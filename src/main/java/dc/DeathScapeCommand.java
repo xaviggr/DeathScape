@@ -1,6 +1,6 @@
 package dc;
 
-import org.bukkit.Bukkit;
+import dc.utils.Message;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -9,11 +9,36 @@ import org.bukkit.entity.Player;
 public class DeathScapeCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!(sender instanceof Player)) {
-            Bukkit.getConsoleSender().sendMessage("Has usado el comando desde terminal!");
-            return true;
+        //Jugador
+        Player player = (Player) sender;
+
+        if(args.length >= 1) {
+            if (args[0].equalsIgnoreCase("help")) {
+                Message.enviarMensajeColorido(player, "DeathScape Comandos:", "azul");
+                Message.enviarMensajeColorido(player, "/deathscape help - Muestra este mensaje", "azul");
+                player.sendMessage("/deathscape info - Muestra información sobre el plugin");
+                player.sendMessage("/deathscape dia - Muestra el dia actual");
+                player.sendMessage("/deathscape despierto - Muestra cuanto tiempo llevas despierto");
+                player.sendMessage("/deathscape discord - Muestra el link de discord");
+
+            } else if (args[0].equalsIgnoreCase("info")) {
+                //Futura implementación
+            } else if (args[0].equalsIgnoreCase("dia")) {
+                //Futura implementación
+            } else if (args[0].equalsIgnoreCase("despierto")) {
+                //Futura implementación
+            } else if (args[0].equalsIgnoreCase("discord")) {
+                //Futura implementación
+            } else {
+                comandoinvalido(player);
+            }
+        } else {
+            comandoinvalido(player);
         }
-        sender.sendMessage("Has usado el comando!");
         return true;
+    }
+
+    public void comandoinvalido(Player jugador) {
+        Message.enviarMensajeColorido(jugador, "Comando invalido! Escribe /deathscape help para la lista de comandos!", "rojo");
     }
 }

@@ -1,5 +1,6 @@
 package dc;
 
+import dc.listeners.PlayerListener;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -9,6 +10,7 @@ public class DeathScape extends JavaPlugin {
     @Override
     public void onEnable() {
         registerCommands();
+        registerEvents();
         Bukkit.getConsoleSender().sendMessage("DeathScape has been enabled!");
     }
 
@@ -19,5 +21,9 @@ public class DeathScape extends JavaPlugin {
 
     public void registerCommands() {
         Objects.requireNonNull(this.getCommand("deathscape")).setExecutor(new DeathScapeCommand());
+    }
+
+    public void registerEvents() {
+        getServer().getPluginManager().registerEvents(new PlayerListener(), this);
     }
 }
