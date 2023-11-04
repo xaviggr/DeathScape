@@ -1,15 +1,20 @@
 package dc.utils;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
 public class Search {
     public static boolean buscarPalabraProhibida(String wordToFind) {
         boolean encontrada = false;
-        File archivoPalabrasProhibidas = new File("palabrasprohibidas.txt");
+        File archivoPalabrasProhibidas = new File("plugins/DeathScape/palabrasprohibidas.txt");
 
         try {
+            if (!archivoPalabrasProhibidas.exists()) {
+                archivoPalabrasProhibidas.createNewFile(); // Crea el archivo si no existe
+            }
+
             Scanner myReader = new Scanner(archivoPalabrasProhibidas);
             while (myReader.hasNextLine()) {
                 String linea = myReader.nextLine();
