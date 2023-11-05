@@ -7,6 +7,11 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class DeathScapeCommand implements CommandExecutor {
+    private DeathScape plugin;
+    public DeathScapeCommand(DeathScape plugin) {
+        this.plugin = plugin;
+    }
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         //Jugador
@@ -27,6 +32,12 @@ public class DeathScapeCommand implements CommandExecutor {
                 //Futura implementación
             } else if (args[0].equalsIgnoreCase("despierto")) {
                 //Futura implementación
+            } else if (args[0].equalsIgnoreCase("reload")) {
+                if(plugin.getMainConfigManager().reloadConfig()) {
+                    Message.enviarMensajeColorido (player, "Configuración recargada!", "verde");
+                } else {
+                    Message.enviarMensajeColorido (player, "Error al recargar la configuración!", "rojo");
+                }
             } else if (args[0].equalsIgnoreCase("discord")) {
                 //Futura implementación
             } else {

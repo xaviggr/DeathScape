@@ -17,6 +17,9 @@ public class Message {
             case "amarillo":
                 colorChat = ChatColor.YELLOW;
                 break;
+            case "verde":
+                colorChat = ChatColor.GREEN;
+                break;
             default:
                 colorChat = ChatColor.WHITE; // Color por defecto si no coincide con ninguno de los colores especificados
                 break;

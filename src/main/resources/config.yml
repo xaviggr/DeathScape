@@ -1,0 +1,14 @@
+# Configuración del plugin
+messages:
+  welcome_message:
+    enabled: true
+    message: "Bienvenido al server!, %player%!"
+  death_message:
+    enabled: true
+    title: "MUERTE!"
+    subtitle: "%player% ha muerto!"
+  ban_message:
+    enabled: true
+    message: "Has sido permabaneado del server!"
+
+config:
