@@ -3,8 +3,6 @@ package dc.config;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import dc.DeathScape;
 
 import java.io.*;
 import java.util.UUID;
@@ -53,16 +51,36 @@ public class PlayerDatabase {
                 jsonObject = new JsonObject();
             }
 
-            // Añadir los nuevos datos al objeto JSON
-            JsonObject playerObject = new JsonObject();
-            playerObject.addProperty("Name", playerData.name);
-            playerObject.addProperty("IsDead", playerData.isDead);
-            playerObject.addProperty("Deaths", playerData.deaths);
-            playerObject.addProperty("IP", playerData.hostAddress);
-            playerObject.addProperty("TimePlayed", playerData.timePlayed);
-            playerObject.addProperty("UUID", playerData.uuid.toString());
+            if(jsonObject == null) {
+                jsonObject = new JsonObject();
+            }
 
-            jsonObject.add(playerData.name, playerObject);
+            // Buscar si ya existe un objeto con el nombre del jugador
+            if (jsonObject.has(playerData.getName())) {
+                // Si existe, obtener el objeto y sobrescribir sus valores
+                JsonObject existingPlayerObject = jsonObject.getAsJsonObject(playerData.getName());
+                existingPlayerObject.addProperty("Name", playerData.getName());
+                existingPlayerObject.addProperty("IsDead", playerData.isDead());
+                existingPlayerObject.addProperty("Deaths", playerData.getDeaths());
+                existingPlayerObject.addProperty("IP", playerData.getHostAddress());
+                existingPlayerObject.addProperty("TimePlayed", playerData.getTimePlayed());
+                existingPlayerObject.addProperty("UUID", playerData.getUuid().toString());
+                existingPlayerObject.addProperty("BanDate", playerData.getBanDate());
+                existingPlayerObject.addProperty("Coords", playerData.getCoords());
+            } else {
+                // Si no existe, crear un nuevo objeto JSON para el jugador
+                JsonObject playerObject = new JsonObject();
+                playerObject.addProperty("Name", playerData.getName());
+                playerObject.addProperty("IsDead", playerData.isDead());
+                playerObject.addProperty("Deaths", playerData.getDeaths());
+                playerObject.addProperty("IP", playerData.getHostAddress());
+                playerObject.addProperty("TimePlayed", playerData.getTimePlayed());
+                playerObject.addProperty("UUID", playerData.getUuid().toString());
+                playerObject.addProperty("BanDate", playerData.getBanDate());
+                playerObject.addProperty("Coords", playerData.getCoords());
+
+                jsonObject.add(playerData.getName(), playerObject);
+            }
 
             // Convertir a formato JSON
             String newJsonString = gson.toJson(jsonObject);
@@ -81,44 +99,55 @@ public class PlayerDatabase {
     }
 
     public static PlayerData getPlayerDataFromDatabase(String playerName) {
+        File archivo = new File(nombreArchivo);
+
         try {
-            File archivo = new File(nombreArchivo);
+            Gson gson = new Gson();
+            JsonObject jsonObject;
+
             if (archivo.exists()) {
+                // Si el archivo existe, leer su contenido y convertirlo a un objeto JSON
                 BufferedReader bufferedReader = new BufferedReader(new FileReader(archivo));
-                StringBuilder stringBuilder = new StringBuilder();
+                StringBuilder jsonString = new StringBuilder();
                 String linea;
 
-                // Leer el contenido del archivo
                 while ((linea = bufferedReader.readLine()) != null) {
-                    stringBuilder.append(linea);
+                    jsonString.append(linea);
                 }
                 bufferedReader.close();
 
-                // Convertir a objeto JSON
-                String contenido = stringBuilder.toString();
-                JsonParser parser = new JsonParser();
-                JsonObject jsonObject = parser.parse(contenido).getAsJsonObject();
+                jsonObject = gson.fromJson(jsonString.toString(), JsonObject.class);
 
-                // Buscar el objeto por el nombre del jugador
-                if (jsonObject.has(playerName)) {
-                    JsonObject playerObject = jsonObject.get(playerName).getAsJsonObject();
+                if (jsonObject == null) {
+                    jsonObject = new JsonObject();
+                }
 
-                    // Extraer datos del objeto JSON y crear un objeto PlayerData
-                    String name = playerObject.get("Name").getAsString();
+                // Buscar el objeto del jugador por su nombre
+                JsonObject playerObject = jsonObject.getAsJsonObject(playerName);
+
+                if (playerObject != null) {
+                    // Obtener los datos del jugador desde el objeto JSON
+                    String name = playerName;
                     boolean isDead = playerObject.get("IsDead").getAsBoolean();
                     int deaths = playerObject.get("Deaths").getAsInt();
                     String hostAddress = playerObject.get("IP").getAsString();
                     String timePlayed = playerObject.get("TimePlayed").getAsString();
                     UUID uuid = UUID.fromString(playerObject.get("UUID").getAsString());
+                    String banDate = playerObject.get("BanDate").getAsString();
+                    String coords = playerObject.get("Coords").getAsString();
 
-                    return new PlayerData(name, isDead, deaths, hostAddress, timePlayed, uuid);
+                    // Crear y devolver un nuevo objeto PlayerData
+                    return new PlayerData(name, isDead, deaths, hostAddress, timePlayed, uuid, banDate, coords);
                 }
             } else {
+                // Si el archivo no existe, devolver null
+                initPlayerDatabase ();
                 return null;
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
+
+        return null; // Si no se encuentra el jugador, devolver null
     }
 }

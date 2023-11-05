@@ -18,6 +18,12 @@ public class MainConfigManager {
     private String banMessage;
     private boolean isBanMessageEnabled;
 
+    public boolean isKick_if_ip_changed() {
+        return kick_if_ip_changed;
+    }
+
+    private boolean kick_if_ip_changed;
+
     public String getBanMessage() {
         return banMessage;
     }
@@ -44,7 +50,7 @@ public class MainConfigManager {
 
     public MainConfigManager(DeathScape plugin) {
         this.plugin = plugin;
-        PlayerDatabase.setNombreArchivo (plugin.getDataFolder () + File.separator + "players.json");
+        PlayerDatabase.setNombreArchivo(plugin.getDataFolder () + File.separator + "players.json");
         loadConfig();
     }
 
@@ -60,6 +66,8 @@ public class MainConfigManager {
         banMessage = getConfig().getString("messages.ban_message.message");
 
         //Config
+        kick_if_ip_changed = getConfig ().getBoolean ("config.kick_if_ip_changed");
+
     }
 
     public boolean reloadConfig() {

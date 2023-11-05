@@ -6,14 +6,18 @@ import dc.listeners.PlayerListener;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.HashMap;
 import java.util.Objects;
 
 public class DeathScape extends JavaPlugin {
 
     private MainConfigManager mainConfigManager;
+    public HashMap<String, Long> tiempoDeConexion;
+
     @Override
     public void onEnable() {
         mainConfigManager = new MainConfigManager(this);
+        tiempoDeConexion = new HashMap<>();
         registerCommands();
         registerEvents();
         Bukkit.getConsoleSender().sendMessage("DeathScape has been enabled!");

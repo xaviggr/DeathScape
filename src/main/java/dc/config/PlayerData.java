@@ -1,22 +1,124 @@
 package dc.config;
 
-import javax.naming.Name;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class PlayerData {
 
-    public String name;
-    public boolean isDead;
-    public int deaths;
-    public String hostAddress;
-    public String timePlayed;
-    public UUID uuid;
-    public PlayerData(String name, boolean isDead, int deaths, String hostAddress, String timePlayed, UUID uniqueId) {
+    private String name;
+    private boolean isDead;
+    private int deaths;
+    private String hostAddress;
+    private String timePlayed;
+    private UUID uuid;
+
+    private String banDate;
+
+    private String coords;
+
+    public String getBanDate() {
+        return banDate;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public boolean isDead() {
+        return isDead;
+    }
+
+    public void setDead(boolean dead) {
+        isDead = dead;
+    }
+
+    public int getDeaths() {
+        return deaths;
+    }
+
+    public void setDeaths(int deaths) {
+        this.deaths = deaths;
+    }
+
+    public String getHostAddress() {
+        return hostAddress;
+    }
+
+    public void setHostAddress(String hostAddress) {
+        this.hostAddress = hostAddress;
+    }
+
+    public String getTimePlayed() {
+        return timePlayed;
+    }
+
+    public void setTimePlayed(String timePlayed) {
+        this.timePlayed = timePlayed;
+    }
+
+    public UUID getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(UUID uuid) {
+        this.uuid = uuid;
+    }
+
+    public String getCoords() {
+        return coords;
+    }
+
+    public void setCoords(String coords) {
+        this.coords = coords;
+    }
+
+    public PlayerData(String name, boolean isDead, int deaths, String hostAddress, String timePlayed, UUID uniqueId, String banDate, String coords) {
         this.name = name;
         this.isDead = isDead;
         this.deaths = deaths;
         this.hostAddress = hostAddress;
         this.timePlayed = timePlayed;
         this.uuid = uniqueId;
+        this.banDate = banDate;
+        this.coords = coords;
+    }
+
+    public void setDeathTime() {
+
+        LocalDateTime fechaActual = LocalDateTime.now();
+
+        int sec = fechaActual.getSecond();
+        int min = fechaActual.getMinute();
+        int hour = fechaActual.getHour();
+
+        String fSec;
+        String fMin;
+        String fHour;
+
+        if (sec < 10) {
+
+            fSec = "0" + sec;
+        } else {
+
+            fSec = String.valueOf(sec);
+        }
+
+        if (min < 10) {
+
+            fMin = "0" + min;
+        } else {
+
+            fMin = String.valueOf(min);
+        }
+
+        if (hour < 10) {
+
+            fHour = "0" + hour;
+        } else {
+
+            fHour = String.valueOf(hour);
+        }
+
+        banDate = fHour + ":" + fMin + ":" + fSec;
     }
 }

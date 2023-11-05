@@ -31,7 +31,7 @@ public class PlayerDeath {
                 getServer().getScheduler().runTaskLater(plugin, () -> {
                     PlayerBan.Ban (player, ChatColor.RED + plugin.getMainConfigManager ().getBanMessage (), null);
                     player.kickPlayer (ChatColor.RED + plugin.getMainConfigManager ().getBanMessage ());
-                }, 5 * 20L);
+                }, 2 * 20L);
 
             } else {
                 PlayerBan.Ban (player, ChatColor.RED + plugin.getMainConfigManager ().getBanMessage (), null);
