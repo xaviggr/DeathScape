@@ -21,7 +21,8 @@ public class PlayerEditDatabase {
         if (playerdata == null) {
             player.kickPlayer ("Error al cargar tus datos, contacta con un administrador.");
         } else {
-            playerdata.setDeathTime();
+            playerdata.setBanTime();
+            playerdata.setBanDate();
             PlayerDatabase.addPlayerDataToDatabase (playerdata);
         }
     }
@@ -37,13 +38,12 @@ public class PlayerEditDatabase {
             int segundos = 0, minutos = 0, horas = 0;
 
             for (String parte : partes) {
-                int parseInt = Integer.parseInt(parte.substring(0, parte.length() - 1));
                 if (parte.endsWith("s")) {
-                    segundos = parseInt; // Convertir los segundos a entero
+                    segundos = Integer.parseInt(parte.substring(0, parte.length() - 1)); // Convertir los segundos a entero
                 } else if (parte.endsWith("m")) {
-                    minutos = parseInt; // Convertir los minutos a entero
+                    minutos = Integer.parseInt(parte.substring(0, parte.length() - 1));// Convertir los minutos a entero
                 } else if (parte.endsWith("h")) {
-                    horas = parseInt; // Convertir las horas a entero
+                    horas = Integer.parseInt(parte.substring(0, parte.length() - 1));// Convertir las horas a entero
                 }
             }
 
@@ -60,6 +60,26 @@ public class PlayerEditDatabase {
             horas += new_horas;
 
             playerdata.setTimePlayed(segundos + "s " + minutos + "m " + horas + "h");
+            PlayerDatabase.addPlayerDataToDatabase (playerdata);
+        }
+    }
+
+    public static void setPlayerCoords(Player player) {
+        PlayerData playerdata = PlayerDatabase.getPlayerDataFromDatabase (player.getName ());
+        if (playerdata == null) {
+            player.kickPlayer ("Error al cargar tus datos, contacta con un administrador.");
+        } else {
+            playerdata.setCoords(player.getLocation().getX() + "," + player.getLocation().getY() + "," + player.getLocation().getZ());
+            PlayerDatabase.addPlayerDataToDatabase (playerdata);
+        }
+    }
+
+    public static void UnbanPlayer(String player_name) {
+        PlayerData playerdata = PlayerDatabase.getPlayerDataFromDatabase (player_name);
+        if (playerdata != null) {
+            playerdata.setDead(false);
+            playerdata.setBanDate("0");
+            playerdata.setBantime("0");
             PlayerDatabase.addPlayerDataToDatabase (playerdata);
         }
     }

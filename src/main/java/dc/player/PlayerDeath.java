@@ -39,5 +39,7 @@ public class PlayerDeath {
         }
         PlayerCreateStatueOnDeath.Create(player);
         PlayerEditDatabase.setPlayerAsDeath (player);
+        PlayerEditDatabase.setPlayerCoords(player);
+        plugin.getServerData().checkDay();
     }
 }

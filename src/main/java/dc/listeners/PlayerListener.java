@@ -40,7 +40,7 @@ public class PlayerListener implements Listener {
         String hostaddress = Objects.requireNonNull(player.getAddress()).getAddress().getHostAddress();
 
         if (PlayerDatabase.getPlayerDataFromDatabase(player.getName()) == null) {
-            PlayerData playerData = new PlayerData(player.getName(), false, 0, hostaddress, "0", player.getUniqueId(), "0", "0");
+            PlayerData playerData = new PlayerData(player.getName(), false, 0, hostaddress, "0", player.getUniqueId(), "0", "0", "0");
             if (!PlayerDatabase.addPlayerDataToDatabase(playerData)) {
                 player.kickPlayer(ChatColor.RED + "Error al cargar tus datos, contacta con un administrador.");
             }
@@ -76,5 +76,7 @@ public class PlayerListener implements Listener {
             PlayerEditDatabase.setPlayerTimePlayed(player, segundos, minutos, horas);
             plugin.tiempoDeConexion.remove(nombreJugador);
         }
+
+        PlayerEditDatabase.setPlayerCoords(player);
     }
 }

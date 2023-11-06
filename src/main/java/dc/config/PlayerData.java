@@ -5,14 +5,15 @@ import java.util.UUID;
 
 public class PlayerData {
 
-    private String name;
+    private final String name;
     private boolean isDead;
     private int deaths;
-    private String hostAddress;
+    private final String hostAddress;
     private String timePlayed;
-    private UUID uuid;
+    private final UUID uuid;
 
     private String banDate;
+    private String bantime;
 
     private String coords;
 
@@ -44,10 +45,6 @@ public class PlayerData {
         return hostAddress;
     }
 
-    public void setHostAddress(String hostAddress) {
-        this.hostAddress = hostAddress;
-    }
-
     public String getTimePlayed() {
         return timePlayed;
     }
@@ -60,10 +57,6 @@ public class PlayerData {
         return uuid;
     }
 
-    public void setUuid(UUID uuid) {
-        this.uuid = uuid;
-    }
-
     public String getCoords() {
         return coords;
     }
@@ -72,7 +65,19 @@ public class PlayerData {
         this.coords = coords;
     }
 
-    public PlayerData(String name, boolean isDead, int deaths, String hostAddress, String timePlayed, UUID uniqueId, String banDate, String coords) {
+    public void setBanDate(String banDate) {
+        this.banDate = banDate;
+    }
+
+    public String getBantime() {
+        return bantime;
+    }
+
+    public void setBantime(String bantime) {
+        this.bantime = bantime;
+    }
+
+    public PlayerData(String name, boolean isDead, int deaths, String hostAddress, String timePlayed, UUID uniqueId, String banDate, String bantime, String coords) {
         this.name = name;
         this.isDead = isDead;
         this.deaths = deaths;
@@ -80,10 +85,11 @@ public class PlayerData {
         this.timePlayed = timePlayed;
         this.uuid = uniqueId;
         this.banDate = banDate;
+        this.bantime= bantime;
         this.coords = coords;
     }
 
-    public void setDeathTime() {
+    public void setBanTime() {
 
         LocalDateTime fechaActual = LocalDateTime.now();
 
@@ -119,6 +125,45 @@ public class PlayerData {
             fHour = String.valueOf(hour);
         }
 
-        banDate = fHour + ":" + fMin + ":" + fSec;
+        bantime = fHour + ":" + fMin + ":" + fSec;
+    }
+
+    public void setBanDate() {
+
+            LocalDateTime fechaActual = LocalDateTime.now();
+
+            int day = fechaActual.getDayOfMonth();
+            int month = fechaActual.getMonthValue();
+            int year = fechaActual.getYear();
+
+            String fDay;
+            String fMonth;
+            String fYear;
+
+            if (day < 10) {
+
+                fDay = "0" + day;
+            } else {
+
+                fDay = String.valueOf(day);
+            }
+
+            if (month < 10) {
+
+                fMonth = "0" + month;
+            } else {
+
+                fMonth = String.valueOf(month);
+            }
+
+            if (year < 10) {
+
+                fYear = "0" + year;
+            } else {
+
+                fYear = String.valueOf(year);
+            }
+
+            banDate = fDay + "/" + fMonth + "/" + fYear;
     }
 }
