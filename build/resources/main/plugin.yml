@@ -1,0 +1,5 @@
+name: DeathScape
+main: com.deathscape.plugin.DeathScape
+version: 1.0
+description: Automaticación DeathScape Server
+api-version: 1.20
