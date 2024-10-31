@@ -2,11 +2,8 @@ package dc.config;
 
 import dc.DeathScape;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 
 public class MainConfigManager {
     private DeathScape plugin;
@@ -56,7 +53,7 @@ public class MainConfigManager {
 
     public void loadConfig() {
         //Messages
-        isWelcomeMessageEnabled = getConfig().getBoolean("messages.welcome_message.enabled");
+        isWelcomeMessageEnabled = (Boolean) getConfig().getBoolean("messages.welcome_message.enabled");
         welcomeMessage = getConfig().getString("messages.welcome_message.message");
 
         deathMessageTitle = getConfig().getString("messages.death_message.title");
