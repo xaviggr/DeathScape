@@ -2,7 +2,7 @@ main: dc.DeathScape
 version: 1.0.0
 name: DeathScape
 author: xaviggr
-api-version: 1.13
+api-version: 1.20
 
 commands:
   Deathscape:
