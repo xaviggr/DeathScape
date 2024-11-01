@@ -13,3 +13,4 @@ messages:
 
 config:
   kick_if_ip_changed: true
+  stormTime: 10

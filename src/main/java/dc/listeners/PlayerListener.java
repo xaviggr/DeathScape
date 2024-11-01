@@ -35,8 +35,7 @@ public class PlayerListener implements Listener {
         // Llama al método Dead para manejar la muerte del jugador
         PlayerDeath.Dead(player, plugin);
 
-        // Agrega 5 minutos al contador de lluvia
-        serverData.agregarTiempoLluvia(5);
+        serverData.agregarTiempoLluvia(plugin.getMainConfigManager().getStormTime());
 
         // Inicia la lluvia si no está activa
         if (!Bukkit.getWorlds().get(0).hasStorm()) {

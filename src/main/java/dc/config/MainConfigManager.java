@@ -13,6 +13,7 @@ public class MainConfigManager {
     private String deathMessageTitle;
     private String deathMessageSubtitle;
     private String banMessage;
+    private int stormTime;
     private boolean isBanMessageEnabled;
 
     public boolean isKick_if_ip_changed() {
@@ -45,6 +46,8 @@ public class MainConfigManager {
         return welcomeMessage;
     }
 
+    public int getStormTime() { return stormTime; }
+
     public MainConfigManager(DeathScape plugin) {
         this.plugin = plugin;
         PlayerDatabase.setNombreArchivo(plugin.getDataFolder () + File.separator + "players.json");
@@ -64,6 +67,7 @@ public class MainConfigManager {
 
         //Config
         kick_if_ip_changed = getConfig ().getBoolean ("config.kick_if_ip_changed");
+        stormTime = getConfig().getInt("config.stormTime");
 
     }
 
