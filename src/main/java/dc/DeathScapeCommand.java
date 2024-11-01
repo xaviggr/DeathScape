@@ -32,6 +32,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
                 opciones.add("reload");
                 opciones.add("dia");
                 opciones.add("tiempojugado");
+                opciones.add("tiempolluvia");
                 opciones.add("discord");
                 if (sender.isOp()) {
                     opciones.add("setdia");
@@ -45,7 +46,12 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        //Jugador
+        // Verifica si el comando es ejecutado por un jugador
+        if (!(sender instanceof Player)) {
+            sender.sendMessage("Este comando solo puede ser usado por jugadores.");
+            return true;
+        }
+
         Player player = (Player) sender;
 
         if (args.length == 1) {
@@ -57,6 +63,10 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
                 Message.enviarMensajeColorido(player, "/deathscape dia - Muestra el día actual del servidor", "azul");
                 Message.enviarMensajeColorido(player, "/deathscape tiempojugado - Muestra el tiempo jugado", "azul");
                 Message.enviarMensajeColorido(player, "/deathscape discord - Muestra el link de discord", "azul");
+                Message.enviarMensajeColorido(player, "/deathscape tiempolluvia - Muestra el tiempo de lluvia pendiente", "azul");
+            } else if (args[0].equalsIgnoreCase("tiempolluvia")) {
+                int tiempoLluviaPendiente = plugin.getServerData().getTiempoLluviaPendiente();
+                Message.enviarMensajeColorido(player, "Tiempo de lluvia pendiente: " + tiempoLluviaPendiente + " minutos.", "verde");
             } else if (args[0].equalsIgnoreCase("info")) {
                 Message.enviarMensajeColorido(player, "DeathScape V" + plugin.getDescription().getVersion() + " por " + plugin.getDescription().getAuthors(), "verde");
             } else if (args[0].equalsIgnoreCase("dia")) {
@@ -99,7 +109,6 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         }
         return true;
     }
-
 
     public boolean setDia(String[] args) {
         if (args.length < 2) {
