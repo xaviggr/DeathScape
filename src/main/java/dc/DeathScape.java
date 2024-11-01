@@ -14,21 +14,22 @@ public class DeathScape extends JavaPlugin {
 
     private MainConfigManager mainConfigManager;
     public HashMap<String, Long> tiempoDeConexion;
+    private ServerData serverData;  // Define serverData aquí
 
     public ServerData getServerData() {
         return serverData;
     }
 
-    private ServerData serverData;
-
     @Override
     public void onEnable() {
-        serverData = new ServerData(this);
-        new onUpdate().runTaskTimer(this, 0, 1);
+        serverData = new ServerData(this);  // Inicializa serverData
         mainConfigManager = new MainConfigManager(this);
         tiempoDeConexion = new HashMap<>();
+
+        new onUpdate().runTaskTimer(this, 0, 1);  // Inicia la tarea programada
         registerCommands();
-        registerEvents();
+        registerEvents();  // Registra eventos
+
         Bukkit.getConsoleSender().sendMessage("DeathScape has been enabled!");
     }
 
@@ -42,7 +43,8 @@ public class DeathScape extends JavaPlugin {
     }
 
     public void registerEvents() {
-        getServer().getPluginManager().registerEvents(new PlayerListener(this), this);
+        // Pasa tanto `this` como `serverData` al constructor de `PlayerListener`
+        getServer().getPluginManager().registerEvents(new PlayerListener(this, serverData), this);
     }
 
     public MainConfigManager getMainConfigManager() {
@@ -53,7 +55,6 @@ public class DeathScape extends JavaPlugin {
         @Override
         public void run() {
             // Este método se ejecutará en cada tick del juego
-
         }
     }
 }

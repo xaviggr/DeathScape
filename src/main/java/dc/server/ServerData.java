@@ -1,6 +1,7 @@
 package dc.server;
 
 import dc.DeathScape;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
@@ -18,17 +19,20 @@ public class ServerData {
         configFile = new File(plugin.getDataFolder(), "dias_servidor.yml");
         config = YamlConfiguration.loadConfiguration(configFile);
 
-        // Verifica si el archivo existe
+        // Inicialización de valores predeterminados
         if (!config.isSet("ultima_actualizacion")) {
             config.set("ultima_actualizacion", Instant.now().toEpochMilli());
-            saveConfig();
         }
+        if (!config.isSet("tiempo_lluvia_pendiente")) {
+            config.set("tiempo_lluvia_pendiente", 0);
+        }
+        saveConfig();
 
         checkDay();
     }
 
-    public void checkDay(){
-        // Obtén la última actualización y calcula los días transcurridos
+    public void checkDay() {
+        // Calcula los días transcurridos y actualiza el contador
         Instant ultimaActualizacion = Instant.ofEpochMilli(config.getLong("ultima_actualizacion"));
         Instant ahora = Instant.now();
         long diasTranscurridos = Duration.between(ultimaActualizacion, ahora).toDays();
@@ -36,14 +40,6 @@ public class ServerData {
         config.set("dias_servidor", config.getInt("dias_servidor", 0) + diasTranscurridos);
         config.set("ultima_actualizacion", Instant.now().toEpochMilli());
         saveConfig();
-    }
-
-    private void saveConfig() {
-        try {
-            config.save(configFile);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     public int getServerDays() {
@@ -54,4 +50,33 @@ public class ServerData {
         config.set("dias_servidor", dia);
         saveConfig();
     }
+
+    // Métodos para gestionar el tiempo de lluvia pendiente
+    public int getTiempoLluviaPendiente() {
+        return config.getInt("tiempo_lluvia_pendiente");
+    }
+
+    public void agregarTiempoLluvia(int minutos) {
+        int tiempoActual = config.getInt("tiempo_lluvia_pendiente");
+        config.set("tiempo_lluvia_pendiente", tiempoActual + minutos);
+        saveConfig();
+        Bukkit.getLogger().info("Tiempo de lluvia aumentado en " + minutos + " minutos. Total pendiente: " + (tiempoActual + minutos) + " minutos.");
+    }
+
+    public void reducirTiempoLluvia(int minutos) {
+        int tiempoActual = config.getInt("tiempo_lluvia_pendiente");
+        int nuevoTiempo = Math.max(0, tiempoActual - minutos);
+        config.set("tiempo_lluvia_pendiente", nuevoTiempo);
+        saveConfig();
+        Bukkit.getLogger().info("Tiempo de lluvia reducido en " + minutos + " minutos. Total pendiente: " + nuevoTiempo + " minutos.");
+    }
+
+    private void saveConfig() {
+        try {
+            config.save(configFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
+
