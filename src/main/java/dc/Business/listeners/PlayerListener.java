@@ -1,20 +1,19 @@
-package dc.listeners;
+package dc.Business.listeners;
 
 import dc.Business.controllers.PlayerController;
+import dc.Business.controllers.ServerController;
 import dc.Business.controllers.StormController;
 import dc.DeathScape;
-import dc.config.PlayerData;
-import dc.config.PlayerDatabase;
-import dc.config.PlayerEditDatabase;
-import dc.player.PlayerDeath;
+import dc.Persistence.player.PlayerData;
+import dc.Persistence.player.PlayerDatabase;
+import dc.Persistence.player.PlayerEditDatabase;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
-import org.bukkit.event.player.AsyncPlayerChatEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.player.*;
 
 import java.util.HashSet;
 import java.util.Objects;
