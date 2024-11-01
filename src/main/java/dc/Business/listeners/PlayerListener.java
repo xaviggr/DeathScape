@@ -1,27 +1,31 @@
-package dc.Business.listeners;
+package dc.listeners;
 
 import dc.Business.controllers.PlayerController;
 import dc.Business.controllers.StormController;
 import dc.DeathScape;
-import dc.Persistence.player.PlayerData;
-import dc.Persistence.player.PlayerDatabase;
-import dc.Persistence.player.PlayerEditDatabase;
-import dc.Business.controllers.ServerController;
+import dc.config.PlayerData;
+import dc.config.PlayerDatabase;
+import dc.config.PlayerEditDatabase;
+import dc.player.PlayerDeath;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 public class PlayerListener implements Listener {
 
     private final DeathScape plugin;
     private final PlayerController playerController;
     private final StormController stormController;
+    private final Set<Player> sleepingPlayers = new HashSet<>(); // Conjunto para jugadores durmiendo
 
     public PlayerListener(DeathScape plugin, ServerController serverController, PlayerController playerController, StormController stormController) {
         this.plugin = plugin;
@@ -80,5 +84,30 @@ public class PlayerListener implements Listener {
         }
 
         PlayerEditDatabase.setPlayerCoords(player);
+    }
+
+    // Añadido: evento para manejar el sueño
+    @EventHandler
+    public void onPlayerSleep(PlayerBedEnterEvent event) {
+        Player player = event.getPlayer();
+        sleepingPlayers.add(player); // Añadir al jugador a la lista de durmiendo
+
+        // Obtener el mundo donde está el jugador
+        org.bukkit.World world = player.getWorld();
+
+        // Cambiar el tiempo a día si hay al menos un jugador durmiendo
+        if (sleepingPlayers.size() == 1 && (world.getTime() >= 13000 && world.getTime() <= 23000)) { // Solo cambiar a día si es el primero en dormir
+            Bukkit.getWorlds().forEach(w -> {
+                w.setTime(0); // Establece la hora a 0 (día)
+            });
+            Bukkit.broadcastMessage(ChatColor.GOLD + player.getName() + " ha hecho que el día llegue!");
+        }
+    }
+
+    // Añadido: evento para manejar el despertar
+    @EventHandler
+    public void onPlayerWake(PlayerBedLeaveEvent event) {
+        Player player = event.getPlayer();
+        sleepingPlayers.remove(player); // Eliminar al jugador que se despertó
     }
 }
