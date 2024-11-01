@@ -1,7 +1,7 @@
 package dc;
 
-import dc.config.PlayerDatabase;
-import dc.config.PlayerEditDatabase;
+import dc.Persistence.player.PlayerDatabase;
+import dc.Persistence.player.PlayerEditDatabase;
 import dc.utils.Message;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -65,7 +65,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
                 Message.enviarMensajeColorido(player, "/deathscape discord - Muestra el link de discord", "azul");
                 Message.enviarMensajeColorido(player, "/deathscape tiempolluvia - Muestra el tiempo de lluvia pendiente", "azul");
             } else if (args[0].equalsIgnoreCase("tiempolluvia")) {
-                int tiempoLluviaPendiente = plugin.getServerData().getTiempoLluviaPendiente();
+                int tiempoLluviaPendiente = plugin.getServerData().getStormPendingTime();
                 Message.enviarMensajeColorido(player, "Tiempo de lluvia pendiente: " + tiempoLluviaPendiente + " minutos.", "verde");
             } else if (args[0].equalsIgnoreCase("info")) {
                 Message.enviarMensajeColorido(player, "DeathScape V" + plugin.getDescription().getVersion() + " por " + plugin.getDescription().getAuthors(), "verde");

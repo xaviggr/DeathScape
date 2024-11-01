@@ -1,8 +1,10 @@
 package dc;
 
-import dc.config.MainConfigManager;
-import dc.listeners.PlayerListener;
-import dc.server.ServerData;
+import dc.Business.controllers.PlayerController;
+import dc.Business.controllers.StormController;
+import dc.Persistence.config.MainConfigManager;
+import dc.Business.listeners.PlayerListener;
+import dc.Business.controllers.ServerController;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -13,23 +15,36 @@ import java.util.Objects;
 public class DeathScape extends JavaPlugin {
 
     private MainConfigManager mainConfigManager;
-    public HashMap<String, Long> tiempoDeConexion;
-    private ServerData serverData;  // Define serverData aquí
+    private ServerController serverController;
 
-    public ServerData getServerData() {
-        return serverData;
+    //Listeners
+    PlayerListener playerListener;
+
+    //Controllers
+    PlayerController playerController;
+    StormController stormController;
+
+    public HashMap<String, Long> time_of_connection;
+
+    public ServerController getServerData() {
+        return serverController;
     }
 
     @Override
     public void onEnable() {
-        serverData = new ServerData(this);  // Inicializa serverData
+        serverController = new ServerController(this);
         mainConfigManager = new MainConfigManager(this);
-        tiempoDeConexion = new HashMap<>();
 
-        new onUpdate().runTaskTimer(this, 0, 1);  // Inicia la tarea programada
+        playerController = new PlayerController(this);
+        stormController = new StormController(this, serverController);
+
+        playerListener = new PlayerListener(this, serverController, playerController, stormController);
+
+        time_of_connection = new HashMap<>();
+
+        new onUpdate().runTaskTimer(this, 0, 1);
         registerCommands();
-        registerEvents();  // Registra eventos
-
+        registerEvents();
         Bukkit.getConsoleSender().sendMessage("DeathScape has been enabled!");
     }
 
@@ -38,13 +53,12 @@ public class DeathScape extends JavaPlugin {
         Bukkit.getConsoleSender().sendMessage("DeathScape has been disabled!");
     }
 
-    public void registerCommands() {
-        Objects.requireNonNull(this.getCommand("deathscape")).setExecutor(new DeathScapeCommand(this));
+    public void registerEvents() {
+        getServer().getPluginManager().registerEvents(playerListener, this);
     }
 
-    public void registerEvents() {
-        // Pasa tanto `this` como `serverData` al constructor de `PlayerListener`
-        getServer().getPluginManager().registerEvents(new PlayerListener(this, serverData), this);
+    public void registerCommands() {
+        Objects.requireNonNull(this.getCommand("deathscape")).setExecutor(new DeathScapeCommand(this));
     }
 
     public MainConfigManager getMainConfigManager() {
