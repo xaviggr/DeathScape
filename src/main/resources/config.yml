@@ -10,7 +10,9 @@ messages:
   ban_message:
     enabled: true
     message: "Has sido permabaneado del server!"
-
+  totem_success: "&a¡El tótem te ha salvado con una probabilidad de &b{randomValue}&f/&c{successProbability}&a!"
+  totem_failure: "&cEl jugador &a{playerName} &cusó un tótem con probabilidad &4{randomValue}&f/&9{successProbability}"
+  totem_broadcast_success: "&a¡El jugador &b{playerName} &aha sobrevivido gracias a su tótem con una probabilidad de &b{randomValue}&f/&c{successProbability}&a!"
 config:
   kick_if_ip_changed: true
   storm_time: 10

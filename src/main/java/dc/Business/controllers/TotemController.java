@@ -54,9 +54,13 @@ public class TotemController {
     public void handleTotemFailure(Player player, int randomValue) {
         int successProbability = plugin.getConfig().getInt("config.totem_success_probability");
 
-        String message = ChatColor.RED + "El jugador " + ChatColor.GREEN + player.getName() + ChatColor.RED + " ha usado un tótem con probabilidad "
-               + ChatColor.DARK_RED + randomValue + ChatColor.WHITE + "/" + ChatColor.BLUE + successProbability;
-        Bukkit.broadcastMessage(message);
+        // Cargar mensaje desde config.yml
+        String message = plugin.getConfig().getString("messages.totem_failure");
+        message = message.replace("{playerName}", player.getName())
+                .replace("{randomValue}", String.valueOf(randomValue))
+                .replace("{successProbability}", String.valueOf(successProbability));
+
+        Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', message));
 
         for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
             onlinePlayer.playSound(onlinePlayer.getLocation(), Sound.BLOCK_GLASS_BREAK, 1.0f, 1.0f);
