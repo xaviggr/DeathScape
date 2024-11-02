@@ -37,7 +37,6 @@ public class DeathScape extends JavaPlugin {
     public void onEnable() {
         serverController = new ServerController(this);
         mainConfigManager = new MainConfigManager(this);
-
         playerController = new PlayerController(this);
         stormController = new StormController(this, serverController);
         totemController = new TotemController(this);

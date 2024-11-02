@@ -2,7 +2,7 @@
 messages:
   welcome_message:
     enabled: true
-    message: "Bienvenido al server!, %player%!"
+    message: "Bienvenido al server %player%!"
   death_message:
     enabled: true
     title: "MUERTE!"

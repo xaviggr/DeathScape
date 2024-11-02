@@ -2,7 +2,7 @@
 messages:
   welcome_message:
     enabled: true
-    message: "Bienvenido al server!, %player%!"
+    message: "Bienvenido al server %player%!"
   death_message:
     enabled: true
     title: "MUERTE!"
@@ -14,3 +14,7 @@ messages:
 config:
   kick_if_ip_changed: true
   storm_time: 10
+  points_to_reduce_on_death: 5
+  tablist:
+    header: "&6Bienvenido a Death Scape, %player%!"
+    footer: "&eJugadores en línea: &a%online_players%"
