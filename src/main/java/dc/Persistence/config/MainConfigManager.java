@@ -16,6 +16,7 @@ public class MainConfigManager {
     private String banMessage;
     private int stormTime;
     private boolean isBanMessageEnabled;
+    private int points_to_reduce_on_death;
 
     public boolean isKick_if_ip_changed() {
         return kick_if_ip_changed;
@@ -49,6 +50,10 @@ public class MainConfigManager {
 
     public int getStormTime() { return stormTime; }
 
+    public int getPoints_to_reduce_on_death() {
+        return points_to_reduce_on_death;
+    }
+
     public MainConfigManager(DeathScape plugin) {
         this.plugin = plugin;
         PlayerDatabase.setNombreArchivo(plugin.getDataFolder () + File.separator + "players.json");
@@ -69,6 +74,7 @@ public class MainConfigManager {
         //Config
         kick_if_ip_changed = getConfig ().getBoolean ("config.kick_if_ip_changed");
         stormTime = getConfig().getInt("config.storm_time");
+        points_to_reduce_on_death = getConfig().getInt("config.points_to_reduce_on_death");
 
     }
 

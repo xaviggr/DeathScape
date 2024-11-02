@@ -68,6 +68,7 @@ public class PlayerDatabase {
                 existingPlayerObject.addProperty("BanDate", playerData.getBanDate());
                 existingPlayerObject.addProperty("BanTime", playerData.getBantime());
                 existingPlayerObject.addProperty("Coords", playerData.getCoords());
+                existingPlayerObject.addProperty("Points", playerData.getPoints());
             } else {
                 // Si no existe, crear un nuevo objeto JSON para el jugador
                 JsonObject playerObject = new JsonObject();
@@ -80,6 +81,7 @@ public class PlayerDatabase {
                 playerObject.addProperty("BanDate", playerData.getBanDate());
                 playerObject.addProperty("BanTime", playerData.getBantime());
                 playerObject.addProperty("Coords", playerData.getCoords());
+                playerObject.addProperty("Points", playerData.getPoints());
 
                 jsonObject.add(playerData.getName(), playerObject);
             }
@@ -138,9 +140,10 @@ public class PlayerDatabase {
                     String banDate = playerObject.get("BanDate").getAsString();
                     String banTime = playerObject.get("BanTime").getAsString();
                     String coords = playerObject.get("Coords").getAsString();
+                    int points = playerObject.get("Points").getAsInt();
 
                     // Crear y devolver un nuevo objeto PlayerData
-                    return new PlayerData(name, isDead, deaths, hostAddress, timePlayed, uuid, banDate, banTime, coords);
+                    return new PlayerData(name, isDead, deaths, hostAddress, timePlayed, uuid, banDate, banTime, coords, points);
                 }
             } else {
                 // Si el archivo no existe, devolver null

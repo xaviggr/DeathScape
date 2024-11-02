@@ -16,31 +16,40 @@ public class StormController {
 
     public void updateStormOnPlayerDeath() {
         serverController.addStormTime(plugin.getMainConfigManager().getStormTime());
+        startStormIfNeeded();
+    }
 
-        // Inicia la lluvia si no está activa
-        if (!Bukkit.getWorlds().get(0).hasStorm()) {
+    public void checkStormOnServerStart() {
+        startStormIfNeeded();
+    }
+
+    private void startStormIfNeeded() {
+        // Activa la tormenta si hay tiempo pendiente y la tarea no está activa
+        if (serverController.getStormPendingTime() > 0 && !serverController.isRainTaskActive()) {
             Bukkit.getWorlds().get(0).setStorm(true);
+            serverController.setRainTaskActive(true);
+            scheduleStormTimer();
         }
+    }
 
-        // Verifica si ya hay una tarea de lluvia activa para evitar duplicados
-        if (!serverController.isRainTaskActive()) {
-            serverController.setRainTaskActive(true); // Establece que la tarea está activa
-
-            // Programa una tarea que reducirá el tiempo de lluvia pendiente cada minuto
-            new BukkitRunnable() {
-                @Override
-                public void run() {
-                    if (serverController.getStormPendingTime() > 0) {
-                        // Reduce el tiempo de lluvia en 1 minuto
-                        serverController.reduceStormTime(1);
-                    } else {
-                        // Si no hay más tiempo de lluvia pendiente, detiene la lluvia y esta tarea
-                        Bukkit.getWorlds().get(0).setStorm(false);
-                        serverController.setRainTaskActive(false); // Marca la tarea como inactiva
-                        this.cancel(); // Cancela esta tarea
-                    }
+    private void scheduleStormTimer() {
+        // Crea una tarea programada para reducir el tiempo de tormenta cada minuto
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                if (serverController.getStormPendingTime() > 0) {
+                    serverController.reduceStormTime(1);
+                } else {
+                    stopStorm();
+                    this.cancel(); // Cancela esta tarea
                 }
-            }.runTaskTimer(plugin, 0L, 20L * 60); // Ejecuta cada minuto (20 ticks = 1 segundo)
-        }
+            }
+        }.runTaskTimer(plugin, 0L, 20L * 60); // Ejecuta cada minuto (20 ticks = 1 segundo)
+    }
+
+    private void stopStorm() {
+        // Detiene la tormenta y marca la tarea como inactiva
+        Bukkit.getWorlds().get(0).setStorm(false);
+        serverController.setRainTaskActive(false);
     }
 }
