@@ -7,6 +7,7 @@ import dc.DeathScape;
 import dc.Persistence.player.PlayerData;
 import dc.Persistence.player.PlayerDatabase;
 import dc.Persistence.player.PlayerEditDatabase;
+import dc.utils.Message;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -14,8 +15,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.*;
-
-import org.bukkit.entity.Player;
 
 import java.util.HashSet;
 import java.util.Objects;
@@ -66,6 +65,8 @@ public class PlayerListener implements Listener {
         if (player.isOnline()) {
             plugin.time_of_connection.put(player.getName(), System.currentTimeMillis());
         }
+
+        playerController.setUpTabList(player);
     }
 
     @EventHandler
@@ -102,7 +103,7 @@ public class PlayerListener implements Listener {
             Bukkit.getWorlds().forEach(w -> {
                 w.setTime(0); // Establece la hora a 0 (día)
             });
-            Bukkit.broadcastMessage(ChatColor.GOLD + player.getName() + " ha hecho que el día llegue!");
+            Message.enviarMensajeColorido(player, "Has hecho que el día llegue!", "dorado");
         }
     }
 

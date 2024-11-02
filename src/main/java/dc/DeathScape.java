@@ -5,7 +5,6 @@ import dc.Business.controllers.StormController;
 import dc.Persistence.config.MainConfigManager;
 import dc.Business.controllers.ServerController;
 import dc.Business.listeners.PlayerListener;
-import dc.Business.controllers.TabListManager;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -41,10 +40,6 @@ public class DeathScape extends JavaPlugin {
 
         time_of_connection = new HashMap<>();
 
-        // Inicia el tabulador
-        getServer().getPluginManager().registerEvents(new TabListManager(this), this);
-
-        new onUpdate(this).runTaskTimer(this, 0, 1);
         registerCommands();
         registerEvents();
         stormController.checkStormOnServerStart();
@@ -69,12 +64,6 @@ public class DeathScape extends JavaPlugin {
     }
 
     private static class onUpdate extends BukkitRunnable {
-        private final DeathScape plugin;
-
-        public onUpdate(DeathScape plugin) {
-            this.plugin = plugin;
-        }
-
         @Override
         public void run() {
             // Este método se ejecutará en cada tick del juego

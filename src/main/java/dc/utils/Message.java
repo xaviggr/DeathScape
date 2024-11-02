@@ -10,6 +10,7 @@ public class Message {
             case "azul" -> ChatColor.BLUE;
             case "amarillo" -> ChatColor.YELLOW;
             case "verde" -> ChatColor.GREEN;
+            case "dorado" -> ChatColor.GOLD;
             default -> ChatColor.WHITE; // Color por defecto si no coincide con ninguno de los colores especificados
         };
 
