@@ -15,3 +15,4 @@ config:
   kick_if_ip_changed: true
   storm_time: 10
   points_to_reduce_on_death: 5
+  totem_success_probability: 50
