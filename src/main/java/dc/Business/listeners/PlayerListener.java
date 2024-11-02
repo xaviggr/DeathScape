@@ -124,25 +124,29 @@ public class PlayerListener implements Listener {
     public void onEntityResurrect(EntityResurrectEvent event) {
         Entity entity = event.getEntity();
 
-        // Verifica si la entidad es un jugador
         if (entity instanceof Player) {
             Player player = (Player) entity;
 
             // Llama al método willTotemSucceed del TotemController
             TotemController.Result result = totemController.willTotemSucceed();
+            int successProbability = totemController.getConfig().getInt("config.totem_success_probability");
 
-            // Si el tótem no tiene éxito, cancela la resurrección
             if (!result.isSuccess()) {
                 event.setCancelled(true); // Cancela el evento de resurrección
-                totemController.handleTotemFailure(player, result.getRandomValue()); // Maneja la falla del tótem
+                totemController.handleTotemFailure(player, result.getRandomValue());
             } else {
-                // El tótem ha funcionado, se puede añadir lógica adicional si es necesario
-                player.sendMessage("¡El tótem te ha salvado con una probabilidad de " + result.getRandomValue() + "/" +
-                        totemController.getConfig().getInt("config.totem_success_probability") + "!");
-                // Mensaje a todos los jugadores
-                String broadcastMessage = ChatColor.GREEN + "¡El jugador " + ChatColor.BLUE + player.getName() + ChatColor.GREEN + " ha sobrevivido gracias a su tótem con una probabilidad de " +
-                        ChatColor.BLUE + result.getRandomValue() + ChatColor.WHITE + "/" + ChatColor.RED + plugin.getConfig().getInt("config.totem_success_probability") + ChatColor.GREEN + "!";
-                Bukkit.broadcastMessage(broadcastMessage);
+                // Mensaje de éxito personal al jugador
+                String successMessage = plugin.getConfig().getString("messages.totem_success", "¡El tótem te ha salvado con una probabilidad de {randomValue}/{successProbability}!");
+                successMessage = successMessage.replace("{randomValue}", String.valueOf(result.getRandomValue()))
+                        .replace("{successProbability}", String.valueOf(successProbability));
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&', successMessage));
+
+                // Mensaje de éxito para todos los jugadores
+                String broadcastMessage = plugin.getConfig().getString("messages.totem_broadcast_success", "¡El jugador {playerName} ha sobrevivido gracias a su tótem con una probabilidad de {randomValue}/{successProbability}!");
+                broadcastMessage = broadcastMessage.replace("{playerName}", player.getName())
+                        .replace("{randomValue}", String.valueOf(result.getRandomValue()))
+                        .replace("{successProbability}", String.valueOf(successProbability));
+                Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', broadcastMessage));
 
                 for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
                     onlinePlayer.playSound(onlinePlayer.getLocation(), Sound.BLOCK_GLASS_BREAK, 1.0f, 1.0f);
