@@ -3,6 +3,7 @@ package dc.Business.listeners;
 import dc.Business.controllers.PlayerController;
 import dc.Business.controllers.ServerController;
 import dc.Business.controllers.StormController;
+import dc.Business.controllers.TotemController;
 import dc.DeathScape;
 import dc.Persistence.player.PlayerData;
 import dc.Persistence.player.PlayerDatabase;
@@ -10,9 +11,12 @@ import dc.Persistence.player.PlayerEditDatabase;
 import dc.utils.Message;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Sound;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityResurrectEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.*;
 
@@ -26,12 +30,14 @@ public class PlayerListener implements Listener {
     private final DeathScape plugin;
     private final PlayerController playerController;
     private final StormController stormController;
+    private final TotemController totemController;
     private final Set<Player> sleepingPlayers = new HashSet<>(); // Conjunto para jugadores durmiendo
 
-    public PlayerListener(DeathScape plugin, ServerController serverController, PlayerController playerController, StormController stormController) {
+    public PlayerListener(DeathScape plugin, ServerController serverController, PlayerController playerController, StormController stormController, TotemController totemController) {
         this.plugin = plugin;
         this.playerController = playerController;
         this.stormController = stormController;
+        this.totemController = totemController;
     }
 
     @EventHandler
@@ -112,5 +118,36 @@ public class PlayerListener implements Listener {
     public void onPlayerWake(PlayerBedLeaveEvent event) {
         Player player = event.getPlayer();
         sleepingPlayers.remove(player); // Eliminar al jugador que se despertó
+    }
+
+    @EventHandler
+    public void onEntityResurrect(EntityResurrectEvent event) {
+        Entity entity = event.getEntity();
+
+        // Verifica si la entidad es un jugador
+        if (entity instanceof Player) {
+            Player player = (Player) entity;
+
+            // Llama al método willTotemSucceed del TotemController
+            TotemController.Result result = totemController.willTotemSucceed();
+
+            // Si el tótem no tiene éxito, cancela la resurrección
+            if (!result.isSuccess()) {
+                event.setCancelled(true); // Cancela el evento de resurrección
+                totemController.handleTotemFailure(player, result.getRandomValue()); // Maneja la falla del tótem
+            } else {
+                // El tótem ha funcionado, se puede añadir lógica adicional si es necesario
+                player.sendMessage("¡El tótem te ha salvado con una probabilidad de " + result.getRandomValue() + "/" +
+                        totemController.getConfig().getInt("config.totem_success_probability") + "!");
+                // Mensaje a todos los jugadores
+                String broadcastMessage = ChatColor.GREEN + "¡El jugador " + ChatColor.BLUE + player.getName() + ChatColor.GREEN + " ha sobrevivido gracias a su tótem con una probabilidad de " +
+                        ChatColor.BLUE + result.getRandomValue() + ChatColor.WHITE + "/" + ChatColor.RED + plugin.getConfig().getInt("config.totem_success_probability") + ChatColor.GREEN + "!";
+                Bukkit.broadcastMessage(broadcastMessage);
+
+                for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+                    onlinePlayer.playSound(onlinePlayer.getLocation(), Sound.BLOCK_GLASS_BREAK, 1.0f, 1.0f);
+                }
+            }
+        }
     }
 }

@@ -18,3 +18,4 @@ config:
   tablist:
     header: "&6Bienvenido a Death Scape, %player%!"
     footer: "&eJugadores en línea: &a%online_players%"
+  totem_success_probability: 50

@@ -2,6 +2,7 @@ package dc;
 
 import dc.Business.controllers.PlayerController;
 import dc.Business.controllers.StormController;
+import dc.Business.controllers.TotemController;
 import dc.Persistence.config.MainConfigManager;
 import dc.Business.controllers.ServerController;
 import dc.Business.listeners.PlayerListener;
@@ -24,6 +25,8 @@ public class DeathScape extends JavaPlugin {
     PlayerController playerController;
     StormController stormController;
 
+    TotemController totemController;
+
     public HashMap<String, Long> time_of_connection;
 
     public ServerController getServerData() {
@@ -36,8 +39,9 @@ public class DeathScape extends JavaPlugin {
         mainConfigManager = new MainConfigManager(this);
         playerController = new PlayerController(this);
         stormController = new StormController(this, serverController);
+        totemController = new TotemController(this);
 
-        playerListener = new PlayerListener(this, serverController, playerController, stormController);
+        playerListener = new PlayerListener(this, serverController, playerController, stormController, totemController);
 
         time_of_connection = new HashMap<>();
 
