@@ -1,177 +1,68 @@
 {
   "minecraft:recipes/decorations/crafting_table": {
     "criteria": {
-      "unlock_right_away": "2023-11-04 21:34:14 +0100"
+      "unlock_right_away": "2024-11-02 17:55:24 +0100"
     },
     "done": true
   },
   "minecraft:adventure/adventuring_time": {
     "criteria": {
-      "minecraft:river": "2023-11-06 00:14:20 +0100",
-      "minecraft:forest": "2023-11-06 00:10:31 +0100",
-      "minecraft:plains": "2023-11-04 21:34:15 +0100"
+      "minecraft:taiga": "2024-11-02 17:56:32 +0100",
+      "minecraft:forest": "2024-11-02 17:55:25 +0100"
     },
     "done": false
   },
-  "minecraft:adventure/root": {
+  "minecraft:recipes/decorations/stone_brick_wall": {
     "criteria": {
-      "killed_by_something": "2023-11-05 14:23:16 +0100"
+      "has_stone_bricks": "2024-11-02 18:41:27 +0100"
     },
     "done": true
   },
-  "minecraft:recipes/food/cooked_chicken_from_campfire_cooking": {
+  "minecraft:recipes/building_blocks/stone_brick_slab_from_stone_bricks_stonecutting": {
     "criteria": {
-      "has_chicken": "2023-11-06 00:10:44 +0100"
+      "has_stone_bricks": "2024-11-02 18:41:27 +0100"
     },
     "done": true
   },
-  "minecraft:recipes/food/cooked_chicken": {
+  "minecraft:recipes/building_blocks/cracked_stone_bricks": {
     "criteria": {
-      "has_chicken": "2023-11-06 00:10:44 +0100"
+      "has_stone_bricks": "2024-11-02 18:41:27 +0100"
     },
     "done": true
   },
-  "minecraft:recipes/food/cooked_chicken_from_smoking": {
+  "minecraft:recipes/building_blocks/stone_brick_stairs_from_stone_bricks_stonecutting": {
     "criteria": {
-      "has_chicken": "2023-11-06 00:10:44 +0100"
+      "has_stone_bricks": "2024-11-02 18:41:27 +0100"
     },
     "done": true
   },
-  "minecraft:recipes/combat/arrow": {
+  "minecraft:recipes/building_blocks/stone_brick_slab": {
     "criteria": {
-      "has_feather": "2023-11-06 00:10:44 +0100"
+      "has_stone_bricks": "2024-11-02 18:41:27 +0100"
     },
     "done": true
   },
-  "minecraft:recipes/food/cooked_mutton_from_smoking": {
+  "minecraft:recipes/building_blocks/stone_brick_stairs": {
     "criteria": {
-      "has_mutton": "2023-11-06 00:13:29 +0100"
+      "has_stone_bricks": "2024-11-02 18:41:27 +0100"
     },
     "done": true
   },
-  "minecraft:recipes/food/cooked_mutton": {
+  "minecraft:recipes/building_blocks/chiseled_stone_bricks_from_stone_bricks_stonecutting": {
     "criteria": {
-      "has_mutton": "2023-11-06 00:13:29 +0100"
+      "has_stone_bricks": "2024-11-02 18:41:27 +0100"
     },
     "done": true
   },
-  "minecraft:recipes/food/cooked_mutton_from_campfire_cooking": {
+  "minecraft:recipes/building_blocks/chiseled_stone_bricks": {
     "criteria": {
-      "has_mutton": "2023-11-06 00:13:29 +0100"
+      "has_tag": "2024-11-02 18:41:27 +0100"
     },
     "done": true
   },
-  "minecraft:recipes/decorations/white_banner": {
+  "minecraft:recipes/decorations/stone_brick_wall_from_stone_bricks_stonecutting": {
     "criteria": {
-      "has_white_wool": "2023-11-06 00:13:30 +0100"
-    },
-    "done": true
-  },
-  "minecraft:recipes/decorations/painting": {
-    "criteria": {
-      "has_wool": "2023-11-06 00:13:30 +0100"
-    },
-    "done": true
-  },
-  "minecraft:recipes/decorations/white_bed": {
-    "criteria": {
-      "has_white_wool": "2023-11-06 00:13:30 +0100"
-    },
-    "done": true
-  },
-  "minecraft:recipes/decorations/white_carpet": {
-    "criteria": {
-      "has_white_wool": "2023-11-06 00:13:30 +0100"
-    },
-    "done": true
-  },
-  "minecraft:recipes/misc/charcoal": {
-    "criteria": {
-      "has_log": "2023-11-06 00:16:49 +0100"
-    },
-    "done": true
-  },
-  "minecraft:recipes/building_blocks/oak_planks": {
-    "criteria": {
-      "has_logs": "2023-11-06 00:16:49 +0100"
-    },
-    "done": true
-  },
-  "minecraft:recipes/building_blocks/oak_wood": {
-    "criteria": {
-      "has_log": "2023-11-06 00:16:49 +0100"
-    },
-    "done": true
-  },
-  "minecraft:adventure/sleep_in_bed": {
-    "criteria": {
-      "slept_in_bed": "2024-11-01 23:52:13 +0100"
-    },
-    "done": true
-  },
-  "minecraft:husbandry/balanced_diet": {
-    "criteria": {
-      "rotten_flesh": "2024-11-02 14:26:22 +0100"
-    },
-    "done": false
-  },
-  "minecraft:husbandry/root": {
-    "criteria": {
-      "consumed_item": "2024-11-02 14:26:22 +0100"
-    },
-    "done": true
-  },
-  "minecraft:recipes/transportation/mangrove_boat": {
-    "criteria": {
-      "in_water": "2024-11-02 15:01:10 +0100"
-    },
-    "done": true
-  },
-  "minecraft:recipes/transportation/acacia_boat": {
-    "criteria": {
-      "in_water": "2024-11-02 15:01:10 +0100"
-    },
-    "done": true
-  },
-  "minecraft:recipes/transportation/cherry_boat": {
-    "criteria": {
-      "in_water": "2024-11-02 15:01:10 +0100"
-    },
-    "done": true
-  },
-  "minecraft:recipes/transportation/bamboo_raft": {
-    "criteria": {
-      "in_water": "2024-11-02 15:01:10 +0100"
-    },
-    "done": true
-  },
-  "minecraft:recipes/transportation/spruce_boat": {
-    "criteria": {
-      "in_water": "2024-11-02 15:01:10 +0100"
-    },
-    "done": true
-  },
-  "minecraft:recipes/transportation/birch_boat": {
-    "criteria": {
-      "in_water": "2024-11-02 15:01:10 +0100"
-    },
-    "done": true
-  },
-  "minecraft:recipes/transportation/oak_boat": {
-    "criteria": {
-      "in_water": "2024-11-02 15:01:10 +0100"
-    },
-    "done": true
-  },
-  "minecraft:recipes/transportation/jungle_boat": {
-    "criteria": {
-      "in_water": "2024-11-02 15:01:10 +0100"
-    },
-    "done": true
-  },
-  "minecraft:recipes/transportation/dark_oak_boat": {
-    "criteria": {
-      "in_water": "2024-11-02 15:01:10 +0100"
+      "has_stone_bricks": "2024-11-02 18:41:27 +0100"
     },
     "done": true
   },

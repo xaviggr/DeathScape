@@ -1,10 +1,7 @@
 package dc;
 
-import dc.Business.controllers.PlayerController;
-import dc.Business.controllers.StormController;
-import dc.Business.controllers.TotemController;
+import dc.Business.controllers.*;
 import dc.Persistence.config.MainConfigManager;
-import dc.Business.controllers.ServerController;
 import dc.Business.listeners.PlayerListener;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -24,8 +21,8 @@ public class DeathScape extends JavaPlugin {
     //Controllers
     PlayerController playerController;
     StormController stormController;
-
     TotemController totemController;
+    AnimationController animationController;
 
     public HashMap<String, Long> time_of_connection;
 
@@ -40,8 +37,10 @@ public class DeathScape extends JavaPlugin {
         playerController = new PlayerController(this);
         stormController = new StormController(this, serverController);
         totemController = new TotemController(this);
+        animationController = new AnimationController(this);
 
-        playerListener = new PlayerListener(this, serverController, playerController, stormController, totemController);
+
+        playerListener = new PlayerListener(this, serverController, playerController, stormController, totemController, animationController);
 
         time_of_connection = new HashMap<>();
 

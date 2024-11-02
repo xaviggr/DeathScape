@@ -24,6 +24,7 @@ public class PlayerDeath {
 
     public void Dead(Player player) {
         String victim = player.getName ();
+        /*
         for (Player checking_player: Bukkit.getOnlinePlayers ()) {
             Message.enviarMensajeColorido (player, "El jugador " + victim + " ha muerto!", "rojo");
 
@@ -32,7 +33,7 @@ public class PlayerDeath {
 
             checking_player.sendTitle (ServerMessageTitle, ServerMessageSubtitle.replace ("%player%", victim), 20, 20 * 5, 20);
             checking_player.playSound (checking_player.getLocation(), Sound.ENTITY_BLAZE_DEATH, Float.MAX_VALUE, -0.1f);
-        }
+        }*/
 
         //Si es admin no lo banea
         if (player.isOp ()) {
