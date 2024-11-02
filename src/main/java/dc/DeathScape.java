@@ -45,6 +45,7 @@ public class DeathScape extends JavaPlugin {
         new onUpdate().runTaskTimer(this, 0, 1);
         registerCommands();
         registerEvents();
+        stormController.checkStormOnServerStart();
         Bukkit.getConsoleSender().sendMessage("DeathScape has been enabled!");
     }
 

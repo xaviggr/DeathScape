@@ -15,9 +15,13 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.*;
 
+import net.kyori.adventure.text.Component;
+import org.bukkit.entity.Player;
+
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+
 
 public class PlayerListener implements Listener {
 
@@ -45,7 +49,7 @@ public class PlayerListener implements Listener {
         String hostaddress = Objects.requireNonNull(player.getAddress()).getAddress().getHostAddress();
 
         if (PlayerDatabase.getPlayerDataFromDatabase(player.getName()) == null) {
-            PlayerData playerData = new PlayerData(player.getName(), false, 0, hostaddress, "0", player.getUniqueId(), "0", "0", "0");
+            PlayerData playerData = new PlayerData(player.getName(), false, 0, hostaddress, "0", player.getUniqueId(), "0", "0", "0", 0);
             if (!PlayerDatabase.addPlayerDataToDatabase(playerData)) {
                 player.kickPlayer(ChatColor.RED + "Error al cargar tus datos, contacta con un administrador.");
             }
