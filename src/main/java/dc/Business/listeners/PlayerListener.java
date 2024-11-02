@@ -15,7 +15,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.*;
 
-import net.kyori.adventure.text.Component;
 import org.bukkit.entity.Player;
 
 import java.util.HashSet;
