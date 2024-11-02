@@ -1,4 +1,4 @@
-package dc.config;
+package dc.Persistence.player;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -11,6 +11,7 @@ public class PlayerData {
     private final String hostAddress;
     private String timePlayed;
     private final UUID uuid;
+    private int points;
 
     private String banDate;
     private String bantime;
@@ -77,7 +78,15 @@ public class PlayerData {
         this.bantime = bantime;
     }
 
-    public PlayerData(String name, boolean isDead, int deaths, String hostAddress, String timePlayed, UUID uniqueId, String banDate, String bantime, String coords) {
+    public int getPoints() {
+        return points;
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
+    }
+
+    public PlayerData(String name, boolean isDead, int deaths, String hostAddress, String timePlayed, UUID uniqueId, String banDate, String bantime, String coords, int points) {
         this.name = name;
         this.isDead = isDead;
         this.deaths = deaths;
@@ -87,6 +96,7 @@ public class PlayerData {
         this.banDate = banDate;
         this.bantime= bantime;
         this.coords = coords;
+        this.points = points;
     }
 
     public void setBanTime() {

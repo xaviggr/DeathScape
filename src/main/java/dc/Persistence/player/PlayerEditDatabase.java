@@ -1,4 +1,4 @@
-package dc.config;
+package dc.Persistence.player;
 
 import org.bukkit.entity.Player;
 

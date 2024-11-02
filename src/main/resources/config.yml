@@ -13,3 +13,5 @@ messages:
 
 config:
   kick_if_ip_changed: true
+  storm_time: 10
+  points_to_reduce_on_death: 5
