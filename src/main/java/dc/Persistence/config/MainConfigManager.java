@@ -56,7 +56,7 @@ public class MainConfigManager {
 
     public MainConfigManager(DeathScape plugin) {
         this.plugin = plugin;
-        PlayerDatabase.setNombreArchivo(plugin.getDataFolder () + File.separator + "players.json");
+        PlayerDatabase.setNameFile(plugin.getDataFolder () + File.separator + "players.json");
         loadConfig();
     }
 

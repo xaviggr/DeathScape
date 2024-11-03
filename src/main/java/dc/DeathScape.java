@@ -14,9 +14,17 @@ public class DeathScape extends JavaPlugin {
 
     private MainConfigManager mainConfigManager;
     private ServerController serverController;
+    private DeathScapeCommand deathScapeCommand;
 
     //Listeners
-    private PlayerListener playerListener;
+    PlayerListener playerListener;
+    ReviveInventory reviveInventory;
+
+    //Controllers
+    PlayerController playerController;
+    StormController stormController;
+    TotemController totemController;
+    private ServerController serverController;
 
     public HashMap<String, Long> time_of_connection;
 
@@ -26,23 +34,35 @@ public class DeathScape extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        serverController = new ServerController(this);
+        //Config
         mainConfigManager = new MainConfigManager(this);
 
         //Controllers
-        PlayerController playerController = new PlayerController(this);
-        StormController stormController = new StormController(this, serverController);
-        TotemController totemController = new TotemController(this);
-        AnimationController animationController = new AnimationController(this);
+        serverController = new ServerController(this);
+        playerController = new PlayerController(this);
+        stormController = new StormController(this, serverController);
+        totemController = new TotemController(this);
 
+
+        //Listeners
+        reviveInventory = new ReviveInventory();
+        AnimationController animationController = new AnimationController(this);
         playerListener = new PlayerListener(this, serverController, playerController, stormController, totemController, animationController);
 
+        deathScapeCommand = new DeathScapeCommand(this, reviveInventory);
+
+        //HashMaps
         time_of_connection = new HashMap<>();
 
         new onUpdate().runTaskTimer(this, 0, 1);
+
+        // Register commands and events
         registerCommands();
         registerEvents();
+
+        // Check if the storm is active when the server starts
         stormController.checkStormOnServerStart();
+
         Bukkit.getConsoleSender().sendMessage("DeathScape has been enabled!");
     }
 
@@ -53,10 +73,11 @@ public class DeathScape extends JavaPlugin {
 
     public void registerEvents() {
         getServer().getPluginManager().registerEvents(playerListener, this);
+        getServer().getPluginManager().registerEvents(reviveInventory, this);
     }
 
     public void registerCommands() {
-        Objects.requireNonNull(this.getCommand("deathscape")).setExecutor(new DeathScapeCommand(this));
+        Objects.requireNonNull(this.getCommand("deathscape")).setExecutor(deathScapeCommand);
     }
 
     public MainConfigManager getMainConfigManager() {

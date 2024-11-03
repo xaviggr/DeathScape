@@ -1,5 +1,6 @@
 package dc;
 
+import dc.Business.inventory.ReviveInventory;
 import dc.Persistence.player.PlayerDatabase;
 import dc.Persistence.player.PlayerEditDatabase;
 import dc.utils.Message;
@@ -16,29 +17,31 @@ import java.util.Objects;
 
 public class DeathScapeCommand implements CommandExecutor, TabCompleter {
     private final DeathScape plugin;
+    private final ReviveInventory reviveInventory;
 
-    public DeathScapeCommand(DeathScape plugin) {
+    public DeathScapeCommand(DeathScape plugin, ReviveInventory reviveInventory) {
         this.plugin = plugin;
+        this.reviveInventory = reviveInventory;
     }
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         if (command.getName().equalsIgnoreCase("deathscape")) {
             if (args.length == 1) {
-                List<String> opciones = new ArrayList<>();
-                // Aquí agregas las opciones de autocompletado para el primer argumento del comando
-                opciones.add("help");
-                opciones.add("info");
-                opciones.add("reload");
-                opciones.add("dia");
-                opciones.add("tiempojugado");
-                opciones.add("tiempolluvia");
-                opciones.add("discord");
+                List<String> options = new ArrayList<>();
+                // Aquí agregas las options de autocompletado para el primer argumento del comando
+                options.add("help");
+                options.add("info");
+                options.add("reload");
+                options.add("dia");
+                options.add("tiempojugado");
+                options.add("tiempolluvia");
+                options.add("discord");
                 if (sender.isOp()) {
-                    opciones.add("setdia");
-                    opciones.add("quitarban");
+                    options.add("setdia");
+                    options.add("quitarban");
                 }
-                return opciones;
+                return options;
             }
         }
         return null;
@@ -82,6 +85,8 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
                 }
             } else if (args[0].equalsIgnoreCase("discord")) {
                 Message.enviarMensajeColorido(player, "Discord: https://discord.gg/Pe9wYt9bcV", "azul");
+            } else if (args[0].equalsIgnoreCase("inventario")) {
+                reviveInventory.openInventory(player);
             } else {
                 comandoinvalido(player);
                 return false;
