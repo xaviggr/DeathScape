@@ -5,155 +5,108 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class PlayerDatabase {
-    public static void setNombreArchivo(String nombreArchivo) {
-        PlayerDatabase.nombreArchivo = nombreArchivo;
+
+    private static String nameFile;
+
+    public static void setNameFile(String nameFile) {
+        PlayerDatabase.nameFile = nameFile;
     }
 
-    private static String nombreArchivo;
-
     public static void initPlayerDatabase() {
-        File archivo = new File (nombreArchivo);
-
-        // Comprueba si el archivo ya existe
-        if (!archivo.exists ()) {
+        File file = new File(nameFile);
+        if (!file.exists()) {
             try {
-                archivo.createNewFile ();
+                file.createNewFile();
             } catch (IOException e) {
-                e.printStackTrace ();
+                e.printStackTrace();
             }
+        }
+    }
+
+    private static JsonObject readJsonFile() {
+        File file = new File(nameFile);
+        if (!file.exists()) {
+            initPlayerDatabase();
+            return new JsonObject();
+        }
+
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
+            StringBuilder jsonString = new StringBuilder();
+            String linea;
+            while ((linea = bufferedReader.readLine()) != null) {
+                jsonString.append(linea);
+            }
+            return new Gson().fromJson(jsonString.toString(), JsonObject.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return new JsonObject();
+    }
+
+    private static void writeJsonFile(JsonObject jsonObject) {
+        try (FileWriter fileWriter = new FileWriter(nameFile)) {
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            fileWriter.write(gson.toJson(jsonObject));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
     public static boolean addPlayerDataToDatabase(PlayerData playerData) {
-        File archivo = new File(nombreArchivo);
+        JsonObject jsonObject = readJsonFile();
+        JsonObject playerObject = new JsonObject();
 
-        try {
-            Gson gson = new GsonBuilder().setPrettyPrinting().create();
-            JsonObject jsonObject;
+        playerObject.addProperty("Name", playerData.getName());
+        playerObject.addProperty("isDead", playerData.isDead());
+        playerObject.addProperty("Deaths", playerData.getDeaths());
+        playerObject.addProperty("IP", playerData.getHostAddress());
+        playerObject.addProperty("TimePlayed", playerData.getTimePlayed());
+        playerObject.addProperty("UUID", playerData.getUuid().toString());
+        playerObject.addProperty("BanDate", playerData.getBanDate());
+        playerObject.addProperty("BanTime", playerData.getBantime());
+        playerObject.addProperty("Coords", playerData.getCoords());
+        playerObject.addProperty("Points", playerData.getPoints());
 
-            if (archivo.exists()) {
-                // Si el archivo ya existe, leer su contenido y convertirlo a un objeto JSON
-                BufferedReader bufferedReader = new BufferedReader(new FileReader(archivo));
-                StringBuilder jsonString = new StringBuilder();
-                String linea;
-
-                while ((linea = bufferedReader.readLine()) != null) {
-                    jsonString.append(linea);
-                }
-                bufferedReader.close();
-
-                jsonObject = gson.fromJson(jsonString.toString(), JsonObject.class);
-            } else {
-                // Si el archivo no existe, crear un nuevo objeto JSON
-                jsonObject = new JsonObject();
-            }
-
-            if(jsonObject == null) {
-                jsonObject = new JsonObject();
-            }
-
-            // Buscar si ya existe un objeto con el nombre del jugador
-            if (jsonObject.has(playerData.getName())) {
-                // Si existe, obtener el objeto y sobrescribir sus valores
-                JsonObject existingPlayerObject = jsonObject.getAsJsonObject(playerData.getName());
-                existingPlayerObject.addProperty("Name", playerData.getName());
-                existingPlayerObject.addProperty("IsDead", playerData.isDead());
-                existingPlayerObject.addProperty("Deaths", playerData.getDeaths());
-                existingPlayerObject.addProperty("IP", playerData.getHostAddress());
-                existingPlayerObject.addProperty("TimePlayed", playerData.getTimePlayed());
-                existingPlayerObject.addProperty("UUID", playerData.getUuid().toString());
-                existingPlayerObject.addProperty("BanDate", playerData.getBanDate());
-                existingPlayerObject.addProperty("BanTime", playerData.getBantime());
-                existingPlayerObject.addProperty("Coords", playerData.getCoords());
-                existingPlayerObject.addProperty("Points", playerData.getPoints());
-            } else {
-                // Si no existe, crear un nuevo objeto JSON para el jugador
-                JsonObject playerObject = new JsonObject();
-                playerObject.addProperty("Name", playerData.getName());
-                playerObject.addProperty("IsDead", playerData.isDead());
-                playerObject.addProperty("Deaths", playerData.getDeaths());
-                playerObject.addProperty("IP", playerData.getHostAddress());
-                playerObject.addProperty("TimePlayed", playerData.getTimePlayed());
-                playerObject.addProperty("UUID", playerData.getUuid().toString());
-                playerObject.addProperty("BanDate", playerData.getBanDate());
-                playerObject.addProperty("BanTime", playerData.getBantime());
-                playerObject.addProperty("Coords", playerData.getCoords());
-                playerObject.addProperty("Points", playerData.getPoints());
-
-                jsonObject.add(playerData.getName(), playerObject);
-            }
-
-            // Convertir a formato JSON
-            String newJsonString = gson.toJson(jsonObject);
-
-            // Escribir en el archivo
-            FileWriter fileWriter = new FileWriter(archivo);
-            fileWriter.write(newJsonString);
-            fileWriter.flush();
-            fileWriter.close();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }
+        jsonObject.add(playerData.getName(), playerObject);
+        writeJsonFile(jsonObject);
         return true;
     }
 
     public static PlayerData getPlayerDataFromDatabase(String playerName) {
-        File archivo = new File(nombreArchivo);
+        JsonObject jsonObject = readJsonFile();
+        JsonObject playerObject = jsonObject.getAsJsonObject(playerName);
 
-        try {
-            Gson gson = new Gson();
-            JsonObject jsonObject;
-
-            if (archivo.exists()) {
-                // Si el archivo existe, leer su contenido y convertirlo a un objeto JSON
-                BufferedReader bufferedReader = new BufferedReader(new FileReader(archivo));
-                StringBuilder jsonString = new StringBuilder();
-                String linea;
-
-                while ((linea = bufferedReader.readLine()) != null) {
-                    jsonString.append(linea);
-                }
-                bufferedReader.close();
-
-                jsonObject = gson.fromJson(jsonString.toString(), JsonObject.class);
-
-                if (jsonObject == null) {
-                    jsonObject = new JsonObject();
-                }
-
-                // Buscar el objeto del jugador por su nombre
-                JsonObject playerObject = jsonObject.getAsJsonObject(playerName);
-
-                if (playerObject != null) {
-                    // Obtener los datos del jugador desde el objeto JSON
-                    String name = playerName;
-                    boolean isDead = playerObject.get("IsDead").getAsBoolean();
-                    int deaths = playerObject.get("Deaths").getAsInt();
-                    String hostAddress = playerObject.get("IP").getAsString();
-                    String timePlayed = playerObject.get("TimePlayed").getAsString();
-                    UUID uuid = UUID.fromString(playerObject.get("UUID").getAsString());
-                    String banDate = playerObject.get("BanDate").getAsString();
-                    String banTime = playerObject.get("BanTime").getAsString();
-                    String coords = playerObject.get("Coords").getAsString();
-                    int points = playerObject.get("Points").getAsInt();
-
-                    // Crear y devolver un nuevo objeto PlayerData
-                    return new PlayerData(name, isDead, deaths, hostAddress, timePlayed, uuid, banDate, banTime, coords, points);
-                }
-            } else {
-                // Si el archivo no existe, devolver null
-                initPlayerDatabase ();
-                return null;
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (playerObject != null) {
+            return new PlayerData(
+                    playerName,
+                    playerObject.get("isDead").getAsBoolean(),
+                    playerObject.get("Deaths").getAsInt(),
+                    playerObject.get("IP").getAsString(),
+                    playerObject.get("TimePlayed").getAsString(),
+                    UUID.fromString(playerObject.get("UUID").getAsString()),
+                    playerObject.get("BanDate").getAsString(),
+                    playerObject.get("BanTime").getAsString(),
+                    playerObject.get("Coords").getAsString(),
+                    playerObject.get("Points").getAsInt()
+            );
         }
+        return null;
+    }
 
-        return null; // Si no se encuentra el jugador, devolver null
+    public static List<String> getDeadPlayers() {
+        List<String> deadPlayers = new ArrayList<>();
+        JsonObject jsonObject = readJsonFile();
+
+        for (String playerName : jsonObject.keySet()) {
+            if (jsonObject.getAsJsonObject(playerName).get("isDead").getAsBoolean()) {
+                deadPlayers.add(playerName);
+            }
+        }
+        return deadPlayers;
     }
 }
