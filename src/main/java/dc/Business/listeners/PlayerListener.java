@@ -1,9 +1,6 @@
 package dc.Business.listeners;
 
-import dc.Business.controllers.PlayerController;
-import dc.Business.controllers.ServerController;
-import dc.Business.controllers.StormController;
-import dc.Business.controllers.TotemController;
+import dc.Business.controllers.*;
 import dc.DeathScape;
 import dc.Persistence.player.PlayerData;
 import dc.Persistence.player.PlayerDatabase;
@@ -31,13 +28,15 @@ public class PlayerListener implements Listener {
     private final PlayerController playerController;
     private final StormController stormController;
     private final TotemController totemController;
+    private final AnimationController animationController;
     private final Set<Player> sleepingPlayers = new HashSet<>(); // Conjunto para jugadores durmiendo
 
-    public PlayerListener(DeathScape plugin, ServerController serverController, PlayerController playerController, StormController stormController, TotemController totemController) {
+    public PlayerListener(DeathScape plugin, ServerController serverController, PlayerController playerController, StormController stormController, TotemController totemController, AnimationController animationController) {
         this.plugin = plugin;
         this.playerController = playerController;
         this.stormController = stormController;
         this.totemController = totemController;
+        this.animationController = animationController;
     }
 
     @EventHandler
@@ -45,6 +44,7 @@ public class PlayerListener implements Listener {
         Player player = Objects.requireNonNull(event.getEntity().getPlayer());
         playerController.setPlayerAsDead(player);
         stormController.updateStormOnPlayerDeath();
+        animationController.startDeathAnimation(player);
     }
 
     @EventHandler
@@ -124,8 +124,7 @@ public class PlayerListener implements Listener {
     public void onEntityResurrect(EntityResurrectEvent event) {
         Entity entity = event.getEntity();
 
-        if (entity instanceof Player) {
-            Player player = (Player) entity;
+        if (entity instanceof Player player) {
 
             // Llama al método willTotemSucceed del TotemController
             TotemController.Result result = totemController.willTotemSucceed();

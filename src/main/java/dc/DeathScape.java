@@ -1,11 +1,8 @@
 package dc;
 
-import dc.Business.controllers.PlayerController;
-import dc.Business.controllers.StormController;
-import dc.Business.controllers.TotemController;
+import dc.Business.controllers.*;
 import dc.Business.inventory.ReviveInventory;
 import dc.Persistence.config.MainConfigManager;
-import dc.Business.controllers.ServerController;
 import dc.Business.listeners.PlayerListener;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -17,6 +14,7 @@ import java.util.Objects;
 public class DeathScape extends JavaPlugin {
 
     private MainConfigManager mainConfigManager;
+    private ServerController serverController;
     private DeathScapeCommand deathScapeCommand;
 
     //Listeners
@@ -27,11 +25,9 @@ public class DeathScape extends JavaPlugin {
     PlayerController playerController;
     StormController stormController;
     TotemController totemController;
-    private ServerController serverController;
 
     public HashMap<String, Long> time_of_connection;
 
-    // Getters
     public ServerController getServerData() {
         return serverController;
     }
@@ -47,9 +43,11 @@ public class DeathScape extends JavaPlugin {
         stormController = new StormController(this, serverController);
         totemController = new TotemController(this);
 
+
         //Listeners
-        playerListener = new PlayerListener(this, serverController, playerController, stormController, totemController);
         reviveInventory = new ReviveInventory();
+        AnimationController animationController = new AnimationController(this);
+        playerListener = new PlayerListener(this, serverController, playerController, stormController, totemController, animationController);
 
         deathScapeCommand = new DeathScapeCommand(this, reviveInventory);
 
