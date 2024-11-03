@@ -1,6 +1,7 @@
 package dc;
 
 import dc.Business.controllers.*;
+import dc.Business.inventory.ReviveInventory;
 import dc.Persistence.config.MainConfigManager;
 import dc.Business.listeners.PlayerListener;
 import org.bukkit.Bukkit;
@@ -24,7 +25,6 @@ public class DeathScape extends JavaPlugin {
     PlayerController playerController;
     StormController stormController;
     TotemController totemController;
-    private ServerController serverController;
 
     public HashMap<String, Long> time_of_connection;
 

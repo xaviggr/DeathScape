@@ -1,14 +1,14 @@
 {
   "xaviggr": {
     "Name": "xaviggr",
-    "isDead": false,
-    "Deaths": 0,
+    "isDead": true,
+    "Deaths": 12,
     "IP": "127.0.0.1",
     "TimePlayed": "17s 0m 0h",
     "UUID": "cb185b4b-cea7-43bb-a340-571c9bb6c3a5",
     "BanDate": "0",
     "BanTime": "0",
-    "Coords": "26.911282505041054,68.0,13.473947615891294",
+    "Coords": "18.079126627363735,68.0,1.7509919310823048",
     "Points": 0
   }
 }
