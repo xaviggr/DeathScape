@@ -16,13 +16,7 @@ public class DeathScape extends JavaPlugin {
     private ServerController serverController;
 
     //Listeners
-    PlayerListener playerListener;
-
-    //Controllers
-    PlayerController playerController;
-    StormController stormController;
-    TotemController totemController;
-    AnimationController animationController;
+    private PlayerListener playerListener;
 
     public HashMap<String, Long> time_of_connection;
 
@@ -34,11 +28,12 @@ public class DeathScape extends JavaPlugin {
     public void onEnable() {
         serverController = new ServerController(this);
         mainConfigManager = new MainConfigManager(this);
-        playerController = new PlayerController(this);
-        stormController = new StormController(this, serverController);
-        totemController = new TotemController(this);
-        animationController = new AnimationController(this);
 
+        //Controllers
+        PlayerController playerController = new PlayerController(this);
+        StormController stormController = new StormController(this, serverController);
+        TotemController totemController = new TotemController(this);
+        AnimationController animationController = new AnimationController(this);
 
         playerListener = new PlayerListener(this, serverController, playerController, stormController, totemController, animationController);
 

@@ -1,7 +1,6 @@
 package dc.Business.controllers;
 
 import dc.DeathScape;
-import dc.utils.Message;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
