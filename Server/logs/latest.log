@@ -1,151 +1,188 @@
-[14:23:17] [ServerMain/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
-[14:23:19] [ServerMain/INFO]: Loaded 1174 recipes
-[14:23:20] [ServerMain/INFO]: Loaded 1271 advancements
-[14:23:20] [Server thread/INFO]: Starting minecraft server version 1.20.4
-[14:23:20] [Server thread/INFO]: Loading properties
-[14:23:21] [Server thread/INFO]: This server is running Purpur version git-Purpur-2176 (MC: 1.20.4) (Implementing API version 1.20.4-R0.1-SNAPSHOT) (Git: 6b1ee98 on HEAD)
-[14:23:22] [Server thread/INFO]: Server Ping Player Sample Count: 12
-[14:23:22] [Server thread/INFO]: Using 4 threads for Netty based IO
-[14:23:22] [Server thread/INFO]: [ChunkTaskScheduler] Chunk system is using 1 I/O threads, 3 worker threads, and gen parallelism of 3 threads
-[14:23:23] [Server thread/WARN]: [Pufferfish] SIMD operations are available for your server, but are not configured!
-[14:23:23] [Server thread/WARN]: [Pufferfish] To enable additional optimizations, add "--add-modules=jdk.incubator.vector" to your startup flags, BEFORE the "-jar".
-[14:23:23] [Server thread/WARN]: [Pufferfish] If you have already added this flag, then SIMD operations are not supported on your JVM or CPU.
-[14:23:23] [Server thread/WARN]: [Pufferfish] Debug: Java: 21.0.1, test run: true
-[14:23:23] [Server thread/INFO]: Default game type: SURVIVAL
-[14:23:23] [Server thread/INFO]: Generating keypair
-[14:23:23] [Server thread/INFO]: Starting Minecraft server on *:25565
-[14:23:23] [Server thread/INFO]: Using default channel type
-[14:23:23] [Server thread/INFO]: Paper: Using Java compression from Velocity.
-[14:23:23] [Server thread/INFO]: Paper: Using Java cipher from Velocity.
-[14:23:23] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loading 4 libraries... please wait
-[14:23:23] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\libraries\net\kyori\adventure-api\4.16.0\adventure-api-4.16.0.jar
-[14:23:23] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\libraries\net\kyori\adventure-key\4.16.0\adventure-key-4.16.0.jar
-[14:23:23] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\libraries\net\kyori\examination-api\1.3.0\examination-api-1.3.0.jar
-[14:23:23] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\libraries\net\kyori\examination-string\1.3.0\examination-string-1.3.0.jar
-[14:23:23] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\libraries\org\jetbrains\annotations\24.1.0\annotations-24.1.0.jar
-[14:23:23] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\libraries\net\kyori\adventure-platform-bukkit\4.3.2\adventure-platform-bukkit-4.3.2.jar
-[14:23:23] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\libraries\net\kyori\adventure-platform-api\4.3.2\adventure-platform-api-4.3.2.jar
-[14:23:23] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\libraries\net\kyori\adventure-text-serializer-bungeecord\4.3.2\adventure-text-serializer-bungeecord-4.3.2.jar
-[14:23:23] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\libraries\net\kyori\adventure-text-serializer-legacy\4.13.1\adventure-text-serializer-legacy-4.13.1.jar
-[14:23:23] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\libraries\net\kyori\adventure-nbt\4.13.1\adventure-nbt-4.13.1.jar
-[14:23:23] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\libraries\net\kyori\adventure-text-serializer-gson-legacy-impl\4.13.1\adventure-text-serializer-gson-legacy-impl-4.13.1.jar
-[14:23:23] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\libraries\net\kyori\adventure-platform-facet\4.3.2\adventure-platform-facet-4.3.2.jar
-[14:23:23] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\libraries\net\kyori\adventure-platform-viaversion\4.3.2\adventure-platform-viaversion-4.3.2.jar
-[14:23:23] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\libraries\net\kyori\adventure-text-minimessage\4.16.0\adventure-text-minimessage-4.16.0.jar
-[14:23:23] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\libraries\net\kyori\adventure-text-serializer-gson\4.16.0\adventure-text-serializer-gson-4.16.0.jar
-[14:23:23] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\libraries\net\kyori\adventure-text-serializer-json\4.16.0\adventure-text-serializer-json-4.16.0.jar
-[14:23:23] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\libraries\net\kyori\option\1.0.0\option-1.0.0.jar
-[14:23:23] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\libraries\com\google\code\gson\gson\2.8.0\gson-2.8.0.jar
-[14:23:23] [Server thread/INFO]: [spark] Loading server plugin spark v1.10.118
-[14:23:23] [Server thread/INFO]: [MythicMobs] Loading server plugin MythicMobs v5.7.2-${CI_COMMIT_SHORT_SHA}
-[14:23:23] [Server thread/INFO]: [LumineUtils] (io.lumine.mythic.bukkit.utils.) is bound to plugin MythicMobs - io.lumine.mythic.bukkit.MythicBukkit
-[14:23:23] [Server thread/INFO]: [MythicMobs] §x§f§f§0§0§0§0M§x§f§f§6§6§0§0y§x§f§f§c§c§0§0t§x§c§b§f§f§0§0h§x§6§5§f§f§0§0i§x§0§0§f§f§0§0c§x§0§0§f§f§6§6 §x§0§0§f§f§c§bE§x§0§0§c§b§f§fn§x§0§0§6§5§f§fa§x§0§0§0§0§f§fb§x§6§6§0§0§f§fl§x§c§c§0§0§f§fe§x§f§f§0§0§c§cd§x§f§f§0§0§6§6!
-[14:23:23] [Server thread/INFO]: [DeathScape] Loading server plugin DeathScape v1.0.0
-[14:23:23] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
-[14:23:23] [Server thread/WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
-[14:23:23] [Server thread/WARN]: The server will make no attempt to authenticate usernames. Beware.
-[14:23:23] [Server thread/WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
-[14:23:23] [Server thread/WARN]: To change this, set "online-mode" to "true" in the server.properties file.
-[14:23:23] [Server thread/INFO]: Preparing level "world"
-[14:23:24] [AWT-EventQueue-0/WARN]: Exception in thread "AWT-EventQueue-0" java.lang.NullPointerException: Cannot invoke "org.purpurmc.purpur.gui.GUIColor.getColor()" because "guiColor" is null
-[14:23:24] [AWT-EventQueue-0/WARN]: 	at org.purpurmc.purpur.gui.JColorTextPane.append(JColorTextPane.java:37)
-[14:23:24] [AWT-EventQueue-0/WARN]: 	at net.minecraft.server.gui.ServerGUI.print(ServerGUI.java:272)
-[14:23:24] [AWT-EventQueue-0/WARN]: 	at net.minecraft.server.gui.ServerGUI.lambda$print$2(ServerGUI.java:254)
-[14:23:24] [AWT-EventQueue-0/WARN]: 	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:318)
-[14:23:24] [AWT-EventQueue-0/WARN]: 	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:773)
-[14:23:24] [AWT-EventQueue-0/WARN]: 	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
-[14:23:24] [AWT-EventQueue-0/WARN]: 	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
-[14:23:24] [AWT-EventQueue-0/WARN]: 	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
-[14:23:24] [AWT-EventQueue-0/WARN]: 	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
-[14:23:24] [AWT-EventQueue-0/WARN]: 	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:742)
-[14:23:24] [AWT-EventQueue-0/WARN]: 	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
-[14:23:24] [AWT-EventQueue-0/WARN]: 	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
-[14:23:24] [AWT-EventQueue-0/WARN]: 	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
-[14:23:24] [AWT-EventQueue-0/WARN]: 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
-[14:23:24] [AWT-EventQueue-0/WARN]: 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
-[14:23:24] [AWT-EventQueue-0/WARN]: 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
-[14:23:24] [Server thread/INFO]: Preparing start region for dimension minecraft:overworld
-[14:23:25] [Server thread/INFO]: Time elapsed: 294 ms
-[14:23:25] [Server thread/INFO]: Preparing start region for dimension minecraft:the_nether
-[14:23:25] [Server thread/INFO]: Time elapsed: 51 ms
-[14:23:25] [Server thread/INFO]: Preparing start region for dimension minecraft:the_end
-[14:23:26] [Server thread/INFO]: Time elapsed: 1207 ms
-[14:23:26] [Server thread/INFO]: [spark] Enabling spark v1.10.118
-[14:23:27] [Server thread/INFO]: [spark] Using Paper ServerTickStartEvent for tick monitoring
-[14:23:27] [Server thread/INFO]: [spark] Starting background profiler...
-[14:23:27] [Server thread/INFO]: [spark] The async-profiler engine is not supported for your os/arch (windows10/amd64), so the built-in Java engine will be used instead.
-[14:23:27] [Server thread/INFO]: [MythicMobs] Enabling MythicMobs v5.7.2-${CI_COMMIT_SHORT_SHA}
-[14:23:27] [Server thread/INFO]: [MythicMobs] Loading MythicMobs for Paper (MC: 1.20.4)...
-[14:23:27] [Server thread/INFO]: [MythicMobs] The server is running Paper; enabled Paper exclusive functionality
-[14:23:29] [Server thread/INFO]: [MythicMobs] Base directory C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\plugins\MythicMobs\data
-[14:23:29] [Server thread/INFO]: [MythicMobs] Module directory C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\plugins\MythicMobs\data\worlds
-[14:23:31] [Server thread/INFO]: [MythicMobs] Loading Packs...
-[14:23:32] [Server thread/INFO]: [MythicMobs] Loading Items...
-[14:23:33] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item botas
-[14:23:33] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\plugins\MythicMobs\items\botas.yml
-[14:23:33] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
-[14:23:33] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item botas2
-[14:23:33] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\plugins\MythicMobs\items\botas2.yml
-[14:23:33] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
-[14:23:33] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item botas3
-[14:23:33] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\plugins\MythicMobs\items\botas3.yml
-[14:23:33] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
-[14:23:33] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item casco
-[14:23:33] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\plugins\MythicMobs\items\casco.yml
-[14:23:33] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
-[14:23:33] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item casco2
-[14:23:33] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\plugins\MythicMobs\items\casco2.yml
-[14:23:33] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
-[14:23:33] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item casco3
-[14:23:33] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\plugins\MythicMobs\items\casco3.yml
-[14:23:33] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
-[14:23:33] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item pechera
-[14:23:33] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\plugins\MythicMobs\items\pechera.yml
-[14:23:33] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
-[14:23:33] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item pechera2
-[14:23:33] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\plugins\MythicMobs\items\pechera2.yml
-[14:23:33] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
-[14:23:33] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item pechera3
-[14:23:33] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\plugins\MythicMobs\items\pechera3.yml
-[14:23:33] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
-[14:23:33] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item perneras
-[14:23:33] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\plugins\MythicMobs\items\perneras.yml
-[14:23:33] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
-[14:23:33] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item perneras2
-[14:23:33] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\plugins\MythicMobs\items\perneras2.yml
-[14:23:33] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
-[14:23:33] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item perneras3
-[14:23:33] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\plugins\MythicMobs\items\perneras3.yml
-[14:23:33] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
-[14:23:33] [Server thread/INFO]: [MythicMobs] Loading Item Groups...
-[14:23:33] [Server thread/INFO]: [MythicMobs] Loading Skills...
-[14:23:33] [Server thread/INFO]: [MythicMobs] Loading Drop Tables...
-[14:23:33] [Server thread/INFO]: [MythicMobs] Loading Random Spawns...
-[14:23:33] [Server thread/INFO]: [MythicMobs] Loading Spawn Blocks...
-[14:23:33] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Mechanic metaskill
-[14:23:33] [Server thread/WARN]: [MythicMobs] --| Mob: Dif2Bruja | File: C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\plugins\MythicMobs\mobs\ExampleMobs.yml
-[14:23:33] [Server thread/WARN]: [MythicMobs] --| Error Message: Could not find MetaSkill SummonMurciélagos
-[14:23:33] [Server thread/WARN]: [MythicMobs] --| Mechanic Line: skill{s=SummonMurciélagos}
-[14:23:33] [Server thread/INFO]: [MythicMobs] ✓ Loaded 70 mobs.
-[14:23:33] [Server thread/INFO]: [MythicMobs] ✓ Loaded 6 vanilla mob overrides.
-[14:23:33] [Server thread/INFO]: [MythicMobs] ✓ Loaded 0 mob stacks.
-[14:23:33] [Server thread/INFO]: [MythicMobs] ✓ Loaded 24 skills.
-[14:23:33] [Server thread/INFO]: [MythicMobs] ✓ Loaded 0 random spawns.
-[14:23:33] [Server thread/INFO]: [MythicMobs] ✓ Loaded 29 mythic items.
-[14:23:33] [Server thread/INFO]: [MythicMobs] ✓ Loaded 4 drop tables.
-[14:23:33] [Server thread/INFO]: [MythicMobs] ✓ Loaded 0 mob spawners.
-[14:23:33] [Server thread/INFO]: [MythicMobs] MythicMobs configuration file loaded successfully.
-[14:23:34] [Server thread/INFO]: [MythicMobs] Started up bStats Metrics
-[14:23:34] [Server thread/INFO]: [MythicMobs] ✓ MythicMobs v5.7.2 ( build ${CI_COMMIT_SHORT_SHA} ) has been successfully loaded!
-[14:23:34] [Server thread/INFO]: [DeathScape] Enabling DeathScape v1.0.0
-[14:23:34] [Server thread/INFO]: DeathScape has been enabled!
-[14:23:34] [Server thread/INFO]: Running delayed init tasks
-[14:23:34] [Server thread/INFO]: Done (13.250s)! For help, type "help"
-[14:23:49] [User Authenticator #0/INFO]: UUID of player Gery_345 is 05822538-133f-3e2c-9d39-74946a11f791
-[14:23:50] [Server thread/INFO]: Gery_345 joined the game
-[14:23:50] [Server thread/INFO]: Gery_345[/127.0.0.1:56350] logged in with entity id 90 at ([world]-646.4788667366912, 88.61292766415177, -121.67497459761128)
-[14:23:59] [Server thread/WARN]: [EntityLookup] Entity uuid already exists: 918c8f50-fa5b-40ee-b8cd-74aa3e6a8876, mapped to EntityEvoker['Evoker'/182, uuid='918c8f50-fa5b-40ee-b8cd-74aa3e6a8876', l='ServerLevel[world]', x=-514.90, y=12.00, z=-88.08, cpos=[-33, -6], tl=61, v=true], can't add EntityEvoker['Evoker'/280, uuid='918c8f50-fa5b-40ee-b8cd-74aa3e6a8876', l='ServerLevel[world]', x=-511.88, y=13.54, z=-89.56, cpos=[-32, -6], tl=30, v=false]
-[14:24:05] [Server thread/WARN]: [EntityLookup] Entity uuid already exists: 84f24dc4-36b7-4f02-8838-f0c4ce082117, mapped to EntityBat['Bat'/513, uuid='84f24dc4-36b7-4f02-8838-f0c4ce082117', l='ServerLevel[world]', x=-544.18, y=-10.13, z=37.54, cpos=[-35, 2], tl=42, v=true], can't add EntityBat['Bat'/560, uuid='84f24dc4-36b7-4f02-8838-f0c4ce082117', l='ServerLevel[world]', x=-542.61, y=-11.88, z=39.36, cpos=[-34, 2], tl=12, v=false]
-[14:24:05] [Server thread/WARN]: [EntityLookup] Entity uuid already exists: 8ab3d1e5-3589-40c9-8fc2-6c9488de76b6, mapped to EntityBat['Bat'/475, uuid='8ab3d1e5-3589-40c9-8fc2-6c9488de76b6', l='ServerLevel[world]', x=-562.75, y=-9.01, z=40.56, cpos=[-36, 2], tl=296, v=true], can't add EntityBat['Bat'/561, uuid='8ab3d1e5-3589-40c9-8fc2-6c9488de76b6', l='ServerLevel[world]', x=-543.43, y=-11.97, z=36.25, cpos=[-34, 2], tl=12, v=false]
-[14:26:43] [Server thread/INFO]: Gery_345 lost connection: Disconnected
-[14:26:43] [Server thread/INFO]: Gery_345 left the game
+[17:54:10] [ServerMain/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
+[17:54:12] [ServerMain/INFO]: Loaded 1174 recipes
+[17:54:12] [ServerMain/INFO]: Loaded 1271 advancements
+[17:54:12] [Server thread/INFO]: Starting minecraft server version 1.20.4
+[17:54:12] [Server thread/INFO]: Loading properties
+[17:54:12] [Server thread/INFO]: This server is running Purpur version git-Purpur-2176 (MC: 1.20.4) (Implementing API version 1.20.4-R0.1-SNAPSHOT) (Git: 6b1ee98 on HEAD)
+[17:54:13] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[17:54:13] [Server thread/INFO]: Using 4 threads for Netty based IO
+[17:54:13] [Server thread/INFO]: [ChunkTaskScheduler] Chunk system is using 1 I/O threads, 5 worker threads, and gen parallelism of 5 threads
+[17:54:13] [Server thread/WARN]: [Pufferfish] SIMD operations are available for your server, but are not configured!
+[17:54:13] [Server thread/WARN]: [Pufferfish] To enable additional optimizations, add "--add-modules=jdk.incubator.vector" to your startup flags, BEFORE the "-jar".
+[17:54:13] [Server thread/WARN]: [Pufferfish] If you have already added this flag, then SIMD operations are not supported on your JVM or CPU.
+[17:54:13] [Server thread/WARN]: [Pufferfish] Debug: Java: 18.0.2.1, test run: true
+[17:54:13] [Server thread/INFO]: Default game type: SURVIVAL
+[17:54:13] [Server thread/INFO]: Generating keypair
+[17:54:13] [Server thread/INFO]: Starting Minecraft server on *:25565
+[17:54:13] [Server thread/INFO]: Using default channel type
+[17:54:13] [Server thread/INFO]: Paper: Using Java compression from Velocity.
+[17:54:13] [Server thread/INFO]: Paper: Using Java cipher from Velocity.
+[17:54:13] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loading 4 libraries... please wait
+[17:54:13] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-api\4.16.0\adventure-api-4.16.0.jar
+[17:54:13] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-key\4.16.0\adventure-key-4.16.0.jar
+[17:54:13] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\examination-api\1.3.0\examination-api-1.3.0.jar
+[17:54:13] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\examination-string\1.3.0\examination-string-1.3.0.jar
+[17:54:13] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\org\jetbrains\annotations\24.1.0\annotations-24.1.0.jar
+[17:54:13] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-platform-bukkit\4.3.2\adventure-platform-bukkit-4.3.2.jar
+[17:54:13] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-platform-api\4.3.2\adventure-platform-api-4.3.2.jar
+[17:54:13] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-text-serializer-bungeecord\4.3.2\adventure-text-serializer-bungeecord-4.3.2.jar
+[17:54:13] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-text-serializer-legacy\4.13.1\adventure-text-serializer-legacy-4.13.1.jar
+[17:54:13] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-nbt\4.13.1\adventure-nbt-4.13.1.jar
+[17:54:13] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-text-serializer-gson-legacy-impl\4.13.1\adventure-text-serializer-gson-legacy-impl-4.13.1.jar
+[17:54:13] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-platform-facet\4.3.2\adventure-platform-facet-4.3.2.jar
+[17:54:13] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-platform-viaversion\4.3.2\adventure-platform-viaversion-4.3.2.jar
+[17:54:13] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-text-minimessage\4.16.0\adventure-text-minimessage-4.16.0.jar
+[17:54:13] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-text-serializer-gson\4.16.0\adventure-text-serializer-gson-4.16.0.jar
+[17:54:13] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-text-serializer-json\4.16.0\adventure-text-serializer-json-4.16.0.jar
+[17:54:13] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\option\1.0.0\option-1.0.0.jar
+[17:54:13] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\com\google\code\gson\gson\2.8.0\gson-2.8.0.jar
+[17:54:13] [Server thread/INFO]: [spark] Loading server plugin spark v1.10.118
+[17:54:13] [Server thread/INFO]: [MythicMobs] Loading server plugin MythicMobs v5.7.2-${CI_COMMIT_SHORT_SHA}
+[17:54:13] [Server thread/INFO]: [LumineUtils] (io.lumine.mythic.bukkit.utils.) is bound to plugin MythicMobs - io.lumine.mythic.bukkit.MythicBukkit
+[17:54:14] [Server thread/INFO]: [MythicMobs] §x§f§f§0§0§0§0M§x§f§f§6§6§0§0y§x§f§f§c§c§0§0t§x§c§b§f§f§0§0h§x§6§5§f§f§0§0i§x§0§0§f§f§0§0c§x§0§0§f§f§6§6 §x§0§0§f§f§c§bE§x§0§0§c§b§f§fn§x§0§0§6§5§f§fa§x§0§0§0§0§f§fb§x§6§6§0§0§f§fl§x§c§c§0§0§f§fe§x§f§f§0§0§c§cd§x§f§f§0§0§6§6!
+[17:54:14] [Server thread/INFO]: [DeathScape] Loading server plugin DeathScape v1.0.0
+[17:54:14] [Server thread/WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[17:54:14] [Server thread/WARN]: The server will make no attempt to authenticate usernames. Beware.
+[17:54:14] [Server thread/WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[17:54:14] [Server thread/WARN]: To change this, set "online-mode" to "true" in the server.properties file.
+[17:54:14] [Server thread/INFO]: Preparing level "world"
+[17:54:14] [AWT-EventQueue-0/WARN]: Exception in thread "AWT-EventQueue-0" java.lang.NullPointerException: Cannot invoke "org.purpurmc.purpur.gui.GUIColor.getColor()" because "guiColor" is null
+[17:54:14] [AWT-EventQueue-0/WARN]: 	at org.purpurmc.purpur.gui.JColorTextPane.append(JColorTextPane.java:37)
+[17:54:14] [AWT-EventQueue-0/WARN]: 	at net.minecraft.server.gui.ServerGUI.print(ServerGUI.java:272)
+[17:54:14] [AWT-EventQueue-0/WARN]: 	at net.minecraft.server.gui.ServerGUI.lambda$print$2(ServerGUI.java:254)
+[17:54:14] [AWT-EventQueue-0/WARN]: 	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:318)
+[17:54:14] [AWT-EventQueue-0/WARN]: 	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:773)
+[17:54:14] [AWT-EventQueue-0/WARN]: 	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
+[17:54:14] [AWT-EventQueue-0/WARN]: 	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
+[17:54:14] [AWT-EventQueue-0/WARN]: 	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+[17:54:14] [AWT-EventQueue-0/WARN]: 	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:86)
+[17:54:14] [AWT-EventQueue-0/WARN]: 	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:742)
+[17:54:14] [AWT-EventQueue-0/WARN]: 	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+[17:54:14] [AWT-EventQueue-0/WARN]: 	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+[17:54:14] [AWT-EventQueue-0/WARN]: 	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+[17:54:14] [AWT-EventQueue-0/WARN]: 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+[17:54:14] [AWT-EventQueue-0/WARN]: 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+[17:54:14] [AWT-EventQueue-0/WARN]: 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+[17:54:14] [Server thread/INFO]: Preparing start region for dimension minecraft:overworld
+[17:54:14] [Server thread/INFO]: Time elapsed: 228 ms
+[17:54:14] [Server thread/INFO]: Preparing start region for dimension minecraft:the_nether
+[17:54:14] [Server thread/INFO]: Time elapsed: 17 ms
+[17:54:14] [Server thread/INFO]: Preparing start region for dimension minecraft:the_end
+[17:54:14] [Server thread/INFO]: Time elapsed: 13 ms
+[17:54:14] [Server thread/INFO]: [spark] Enabling spark v1.10.118
+[17:54:15] [Server thread/INFO]: [spark] Using Paper ServerTickStartEvent for tick monitoring
+[17:54:15] [Server thread/INFO]: [spark] Starting background profiler...
+[17:54:15] [Server thread/INFO]: [spark] The async-profiler engine is not supported for your os/arch (windows11/amd64), so the built-in Java engine will be used instead.
+[17:54:15] [Server thread/INFO]: [MythicMobs] Enabling MythicMobs v5.7.2-${CI_COMMIT_SHORT_SHA}
+[17:54:15] [Server thread/INFO]: [MythicMobs] Loading MythicMobs for Paper (MC: 1.20.4)...
+[17:54:15] [Server thread/INFO]: [MythicMobs] The server is running Paper; enabled Paper exclusive functionality
+[17:54:17] [Server thread/INFO]: [MythicMobs] Base directory C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\data
+[17:54:17] [Server thread/INFO]: [MythicMobs] Module directory C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\data\worlds
+[17:54:18] [Server thread/INFO]: [MythicMobs] Loading Packs...
+[17:54:19] [Server thread/INFO]: [MythicMobs] Loading Items...
+[17:54:19] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item botas
+[17:54:19] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\botas.yml
+[17:54:19] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[17:54:19] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item botas2
+[17:54:19] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\botas2.yml
+[17:54:19] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[17:54:19] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item botas3
+[17:54:19] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\botas3.yml
+[17:54:19] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[17:54:19] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item casco
+[17:54:19] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\casco.yml
+[17:54:19] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[17:54:19] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item casco2
+[17:54:19] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\casco2.yml
+[17:54:19] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[17:54:19] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item casco3
+[17:54:19] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\casco3.yml
+[17:54:19] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[17:54:19] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item pechera
+[17:54:19] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\pechera.yml
+[17:54:19] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[17:54:19] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item pechera2
+[17:54:19] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\pechera2.yml
+[17:54:19] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[17:54:19] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item pechera3
+[17:54:19] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\pechera3.yml
+[17:54:19] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[17:54:19] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item perneras
+[17:54:19] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\perneras.yml
+[17:54:19] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[17:54:19] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item perneras2
+[17:54:19] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\perneras2.yml
+[17:54:19] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[17:54:19] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item perneras3
+[17:54:19] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\perneras3.yml
+[17:54:19] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[17:54:19] [Server thread/INFO]: [MythicMobs] Loading Item Groups...
+[17:54:19] [Server thread/INFO]: [MythicMobs] Loading Skills...
+[17:54:20] [Server thread/INFO]: [MythicMobs] Loading Drop Tables...
+[17:54:20] [Server thread/INFO]: [MythicMobs] Loading Random Spawns...
+[17:54:20] [Server thread/INFO]: [MythicMobs] Loading Spawn Blocks...
+[17:54:20] [Server thread/INFO]: [MythicMobs] Spawners folder not found! Creating...
+[17:54:20] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Mechanic metaskill
+[17:54:20] [Server thread/WARN]: [MythicMobs] --| Mob: Dif2Bruja | File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\mobs\ExampleMobs.yml
+[17:54:20] [Server thread/WARN]: [MythicMobs] --| Error Message: Could not find MetaSkill SummonMurciélagos
+[17:54:20] [Server thread/WARN]: [MythicMobs] --| Mechanic Line: skill{s=SummonMurciélagos}
+[17:54:20] [Server thread/INFO]: [MythicMobs] ✓ Loaded 70 mobs.
+[17:54:20] [Server thread/INFO]: [MythicMobs] ✓ Loaded 6 vanilla mob overrides.
+[17:54:20] [Server thread/INFO]: [MythicMobs] ✓ Loaded 0 mob stacks.
+[17:54:20] [Server thread/INFO]: [MythicMobs] ✓ Loaded 24 skills.
+[17:54:20] [Server thread/INFO]: [MythicMobs] ✓ Loaded 0 random spawns.
+[17:54:20] [Server thread/INFO]: [MythicMobs] ✓ Loaded 29 mythic items.
+[17:54:20] [Server thread/INFO]: [MythicMobs] ✓ Loaded 4 drop tables.
+[17:54:20] [Server thread/INFO]: [MythicMobs] ✓ Loaded 0 mob spawners.
+[17:54:20] [Server thread/INFO]: [MythicMobs] MythicMobs configuration file loaded successfully.
+[17:54:20] [Server thread/INFO]: [MythicMobs] Started up bStats Metrics
+[17:54:20] [Server thread/INFO]: [MythicMobs] ✓ MythicMobs v5.7.2 ( build ${CI_COMMIT_SHORT_SHA} ) has been successfully loaded!
+[17:54:20] [Server thread/INFO]: [DeathScape] Enabling DeathScape v1.0.0
+[17:54:20] [Server thread/INFO]: DeathScape has been enabled!
+[17:54:20] [Server thread/INFO]: Running delayed init tasks
+[17:54:20] [Server thread/INFO]: Done (8.140s)! For help, type "help"
+[17:55:10] [Server thread/INFO]: Stopping the server
+[17:55:10] [Server thread/INFO]: Stopping server
+[17:55:10] [Server thread/INFO]: [DeathScape] Disabling DeathScape v1.0.0
+[17:55:10] [Server thread/INFO]: DeathScape has been disabled!
+[17:55:10] [Server thread/INFO]: [MythicMobs] Disabling MythicMobs v5.7.2-${CI_COMMIT_SHORT_SHA}
+[17:55:10] [Server thread/INFO]: [MythicMobs] ------------------------------------------------------------
+[17:55:10] [Server thread/INFO]: [MythicMobs] - 
+[17:55:10] [Server thread/INFO]: [MythicMobs] - Unloading Mythic...
+[17:55:10] [Server thread/INFO]: [MythicMobs] - 
+[17:55:10] [Server thread/INFO]: [MythicMobs] ------------------------------------------------------------
+[17:55:10] [Server thread/INFO]: [MythicMobs] - Spawners saved and unloaded...
+[17:55:10] [Server thread/INFO]: [MythicMobs] - Mobs saved and unloaded...
+[17:55:10] [Server thread/INFO]: [MythicMobs] Saving plugin data...
+[17:55:10] [Server thread/INFO]: [MythicMobs] ✓Saving Finished
+[17:55:10] [Server thread/INFO]: [MythicMobs] - Variables saved...
+[17:55:10] [Server thread/INFO]: [MythicMobs] - All active settings have been saved!
+[17:55:10] [Server thread/INFO]: [MythicMobs] - Mythic has been unloaded!
+[17:55:10] [Server thread/INFO]: [MythicMobs] ------------------------------------------------------------
+[17:55:10] [Server thread/INFO]: [MythicMobs] Saving plugin data...
+[17:55:10] [Server thread/INFO]: [MythicMobs] ✓Saving Finished
+[17:55:10] [Server thread/INFO]: [spark] Disabling spark v1.10.118
+[17:55:10] [Server thread/INFO]: Saving players
+[17:55:10] [Server thread/INFO]: Saving worlds
+[17:55:10] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[17:55:10] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world'
+[17:55:10] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world'
+[17:55:10] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world'
+[17:55:11] [Server thread/INFO]: [ChunkHolderManager] Saved 529 block chunks, 529 entity chunks, 0 poi chunks in world 'world' in 0,92s
+[17:55:11] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[17:55:11] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_nether]'/minecraft:the_nether
+[17:55:11] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_nether'
+[17:55:11] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_nether'
+[17:55:11] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_nether'
+[17:55:12] [Server thread/INFO]: [ChunkHolderManager] Saved 529 block chunks, 529 entity chunks, 0 poi chunks in world 'world_nether' in 0,48s
+[17:55:12] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[17:55:12] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_the_end]'/minecraft:the_end
+[17:55:12] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_the_end'
+[17:55:12] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_the_end'
+[17:55:12] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_the_end'
+[17:55:12] [Server thread/INFO]: [ChunkHolderManager] Saved 529 block chunks, 529 entity chunks, 0 poi chunks in world 'world_the_end' in 0,17s
+[17:55:12] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[17:55:12] [Server thread/INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
+[17:55:12] [Server thread/INFO]: Flushing Chunk IO
+[17:55:12] [Server thread/INFO]: Closing Thread Pool
+[17:55:12] [Server thread/INFO]: Closing Server
