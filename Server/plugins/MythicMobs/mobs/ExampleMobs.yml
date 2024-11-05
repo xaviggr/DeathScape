@@ -1,0 +1,625 @@
+# For more information, check out the plugin manual or join us on Discord:
+# http://www.mythicmobs.net
+#  
+
+SkeletalKnight:
+  Type: WITHER_SKELETON
+  Display: '&aSkeletal Knight'
+  Health: 40
+  Damage: 8
+  Equipment:
+  - IRON_HELMET HEAD
+  - IRON_CHESTPLATE CHEST
+  - IRON_LEGGINGS LEGS
+  - IRON_BOOTS FEET
+  - IRON_SWORD HAND
+  - SHIELD OFFHAND
+  Drops:
+  - GOLD_NUGGET{display="Gold Coin"} 1to2 0.5
+  LevelModifiers:
+  - health 5
+  - damage 0.5
+  Options:
+    MovementSpeed: 0.1
+SkeletonKing:
+  Type: WITHER_SKELETON
+  Display: '&6&lDeathScape King'
+  Health: 500
+  Damage: 12
+  Skills:
+  - skill{s=SummonSkeletons} @self 0.1
+  - skill{s=SmashAttack} @target >0 0.2
+  Equipment:
+  - KingsCrown HEAD
+  - SkeletonKingSword HAND
+  Drops:
+  - SkeletonKingDrops
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    MaxCombatDistance: 25
+    PreventOtherDrops: true
+SkeletalMinion:
+  Type: SKELETON
+  Display: '&2Skeletal Minion'
+  Health: 10
+  Damage: 2
+  Options:
+    MovementSpeed: 0.1
+StaticallyChargedSheep:
+  Type: SHEEP
+  Display: '&aStatically Charged Sheep'
+  Health: 100
+  Damage: 2
+  Options:
+    MovementSpeed: 0.3
+  DamageModifiers:
+  - LIGHTNING 0
+  - FIRE 0.5
+  Skills:
+    - lightning @PlayersInRadius{r=10} ~onTimer:50
+AngrySludge:
+  Type: SLIME
+  Display: '&aAngry Sludge'
+  Health: 100
+  Damage: 2
+  Options:
+    Size: 20
+    MovementSpeed: 0.1
+    PreventSlimeSplit: true
+    PreventOtherDrops: true
+    MaxCombatDistance: 30
+    KnockbackResistance: 1
+  Skills:
+  - skill{s=AngrySludgePoison} 0.2
+  - blockmask{material=SLIME_BLOCK;r=1;duration=100} @self ~onTimer:20
+  
+  
+  
+  
+Creeper1:
+  Type: CREEPER
+  Health: 30
+  Options:
+    MovementSpeed: 0.31
+  Skills:
+  - skill{s=DañoAlFlecharle}
+Wither1:
+  Type: WITHER_SKELETON
+  Health: 30
+  Damage: 5
+  Skills:
+  - skill{s=LentitudCercano} ~onTimer:60
+Brute1:
+  Type: PIGLIN_BRUTE
+  Equipment:
+  - HachaFilo3 HAND
+Esqueleto:
+  Type: SKELETON
+  Equipment:
+  - ArcoFuego HAND
+  Drops:
+  - EsqueletoDrops
+RavagerCheto:
+  Type: RAVAGER
+  Health: 100
+  Damage: 20
+  Options:
+    MovementSpeed: 100
+Fantasma:
+  Type: VEX
+  Health: 25
+  Damage: 40
+  Options:
+    MovementSpeed: 0.8
+
+Dif1Araña:
+  Type: Spider
+  Options:
+    MovementSpeed: 0.2
+Dif1Zombie:
+  Type: Zombie
+  Equipment:
+    - LEATHER_HELMET HEAD
+    - LEATHER_CHESTPLATE CHEST
+    - LEATHER_LEGGINGS LEGS
+    - LEATHER_BOOTS FEET
+Dif2Bruja:
+  Type: WITCH
+  DamageModifiers:
+  - LIGHTNING 0
+  Skills:
+    - lightning @PlayersInRadius{r=10} ~onTimer:50
+    - skill{s=SummonMurciélagos}
+Dif2Zombie:
+  Type: Zombie
+  Damage: 7.5
+Dif2Esqueleto:
+  Type: Skeleton
+  Damage: 8
+Dif2Araña:
+  Type: Spider
+  Damage: 7
+  Options:
+    MovementSpeed: 0.2
+ArañaTipo1:
+  Type: SPIDER
+  Damage: 8
+  Options:
+    MovementSpeed: 0.3
+ArañaTipo2:
+  Type: SPIDER
+  Health: 30
+  Options:
+    Glowing: true
+ArañaTipo3:
+  Type: SPIDER
+  Health: 35
+  Damage: 11
+  Options: 
+    Glowing: true
+    MovementSpeed: 0.3
+ArañaTipo4:
+  Type: SPIDER
+  Health: 20
+  Options:
+    ApplyInvisibility: true
+    MovementSpeed: 0.3
+ArañaTipo5:
+  Type: Spider
+  Damage: 8
+  Options:
+    Glowing: true
+    ApplyInvisibility: true
+Ravager1:
+  Type: RAVAGER
+  Options: 
+    MovementSpeed: 0.4
+Vexx:
+  Type: VEX
+  Damage: 20
+  Health: 30
+  Options:
+    ApplyInvisibility: false
+Mago:
+  Type: ILLUSIONER
+  Display: '&3&lDefensor del Horizonte'
+  Equipment: 
+    - ArcoFuego HAND
+    - SHIELD OFFHAND
+  Options:
+    Despawn: false
+  Skills:
+  - pull{velocity=5} @target ~onTimer:200
+  Drops:
+    - ArcoFuego1 1 0.01
+Gigante:
+  Type: GIANT
+  Display: '&1&lGran Coloso'
+  Equipment:
+    - NETHERITE_HELMET HEAD
+    - NETHERITE_CHESTPLATE CHEST
+    - NETHERITE_LEGGINGS LEGS
+    - NETHERITE_BOOTS FEET
+  Options:
+    ApplyInvisibility: true
+  Skills:
+    - skill{s=LentitudCercano} ~onTimer:60
+    - skill{s=DañoCercano} ~onTimer: 40
+  Drops:
+    - ENCHANTED_GOLDEN_APPLE 1 0.01
+TitanPillager:
+  Type: EVOKER
+  Display: '&6&lTitanPillager'
+  Health: 1100
+  Damage: 16
+  Skills:
+  - skill{s=SummonEvokers} @self 0.1
+  - skill{s=SmashAttack2} @target >0 0.2
+  - skill{s=DañoCercano} ~onTimer: 80
+  Drops:
+  - SkeletonKingSword 1
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.3
+    MaxCombatDistance: 25
+    PreventOtherDrops: true
+  BossBar:
+    Enabled: true
+    Title: '&4&lTitanPillager'
+    Range: 20
+    Color: RED
+    Style: SOLID
+CreeperCargado:
+  Type: CREEPER
+  Options:
+    MovementSpeed: 0.4
+    ApplyInvisibility: true
+    ExplosionRadius: 8
+    FuseTicks: 7
+    SuperCharged: false
+Bob:
+  Type: SILVERFISH
+  Display: '&5&lBob'
+  Health: 65
+  Damage: 70
+PerroProtector:
+  Type: WOLF
+  Display: '&c&lALPHA'
+  Damage: 10
+  Skills:
+    - potion{type=REGENERATION;duration=200;level=0} @PlayersInRadius{r=10}
+  Options:
+    Tameable:true
+EnderGhast:
+  Type: GHAST
+  Health: 60
+  Skills:
+    - damage{a=90} ~onAttack
+ChargedCreeper:
+  Type: CREEPER
+  Damage: 150
+  Options: 
+    ApplyInvisibility: true
+    SuperCharged: true
+    MovementSpeed: 0.4
+Enderman1:
+  Type: ENDERMAN
+  Damage: 10
+  Options:
+    MovementSpeed: 0.15
+Endermite1:
+  Type: ENDERMITE
+  Damage: 10
+  Options:
+    MovementSpeed: 0.15
+Drowned1:
+  Type: DROWNED
+PolloAgresivo: 
+  Type: CHICKEN
+  Damage: 60
+  AIGoalSelectors:
+  - clear
+  - meleeattack
+  - randomstroll
+  AITargetSelectors:
+  - clear
+  - players
+
+Phantom1:
+  Type: PHANTOM
+  Damage: 12
+Bob1:
+  Type: SILVERFISH
+  Damage: 95
+CreeperPollo:
+  Type: CREEPER
+  Options:
+    SuperCharged: true
+  Disguise: CHICKEN
+ZombieVaca: 
+  Type: ZOMBIE
+  Damage: 14
+  Disguise: COW
+ZombiePrueba:
+  Type: ZOMBIE
+  Damage: 100
+  Options:
+    MovementSpeed: 0.25
+  Equipment:
+  - Espada2 HAND
+  - NETHERITE_BOOTS FEET
+  - NETHERITE_HELMET HEAD
+  - NETHERITE_LEGGINGS LEGS
+  - NETHERITE_CHESTPLATE CHEST
+EsqueletoPrueba:
+  Type: SKELETON
+  Equipment:
+  - Arco3 HAND
+  - DIAMOND_BOOTS FEET
+  - DIAMOND_HELMET HEAD
+  - DIAMOND_LEGGINGS LEGS
+  - DIAMOND_CHESTPLATE CHEST
+  Drops:
+  - ArcoD19 1 1
+AldeanoCreeper:
+  Type: CREEPER 
+  Damage: 60
+  Disguise: VILLAGER
+Phantom2:
+  Type: PHANTOM
+  Skills:
+  - damage{amount=28;ignoreArmor=true}
+ArañaTortuga:
+  Type: SPIDER
+  Damage: 80
+  Options:
+    MovementSpeed: 0.40
+  Disguise: TURTLE setBaby true setGlowing true
+EndermanPrueba: 
+  Type: ENDERMAN
+  Damage: 60
+  Options:
+    MovementSpeed: 0.2
+PillagerPrueba:
+  Type: PILLAGER
+  Equipment:
+  - Ballesta1 HAND
+ShulkerMamado:
+  Type: SHULKER
+  Skills:
+    - damage{a=35} ~onAttack
+CaballoEsqueleto:
+  Type: SKELETON_HORSE
+  Health: 200
+  Skills:
+  - potion{type=POISON;duration=100;level=1} @PlayersInRadius{r=10}
+JefeGery:
+  Type: SKELETON
+  Diplay: '&l&4Gery'
+  Disguise: player &l&4Gery setSkin Gery_345
+  Health: 500
+  Options:
+    PreventSunburn: true
+    PreventOtherDrops: true
+    Despawn: false
+    KnockbackResistance: 2
+    MovementSpeed: 0.3
+  Equipment:
+  - Arco3 HAND
+  - SHIELD OFFHAND
+  Modules:
+    ThreatTable: true
+  Skills:
+  - effect:flames @target
+  - skill{s=SummonBobs}
+  - skill{s=MontarCaballoEsqueleto}
+  - skill{s=GroundSlam} ~onTimer:140
+  - weather{type=storm;duration=300}
+  BossBar:
+    Enabled: true
+    Title: '&k&1s&r&l&4Gery&k&1s'
+    Range: 20
+    Color: RED
+    Style: SOLID
+    CreateFog: true
+    DarkenSky: true
+    PlayMusic: true 
+  Drops:
+  - casco2 1 1
+
+Jefe4gymo:
+  Type: BLAZE
+  Diplay: '&l&44gymo'
+  Disguise: player &l&44gymo setSkin 4gymo
+  Health: 500
+  Damage: 50
+  Options:
+    PreventSunburn: true
+    PreventOtherDrops: true
+    Despawn: false
+    KnockbackResistance: 2
+    MovementSpeed: 0.3
+  Modules:
+    ThreatTable: true
+  DamageModifiers:
+  - ENTITY_EXPLOSION 0
+  - BLOCK_EXPLOSION 0
+  Skills:
+  - effect:flames @target
+  - damage{a=65} ~onAttack
+  - skill{s=FireballBarrage} ~onTimer:100
+  - skill{s=SkullBarrage} ~onTimer:350
+  - skill{s=SummonBlazes}
+  BossBar:
+    Enabled: true
+    Title: '&k&1s&r&l&44gymo&k&1s'
+    Range: 20
+    Color: RED
+    Style: SOLID
+    CreateFog: true
+    DarkenSky: true
+    PlayMusic: true 
+  Drops:
+  - pechera2 1 1
+Blaze1:
+  Type: BLAZE 
+  Skills: 
+  - damage{a=45} ~onAttack
+  - potion{type=WITHER;duration=40;level=1} @PlayersInRadius{r=10} ~onTimer:100
+JefeLink:
+  Type: WITHER_SKELETON
+  Diplay: '&l&4Link'
+  Disguise: player &l&4Link setSkin Link825_
+  Health: 500
+  Damage: 100
+  Equipment: 
+  - Espada2 HAND
+  - SHIELD OFFHAND
+  Options:
+    PreventSunburn: true
+    PreventOtherDrops: true
+    Despawn: false
+    KnockbackResistance: 2
+    MovementSpeed: 0.25
+  Modules:
+    ThreatTable: true
+  Skills:
+  - effect:flames @target
+  - pull{velocity=10} @target ~onTimer:200
+  - skill{s=MontarVex}
+  - freeze{ticks=100} @target ~onAttack
+  - lightning{d=25} @PlayersInRadius{r=10} ~onTimer:100
+  DamageModifiers:
+  - FALL 0
+  AIGoalSelectors:
+  - clear
+  - meleeattack
+  - randomstroll
+  AITargetSelectors:
+  - clear
+  - players
+  BossBar:
+    Enabled: true
+    Title: '&k&1s&r&l&4Link&k&1s'
+    Range: 20
+    Color: RED
+    Style: SOLID
+    CreateFog: true
+    DarkenSky: true
+    PlayMusic: true 
+  Drops: 
+  - perneras2 1 1
+JefeHeraldo:
+  Type: STRAY
+  Diplay: '&l&4Heraldo de la Muerte'
+  Health: 500
+  Damage: 80
+  Equipment: 
+  - Arco3 HAND
+  - SHIELD OFFHAND
+  Options:
+    PreventSunburn: true
+    PreventOtherDrops: true
+    Despawn: false
+    KnockbackResistance: 2
+    MovementSpeed: 0.25
+  Modules:
+    ThreatTable: true
+  Skills:
+  - effect:flames @target
+  - doppleganger @target
+  - shield{amount=50;maxShield=100} @self >0 0.2
+  - skill{s=TestingShootShulkerBullet} ~onTimer:60
+  - closeinventory{forcesync=true} @target ~onTimer:20
+  - skill{s=SummonSubditosHeraldo} ~onTimer:300
+  - skill{s=MontarTortuga}
+  - lightning{d=32} @PlayersInRadius{r=10} ~onTimer:100
+  - skill{s=FireballBarrage} ~onTimer:250
+  - skill{s=FireballBarrage} ~onTimer:250
+  - damage{a=40}
+  BossBar:
+    Enabled: true
+    Title: '&k&1s&r&l&4Heraldo De La Muerte&k&1s'
+    Range: 20
+    Color: RED
+    Style: SOLID
+    CreateFog: true
+    DarkenSky: true
+    PlayMusic: true
+  Drops:
+  - botas2 1 1
+    
+
+HorizonGhast:
+  Type: GHAST
+  Health: 60
+  Skills:
+    - damage{a=75} ~onAttack
+HorizonCreeper:
+  Type: CREEPER
+  Options:
+    MovementSpeed: 0.4
+    ApplyInvisibility: false
+    ExplosionRadius: 8
+    FuseTicks: 10
+    SuperCharged: true
+HorizonBob:
+  Type: SILVERFISH
+  Damage: 70
+  Options: 
+    MovementSpeed: 0.35
+    ApplyInvisibility: true
+    Glowing: true
+HorizonGigante:
+  Type: GIANT
+  Damage: 80
+  Health: 150
+  Display: '&1&lGran Coloso'
+  Equipment:
+    - NETHERITE_HELMET HEAD
+    - NETHERITE_CHESTPLATE CHEST
+    - NETHERITE_LEGGINGS LEGS
+    - NETHERITE_BOOTS FEET
+  AIGoalSelectors:
+  - clear
+  - meleeattack
+  - randomstroll
+  AITargetSelectors:
+  - clear
+  - players
+  Options:
+    MovementSpeed: 0.4
+    FollowRange: 64
+  DamageModifiers:
+  - FALL 0
+  Skills:
+  - potion{type=BLINDNESS;duration=80;level=1} @PlayersInRadius{r=30} ~onTimer:300
+HorizonDSKing:
+  Type: WITHER_SKELETON
+  Display: '&6&lDeathScape King'
+  Health: 500
+  Damage: 12
+  Skills:
+  - skill{s=SummonSkeletons} @self 0.1
+  - skill{s=SmashAttack2} @target >0 0.2
+  Equipment:
+  - KingsCrown HEAD
+  - NETHERITE_CHESTPLATE CHEST
+  - NETHERITE_LEGGINGS LEGS
+  - NETHERITE_BOOTS FEET
+  - SkeletonKingSword HAND
+  Options:
+    AlwaysShowName: true
+    MovementSpeed: 0.2
+    MaxCombatDistance: 25
+    PreventOtherDrops: true
+    
+QuazarGhast:
+  Type: GHAST
+  Health: 100
+  Skills:
+    - damage{a=100} ~onAttack
+  Drops:
+  - casco3 1 0.2
+QuazarPol:
+  Type: ENDERMITE 
+  Damage: 95
+  Options:
+    MovementSpeed: 0.35
+  Health: 60
+  Drops:
+  - perneras3 1 0.2
+QuazarCreeper:
+  Type: CREEPER 
+  Options:
+    MovementSpeed: 0.4
+    ApplyInvisibility: true
+    ExplosionRadius: 20
+    FuseTicks: 15
+    SuperCharged: true
+  Drops:
+  - pechera3 1 0.2
+QuazarEnderman:
+  Type: ENDERMAN 
+  Damage: 95
+  Options:
+    MovementSpeed: 0.45
+  Skills:
+  - dismount ~onDamaged
+  Drops:
+  - botas3 1 0.2
+
+HeraldoSubditos:
+  Type: STRAY
+  Health: 60
+  Equipment:
+  - Arco1 HAND
+  Options:
+    PreventSunburn: true
+    PreventOtherDrops: true
+    Despawn: true
+    KnockbackResistance: 2
+    MovementSpeed: 0.25
+  Skills:
+  - potionclear{} @target ~onTimer:200

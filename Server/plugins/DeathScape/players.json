@@ -1,14 +1,14 @@
 {
-  "xaviggr": {
-    "Name": "xaviggr",
-    "isDead": true,
-    "Deaths": 16,
+  "Gery_345": {
+    "Name": "Gery_345",
+    "IsDead": false,
+    "Deaths": 0,
     "IP": "127.0.0.1",
-    "TimePlayed": "38s 3m 0h",
-    "UUID": "cb185b4b-cea7-43bb-a340-571c9bb6c3a5",
+    "TimePlayed": "53s 2m 0h",
+    "UUID": "05822538-133f-3e2c-9d39-74946a11f791",
     "BanDate": "0",
     "BanTime": "0",
-    "Coords": "-7.106953566092927,75.37259037671856,-29.960925473713623",
+    "Coords": "-492.1329751316939,70.62984229519888,52.25638288483053",
     "Points": 0
   }
 }

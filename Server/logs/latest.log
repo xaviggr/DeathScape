@@ -1,746 +1,151 @@
-[12:24:55] [ServerMain/INFO]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
-[12:24:56] [ServerMain/INFO]: Loaded 7 recipes
-[12:24:56] [Server thread/INFO]: Starting minecraft server version 1.20.1
-[12:24:56] [Server thread/INFO]: Loading properties
-[12:24:56] [Server thread/INFO]: This server is running CraftBukkit version 3871-Spigot-d2eba2c-3f9263b (MC: 1.20.1) (Implementing API version 1.20.1-R0.1-SNAPSHOT)
-[12:24:56] [Server thread/INFO]: Debug logging is disabled
-[12:24:56] [Server thread/INFO]: Server Ping Player Sample Count: 12
-[12:24:56] [Server thread/INFO]: Using 4 threads for Netty based IO
-[12:24:56] [Server thread/INFO]: Default game type: SURVIVAL
-[12:24:56] [Server thread/INFO]: Generating keypair
-[12:24:57] [Server thread/INFO]: Starting Minecraft server on 127.0.0.1:25565
-[12:24:57] [Server thread/INFO]: Using default channel type
-[12:24:57] [Server thread/INFO]: [DeathScape] Loading DeathScape v1.0.0
-[12:24:57] [Server thread/INFO]: Preparing level "world"
-[12:24:57] [Server thread/INFO]: -------- World Settings For [world] --------
-[12:24:57] [Server thread/INFO]: Arrow Despawn Rate: 1200 Trident Respawn Rate:1200
-[12:24:57] [Server thread/INFO]: Zombie Aggressive Towards Villager: true
-[12:24:57] [Server thread/INFO]: Item Merge Radius: 2.5
-[12:24:57] [Server thread/INFO]: Item Despawn Rate: 6000
-[12:24:57] [Server thread/INFO]: Simulation Distance: 10
-[12:24:57] [Server thread/INFO]: View Distance: 10
-[12:24:57] [Server thread/INFO]: Allow Zombie Pigmen to spawn from portal blocks: true
-[12:24:57] [Server thread/INFO]: Nerfing mobs spawned from spawners: false
-[12:24:57] [Server thread/INFO]: Mob Spawn Range: 6
-[12:24:57] [Server thread/INFO]: Experience Merge Radius: 3.0
-[12:24:57] [Server thread/INFO]: Cactus Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Cane Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Melon Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Mushroom Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Pumpkin Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Sapling Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Beetroot Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Carrot Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Potato Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Wheat Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: NetherWart Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Vine Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Cocoa Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Bamboo Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: SweetBerry Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Kelp Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: TwistingVines Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: WeepingVines Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: CaveVines Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Entity Activation Range: An 32 / Mo 32 / Ra 48 / Mi 16 / Tiv true / Isa false
-[12:24:57] [Server thread/INFO]: Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Di 128 / Other 64
-[12:24:57] [Server thread/INFO]: Hopper Transfer: 8 Hopper Check: 1 Hopper Amount: 1 Hopper Can Load Chunks: false
-[12:24:57] [Server thread/INFO]: Custom Map Seeds:  Village: 10387312 Desert: 14357617 Igloo: 14357618 Jungle: 14357619 Swamp: 14357620 Monument: 10387313 Ocean: 14357621 Shipwreck: 165745295 End City: 10387313 Slime: 987234911 Nether: 30084232 Mansion: 10387319 Fossil: 14357921 Portal: 34222645
-[12:24:57] [Server thread/INFO]: Max TNT Explosions: 100
-[12:24:57] [Server thread/INFO]: Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
-[12:24:57] [Server thread/INFO]: -------- World Settings For [world_nether] --------
-[12:24:57] [Server thread/INFO]: Arrow Despawn Rate: 1200 Trident Respawn Rate:1200
-[12:24:57] [Server thread/INFO]: Zombie Aggressive Towards Villager: true
-[12:24:57] [Server thread/INFO]: Item Merge Radius: 2.5
-[12:24:57] [Server thread/INFO]: Item Despawn Rate: 6000
-[12:24:57] [Server thread/INFO]: Simulation Distance: 10
-[12:24:57] [Server thread/INFO]: View Distance: 10
-[12:24:57] [Server thread/INFO]: Allow Zombie Pigmen to spawn from portal blocks: true
-[12:24:57] [Server thread/INFO]: Nerfing mobs spawned from spawners: false
-[12:24:57] [Server thread/INFO]: Mob Spawn Range: 6
-[12:24:57] [Server thread/INFO]: Experience Merge Radius: 3.0
-[12:24:57] [Server thread/INFO]: Cactus Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Cane Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Melon Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Mushroom Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Pumpkin Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Sapling Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Beetroot Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Carrot Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Potato Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Wheat Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: NetherWart Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Vine Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Cocoa Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Bamboo Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: SweetBerry Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Kelp Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: TwistingVines Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: WeepingVines Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: CaveVines Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Entity Activation Range: An 32 / Mo 32 / Ra 48 / Mi 16 / Tiv true / Isa false
-[12:24:57] [Server thread/INFO]: Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Di 128 / Other 64
-[12:24:57] [Server thread/INFO]: Hopper Transfer: 8 Hopper Check: 1 Hopper Amount: 1 Hopper Can Load Chunks: false
-[12:24:57] [Server thread/INFO]: Custom Map Seeds:  Village: 10387312 Desert: 14357617 Igloo: 14357618 Jungle: 14357619 Swamp: 14357620 Monument: 10387313 Ocean: 14357621 Shipwreck: 165745295 End City: 10387313 Slime: 987234911 Nether: 30084232 Mansion: 10387319 Fossil: 14357921 Portal: 34222645
-[12:24:57] [Server thread/INFO]: Max TNT Explosions: 100
-[12:24:57] [Server thread/INFO]: Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
-[12:24:57] [Server thread/INFO]: -------- World Settings For [world_the_end] --------
-[12:24:57] [Server thread/INFO]: Arrow Despawn Rate: 1200 Trident Respawn Rate:1200
-[12:24:57] [Server thread/INFO]: Zombie Aggressive Towards Villager: true
-[12:24:57] [Server thread/INFO]: Item Merge Radius: 2.5
-[12:24:57] [Server thread/INFO]: Item Despawn Rate: 6000
-[12:24:57] [Server thread/INFO]: Simulation Distance: 10
-[12:24:57] [Server thread/INFO]: View Distance: 10
-[12:24:57] [Server thread/INFO]: Allow Zombie Pigmen to spawn from portal blocks: true
-[12:24:57] [Server thread/INFO]: Nerfing mobs spawned from spawners: false
-[12:24:57] [Server thread/INFO]: Mob Spawn Range: 6
-[12:24:57] [Server thread/INFO]: Experience Merge Radius: 3.0
-[12:24:57] [Server thread/INFO]: Cactus Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Cane Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Melon Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Mushroom Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Pumpkin Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Sapling Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Beetroot Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Carrot Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Potato Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Wheat Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: NetherWart Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Vine Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Cocoa Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Bamboo Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: SweetBerry Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Kelp Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: TwistingVines Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: WeepingVines Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: CaveVines Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Entity Activation Range: An 32 / Mo 32 / Ra 48 / Mi 16 / Tiv true / Isa false
-[12:24:57] [Server thread/INFO]: Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Di 128 / Other 64
-[12:24:57] [Server thread/INFO]: Hopper Transfer: 8 Hopper Check: 1 Hopper Amount: 1 Hopper Can Load Chunks: false
-[12:24:57] [Server thread/INFO]: Custom Map Seeds:  Village: 10387312 Desert: 14357617 Igloo: 14357618 Jungle: 14357619 Swamp: 14357620 Monument: 10387313 Ocean: 14357621 Shipwreck: 165745295 End City: 10387313 Slime: 987234911 Nether: 30084232 Mansion: 10387319 Fossil: 14357921 Portal: 34222645
-[12:24:57] [Server thread/INFO]: Max TNT Explosions: 100
-[12:24:57] [Server thread/INFO]: Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
-[12:24:57] [Server thread/INFO]: -------- World Settings For [world_mi_dimension_islas_flotantes] --------
-[12:24:57] [Server thread/INFO]: Arrow Despawn Rate: 1200 Trident Respawn Rate:1200
-[12:24:57] [Server thread/INFO]: Zombie Aggressive Towards Villager: true
-[12:24:57] [Server thread/INFO]: Item Merge Radius: 2.5
-[12:24:57] [Server thread/INFO]: Item Despawn Rate: 6000
-[12:24:57] [Server thread/INFO]: Simulation Distance: 10
-[12:24:57] [Server thread/INFO]: View Distance: 10
-[12:24:57] [Server thread/INFO]: Allow Zombie Pigmen to spawn from portal blocks: true
-[12:24:57] [Server thread/INFO]: Nerfing mobs spawned from spawners: false
-[12:24:57] [Server thread/INFO]: Mob Spawn Range: 6
-[12:24:57] [Server thread/INFO]: Experience Merge Radius: 3.0
-[12:24:57] [Server thread/INFO]: Cactus Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Cane Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Melon Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Mushroom Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Pumpkin Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Sapling Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Beetroot Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Carrot Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Potato Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Wheat Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: NetherWart Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Vine Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Cocoa Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Bamboo Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: SweetBerry Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Kelp Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: TwistingVines Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: WeepingVines Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: CaveVines Growth Modifier: 100%
-[12:24:57] [Server thread/INFO]: Entity Activation Range: An 32 / Mo 32 / Ra 48 / Mi 16 / Tiv true / Isa false
-[12:24:57] [Server thread/INFO]: Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Di 128 / Other 64
-[12:24:57] [Server thread/INFO]: Hopper Transfer: 8 Hopper Check: 1 Hopper Amount: 1 Hopper Can Load Chunks: false
-[12:24:57] [Server thread/INFO]: Custom Map Seeds:  Village: 10387312 Desert: 14357617 Igloo: 14357618 Jungle: 14357619 Swamp: 14357620 Monument: 10387313 Ocean: 14357621 Shipwreck: 165745295 End City: 10387313 Slime: 987234911 Nether: 30084232 Mansion: 10387319 Fossil: 14357921 Portal: 34222645
-[12:24:57] [Server thread/INFO]: Max TNT Explosions: 100
-[12:24:57] [Server thread/INFO]: Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
-[12:24:57] [Server thread/INFO]: Preparing start region for dimension minecraft:overworld
-[12:24:59] [Worker-Main-3/INFO]: Preparing spawn area: 0%
-[12:24:59] [Worker-Main-12/INFO]: Preparing spawn area: 0%
-[12:24:59] [Worker-Main-9/INFO]: Preparing spawn area: 0%
-[12:24:59] [Worker-Main-14/INFO]: Preparing spawn area: 0%
-[12:24:59] [Worker-Main-3/INFO]: Preparing spawn area: 88%
-[12:24:59] [Server thread/INFO]: Time elapsed: 2025 ms
-[12:24:59] [Server thread/INFO]: Preparing start region for dimension minecraft:the_nether
-[12:25:00] [Worker-Main-12/INFO]: Preparing spawn area: 0%
-[12:25:00] [Worker-Main-3/INFO]: Preparing spawn area: 0%
-[12:25:00] [Worker-Main-8/INFO]: Preparing spawn area: 0%
-[12:25:01] [Server thread/INFO]: Time elapsed: 1422 ms
-[12:25:01] [Server thread/INFO]: Preparing start region for dimension minecraft:the_end
-[12:25:02] [Worker-Main-10/INFO]: Preparing spawn area: 0%
-[12:25:02] [Worker-Main-6/INFO]: Preparing spawn area: 0%
-[12:25:02] [Worker-Main-18/INFO]: Preparing spawn area: 10%
-[12:25:02] [Server thread/INFO]: Time elapsed: 1195 ms
-[12:25:02] [Server thread/INFO]: Preparing start region for dimension mi_dimension:islas_flotantes
-[12:25:03] [Worker-Main-7/INFO]: Preparing spawn area: 0%
-[12:25:03] [Worker-Main-9/INFO]: Preparing spawn area: 0%
-[12:25:03] [Worker-Main-14/INFO]: Preparing spawn area: 0%
-[12:25:03] [Server thread/INFO]: Time elapsed: 1273 ms
-[12:25:03] [Server thread/INFO]: [DeathScape] Enabling DeathScape v1.0.0
-[12:25:03] [Server thread/INFO]: DeathScape has been enabled![m
-[12:25:03] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
-[12:25:03] [Server thread/INFO]: Done (6.493s)! For help, type "help"
-[12:25:16] [User Authenticator #1/INFO]: UUID of player xaviggr is cb185b4b-cea7-43bb-a340-571c9bb6c3a5
-[12:25:16] [Server thread/INFO]: xaviggr joined the game
-[12:25:16] [Server thread/INFO]: xaviggr[/127.0.0.1:52578] logged in with entity id 323 at ([world]13.250224104787836, 68.0, 5.477063065127698)
-[12:25:20] [Server thread/INFO]: xaviggr issued server command: /kill
-[12:25:20] [Server thread/INFO]: Played sound minecraft:muerte to xaviggr
-[12:25:20] [Server thread/INFO]: Applied effect Blindness to xaviggr
-[12:25:20] [Server thread/INFO]: Changed title display times for xaviggr
-[12:25:20] [Server thread/INFO]: xaviggr was killed
-[12:25:20] [Server thread/INFO]: [xaviggr: Killed xaviggr]
-[12:25:20] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:20] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:20] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:20] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:20] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:20] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:20] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:20] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:20] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:20] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:20] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:20] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:20] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:20] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:21] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:21] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:21] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:21] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:21] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:21] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:21] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:21] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:21] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:21] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:21] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:21] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:21] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:21] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:21] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:21] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:21] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:21] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:21] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:21] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:22] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:22] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:22] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:22] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:22] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:22] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:22] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:22] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:22] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:22] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:22] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:22] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:22] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:22] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:22] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:22] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:22] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:22] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:22] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:22] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:23] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:23] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:23] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:23] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:23] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:23] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:23] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:23] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:23] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:23] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:23] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:23] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:23] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:23] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:23] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:23] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:23] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:23] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:23] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:23] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:24] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:24] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:24] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:24] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:24] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:24] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:24] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:24] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:24] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:24] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:24] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:24] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:24] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:24] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:24] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:24] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:24] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:24] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:24] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:24] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:25] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:25] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:25] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:25] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:25] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:25] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:25] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:25] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:25] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:25] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:25] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:25] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:25] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:25] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:25] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:25] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:25] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:25] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:25] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:25] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:26] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:26] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:26] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:26] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:26] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:26] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:26] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:26] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:26] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:26] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:26] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:26] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:26] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:26] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:26] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:26] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:26] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:26] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:26] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:26] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:27] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:27] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:27] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:27] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:27] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:27] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:27] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:27] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:27] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:27] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:27] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:27] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:27] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:27] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:27] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:27] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:27] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:27] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:27] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:27] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:28] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:28] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:28] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:28] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:28] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:28] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:28] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:28] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:28] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:28] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:28] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:28] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:28] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:28] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:28] [Server thread/INFO]: Showing new title for xaviggr
-[12:25:28] [Server thread/INFO]: Played sound minecraft:entity.lightning_bolt.impact to xaviggr
-[12:25:28] [Server thread/INFO]: Changed title display times for xaviggr
-[12:25:36] [Server thread/INFO]: xaviggr issued server command: /gamemode creative
-[12:25:36] [Server thread/INFO]: [xaviggr: Set own game mode to Creative Mode]
-[12:26:27] [Server thread/INFO]: xaviggr issued server command: /execute in mi_dimension:islas_flotantes run tp @p 0 100 0
-[12:26:27] [Server thread/INFO]: [xaviggr: Teleported xaviggr to 0.500000, 100.000000, 0.500000]
-[12:27:18] [Server thread/ERROR]: Error al crear la cabeza de la estatua para xaviggr: class org.bukkit.craftbukkit.v1_20_R1.block.CraftBlockState cannot be cast to class org.bukkit.block.Skull (org.bukkit.craftbukkit.v1_20_R1.block.CraftBlockState and org.bukkit.block.Skull are in unnamed module of loader java.net.URLClassLoader @5fa7e7ff)
-[12:27:18] [Server thread/INFO]: Played sound minecraft:muerte to xaviggr
-[12:27:18] [Server thread/INFO]: Applied effect Blindness to xaviggr
-[12:27:18] [Server thread/INFO]: Changed title display times for xaviggr
-[12:27:18] [Server thread/INFO]: xaviggr fell out of the world
-[12:27:19] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:19] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:19] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:19] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:19] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:19] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:19] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:19] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:19] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:19] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:19] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:19] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:19] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:19] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:19] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:19] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:19] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:19] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:19] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:19] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:20] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:20] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:20] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:20] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:20] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:20] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:20] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:20] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:20] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:20] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:20] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:20] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:20] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:20] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:20] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:20] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:20] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:20] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:20] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:20] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:21] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:21] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:21] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:21] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:21] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:21] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:21] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:21] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:21] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:21] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:21] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:21] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:21] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:21] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:21] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:21] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:21] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:21] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:21] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:21] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:22] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:22] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:22] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:22] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:22] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:22] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:22] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:22] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:22] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:22] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:22] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:22] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:22] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:22] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:22] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:22] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:22] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:22] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:22] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:22] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:23] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:23] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:23] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:23] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:23] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:23] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:23] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:23] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:23] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:23] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:23] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:23] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:23] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:23] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:23] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:23] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:23] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:23] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:23] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:23] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:24] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:24] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:24] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:24] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:24] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:24] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:24] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:24] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:24] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:24] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:24] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:24] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:24] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:24] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:24] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:24] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:24] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:24] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:24] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:24] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:25] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:25] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:25] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:25] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:25] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:25] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:25] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:25] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:25] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:25] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:25] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:25] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:25] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:25] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:25] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:25] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:25] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:25] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:25] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:25] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:26] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:26] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:26] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:26] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:26] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:26] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:26] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:26] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:26] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:26] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:26] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:26] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:26] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:26] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:26] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:26] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:26] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:26] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:26] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:26] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:27] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:27] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:27] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:27] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:27] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:27] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:27] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:27] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:27] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:27] [Server thread/INFO]: Played sound minecraft:entity.lightning_bolt.impact to xaviggr
-[12:27:27] [Server thread/INFO]: Changed title display times for xaviggr
-[12:27:45] [Server thread/INFO]: xaviggr issued server command: /execute in mi_dimension:islas_flotantes run tp @p 0 100 0
-[12:27:45] [Server thread/INFO]: [xaviggr: Teleported xaviggr to 0.500000, 100.000000, 0.500000]
-[12:27:49] [Server thread/INFO]: xaviggr issued server command: /gamemode creative
-[12:27:49] [Server thread/INFO]: [xaviggr: Set own game mode to Creative Mode]
-[12:27:51] [Server thread/INFO]: xaviggr issued server command: /kill
-[12:27:51] [Server thread/INFO]: Played sound minecraft:muerte to xaviggr
-[12:27:51] [Server thread/INFO]: Applied effect Blindness to xaviggr
-[12:27:51] [Server thread/INFO]: Changed title display times for xaviggr
-[12:27:51] [Server thread/INFO]: xaviggr was killed
-[12:27:51] [Server thread/INFO]: [xaviggr: Killed xaviggr]
-[12:27:51] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:51] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:52] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:52] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:52] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:52] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:52] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:52] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:52] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:52] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:52] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:52] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:52] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:52] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:52] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:52] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:52] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:52] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:52] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:52] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:52] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:52] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:53] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:53] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:53] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:53] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:53] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:53] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:53] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:53] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:53] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:53] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:53] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:53] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:53] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:53] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:53] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:53] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:53] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:53] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:53] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:53] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:54] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:54] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:54] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:54] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:54] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:54] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:54] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:54] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:54] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:54] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:54] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:54] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:54] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:54] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:54] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:54] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:54] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:54] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:54] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:54] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:55] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:55] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:55] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:55] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:55] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:55] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:55] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:55] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:55] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:55] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:55] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:55] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:55] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:55] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:55] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:55] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:55] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:55] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:55] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:55] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:56] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:56] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:56] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:56] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:56] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:56] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:56] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:56] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:56] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:56] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:56] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:56] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:56] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:56] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:56] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:56] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:56] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:56] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:56] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:56] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:57] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:57] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:57] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:57] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:57] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:57] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:57] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:57] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:57] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:57] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:57] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:57] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:57] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:57] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:57] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:57] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:57] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:57] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:57] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:57] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:58] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:58] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:58] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:58] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:58] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:58] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:58] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:58] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:58] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:58] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:58] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:58] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:58] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:58] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:58] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:58] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:58] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:58] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:58] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:58] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:59] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:59] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:59] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:59] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:59] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:59] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:59] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:59] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:59] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:59] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:59] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:59] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:59] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:59] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:59] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:59] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:59] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:59] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:59] [Server thread/INFO]: Showing new title for xaviggr
-[12:27:59] [Server thread/INFO]: Showing new title for xaviggr
-[12:28:00] [Server thread/INFO]: Showing new title for xaviggr
-[12:28:00] [Server thread/INFO]: Showing new title for xaviggr
-[12:28:00] [Server thread/INFO]: Showing new title for xaviggr
-[12:28:00] [Server thread/INFO]: Showing new title for xaviggr
-[12:28:00] [Server thread/INFO]: Showing new title for xaviggr
-[12:28:00] [Server thread/INFO]: Showing new title for xaviggr
-[12:28:00] [Server thread/INFO]: Showing new title for xaviggr
-[12:28:00] [Server thread/INFO]: Played sound minecraft:entity.lightning_bolt.impact to xaviggr
-[12:28:00] [Server thread/INFO]: Changed title display times for xaviggr
-[12:28:09] [Server thread/INFO]: xaviggr issued server command: /execute in mi_dimension:islas_flotantes run tp @p 0 100 0
-[12:28:09] [Server thread/INFO]: [xaviggr: Teleported xaviggr to 0.500000, 100.000000, 0.500000]
-[12:28:36] [Server thread/INFO]: xaviggr issued server command: /gamemode creative
-[12:28:36] [Server thread/INFO]: [xaviggr: Set own game mode to Creative Mode]
-[12:28:37] [Server thread/INFO]: xaviggr lost connection: Disconnected
-[12:28:37] [Server thread/INFO]: xaviggr left the game
-[12:28:42] [Server thread/INFO]: Stopping the server
-[12:28:42] [Server thread/INFO]: Stopping server
-[12:28:42] [Server thread/INFO]: [DeathScape] Disabling DeathScape v1.0.0
-[12:28:42] [Server thread/INFO]: DeathScape has been disabled![m
-[12:28:42] [Server thread/INFO]: Saving players
-[12:28:42] [Server thread/INFO]: Saving worlds
-[12:28:43] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
-[12:28:44] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_nether]'/minecraft:the_nether
-[12:28:44] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_the_end]'/minecraft:the_end
-[12:28:44] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_mi_dimension_islas_flotantes]'/mi_dimension:islas_flotantes
-[12:28:44] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
-[12:28:44] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
-[12:28:44] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
-[12:28:44] [Server thread/INFO]: ThreadedAnvilChunkStorage (islas_flotantes): All chunks are saved
-[12:28:44] [Server thread/INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
+[14:23:17] [ServerMain/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
+[14:23:19] [ServerMain/INFO]: Loaded 1174 recipes
+[14:23:20] [ServerMain/INFO]: Loaded 1271 advancements
+[14:23:20] [Server thread/INFO]: Starting minecraft server version 1.20.4
+[14:23:20] [Server thread/INFO]: Loading properties
+[14:23:21] [Server thread/INFO]: This server is running Purpur version git-Purpur-2176 (MC: 1.20.4) (Implementing API version 1.20.4-R0.1-SNAPSHOT) (Git: 6b1ee98 on HEAD)
+[14:23:22] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[14:23:22] [Server thread/INFO]: Using 4 threads for Netty based IO
+[14:23:22] [Server thread/INFO]: [ChunkTaskScheduler] Chunk system is using 1 I/O threads, 3 worker threads, and gen parallelism of 3 threads
+[14:23:23] [Server thread/WARN]: [Pufferfish] SIMD operations are available for your server, but are not configured!
+[14:23:23] [Server thread/WARN]: [Pufferfish] To enable additional optimizations, add "--add-modules=jdk.incubator.vector" to your startup flags, BEFORE the "-jar".
+[14:23:23] [Server thread/WARN]: [Pufferfish] If you have already added this flag, then SIMD operations are not supported on your JVM or CPU.
+[14:23:23] [Server thread/WARN]: [Pufferfish] Debug: Java: 21.0.1, test run: true
+[14:23:23] [Server thread/INFO]: Default game type: SURVIVAL
+[14:23:23] [Server thread/INFO]: Generating keypair
+[14:23:23] [Server thread/INFO]: Starting Minecraft server on *:25565
+[14:23:23] [Server thread/INFO]: Using default channel type
+[14:23:23] [Server thread/INFO]: Paper: Using Java compression from Velocity.
+[14:23:23] [Server thread/INFO]: Paper: Using Java cipher from Velocity.
+[14:23:23] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loading 4 libraries... please wait
+[14:23:23] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\libraries\net\kyori\adventure-api\4.16.0\adventure-api-4.16.0.jar
+[14:23:23] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\libraries\net\kyori\adventure-key\4.16.0\adventure-key-4.16.0.jar
+[14:23:23] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\libraries\net\kyori\examination-api\1.3.0\examination-api-1.3.0.jar
+[14:23:23] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\libraries\net\kyori\examination-string\1.3.0\examination-string-1.3.0.jar
+[14:23:23] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\libraries\org\jetbrains\annotations\24.1.0\annotations-24.1.0.jar
+[14:23:23] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\libraries\net\kyori\adventure-platform-bukkit\4.3.2\adventure-platform-bukkit-4.3.2.jar
+[14:23:23] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\libraries\net\kyori\adventure-platform-api\4.3.2\adventure-platform-api-4.3.2.jar
+[14:23:23] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\libraries\net\kyori\adventure-text-serializer-bungeecord\4.3.2\adventure-text-serializer-bungeecord-4.3.2.jar
+[14:23:23] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\libraries\net\kyori\adventure-text-serializer-legacy\4.13.1\adventure-text-serializer-legacy-4.13.1.jar
+[14:23:23] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\libraries\net\kyori\adventure-nbt\4.13.1\adventure-nbt-4.13.1.jar
+[14:23:23] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\libraries\net\kyori\adventure-text-serializer-gson-legacy-impl\4.13.1\adventure-text-serializer-gson-legacy-impl-4.13.1.jar
+[14:23:23] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\libraries\net\kyori\adventure-platform-facet\4.3.2\adventure-platform-facet-4.3.2.jar
+[14:23:23] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\libraries\net\kyori\adventure-platform-viaversion\4.3.2\adventure-platform-viaversion-4.3.2.jar
+[14:23:23] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\libraries\net\kyori\adventure-text-minimessage\4.16.0\adventure-text-minimessage-4.16.0.jar
+[14:23:23] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\libraries\net\kyori\adventure-text-serializer-gson\4.16.0\adventure-text-serializer-gson-4.16.0.jar
+[14:23:23] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\libraries\net\kyori\adventure-text-serializer-json\4.16.0\adventure-text-serializer-json-4.16.0.jar
+[14:23:23] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\libraries\net\kyori\option\1.0.0\option-1.0.0.jar
+[14:23:23] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\libraries\com\google\code\gson\gson\2.8.0\gson-2.8.0.jar
+[14:23:23] [Server thread/INFO]: [spark] Loading server plugin spark v1.10.118
+[14:23:23] [Server thread/INFO]: [MythicMobs] Loading server plugin MythicMobs v5.7.2-${CI_COMMIT_SHORT_SHA}
+[14:23:23] [Server thread/INFO]: [LumineUtils] (io.lumine.mythic.bukkit.utils.) is bound to plugin MythicMobs - io.lumine.mythic.bukkit.MythicBukkit
+[14:23:23] [Server thread/INFO]: [MythicMobs] §x§f§f§0§0§0§0M§x§f§f§6§6§0§0y§x§f§f§c§c§0§0t§x§c§b§f§f§0§0h§x§6§5§f§f§0§0i§x§0§0§f§f§0§0c§x§0§0§f§f§6§6 §x§0§0§f§f§c§bE§x§0§0§c§b§f§fn§x§0§0§6§5§f§fa§x§0§0§0§0§f§fb§x§6§6§0§0§f§fl§x§c§c§0§0§f§fe§x§f§f§0§0§c§cd§x§f§f§0§0§6§6!
+[14:23:23] [Server thread/INFO]: [DeathScape] Loading server plugin DeathScape v1.0.0
+[14:23:23] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[14:23:23] [Server thread/WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[14:23:23] [Server thread/WARN]: The server will make no attempt to authenticate usernames. Beware.
+[14:23:23] [Server thread/WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[14:23:23] [Server thread/WARN]: To change this, set "online-mode" to "true" in the server.properties file.
+[14:23:23] [Server thread/INFO]: Preparing level "world"
+[14:23:24] [AWT-EventQueue-0/WARN]: Exception in thread "AWT-EventQueue-0" java.lang.NullPointerException: Cannot invoke "org.purpurmc.purpur.gui.GUIColor.getColor()" because "guiColor" is null
+[14:23:24] [AWT-EventQueue-0/WARN]: 	at org.purpurmc.purpur.gui.JColorTextPane.append(JColorTextPane.java:37)
+[14:23:24] [AWT-EventQueue-0/WARN]: 	at net.minecraft.server.gui.ServerGUI.print(ServerGUI.java:272)
+[14:23:24] [AWT-EventQueue-0/WARN]: 	at net.minecraft.server.gui.ServerGUI.lambda$print$2(ServerGUI.java:254)
+[14:23:24] [AWT-EventQueue-0/WARN]: 	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:318)
+[14:23:24] [AWT-EventQueue-0/WARN]: 	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:773)
+[14:23:24] [AWT-EventQueue-0/WARN]: 	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)
+[14:23:24] [AWT-EventQueue-0/WARN]: 	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)
+[14:23:24] [AWT-EventQueue-0/WARN]: 	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+[14:23:24] [AWT-EventQueue-0/WARN]: 	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)
+[14:23:24] [AWT-EventQueue-0/WARN]: 	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:742)
+[14:23:24] [AWT-EventQueue-0/WARN]: 	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+[14:23:24] [AWT-EventQueue-0/WARN]: 	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+[14:23:24] [AWT-EventQueue-0/WARN]: 	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+[14:23:24] [AWT-EventQueue-0/WARN]: 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+[14:23:24] [AWT-EventQueue-0/WARN]: 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+[14:23:24] [AWT-EventQueue-0/WARN]: 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+[14:23:24] [Server thread/INFO]: Preparing start region for dimension minecraft:overworld
+[14:23:25] [Server thread/INFO]: Time elapsed: 294 ms
+[14:23:25] [Server thread/INFO]: Preparing start region for dimension minecraft:the_nether
+[14:23:25] [Server thread/INFO]: Time elapsed: 51 ms
+[14:23:25] [Server thread/INFO]: Preparing start region for dimension minecraft:the_end
+[14:23:26] [Server thread/INFO]: Time elapsed: 1207 ms
+[14:23:26] [Server thread/INFO]: [spark] Enabling spark v1.10.118
+[14:23:27] [Server thread/INFO]: [spark] Using Paper ServerTickStartEvent for tick monitoring
+[14:23:27] [Server thread/INFO]: [spark] Starting background profiler...
+[14:23:27] [Server thread/INFO]: [spark] The async-profiler engine is not supported for your os/arch (windows10/amd64), so the built-in Java engine will be used instead.
+[14:23:27] [Server thread/INFO]: [MythicMobs] Enabling MythicMobs v5.7.2-${CI_COMMIT_SHORT_SHA}
+[14:23:27] [Server thread/INFO]: [MythicMobs] Loading MythicMobs for Paper (MC: 1.20.4)...
+[14:23:27] [Server thread/INFO]: [MythicMobs] The server is running Paper; enabled Paper exclusive functionality
+[14:23:29] [Server thread/INFO]: [MythicMobs] Base directory C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\plugins\MythicMobs\data
+[14:23:29] [Server thread/INFO]: [MythicMobs] Module directory C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\plugins\MythicMobs\data\worlds
+[14:23:31] [Server thread/INFO]: [MythicMobs] Loading Packs...
+[14:23:32] [Server thread/INFO]: [MythicMobs] Loading Items...
+[14:23:33] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item botas
+[14:23:33] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\plugins\MythicMobs\items\botas.yml
+[14:23:33] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[14:23:33] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item botas2
+[14:23:33] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\plugins\MythicMobs\items\botas2.yml
+[14:23:33] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[14:23:33] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item botas3
+[14:23:33] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\plugins\MythicMobs\items\botas3.yml
+[14:23:33] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[14:23:33] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item casco
+[14:23:33] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\plugins\MythicMobs\items\casco.yml
+[14:23:33] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[14:23:33] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item casco2
+[14:23:33] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\plugins\MythicMobs\items\casco2.yml
+[14:23:33] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[14:23:33] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item casco3
+[14:23:33] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\plugins\MythicMobs\items\casco3.yml
+[14:23:33] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[14:23:33] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item pechera
+[14:23:33] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\plugins\MythicMobs\items\pechera.yml
+[14:23:33] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[14:23:33] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item pechera2
+[14:23:33] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\plugins\MythicMobs\items\pechera2.yml
+[14:23:33] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[14:23:33] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item pechera3
+[14:23:33] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\plugins\MythicMobs\items\pechera3.yml
+[14:23:33] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[14:23:33] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item perneras
+[14:23:33] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\plugins\MythicMobs\items\perneras.yml
+[14:23:33] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[14:23:33] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item perneras2
+[14:23:33] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\plugins\MythicMobs\items\perneras2.yml
+[14:23:33] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[14:23:33] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item perneras3
+[14:23:33] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\plugins\MythicMobs\items\perneras3.yml
+[14:23:33] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[14:23:33] [Server thread/INFO]: [MythicMobs] Loading Item Groups...
+[14:23:33] [Server thread/INFO]: [MythicMobs] Loading Skills...
+[14:23:33] [Server thread/INFO]: [MythicMobs] Loading Drop Tables...
+[14:23:33] [Server thread/INFO]: [MythicMobs] Loading Random Spawns...
+[14:23:33] [Server thread/INFO]: [MythicMobs] Loading Spawn Blocks...
+[14:23:33] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Mechanic metaskill
+[14:23:33] [Server thread/WARN]: [MythicMobs] --| Mob: Dif2Bruja | File: C:\Users\gery3\OneDrive\Escritorio\DS4\DS4-1.20.4\plugins\MythicMobs\mobs\ExampleMobs.yml
+[14:23:33] [Server thread/WARN]: [MythicMobs] --| Error Message: Could not find MetaSkill SummonMurciélagos
+[14:23:33] [Server thread/WARN]: [MythicMobs] --| Mechanic Line: skill{s=SummonMurciélagos}
+[14:23:33] [Server thread/INFO]: [MythicMobs] ✓ Loaded 70 mobs.
+[14:23:33] [Server thread/INFO]: [MythicMobs] ✓ Loaded 6 vanilla mob overrides.
+[14:23:33] [Server thread/INFO]: [MythicMobs] ✓ Loaded 0 mob stacks.
+[14:23:33] [Server thread/INFO]: [MythicMobs] ✓ Loaded 24 skills.
+[14:23:33] [Server thread/INFO]: [MythicMobs] ✓ Loaded 0 random spawns.
+[14:23:33] [Server thread/INFO]: [MythicMobs] ✓ Loaded 29 mythic items.
+[14:23:33] [Server thread/INFO]: [MythicMobs] ✓ Loaded 4 drop tables.
+[14:23:33] [Server thread/INFO]: [MythicMobs] ✓ Loaded 0 mob spawners.
+[14:23:33] [Server thread/INFO]: [MythicMobs] MythicMobs configuration file loaded successfully.
+[14:23:34] [Server thread/INFO]: [MythicMobs] Started up bStats Metrics
+[14:23:34] [Server thread/INFO]: [MythicMobs] ✓ MythicMobs v5.7.2 ( build ${CI_COMMIT_SHORT_SHA} ) has been successfully loaded!
+[14:23:34] [Server thread/INFO]: [DeathScape] Enabling DeathScape v1.0.0
+[14:23:34] [Server thread/INFO]: DeathScape has been enabled!
+[14:23:34] [Server thread/INFO]: Running delayed init tasks
+[14:23:34] [Server thread/INFO]: Done (13.250s)! For help, type "help"
+[14:23:49] [User Authenticator #0/INFO]: UUID of player Gery_345 is 05822538-133f-3e2c-9d39-74946a11f791
+[14:23:50] [Server thread/INFO]: Gery_345 joined the game
+[14:23:50] [Server thread/INFO]: Gery_345[/127.0.0.1:56350] logged in with entity id 90 at ([world]-646.4788667366912, 88.61292766415177, -121.67497459761128)
+[14:23:59] [Server thread/WARN]: [EntityLookup] Entity uuid already exists: 918c8f50-fa5b-40ee-b8cd-74aa3e6a8876, mapped to EntityEvoker['Evoker'/182, uuid='918c8f50-fa5b-40ee-b8cd-74aa3e6a8876', l='ServerLevel[world]', x=-514.90, y=12.00, z=-88.08, cpos=[-33, -6], tl=61, v=true], can't add EntityEvoker['Evoker'/280, uuid='918c8f50-fa5b-40ee-b8cd-74aa3e6a8876', l='ServerLevel[world]', x=-511.88, y=13.54, z=-89.56, cpos=[-32, -6], tl=30, v=false]
+[14:24:05] [Server thread/WARN]: [EntityLookup] Entity uuid already exists: 84f24dc4-36b7-4f02-8838-f0c4ce082117, mapped to EntityBat['Bat'/513, uuid='84f24dc4-36b7-4f02-8838-f0c4ce082117', l='ServerLevel[world]', x=-544.18, y=-10.13, z=37.54, cpos=[-35, 2], tl=42, v=true], can't add EntityBat['Bat'/560, uuid='84f24dc4-36b7-4f02-8838-f0c4ce082117', l='ServerLevel[world]', x=-542.61, y=-11.88, z=39.36, cpos=[-34, 2], tl=12, v=false]
+[14:24:05] [Server thread/WARN]: [EntityLookup] Entity uuid already exists: 8ab3d1e5-3589-40c9-8fc2-6c9488de76b6, mapped to EntityBat['Bat'/475, uuid='8ab3d1e5-3589-40c9-8fc2-6c9488de76b6', l='ServerLevel[world]', x=-562.75, y=-9.01, z=40.56, cpos=[-36, 2], tl=296, v=true], can't add EntityBat['Bat'/561, uuid='8ab3d1e5-3589-40c9-8fc2-6c9488de76b6', l='ServerLevel[world]', x=-543.43, y=-11.97, z=36.25, cpos=[-34, 2], tl=12, v=false]
+[14:26:43] [Server thread/INFO]: Gery_345 lost connection: Disconnected
+[14:26:43] [Server thread/INFO]: Gery_345 left the game
