@@ -1,0 +1,9 @@
+{
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "minecraft:mountains": "2020-04-28 17:28:22 -0500"
+    },
+    "done": false
+  },
+  "DataVersion": 2230
+}
