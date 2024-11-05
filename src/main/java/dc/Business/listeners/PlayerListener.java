@@ -121,7 +121,7 @@ public class PlayerListener implements Listener {
         Player player = event.getPlayer();
         sleepingPlayers.remove(player); // Eliminar al jugador que se despertó
     }
-
+    @EventHandler
     public void onEntityResurrect(EntityResurrectEvent event) {
         Entity entity = event.getEntity();
 
