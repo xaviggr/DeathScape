@@ -1,0 +1,19 @@
+mobs:
+  day_1:
+    world:
+      - Mago
+  day_2:
+    world:
+      - Gigante
+  day_3:
+    world:
+      - TitanPillager
+  day_4:
+    world:
+      - CreeperCargado
+  day_5:
+    world:
+      - Bob
+  day_6:
+    world:
+      - PerroProtector

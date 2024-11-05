@@ -1,30 +1,35 @@
 package dc;
 
-import dc.Business.controllers.PlayerController;
-import dc.Business.controllers.StormController;
-import dc.Business.controllers.TotemController;
+import dc.Business.controllers.*;
+import dc.Business.listeners.MobSpawnListener;
 import dc.Persistence.config.MainConfigManager;
-import dc.Business.controllers.ServerController;
 import dc.Business.listeners.PlayerListener;
+import io.lumine.mythic.api.MythicProvider;
 import org.bukkit.Bukkit;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Objects;
+import io.lumine.mythic.api.mobs.MobManager; // Asegúrate de importar MobManager
 
 public class DeathScape extends JavaPlugin {
-
+    private FileConfiguration mobsConfig;
     private MainConfigManager mainConfigManager;
     private ServerController serverController;
+    private MobManager mobManager; // Añade esta línea
 
-    //Listeners
+    // Listeners
     PlayerListener playerListener;
+    MobSpawnListener mobSpawnListener;
 
-    //Controllers
+    // Controllers
     PlayerController playerController;
     StormController stormController;
-
+    MobSpawnController mobSpawnController;
     TotemController totemController;
 
     public HashMap<String, Long> time_of_connection;
@@ -32,16 +37,26 @@ public class DeathScape extends JavaPlugin {
     public ServerController getServerData() {
         return serverController;
     }
+    public MobManager getMobManager() {
+        return mobManager; // Método para obtener el MobManager
+    }
 
     @Override
     public void onEnable() {
+        // Cargar configuración principal y otras inicializaciones
+        loadMobsConfig(); // Llamada para cargar mobs.yml
+
+        mobManager = MythicProvider.get().getMobManager();
+
         serverController = new ServerController(this);
         mainConfigManager = new MainConfigManager(this);
         playerController = new PlayerController(this);
         stormController = new StormController(this, serverController);
         totemController = new TotemController(this);
+        mobSpawnController = new MobSpawnController(this); // Asegúrate de pasar la referencia correcta
 
         playerListener = new PlayerListener(this, serverController, playerController, stormController, totemController);
+        mobSpawnListener = new MobSpawnListener(this, mobSpawnController);
 
         time_of_connection = new HashMap<>();
 
@@ -52,6 +67,19 @@ public class DeathScape extends JavaPlugin {
         Bukkit.getConsoleSender().sendMessage("DeathScape has been enabled!");
     }
 
+    // Método para cargar mobs.yml
+    public void loadMobsConfig() {
+        File mobsFile = new File(getDataFolder(), "mobs.yml");
+        if (!mobsFile.exists()) {
+            saveResource("mobs.yml", false); // Copia mobs.yml desde src/main/resources si no existe
+        }
+        mobsConfig = YamlConfiguration.loadConfiguration(mobsFile);
+    }
+
+    public FileConfiguration getMobsConfig() {
+        return mobsConfig;
+    }
+
     @Override
     public void onDisable() {
         Bukkit.getConsoleSender().sendMessage("DeathScape has been disabled!");
@@ -59,6 +87,7 @@ public class DeathScape extends JavaPlugin {
 
     public void registerEvents() {
         getServer().getPluginManager().registerEvents(playerListener, this);
+        getServer().getPluginManager().registerEvents(mobSpawnListener, this);
     }
 
     public void registerCommands() {
@@ -76,3 +105,4 @@ public class DeathScape extends JavaPlugin {
         }
     }
 }
+
