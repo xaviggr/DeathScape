@@ -80,9 +80,16 @@ public class PlayerDeath implements Listener {
         // Colocar la cabeza del jugador encima de la cadena
         Block skullBlock = deathLocationBlock.getRelative(0, 1, 0);
         skullBlock.setType(Material.PLAYER_HEAD);
-        Skull skull = (Skull) skullBlock.getState();
-        skull.setOwningPlayer(player);
-        skull.update();
+
+        // Manejo de la cabeza del jugador
+        try {
+            Skull skull = (Skull) skullBlock.getState();
+            skull.setOwningPlayer(player);
+            skull.update();
+        } catch (ClassCastException e) {
+            Bukkit.getLogger().severe("Error al crear la cabeza de la estatua para " + player.getName() + ": " + e.getMessage());
+            // Opcionalmente, puedes realizar una acción alternativa aquí.
+        }
 
         // Crear un ArmorStand con el nombre del jugador encima de la cabeza
         ArmorStand nameStand = (ArmorStand) world.spawnEntity(bedrockBlock.getLocation().add(0.5, 0.5, 0.5), EntityType.ARMOR_STAND);
@@ -97,6 +104,7 @@ public class PlayerDeath implements Listener {
         // Mensaje o sonido al morir
         world.playSound(player.getLocation(), Sound.ENTITY_WITHER_DEATH, 1.0f, 0.5f);
     }
+
 
     private void generateFireAura(Player player, Block baseBlock) {
         World world = baseBlock.getWorld();
