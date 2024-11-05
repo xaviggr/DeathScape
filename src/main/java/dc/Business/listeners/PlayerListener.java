@@ -8,6 +8,7 @@ import dc.Persistence.player.PlayerEditDatabase;
 import dc.utils.Message;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -16,6 +17,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityResurrectEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.*;
+import org.bukkit.inventory.PlayerInventory;
 
 import java.util.HashSet;
 import java.util.Objects;
@@ -120,11 +122,19 @@ public class PlayerListener implements Listener {
         sleepingPlayers.remove(player); // Eliminar al jugador que se despertó
     }
 
-    @EventHandler
     public void onEntityResurrect(EntityResurrectEvent event) {
         Entity entity = event.getEntity();
 
         if (entity instanceof Player player) {
+            PlayerInventory inventory = player.getInventory();
+
+            // Verifica si el jugador tiene un tótem en la mano principal o secundaria
+            boolean hasTotem = (inventory.getItemInMainHand().getType() == Material.TOTEM_OF_UNDYING ||
+                    inventory.getItemInOffHand().getType() == Material.TOTEM_OF_UNDYING);
+
+            if (!hasTotem) {
+                return; // Sale del evento si no hay tótem en ninguna mano
+            }
 
             // Llama al método willTotemSucceed del TotemController
             TotemController.Result result = totemController.willTotemSucceed();

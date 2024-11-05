@@ -2,7 +2,6 @@ package dc;
 
 import dc.Business.controllers.*;
 import dc.Business.listeners.MobSpawnListener;
-import dc.Business.controllers.*;
 import dc.Business.inventory.ReviveInventory;
 import dc.Persistence.config.MainConfigManager;
 import dc.Business.listeners.PlayerListener;
