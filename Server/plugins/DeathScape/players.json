@@ -10,5 +10,17 @@
     "BanTime": "0",
     "Coords": "-492.1329751316939,70.62984229519888,52.25638288483053",
     "Points": 0
+  },
+  "xaviggr": {
+    "Name": "xaviggr",
+    "IsDead": true,
+    "Deaths": 3,
+    "IP": "127.0.0.1",
+    "TimePlayed": "16s 11m 0h",
+    "UUID": "edd62276-4a49-32bb-b0ec-762ffd8505c4",
+    "BanDate": "0",
+    "BanTime": "0",
+    "Coords": "0.5,100.0,0.5",
+    "Points": 0
   }
 }

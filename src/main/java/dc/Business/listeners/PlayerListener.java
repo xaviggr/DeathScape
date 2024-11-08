@@ -28,15 +28,15 @@ public class PlayerListener implements Listener {
 
     private final DeathScape plugin;
     private final PlayerController playerController;
-    private final StormController stormController;
+    private final WeatherController weatherController;
     private final TotemController totemController;
     private final AnimationController animationController;
     private final Set<Player> sleepingPlayers = new HashSet<>(); // Conjunto para jugadores durmiendo
 
-    public PlayerListener(DeathScape plugin, ServerController serverController, PlayerController playerController, StormController stormController, TotemController totemController, AnimationController animationController) {
+    public PlayerListener(DeathScape plugin, ServerController serverController, PlayerController playerController, WeatherController weatherController, TotemController totemController, AnimationController animationController) {
         this.plugin = plugin;
         this.playerController = playerController;
-        this.stormController = stormController;
+        this.weatherController = weatherController;
         this.totemController = totemController;
         this.animationController = animationController;
     }
@@ -45,7 +45,7 @@ public class PlayerListener implements Listener {
     public void onPlayerDeath(PlayerDeathEvent event) {
         Player player = Objects.requireNonNull(event.getEntity().getPlayer());
         playerController.setPlayerAsDead(player);
-        stormController.updateStormOnPlayerDeath();
+        weatherController.updateStormOnPlayerDeath();
         animationController.startDeathAnimation(player);
     }
 

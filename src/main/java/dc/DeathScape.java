@@ -31,9 +31,10 @@ public class DeathScape extends JavaPlugin {
 
     // Controllers
     PlayerController playerController;
-    StormController stormController;
+    WeatherController weatherController;
     MobSpawnController mobSpawnController;
     TotemController totemController;
+    DimensionController dimensionController;
 
     public HashMap<String, Long> time_of_connection;
 
@@ -58,15 +59,16 @@ public class DeathScape extends JavaPlugin {
         //Controllers
         serverController = new ServerController(this);
         playerController = new PlayerController(this);
-        stormController = new StormController(this, serverController);
+        weatherController = new WeatherController(this, serverController);
         totemController = new TotemController(this);
-        mobSpawnController = new MobSpawnController(this); // Asegúrate de pasar la referencia correcta
+        mobSpawnController = new MobSpawnController(this);
+        dimensionController = new DimensionController(this);
 
 
         //Listeners
         reviveInventory = new ReviveInventory();
         AnimationController animationController = new AnimationController(this);
-        playerListener = new PlayerListener(this, serverController, playerController, stormController, totemController, animationController);
+        playerListener = new PlayerListener(this, serverController, playerController, weatherController, totemController, animationController);
         mobSpawnListener = new MobSpawnListener(this, mobSpawnController);
 
         deathScapeCommand = new DeathScapeCommand(this, reviveInventory);
@@ -81,7 +83,7 @@ public class DeathScape extends JavaPlugin {
         registerEvents();
 
         // Check if the storm is active when the server starts
-        stormController.checkStormOnServerStart();
+        weatherController.checkStormOnServerStart();
 
         Bukkit.getConsoleSender().sendMessage("DeathScape has been enabled!");
     }
