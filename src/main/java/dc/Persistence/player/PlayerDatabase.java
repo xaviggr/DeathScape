@@ -22,6 +22,9 @@ public class PlayerDatabase {
         if (!file.exists()) {
             try {
                 file.createNewFile();
+                try (FileWriter writer = new FileWriter(file)) {
+                    writer.write("{}");
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }

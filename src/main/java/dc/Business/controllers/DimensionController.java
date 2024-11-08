@@ -26,12 +26,7 @@ public class DimensionController {
             Bukkit.getScheduler().runTaskTimer(plugin, () -> {
                 // Establece el tiempo en noche (por ejemplo, las 18000 ticks)
                 miDimension.setTime(18000);
-                //Set message on console to test
-                Bukkit.getConsoleSender().sendMessage("Time set to night in Rift dimension");
             }, 0L, 100L); // Configura cada 5 segundos (100 ticks) para mantener el tiempo de noche
-        } else {
-            //Set message on console to test
-            Bukkit.getConsoleSender().sendMessage("Rift dimension not found");
         }
     }
 }
