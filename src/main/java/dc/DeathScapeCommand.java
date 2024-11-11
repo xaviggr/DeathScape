@@ -85,8 +85,6 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
                 }
             } else if (args[0].equalsIgnoreCase("discord")) {
                 Message.enviarMensajeColorido(player, "Discord: https://discord.gg/Pe9wYt9bcV", "azul");
-            } else if (args[0].equalsIgnoreCase("inventario")) {
-                reviveInventory.openInventory(player);
             } else {
                 comandoinvalido(player);
                 return false;
