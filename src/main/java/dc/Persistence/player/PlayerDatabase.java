@@ -112,4 +112,10 @@ public class PlayerDatabase {
         }
         return deadPlayers;
     }
+
+    public static List<String> getAllPlayers() {
+        JsonObject jsonObject = readJsonFile();
+
+        return new ArrayList<>(jsonObject.keySet());
+    }
 }

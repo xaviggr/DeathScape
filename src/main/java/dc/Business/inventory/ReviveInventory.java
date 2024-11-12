@@ -1,52 +1,35 @@
 package dc.Business.inventory;
 
 import dc.Persistence.player.PlayerDatabase;
+import dc.Persistence.player.PlayerEditDatabase;
+import dc.utils.Message;
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.SkullMeta;
+import org.bukkit.Color;
 
 import java.util.List;
-import java.util.Objects;
 
-public class ReviveInventory extends InventorySystem {
+public class ReviveInventory extends PlayersInventory {
 
     public ReviveInventory() {
         super("Revivir Jugador");
     }
 
     @Override
-    protected void onItemClicked(Player player, ItemStack item) {
-        if (item.getType() == Material.PLAYER_HEAD) {
-            String playerName = Objects.requireNonNull(((SkullMeta) Objects.requireNonNull(item.getItemMeta())).getOwningPlayer()).getName();
-            revivePlayer(player, playerName);
-            player.closeInventory();
-        }
+    protected List<String> getPlayersList() {
+        return PlayerDatabase.getDeadPlayers();
     }
 
     @Override
-    protected void generateInventory() {
-        // Limpiar la lista de items para evitar acumulación
-        items.clear();  // Agrega esta línea
-
-        List<String> deadPlayers = PlayerDatabase.getDeadPlayers();
-        // Convertir cada jugador muerto a una cabeza de jugador y agregarlo a los items
-        for (String playerName : deadPlayers) {
-            ItemStack playerHead = new ItemStack(Material.PLAYER_HEAD);
-            SkullMeta skullMeta = (SkullMeta) playerHead.getItemMeta();
-            assert skullMeta != null;
-            skullMeta.setOwningPlayer(Bukkit.getOfflinePlayer(playerName));
-            skullMeta.setDisplayName("Revivir a " + playerName);
-            playerHead.setItemMeta(skullMeta);
-
-            items.add(playerHead);
-        }
+    protected String getPlayerDisplayName(String playerName) {
+        return "Revivir a " + playerName;
     }
 
-    private void revivePlayer(Player reviver, String playerName) {
-        // Lógica para revivir al jugador
-        reviver.sendMessage("Has revivido a " + playerName + " exitosamente.");
-        // Implementa la resurrección aquí
+    @Override
+    protected void onPlayerSelected(Player reviver, String playerName) {
+        Bukkit.getBanList(org.bukkit.BanList.Type.NAME).pardon(playerName);
+        PlayerEditDatabase.UnbanPlayer(playerName);
+        Message.sendMessageAllPlayers(playerName + " ha sido revivido por " + reviver.getName(), ChatColor.GREEN);
     }
 }

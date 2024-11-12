@@ -1,6 +1,8 @@
 package dc.Persistence.config;
 
 import dc.DeathScape;
+import dc.Persistence.chat.BannedWordsDatabase;
+import dc.Persistence.chat.ReportsDatabase;
 import dc.Persistence.player.PlayerDatabase;
 import org.bukkit.configuration.file.FileConfiguration;
 
@@ -57,6 +59,8 @@ public class MainConfigManager {
     public MainConfigManager(DeathScape plugin) {
         this.plugin = plugin;
         PlayerDatabase.setNameFile(plugin.getDataFolder () + File.separator + "players.json");
+        BannedWordsDatabase.setBannedWordsFile(plugin.getDataFolder () + File.separator + "bannedWords.json");
+        ReportsDatabase.setReportsFile(plugin.getDataFolder () + File.separator + "reports.json");
         loadConfig();
     }
 

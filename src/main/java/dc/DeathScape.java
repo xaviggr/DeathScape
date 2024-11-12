@@ -1,6 +1,9 @@
 package dc;
 
 import dc.Business.controllers.*;
+import dc.Business.inventory.ReportInventory;
+import dc.Business.inventory.ReportsInventory;
+import dc.Business.listeners.ChatListener;
 import dc.Business.listeners.MobSpawnListener;
 import dc.Business.inventory.ReviveInventory;
 import dc.Persistence.config.MainConfigManager;
@@ -27,7 +30,12 @@ public class DeathScape extends JavaPlugin {
     // Listeners
     PlayerListener playerListener;
     MobSpawnListener mobSpawnListener;
+    ChatListener chatListener;
+
+    // Inventory
+    ReportInventory reportInventory;
     ReviveInventory reviveInventory;
+    ReportsInventory reportsInventory;
 
     // Controllers
     PlayerController playerController;
@@ -64,14 +72,17 @@ public class DeathScape extends JavaPlugin {
         mobSpawnController = new MobSpawnController(this);
         dimensionController = new DimensionController(this);
 
+        //Inventory
+        reportInventory = new ReportInventory();
+        reviveInventory = new ReviveInventory();
+        reportsInventory = new ReportsInventory();
 
         //Listeners
-        reviveInventory = new ReviveInventory();
         AnimationController animationController = new AnimationController(this);
         playerListener = new PlayerListener(this, serverController, playerController, weatherController, totemController, animationController);
         mobSpawnListener = new MobSpawnListener(this, mobSpawnController);
-
-        deathScapeCommand = new DeathScapeCommand(this, reviveInventory);
+        deathScapeCommand = new DeathScapeCommand(this, reportInventory, reportsInventory);
+        chatListener = new ChatListener();
 
         //HashMaps
         time_of_connection = new HashMap<>();
@@ -108,8 +119,11 @@ public class DeathScape extends JavaPlugin {
 
     public void registerEvents() {
         getServer().getPluginManager().registerEvents(playerListener, this);
+        getServer().getPluginManager().registerEvents(reportInventory, this);
         getServer().getPluginManager().registerEvents(reviveInventory, this);
+        getServer().getPluginManager().registerEvents(reportsInventory, this);
         getServer().getPluginManager().registerEvents(mobSpawnListener, this);
+        getServer().getPluginManager().registerEvents(chatListener, this);
     }
 
     public void registerCommands() {

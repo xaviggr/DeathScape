@@ -36,7 +36,7 @@ public class PlayerDeath implements Listener {
         String victim = player.getName();
 
         for (Player checking_player : Bukkit.getOnlinePlayers()) {
-            Message.enviarMensajeColorido(player, "El jugador " + victim + " ha muerto!", "rojo");
+            Message.enviarMensajeColorido(player, "El jugador " + victim + " ha muerto!", ChatColor.RED);
 
             String ServerMessageTitle = plugin.getMainConfigManager().getDeathMessageTitle();
             String ServerMessageSubtitle = plugin.getMainConfigManager().getDeathMessageSubtitle();

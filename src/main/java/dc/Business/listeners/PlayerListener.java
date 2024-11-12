@@ -111,7 +111,7 @@ public class PlayerListener implements Listener {
             Bukkit.getWorlds().forEach(w -> {
                 w.setTime(0); // Establece la hora a 0 (día)
             });
-            Message.enviarMensajeColorido(player, "Has hecho que el día llegue!", "dorado");
+            Message.enviarMensajeColorido(player, "Has hecho que el día llegue!", ChatColor.GOLD);
         }
     }
 
