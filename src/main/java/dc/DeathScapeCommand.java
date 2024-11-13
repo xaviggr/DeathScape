@@ -36,21 +36,24 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
             if (args.length == 1) {
                 List<String> options = new ArrayList<>();
                 // Aquí agregas las options de autocompletado para el primer argumento del comando
+                options.add("dia");
+                options.add("discord");
                 options.add("help");
                 options.add("info");
-                options.add("reload");
-                options.add("dia");
+                options.add("reportar");
+                options.add("setdia");
                 options.add("tiempojugado");
                 options.add("tiempolluvia");
-                options.add("discord");
-                options.add("reportar");
+
                 if (sender.isOp()) {
-                    options.add("setdia");
-                    options.add("quitarban");
                     options.add("añadirBannedWord");
                     options.add("quitarBannedWord");
+                    options.add("quitarban");
+                    options.add("reload");
                     options.add("reportes");
+                    options.add("setdia");
                 }
+
                 return options;
             }
         }

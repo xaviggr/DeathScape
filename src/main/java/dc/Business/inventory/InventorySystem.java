@@ -94,6 +94,7 @@ public abstract class InventorySystem implements Listener {
             openInventory(player);
         } else {
             onItemClicked(player, clickedItem);
+            player.playSound(player.getLocation(), "ui.button.click", 1, 1);
         }
     }
 
