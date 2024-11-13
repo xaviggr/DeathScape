@@ -2,6 +2,7 @@ package dc.Business.listeners;
 
 import dc.Business.controllers.*;
 import dc.DeathScape;
+import dc.Persistence.config.MainConfigManager;
 import dc.Persistence.player.PlayerData;
 import dc.Persistence.player.PlayerDatabase;
 import dc.Persistence.player.PlayerEditDatabase;
@@ -65,7 +66,7 @@ public class PlayerListener implements Listener {
             if (playerData.isDead() && !player.isOp()) {
                 player.kickPlayer(ChatColor.RED + "Estás muerto, contacta con un administrador.");
             }
-            if (!Objects.equals(playerData.getHostAddress(), hostaddress) && plugin.getMainConfigManager().isKick_if_ip_changed() && !player.isOp()) {
+            if (!Objects.equals(playerData.getHostAddress(), hostaddress) && MainConfigManager.getInstance().isKick_if_ip_changed() && !player.isOp()) {
                 player.kickPlayer(ChatColor.RED + "Tu IP ha cambiado, contacta con un administrador.");
             }
         }

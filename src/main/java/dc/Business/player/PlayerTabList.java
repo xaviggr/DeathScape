@@ -1,6 +1,7 @@
 package dc.Business.player;
 
 import dc.DeathScape;
+import dc.Persistence.config.MainConfigManager;
 import dc.Persistence.player.PlayerData;
 import dc.Persistence.player.PlayerDatabase;
 import dc.utils.Info;
@@ -27,17 +28,6 @@ public class PlayerTabList {
     private final ChatColor[] colors = {
             ChatColor.YELLOW, ChatColor.GOLD
     };
-
-    private String getRank(Player player) {
-        // Aquí podrías implementar tu lógica para obtener el rango del jugador
-        if (player.hasPermission("admin")) {
-            return ChatColor.DARK_RED + "[ADMIN]";
-        } else if (player.hasPermission("mod")) {
-            return ChatColor.BLUE + "[MOD]";
-        } else {
-            return ChatColor.GREEN + "[JUGADOR]";
-        }
-    }
 
     public void startAnimation(Player player) {
         playerIndices.put(player, 1); // Inicializa el índice para el jugador
@@ -66,7 +56,6 @@ public class PlayerTabList {
 
         int health = (int) player.getHealth();
         player.setPlayerListName(
-                        getRank(player) + "] " +
                         ChatColor.WHITE + player.getName() +
                         ChatColor.RED + " " + health + "❤" +
                         ChatColor.YELLOW + " " + playerData.getPoints() + "⦿");
@@ -74,7 +63,7 @@ public class PlayerTabList {
     }
 
     private String createAnimatedHeader(Player player) {
-        String welcomeMessage = plugin.getMainConfigManager().getWelcomeMessage();
+        String welcomeMessage = MainConfigManager.getInstance().getWelcomeMessage();
 
         // Construir el título y las partes sin animación
         String staticHeader = ChatColor.DARK_AQUA + "=== DEATHSCAPE 4: LOST CHAPTER ===\n" +

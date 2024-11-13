@@ -1,6 +1,7 @@
 package dc.Business.controllers;
 
 import dc.DeathScape;
+import dc.Persistence.config.MainConfigManager;
 import org.bukkit.Bukkit;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -15,7 +16,7 @@ public class WeatherController {
     }
 
     public void updateStormOnPlayerDeath() {
-        serverController.addStormTime(plugin.getMainConfigManager().getStormTime());
+        serverController.addStormTime(MainConfigManager.getInstance().getStormTime());
         startStormIfNeeded();
     }
 

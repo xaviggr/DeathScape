@@ -1,6 +1,7 @@
 package dc.Business.player;
 
 import dc.DeathScape;
+import dc.Persistence.config.MainConfigManager;
 import dc.Persistence.player.PlayerEditDatabase;
 import dc.utils.Message;
 import org.bukkit.*;
@@ -38,8 +39,8 @@ public class PlayerDeath implements Listener {
         for (Player checking_player : Bukkit.getOnlinePlayers()) {
             Message.enviarMensajeColorido(player, "El jugador " + victim + " ha muerto!", ChatColor.RED);
 
-            String ServerMessageTitle = plugin.getMainConfigManager().getDeathMessageTitle();
-            String ServerMessageSubtitle = plugin.getMainConfigManager().getDeathMessageSubtitle();
+            String ServerMessageTitle = MainConfigManager.getInstance().getDeathMessageTitle();
+            String ServerMessageSubtitle = MainConfigManager.getInstance().getDeathMessageSubtitle();
 
             checking_player.sendTitle(ServerMessageTitle, ServerMessageSubtitle.replace("%player%", victim), 20, 20 * 5, 20);
             checking_player.playSound(checking_player.getLocation(), Sound.ENTITY_BLAZE_DEATH, Float.MAX_VALUE, -0.1f);
@@ -52,11 +53,11 @@ public class PlayerDeath implements Listener {
             // Si esta conectado se le expulsa.
             if (player.isOnline()) {
                 getServer().getScheduler().runTaskLater(plugin, () -> {
-                    playerBan.Ban(player, ChatColor.RED + plugin.getMainConfigManager().getBanMessage(), null);
-                    player.kickPlayer(ChatColor.RED + plugin.getMainConfigManager().getBanMessage());
+                    playerBan.Ban(player, ChatColor.RED + MainConfigManager.getInstance().getBanMessage(), null);
+                    player.kickPlayer(ChatColor.RED + MainConfigManager.getInstance().getBanMessage());
                 }, 2 * 20L);
             } else {
-                playerBan.Ban(player, ChatColor.RED + plugin.getMainConfigManager().getBanMessage(), null);
+                playerBan.Ban(player, ChatColor.RED + MainConfigManager.getInstance().getBanMessage(), null);
             }
         }
 

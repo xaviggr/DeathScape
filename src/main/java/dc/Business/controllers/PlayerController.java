@@ -4,6 +4,7 @@ import dc.Business.player.PlayerBan;
 import dc.Business.player.PlayerDeath;
 import dc.Business.player.PlayerTabList;
 import dc.DeathScape;
+import dc.Persistence.config.MainConfigManager;
 import dc.Persistence.player.PlayerData;
 import dc.Persistence.player.PlayerDatabase;
 import org.bukkit.entity.Player;
@@ -23,7 +24,7 @@ public class PlayerController {
 
     public void setPlayerAsDead(Player player) {
         playerDeath.Dead(player);
-        int points = plugin.getMainConfigManager().getPoints_to_reduce_on_death() * -1;
+        int points = MainConfigManager.getInstance().getPoints_to_reduce_on_death() * -1;
         addPointsToPlayer(player, points);
     }
 

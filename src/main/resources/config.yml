@@ -18,3 +18,20 @@ config:
   storm_time: 10
   points_to_reduce_on_death: 5
   totem_success_probability: 50
+groups:
+  admin:
+    prefix: "&4[Admin]"
+    permissions:
+      - "group.admin"
+      - "group.moderate"
+    players:
+      - "xaviggr"
+      - "4gymo"
+      - "gery345"
+      - "link"
+  default:
+    prefix: "&7[User]"
+    permissions:
+      - "group.user"
+    players:
+      - "test"

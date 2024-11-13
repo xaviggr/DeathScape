@@ -22,7 +22,6 @@ import io.lumine.mythic.api.mobs.MobManager; // Asegúrate de importar MobManage
 
 public class DeathScape extends JavaPlugin {
     private FileConfiguration mobsConfig;
-    private MainConfigManager mainConfigManager;
     private ServerController serverController;
     private MobManager mobManager; // Añade esta línea
     private DeathScapeCommand deathScapeCommand;
@@ -56,13 +55,13 @@ public class DeathScape extends JavaPlugin {
     @Override
     public void onEnable() {
         //Config
-        // Cargar configuración principal y otras inicializaciones
-        loadMobsConfig(); // Llamada para cargar mobs.yml
+        loadMobsConfig();
+
+        //Singletons
+        MainConfigManager.setInstance(this);
 
         mobManager = MythicProvider.get().getMobManager();
-
         serverController = new ServerController(this);
-        mainConfigManager = new MainConfigManager(this);
 
         //Controllers
         serverController = new ServerController(this);
@@ -128,10 +127,6 @@ public class DeathScape extends JavaPlugin {
 
     public void registerCommands() {
         Objects.requireNonNull(this.getCommand("deathscape")).setExecutor(deathScapeCommand);
-    }
-
-    public MainConfigManager getMainConfigManager() {
-        return mainConfigManager;
     }
 
     private static class onUpdate extends BukkitRunnable {

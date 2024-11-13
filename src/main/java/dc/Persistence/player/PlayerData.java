@@ -178,4 +178,9 @@ public class PlayerData {
 
             banDate = fDay + "/" + fMonth + "/" + fYear;
     }
+
+    @Override
+    public String toString() {
+        return new Gson().toJson(this);
+    }
 }

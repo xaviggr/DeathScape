@@ -4,6 +4,7 @@ import dc.Business.inventory.ReportInventory;
 import dc.Business.inventory.ReportsInventory;
 import dc.Business.inventory.ReviveInventory;
 import dc.Persistence.chat.BannedWordsDatabase;
+import dc.Persistence.config.MainConfigManager;
 import dc.Persistence.player.PlayerDatabase;
 import dc.Persistence.player.PlayerEditDatabase;
 import dc.utils.Message;
@@ -91,7 +92,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
             } else if (args[0].equalsIgnoreCase("tiempojugado")) {
                 Message.enviarMensajeColorido(player, "Has jugado un total de: " + Objects.requireNonNull(PlayerDatabase.getPlayerDataFromDatabase(player.getName())).getTimePlayed(), ChatColor.GREEN);
             } else if (args[0].equalsIgnoreCase("reload")) {
-                if (plugin.getMainConfigManager().reloadConfig()) {
+                if (MainConfigManager.getInstance().reloadConfig()) {
                     Message.ConfigLoadedOK(player);
                 } else {
                     Message.ConfigLoadedError(player);
