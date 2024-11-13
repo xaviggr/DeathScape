@@ -8,6 +8,8 @@ perneras2:
       meta-type: UNSPECIFIC
       display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"light_purple","text":"Titan
         Leggings"}],"text":""}'
+      lore:
+        - ''
       enchants:
         PROTECTION_ENVIRONMENTAL: 6
       Unbreakable: true

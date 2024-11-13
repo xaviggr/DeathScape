@@ -4,11 +4,23 @@
     "isDead": false,
     "Deaths": 0,
     "IP": "127.0.0.1",
+    "TimePlayed": "15s 6m 0h",
+    "UUID": "cb185b4b-cea7-43bb-a340-571c9bb6c3a5",
+    "BanDate": "0",
+    "BanTime": "0",
+    "Coords": "925.3153488829909,64.0,85.88312029376743",
+    "Points": 0
+  },
+  "test": {
+    "Name": "test",
+    "isDead": true,
+    "Deaths": 1,
+    "IP": "127.0.0.1",
     "TimePlayed": "0",
     "UUID": "cb185b4b-cea7-43bb-a340-571c9bb6c3a5",
     "BanDate": "0",
     "BanTime": "0",
-    "Coords": "0",
+    "Coords": "1.5007627163699553,186.0,2.835486893362079",
     "Points": 0
   }
 }
