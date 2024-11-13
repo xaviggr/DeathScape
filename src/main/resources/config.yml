@@ -19,11 +19,17 @@ config:
   points_to_reduce_on_death: 5
   totem_success_probability: 50
 groups:
-  admin:
-    prefix: "&4[Admin]"
+  owner:
+    prefix: "&4[Owner]"
     permissions:
-      - "group.admin"
-      - "group.moderate"
+      - "ban"
+      - "kick"
+      - "teleport"
+      - "reload"
+      - "reports"
+      - "fly"
+      - "chat"
+      - "heal"
     players:
       - "xaviggr"
       - "4gymo"
@@ -32,6 +38,4 @@ groups:
   default:
     prefix: "&7[User]"
     permissions:
-      - "group.user"
     players:
-      - "test"

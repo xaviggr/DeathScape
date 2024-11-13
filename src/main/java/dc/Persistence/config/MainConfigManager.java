@@ -112,7 +112,8 @@ public class MainConfigManager {
             String prefix = groupSection.getString("prefix", "");
             List<Permission> permissions = new ArrayList<>();
             for (String perm : groupSection.getStringList("permissions")) {
-                permissions.add(Permission.valueOf(perm));
+                Permission permission = Permission.valueOf(perm.toUpperCase());
+                permissions.add(permission);
             }
 
             List<PlayerData> players = new ArrayList<>();

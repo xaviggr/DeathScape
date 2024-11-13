@@ -87,4 +87,9 @@ public class GroupDatabase {
     public static List<String> getAllGroups() {
         return new ArrayList<>(loadGroups().keySet());
     }
+
+    public static String getPrefixFromGroup(String groupName) {
+        GroupData groupData = getGroupData(groupName);
+        return groupData != null ? groupData.getPrefix() : null;
+    }
 }

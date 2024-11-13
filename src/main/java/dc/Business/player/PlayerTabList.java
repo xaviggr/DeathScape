@@ -1,7 +1,9 @@
 package dc.Business.player;
 
+import dc.Business.controllers.PlayerController;
 import dc.DeathScape;
 import dc.Persistence.config.MainConfigManager;
+import dc.Persistence.groups.GroupDatabase;
 import dc.Persistence.player.PlayerData;
 import dc.Persistence.player.PlayerDatabase;
 import dc.utils.Info;
@@ -18,11 +20,13 @@ import java.util.Objects;
 public class PlayerTabList {
 
     private final DeathScape plugin;
+    private final PlayerController playerController;
     private final Map<Player, Integer> playerIndices = new HashMap<>();
     private int colorIndex = 0;
 
-    public PlayerTabList(DeathScape plugin) {
+    public PlayerTabList(DeathScape plugin, PlayerController playerController) {
         this.plugin = plugin;
+        this.playerController = playerController;
     }
 
     private final ChatColor[] colors = {
@@ -56,6 +60,7 @@ public class PlayerTabList {
 
         int health = (int) player.getHealth();
         player.setPlayerListName(
+                        GroupDatabase.getPrefixFromGroup(playerController.getGroupFromPlayer(player))+
                         ChatColor.WHITE + player.getName() +
                         ChatColor.RED + " " + health + "❤" +
                         ChatColor.YELLOW + " " + playerData.getPoints() + "⦿");

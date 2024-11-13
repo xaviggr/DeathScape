@@ -5,9 +5,12 @@ public enum Permission {
     BAN,
     KICK,
     TELEPORT,
-    BUILD,
+    RELOAD,
     REPORTS,
-    CHAT;
+    FLY,
+    CHAT,
+    HEAL,
+    NULL;
 
     @Override
     public String toString() {

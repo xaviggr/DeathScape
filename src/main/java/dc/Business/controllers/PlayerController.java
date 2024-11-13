@@ -9,16 +9,16 @@ import dc.Persistence.player.PlayerData;
 import dc.Persistence.player.PlayerDatabase;
 import org.bukkit.entity.Player;
 
+import javax.naming.Name;
+
 public class PlayerController {
 
-    private final DeathScape plugin;
     private final PlayerDeath playerDeath;
     private final PlayerTabList playerTabList;
 
     public PlayerController(DeathScape plugin) {
-        this.plugin = plugin;
         PlayerBan playerBan = new PlayerBan();
-        this.playerTabList = new PlayerTabList(plugin);
+        this.playerTabList = new PlayerTabList(plugin,this);
         this.playerDeath = new PlayerDeath(plugin, playerBan);
     }
 
@@ -26,6 +26,14 @@ public class PlayerController {
         playerDeath.Dead(player);
         int points = MainConfigManager.getInstance().getPoints_to_reduce_on_death() * -1;
         addPointsToPlayer(player, points);
+    }
+
+    public void setGroupToPlayer(Player player, String group) {
+        PlayerData playerData = PlayerDatabase.getPlayerDataFromDatabase(player.getName());
+
+        assert playerData != null;
+        playerData.setGroup(group);
+        PlayerDatabase.addPlayerDataToDatabase(playerData);
     }
 
     public void addPointToPlayer(Player player) {
@@ -42,5 +50,12 @@ public class PlayerController {
 
     public void setUpTabList(Player player) {
         playerTabList.startAnimation(player);
+    }
+
+    public String getGroupFromPlayer(Player player) {
+        PlayerData playerData = PlayerDatabase.getPlayerDataFromDatabase(player.getName());
+
+        assert playerData != null;
+        return playerData.getGroup();
     }
 }

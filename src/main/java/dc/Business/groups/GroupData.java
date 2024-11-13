@@ -7,10 +7,10 @@ import java.util.List;
 
 public class GroupData {
 
-    protected String name;
-    protected String prefix;
-    protected List<Permission> permissions;
-    protected List<PlayerData> players;
+    private final String name;
+    private final String prefix;
+    private final List<Permission> permissions;
+    private final List<PlayerData> players;
 
     public GroupData(String groupName, String prefix, List<Permission> permissions, List<PlayerData> players) {
         this.name = groupName;
@@ -26,5 +26,17 @@ public class GroupData {
 
     public String getName() {
         return name;
+    }
+
+    public String getPrefix() {
+        return prefix;
+    }
+
+    public List<Permission> getPermissions() {
+        return permissions;
+    }
+
+    public List<PlayerData> getPlayers() {
+        return players;
     }
 }
