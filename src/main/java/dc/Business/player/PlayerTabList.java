@@ -4,7 +4,6 @@ import dc.Business.controllers.PlayerController;
 import dc.DeathScape;
 import dc.Persistence.config.MainConfigManager;
 import dc.Persistence.groups.GroupDatabase;
-import dc.Persistence.player.PlayerData;
 import dc.Persistence.player.PlayerDatabase;
 import dc.utils.Info;
 import org.bukkit.Bukkit;
@@ -60,7 +59,7 @@ public class PlayerTabList {
 
         int health = (int) player.getHealth();
         player.setPlayerListName(
-                        GroupDatabase.getPrefixFromGroup(playerController.getGroupFromPlayer(player))+
+                        ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(GroupDatabase.getPrefixFromGroup(playerController.getGroupFromPlayer(player)))) +
                         ChatColor.WHITE + player.getName() +
                         ChatColor.RED + " " + health + "❤" +
                         ChatColor.YELLOW + " " + playerData.getPoints() + "⦿");

@@ -18,3 +18,62 @@ config:
   storm_time: 10
   points_to_reduce_on_death: 5
   totem_success_probability: 50
+groups:
+  owner:
+    prefix: "&4[Owner]"
+    permissions:
+      - "group"
+      - "ban"
+      - "kick"
+      - "teleport"
+      - "reload"
+      - "reports"
+      - "banshee"
+      - "chat"
+      - "heal"
+      - "days"
+    players:
+
+  admin:
+    prefix: "&c[Admin]"
+    permissions:
+      - "ban"
+      - "kick"
+      - "teleport"
+      - "reports"
+      - "banshee"
+      - "chat"
+      - "heal"
+    players:
+
+  mod:
+    prefix: "&9[Mod]"
+    permissions:
+      - "kick"
+      - "teleport"
+      - "reports"
+      - "banshee"
+      - "chat"
+    players:
+
+  soporte:
+    prefix: "&b[Soporte]"
+    permissions:
+      - "banshee"
+      - "teleport"
+    players:
+
+  youtuber_streamer:
+    prefix: "&5[Youtuber/Streamer]"
+    permissions: []
+    players:
+
+  vip:
+    prefix: "&6[VIP]"
+    permissions: []
+    players:
+
+  default:
+    prefix: "&7[Warrior]"
+    permissions: []
+    players:

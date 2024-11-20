@@ -42,7 +42,7 @@ public class GroupDatabase {
         }
     }
 
-    private static void initGroupDatabase() {
+    public static void initGroupDatabase() {
         File file = new File(nameFile);
         if (!file.exists()) {
             try {
@@ -67,11 +67,10 @@ public class GroupDatabase {
         return groupsData;
     }
 
-    public static boolean addGroupData(GroupData groupData) {
+    public static void addGroupData(GroupData groupData) {
         JsonObject groupsData = loadGroups();
         groupsData.add(groupData.getName(), GSON.toJsonTree(groupData));
         writeGroups(groupsData);
-        return true;
     }
 
     public static GroupData getGroupData(String groupName) {

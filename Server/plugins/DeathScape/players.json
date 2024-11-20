@@ -4,11 +4,12 @@
     "isDead": false,
     "deaths": 0,
     "hostAddress": "127.0.0.1",
-    "timePlayed": "0",
+    "timePlayed": "21s 2m 0h",
     "uuid": "cb185b4b-cea7-43bb-a340-571c9bb6c3a5",
     "points": 0,
     "banDate": "0",
     "bantime": "0",
-    "coords": "0"
+    "coords": "1291.8418022417763,63.0,279.12033752416573",
+    "group": "default"
   }
 }

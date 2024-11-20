@@ -3,11 +3,13 @@ package dc.Persistence.player;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
+import dc.Business.groups.GroupData;
+import dc.Business.player.PlayerData;
+import dc.Persistence.groups.GroupDatabase;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class PlayerDatabase {
 
@@ -59,8 +61,10 @@ public class PlayerDatabase {
         JsonObject jsonObject = readJsonFile();
         jsonObject.add(playerData.getName(), GSON.toJsonTree(playerData));
         writeJsonFile(jsonObject);
+        PlayerEditDatabase.addPlayerToGroup(playerData.getName(), playerData.getGroup());
         return true;
     }
+
 
     public static PlayerData getPlayerDataFromDatabase(String playerName) {
         JsonObject jsonObject = readJsonFile();

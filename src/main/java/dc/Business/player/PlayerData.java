@@ -1,7 +1,6 @@
-package dc.Persistence.player;
+package dc.Business.player;
 
 import com.google.gson.Gson;
-import dc.Persistence.groups.GroupDatabase;
 
 import java.time.LocalDateTime;
 import java.util.UUID;

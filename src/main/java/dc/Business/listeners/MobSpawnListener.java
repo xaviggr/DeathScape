@@ -14,12 +14,10 @@ import org.bukkit.event.entity.CreatureSpawnEvent;
 import java.util.*;
 
 public class MobSpawnListener implements Listener {
-    private final DeathScape plugin;
     private final MobSpawnController mobSpawnController;
     private final Random random;
 
     public MobSpawnListener(DeathScape plugin, MobSpawnController mobSpawnController) {
-        this.plugin = plugin;
         this.mobSpawnController = mobSpawnController;
         this.random = new Random();
     }
@@ -34,25 +32,23 @@ public class MobSpawnListener implements Listener {
         Location spawnLocation = event.getLocation();
 
         try {
-            if (entity instanceof LivingEntity) {
-                String worldName = entity.getWorld().getName();
-                List<String> todaysMobsForWorld = mobSpawnController.getMobsForTodayInWorld(worldName);
+            String worldName = entity.getWorld().getName();
+            List<String> todaysMobsForWorld = mobSpawnController.getMobsForTodayInWorld(worldName);
 
-                if (todaysMobsForWorld == null || todaysMobsForWorld.isEmpty()) {
-                    return;
-                }
-
-                String randomMobType = todaysMobsForWorld.get(random.nextInt(todaysMobsForWorld.size()));
-
-                if (spawnLocation == null || spawnLocation.getWorld() == null) {
-                    mobSpawnController.getPlugin().getLogger().warning("Ubicación nula detectada, abortando spawn.");
-                    return;
-                }
-
-                event.setCancelled(true);
-
-                mobSpawnController.spawnMythicMob(spawnLocation, randomMobType);
+            if (todaysMobsForWorld == null || todaysMobsForWorld.isEmpty()) {
+                return;
             }
+
+            String randomMobType = todaysMobsForWorld.get(random.nextInt(todaysMobsForWorld.size()));
+
+            if (spawnLocation.getWorld() == null) {
+                mobSpawnController.getPlugin().getLogger().warning("Ubicación nula detectada, abortando spawn.");
+                return;
+            }
+
+            event.setCancelled(true);
+
+            mobSpawnController.spawnMythicMob(spawnLocation, randomMobType);
         } catch (Exception e) {
             mobSpawnController.getPlugin().getLogger().severe("Error en spawn: " + e.getMessage());
             e.printStackTrace();

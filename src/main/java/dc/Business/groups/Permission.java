@@ -2,15 +2,16 @@ package dc.Business.groups;
 
 
 public enum Permission {
+    GROUP,
     BAN,
     KICK,
     TELEPORT,
     RELOAD,
     REPORTS,
-    FLY,
+    BANSHEE,
     CHAT,
     HEAL,
-    NULL;
+    DAYS;
 
     @Override
     public String toString() {

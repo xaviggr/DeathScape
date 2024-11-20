@@ -1,15 +1,17 @@
 package dc.Business.controllers;
 
+import dc.Business.groups.GroupData;
 import dc.Business.player.PlayerBan;
 import dc.Business.player.PlayerDeath;
 import dc.Business.player.PlayerTabList;
 import dc.DeathScape;
 import dc.Persistence.config.MainConfigManager;
-import dc.Persistence.player.PlayerData;
+import dc.Persistence.groups.GroupDatabase;
+import dc.Business.player.PlayerData;
 import dc.Persistence.player.PlayerDatabase;
+import dc.Persistence.player.PlayerEditDatabase;
+import dc.utils.Message;
 import org.bukkit.entity.Player;
-
-import javax.naming.Name;
 
 public class PlayerController {
 
@@ -24,17 +26,18 @@ public class PlayerController {
 
     public void setPlayerAsDead(Player player) {
         playerDeath.Dead(player);
-        int points = MainConfigManager.getInstance().getPoints_to_reduce_on_death() * -1;
+        int points = MainConfigManager.getInstance().getPointsToReduceOnDeath() * -1;
         addPointsToPlayer(player, points);
     }
 
-    public void setGroupToPlayer(Player player, String group) {
-        PlayerData playerData = PlayerDatabase.getPlayerDataFromDatabase(player.getName());
-
-        assert playerData != null;
-        playerData.setGroup(group);
-        PlayerDatabase.addPlayerDataToDatabase(playerData);
+    public boolean setGroupToPlayer(Player player, String group) {
+        return PlayerEditDatabase.addPlayerToGroup(player.getName(), group);
     }
+
+    public boolean removeGroupFromPlayer(Player player) {
+        return PlayerEditDatabase.removePlayerFromGroup(player.getName());
+    }
+
 
     public void addPointToPlayer(Player player) {
         addPointsToPlayer(player, 1);
