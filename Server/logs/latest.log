@@ -1,161 +1,926 @@
-[17:51:27] [ServerMain/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
-[17:51:28] [ServerMain/INFO]: Loaded 1174 recipes
-[17:51:28] [ServerMain/INFO]: Loaded 1271 advancements
-[17:51:28] [Server thread/INFO]: Starting minecraft server version 1.20.4
-[17:51:28] [Server thread/INFO]: Loading properties
-[17:51:28] [Server thread/INFO]: This server is running Purpur version git-Purpur-2176 (MC: 1.20.4) (Implementing API version 1.20.4-R0.1-SNAPSHOT) (Git: 6b1ee98 on HEAD)
-[17:51:29] [Server thread/INFO]: Server Ping Player Sample Count: 12
-[17:51:29] [Server thread/INFO]: Using 4 threads for Netty based IO
-[17:51:29] [Server thread/INFO]: [ChunkTaskScheduler] Chunk system is using 1 I/O threads, 5 worker threads, and gen parallelism of 5 threads
-[17:51:29] [Server thread/INFO]: [Pufferfish] Max SIMD vector size on this system is 256 bits (int)
-[17:51:29] [Server thread/INFO]: [Pufferfish] Max SIMD vector size on this system is 256 bits (float)
-[17:51:29] [Server thread/INFO]: [Pufferfish] SIMD operations detected as functional. Will replace some operations with faster versions.
-[17:51:29] [Server thread/INFO]: Default game type: SURVIVAL
-[17:51:29] [Server thread/INFO]: Generating keypair
-[17:51:29] [Server thread/INFO]: Starting Minecraft server on localhost:25565
-[17:51:29] [Server thread/INFO]: Using default channel type
-[17:51:29] [Server thread/INFO]: Paper: Using Java compression from Velocity.
-[17:51:29] [Server thread/INFO]: Paper: Using Java cipher from Velocity.
-[17:51:29] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loading 4 libraries... please wait
-[17:51:29] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-api\4.16.0\adventure-api-4.16.0.jar
-[17:51:29] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-key\4.16.0\adventure-key-4.16.0.jar
-[17:51:29] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\examination-api\1.3.0\examination-api-1.3.0.jar
-[17:51:29] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\examination-string\1.3.0\examination-string-1.3.0.jar
-[17:51:29] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\org\jetbrains\annotations\24.1.0\annotations-24.1.0.jar
-[17:51:29] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-platform-bukkit\4.3.2\adventure-platform-bukkit-4.3.2.jar
-[17:51:29] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-platform-api\4.3.2\adventure-platform-api-4.3.2.jar
-[17:51:29] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-text-serializer-bungeecord\4.3.2\adventure-text-serializer-bungeecord-4.3.2.jar
-[17:51:29] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-text-serializer-legacy\4.13.1\adventure-text-serializer-legacy-4.13.1.jar
-[17:51:29] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-nbt\4.13.1\adventure-nbt-4.13.1.jar
-[17:51:29] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-text-serializer-gson-legacy-impl\4.13.1\adventure-text-serializer-gson-legacy-impl-4.13.1.jar
-[17:51:29] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-platform-facet\4.3.2\adventure-platform-facet-4.3.2.jar
-[17:51:29] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-platform-viaversion\4.3.2\adventure-platform-viaversion-4.3.2.jar
-[17:51:29] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-text-minimessage\4.16.0\adventure-text-minimessage-4.16.0.jar
-[17:51:29] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-text-serializer-gson\4.16.0\adventure-text-serializer-gson-4.16.0.jar
-[17:51:29] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-text-serializer-json\4.16.0\adventure-text-serializer-json-4.16.0.jar
-[17:51:29] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\option\1.0.0\option-1.0.0.jar
-[17:51:29] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\com\google\code\gson\gson\2.8.0\gson-2.8.0.jar
-[17:51:29] [Server thread/INFO]: [spark] Loading server plugin spark v1.10.119
-[17:51:29] [Server thread/INFO]: [WorldEdit] Loading server plugin WorldEdit v7.3.0+6678-55745ad
-[17:51:30] [Server thread/INFO]: Got request to register class com.sk89q.worldedit.bukkit.BukkitServerInterface with WorldEdit [com.sk89q.worldedit.extension.platform.PlatformManager@2539ef05]
-[17:51:30] [Server thread/INFO]: [SkinsRestorer] Loading server plugin SkinsRestorer v15.4.4
-[17:51:30] [Server thread/INFO]: [MythicMobs] Loading server plugin MythicMobs v5.7.2-${CI_COMMIT_SHORT_SHA}
-[17:51:30] [Server thread/INFO]: [LumineUtils] (io.lumine.mythic.bukkit.utils.) is bound to plugin MythicMobs - io.lumine.mythic.bukkit.MythicBukkit
-[17:51:30] [Server thread/INFO]: [MythicMobs] §x§f§f§0§0§0§0M§x§f§f§6§6§0§0y§x§f§f§c§c§0§0t§x§c§b§f§f§0§0h§x§6§5§f§f§0§0i§x§0§0§f§f§0§0c§x§0§0§f§f§6§6 §x§0§0§f§f§c§bE§x§0§0§c§b§f§fn§x§0§0§6§5§f§fa§x§0§0§0§0§f§fb§x§6§6§0§0§f§fl§x§c§c§0§0§f§fe§x§f§f§0§0§c§cd§x§f§f§0§0§6§6!
-[17:51:30] [Server thread/INFO]: [DeathScape] Loading server plugin DeathScape v1.0.0
-[17:51:30] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
-[17:51:30] [Server thread/INFO]: [WorldEdit] Enabling WorldEdit v7.3.0+6678-55745ad
-[17:51:30] [Server thread/INFO]: Registering commands with com.sk89q.worldedit.bukkit.BukkitServerInterface
-[17:51:30] [Server thread/INFO]: WEPIF: Using the Bukkit Permissions API.
-[17:51:30] [Server thread/INFO]: Using com.sk89q.worldedit.bukkit.adapter.impl.v1_20_R3.PaperweightAdapter as the Bukkit adapter
-[17:51:31] [Server thread/INFO]: [SkinsRestorer] Enabling SkinsRestorer v15.4.4
-[17:51:31] [Server thread/WARN]: [SkinsRestorer] You must agree to the rules at 'commands.perSkinPermissionsConsent' in the config to use per skin permissions.
-[17:51:31] [Server thread/INFO]: [SkinsRestorer] Running on Minecraft 1.20.4.
-[17:51:32] [Server thread/INFO]: [SkinsRestorer] Using paper join listener!
-[17:51:32] [Server thread/INFO]: Preparing level "world"
-[17:51:32] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
-[17:51:32] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +==================+
-[17:51:32] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |   SkinsRestorer  |
-[17:51:32] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |------------------|
-[17:51:32] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |  Standalone Mode |
-[17:51:32] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +==================+
-[17:51:32] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
-[17:51:32] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Version: 15.4.4
-[17:51:32] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Commit: dc501c7
-[17:51:32] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     This is the latest version!
-[17:51:32] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
-[17:51:32] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Do you have issues? Read our troubleshooting guide: https://skinsrestorer.net/docs/troubleshooting
-[17:51:32] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Want to support SkinsRestorer? Consider donating: https://skinsrestorer.net/donate
-[17:51:32] [Server thread/INFO]: Preparing start region for dimension minecraft:overworld
-[17:51:33] [Server thread/INFO]: Time elapsed: 177 ms
-[17:51:33] [Server thread/INFO]: Preparing start region for dimension minecraft:the_end
-[17:51:33] [Server thread/INFO]: Time elapsed: 18 ms
-[17:51:33] [Server thread/INFO]: [spark] Enabling spark v1.10.119
-[17:51:33] [Server thread/INFO]: [spark] Using Paper ServerTickStartEvent for tick monitoring
-[17:51:33] [Server thread/INFO]: [spark] Starting background profiler...
-[17:51:33] [Server thread/INFO]: [spark] The async-profiler engine is not supported for your os/arch (windows11/amd64), so the built-in Java engine will be used instead.
-[17:51:33] [Server thread/INFO]: [MythicMobs] Enabling MythicMobs v5.7.2-${CI_COMMIT_SHORT_SHA}
-[17:51:33] [Server thread/INFO]: [MythicMobs] Loading MythicMobs for Paper (MC: 1.20.4)...
-[17:51:33] [Server thread/INFO]: [MythicMobs] The server is running Paper; enabled Paper exclusive functionality
-[17:51:34] [Server thread/INFO]: [MythicMobs] Base directory C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\data
-[17:51:34] [Server thread/INFO]: [MythicMobs] Module directory C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\data\worlds
-[17:51:36] [Server thread/INFO]: [MythicMobs] Loading Packs...
-[17:51:36] [Server thread/INFO]: [MythicMobs] Loading Items...
-[17:51:36] [Server thread/INFO]: [MythicMobs] Loading Item Groups...
-[17:51:36] [Server thread/INFO]: [MythicMobs] Loading Skills...
-[17:51:36] [Server thread/INFO]: [MythicMobs] Loading Drop Tables...
-[17:51:36] [Server thread/INFO]: [MythicMobs] Loading Random Spawns...
-[17:51:36] [Server thread/INFO]: [MythicMobs] Loading Spawn Blocks...
-[17:51:36] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Mechanic metaskill
-[17:51:36] [Server thread/WARN]: [MythicMobs] --| Mob: Dif2Bruja | File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\mobs\ExampleMobs.yml
-[17:51:36] [Server thread/WARN]: [MythicMobs] --| Error Message: Could not find MetaSkill SummonMurciélagos
-[17:51:36] [Server thread/WARN]: [MythicMobs] --| Mechanic Line: skill{s=SummonMurciélagos}
-[17:51:36] [Server thread/INFO]: [MythicMobs] ✓ Loaded 70 mobs.
-[17:51:36] [Server thread/INFO]: [MythicMobs] ✓ Loaded 6 vanilla mob overrides.
-[17:51:36] [Server thread/INFO]: [MythicMobs] ✓ Loaded 0 mob stacks.
-[17:51:36] [Server thread/INFO]: [MythicMobs] ✓ Loaded 24 skills.
-[17:51:36] [Server thread/INFO]: [MythicMobs] ✓ Loaded 0 random spawns.
-[17:51:36] [Server thread/INFO]: [MythicMobs] ✓ Loaded 29 mythic items.
-[17:51:36] [Server thread/INFO]: [MythicMobs] ✓ Loaded 4 drop tables.
-[17:51:36] [Server thread/INFO]: [MythicMobs] ✓ Loaded 0 mob spawners.
-[17:51:36] [Server thread/INFO]: [MythicMobs] MythicMobs configuration file loaded successfully.
-[17:51:36] [Server thread/INFO]: [MythicMobs] Started up bStats Metrics
-[17:51:36] [Server thread/INFO]: [MythicMobs] ✓ MythicMobs v5.7.2 ( build ${CI_COMMIT_SHORT_SHA} ) has been successfully loaded!
-[17:51:36] [Server thread/INFO]: [DeathScape] Enabling DeathScape v1.0.0
-[17:51:36] [Server thread/INFO]: DeathScape has been enabled!
-[17:51:36] [Server thread/INFO]: Running delayed init tasks
-[17:51:37] [Server thread/INFO]: Done (8.217s)! For help, type "help"
-[17:51:42] [User Authenticator #0/INFO]: UUID of player xaviggr is cb185b4b-cea7-43bb-a340-571c9bb6c3a5
-[17:51:42] [Server thread/INFO]: GroupData: {"name":"default","prefix":"\u0026b[Warrior]","permissions":[],"players":[]}
-[17:51:42] [Server thread/INFO]: GroupData: {"name":"default","prefix":"\u0026b[Warrior]","permissions":[],"players":["xaviggr"]}
-[17:51:42] [Server thread/INFO]: xaviggr joined the game
-[17:51:42] [Server thread/INFO]: xaviggr[IP hidden] logged in with entity id 52 at ([world]4136.447999226285, 76.0625, -549.1152338900988)
-[17:51:55] [Server thread/INFO]: xaviggr issued server command: /gamemode creative
-[17:51:55] [Server thread/INFO]: [xaviggr: Set own game mode to Creative Mode]
-[17:52:07] [Server thread/INFO]: xaviggr issued server command: /gamemode survival
-[17:52:07] [Server thread/INFO]: [xaviggr: Set own game mode to Survival Mode]
-[17:52:17] [Server thread/INFO]: xaviggr issued server command: /difficulty hard
-[17:52:17] [Server thread/INFO]: [xaviggr: The difficulty has been set to Hard]
-[17:52:59] [Server thread/INFO]: Stopping server
-[17:52:59] [Server thread/INFO]: [DeathScape] Disabling DeathScape v1.0.0
-[17:52:59] [Server thread/INFO]: DeathScape has been disabled!
-[17:52:59] [Server thread/INFO]: [MythicMobs] Disabling MythicMobs v5.7.2-${CI_COMMIT_SHORT_SHA}
-[17:52:59] [Server thread/INFO]: [MythicMobs] ------------------------------------------------------------
-[17:52:59] [Server thread/INFO]: [MythicMobs] - 
-[17:52:59] [Server thread/INFO]: [MythicMobs] - Unloading Mythic...
-[17:52:59] [Server thread/INFO]: [MythicMobs] - 
-[17:52:59] [Server thread/INFO]: [MythicMobs] ------------------------------------------------------------
-[17:52:59] [Server thread/INFO]: [MythicMobs] - Spawners saved and unloaded...
-[17:52:59] [Server thread/INFO]: [MythicMobs] - Mobs saved and unloaded...
-[17:52:59] [Server thread/INFO]: [MythicMobs] Saving plugin data...
-[17:52:59] [Server thread/INFO]: [MythicMobs] ✓Saving Finished
-[17:52:59] [Server thread/INFO]: [MythicMobs] - Variables saved...
-[17:52:59] [Server thread/INFO]: [MythicMobs] - All active settings have been saved!
-[17:52:59] [Server thread/INFO]: [MythicMobs] - Mythic has been unloaded!
-[17:52:59] [Server thread/INFO]: [MythicMobs] ------------------------------------------------------------
-[17:52:59] [Server thread/INFO]: [MythicMobs] Saving plugin data...
-[17:52:59] [Server thread/INFO]: [MythicMobs] ✓Saving Finished
-[17:52:59] [Server thread/INFO]: [SkinsRestorer] Disabling SkinsRestorer v15.4.4
-[17:52:59] [Server thread/INFO]: [WorldEdit] Disabling WorldEdit v7.3.0+6678-55745ad
-[17:52:59] [Server thread/INFO]: Unregistering com.sk89q.worldedit.bukkit.BukkitServerInterface from WorldEdit
-[17:52:59] [Server thread/INFO]: [spark] Disabling spark v1.10.119
-[17:52:59] [Server thread/INFO]: Saving players
-[17:52:59] [Server thread/INFO]: xaviggr lost connection: Server closed
-[17:52:59] [Server thread/INFO]: xaviggr left the game
-[17:52:59] [Server thread/INFO]: Saving worlds
-[17:52:59] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
-[17:52:59] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world'
-[17:52:59] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world'
-[17:52:59] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world'
-[17:53:00] [Server thread/INFO]: [ChunkHolderManager] Saved 1281 block chunks, 1281 entity chunks, 0 poi chunks in world 'world' in 1,20s
-[17:53:00] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
-[17:53:00] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_the_end]'/minecraft:the_end
-[17:53:00] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_the_end'
-[17:53:00] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_the_end'
-[17:53:00] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_the_end'
-[17:53:00] [Server thread/INFO]: [ChunkHolderManager] Saved 529 block chunks, 529 entity chunks, 0 poi chunks in world 'world_the_end' in 0,07s
-[17:53:00] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
-[17:53:00] [Server thread/INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
-[17:53:00] [Server thread/INFO]: Flushing Chunk IO
-[17:53:00] [Server thread/INFO]: Closing Thread Pool
-[17:53:00] [Server thread/INFO]: Closing Server
+[18:38:40] [ServerMain/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
+[18:38:41] [ServerMain/INFO]: Loaded 1174 recipes
+[18:38:41] [ServerMain/INFO]: Loaded 1271 advancements
+[18:38:41] [Server thread/INFO]: Starting minecraft server version 1.20.4
+[18:38:41] [Server thread/INFO]: Loading properties
+[18:38:41] [Server thread/INFO]: This server is running Purpur version git-Purpur-2176 (MC: 1.20.4) (Implementing API version 1.20.4-R0.1-SNAPSHOT) (Git: 6b1ee98 on HEAD)
+[18:38:41] [Server thread/INFO]: Using 4 threads for Netty based IO
+[18:38:41] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[18:38:41] [Server thread/INFO]: [ChunkTaskScheduler] Chunk system is using 1 I/O threads, 5 worker threads, and gen parallelism of 5 threads
+[18:38:42] [Server thread/INFO]: [Pufferfish] Max SIMD vector size on this system is 256 bits (int)
+[18:38:42] [Server thread/INFO]: [Pufferfish] Max SIMD vector size on this system is 256 bits (float)
+[18:38:42] [Server thread/INFO]: [Pufferfish] SIMD operations detected as functional. Will replace some operations with faster versions.
+[18:38:42] [Server thread/INFO]: Default game type: SURVIVAL
+[18:38:42] [Server thread/INFO]: Generating keypair
+[18:38:42] [Server thread/INFO]: Starting Minecraft server on localhost:25565
+[18:38:42] [Server thread/INFO]: Using default channel type
+[18:38:42] [Server thread/INFO]: Paper: Using Java compression from Velocity.
+[18:38:42] [Server thread/INFO]: Paper: Using Java cipher from Velocity.
+[18:38:42] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loading 4 libraries... please wait
+[18:38:42] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-api\4.16.0\adventure-api-4.16.0.jar
+[18:38:42] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-key\4.16.0\adventure-key-4.16.0.jar
+[18:38:42] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\examination-api\1.3.0\examination-api-1.3.0.jar
+[18:38:42] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\examination-string\1.3.0\examination-string-1.3.0.jar
+[18:38:42] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\org\jetbrains\annotations\24.1.0\annotations-24.1.0.jar
+[18:38:42] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-platform-bukkit\4.3.2\adventure-platform-bukkit-4.3.2.jar
+[18:38:42] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-platform-api\4.3.2\adventure-platform-api-4.3.2.jar
+[18:38:42] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-text-serializer-bungeecord\4.3.2\adventure-text-serializer-bungeecord-4.3.2.jar
+[18:38:42] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-text-serializer-legacy\4.13.1\adventure-text-serializer-legacy-4.13.1.jar
+[18:38:42] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-nbt\4.13.1\adventure-nbt-4.13.1.jar
+[18:38:42] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-text-serializer-gson-legacy-impl\4.13.1\adventure-text-serializer-gson-legacy-impl-4.13.1.jar
+[18:38:42] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-platform-facet\4.3.2\adventure-platform-facet-4.3.2.jar
+[18:38:42] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-platform-viaversion\4.3.2\adventure-platform-viaversion-4.3.2.jar
+[18:38:42] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-text-minimessage\4.16.0\adventure-text-minimessage-4.16.0.jar
+[18:38:42] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-text-serializer-gson\4.16.0\adventure-text-serializer-gson-4.16.0.jar
+[18:38:42] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-text-serializer-json\4.16.0\adventure-text-serializer-json-4.16.0.jar
+[18:38:42] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\option\1.0.0\option-1.0.0.jar
+[18:38:42] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\com\google\code\gson\gson\2.8.0\gson-2.8.0.jar
+[18:38:42] [Server thread/INFO]: [spark] Loading server plugin spark v1.10.119
+[18:38:42] [Server thread/INFO]: [WorldEdit] Loading server plugin WorldEdit v7.3.0+6678-55745ad
+[18:38:43] [Server thread/INFO]: Got request to register class com.sk89q.worldedit.bukkit.BukkitServerInterface with WorldEdit [com.sk89q.worldedit.extension.platform.PlatformManager@7ea086b2]
+[18:38:43] [Server thread/INFO]: [SkinsRestorer] Loading server plugin SkinsRestorer v15.4.4
+[18:38:43] [Server thread/INFO]: [MythicMobs] Loading server plugin MythicMobs v5.7.2-${CI_COMMIT_SHORT_SHA}
+[18:38:43] [Server thread/INFO]: [LumineUtils] (io.lumine.mythic.bukkit.utils.) is bound to plugin MythicMobs - io.lumine.mythic.bukkit.MythicBukkit
+[18:38:43] [Server thread/INFO]: [MythicMobs] §x§f§f§0§0§0§0M§x§f§f§6§6§0§0y§x§f§f§c§c§0§0t§x§c§b§f§f§0§0h§x§6§5§f§f§0§0i§x§0§0§f§f§0§0c§x§0§0§f§f§6§6 §x§0§0§f§f§c§bE§x§0§0§c§b§f§fn§x§0§0§6§5§f§fa§x§0§0§0§0§f§fb§x§6§6§0§0§f§fl§x§c§c§0§0§f§fe§x§f§f§0§0§c§cd§x§f§f§0§0§6§6!
+[18:38:43] [Server thread/INFO]: [DeathScape] Loading server plugin DeathScape v1.0.0
+[18:38:43] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[18:38:43] [Server thread/INFO]: [WorldEdit] Enabling WorldEdit v7.3.0+6678-55745ad
+[18:38:43] [Server thread/INFO]: Registering commands with com.sk89q.worldedit.bukkit.BukkitServerInterface
+[18:38:43] [Server thread/INFO]: WEPIF: Using the Bukkit Permissions API.
+[18:38:43] [Server thread/INFO]: Using com.sk89q.worldedit.bukkit.adapter.impl.v1_20_R3.PaperweightAdapter as the Bukkit adapter
+[18:38:43] [Server thread/INFO]: [SkinsRestorer] Enabling SkinsRestorer v15.4.4
+[18:38:44] [Server thread/WARN]: [SkinsRestorer] You must agree to the rules at 'commands.perSkinPermissionsConsent' in the config to use per skin permissions.
+[18:38:44] [Server thread/INFO]: [SkinsRestorer] Running on Minecraft 1.20.4.
+[18:38:44] [Server thread/INFO]: [SkinsRestorer] Using paper join listener!
+[18:38:44] [Server thread/INFO]: Preparing level "world"
+[18:38:44] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[18:38:44] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +==================+
+[18:38:44] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |   SkinsRestorer  |
+[18:38:44] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |------------------|
+[18:38:44] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |  Standalone Mode |
+[18:38:44] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +==================+
+[18:38:44] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[18:38:44] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Version: 15.4.4
+[18:38:44] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Commit: dc501c7
+[18:38:44] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     This is the latest version!
+[18:38:44] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[18:38:44] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Do you have issues? Read our troubleshooting guide: https://skinsrestorer.net/docs/troubleshooting
+[18:38:44] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Want to support SkinsRestorer? Consider donating: https://skinsrestorer.net/donate
+[18:38:45] [Server thread/INFO]: Preparing start region for dimension minecraft:overworld
+[18:38:45] [Server thread/INFO]: Time elapsed: 279 ms
+[18:38:45] [Server thread/INFO]: Preparing start region for dimension minecraft:the_end
+[18:38:45] [Server thread/INFO]: Time elapsed: 20 ms
+[18:38:45] [Server thread/INFO]: [spark] Enabling spark v1.10.119
+[18:38:46] [Server thread/INFO]: [spark] Using Paper ServerTickStartEvent for tick monitoring
+[18:38:46] [Server thread/INFO]: [spark] Starting background profiler...
+[18:38:46] [Server thread/INFO]: [spark] The async-profiler engine is not supported for your os/arch (windows11/amd64), so the built-in Java engine will be used instead.
+[18:38:46] [Server thread/INFO]: [MythicMobs] Enabling MythicMobs v5.7.2-${CI_COMMIT_SHORT_SHA}
+[18:38:46] [Server thread/INFO]: [MythicMobs] Loading MythicMobs for Paper (MC: 1.20.4)...
+[18:38:46] [Server thread/INFO]: [MythicMobs] The server is running Paper; enabled Paper exclusive functionality
+[18:38:47] [Server thread/INFO]: [MythicMobs] Base directory C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\data
+[18:38:47] [Server thread/INFO]: [MythicMobs] Module directory C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\data\worlds
+[18:38:48] [Server thread/INFO]: [MythicMobs] Loading Packs...
+[18:38:48] [Server thread/INFO]: [MythicMobs] Loading Items...
+[18:38:49] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item botas
+[18:38:49] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\botas.yml
+[18:38:49] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[18:38:49] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item botas2
+[18:38:49] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\botas2.yml
+[18:38:49] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[18:38:49] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item botas3
+[18:38:49] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\botas3.yml
+[18:38:49] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[18:38:49] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item casco
+[18:38:49] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\casco.yml
+[18:38:49] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[18:38:49] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item casco2
+[18:38:49] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\casco2.yml
+[18:38:49] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[18:38:49] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item casco3
+[18:38:49] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\casco3.yml
+[18:38:49] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[18:38:49] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item pechera
+[18:38:49] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\pechera.yml
+[18:38:49] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[18:38:49] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item pechera2
+[18:38:49] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\pechera2.yml
+[18:38:49] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[18:38:49] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item pechera3
+[18:38:49] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\pechera3.yml
+[18:38:49] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[18:38:49] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item perneras
+[18:38:49] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\perneras.yml
+[18:38:49] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[18:38:49] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item perneras2
+[18:38:49] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\perneras2.yml
+[18:38:49] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[18:38:49] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item perneras3
+[18:38:49] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\perneras3.yml
+[18:38:49] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[18:38:49] [Server thread/INFO]: [MythicMobs] Loading Item Groups...
+[18:38:49] [Server thread/INFO]: [MythicMobs] Loading Skills...
+[18:38:49] [Server thread/INFO]: [MythicMobs] Loading Drop Tables...
+[18:38:49] [Server thread/INFO]: [MythicMobs] Loading Random Spawns...
+[18:38:49] [Server thread/INFO]: [MythicMobs] Loading Spawn Blocks...
+[18:38:49] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Mechanic metaskill
+[18:38:49] [Server thread/WARN]: [MythicMobs] --| Mob: Dif2Bruja | File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\mobs\ExampleMobs.yml
+[18:38:49] [Server thread/WARN]: [MythicMobs] --| Error Message: Could not find MetaSkill SummonMurciélagos
+[18:38:49] [Server thread/WARN]: [MythicMobs] --| Mechanic Line: skill{s=SummonMurciélagos}
+[18:38:49] [Server thread/INFO]: [MythicMobs] ✓ Loaded 70 mobs.
+[18:38:49] [Server thread/INFO]: [MythicMobs] ✓ Loaded 6 vanilla mob overrides.
+[18:38:49] [Server thread/INFO]: [MythicMobs] ✓ Loaded 0 mob stacks.
+[18:38:49] [Server thread/INFO]: [MythicMobs] ✓ Loaded 24 skills.
+[18:38:49] [Server thread/INFO]: [MythicMobs] ✓ Loaded 0 random spawns.
+[18:38:49] [Server thread/INFO]: [MythicMobs] ✓ Loaded 29 mythic items.
+[18:38:49] [Server thread/INFO]: [MythicMobs] ✓ Loaded 4 drop tables.
+[18:38:49] [Server thread/INFO]: [MythicMobs] ✓ Loaded 0 mob spawners.
+[18:38:49] [Server thread/INFO]: [MythicMobs] MythicMobs configuration file loaded successfully.
+[18:38:49] [Server thread/INFO]: [MythicMobs] Started up bStats Metrics
+[18:38:49] [Server thread/INFO]: [MythicMobs] ✓ MythicMobs v5.7.2 ( build ${CI_COMMIT_SHORT_SHA} ) has been successfully loaded!
+[18:38:49] [Server thread/INFO]: [DeathScape] Enabling DeathScape v1.0.0
+[18:38:49] [Server thread/INFO]: DeathScape has been enabled!
+[18:38:49] [Server thread/INFO]: Running delayed init tasks
+[18:38:49] [Server thread/INFO]: Done (8.052s)! For help, type "help"
+[18:38:53] [User Authenticator #0/INFO]: UUID of player xaviggr is cb185b4b-cea7-43bb-a340-571c9bb6c3a5
+[18:38:53] [Server thread/INFO]: xaviggr joined the game
+[18:38:53] [Server thread/INFO]: xaviggr[IP hidden] logged in with entity id 23 at ([world]3853.0100971868733, 71.0, -2.6903163296451984)
+[18:38:55] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=3787.5,y=1.0,z=-31.5,pitch=0.0,yaw=109.295296}
+[18:38:55] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=3841.5,y=88.0,z=66.5,pitch=0.0,yaw=125.352974}
+[18:38:55] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=3839.5,y=88.0,z=70.5,pitch=0.0,yaw=228.57487}
+[18:38:55] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=3748.5,y=6.0,z=-0.5,pitch=0.0,yaw=266.72818}
+[18:38:56] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=3823.5,y=-39.0,z=-34.5,pitch=0.0,yaw=251.11292}
+[18:38:56] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=3802.5,y=-24.0,z=6.5,pitch=0.0,yaw=347.6477}
+[18:38:56] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=3803.5,y=-24.0,z=5.5,pitch=0.0,yaw=57.08953}
+[18:38:57] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=3744.5,y=27.0,z=-17.5,pitch=0.0,yaw=211.19917}
+[18:38:58] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=3854.5,y=17.0,z=-50.5,pitch=0.0,yaw=358.23636}
+[18:38:59] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=3829.5,y=-35.0,z=-27.5,pitch=0.0,yaw=28.1768}
+[18:38:59] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=3829.5,y=-35.0,z=-28.5,pitch=0.0,yaw=50.053776}
+[18:38:59] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=3835.5,y=-35.0,z=-24.5,pitch=0.0,yaw=163.92392}
+[18:38:59] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=3831.5,y=-35.0,z=-28.5,pitch=0.0,yaw=340.52258}
+[18:38:59] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=3818.5,y=78.0,z=92.5,pitch=0.0,yaw=309.09756}
+[18:38:59] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=3821.5,y=78.0,z=94.5,pitch=0.0,yaw=36.76313}
+[18:38:59] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=3824.5,y=78.0,z=97.5,pitch=0.0,yaw=4.5153594}
+[18:39:00] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=3781.5,y=-8.0,z=-63.5,pitch=0.0,yaw=70.997406}
+[18:39:00] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=3782.5,y=-8.0,z=-62.5,pitch=0.0,yaw=122.6801}
+[18:39:03] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=3821.5,y=-50.0,z=-13.5,pitch=0.0,yaw=152.7742}
+[18:39:03] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=3822.5,y=-50.0,z=-14.5,pitch=0.0,yaw=46.691444}
+[18:39:03] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=3828.5,y=-50.0,z=-15.5,pitch=0.0,yaw=64.10023}
+[18:39:03] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=3824.5,y=-50.0,z=-13.5,pitch=0.0,yaw=194.17697}
+[18:39:03] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=3827.5,y=-50.0,z=-12.5,pitch=0.0,yaw=3.0354238}
+[18:39:03] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=3940.5,y=87.0,z=10.5,pitch=0.0,yaw=104.032974}
+[18:39:04] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=3793.5,y=-20.0,z=6.5,pitch=0.0,yaw=253.35825}
+[18:39:04] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=3795.5,y=77.0,z=-58.5,pitch=0.0,yaw=236.04263}
+[18:39:04] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=3794.5,y=77.0,z=-60.5,pitch=0.0,yaw=311.08212}
+[18:39:04] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=3806.5,y=46.0,z=-94.5,pitch=0.0,yaw=213.02954}
+[18:39:04] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=3808.5,y=46.0,z=-92.5,pitch=0.0,yaw=46.718716}
+[18:39:04] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=3808.5,y=46.0,z=-87.5,pitch=0.0,yaw=242.1504}
+[18:39:04] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=3807.5,y=46.0,z=-88.5,pitch=0.0,yaw=203.28763}
+[18:39:04] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=3743.5,y=64.0,z=-44.5,pitch=0.0,yaw=338.41406}
+[18:39:05] [Server thread/INFO]: Spawned mob: Bob at Location{world=CraftWorld{name=world},x=3870.5,y=74.0,z=-54.5,pitch=0.0,yaw=19.805603}
+[18:39:05] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=3864.5,y=74.0,z=-68.5,pitch=0.0,yaw=234.5189}
+[18:39:05] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=3976.5,y=67.0,z=26.5,pitch=0.0,yaw=198.81844}
+[18:39:06] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=3872.5,y=91.0,z=16.5,pitch=0.0,yaw=56.28242}
+[18:39:06] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=3855.5,y=71.0,z=-105.5,pitch=0.0,yaw=338.35855}
+[18:39:06] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=3741.5,y=64.0,z=-40.5,pitch=0.0,yaw=311.17688}
+[18:39:07] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=3821.5,y=20.0,z=-112.5,pitch=0.0,yaw=120.161224}
+[18:39:07] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=3819.5,y=20.0,z=-111.5,pitch=0.0,yaw=229.03323}
+[18:39:07] [Server thread/INFO]: Spawned mob: Bob at Location{world=CraftWorld{name=world},x=3817.5,y=20.0,z=-110.5,pitch=0.0,yaw=39.6818}
+[18:39:07] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=3815.5,y=20.0,z=-109.5,pitch=0.0,yaw=280.3392}
+[18:39:07] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=3750.5,y=9.0,z=-48.5,pitch=0.0,yaw=51.98121}
+[18:39:07] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=3926.5,y=42.0,z=40.5,pitch=0.0,yaw=92.111694}
+[18:39:08] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=3816.5,y=0.0,z=-21.5,pitch=0.0,yaw=313.985}
+[18:39:08] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=3815.5,y=0.0,z=-21.5,pitch=0.0,yaw=279.80368}
+[18:39:08] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=3814.5,y=0.0,z=-20.5,pitch=0.0,yaw=291.59695}
+[18:39:08] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=3811.5,y=0.0,z=-20.5,pitch=0.0,yaw=185.05386}
+[18:39:08] [Server thread/INFO]: Spawned mob: Bob at Location{world=CraftWorld{name=world},x=3808.5,y=0.0,z=-21.5,pitch=0.0,yaw=183.24504}
+[18:39:08] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=3806.5,y=0.0,z=-19.5,pitch=0.0,yaw=154.49016}
+[18:39:08] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=3806.5,y=0.0,z=-17.5,pitch=0.0,yaw=253.60376}
+[18:39:08] [Server thread/INFO]: Spawned mob: Bob at Location{world=CraftWorld{name=world},x=3843.5,y=87.0,z=79.5,pitch=0.0,yaw=199.25746}
+[18:39:09] [Server thread/INFO]: Spawned mob: Bob at Location{world=CraftWorld{name=world},x=3895.5,y=72.0,z=-32.5,pitch=0.0,yaw=355.24097}
+[18:39:09] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=3892.5,y=72.0,z=-38.5,pitch=0.0,yaw=321.36734}
+[18:39:09] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=3827.5,y=47.0,z=-121.5,pitch=0.0,yaw=1.3904142}
+[18:39:09] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=3774.5,y=63.0,z=81.5,pitch=0.0,yaw=240.9749}
+[18:39:10] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=3830.5,y=14.0,z=-22.5,pitch=0.0,yaw=13.076284}
+[18:39:10] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=3830.5,y=14.0,z=-21.5,pitch=0.0,yaw=194.60364}
+[18:39:10] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=3828.5,y=14.0,z=-20.5,pitch=0.0,yaw=235.4714}
+[18:39:10] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=3780.5,y=-9.0,z=-52.5,pitch=0.0,yaw=210.54225}
+[18:39:10] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=3773.5,y=-9.0,z=-51.5,pitch=0.0,yaw=251.40489}
+[18:39:10] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=3811.5,y=78.0,z=112.5,pitch=0.0,yaw=231.32744}
+[18:39:10] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=3814.5,y=78.0,z=115.5,pitch=0.0,yaw=70.915245}
+[18:39:10] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=3875.5,y=84.0,z=101.5,pitch=0.0,yaw=50.1604}
+[18:39:11] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=3795.5,y=6.0,z=-0.5,pitch=0.0,yaw=222.36697}
+[18:39:11] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=3932.5,y=24.0,z=-24.5,pitch=0.0,yaw=176.5398}
+[18:39:11] [Server thread/INFO]: Spawned mob: Bob at Location{world=CraftWorld{name=world},x=3786.5,y=-8.0,z=-59.5,pitch=0.0,yaw=114.88892}
+[18:39:11] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=3787.5,y=-8.0,z=-57.5,pitch=0.0,yaw=276.47046}
+[18:39:11] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=3787.5,y=-8.0,z=-58.5,pitch=0.0,yaw=345.12943}
+[18:39:11] [Server thread/INFO]: Spawned mob: Bob at Location{world=CraftWorld{name=world},x=3784.5,y=-8.0,z=-60.5,pitch=0.0,yaw=168.03795}
+[18:39:11] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=3913.5,y=96.0,z=60.5,pitch=0.0,yaw=45.232365}
+[18:39:11] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=3929.5,y=96.0,z=55.5,pitch=0.0,yaw=64.0095}
+[18:39:11] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=3930.5,y=96.0,z=53.5,pitch=0.0,yaw=8.668663}
+[18:39:12] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=3906.5,y=70.0,z=-1.5,pitch=0.0,yaw=25.92838}
+[18:39:12] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=3941.5,y=67.0,z=13.5,pitch=0.0,yaw=144.66576}
+[18:39:12] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=3942.5,y=67.0,z=14.5,pitch=0.0,yaw=140.80058}
+[18:39:12] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=3814.5,y=46.0,z=-106.5,pitch=0.0,yaw=317.25607}
+[18:39:12] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=3813.5,y=46.0,z=-99.5,pitch=0.0,yaw=132.85187}
+[18:39:13] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=3815.5,y=-12.0,z=33.5,pitch=0.0,yaw=40.61845}
+[18:39:13] [Server thread/INFO]: Spawned mob: Bob at Location{world=CraftWorld{name=world},x=3847.5,y=-16.0,z=-96.5,pitch=0.0,yaw=60.925907}
+[18:39:13] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=3745.5,y=6.0,z=-17.5,pitch=0.0,yaw=230.9584}
+[18:39:13] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=3751.5,y=6.0,z=-26.5,pitch=0.0,yaw=27.641516}
+[18:39:13] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=3909.5,y=91.0,z=36.5,pitch=0.0,yaw=35.767536}
+[18:39:15] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=3843.5,y=38.0,z=-31.5,pitch=0.0,yaw=282.40805}
+[18:39:15] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=3845.5,y=38.0,z=-33.5,pitch=0.0,yaw=278.08047}
+[18:39:15] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=3843.5,y=38.0,z=-32.5,pitch=0.0,yaw=318.70047}
+[18:39:15] [Server thread/INFO]: Spawned mob: Bob at Location{world=CraftWorld{name=world},x=3822.5,y=87.0,z=33.5,pitch=0.0,yaw=99.03087}
+[18:39:15] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=3822.5,y=87.0,z=32.5,pitch=0.0,yaw=297.37045}
+[18:39:15] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=3826.5,y=87.0,z=41.5,pitch=0.0,yaw=298.24463}
+[18:39:15] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=3843.5,y=78.0,z=-83.5,pitch=0.0,yaw=96.958916}
+[18:39:15] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=3844.5,y=78.0,z=-80.5,pitch=0.0,yaw=357.3274}
+[18:39:15] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=3848.5,y=78.0,z=-84.5,pitch=0.0,yaw=61.392483}
+[18:39:15] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=3846.5,y=78.0,z=-84.5,pitch=0.0,yaw=349.61502}
+[18:39:15] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=3850.5,y=78.0,z=-86.5,pitch=0.0,yaw=91.96719}
+[18:39:15] [Server thread/INFO]: Spawned mob: Bob at Location{world=CraftWorld{name=world},x=3815.5,y=47.0,z=-86.5,pitch=0.0,yaw=60.424183}
+[18:39:15] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=3925.5,y=67.0,z=-88.5,pitch=0.0,yaw=301.33795}
+[18:39:16] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=3889.5,y=70.0,z=-79.5,pitch=0.0,yaw=12.484717}
+[18:39:16] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=3887.5,y=70.0,z=-79.5,pitch=0.0,yaw=134.11496}
+[18:39:17] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=3773.5,y=64.0,z=14.5,pitch=0.0,yaw=192.46214}
+[18:39:17] [Server thread/INFO]: Spawned mob: Bob at Location{world=CraftWorld{name=world},x=3775.5,y=64.0,z=12.5,pitch=0.0,yaw=167.68971}
+[18:39:17] [Server thread/INFO]: Spawned mob: Bob at Location{world=CraftWorld{name=world},x=3790.5,y=2.0,z=-44.5,pitch=0.0,yaw=28.422125}
+[18:39:17] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=3781.5,y=2.0,z=-40.5,pitch=0.0,yaw=128.41698}
+[18:39:17] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=3790.5,y=-2.0,z=-58.5,pitch=0.0,yaw=296.28268}
+[18:39:17] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=3787.5,y=18.0,z=80.5,pitch=0.0,yaw=258.07202}
+[18:39:17] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=3787.5,y=18.0,z=78.5,pitch=0.0,yaw=286.38873}
+[18:39:17] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=3785.5,y=18.0,z=82.5,pitch=0.0,yaw=164.4797}
+[18:39:18] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=3796.5,y=3.0,z=-9.5,pitch=0.0,yaw=193.55165}
+[18:39:18] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=3798.5,y=3.0,z=-10.5,pitch=0.0,yaw=330.04663}
+[18:39:18] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=3798.5,y=3.0,z=-12.5,pitch=0.0,yaw=337.85788}
+[18:39:19] [Server thread/INFO]: Entity killed: SHEEP
+[18:39:19] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=3739.5,y=65.0,z=-31.5,pitch=0.0,yaw=181.92899}
+[18:39:19] [Server thread/INFO]: xaviggr issued server command: /gamemode spectator
+[18:39:19] [Server thread/INFO]: [xaviggr: Set own game mode to Spectator Mode]
+[18:39:48] [Server thread/INFO]: Entity killed: GIANT
+[18:39:49] [Server thread/INFO]: Entity killed: GIANT
+[18:39:53] [Server thread/INFO]: Entity killed: GIANT
+[18:39:53] [Server thread/INFO]: Entity killed: GIANT
+[18:39:59] [Server thread/INFO]: xaviggr issued server command: /gamemode creative
+[18:39:59] [Server thread/INFO]: [xaviggr: Set own game mode to Creative Mode]
+[18:39:59] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=3851.5,y=23.0,z=-83.5,pitch=0.0,yaw=290.318}
+[18:39:59] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=4063.5,y=11.0,z=-52.5,pitch=0.0,yaw=5.3031564}
+[18:39:59] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=4061.5,y=11.0,z=-53.5,pitch=0.0,yaw=318.5527}
+[18:39:59] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=4063.5,y=11.0,z=-53.5,pitch=0.0,yaw=208.62953}
+[18:39:59] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=4060.5,y=11.0,z=-53.5,pitch=0.0,yaw=215.36668}
+[18:40:02] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=3874.5,y=71.0,z=-82.5,pitch=0.0,yaw=91.594734}
+[18:40:02] [Server thread/INFO]: Spawned mob: Bob at Location{world=CraftWorld{name=world},x=3875.5,y=71.0,z=-80.5,pitch=0.0,yaw=166.88777}
+[18:40:02] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=3957.5,y=66.0,z=-74.5,pitch=0.0,yaw=351.98492}
+[18:40:02] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=4039.5,y=27.0,z=-114.5,pitch=0.0,yaw=115.78407}
+[18:40:03] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=3945.5,y=25.0,z=-92.5,pitch=0.0,yaw=251.60039}
+[18:40:03] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=3942.5,y=25.0,z=-87.5,pitch=0.0,yaw=204.37709}
+[18:40:03] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=3899.5,y=71.0,z=-133.5,pitch=0.0,yaw=136.73383}
+[18:40:03] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=3897.5,y=71.0,z=-133.5,pitch=0.0,yaw=259.93808}
+[18:40:03] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=3894.5,y=71.0,z=-130.5,pitch=0.0,yaw=329.57}
+[18:40:03] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=3900.5,y=71.0,z=-133.5,pitch=0.0,yaw=124.012726}
+[18:40:03] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=3897.5,y=71.0,z=-129.5,pitch=0.0,yaw=72.569695}
+[18:40:04] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=3868.5,y=99.0,z=27.5,pitch=0.0,yaw=11.829615}
+[18:40:04] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=3869.5,y=99.0,z=29.5,pitch=0.0,yaw=42.64927}
+[18:40:04] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=3867.5,y=99.0,z=26.5,pitch=0.0,yaw=89.39176}
+[18:40:04] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=3916.5,y=57.0,z=-144.5,pitch=0.0,yaw=121.04642}
+[18:40:04] [Server thread/INFO]: Spawned mob: Bob at Location{world=CraftWorld{name=world},x=4024.5,y=29.0,z=-139.5,pitch=0.0,yaw=49.64237}
+[18:40:04] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=4024.5,y=29.0,z=-138.5,pitch=0.0,yaw=164.09062}
+[18:40:04] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=4025.5,y=29.0,z=-140.5,pitch=0.0,yaw=153.08029}
+[18:40:05] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=3918.5,y=-2.0,z=39.5,pitch=0.0,yaw=217.01512}
+[18:40:06] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=3954.5,y=67.0,z=-33.5,pitch=0.0,yaw=121.37906}
+[18:40:06] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=3997.5,y=66.0,z=-63.5,pitch=0.0,yaw=329.94086}
+[18:40:06] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=3994.5,y=66.0,z=-57.5,pitch=0.0,yaw=44.62224}
+[18:40:06] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=3963.5,y=65.0,z=-132.5,pitch=0.0,yaw=137.44183}
+[18:40:06] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=3961.5,y=65.0,z=-133.5,pitch=0.0,yaw=58.26333}
+[18:40:06] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=3996.5,y=63.0,z=-114.5,pitch=0.0,yaw=61.600643}
+[18:40:06] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=4062.5,y=15.0,z=-65.5,pitch=0.0,yaw=319.50635}
+[18:40:07] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=3945.5,y=70.0,z=-9.5,pitch=0.0,yaw=293.40485}
+[18:40:07] [Server thread/INFO]: Spawned mob: Bob at Location{world=CraftWorld{name=world},x=3945.5,y=70.0,z=-13.5,pitch=0.0,yaw=227.94934}
+[18:40:07] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=3982.5,y=-13.0,z=6.5,pitch=0.0,yaw=354.70013}
+[18:40:07] [Server thread/INFO]: Spawned mob: Bob at Location{world=CraftWorld{name=world},x=3981.5,y=64.0,z=-40.5,pitch=0.0,yaw=76.761154}
+[18:40:07] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=3980.5,y=64.0,z=-40.5,pitch=0.0,yaw=278.7826}
+[18:40:07] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=3976.5,y=64.0,z=-41.5,pitch=0.0,yaw=325.3819}
+[18:40:07] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=3978.5,y=64.0,z=-43.5,pitch=0.0,yaw=143.7378}
+[18:40:07] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=3980.5,y=64.0,z=-39.5,pitch=0.0,yaw=43.400417}
+[18:40:08] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=4031.5,y=64.0,z=-38.5,pitch=0.0,yaw=161.29709}
+[18:40:08] [Server thread/INFO]: Spawned mob: Bob at Location{world=CraftWorld{name=world},x=4034.5,y=64.0,z=-36.5,pitch=0.0,yaw=196.65309}
+[18:40:09] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=3879.5,y=71.0,z=-0.5,pitch=0.0,yaw=101.21779}
+[18:40:10] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=3919.5,y=7.0,z=35.5,pitch=0.0,yaw=102.0938}
+[18:40:10] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=3903.5,y=102.0,z=67.5,pitch=0.0,yaw=232.1727}
+[18:40:11] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=3880.5,y=75.0,z=-20.5,pitch=0.0,yaw=227.29362}
+[18:40:11] [Server thread/INFO]: Spawned mob: Bob at Location{world=CraftWorld{name=world},x=4008.5,y=64.0,z=-19.5,pitch=0.0,yaw=147.7272}
+[18:40:11] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=4017.5,y=64.0,z=-20.5,pitch=0.0,yaw=46.09329}
+[18:40:11] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=4016.5,y=64.0,z=-18.5,pitch=0.0,yaw=297.9556}
+[18:40:11] [Server thread/INFO]: Spawned mob: Bob at Location{world=CraftWorld{name=world},x=4022.5,y=64.0,z=-23.5,pitch=0.0,yaw=221.40768}
+[18:40:12] [Server thread/INFO]: xaviggr issued server command: /gamemode survival
+[18:40:12] [Server thread/INFO]: [xaviggr: Set own game mode to Survival Mode]
+[18:40:13] [Server thread/INFO]: Spawned mob: Bob at Location{world=CraftWorld{name=world},x=4053.5,y=14.0,z=-49.5,pitch=0.0,yaw=301.43817}
+[18:40:13] [Server thread/INFO]: El jugador xaviggr usó un tótem con probabilidad 74/50
+[18:40:13] [Server thread/INFO]: GroupData: {"name":"owner","prefix":"\u00264[Owner]","permissions":["GROUP","BAN","KICK","TELEPORT","RELOAD","REPORTS","BANSHEE","CHAT","HEAL","DAYS"],"players":["xaviggr"]}
+[18:40:13] [Server thread/INFO]: GroupData: {"name":"owner","prefix":"\u00264[Owner]","permissions":["GROUP","BAN","KICK","TELEPORT","RELOAD","REPORTS","BANSHEE","CHAT","HEAL","DAYS"],"players":["xaviggr"]}
+[18:40:13] [Server thread/INFO]: GroupData: {"name":"owner","prefix":"\u00264[Owner]","permissions":["GROUP","BAN","KICK","TELEPORT","RELOAD","REPORTS","BANSHEE","CHAT","HEAL","DAYS"],"players":["xaviggr"]}
+[18:40:13] [Server thread/INFO]: Played sound minecraft:muerte to xaviggr
+[18:40:13] [Server thread/INFO]: Applied effect Blindness to xaviggr
+[18:40:13] [Server thread/INFO]: Changed title display times for xaviggr
+[18:40:13] [Server thread/INFO]: Entity killed: PLAYER
+[18:40:13] [Server thread/INFO]: xaviggr fell from a high place
+[18:40:13] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:13] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:13] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:13] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:14] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:14] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:14] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:14] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:14] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:14] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:14] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:14] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:14] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:14] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:14] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:14] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:14] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:14] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:14] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:14] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:14] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:14] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:14] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:14] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:15] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:15] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:15] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:15] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:15] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:15] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:15] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:15] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:15] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:15] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:15] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:15] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:15] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:15] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:15] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:15] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:15] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:15] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:15] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:15] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:16] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:16] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:16] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:16] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:16] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:16] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:16] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:16] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:16] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:16] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:16] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:16] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:16] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:16] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:16] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:16] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:16] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:16] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:16] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:16] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:17] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:17] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:17] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:17] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:17] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:17] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:17] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:17] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:17] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:17] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:17] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:17] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:17] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:17] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:17] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:17] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:17] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:17] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:17] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:17] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:18] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:18] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:18] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:18] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:18] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:18] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:18] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:18] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:18] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:18] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:18] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:18] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:18] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:18] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:18] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:18] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:18] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:18] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:18] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:18] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:19] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:19] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:19] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:19] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:19] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:19] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:19] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:19] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:19] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:19] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:19] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:19] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:19] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:19] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:19] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:19] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:19] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:19] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:19] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:19] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:20] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:20] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:20] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:20] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:20] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:20] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:20] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:20] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:20] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:20] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:20] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:20] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:20] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:20] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:20] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:20] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:20] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:20] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:20] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:20] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:21] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:21] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:21] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:21] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:21] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:21] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:21] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:21] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:21] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:21] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:21] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:21] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:21] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:21] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:21] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:21] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:21] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:21] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:21] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:21] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:22] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:22] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:22] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:22] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:22] [Server thread/INFO]: Showing new title for xaviggr
+[18:40:22] [Server thread/INFO]: Played sound minecraft:entity.lightning_bolt.impact to xaviggr
+[18:40:22] [Server thread/INFO]: Changed title display times for xaviggr
+[18:40:22] [Server thread/INFO]: xaviggr issued server command: /gamemode creative
+[18:40:22] [Server thread/INFO]: [xaviggr: Set own game mode to Creative Mode]
+[18:40:23] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=-20.5,y=18.0,z=27.5,pitch=0.0,yaw=180.47652}
+[18:40:23] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=1.5,y=68.0,z=62.5,pitch=0.0,yaw=62.466225}
+[18:40:23] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=58.5,y=70.0,z=-92.5,pitch=0.0,yaw=340.25333}
+[18:40:23] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=79.5,y=70.0,z=28.5,pitch=0.0,yaw=206.0266}
+[18:40:24] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=-63.5,y=68.0,z=-97.5,pitch=0.0,yaw=317.4189}
+[18:40:24] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=-65.5,y=64.0,z=85.5,pitch=0.0,yaw=273.47375}
+[18:40:24] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=-35.5,y=3.0,z=30.5,pitch=0.0,yaw=325.3106}
+[18:40:25] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=-4.5,y=-16.0,z=-26.5,pitch=0.0,yaw=101.07372}
+[18:40:26] [Server thread/INFO]: Spawned mob: Bob at Location{world=CraftWorld{name=world},x=-41.5,y=70.0,z=-91.5,pitch=0.0,yaw=201.52989}
+[18:40:26] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=-46.5,y=70.0,z=-94.5,pitch=0.0,yaw=318.86432}
+[18:40:26] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=-105.5,y=72.0,z=31.5,pitch=0.0,yaw=2.2055483}
+[18:40:26] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=-101.5,y=72.0,z=31.5,pitch=0.0,yaw=52.974636}
+[18:40:26] [Server thread/INFO]: Spawned mob: Bob at Location{world=CraftWorld{name=world},x=5.5,y=64.0,z=106.5,pitch=0.0,yaw=271.51242}
+[18:40:26] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=5.5,y=64.0,z=102.5,pitch=0.0,yaw=42.7163}
+[18:40:26] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=2.5,y=64.0,z=98.5,pitch=0.0,yaw=295.0663}
+[18:40:27] [Server thread/INFO]: Spawned mob: Bob at Location{world=CraftWorld{name=world},x=-94.5,y=27.0,z=28.5,pitch=0.0,yaw=1.2439013}
+[18:40:28] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=-70.5,y=68.0,z=-96.5,pitch=0.0,yaw=331.32715}
+[18:40:28] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=-27.5,y=82.0,z=47.5,pitch=0.0,yaw=215.52525}
+[18:40:29] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=-91.5,y=66.0,z=-42.5,pitch=0.0,yaw=114.66334}
+[18:40:29] [Server thread/INFO]: Spawned mob: Bob at Location{world=CraftWorld{name=world},x=-91.5,y=66.0,z=-45.5,pitch=0.0,yaw=129.02971}
+[18:40:29] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=-96.5,y=66.0,z=-37.5,pitch=0.0,yaw=261.50705}
+[18:40:29] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=10.5,y=69.0,z=44.5,pitch=0.0,yaw=4.6083355}
+[18:40:29] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=15.5,y=69.0,z=47.5,pitch=0.0,yaw=34.206192}
+[18:40:29] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=7.5,y=63.0,z=113.5,pitch=0.0,yaw=281.06833}
+[18:40:30] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=-10.5,y=75.0,z=-42.5,pitch=0.0,yaw=27.176334}
+[18:40:30] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=-6.5,y=75.0,z=-40.5,pitch=0.0,yaw=196.32014}
+[18:40:30] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=-50.5,y=65.0,z=87.5,pitch=0.0,yaw=191.45747}
+[18:40:30] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=-51.5,y=65.0,z=84.5,pitch=0.0,yaw=55.20222}
+[18:40:30] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=5.5,y=66.0,z=66.5,pitch=0.0,yaw=178.15363}
+[18:40:30] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=9.5,y=66.0,z=62.5,pitch=0.0,yaw=239.94366}
+[18:40:30] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=74.5,y=67.0,z=81.5,pitch=0.0,yaw=238.65234}
+[18:40:30] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=74.5,y=67.0,z=82.5,pitch=0.0,yaw=208.345}
+[18:40:32] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=-62.5,y=68.0,z=-90.5,pitch=0.0,yaw=218.1314}
+[18:40:32] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=-60.5,y=68.0,z=-89.5,pitch=0.0,yaw=165.89401}
+[18:40:33] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=-67.5,y=68.0,z=-93.5,pitch=0.0,yaw=148.15158}
+[18:40:33] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=-69.5,y=65.0,z=-53.5,pitch=0.0,yaw=125.03186}
+[18:40:33] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=-69.5,y=65.0,z=-47.5,pitch=0.0,yaw=5.7406354}
+[18:40:33] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=-68.5,y=65.0,z=-47.5,pitch=0.0,yaw=125.52994}
+[18:40:33] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=-43.5,y=1.0,z=-8.5,pitch=0.0,yaw=35.508026}
+[18:40:33] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=-42.5,y=1.0,z=-7.5,pitch=0.0,yaw=218.66956}
+[18:40:33] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=73.5,y=71.0,z=-0.5,pitch=0.0,yaw=54.12584}
+[18:40:33] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=75.5,y=71.0,z=-4.5,pitch=0.0,yaw=334.56467}
+[18:40:34] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=2.5,y=64.0,z=108.5,pitch=0.0,yaw=72.89997}
+[18:40:35] [Server thread/INFO]: Spawned mob: Bob at Location{world=CraftWorld{name=world},x=-13.5,y=26.0,z=-2.5,pitch=0.0,yaw=357.82806}
+[18:40:38] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=-53.5,y=69.0,z=-87.5,pitch=0.0,yaw=172.43675}
+[18:40:38] [Server thread/INFO]: Spawned mob: Bob at Location{world=CraftWorld{name=world},x=-53.5,y=69.0,z=-83.5,pitch=0.0,yaw=68.573166}
+[18:40:38] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=-54.5,y=69.0,z=-75.5,pitch=0.0,yaw=66.025795}
+[18:40:38] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=-101.5,y=66.0,z=-10.5,pitch=0.0,yaw=109.48054}
+[18:40:38] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=-100.5,y=66.0,z=-9.5,pitch=0.0,yaw=264.21246}
+[18:40:38] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=-102.5,y=66.0,z=-7.5,pitch=0.0,yaw=107.004906}
+[18:40:39] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=-32.5,y=71.0,z=13.5,pitch=0.0,yaw=196.55992}
+[18:40:39] [Server thread/INFO]: Spawned mob: Bob at Location{world=CraftWorld{name=world},x=34.5,y=78.0,z=-3.5,pitch=0.0,yaw=313.27118}
+[18:40:41] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=-95.5,y=64.0,z=-24.5,pitch=0.0,yaw=134.72345}
+[18:40:41] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=-97.5,y=64.0,z=-23.5,pitch=0.0,yaw=288.495}
+[18:40:41] [Server thread/INFO]: Spawned mob: Bob at Location{world=CraftWorld{name=world},x=-73.5,y=67.0,z=11.5,pitch=0.0,yaw=85.394966}
+[18:40:41] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=-71.5,y=67.0,z=10.5,pitch=0.0,yaw=69.10467}
+[18:40:42] [Server thread/INFO]: xaviggr issued server command: /gamemode survival
+[18:40:42] [Server thread/INFO]: [xaviggr: Set own game mode to Survival Mode]
+[18:40:42] [Server thread/INFO]: Spawned mob: Bob at Location{world=CraftWorld{name=world},x=-101.5,y=66.0,z=-38.5,pitch=0.0,yaw=225.11061}
+[18:40:42] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=-40.5,y=75.0,z=32.5,pitch=0.0,yaw=154.95007}
+[18:40:42] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=0.5,y=71.0,z=36.5,pitch=0.0,yaw=326.44302}
+[18:40:42] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=24.5,y=78.0,z=-69.5,pitch=0.0,yaw=241.92328}
+[18:40:43] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=31.5,y=79.0,z=-12.5,pitch=0.0,yaw=156.60072}
+[18:40:44] [Server thread/INFO]: ¡xaviggr sobrevivió gracias a su tótem con una probabilidad de éxito de 46/50!
+[18:40:44] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=-24.5,y=21.0,z=4.5,pitch=0.0,yaw=66.951996}
+[18:40:44] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=-66.5,y=66.0,z=112.5,pitch=0.0,yaw=161.04057}
+[18:40:44] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=-68.5,y=66.0,z=109.5,pitch=0.0,yaw=349.8634}
+[18:40:44] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=-11.5,y=64.0,z=99.5,pitch=0.0,yaw=209.70845}
+[18:40:44] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=-9.5,y=64.0,z=104.5,pitch=0.0,yaw=143.14641}
+[18:40:44] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=-16.5,y=64.0,z=96.5,pitch=0.0,yaw=20.014236}
+[18:40:44] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=-15.5,y=64.0,z=93.5,pitch=0.0,yaw=247.8742}
+[18:40:44] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=-14.5,y=64.0,z=94.5,pitch=0.0,yaw=228.83237}
+[18:40:44] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=-19.5,y=64.0,z=94.5,pitch=0.0,yaw=183.16724}
+[18:40:44] [Server thread/INFO]: Spawned mob: Bob at Location{world=CraftWorld{name=world},x=-16.5,y=64.0,z=95.5,pitch=0.0,yaw=59.05529}
+[18:40:45] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=-111.5,y=11.0,z=-26.5,pitch=0.0,yaw=189.44334}
+[18:40:45] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=-24.5,y=31.0,z=-4.5,pitch=0.0,yaw=17.903809}
+[18:40:45] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=-105.5,y=3.0,z=39.5,pitch=0.0,yaw=166.90988}
+[18:40:46] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=23.5,y=14.0,z=32.5,pitch=0.0,yaw=177.8068}
+[18:40:46] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=44.5,y=26.0,z=46.5,pitch=0.0,yaw=12.634621}
+[18:40:48] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=-127.5,y=69.0,z=-23.5,pitch=0.0,yaw=11.138463}
+[18:40:48] [Server thread/INFO]: Spawned mob: Bob at Location{world=CraftWorld{name=world},x=-26.5,y=72.0,z=-68.5,pitch=0.0,yaw=317.6867}
+[18:40:48] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=-108.5,y=63.0,z=54.5,pitch=0.0,yaw=205.03128}
+[18:40:48] [Server thread/INFO]: Spawned mob: Bob at Location{world=CraftWorld{name=world},x=-9.5,y=67.0,z=78.5,pitch=0.0,yaw=5.596075}
+[18:40:48] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=-5.5,y=67.0,z=75.5,pitch=0.0,yaw=253.71635}
+[18:40:48] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=66.5,y=-12.0,z=-25.5,pitch=0.0,yaw=317.2198}
+[18:40:48] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=67.5,y=-12.0,z=-25.5,pitch=0.0,yaw=131.14212}
+[18:40:49] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=-70.5,y=-13.0,z=1.5,pitch=0.0,yaw=201.48393}
+[18:40:51] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=-118.5,y=-3.0,z=8.5,pitch=0.0,yaw=60.68397}
+[18:40:51] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=-116.5,y=-3.0,z=10.5,pitch=0.0,yaw=90.962845}
+[18:40:51] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=-118.5,y=-3.0,z=10.5,pitch=0.0,yaw=308.67416}
+[18:40:51] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=-116.5,y=-3.0,z=11.5,pitch=0.0,yaw=347.85715}
+[18:40:51] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=-121.5,y=-3.0,z=8.5,pitch=0.0,yaw=216.71815}
+[18:40:51] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=-124.5,y=-3.0,z=11.5,pitch=0.0,yaw=282.6629}
+[18:40:51] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=-120.5,y=-3.0,z=5.5,pitch=0.0,yaw=230.68974}
+[18:40:52] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=4.5,y=16.0,z=51.5,pitch=0.0,yaw=268.9826}
+[18:40:52] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=5.5,y=16.0,z=50.5,pitch=0.0,yaw=323.58084}
+[18:40:52] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=65.5,y=74.0,z=-14.5,pitch=0.0,yaw=102.22158}
+[18:40:52] [Server thread/INFO]: Spawned mob: Bob at Location{world=CraftWorld{name=world},x=61.5,y=74.0,z=-14.5,pitch=0.0,yaw=24.379456}
+[18:40:52] [Server thread/INFO]: Spawned mob: Bob at Location{world=CraftWorld{name=world},x=77.5,y=69.0,z=37.5,pitch=0.0,yaw=139.71185}
+[18:40:53] [Server thread/INFO]: Spawned mob: Bob at Location{world=CraftWorld{name=world},x=-79.5,y=20.0,z=42.5,pitch=0.0,yaw=136.48004}
+[18:40:53] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=-44.5,y=-5.0,z=39.5,pitch=0.0,yaw=241.1829}
+[18:40:53] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=-45.5,y=-5.0,z=40.5,pitch=0.0,yaw=255.66333}
+[18:40:53] [Server thread/INFO]: Entity killed: GLOW_SQUID
+[18:40:54] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=23.5,y=78.0,z=-58.5,pitch=0.0,yaw=105.52431}
+[18:40:55] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=-92.5,y=71.0,z=39.5,pitch=0.0,yaw=197.64896}
+[18:40:55] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=-93.5,y=71.0,z=38.5,pitch=0.0,yaw=240.46877}
+[18:40:55] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=19.5,y=71.0,z=40.5,pitch=0.0,yaw=18.646545}
+[18:40:55] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=21.5,y=71.0,z=39.5,pitch=0.0,yaw=149.38913}
+[18:40:56] [Server thread/INFO]: Spawned mob: Bob at Location{world=CraftWorld{name=world},x=-75.5,y=57.0,z=-122.5,pitch=0.0,yaw=217.3898}
+[18:40:56] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=-42.5,y=69.0,z=-65.5,pitch=0.0,yaw=15.593527}
+[18:40:56] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=45.5,y=19.0,z=39.5,pitch=0.0,yaw=174.38474}
+[18:40:57] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=-31.5,y=-35.0,z=1.5,pitch=0.0,yaw=308.99628}
+[18:40:57] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=-34.5,y=-35.0,z=-0.5,pitch=0.0,yaw=110.77864}
+[18:40:57] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=-29.5,y=-35.0,z=3.5,pitch=0.0,yaw=300.3971}
+[18:40:58] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=-67.5,y=-26.0,z=-36.5,pitch=0.0,yaw=64.54249}
+[18:40:59] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=-40.5,y=-32.0,z=-87.5,pitch=0.0,yaw=268.35358}
+[18:40:59] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=-163.5,y=41.0,z=-84.5,pitch=0.0,yaw=243.72578}
+[18:40:59] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=-163.5,y=41.0,z=-83.5,pitch=0.0,yaw=95.20097}
+[18:41:01] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=-75.5,y=-20.0,z=-57.5,pitch=0.0,yaw=127.23196}
+[18:41:01] [Server thread/INFO]: Spawned mob: Bob at Location{world=CraftWorld{name=world},x=-73.5,y=-20.0,z=-55.5,pitch=0.0,yaw=17.213303}
+[18:41:01] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=-63.5,y=-30.0,z=-25.5,pitch=0.0,yaw=45.606457}
+[18:41:01] [Server thread/INFO]: Spawned mob: Bob at Location{world=CraftWorld{name=world},x=-67.5,y=-30.0,z=-28.5,pitch=0.0,yaw=279.1006}
+[18:41:01] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=-79.5,y=66.0,z=3.5,pitch=0.0,yaw=324.92245}
+[18:41:01] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=-70.5,y=66.0,z=0.5,pitch=0.0,yaw=221.1571}
+[18:41:01] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=-75.5,y=66.0,z=1.5,pitch=0.0,yaw=57.73573}
+[18:41:01] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=-59.5,y=68.0,z=74.5,pitch=0.0,yaw=40.013687}
+[18:41:03] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=-97.5,y=67.0,z=-47.5,pitch=0.0,yaw=346.1672}
+[18:41:03] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=-94.5,y=67.0,z=-48.5,pitch=0.0,yaw=6.057608}
+[18:41:03] [Server thread/INFO]: Spawned mob: Bob at Location{world=CraftWorld{name=world},x=-7.5,y=76.0,z=-105.5,pitch=0.0,yaw=13.265026}
+[18:41:03] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=45.5,y=64.0,z=-98.5,pitch=0.0,yaw=343.53674}
+[18:41:03] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=42.5,y=78.0,z=-14.5,pitch=0.0,yaw=245.91872}
+[18:41:03] [Server thread/INFO]: Spawned mob: Bob at Location{world=CraftWorld{name=world},x=45.5,y=78.0,z=-14.5,pitch=0.0,yaw=309.474}
+[18:41:03] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=45.5,y=78.0,z=-13.5,pitch=0.0,yaw=138.04225}
+[18:41:03] [Server thread/INFO]: Spawned mob: Bob at Location{world=CraftWorld{name=world},x=-186.5,y=81.0,z=-67.5,pitch=0.0,yaw=303.10553}
+[18:41:03] [Server thread/INFO]: Entity killed: CREEPER
+[18:41:03] [Server thread/INFO]: GroupData: {"name":"owner","prefix":"\u00264[Owner]","permissions":["GROUP","BAN","KICK","TELEPORT","RELOAD","REPORTS","BANSHEE","CHAT","HEAL","DAYS"],"players":["xaviggr"]}
+[18:41:03] [Server thread/INFO]: GroupData: {"name":"owner","prefix":"\u00264[Owner]","permissions":["GROUP","BAN","KICK","TELEPORT","RELOAD","REPORTS","BANSHEE","CHAT","HEAL","DAYS"],"players":["xaviggr"]}
+[18:41:03] [Server thread/INFO]: GroupData: {"name":"owner","prefix":"\u00264[Owner]","permissions":["GROUP","BAN","KICK","TELEPORT","RELOAD","REPORTS","BANSHEE","CHAT","HEAL","DAYS"],"players":["xaviggr"]}
+[18:41:03] [Server thread/INFO]: Played sound minecraft:muerte to xaviggr
+[18:41:03] [Server thread/INFO]: Applied effect Blindness to xaviggr
+[18:41:03] [Server thread/INFO]: Changed title display times for xaviggr
+[18:41:03] [Server thread/INFO]: Entity killed: PLAYER
+[18:41:03] [Server thread/INFO]: xaviggr was blown up by Creeper
+[18:41:04] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:04] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:04] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:04] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:04] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:04] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:04] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:04] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:04] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:04] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:04] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:04] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:04] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:04] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:04] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:04] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:04] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:04] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:04] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:04] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:05] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:05] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:05] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:05] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:05] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:05] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:05] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:05] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:05] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:05] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:05] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:05] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:05] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:05] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:05] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:05] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:05] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:05] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:05] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:05] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:06] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:06] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:06] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:06] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:06] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:06] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:06] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:06] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:06] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:06] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:06] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:06] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:06] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:06] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:06] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:06] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:06] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:06] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:06] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:06] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:07] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:07] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:07] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:07] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:07] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:07] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:07] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:07] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:07] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:07] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:07] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:07] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:07] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:07] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:07] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:07] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:07] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:07] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:07] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:07] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:08] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:08] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:08] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:08] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:08] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:08] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:08] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:08] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:08] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:08] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:08] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:08] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:08] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:08] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:08] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:08] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:08] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:08] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:08] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:08] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:09] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:09] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:09] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:09] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:09] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:09] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:09] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:09] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:09] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:09] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:09] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:09] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:09] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:09] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:09] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:09] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:09] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:09] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:09] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:09] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:10] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:10] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:10] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:10] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:10] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:10] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:10] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:10] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:10] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:10] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:10] [Server thread/INFO]: xaviggr issued server command: /gamemode survival
+[18:41:10] [Server thread/INFO]: [xaviggr: Set own game mode to Survival Mode]
+[18:41:10] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:10] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:10] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:10] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:10] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:10] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:10] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:10] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:10] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:10] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:11] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:11] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:11] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:11] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:11] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:11] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:11] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:11] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:11] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:11] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:11] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=-153.5,y=70.0,z=19.5,pitch=0.0,yaw=4.260807}
+[18:41:11] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=17.5,y=76.0,z=-76.5,pitch=0.0,yaw=277.84555}
+[18:41:11] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:11] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:11] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:11] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:11] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:11] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:11] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:11] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:11] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:11] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:12] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:12] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:12] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:12] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:12] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:12] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:12] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:12] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:12] [Server thread/INFO]: Showing new title for xaviggr
+[18:41:12] [Server thread/INFO]: Played sound minecraft:entity.lightning_bolt.impact to xaviggr
+[18:41:12] [Server thread/INFO]: Changed title display times for xaviggr
+[18:41:12] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=6.5,y=36.0,z=-75.5,pitch=0.0,yaw=114.06465}
+[18:41:12] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=4.5,y=36.0,z=-76.5,pitch=0.0,yaw=115.96376}
+[18:41:12] [Server thread/INFO]: Spawned mob: Bob at Location{world=CraftWorld{name=world},x=-99.5,y=2.0,z=68.5,pitch=0.0,yaw=242.05501}
+[18:41:12] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=-99.5,y=2.0,z=70.5,pitch=0.0,yaw=5.465913}
+[18:41:12] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=-97.5,y=2.0,z=70.5,pitch=0.0,yaw=227.88307}
+[18:41:12] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=7.5,y=64.0,z=100.5,pitch=0.0,yaw=61.87586}
+[18:41:12] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=1.5,y=64.0,z=106.5,pitch=0.0,yaw=164.73898}
+[18:41:14] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=-10.5,y=75.0,z=-56.5,pitch=0.0,yaw=222.66766}
+[18:41:14] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=-23.5,y=70.0,z=-3.5,pitch=0.0,yaw=182.32008}
+[18:41:14] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=-29.5,y=70.0,z=5.5,pitch=0.0,yaw=323.91574}
+[18:41:14] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=-21.5,y=70.0,z=3.5,pitch=0.0,yaw=353.542}
+[18:41:14] [Server thread/INFO]: Spawned mob: Bob at Location{world=CraftWorld{name=world},x=-15.5,y=3.0,z=67.5,pitch=0.0,yaw=181.04095}
+[18:41:14] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=-14.5,y=3.0,z=69.5,pitch=0.0,yaw=180.10199}
+[18:41:15] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=-119.5,y=-3.0,z=6.5,pitch=0.0,yaw=226.33855}
+[18:41:15] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=-119.5,y=-3.0,z=13.5,pitch=0.0,yaw=222.0898}
+[18:41:15] [Server thread/INFO]: Spawned mob: Bob at Location{world=CraftWorld{name=world},x=-118.5,y=-3.0,z=10.5,pitch=0.0,yaw=235.97128}
+[18:41:15] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=-121.5,y=-3.0,z=12.5,pitch=0.0,yaw=16.864893}
+[18:41:15] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=-118.5,y=-3.0,z=9.5,pitch=0.0,yaw=336.06668}
+[18:41:15] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=-90.5,y=82.0,z=52.5,pitch=0.0,yaw=33.49626}
+[18:41:15] [Server thread/INFO]: Spawned mob: Bob at Location{world=CraftWorld{name=world},x=-87.5,y=82.0,z=52.5,pitch=0.0,yaw=266.38617}
+[18:41:15] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=-39.5,y=78.0,z=35.5,pitch=0.0,yaw=254.54582}
+[18:41:15] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=-36.5,y=78.0,z=36.5,pitch=0.0,yaw=208.98315}
+[18:41:15] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=-7.5,y=22.0,z=46.5,pitch=0.0,yaw=305.79736}
+[18:41:16] [Server thread/INFO]: Spawned mob: Bob at Location{world=CraftWorld{name=world},x=-27.5,y=22.0,z=6.5,pitch=0.0,yaw=184.38971}
+[18:41:16] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=-26.5,y=22.0,z=5.5,pitch=0.0,yaw=182.69164}
+[18:41:16] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=-64.5,y=-13.0,z=25.5,pitch=0.0,yaw=226.71931}
+[18:41:16] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=-64.5,y=-13.0,z=23.5,pitch=0.0,yaw=8.765738}
+[18:41:16] [Server thread/INFO]: Spawned mob: Bob at Location{world=CraftWorld{name=world},x=-21.5,y=-7.0,z=85.5,pitch=0.0,yaw=259.55472}
+[18:41:16] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=31.5,y=11.0,z=27.5,pitch=0.0,yaw=32.32768}
+[18:41:16] [Server thread/INFO]: Entity killed: GLOW_SQUID
+[18:41:18] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=-33.5,y=72.0,z=-75.5,pitch=0.0,yaw=154.38586}
+[18:41:18] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=-124.5,y=23.0,z=104.5,pitch=0.0,yaw=334.81293}
+[18:41:18] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=-127.5,y=23.0,z=107.5,pitch=0.0,yaw=33.413544}
+[18:41:18] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=-134.5,y=27.0,z=101.5,pitch=0.0,yaw=277.8547}
+[18:41:19] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=-42.5,y=70.0,z=-101.5,pitch=0.0,yaw=164.23917}
+[18:41:19] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=-43.5,y=70.0,z=-93.5,pitch=0.0,yaw=77.07237}
+[18:41:19] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=-129.5,y=22.0,z=-48.5,pitch=0.0,yaw=87.47619}
+[18:41:19] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=-44.5,y=1.0,z=-8.5,pitch=0.0,yaw=167.10812}
+[18:41:19] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=-65.5,y=-38.0,z=70.5,pitch=0.0,yaw=21.049955}
+[18:41:20] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=-97.5,y=68.0,z=-101.5,pitch=0.0,yaw=231.00029}
+[18:41:20] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=-158.5,y=71.0,z=-2.5,pitch=0.0,yaw=357.64948}
+[18:41:20] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=-149.5,y=71.0,z=-10.5,pitch=0.0,yaw=57.504135}
+[18:41:20] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=-144.5,y=71.0,z=-11.5,pitch=0.0,yaw=205.09647}
+[18:41:20] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=13.5,y=-15.0,z=-31.5,pitch=0.0,yaw=259.08896}
+[18:41:20] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=-91.5,y=18.0,z=127.5,pitch=0.0,yaw=305.53308}
+[18:41:20] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=-4.5,y=64.0,z=87.5,pitch=0.0,yaw=276.44302}
+[18:41:21] [Server thread/INFO]: Spawned mob: Bob at Location{world=CraftWorld{name=world},x=-97.5,y=66.0,z=-5.5,pitch=0.0,yaw=118.349686}
+[18:41:22] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=-121.5,y=68.0,z=3.5,pitch=0.0,yaw=274.0155}
+[18:41:22] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=-123.5,y=68.0,z=2.5,pitch=0.0,yaw=93.91731}
+[18:41:22] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=-133.5,y=70.0,z=86.5,pitch=0.0,yaw=163.79353}
+[18:41:22] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=-137.5,y=70.0,z=84.5,pitch=0.0,yaw=11.587229}
+[18:41:23] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=-81.5,y=-22.0,z=-50.5,pitch=0.0,yaw=63.556767}
+[18:41:24] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=-92.5,y=67.0,z=-51.5,pitch=0.0,yaw=300.92798}
+[18:41:24] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=-90.5,y=67.0,z=-56.5,pitch=0.0,yaw=90.07165}
+[18:41:24] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=-89.5,y=67.0,z=-54.5,pitch=0.0,yaw=114.25535}
+[18:41:24] [Server thread/INFO]: Spawned mob: Gigante at Location{world=CraftWorld{name=world},x=-87.5,y=67.0,z=-56.5,pitch=0.0,yaw=105.11901}
+[18:41:24] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=-152.5,y=80.0,z=-46.5,pitch=0.0,yaw=175.82513}
+[18:41:24] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=-158.5,y=80.0,z=-45.5,pitch=0.0,yaw=118.75489}
+[18:41:24] [Server thread/INFO]: Spawned mob: Mago at Location{world=CraftWorld{name=world},x=-153.5,y=0.0,z=48.5,pitch=0.0,yaw=252.56859}
+[18:41:24] [Server thread/INFO]: Spawned mob: TitanPillager at Location{world=CraftWorld{name=world},x=-152.5,y=0.0,z=47.5,pitch=0.0,yaw=205.51244}
+[18:41:24] [Server thread/INFO]: Spawned mob: CreeperCargado at Location{world=CraftWorld{name=world},x=-153.5,y=0.0,z=47.5,pitch=0.0,yaw=254.52429}
+[18:41:24] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=-157.5,y=0.0,z=50.5,pitch=0.0,yaw=307.89124}
+[18:41:24] [Server thread/INFO]: Spawned mob: PerroProtector at Location{world=CraftWorld{name=world},x=24.5,y=-4.0,z=-7.5,pitch=0.0,yaw=353.61908}
+[18:41:26] [Server thread/INFO]: xaviggr issued server command: /gamemode spectator
+[18:41:26] [Server thread/INFO]: [xaviggr: Set own game mode to Spectator Mode]
+[18:41:27] [Server thread/INFO]: Entity killed: GLOW_SQUID
+[18:41:36] [Server thread/INFO]: Stopping server
+[18:41:36] [Server thread/INFO]: [DeathScape] Disabling DeathScape v1.0.0
+[18:41:36] [Server thread/INFO]: DeathScape has been disabled!
+[18:41:36] [Server thread/INFO]: [MythicMobs] Disabling MythicMobs v5.7.2-${CI_COMMIT_SHORT_SHA}
+[18:41:36] [Server thread/INFO]: [MythicMobs] ------------------------------------------------------------
+[18:41:36] [Server thread/INFO]: [MythicMobs] - 
+[18:41:36] [Server thread/INFO]: [MythicMobs] - Unloading Mythic...
+[18:41:36] [Server thread/INFO]: [MythicMobs] - 
+[18:41:36] [Server thread/INFO]: [MythicMobs] ------------------------------------------------------------
+[18:41:36] [Server thread/INFO]: [MythicMobs] - Spawners saved and unloaded...
+[18:41:36] [Server thread/INFO]: [MythicMobs] - Mobs saved and unloaded...
+[18:41:36] [Server thread/INFO]: [MythicMobs] Saving plugin data...
+[18:41:36] [Server thread/INFO]: [MythicMobs] ✓Saving Finished
+[18:41:36] [Server thread/INFO]: [MythicMobs] - Variables saved...
+[18:41:36] [Server thread/INFO]: [MythicMobs] - All active settings have been saved!
+[18:41:36] [Server thread/INFO]: [MythicMobs] - Mythic has been unloaded!
+[18:41:36] [Server thread/INFO]: [MythicMobs] ------------------------------------------------------------
+[18:41:36] [Server thread/INFO]: [MythicMobs] Saving plugin data...
+[18:41:36] [Server thread/INFO]: [MythicMobs] ✓Saving Finished
+[18:41:36] [Server thread/INFO]: [SkinsRestorer] Disabling SkinsRestorer v15.4.4
+[18:41:36] [Server thread/INFO]: [WorldEdit] Disabling WorldEdit v7.3.0+6678-55745ad
+[18:41:36] [Server thread/INFO]: Unregistering com.sk89q.worldedit.bukkit.BukkitServerInterface from WorldEdit
+[18:41:36] [Server thread/INFO]: [spark] Disabling spark v1.10.119
+[18:41:36] [Server thread/INFO]: Saving players
+[18:41:36] [Server thread/INFO]: xaviggr lost connection: Server closed
+[18:41:36] [Server thread/INFO]: xaviggr left the game
+[18:41:36] [Server thread/INFO]: Saving worlds
+[18:41:36] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[18:41:36] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world'
+[18:41:36] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world'
+[18:41:36] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world'
+[18:41:37] [Server thread/INFO]: [ChunkHolderManager] Saved 1103 block chunks, 816 entity chunks, 1 poi chunks in world 'world' in 0,81s
+[18:41:37] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[18:41:37] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_the_end]'/minecraft:the_end
+[18:41:37] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_the_end'
+[18:41:37] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_the_end'
+[18:41:37] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_the_end'
+[18:41:37] [Server thread/INFO]: [ChunkHolderManager] Saved 529 block chunks, 529 entity chunks, 0 poi chunks in world 'world_the_end' in 0,07s
+[18:41:37] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[18:41:37] [Server thread/INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
+[18:41:37] [Server thread/INFO]: Flushing Chunk IO
+[18:41:37] [Server thread/INFO]: Closing Thread Pool
+[18:41:37] [Server thread/INFO]: Closing Server

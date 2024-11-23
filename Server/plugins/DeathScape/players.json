@@ -1,15 +1,15 @@
 {
   "xaviggr": {
     "name": "xaviggr",
-    "isDead": false,
-    "deaths": 0,
+    "isDead": true,
+    "deaths": 5,
     "hostAddress": "127.0.0.1",
     "timePlayed": "0",
     "uuid": "cb185b4b-cea7-43bb-a340-571c9bb6c3a5",
-    "points": 0,
+    "points": 72,
     "banDate": "0",
     "bantime": "0",
-    "coords": "0",
-    "group": "default"
+    "coords": "-71.25301751545226,65.0,-46.318810377410756",
+    "group": "owner"
   }
 }

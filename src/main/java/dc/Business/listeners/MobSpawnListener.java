@@ -2,6 +2,7 @@ package dc.Business.listeners;
 
 import dc.Business.controllers.MobSpawnController;
 import dc.DeathScape;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Monster;
@@ -48,15 +49,15 @@ public class MobSpawnListener implements Listener {
             String worldName = entity.getWorld().getName();
 
             // Get the list of mob types for today in this world
-            List<String> todaysMobsForWorld = mobSpawnController.getMobsForTodayInWorld(worldName);
+            List<String> todayMobsForWorld = mobSpawnController.getMobsForTodayInWorld(worldName);
 
             // If no mobs are configured for today, do nothing
-            if (todaysMobsForWorld == null || todaysMobsForWorld.isEmpty()) {
+            if (todayMobsForWorld == null || todayMobsForWorld.isEmpty()) {
                 return;
             }
 
             // Select a random mob from the list for today's spawn
-            String randomMobType = todaysMobsForWorld.get(random.nextInt(todaysMobsForWorld.size()));
+            String randomMobType = todayMobsForWorld.get(random.nextInt(todayMobsForWorld.size()));
 
             // If the world is null, log a warning and return
             if (spawnLocation.getWorld() == null) {
@@ -67,9 +68,11 @@ public class MobSpawnListener implements Listener {
             // Cancel the default spawn and trigger the custom mob spawn
             event.setCancelled(true);
             mobSpawnController.spawnMythicMob(spawnLocation, randomMobType);
+            Bukkit.getConsoleSender().sendMessage("Spawned mob: " + randomMobType + " at " + spawnLocation.toString());
 
         } catch (Exception e) {
             // Catch any unexpected errors, log them and print stack trace
+            Bukkit.getConsoleSender().sendMessage("Error in mob spawn: " + e.getMessage());
             mobSpawnController.getPlugin().getLogger().severe("Error in mob spawn: " + e.getMessage());
             e.printStackTrace();
         }

@@ -1,6 +1,9 @@
 package dc.Business.listeners.Player;
 
 import dc.Business.controllers.PlayerController;
+import dc.utils.Message;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Monster;
 import org.bukkit.entity.Player;
@@ -21,6 +24,8 @@ public class PlayerKillListener implements Listener {
     public void onEntityDeath(EntityDeathEvent event) {
         LivingEntity entity = event.getEntity();
 
+        Bukkit.getConsoleSender().sendMessage("Entity killed: " + entity.getType().name());
+
         // Check if the entity was killed by a player
         Player player = entity.getKiller();  // The player who killed the entity
 
@@ -31,11 +36,13 @@ public class PlayerKillListener implements Listener {
                 handleMonsterKill(player, (Monster) entity);  // Pass the player and the specific monster
             }
 
+            Message.enviarMensajeColorido(player, "You killed a " + entity.getType().name() + "!", ChatColor.GREEN);
+
             // If you want to do something with the items dropped by the entity
+            /*
             for (ItemStack item : event.getDrops()) {
-                // Here you can perform some action with the items dropped by the entity
-                System.out.println("The entity dropped the item: " + item.getType());
-            }
+
+            }*/
         }
     }
 

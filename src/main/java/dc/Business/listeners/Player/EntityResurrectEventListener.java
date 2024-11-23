@@ -47,11 +47,11 @@ public class EntityResurrectEventListener implements Listener {
     }
 
     private void sendTotemSuccessMessages(Player player, TotemController.Result result, int successProbability) {
-        String successMessage = String.format("The totem saved you with a success chance of %d/%d!", result.getRandomValue(), successProbability);
+        String successMessage = String.format("¡El tótem te salvó con una probabilidad de éxito de %d/%d!", result.getRandomValue(), successProbability);
         player.sendMessage(successMessage);
 
         // Broadcast to all players
-        String broadcastMessage = String.format("%s survived thanks to their totem with a success chance of %d/%d!", player.getName(), result.getRandomValue(), successProbability);
+        String broadcastMessage = String.format("¡%s sobrevivió gracias a su tótem con una probabilidad de éxito de %d/%d!", player.getName(), result.getRandomValue(), successProbability);
         Bukkit.broadcastMessage(broadcastMessage);
 
         // Play sound to all players

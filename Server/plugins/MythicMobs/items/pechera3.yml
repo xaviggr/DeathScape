@@ -8,8 +8,6 @@ pechera3:
       meta-type: UNSPECIFIC
       display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"light_purple","text":"Titan
         Chestplate"}],"text":""}'
-      lore:
-        - ''
       enchants:
         PROTECTION_ENVIRONMENTAL: 7
       Unbreakable: true
