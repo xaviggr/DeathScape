@@ -10,14 +10,8 @@ import org.bukkit.block.Skull;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.EntityType;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.BlockBreakEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.scheduler.BukkitRunnable;
-
-import java.util.HashSet;
-import java.util.Set;
 
 import static org.bukkit.Bukkit.getServer;
 
@@ -26,87 +20,116 @@ public class PlayerDeath implements Listener {
     private final DeathScape plugin;
     private final PlayerBan playerBan;
 
-    // Constructor
+    // Constructor to initialize the plugin and player ban handler
     public PlayerDeath(DeathScape plugin, PlayerBan playerBan) {
         this.plugin = plugin;
         this.playerBan = playerBan;
-        plugin.getServer().getPluginManager().registerEvents(this, plugin);
+        plugin.getServer().getPluginManager().registerEvents(this, plugin);  // Register events for this listener
     }
 
+    /**
+     * Called when a player dies. This handles death messages, bans (if applicable), and creates a death statue.
+     * @param player The player who died.
+     */
     public void Dead(Player player) {
         String victim = player.getName();
 
-        for (Player checking_player : Bukkit.getOnlinePlayers()) {
+        // Notify all players about the death
+        for (Player checkingPlayer : Bukkit.getOnlinePlayers()) {
             Message.enviarMensajeColorido(player, "El jugador " + victim + " ha muerto!", ChatColor.RED);
 
-            String ServerMessageTitle = MainConfigManager.getInstance().getDeathMessageTitle();
-            String ServerMessageSubtitle = MainConfigManager.getInstance().getDeathMessageSubtitle();
+            String deathTitle = MainConfigManager.getInstance().getDeathMessageTitle();
+            String deathSubtitle = MainConfigManager.getInstance().getDeathMessageSubtitle();
 
-            checking_player.sendTitle(ServerMessageTitle, ServerMessageSubtitle.replace("%player%", victim), 20, 20 * 5, 20);
-            checking_player.playSound(checking_player.getLocation(), Sound.ENTITY_BLAZE_DEATH, Float.MAX_VALUE, -0.1f);
+            // Send title and subtitle to all players
+            checkingPlayer.sendTitle(deathTitle, deathSubtitle.replace("%player%", victim), 20, 100, 20);
+            checkingPlayer.playSound(checkingPlayer.getLocation(), Sound.ENTITY_BLAZE_DEATH, Float.MAX_VALUE, -0.1f);
         }
 
-        // Si es admin no lo banea
+        // Handle admin case (do not ban, just spectate)
         if (player.isOp()) {
             player.setGameMode(GameMode.SPECTATOR);
         } else {
-            // Si esta conectado se le expulsa.
-            if (player.isOnline()) {
-                getServer().getScheduler().runTaskLater(plugin, () -> {
-                    playerBan.Ban(player, ChatColor.RED + MainConfigManager.getInstance().getBanMessage(), null);
-                    player.kickPlayer(ChatColor.RED + MainConfigManager.getInstance().getBanMessage());
-                }, 2 * 20L);
-            } else {
-                playerBan.Ban(player, ChatColor.RED + MainConfigManager.getInstance().getBanMessage(), null);
-            }
+            // If not an admin, ban the player
+            handlePlayerBan(player);
         }
 
+        // Create a statue at the player's death location
         createStatueOnDeath(player);
+
+        // Update player status in database
         PlayerEditDatabase.setPlayerAsDeath(player);
         PlayerEditDatabase.setPlayerCoords(player);
+
+        // Trigger server-specific checks
         plugin.getServerData().checkDay();
     }
 
+    /**
+     * Handles banning the player after they die.
+     * @param player The player to be banned.
+     */
+    private void handlePlayerBan(Player player) {
+        if (player.isOnline()) {
+            // Schedule ban and kick the player after a short delay
+            getServer().getScheduler().runTaskLater(plugin, () -> {
+                playerBan.Ban(player, ChatColor.RED + MainConfigManager.getInstance().getBanMessage(), null);
+                player.kickPlayer(ChatColor.RED + MainConfigManager.getInstance().getBanMessage());
+            }, 2 * 20L);  // Delay of 2 seconds
+        } else {
+            // If player is offline, immediately ban them
+            playerBan.Ban(player, ChatColor.RED + MainConfigManager.getInstance().getBanMessage(), null);
+        }
+    }
+
+    /**
+     * Creates a statue at the location where the player died.
+     * This includes a bedrock block, chain, player skull, and an armor stand with the player's name.
+     * @param player The player who died.
+     */
     private void createStatueOnDeath(Player player) {
         World world = player.getWorld();
         Block deathLocationBlock = player.getLocation().getBlock();
 
-        // Colocar bedrock un bloque por debajo del lugar de muerte
+        // Place a bedrock block below the death location
         Block bedrockBlock = deathLocationBlock.getRelative(0, -1, 0);
         bedrockBlock.setType(Material.BEDROCK);
 
-        // Colocar la cadena en la posición del jugador
+        // Place a chain block at the death location
         deathLocationBlock.setType(Material.CHAIN);
 
-        // Colocar la cabeza del jugador encima de la cadena
+        // Place a player skull above the chain block
         Block skullBlock = deathLocationBlock.getRelative(0, 1, 0);
         skullBlock.setType(Material.PLAYER_HEAD);
 
-        // Manejo de la cabeza del jugador
+        // Set the player's head on the skull block
         try {
             Skull skull = (Skull) skullBlock.getState();
             skull.setOwningPlayer(player);
             skull.update();
         } catch (ClassCastException e) {
             Bukkit.getLogger().severe("Error al crear la cabeza de la estatua para " + player.getName() + ": " + e.getMessage());
-            // Opcionalmente, puedes realizar una acción alternativa aquí.
         }
 
-        // Crear un ArmorStand con el nombre del jugador encima de la cabeza
+        // Create an armor stand with the player's name above the skull
         ArmorStand nameStand = (ArmorStand) world.spawnEntity(bedrockBlock.getLocation().add(0.5, 0.5, 0.5), EntityType.ARMOR_STAND);
         nameStand.setCustomName(player.getName());
         nameStand.setCustomNameVisible(true);
         nameStand.setGravity(false);
         nameStand.setVisible(false);
 
-        // Generar el aura de fuego
+        // Generate a fire aura around the death location
         generateFireAura(player, deathLocationBlock);
 
-        // Mensaje o sonido al morir
+        // Play a sound at the death location
         world.playSound(player.getLocation(), Sound.ENTITY_WITHER_DEATH, 1.0f, 0.5f);
     }
 
-
+    /**
+     * Generates a fire aura around the player's death location using particles.
+     * @param player The player who died.
+     * @param baseBlock The block where the aura should be generated.
+     */
     private void generateFireAura(Player player, Block baseBlock) {
         World world = baseBlock.getWorld();
 
@@ -115,16 +138,16 @@ public class PlayerDeath implements Listener {
 
             @Override
             public void run() {
-                if (count >= 200) {  // Duración del aura (200 ticks)
+                if (count >= 200) {  // Stop after 200 ticks (about 10 seconds)
                     cancel();
                     return;
                 }
 
-                // Generar partículas de fuego alrededor
+                // Generate flame particles around the death location
                 world.spawnParticle(Particle.FLAME, baseBlock.getLocation().add(0.5, 1.5, 0.5), 20, 0.5, 0.5, 0.5, 0);
 
                 count++;
             }
-        }.runTaskTimer(plugin, 0, 10); // Cada 10 ticks se ejecuta
+        }.runTaskTimer(plugin, 0, 10);  // Run every 10 ticks
     }
 }

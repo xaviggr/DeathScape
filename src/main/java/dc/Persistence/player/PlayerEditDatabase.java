@@ -3,6 +3,7 @@ package dc.Persistence.player;
 import dc.Business.groups.GroupData;
 import dc.Business.player.PlayerData;
 import dc.Persistence.groups.GroupDatabase;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import java.util.Objects;
@@ -90,15 +91,18 @@ public class PlayerEditDatabase {
     }
 
     public static boolean addPlayerToGroup(String player, String group) {
-        String actualNameGroup = Objects.requireNonNull(PlayerDatabase.getPlayerDataFromDatabase(player)).getGroup();
-        removePlayerFromGroup(player);
-        GroupData groupData = GroupDatabase.getGroupData(group);
-        assert groupData != null;
+        GroupData groupData = GroupDatabase.getGroupData(group.toLowerCase());
+        Bukkit.getConsoleSender().sendMessage("GroupData: " + groupData);
+        if (groupData == null) {
+            return false;
+        }
         if (groupData.getPlayers().contains(player)) {
             return false;
         }
+        removePlayerFromGroup(player);
         groupData.addPlayer(player);
         GroupDatabase.addGroupData(groupData);
+        PlayerDatabase.setPlayerGroup(player, group);
         return true;
     }
 

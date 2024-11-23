@@ -90,4 +90,12 @@ public class PlayerDatabase {
     public static List<String> getAllPlayers() {
         return new ArrayList<>(readJsonFile().keySet());
     }
+
+    public static void setPlayerGroup(String player, String group) {
+        PlayerData playerData = getPlayerDataFromDatabase(player);
+        if (playerData != null) {
+            playerData.setGroup(group);
+            addPlayerDataToDatabase(playerData);
+        }
+    }
 }

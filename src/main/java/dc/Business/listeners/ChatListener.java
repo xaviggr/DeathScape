@@ -9,62 +9,89 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+
 import java.util.Map;
 
 public class ChatListener implements Listener {
 
+    /**
+     * Handles player chat events. Processes reports and banned word detection.
+     * @param event The AsyncPlayerChatEvent triggered when a player sends a message.
+     */
     @EventHandler
     public void onPlayerChat(AsyncPlayerChatEvent event) {
         Player player = event.getPlayer();
         String message = event.getMessage();
 
-        // Maneja los comentarios de reporte, si el jugador está en proceso de reportar
+        // Check if the player is in the process of making a report
         if (isPendingReport(player)) {
             handlePlayerReport(event, player, message);
-            return; // Salimos, ya que el mensaje fue tratado como un reporte
+            return; // Exit after handling the report
         }
 
-        // Verifica y bloquea palabras prohibidas en el mensaje
+        // Check for banned words in the message
         if (containsBannedWords(message)) {
-            handleBannedWords(event, player, message);
+            handleBannedWords(event, player);
         }
     }
 
-    // Verifica si el jugador está en proceso de reportar
+    /**
+     * Checks if the player is currently in the process of reporting another player.
+     * @param player The player sending the chat message.
+     * @return True if the player is reporting, otherwise false.
+     */
     private boolean isPendingReport(Player player) {
         return ReportInventory.getPendingReports().containsKey(player);
     }
 
-    // Maneja el comentario de reporte y lo envía
+    /**
+     * Handles the report comment from the player and sends it to the database.
+     * @param event The chat event.
+     * @param player The player making the report.
+     * @param comment The comment from the player about the report.
+     */
     private void handlePlayerReport(AsyncPlayerChatEvent event, Player player, String comment) {
-        event.setCancelled(true);  // Cancela el mensaje en el chat global
+        event.setCancelled(true);  // Cancel the chat message to prevent it from being sent to others
 
         Map<Player, String> pendingReports = ReportInventory.getPendingReports();
-        String reportedPlayerName = pendingReports.get(player);
+        String reportedPlayerName = pendingReports.get(player);  // Get the name of the player being reported
 
-        sendReport(player, reportedPlayerName, comment);
-        Message.enviarMensajeColorido(player, "Gracias por tu reporte.", ChatColor.GREEN);
-        pendingReports.remove(player);
+        sendReport(player, reportedPlayerName, comment);  // Send the report
+        Message.enviarMensajeColorido(player, "Gracias por tu reporte.", ChatColor.GREEN);  // Acknowledge the report
+        pendingReports.remove(player);  // Remove the player from the pending reports list
     }
 
-    // Envía el reporte a administradores o lo guarda en la base de datos
+    /**
+     * Sends the report to the database for processing.
+     * @param reporter The player making the report.
+     * @param reportedPlayerName The name of the player being reported.
+     * @param comment The comment or reason for the report.
+     */
     private void sendReport(Player reporter, String reportedPlayerName, String comment) {
-        ReportsDatabase.addReport(reporter.getName(), reportedPlayerName, comment);
+        ReportsDatabase.addReport(reporter.getName(), reportedPlayerName, comment);  // Save the report to the database
     }
 
-    // Verifica si el mensaje contiene palabras prohibidas
+    /**
+     * Checks if the message contains any banned words.
+     * @param message The message to check.
+     * @return True if the message contains a banned word, otherwise false.
+     */
     private boolean containsBannedWords(String message) {
         for (String bannedWord : BannedWordsDatabase.getBannedWords()) {
-            if (message.toLowerCase().contains(bannedWord)) {
+            if (message.toLowerCase().contains(bannedWord)) {  // Case-insensitive check for banned words
                 return true;
             }
         }
-        return false;
+        return false;  // No banned words found
     }
 
-    // Maneja el caso de palabras prohibidas en el mensaje
-    private void handleBannedWords(AsyncPlayerChatEvent event, Player player, String message) {
-        event.setCancelled(true);
-        Message.enviarMensajeColorido(player, "Por favor, no uses palabras prohibidas.", ChatColor.RED);
+    /**
+     * Handles a message containing banned words by cancelling the event and notifying the player.
+     * @param event The chat event.
+     * @param player The player who sent the message.
+     */
+    private void handleBannedWords(AsyncPlayerChatEvent event, Player player) {
+        event.setCancelled(true);  // Cancel the chat message
+        Message.enviarMensajeColorido(player, "Por favor, no uses palabras prohibidas.", ChatColor.RED);  // Notify the player
     }
 }

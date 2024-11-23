@@ -6,7 +6,7 @@ import dc.Business.inventory.ReportsInventory;
 import dc.Business.inventory.ReviveInventory;
 import dc.Business.listeners.ChatListener;
 import dc.Business.listeners.MobSpawnListener;
-import dc.Business.listeners.PlayerListener;
+import dc.Business.listeners.Player.PlayerListener;
 import dc.Persistence.config.MainConfigManager;
 import dc.Persistence.groups.GroupDatabase;
 import dc.Persistence.player.PlayerDatabase;
@@ -99,9 +99,9 @@ public class DeathScape extends JavaPlugin {
 
     private void initializeListeners() {
         AnimationController animationController = new AnimationController(this);
-        playerListener = new PlayerListener(this, serverController, playerController, weatherController, totemController, animationController);
+        playerListener = new PlayerListener(this, playerController, weatherController, animationController, totemController);
         mobSpawnListener = new MobSpawnListener(this, mobSpawnController);
-        deathScapeCommand = new DeathScapeCommand(this, reportInventory, reportsInventory);
+        deathScapeCommand = new DeathScapeCommand(this, reportInventory, reportsInventory, playerController);
         chatListener = new ChatListener();
     }
 
@@ -124,7 +124,6 @@ public class DeathScape extends JavaPlugin {
     }
 
     private void registerEvents() {
-        getServer().getPluginManager().registerEvents(playerListener, this);
         getServer().getPluginManager().registerEvents(reportInventory, this);
         getServer().getPluginManager().registerEvents(reviveInventory, this);
         getServer().getPluginManager().registerEvents(reportsInventory, this);

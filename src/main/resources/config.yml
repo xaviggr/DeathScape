@@ -35,7 +35,7 @@ groups:
     players:
 
   admin:
-    prefix: "&c[Admin]"
+    prefix: "&e[Admin]"
     permissions:
       - "ban"
       - "kick"
@@ -47,7 +47,7 @@ groups:
     players:
 
   mod:
-    prefix: "&9[Mod]"
+    prefix: "&5[Mod]"
     permissions:
       - "kick"
       - "teleport"
@@ -57,23 +57,28 @@ groups:
     players:
 
   soporte:
-    prefix: "&b[Soporte]"
+    prefix: "&a[Soporte]"
     permissions:
       - "banshee"
       - "teleport"
     players:
 
   youtuber_streamer:
-    prefix: "&5[Youtuber/Streamer]"
+    prefix: "&1[Youtuber/Streamer]"
     permissions: []
     players:
 
   vip:
-    prefix: "&6[VIP]"
+    prefix: "&d[VIP]"
+    permissions: []
+    players:
+
+  nitro:
+    prefix: "&7[Nitro Booster]"
     permissions: []
     players:
 
   default:
-    prefix: "&7[Warrior]"
+    prefix: "&b[Warrior]"
     permissions: []
     players:

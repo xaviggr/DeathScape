@@ -1,5 +1,6 @@
 package dc;
 
+import dc.Business.controllers.PlayerController;
 import dc.Business.groups.GroupData;
 import dc.Business.groups.Permission;
 import dc.Business.inventory.ReportInventory;
@@ -31,13 +32,15 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
     private static final String INVALID_COMMAND_MESSAGE = "Comando invalido! Escribe /deathscape help para la lista de comandos!";
 
     private final DeathScape plugin;
+    private final PlayerController playerController;
     private final ReportInventory reportInventory;
     private final ReportsInventory reportsInventory;
 
-    public DeathScapeCommand(DeathScape plugin, ReportInventory reportInventory, ReportsInventory reportsInventory) {
+    public DeathScapeCommand(DeathScape plugin, ReportInventory reportInventory, ReportsInventory reportsInventory, PlayerController playerController) {
         this.plugin = plugin;
         this.reportInventory = reportInventory;
         this.reportsInventory = reportsInventory;
+        this.playerController = playerController;
     }
 
     @Override
@@ -52,7 +55,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
                     List<String> groupPermissions = groupData.getPermissions().stream()
                             .map(Permission::toString)
                             .toList();
-                    if (groupPermissions.contains("grupo")) {
+                    if (groupPermissions.contains("group")) {
                         options.add("añadirUsuarioAGrupo");
                         options.add("quitarUsuarioDeGrupo");
                     }
@@ -68,11 +71,14 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
                         options.add("reportes");
                     }
                     if (groupPermissions.contains("banshee")) {
-                        options.add("añadirBannedWord");
-                        options.add("quitarBannedWord");
+                        options.add("banshee");
                     }
                     if (groupPermissions.contains("days")) {
                         options.add("setdia");
+                    }
+                    if (groupPermissions.contains("chat")) {
+                        options.add("añadirbannedword");
+                        options.add("quitarbannedword");
                     }
                 }
             }
@@ -131,11 +137,18 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
                     break;
                 case "banshee":
                     if (group.getPermissions().contains(Permission.BANSHEE)) {
-                        createBanshee(player);
+                        if (playerController.isBansheeActive(player)) {
+                            playerController.deactivateBanshee(player);
+                            Message.enviarMensajeColorido(player, "Banshee desactivado.", ChatColor.GREEN);
+                        } else {
+                            playerController.activateBanshee(player);
+                            Message.enviarMensajeColorido(player, "Banshee activado.", ChatColor.GREEN);
+                        }
                     } else {
                         sendNoPermissionMessage(player);
                     }
                     break;
+
                 case "discord":
                     showDiscord(player);
                     break;
@@ -202,33 +215,6 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
             return false;
         }
         return true;
-    }
-
-    private void createBanshee(Player player) {
-        // Determina el radio de destrucción alrededor del jugador (por ejemplo, 5 bloques)
-        int radius = 5;
-
-        // Obtiene la ubicación del jugador
-        int centerX = player.getLocation().getBlockX();
-        int centerY = player.getLocation().getBlockY();
-        int centerZ = player.getLocation().getBlockZ();
-
-        // Itera sobre un área alrededor del jugador para colocar TNT y activarlo
-        for (int x = -radius; x <= radius; x++) {
-            for (int y = -radius; y <= radius; y++) {
-                for (int z = -radius; z <= radius; z++) {
-                    Block block = player.getWorld().getBlockAt(centerX + x, centerY + y, centerZ + z);
-
-                    if (block.getType() != Material.AIR) {
-                        block.setType(Material.TNT);
-
-                        // Generar la TNT activada (primed) y hacer que explote inmediatamente
-                        TNTPrimed tnt = block.getWorld().spawn(block.getLocation(), TNTPrimed.class);
-                        tnt.setFuseTicks(6);  // Esto hace que la TNT explote inmediatamente
-                    }
-                }
-            }
-        }
     }
 
     private void showHelp(Player player) {
