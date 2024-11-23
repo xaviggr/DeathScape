@@ -1,7 +1,9 @@
 package dc.Business.player;
 
+import dc.Business.controllers.PlayerController;
 import dc.DeathScape;
-import dc.Persistence.player.PlayerData;
+import dc.Persistence.config.MainConfigManager;
+import dc.Persistence.groups.GroupDatabase;
 import dc.Persistence.player.PlayerDatabase;
 import dc.utils.Info;
 import org.bukkit.Bukkit;
@@ -17,27 +19,18 @@ import java.util.Objects;
 public class PlayerTabList {
 
     private final DeathScape plugin;
+    private final PlayerController playerController;
     private final Map<Player, Integer> playerIndices = new HashMap<>();
     private int colorIndex = 0;
 
-    public PlayerTabList(DeathScape plugin) {
+    public PlayerTabList(DeathScape plugin, PlayerController playerController) {
         this.plugin = plugin;
+        this.playerController = playerController;
     }
 
     private final ChatColor[] colors = {
             ChatColor.YELLOW, ChatColor.GOLD
     };
-
-    private String getRank(Player player) {
-        // Aquí podrías implementar tu lógica para obtener el rango del jugador
-        if (player.hasPermission("admin")) {
-            return ChatColor.DARK_RED + "[ADMIN]";
-        } else if (player.hasPermission("mod")) {
-            return ChatColor.BLUE + "[MOD]";
-        } else {
-            return ChatColor.GREEN + "[JUGADOR]";
-        }
-    }
 
     public void startAnimation(Player player) {
         playerIndices.put(player, 1); // Inicializa el índice para el jugador
@@ -66,7 +59,7 @@ public class PlayerTabList {
 
         int health = (int) player.getHealth();
         player.setPlayerListName(
-                        getRank(player) + "] " +
+                        ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(GroupDatabase.getPrefixFromGroup(playerController.getGroupFromPlayer(player)))) +
                         ChatColor.WHITE + player.getName() +
                         ChatColor.RED + " " + health + "❤" +
                         ChatColor.YELLOW + " " + playerData.getPoints() + "⦿");
@@ -74,7 +67,7 @@ public class PlayerTabList {
     }
 
     private String createAnimatedHeader(Player player) {
-        String welcomeMessage = plugin.getMainConfigManager().getWelcomeMessage();
+        String welcomeMessage = MainConfigManager.getInstance().getWelcomeMessage();
 
         // Construir el título y las partes sin animación
         String staticHeader = ChatColor.DARK_AQUA + "=== DEATHSCAPE 4: LOST CHAPTER ===\n" +

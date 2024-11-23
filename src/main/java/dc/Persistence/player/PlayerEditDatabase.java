@@ -1,6 +1,12 @@
 package dc.Persistence.player;
 
+import dc.Business.groups.GroupData;
+import dc.Business.player.PlayerData;
+import dc.Persistence.groups.GroupDatabase;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+
+import java.util.Objects;
 
 public class PlayerEditDatabase {
 
@@ -82,5 +88,32 @@ public class PlayerEditDatabase {
             playerdata.setBantime("0");
             PlayerDatabase.addPlayerDataToDatabase (playerdata);
         }
+    }
+
+    public static boolean addPlayerToGroup(String player, String group) {
+        GroupData groupData = GroupDatabase.getGroupData(group.toLowerCase());
+        Bukkit.getConsoleSender().sendMessage("GroupData: " + groupData);
+        if (groupData == null) {
+            return false;
+        }
+        if (groupData.getPlayers().contains(player)) {
+            return false;
+        }
+        removePlayerFromGroup(player);
+        groupData.addPlayer(player);
+        GroupDatabase.addGroupData(groupData);
+        PlayerDatabase.setPlayerGroup(player, group);
+        return true;
+    }
+
+    public static boolean removePlayerFromGroup(String player) {
+        GroupData groupData = GroupDatabase.getGroupData(Objects.requireNonNull(PlayerDatabase.getPlayerDataFromDatabase(player)).getGroup());
+        assert groupData != null;
+        if (!groupData.getPlayers().contains(player)) {
+            return false;
+        }
+        groupData.removePlayer(player);
+        GroupDatabase.addGroupData(groupData);
+        return true;
     }
 }

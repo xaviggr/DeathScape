@@ -1,4 +1,4 @@
-package dc.Persistence.player;
+package dc.Business.player;
 
 import com.google.gson.Gson;
 
@@ -19,6 +19,7 @@ public class PlayerData {
     private String bantime;
 
     private String coords;
+    private String group;
 
     public String getBanDate() {
         return banDate;
@@ -88,7 +89,15 @@ public class PlayerData {
         this.points = points;
     }
 
-    public PlayerData(String name, boolean isDead, int deaths, String hostAddress, String timePlayed, UUID uniqueId, String banDate, String bantime, String coords, int points) {
+    public String getGroup() {
+        return group;
+    }
+
+    public void setGroup(String group) {
+        this.group = group;
+    }
+
+    public PlayerData(String name, boolean isDead, int deaths, String hostAddress, String timePlayed, UUID uniqueId, String banDate, String bantime, String coords, int points, String group) {
         this.name = name;
         this.isDead = isDead;
         this.deaths = deaths;
@@ -99,6 +108,8 @@ public class PlayerData {
         this.bantime= bantime;
         this.coords = coords;
         this.points = points;
+        this.group = group;
+
     }
 
     public void setBanTime() {
@@ -177,5 +188,10 @@ public class PlayerData {
             }
 
             banDate = fDay + "/" + fMonth + "/" + fYear;
+    }
+
+    @Override
+    public String toString() {
+        return new Gson().toJson(this);
     }
 }
