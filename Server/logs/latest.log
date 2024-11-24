@@ -1,222 +1,200 @@
-[18:12:42] [ServerMain/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
-[18:12:43] [ServerMain/INFO]: Loaded 1174 recipes
-[18:12:43] [ServerMain/INFO]: Loaded 1271 advancements
-[18:12:43] [Server thread/INFO]: Starting minecraft server version 1.20.4
-[18:12:43] [Server thread/INFO]: Loading properties
-[18:12:43] [Server thread/INFO]: This server is running Purpur version git-Purpur-2176 (MC: 1.20.4) (Implementing API version 1.20.4-R0.1-SNAPSHOT) (Git: 6b1ee98 on HEAD)
-[18:12:44] [Server thread/INFO]: Server Ping Player Sample Count: 12
-[18:12:44] [Server thread/INFO]: Using 4 threads for Netty based IO
-[18:12:44] [Server thread/INFO]: [ChunkTaskScheduler] Chunk system is using 1 I/O threads, 5 worker threads, and gen parallelism of 5 threads
-[18:12:44] [Server thread/INFO]: [Pufferfish] Max SIMD vector size on this system is 256 bits (int)
-[18:12:44] [Server thread/INFO]: [Pufferfish] Max SIMD vector size on this system is 256 bits (float)
-[18:12:44] [Server thread/INFO]: [Pufferfish] SIMD operations detected as functional. Will replace some operations with faster versions.
-[18:12:44] [Server thread/INFO]: Default game type: SURVIVAL
-[18:12:44] [Server thread/INFO]: Generating keypair
-[18:12:44] [Server thread/INFO]: Starting Minecraft server on 192.168.1.134:25565
-[18:12:44] [Server thread/INFO]: Using default channel type
-[18:12:44] [Server thread/INFO]: Paper: Using Java compression from Velocity.
-[18:12:44] [Server thread/INFO]: Paper: Using Java cipher from Velocity.
-[18:12:44] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loading 4 libraries... please wait
-[18:12:44] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-api\4.16.0\adventure-api-4.16.0.jar
-[18:12:44] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-key\4.16.0\adventure-key-4.16.0.jar
-[18:12:44] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\examination-api\1.3.0\examination-api-1.3.0.jar
-[18:12:44] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\examination-string\1.3.0\examination-string-1.3.0.jar
-[18:12:44] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\org\jetbrains\annotations\24.1.0\annotations-24.1.0.jar
-[18:12:44] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-platform-bukkit\4.3.2\adventure-platform-bukkit-4.3.2.jar
-[18:12:44] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-platform-api\4.3.2\adventure-platform-api-4.3.2.jar
-[18:12:44] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-text-serializer-bungeecord\4.3.2\adventure-text-serializer-bungeecord-4.3.2.jar
-[18:12:44] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-text-serializer-legacy\4.13.1\adventure-text-serializer-legacy-4.13.1.jar
-[18:12:44] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-nbt\4.13.1\adventure-nbt-4.13.1.jar
-[18:12:44] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-text-serializer-gson-legacy-impl\4.13.1\adventure-text-serializer-gson-legacy-impl-4.13.1.jar
-[18:12:44] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-platform-facet\4.3.2\adventure-platform-facet-4.3.2.jar
-[18:12:44] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-platform-viaversion\4.3.2\adventure-platform-viaversion-4.3.2.jar
-[18:12:45] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-text-minimessage\4.16.0\adventure-text-minimessage-4.16.0.jar
-[18:12:45] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-text-serializer-gson\4.16.0\adventure-text-serializer-gson-4.16.0.jar
-[18:12:45] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-text-serializer-json\4.16.0\adventure-text-serializer-json-4.16.0.jar
-[18:12:45] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\option\1.0.0\option-1.0.0.jar
-[18:12:45] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\com\google\code\gson\gson\2.8.0\gson-2.8.0.jar
-[18:12:45] [Server thread/INFO]: [spark] Loading server plugin spark v1.10.119
-[18:12:45] [Server thread/INFO]: [WorldEdit] Loading server plugin WorldEdit v7.3.0+6678-55745ad
-[18:12:45] [Server thread/INFO]: Got request to register class com.sk89q.worldedit.bukkit.BukkitServerInterface with WorldEdit [com.sk89q.worldedit.extension.platform.PlatformManager@6fdfd2f1]
-[18:12:45] [Server thread/INFO]: [SkinsRestorer] Loading server plugin SkinsRestorer v15.4.4
-[18:12:45] [Server thread/INFO]: [MythicMobs] Loading server plugin MythicMobs v5.7.2-${CI_COMMIT_SHORT_SHA}
-[18:12:45] [Server thread/INFO]: [LumineUtils] (io.lumine.mythic.bukkit.utils.) is bound to plugin MythicMobs - io.lumine.mythic.bukkit.MythicBukkit
-[18:12:45] [Server thread/INFO]: [MythicMobs] §x§f§f§0§0§0§0M§x§f§f§6§6§0§0y§x§f§f§c§c§0§0t§x§c§b§f§f§0§0h§x§6§5§f§f§0§0i§x§0§0§f§f§0§0c§x§0§0§f§f§6§6 §x§0§0§f§f§c§bE§x§0§0§c§b§f§fn§x§0§0§6§5§f§fa§x§0§0§0§0§f§fb§x§6§6§0§0§f§fl§x§c§c§0§0§f§fe§x§f§f§0§0§c§cd§x§f§f§0§0§6§6!
-[18:12:45] [Server thread/INFO]: [DeathScape] Loading server plugin DeathScape v1.0.0
-[18:12:45] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
-[18:12:45] [Server thread/INFO]: [WorldEdit] Enabling WorldEdit v7.3.0+6678-55745ad
-[18:12:45] [Server thread/INFO]: Registering commands with com.sk89q.worldedit.bukkit.BukkitServerInterface
-[18:12:45] [Server thread/INFO]: WEPIF: Using the Bukkit Permissions API.
-[18:12:45] [Server thread/INFO]: Using com.sk89q.worldedit.bukkit.adapter.impl.v1_20_R3.PaperweightAdapter as the Bukkit adapter
-[18:12:46] [Server thread/INFO]: [SkinsRestorer] Enabling SkinsRestorer v15.4.4
-[18:12:46] [Server thread/WARN]: [SkinsRestorer] You must agree to the rules at 'commands.perSkinPermissionsConsent' in the config to use per skin permissions.
-[18:12:47] [Server thread/INFO]: [SkinsRestorer] Running on Minecraft 1.20.4.
-[18:12:47] [Server thread/INFO]: [SkinsRestorer] Using paper join listener!
-[18:12:47] [Server thread/INFO]: Preparing level "world"
-[18:12:47] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
-[18:12:47] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +==================+
-[18:12:47] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |   SkinsRestorer  |
-[18:12:47] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |------------------|
-[18:12:47] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |  Standalone Mode |
-[18:12:47] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +==================+
-[18:12:47] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
-[18:12:47] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Version: 15.4.4
-[18:12:47] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Commit: dc501c7
-[18:12:47] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     This is the latest version!
-[18:12:47] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
-[18:12:47] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Do you have issues? Read our troubleshooting guide: https://skinsrestorer.net/docs/troubleshooting
-[18:12:47] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Want to support SkinsRestorer? Consider donating: https://skinsrestorer.net/donate
-[18:12:48] [Server thread/INFO]: Preparing start region for dimension minecraft:overworld
-[18:12:48] [Server thread/INFO]: Time elapsed: 292 ms
-[18:12:48] [Server thread/INFO]: Preparing start region for dimension minecraft:the_end
-[18:12:49] [Server thread/INFO]: Time elapsed: 984 ms
-[18:12:49] [Server thread/INFO]: [spark] Enabling spark v1.10.119
-[18:12:49] [Server thread/INFO]: [spark] Using Paper ServerTickStartEvent for tick monitoring
-[18:12:49] [Server thread/INFO]: [spark] Starting background profiler...
-[18:12:49] [Server thread/INFO]: [spark] The async-profiler engine is not supported for your os/arch (windows11/amd64), so the built-in Java engine will be used instead.
-[18:12:49] [Server thread/INFO]: [MythicMobs] Enabling MythicMobs v5.7.2-${CI_COMMIT_SHORT_SHA}
-[18:12:49] [Server thread/INFO]: [MythicMobs] Loading MythicMobs for Paper (MC: 1.20.4)...
-[18:12:49] [Server thread/INFO]: [MythicMobs] The server is running Paper; enabled Paper exclusive functionality
-[18:12:50] [Server thread/INFO]: [MythicMobs] Base directory C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\data
-[18:12:50] [Server thread/INFO]: [MythicMobs] Module directory C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\data\worlds
-[18:12:51] [Server thread/INFO]: [MythicMobs] Loading Packs...
-[18:12:52] [Server thread/INFO]: [MythicMobs] Loading Items...
-[18:12:52] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item botas
-[18:12:52] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\botas.yml
-[18:12:52] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
-[18:12:52] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item botas2
-[18:12:52] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\botas2.yml
-[18:12:52] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
-[18:12:52] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item botas3
-[18:12:52] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\botas3.yml
-[18:12:52] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
-[18:12:52] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item casco
-[18:12:52] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\casco.yml
-[18:12:52] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
-[18:12:52] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item casco2
-[18:12:52] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\casco2.yml
-[18:12:52] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
-[18:12:52] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item casco3
-[18:12:52] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\casco3.yml
-[18:12:52] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
-[18:12:52] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item pechera
-[18:12:52] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\pechera.yml
-[18:12:52] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
-[18:12:52] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item pechera2
-[18:12:52] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\pechera2.yml
-[18:12:52] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
-[18:12:52] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item pechera3
-[18:12:52] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\pechera3.yml
-[18:12:52] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
-[18:12:52] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item perneras
-[18:12:52] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\perneras.yml
-[18:12:52] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
-[18:12:52] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item perneras2
-[18:12:52] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\perneras2.yml
-[18:12:52] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
-[18:12:52] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item perneras3
-[18:12:52] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\perneras3.yml
-[18:12:52] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
-[18:12:52] [Server thread/INFO]: [MythicMobs] Loading Item Groups...
-[18:12:52] [Server thread/INFO]: [MythicMobs] Loading Skills...
-[18:12:52] [Server thread/INFO]: [MythicMobs] Loading Drop Tables...
-[18:12:52] [Server thread/INFO]: [MythicMobs] Loading Random Spawns...
-[18:12:52] [Server thread/INFO]: [MythicMobs] Loading Spawn Blocks...
-[18:12:52] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Mechanic metaskill
-[18:12:52] [Server thread/WARN]: [MythicMobs] --| Mob: Dif2Bruja | File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\mobs\ExampleMobs.yml
-[18:12:52] [Server thread/WARN]: [MythicMobs] --| Error Message: Could not find MetaSkill SummonMurciélagos
-[18:12:52] [Server thread/WARN]: [MythicMobs] --| Mechanic Line: skill{s=SummonMurciélagos}
-[18:12:52] [Server thread/INFO]: [MythicMobs] ✓ Loaded 70 mobs.
-[18:12:52] [Server thread/INFO]: [MythicMobs] ✓ Loaded 6 vanilla mob overrides.
-[18:12:52] [Server thread/INFO]: [MythicMobs] ✓ Loaded 0 mob stacks.
-[18:12:52] [Server thread/INFO]: [MythicMobs] ✓ Loaded 24 skills.
-[18:12:52] [Server thread/INFO]: [MythicMobs] ✓ Loaded 0 random spawns.
-[18:12:52] [Server thread/INFO]: [MythicMobs] ✓ Loaded 29 mythic items.
-[18:12:52] [Server thread/INFO]: [MythicMobs] ✓ Loaded 4 drop tables.
-[18:12:52] [Server thread/INFO]: [MythicMobs] ✓ Loaded 0 mob spawners.
-[18:12:52] [Server thread/INFO]: [MythicMobs] MythicMobs configuration file loaded successfully.
-[18:12:52] [Server thread/INFO]: [MythicMobs] Started up bStats Metrics
-[18:12:52] [Server thread/INFO]: [MythicMobs] ✓ MythicMobs v5.7.2 ( build ${CI_COMMIT_SHORT_SHA} ) has been successfully loaded!
-[18:12:52] [Server thread/INFO]: [DeathScape] Enabling DeathScape v1.0.0
-[18:12:52] [Server thread/INFO]: DeathScape has been enabled!
-[18:12:52] [Server thread/INFO]: Running delayed init tasks
-[18:12:52] [Server thread/INFO]: Done (9.056s)! For help, type "help"
-[18:12:55] [User Authenticator #0/INFO]: UUID of player xaviggr is cb185b4b-cea7-43bb-a340-571c9bb6c3a5
-[18:12:55] [Server thread/INFO]: xaviggr joined the game
-[18:12:55] [Server thread/INFO]: xaviggr[IP hidden] logged in with entity id 1806 at ([world]4073.851141684605, 76.0625, -545.9787016234026)
-[18:13:08] [Server thread/INFO]: xaviggr issued server command: /ds dia
-[18:13:11] [User Authenticator #0/INFO]: UUID of player 4gymo is 19cef73f-c4d2-46ec-8481-81ea7417e2f3
-[18:13:11] [Server thread/INFO]: 4gymo lost connection: You are dead, please contact an administrator.
-[18:13:11] [Server thread/INFO]: 4gymo left the game
-[18:13:23] [User Authenticator #0/INFO]: UUID of player 4gymo is 19cef73f-c4d2-46ec-8481-81ea7417e2f3
-[18:13:23] [Server thread/INFO]: 4gymo lost connection: You are dead, please contact an administrator.
-[18:13:23] [Server thread/INFO]: 4gymo left the game
-[18:13:36] [User Authenticator #0/INFO]: UUID of player 4gymo is 19cef73f-c4d2-46ec-8481-81ea7417e2f3
-[18:13:36] [Server thread/INFO]: 4gymo lost connection: Your IP has changed, please contact an administrator.
-[18:13:36] [Server thread/INFO]: 4gymo left the game
-[18:13:47] [User Authenticator #0/INFO]: UUID of player 4gymo is 19cef73f-c4d2-46ec-8481-81ea7417e2f3
-[18:13:47] [Server thread/INFO]: 4gymo lost connection: Your IP has changed, please contact an administrator.
-[18:13:47] [Server thread/INFO]: 4gymo left the game
-[18:13:59] [User Authenticator #0/INFO]: UUID of player 4gymo is 19cef73f-c4d2-46ec-8481-81ea7417e2f3
-[18:14:00] [Server thread/INFO]: 4gymo lost connection: Your IP has changed, please contact an administrator.
-[18:14:00] [Server thread/INFO]: 4gymo left the game
-[18:14:17] [User Authenticator #0/INFO]: UUID of player 4gymo is 19cef73f-c4d2-46ec-8481-81ea7417e2f3
-[18:14:18] [Server thread/INFO]: 4gymo joined the game
-[18:14:18] [Server thread/INFO]: 4gymo[IP hidden] logged in with entity id 1881 at ([world]4089.3451134227043, 83.50108666925732, -547.7965459738391)
-[18:14:23] [Server thread/INFO]: 4gymo issued server command: /ds tp xaviggr
-[18:14:27] [Server thread/INFO]: xaviggr issued server command: /ds tp 4gymo xaviggr
-[18:14:36] [Server thread/INFO]: xaviggr issued server command: /ds añadirUsuarioAGrupo 4gymo admin
-[18:14:40] [Server thread/INFO]: 4gymo issued server command: /ds tp xaviggr
-[18:14:41] [Server thread/INFO]: 4gymo issued server command: /ds tp xaviggr
-[18:14:42] [Server thread/INFO]: 4gymo issued server command: /ds tp xaviggr
-[18:14:42] [Server thread/INFO]: 4gymo issued server command: /ds tp xaviggrt
-[18:14:47] [Server thread/INFO]: 4gymo issued server command: /ds banshee
-[18:14:49] [Server thread/INFO]: 4gymo issued server command: /ds banshee
-[18:15:24] [Server thread/WARN]: Can't keep up! Is the server overloaded? Running 2509ms or 50 ticks behind
-[18:16:01] [Server thread/WARN]: Can't keep up! Is the server overloaded? Running 2524ms or 50 ticks behind
-[18:16:35] [Server thread/INFO]: 4gymo lost connection: Disconnected
-[18:16:35] [Server thread/INFO]: 4gymo left the game
-[18:16:38] [Server thread/INFO]: Stopping the server
-[18:16:38] [Server thread/INFO]: Stopping server
-[18:16:38] [Server thread/INFO]: [DeathScape] Disabling DeathScape v1.0.0
-[18:16:38] [Server thread/INFO]: DeathScape has been disabled!
-[18:16:38] [Server thread/INFO]: [MythicMobs] Disabling MythicMobs v5.7.2-${CI_COMMIT_SHORT_SHA}
-[18:16:38] [Server thread/INFO]: [MythicMobs] ------------------------------------------------------------
-[18:16:38] [Server thread/INFO]: [MythicMobs] - 
-[18:16:38] [Server thread/INFO]: [MythicMobs] - Unloading Mythic...
-[18:16:38] [Server thread/INFO]: [MythicMobs] - 
-[18:16:38] [Server thread/INFO]: [MythicMobs] ------------------------------------------------------------
-[18:16:38] [Server thread/INFO]: [MythicMobs] - Spawners saved and unloaded...
-[18:16:38] [Server thread/INFO]: [MythicMobs] - Mobs saved and unloaded...
-[18:16:38] [Server thread/INFO]: [MythicMobs] Saving plugin data...
-[18:16:38] [Server thread/INFO]: [MythicMobs] ✓Saving Finished
-[18:16:38] [Server thread/INFO]: [MythicMobs] - Variables saved...
-[18:16:38] [Server thread/INFO]: [MythicMobs] - All active settings have been saved!
-[18:16:38] [Server thread/INFO]: [MythicMobs] - Mythic has been unloaded!
-[18:16:38] [Server thread/INFO]: [MythicMobs] ------------------------------------------------------------
-[18:16:38] [Server thread/INFO]: [MythicMobs] Saving plugin data...
-[18:16:38] [Server thread/INFO]: [MythicMobs] ✓Saving Finished
-[18:16:38] [Server thread/INFO]: [SkinsRestorer] Disabling SkinsRestorer v15.4.4
-[18:16:38] [Server thread/INFO]: [WorldEdit] Disabling WorldEdit v7.3.0+6678-55745ad
-[18:16:38] [Server thread/INFO]: Unregistering com.sk89q.worldedit.bukkit.BukkitServerInterface from WorldEdit
-[18:16:38] [Server thread/INFO]: [spark] Disabling spark v1.10.119
-[18:16:38] [Server thread/INFO]: Saving players
-[18:16:38] [Server thread/INFO]: xaviggr lost connection: Server closed
-[18:16:38] [Server thread/INFO]: xaviggr left the game
-[18:16:39] [Server thread/INFO]: Saving worlds
-[18:16:39] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
-[18:16:39] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world'
-[18:16:39] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world'
-[18:16:39] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world'
-[18:16:40] [Server thread/INFO]: [ChunkHolderManager] Saved 752 block chunks, 752 entity chunks, 0 poi chunks in world 'world' in 1,34s
-[18:16:40] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
-[18:16:40] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_the_end]'/minecraft:the_end
-[18:16:40] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_the_end'
-[18:16:40] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_the_end'
-[18:16:40] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_the_end'
-[18:16:40] [Server thread/INFO]: [ChunkHolderManager] Saved 529 block chunks, 529 entity chunks, 0 poi chunks in world 'world_the_end' in 0,29s
-[18:16:40] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
-[18:16:40] [Server thread/INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
-[18:16:40] [Server thread/INFO]: Flushing Chunk IO
-[18:16:40] [Server thread/INFO]: Closing Thread Pool
-[18:16:40] [Server thread/INFO]: Closing Server
+[18:41:25] [ServerMain/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
+[18:41:26] [ServerMain/INFO]: Loaded 1174 recipes
+[18:41:27] [ServerMain/INFO]: Loaded 1271 advancements
+[18:41:27] [Server thread/INFO]: Starting minecraft server version 1.20.4
+[18:41:27] [Server thread/INFO]: Loading properties
+[18:41:27] [Server thread/INFO]: This server is running Purpur version git-Purpur-2176 (MC: 1.20.4) (Implementing API version 1.20.4-R0.1-SNAPSHOT) (Git: 6b1ee98 on HEAD)
+[18:41:27] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[18:41:27] [Server thread/INFO]: Using 4 threads for Netty based IO
+[18:41:28] [Server thread/INFO]: [ChunkTaskScheduler] Chunk system is using 1 I/O threads, 5 worker threads, and gen parallelism of 5 threads
+[18:41:28] [Server thread/INFO]: [Pufferfish] Max SIMD vector size on this system is 256 bits (int)
+[18:41:28] [Server thread/INFO]: [Pufferfish] Max SIMD vector size on this system is 256 bits (float)
+[18:41:28] [Server thread/INFO]: [Pufferfish] SIMD operations detected as functional. Will replace some operations with faster versions.
+[18:41:28] [Server thread/INFO]: Default game type: SURVIVAL
+[18:41:28] [Server thread/INFO]: Generating keypair
+[18:41:28] [Server thread/INFO]: Starting Minecraft server on 192.168.1.134:25565
+[18:41:28] [Server thread/INFO]: Using default channel type
+[18:41:28] [Server thread/INFO]: Paper: Using Java compression from Velocity.
+[18:41:28] [Server thread/INFO]: Paper: Using Java cipher from Velocity.
+[18:41:28] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loading 4 libraries... please wait
+[18:41:29] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-api\4.16.0\adventure-api-4.16.0.jar
+[18:41:29] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-key\4.16.0\adventure-key-4.16.0.jar
+[18:41:29] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\examination-api\1.3.0\examination-api-1.3.0.jar
+[18:41:29] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\examination-string\1.3.0\examination-string-1.3.0.jar
+[18:41:29] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\org\jetbrains\annotations\24.1.0\annotations-24.1.0.jar
+[18:41:29] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-platform-bukkit\4.3.2\adventure-platform-bukkit-4.3.2.jar
+[18:41:29] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-platform-api\4.3.2\adventure-platform-api-4.3.2.jar
+[18:41:29] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-text-serializer-bungeecord\4.3.2\adventure-text-serializer-bungeecord-4.3.2.jar
+[18:41:29] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-text-serializer-legacy\4.13.1\adventure-text-serializer-legacy-4.13.1.jar
+[18:41:29] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-nbt\4.13.1\adventure-nbt-4.13.1.jar
+[18:41:29] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-text-serializer-gson-legacy-impl\4.13.1\adventure-text-serializer-gson-legacy-impl-4.13.1.jar
+[18:41:29] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-platform-facet\4.3.2\adventure-platform-facet-4.3.2.jar
+[18:41:29] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-platform-viaversion\4.3.2\adventure-platform-viaversion-4.3.2.jar
+[18:41:29] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-text-minimessage\4.16.0\adventure-text-minimessage-4.16.0.jar
+[18:41:29] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-text-serializer-gson\4.16.0\adventure-text-serializer-gson-4.16.0.jar
+[18:41:29] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\adventure-text-serializer-json\4.16.0\adventure-text-serializer-json-4.16.0.jar
+[18:41:29] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\net\kyori\option\1.0.0\option-1.0.0.jar
+[18:41:29] [Server thread/INFO]: [SpigotLibraryLoader] [MythicMobs] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\com\google\code\gson\gson\2.8.0\gson-2.8.0.jar
+[18:41:29] [Server thread/INFO]: [spark] Loading server plugin spark v1.10.119
+[18:41:29] [Server thread/INFO]: [WorldEdit] Loading server plugin WorldEdit v7.3.0+6678-55745ad
+[18:41:29] [Server thread/INFO]: Got request to register class com.sk89q.worldedit.bukkit.BukkitServerInterface with WorldEdit [com.sk89q.worldedit.extension.platform.PlatformManager@2232bc35]
+[18:41:29] [Server thread/INFO]: [SkinsRestorer] Loading server plugin SkinsRestorer v15.4.4
+[18:41:29] [Server thread/INFO]: [MythicMobs] Loading server plugin MythicMobs v5.7.2-${CI_COMMIT_SHORT_SHA}
+[18:41:29] [Server thread/INFO]: [LumineUtils] (io.lumine.mythic.bukkit.utils.) is bound to plugin MythicMobs - io.lumine.mythic.bukkit.MythicBukkit
+[18:41:29] [Server thread/INFO]: [MythicMobs] §x§f§f§0§0§0§0M§x§f§f§6§6§0§0y§x§f§f§c§c§0§0t§x§c§b§f§f§0§0h§x§6§5§f§f§0§0i§x§0§0§f§f§0§0c§x§0§0§f§f§6§6 §x§0§0§f§f§c§bE§x§0§0§c§b§f§fn§x§0§0§6§5§f§fa§x§0§0§0§0§f§fb§x§6§6§0§0§f§fl§x§c§c§0§0§f§fe§x§f§f§0§0§c§cd§x§f§f§0§0§6§6!
+[18:41:29] [Server thread/INFO]: [DeathScape] Loading server plugin DeathScape v1.0.0
+[18:41:29] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[18:41:29] [Server thread/INFO]: [WorldEdit] Enabling WorldEdit v7.3.0+6678-55745ad
+[18:41:29] [Server thread/INFO]: Registering commands with com.sk89q.worldedit.bukkit.BukkitServerInterface
+[18:41:29] [Server thread/INFO]: WEPIF: Using the Bukkit Permissions API.
+[18:41:30] [Server thread/INFO]: Using com.sk89q.worldedit.bukkit.adapter.impl.v1_20_R3.PaperweightAdapter as the Bukkit adapter
+[18:41:31] [Server thread/INFO]: [SkinsRestorer] Enabling SkinsRestorer v15.4.4
+[18:41:31] [Server thread/WARN]: [SkinsRestorer] You must agree to the rules at 'commands.perSkinPermissionsConsent' in the config to use per skin permissions.
+[18:41:32] [Server thread/INFO]: [SkinsRestorer] Running on Minecraft 1.20.4.
+[18:41:32] [Server thread/INFO]: [SkinsRestorer] Using paper join listener!
+[18:41:32] [Server thread/INFO]: Preparing level "world"
+[18:41:32] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[18:41:32] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +==================+
+[18:41:32] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |   SkinsRestorer  |
+[18:41:32] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |------------------|
+[18:41:32] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |  Standalone Mode |
+[18:41:32] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +==================+
+[18:41:32] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[18:41:32] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Version: 15.4.4
+[18:41:32] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Commit: dc501c7
+[18:41:32] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     This is the latest version!
+[18:41:32] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[18:41:32] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Do you have issues? Read our troubleshooting guide: https://skinsrestorer.net/docs/troubleshooting
+[18:41:32] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Want to support SkinsRestorer? Consider donating: https://skinsrestorer.net/donate
+[18:41:33] [Server thread/INFO]: Preparing start region for dimension minecraft:overworld
+[18:41:33] [Server thread/INFO]: Time elapsed: 217 ms
+[18:41:33] [Server thread/INFO]: Preparing start region for dimension minecraft:the_end
+[18:41:33] [Server thread/INFO]: Time elapsed: 45 ms
+[18:41:33] [Server thread/INFO]: [spark] Enabling spark v1.10.119
+[18:41:34] [Server thread/INFO]: [spark] Using Paper ServerTickStartEvent for tick monitoring
+[18:41:34] [Server thread/INFO]: [spark] Starting background profiler...
+[18:41:34] [Server thread/INFO]: [spark] The async-profiler engine is not supported for your os/arch (windows11/amd64), so the built-in Java engine will be used instead.
+[18:41:35] [Server thread/INFO]: [MythicMobs] Enabling MythicMobs v5.7.2-${CI_COMMIT_SHORT_SHA}
+[18:41:35] [Server thread/INFO]: [MythicMobs] Loading MythicMobs for Paper (MC: 1.20.4)...
+[18:41:35] [Server thread/INFO]: [MythicMobs] The server is running Paper; enabled Paper exclusive functionality
+[18:41:37] [Server thread/INFO]: [MythicMobs] Base directory C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\data
+[18:41:37] [Server thread/INFO]: [MythicMobs] Module directory C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\data\worlds
+[18:41:39] [Server thread/INFO]: [MythicMobs] Loading Packs...
+[18:41:39] [Server thread/INFO]: [MythicMobs] Loading Items...
+[18:41:40] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item botas
+[18:41:40] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\botas.yml
+[18:41:40] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[18:41:40] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item botas2
+[18:41:40] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\botas2.yml
+[18:41:40] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[18:41:40] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item botas3
+[18:41:40] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\botas3.yml
+[18:41:40] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[18:41:40] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item casco
+[18:41:40] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\casco.yml
+[18:41:40] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[18:41:40] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item casco2
+[18:41:40] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\casco2.yml
+[18:41:40] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[18:41:40] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item casco3
+[18:41:40] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\casco3.yml
+[18:41:40] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[18:41:40] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item pechera
+[18:41:40] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\pechera.yml
+[18:41:40] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[18:41:40] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item pechera2
+[18:41:40] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\pechera2.yml
+[18:41:40] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[18:41:40] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item pechera3
+[18:41:40] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\pechera3.yml
+[18:41:40] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[18:41:40] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item perneras
+[18:41:40] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\perneras.yml
+[18:41:40] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[18:41:40] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item perneras2
+[18:41:40] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\perneras2.yml
+[18:41:40] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[18:41:40] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item perneras3
+[18:41:40] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\perneras3.yml
+[18:41:40] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[18:41:40] [Server thread/INFO]: [MythicMobs] Loading Item Groups...
+[18:41:40] [Server thread/INFO]: [MythicMobs] Loading Skills...
+[18:41:40] [Server thread/INFO]: [MythicMobs] Loading Drop Tables...
+[18:41:40] [Server thread/INFO]: [MythicMobs] Loading Random Spawns...
+[18:41:40] [Server thread/INFO]: [MythicMobs] Loading Spawn Blocks...
+[18:41:41] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Mechanic metaskill
+[18:41:41] [Server thread/WARN]: [MythicMobs] --| Mob: Dif2Bruja | File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\mobs\ExampleMobs.yml
+[18:41:41] [Server thread/WARN]: [MythicMobs] --| Error Message: Could not find MetaSkill SummonMurciélagos
+[18:41:41] [Server thread/WARN]: [MythicMobs] --| Mechanic Line: skill{s=SummonMurciélagos}
+[18:41:41] [Server thread/INFO]: [MythicMobs] ✓ Loaded 70 mobs.
+[18:41:41] [Server thread/INFO]: [MythicMobs] ✓ Loaded 6 vanilla mob overrides.
+[18:41:41] [Server thread/INFO]: [MythicMobs] ✓ Loaded 0 mob stacks.
+[18:41:41] [Server thread/INFO]: [MythicMobs] ✓ Loaded 24 skills.
+[18:41:41] [Server thread/INFO]: [MythicMobs] ✓ Loaded 0 random spawns.
+[18:41:41] [Server thread/INFO]: [MythicMobs] ✓ Loaded 29 mythic items.
+[18:41:41] [Server thread/INFO]: [MythicMobs] ✓ Loaded 4 drop tables.
+[18:41:41] [Server thread/INFO]: [MythicMobs] ✓ Loaded 0 mob spawners.
+[18:41:41] [Server thread/INFO]: [MythicMobs] MythicMobs configuration file loaded successfully.
+[18:41:41] [Server thread/INFO]: [MythicMobs] Started up bStats Metrics
+[18:41:41] [Server thread/INFO]: [MythicMobs] ✓ MythicMobs v5.7.2 ( build ${CI_COMMIT_SHORT_SHA} ) has been successfully loaded!
+[18:41:41] [Server thread/INFO]: [DeathScape] Enabling DeathScape v1.0.0
+[18:41:41] [Server thread/INFO]: DeathScape has been enabled!
+[18:41:41] [Server thread/INFO]: Running delayed init tasks
+[18:41:41] [Server thread/INFO]: Días del servidor actualizados automáticamente.
+[18:41:41] [Server thread/INFO]: Done (14.257s)! For help, type "help"
+[18:41:51] [User Authenticator #0/INFO]: UUID of player xaviggr is cb185b4b-cea7-43bb-a340-571c9bb6c3a5
+[18:41:51] [Server thread/INFO]: xaviggr joined the game
+[18:41:51] [Server thread/INFO]: xaviggr[IP hidden] logged in with entity id 1802 at ([world]4077.897982615644, 76.0625, -563.9974639046369)
+[18:42:11] [Server thread/INFO]: xaviggr issued server command: /difficulty hard
+[18:42:11] [Server thread/INFO]: [xaviggr: The difficulty has been set to Hard]
+[18:42:15] [Server thread/INFO]: xaviggr issued server command: /ds dia
+[18:42:20] [Server thread/INFO]: xaviggr issued server command: /ds setdia 1
+[18:42:24] [Server thread/INFO]: xaviggr issued server command: /ds dia
+[18:42:26] [Server thread/INFO]: xaviggr issued server command: /gamemode spectator
+[18:42:26] [Server thread/INFO]: [xaviggr: Set own game mode to Spectator Mode]
+[18:42:28] [Server thread/INFO]: xaviggr issued server command: /gamemode survival
+[18:42:28] [Server thread/INFO]: [xaviggr: Set own game mode to Survival Mode]
+[18:43:03] [Server thread/INFO]: Stopping the server
+[18:43:03] [Server thread/INFO]: Stopping server
+[18:43:03] [Server thread/INFO]: [DeathScape] Disabling DeathScape v1.0.0
+[18:43:03] [Server thread/INFO]: DeathScape has been disabled!
+[18:43:03] [Server thread/INFO]: [MythicMobs] Disabling MythicMobs v5.7.2-${CI_COMMIT_SHORT_SHA}
+[18:43:03] [Server thread/INFO]: [MythicMobs] ------------------------------------------------------------
+[18:43:03] [Server thread/INFO]: [MythicMobs] - 
+[18:43:03] [Server thread/INFO]: [MythicMobs] - Unloading Mythic...
+[18:43:03] [Server thread/INFO]: [MythicMobs] - 
+[18:43:03] [Server thread/INFO]: [MythicMobs] ------------------------------------------------------------
+[18:43:03] [Server thread/INFO]: [MythicMobs] - Spawners saved and unloaded...
+[18:43:03] [Server thread/INFO]: [MythicMobs] - Mobs saved and unloaded...
+[18:43:03] [Server thread/INFO]: [MythicMobs] Saving plugin data...
+[18:43:03] [Server thread/INFO]: [MythicMobs] ✓Saving Finished
+[18:43:03] [Server thread/INFO]: [MythicMobs] - Variables saved...
+[18:43:03] [Server thread/INFO]: [MythicMobs] - All active settings have been saved!
+[18:43:03] [Server thread/INFO]: [MythicMobs] - Mythic has been unloaded!
+[18:43:03] [Server thread/INFO]: [MythicMobs] ------------------------------------------------------------
+[18:43:03] [Server thread/INFO]: [MythicMobs] Saving plugin data...
+[18:43:03] [Server thread/INFO]: [MythicMobs] ✓Saving Finished
+[18:43:03] [Server thread/INFO]: [SkinsRestorer] Disabling SkinsRestorer v15.4.4
+[18:43:03] [Server thread/INFO]: [WorldEdit] Disabling WorldEdit v7.3.0+6678-55745ad
+[18:43:03] [Server thread/INFO]: Unregistering com.sk89q.worldedit.bukkit.BukkitServerInterface from WorldEdit
+[18:43:03] [Server thread/INFO]: [spark] Disabling spark v1.10.119
+[18:43:03] [Server thread/INFO]: Saving players
+[18:43:03] [Server thread/INFO]: xaviggr lost connection: Server closed
+[18:43:03] [Server thread/INFO]: xaviggr left the game
+[18:43:03] [Server thread/INFO]: Saving worlds
+[18:43:03] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[18:43:03] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world'
+[18:43:03] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world'
+[18:43:03] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world'
+[18:43:04] [Server thread/INFO]: [ChunkHolderManager] Saved 860 block chunks, 860 entity chunks, 0 poi chunks in world 'world' in 0,97s
+[18:43:04] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[18:43:04] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_the_end]'/minecraft:the_end
+[18:43:04] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_the_end'
+[18:43:04] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_the_end'
+[18:43:04] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_the_end'
+[18:43:04] [Server thread/INFO]: [ChunkHolderManager] Saved 529 block chunks, 529 entity chunks, 0 poi chunks in world 'world_the_end' in 0,07s
+[18:43:04] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[18:43:04] [Server thread/INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
+[18:43:04] [Server thread/INFO]: Flushing Chunk IO
+[18:43:04] [Server thread/INFO]: Closing Thread Pool
+[18:43:04] [Server thread/INFO]: Closing Server

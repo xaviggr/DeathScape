@@ -1,6 +1,7 @@
 package dc.Business.controllers;
 
 import dc.DeathScape;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
@@ -13,8 +14,10 @@ public class ServerController {
     private final File configFile;
     private final FileConfiguration config;
     private boolean rainTaskActive;
+    private final DeathScape plugin;
 
     public ServerController(DeathScape plugin) {
+        this.plugin = plugin;
         // Carga el archivo de configuración
         configFile = new File(plugin.getDataFolder(), "serverData.yml");
         config = YamlConfiguration.loadConfiguration(configFile);
@@ -30,6 +33,14 @@ public class ServerController {
 
         rainTaskActive = false;
         checkDay();
+        startDayUpdater();
+    }
+
+    private void startDayUpdater() {
+        Bukkit.getScheduler().runTaskTimer(plugin, () -> {
+            checkDay();
+            Bukkit.getConsoleSender().sendMessage("Días del servidor actualizados automáticamente.");
+        }, 0L, 24 * 60 * 60 * 20L);
     }
 
     public void checkDay() {

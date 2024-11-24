@@ -60,9 +60,6 @@ public class PlayerDeath implements Listener {
         // Update player status in database
         PlayerEditDatabase.setPlayerAsDeath(player);
         PlayerEditDatabase.setPlayerCoords(player);
-
-        // Trigger server-specific checks
-        plugin.getServerData().checkDay();
     }
 
     /**

@@ -20,7 +20,6 @@ public class MobSpawnController {
 
     private final DeathScape plugin;
     private final MobManager mobManager;
-    private final Random random;
 
     /**
      * Constructor for MobSpawnController.
@@ -31,7 +30,6 @@ public class MobSpawnController {
     public MobSpawnController(DeathScape plugin) {
         this.plugin = plugin;
         this.mobManager = plugin.getMobManager();
-        this.random = new Random();
     }
 
     /**
@@ -43,7 +41,7 @@ public class MobSpawnController {
      */
     public List<String> getMobsForTodayInWorld(String worldName) {
         FileConfiguration config = plugin.getMobsConfig();
-        int dayOfMonth = LocalDate.now().getDayOfMonth(); // Current day of the month
+        int dayOfMonth = plugin.getServerData().getServerDays(); // Current day of the month
         List<String> cumulativeMobs = new ArrayList<>();
 
         // Collect all mobs from day 1 to the current day for the given world
