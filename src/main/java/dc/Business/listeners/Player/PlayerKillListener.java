@@ -24,8 +24,6 @@ public class PlayerKillListener implements Listener {
     public void onEntityDeath(EntityDeathEvent event) {
         LivingEntity entity = event.getEntity();
 
-        Bukkit.getConsoleSender().sendMessage("Entity killed: " + entity.getType().name());
-
         // Check if the entity was killed by a player
         Player player = entity.getKiller();  // The player who killed the entity
 

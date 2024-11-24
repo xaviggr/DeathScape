@@ -5,27 +5,24 @@ import dc.Business.groups.GroupData;
 import dc.Business.groups.Permission;
 import dc.Business.inventory.ReportInventory;
 import dc.Business.inventory.ReportsInventory;
+import dc.Business.log.LogData;
 import dc.Business.player.PlayerData;
 import dc.Persistence.chat.BannedWordsDatabase;
 import dc.Persistence.config.MainConfigManager;
 import dc.Persistence.groups.GroupDatabase;
+import dc.Persistence.logs.LogDatabase;
 import dc.Persistence.player.PlayerDatabase;
 import dc.Persistence.player.PlayerEditDatabase;
 import dc.utils.Message;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Material;
-import org.bukkit.block.Block;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
-import org.bukkit.entity.TNTPrimed;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class DeathScapeCommand implements CommandExecutor, TabCompleter {
     private static final String DISCORD_URL = "https://discord.gg/Pe9wYt9bcV";
@@ -58,6 +55,10 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
                     if (groupPermissions.contains("group")) {
                         options.add("añadirUsuarioAGrupo");
                         options.add("quitarUsuarioDeGrupo");
+                    }
+
+                    if (groupPermissions.contains("teleport")) {
+                        options.add("tp");
                     }
 
                     // Add specific commands based on group permissions
@@ -94,9 +95,9 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
             return true;
         }
 
+        // Verificación de datos del jugador y su grupo
         PlayerData playerData = PlayerDatabase.getPlayerDataFromDatabase(player.getName());
-        if (playerData == null) {
-            sender.sendMessage(ChatColor.RED + "No se pudo encontrar los datos del jugador.");
+        if (playerData == null || !validateGroup(player, playerData)) {
             return true;
         }
 
@@ -106,115 +107,253 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
             return true;
         }
 
-        // Verificar los permisos según los comandos
-        if (args.length == 1) {
-            switch (args[0].toLowerCase()) {
-                case "help":
-                    showHelp(player);
-                    break;
-                case "tiempolluvia":
-                    showStormTime(player);
-                    break;
-                case "info":
-                    showInfo(player);
-                    break;
-                case "reportar":
-                    reportInventory.openInventory(player);
-                    break;
-                case "reportes":
-                    if (group.getPermissions().contains(Permission.REPORTS)) {
-                        reportsInventory.openInventory(player);
-                    } else {
-                        sendNoPermissionMessage(player);
-                    }
-                    break;
-                case "reload":
-                    if (group.getPermissions().contains(Permission.RELOAD)) {
-                        reloadConfig(player);
-                    } else {
-                        sendNoPermissionMessage(player);
-                    }
-                    break;
-                case "banshee":
-                    if (group.getPermissions().contains(Permission.BANSHEE)) {
-                        if (playerController.isBansheeActive(player)) {
-                            playerController.deactivateBanshee(player);
-                            Message.enviarMensajeColorido(player, "Banshee desactivado.", ChatColor.GREEN);
-                        } else {
-                            playerController.activateBanshee(player);
-                            Message.enviarMensajeColorido(player, "Banshee activado.", ChatColor.GREEN);
-                        }
-                    } else {
-                        sendNoPermissionMessage(player);
-                    }
-                    break;
-
-                case "discord":
-                    showDiscord(player);
-                    break;
-                case "tiempojugado":
-                    showPlayTime(player);
-                    break;
-                case "dia":
-                    showDay(player);
-                    break;
-                default:
-                    sendInvalidCommandMessage(player);
-                    return false;
-            }
-        } else if (args.length == 2) {
-            switch (args[0].toLowerCase()) {
-                case "setdia":
-                    if (group.getPermissions().contains(Permission.DAYS)) {
-                        setDay(player, args[1]);
-                    } else {
-                        sendNoPermissionMessage(player);
-                    }
-                    break;
-                case "quitarban":
-                    if (group.getPermissions().contains(Permission.BAN)) {
-                        unbanPlayer(player, args[1]);
-                    } else {
-                        sendNoPermissionMessage(player);
-                    }
-                    break;
-                case "añadirbannedword":
-                    if (group.getPermissions().contains(Permission.CHAT)) {
-                        addBannedWord(player, args[1]);
-                    } else {
-                        sendNoPermissionMessage(player);
-                    }
-                    break;
-                case "quitarbannedword":
-                    if (group.getPermissions().contains(Permission.CHAT)) {
-                        removeBannedWord(player, args[1]);
-                    } else {
-                        sendNoPermissionMessage(player);
-                    }
-                    break;
-                default:
-                    sendInvalidCommandMessage(player);
-                    return false;
-            }
-        } else if (args.length >= 2) {
-            if (args[0].equalsIgnoreCase("añadirusuarioagrupo")) {
-                if (group.getPermissions().contains(Permission.GROUP)) {
-                    PlayerEditDatabase.addPlayerToGroup(args[1], args[2]);
-                } else {
-                    sendNoPermissionMessage(player);
-                }
-            } else if (args[0].equalsIgnoreCase("quitarusuariodegrupo")) {
-                if (group.getPermissions().contains(Permission.GROUP)) {
-                    PlayerEditDatabase.removePlayerFromGroup(args[1]);
-                } else {
-                    sendNoPermissionMessage(player);
-                }
-            }
-        } else {
+        if (args.length == 0) {
             sendInvalidCommandMessage(player);
             return false;
         }
+
+        // Mapa de comandos y sus respectivos manejadores
+        Map<String, Runnable> commandMap = new HashMap<>();
+        commandMap.put("help", () -> showHelp(player));
+        commandMap.put("tiempolluvia", () -> showStormTime(player));
+        commandMap.put("info", () -> showInfo(player));
+        commandMap.put("reportar", () -> handleMakeReport(player));
+        commandMap.put("reportes", () -> handleShowReports(player, group));
+        commandMap.put("reload", () -> handleReloadConfig(player, group));
+        commandMap.put("banshee", () -> handleBansheeCommand(player,group));
+        commandMap.put("discord", () -> showDiscord(player));
+        commandMap.put("tiempojugado", () -> showPlayTime(player));
+        commandMap.put("dia", () -> showDay(player));
+        commandMap.put("back", () -> handleBackCommand(player,group));
+        commandMap.put("añadirusuarioagrupo", () -> handleAddUserToGroupCommand(player, args, group));
+        commandMap.put("quitarusuariodegrupo", () -> handleRemoveUserFromGroupCommand(player, args, group));
+        commandMap.put("tp", () -> handleTeleportCommand(player, args, group));
+        commandMap.put("setdia", () -> handleSetDayCommand(player, args, group));
+        commandMap.put("añadirbannedword", () -> handleAddBannedWordCommand(player, args, group));
+        commandMap.put("quitarbannedword", () -> handleRemoveBannedWordCommand(player, args, group));
+        commandMap.put("quitarban", () -> handleUnbanPlayerCommand(player, args, group));
+
+        // Ejecuta el comando correspondiente
+        Runnable commandAction = commandMap.get(args[0].toLowerCase());
+        if (commandAction != null) {
+            commandAction.run();
+        } else {
+            sendInvalidCommandMessage(player);
+        }
+
+        LogDatabase.addLog(new LogData("command", player.getName(), Arrays.toString(args)));
+
         return true;
+    }
+
+    private boolean validateGroup(Player player, PlayerData playerData) {
+        GroupData group = GroupDatabase.getGroupData(playerData.getGroup());
+        if (group == null) {
+            player.sendMessage(ChatColor.RED + "No tienes un grupo asignado.");
+            return false;
+        }
+        return true;
+    }
+
+    private void handleMakeReport(Player player) {
+        reportInventory.openInventory(player);
+    }
+
+    private void handleShowReports(Player player, GroupData group) {
+        if (group.getPermissions().contains(Permission.REPORTS)) {
+            reportsInventory.openInventory(player);
+        } else {
+            sendNoPermissionMessage(player);
+        }
+    }
+
+    private void handleReloadConfig(Player player, GroupData group) {
+        if (group.getPermissions().contains(Permission.RELOAD)) {
+            reloadConfig(player);
+        } else {
+            sendNoPermissionMessage(player);
+        }
+    }
+
+    private void handleTeleportCommand(Player player, String[] args, GroupData group) {
+        if (!group.getPermissions().contains(Permission.TELEPORT)) {
+            sendNoPermissionMessage(player);
+            return;
+        }
+
+        switch (args.length) {
+            case 2 -> {
+                // Teletransportarse a un jugador
+                if (playerController.teleportToPlayer(player, args[1])) {
+                    Message.enviarMensajeColorido(player, "Te has teletransportado a " + args[1], ChatColor.GREEN);
+                } else {
+                    Message.enviarMensajeColorido(player, "El jugador " + args[1] + " no está conectado.", ChatColor.RED);
+                }
+            }
+            case 4 -> {
+                // Teletransportarse a coordenadas
+                try {
+                    double x = Double.parseDouble(args[1]);
+                    double y = Double.parseDouble(args[2]);
+                    double z = Double.parseDouble(args[3]);
+                    if (playerController.teleportToCoordinates(player, x, y, z)) {
+                        Message.enviarMensajeColorido(player, "Te has teletransportado a las coordenadas: " + x + ", " + y + ", " + z, ChatColor.GREEN);
+                    }
+                } catch (NumberFormatException e) {
+                    Message.enviarMensajeColorido(player, "Por favor, introduce coordenadas válidas.", ChatColor.RED);
+                }
+            }
+            case 3 -> {
+                // Teletransportar a un jugador a otro
+                if (playerController.teleportPlayerToPlayer(args[1], args[2])) {
+                    Message.enviarMensajeColorido(player, "Has teletransportado a " + args[1] + " a " + args[2], ChatColor.GREEN);
+                } else {
+                    Message.enviarMensajeColorido(player, "No se pudo completar el teletransporte.", ChatColor.RED);
+                }
+            }
+            default -> Message.enviarMensajeColorido(player, """
+                Uso incorrecto del comando. Formatos válidos:
+                /tp <jugador>
+                /tp <x> <y> <z>
+                /tp <jugador_origen> <jugador_destino>
+                """, ChatColor.RED);
+        }
+    }
+
+    private void handleBansheeCommand(Player player, GroupData group) {
+        if (!group.getPermissions().contains(Permission.BANSHEE)) {
+            sendNoPermissionMessage(player);
+            return;
+        }
+
+        if (playerController.isBansheeActive(player)) {
+            playerController.deactivateBanshee(player);
+            Message.enviarMensajeColorido(player, "Banshee desactivado.", ChatColor.GREEN);
+        } else {
+            playerController.activateBanshee(player);
+            Message.enviarMensajeColorido(player, "Banshee activado.", ChatColor.GREEN);
+        }
+    }
+
+    private void handleAddUserToGroupCommand(Player player, String[] args, GroupData group) {
+        if (!group.getPermissions().contains(Permission.GROUP)) {
+            sendNoPermissionMessage(player);
+            return;
+        }
+
+        if (args.length < 3) {
+            Message.enviarMensajeColorido(player, "Uso: /añadirusuarioagrupo <usuario> <grupo>", ChatColor.RED);
+            return;
+        }
+
+        PlayerEditDatabase.addPlayerToGroup(args[1], args[2]);
+        Message.enviarMensajeColorido(player, "Usuario añadido al grupo correctamente.", ChatColor.GREEN);
+    }
+
+    private void handleRemoveUserFromGroupCommand(Player player, String[] args, GroupData group) {
+        if (!group.getPermissions().contains(Permission.GROUP)) {
+            sendNoPermissionMessage(player);
+            return;
+        }
+
+        if (args.length < 2) {
+            Message.enviarMensajeColorido(player, "Uso: /quitarusuariodegrupo <usuario>", ChatColor.RED);
+            return;
+        }
+
+        PlayerEditDatabase.removePlayerFromGroup(args[1]);
+        Message.enviarMensajeColorido(player, "Usuario eliminado del grupo correctamente.", ChatColor.GREEN);
+    }
+
+    private void handleBackCommand(Player player, GroupData group) {
+        if (!group.getPermissions().contains(Permission.TELEPORT)) {
+            sendNoPermissionMessage(player);
+            return;
+        }
+
+        if (playerController.teleportBack(player)) {
+            Message.enviarMensajeColorido(player, "Te has teletransportado al punto anterior.", ChatColor.GREEN);
+        } else {
+            Message.enviarMensajeColorido(player, "No hay un punto anterior al que teletransportarse.", ChatColor.RED);
+        }
+    }
+
+    private void handleSetDayCommand(Player player, String[] args, GroupData group) {
+        if (!group.getPermissions().contains(Permission.DAYS)) {
+            sendNoPermissionMessage(player);
+            return;
+        }
+
+        if (args.length < 2) {
+            Message.enviarMensajeColorido(player, "Uso: /setdia <número de días>", ChatColor.RED);
+            return;
+        }
+
+        try {
+            int days = Integer.parseInt(args[1]);
+            try {
+                plugin.getServerData().setServerDays(days);
+                Message.ConfigLoadedOK(player);
+            } catch (NumberFormatException e) {
+                sendInvalidCommandMessage(player);
+            }
+            Message.enviarMensajeColorido(player, "Se ha establecido el día a " + days + " correctamente.", ChatColor.GREEN);
+        } catch (NumberFormatException e) {
+            Message.enviarMensajeColorido(player, "Por favor, introduce un número válido de días.", ChatColor.RED);
+        }
+    }
+
+    private void handleAddBannedWordCommand(Player player, String[] args, GroupData group) {
+        if (!group.getPermissions().contains(Permission.CHAT)) {
+            sendNoPermissionMessage(player);
+            return;
+        }
+
+        if (args.length < 2) {
+            Message.enviarMensajeColorido(player, "Uso: /añadirbannedword <palabra>", ChatColor.RED);
+            return;
+        }
+
+        String word = args[1];
+        BannedWordsDatabase.addBannedWord(word);
+        Message.enviarMensajeColorido(player, "La palabra " + word + " ha sido añadida a la lista de palabras prohibidas.", ChatColor.GREEN);
+    }
+
+    private void handleRemoveBannedWordCommand(Player player, String[] args, GroupData group) {
+        if (!group.getPermissions().contains(Permission.CHAT)) {
+            sendNoPermissionMessage(player);
+            return;
+        }
+
+        if (args.length < 2) {
+            Message.enviarMensajeColorido(player, "Uso: /quitarbannedword <palabra>", ChatColor.RED);
+            return;
+        }
+
+        String word = args[1];
+        BannedWordsDatabase.removeBannedWord(word);
+        Message.enviarMensajeColorido(player, "La palabra " + word + " ha sido eliminada de la lista de palabras prohibidas.", ChatColor.GREEN);
+    }
+
+    private void handleUnbanPlayerCommand(Player player, String[] args, GroupData group) {
+        if (!group.getPermissions().contains(Permission.BAN)) {
+            sendNoPermissionMessage(player);
+            return;
+        }
+
+        if (args.length < 2) {
+            Message.enviarMensajeColorido(player, "Uso: /quitarban <usuario>", ChatColor.RED);
+            return;
+        }
+
+        String targetPlayer = args[1];
+        if (Bukkit.getBanList(org.bukkit.BanList.Type.NAME).isBanned(targetPlayer)) {
+            Bukkit.getBanList(org.bukkit.BanList.Type.NAME).pardon(targetPlayer);
+            PlayerEditDatabase.UnbanPlayer(targetPlayer);
+            Message.enviarMensajeColorido(player, "El jugador " + targetPlayer + " ha sido desbaneado.", ChatColor.GREEN);
+        } else {
+            Message.enviarMensajeColorido(player, "El jugador " + targetPlayer + " no está baneado.", ChatColor.RED);
+        }
     }
 
     private void showHelp(Player player) {
@@ -244,8 +383,8 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
     }
 
     private void showStormTime(Player player) {
-        int tiempoLluviaPendiente = plugin.getServerData().getStormPendingTime();
-        Message.enviarMensajeColorido(player, "Tiempo de lluvia pendiente: " + tiempoLluviaPendiente + " minutos.", ChatColor.GREEN);
+        int rainTimePending = plugin.getServerData().getStormPendingTime();
+        Message.enviarMensajeColorido(player, "Tiempo de lluvia pendiente: " + rainTimePending + " minutos.", ChatColor.GREEN);
     }
 
     private void showDay(Player player) {
@@ -263,35 +402,6 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         } else {
             Message.ConfigLoadedError(player);
         }
-    }
-
-    private void setDay(Player player, String day) {
-        try {
-            plugin.getServerData().setServerDays(Integer.parseInt(day));
-            Message.ConfigLoadedOK(player);
-        } catch (NumberFormatException e) {
-            sendInvalidCommandMessage(player);
-        }
-    }
-
-    private void unbanPlayer(Player player, String playerName) {
-        if (Bukkit.getBanList(org.bukkit.BanList.Type.NAME).isBanned(playerName)) {
-            Bukkit.getBanList(org.bukkit.BanList.Type.NAME).pardon(playerName);
-            PlayerEditDatabase.UnbanPlayer(playerName);
-            Message.enviarMensajeColorido(player, "El jugador " + playerName + " ha sido desbaneado.", ChatColor.GREEN);
-        } else {
-            Message.enviarMensajeColorido(player, "El jugador " + playerName + " no está baneado.", ChatColor.RED);
-        }
-    }
-
-    private void addBannedWord(Player player, String word) {
-        BannedWordsDatabase.addBannedWord(word);
-        Message.enviarMensajeColorido(player, "La palabra " + word + " ha sido añadida a la lista de palabras prohibidas.", ChatColor.GREEN);
-    }
-
-    private void removeBannedWord(Player player, String word) {
-        BannedWordsDatabase.removeBannedWord(word);
-        Message.enviarMensajeColorido(player, "La palabra " + word + " ha sido eliminada de la lista de palabras prohibidas.", ChatColor.GREEN);
     }
 
     private void sendInvalidCommandMessage(Player player) {

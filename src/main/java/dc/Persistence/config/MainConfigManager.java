@@ -2,10 +2,12 @@ package dc.Persistence.config;
 
 import dc.Business.groups.GroupData;
 import dc.Business.groups.Permission;
+import dc.Business.log.LogData;
 import dc.DeathScape;
 import dc.Persistence.chat.BannedWordsDatabase;
 import dc.Persistence.chat.ReportsDatabase;
 import dc.Persistence.groups.GroupDatabase;
+import dc.Persistence.logs.LogDatabase;
 import dc.Persistence.player.PlayerDatabase;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -43,6 +45,7 @@ public class MainConfigManager {
             BannedWordsDatabase.setBannedWordsFile(plugin.getDataFolder() + File.separator + "bannedWords.json");
             ReportsDatabase.setReportsFile(plugin.getDataFolder() + File.separator + "reports.json");
             GroupDatabase.setNameFile(plugin.getDataFolder() + File.separator + "groups.json");
+            LogDatabase.setLogFile(plugin.getDataFolder() + File.separator + "logs.json");
             instance.loadConfig();
         }
     }

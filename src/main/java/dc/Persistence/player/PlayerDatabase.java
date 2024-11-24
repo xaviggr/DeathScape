@@ -3,9 +3,7 @@ package dc.Persistence.player;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
-import dc.Business.groups.GroupData;
 import dc.Business.player.PlayerData;
-import dc.Persistence.groups.GroupDatabase;
 
 import java.io.*;
 import java.util.ArrayList;

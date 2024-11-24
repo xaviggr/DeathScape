@@ -92,7 +92,6 @@ public class PlayerEditDatabase {
 
     public static boolean addPlayerToGroup(String player, String group) {
         GroupData groupData = GroupDatabase.getGroupData(group.toLowerCase());
-        Bukkit.getConsoleSender().sendMessage("GroupData: " + groupData);
         if (groupData == null) {
             return false;
         }

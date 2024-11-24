@@ -38,7 +38,6 @@ public abstract class PlayersInventory extends InventorySystem {
 
     @Override
     protected void onItemClicked(Player player, ItemStack item) {
-        Bukkit.getConsoleSender().sendMessage("Item clicked: " + item.getType());
         if (item.getType() == Material.PLAYER_HEAD) {
             String playerName = Objects.requireNonNull(((SkullMeta) Objects.requireNonNull(item.getItemMeta())).getOwningPlayer()).getName();
             onPlayerSelected(player, playerName);

@@ -8,15 +8,22 @@ import dc.Persistence.config.MainConfigManager;
 import dc.Business.player.PlayerData;
 import dc.Persistence.player.PlayerDatabase;
 import dc.Persistence.player.PlayerEditDatabase;
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 public class PlayerController {
 
     // Fields for player-related functionalities
     private final PlayerDeath playerDeath;
     private final PlayerTabList playerTabList;
+    private final Map<UUID, Location> previousLocations = new HashMap<>();
 
     // Constructor to initialize necessary components
     public PlayerController(DeathScape plugin) {
@@ -155,5 +162,51 @@ public class PlayerController {
 
     private void removePotionEffect(Player player, PotionEffectType effectType) {
         player.removePotionEffect(effectType);
+    }
+
+    // Método para teletransportar a un jugador a otro
+    public boolean teleportToPlayer(Player player, String targetName) {
+        Player target = Bukkit.getPlayer(targetName);
+        if (target != null) {
+            savePreviousLocation(player);
+            player.teleport(target);
+            return true;
+        }
+        return false;
+    }
+
+    // Método para teletransportar a un jugador a coordenadas
+    public boolean teleportToCoordinates(Player player, double x, double y, double z) {
+        savePreviousLocation(player);
+        Location location = new Location(player.getWorld(), x, y, z);
+        player.teleport(location);
+        return true;
+    }
+
+    // Método para teletransportar a un jugador origen a otro jugador destino
+    public boolean teleportPlayerToPlayer(String sourceName, String targetName) {
+        Player source = Bukkit.getPlayer(sourceName);
+        Player target = Bukkit.getPlayer(targetName);
+        if (source != null && target != null) {
+            savePreviousLocation(source);
+            source.teleport(target);
+            return true;
+        }
+        return false;
+    }
+
+    // Método para regresar a la ubicación anterior
+    public boolean teleportBack(Player player) {
+        if (previousLocations.containsKey(player.getUniqueId())) {
+            Location previousLocation = previousLocations.get(player.getUniqueId());
+            player.teleport(previousLocation);
+            return true;
+        }
+        return false;
+    }
+
+    // Guarda la ubicación actual antes de teletransportarse
+    private void savePreviousLocation(Player player) {
+        previousLocations.put(player.getUniqueId(), player.getLocation());
     }
 }
