@@ -36,8 +36,6 @@ public class PlayerKillListener implements Listener {
                 handleMonsterKill(player, (Monster) entity);  // Pass the player and the specific monster
             }
 
-            Message.enviarMensajeColorido(player, "You killed a " + entity.getType().name() + "!", ChatColor.GREEN);
-
             // If you want to do something with the items dropped by the entity
             /*
             for (ItemStack item : event.getDrops()) {

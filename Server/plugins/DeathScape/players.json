@@ -11,5 +11,18 @@
     "bantime": "0",
     "coords": "-71.25301751545226,65.0,-46.318810377410756",
     "group": "owner"
+  },
+  "4gymo": {
+    "name": "4gymo",
+    "isDead": false,
+    "deaths": 1,
+    "hostAddress": "81.35.203.91",
+    "timePlayed": "0",
+    "uuid": "19cef73f-c4d2-46ec-8481-81ea7417e2f3",
+    "points": 0,
+    "banDate": "0",
+    "bantime": "0",
+    "coords": "4069.7796948790274,82.96700505815774,-533.8666911834799",
+    "group": "admin"
   }
 }

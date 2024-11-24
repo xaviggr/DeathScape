@@ -68,11 +68,9 @@ public class MobSpawnListener implements Listener {
             // Cancel the default spawn and trigger the custom mob spawn
             event.setCancelled(true);
             mobSpawnController.spawnMythicMob(spawnLocation, randomMobType);
-            Bukkit.getConsoleSender().sendMessage("Spawned mob: " + randomMobType + " at " + spawnLocation.toString());
 
         } catch (Exception e) {
             // Catch any unexpected errors, log them and print stack trace
-            Bukkit.getConsoleSender().sendMessage("Error in mob spawn: " + e.getMessage());
             mobSpawnController.getPlugin().getLogger().severe("Error in mob spawn: " + e.getMessage());
             e.printStackTrace();
         }
