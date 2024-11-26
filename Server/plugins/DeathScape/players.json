@@ -9,21 +9,21 @@
     "points": 72,
     "banDate": "0",
     "bantime": "0",
-    "coords": "4064.178005709543,98.0,-472.7625991470301",
+    "coords": "38.78203537293097,68.0,56.98880607718343",
     "group": "owner"
   },
   "Gery_345": {
     "name": "Gery_345",
     "isDead": false,
-    "deaths": 1,
+    "deaths": 2,
     "hostAddress": "79.158.181.39",
     "timePlayed": "0",
     "uuid": "c84063b4-6e39-4e72-8b79-9ea3cc4db41c",
     "points": 0,
     "banDate": "0",
     "bantime": "0",
-    "coords": "4088.300171951035,88.0,-587.3000000119209",
-    "group": "mod"
+    "coords": "42.35289755120613,68.0,55.70362326393679",
+    "group": "default"
   },
   "Link825_": {
     "name": "Link825_",

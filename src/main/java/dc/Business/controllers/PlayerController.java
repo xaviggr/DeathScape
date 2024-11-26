@@ -6,16 +6,22 @@ import dc.Business.player.PlayerTabList;
 import dc.DeathScape;
 import dc.Persistence.config.MainConfigManager;
 import dc.Business.player.PlayerData;
+import dc.Persistence.groups.GroupDatabase;
 import dc.Persistence.player.PlayerDatabase;
 import dc.Persistence.player.PlayerEditDatabase;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import org.bukkit.scoreboard.Scoreboard;
+import org.bukkit.scoreboard.ScoreboardManager;
+import org.bukkit.scoreboard.Team;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.UUID;
 
 public class PlayerController {
@@ -52,16 +58,6 @@ public class PlayerController {
     public boolean setGroupToPlayer(Player player, String group) {
         // Add player to specified group in the database
         return PlayerEditDatabase.addPlayerToGroup(player.getName(), group);
-    }
-
-    /**
-     * Removes the group from the player.
-     * @param player The player whose group is to be removed.
-     * @return True if the group was removed successfully, otherwise false.
-     */
-    public boolean removeGroupFromPlayer(Player player) {
-        // Remove player from any existing group
-        return PlayerEditDatabase.removePlayerFromGroup(player.getName());
     }
 
     /**
@@ -208,5 +204,31 @@ public class PlayerController {
     // Guarda la ubicación actual antes de teletransportarse
     private void savePreviousLocation(Player player) {
         previousLocations.put(player.getUniqueId(), player.getLocation());
+    }
+
+    public void setPlayerRank(Player player, String prefix) {
+        // Obtener el Scoreboard
+        ScoreboardManager manager = Bukkit.getScoreboardManager();
+        assert manager != null;
+        Scoreboard scoreboard = manager.getMainScoreboard();
+
+        // Crear o encontrar el equipo del rango
+        Team team = scoreboard.getTeam(prefix);
+        if (team == null) {
+            team = scoreboard.registerNewTeam(prefix);
+            team.setPrefix(prefix + " ");
+        }
+
+        // Añadir al jugador al equipo
+        team.addEntry(player.getName());
+
+        // Asignar el Scoreboard al jugador (si es un Scoreboard personalizado)
+        player.setScoreboard(scoreboard);
+    }
+
+    public void healPlayer(Player player) {
+        player.setHealth(20);
+        player.setFoodLevel(20);
+        player.setSaturation(20);
     }
 }
