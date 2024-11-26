@@ -52,7 +52,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
                     List<String> groupPermissions = groupData.getPermissions().stream()
                             .map(Permission::toString)
                             .toList();
-                    if (groupPermissions.contains("group")) {
+                    if (groupPermissions.contains("group") || player.isOp()) {
                         options.add("añadirUsuarioAGrupo");
                         options.add("quitarUsuarioDeGrupo");
                     }
@@ -73,6 +73,9 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
                     }
                     if (groupPermissions.contains("banshee")) {
                         options.add("banshee");
+                    }
+                    if (groupPermissions.contains("heal")) {
+                        options.add("heal");
                     }
                     if (groupPermissions.contains("days")) {
                         options.add("setdia");
@@ -124,6 +127,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         commandMap.put("discord", () -> showDiscord(player));
         commandMap.put("tiempojugado", () -> showPlayTime(player));
         commandMap.put("dia", () -> showDay(player));
+        commandMap.put("heal", () -> playerController.healPlayer(player));
         commandMap.put("back", () -> handleBackCommand(player,group));
         commandMap.put("añadirusuarioagrupo", () -> handleAddUserToGroupCommand(player, args, group));
         commandMap.put("quitarusuariodegrupo", () -> handleRemoveUserFromGroupCommand(player, args, group));
@@ -236,7 +240,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
     }
 
     private void handleAddUserToGroupCommand(Player player, String[] args, GroupData group) {
-        if (!group.getPermissions().contains(Permission.GROUP)) {
+        if (!group.getPermissions().contains(Permission.GROUP) || !player.isOp()) {
             sendNoPermissionMessage(player);
             return;
         }
@@ -251,7 +255,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
     }
 
     private void handleRemoveUserFromGroupCommand(Player player, String[] args, GroupData group) {
-        if (!group.getPermissions().contains(Permission.GROUP)) {
+        if (!group.getPermissions().contains(Permission.GROUP) || !player.isOp()) {
             sendNoPermissionMessage(player);
             return;
         }
@@ -261,7 +265,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
             return;
         }
 
-        PlayerEditDatabase.removePlayerFromGroup(args[1]);
+        PlayerEditDatabase.addPlayerToGroup(args[1], "default");
         Message.enviarMensajeColorido(player, "Usuario eliminado del grupo correctamente.", ChatColor.GREEN);
     }
 
