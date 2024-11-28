@@ -47,6 +47,7 @@ mobs:
     world:
       CREEPER:
         - CreeperPollo
+        - CreeperCargado
       ZOMBIE:
         - ZombieVaca
   day_4:
@@ -54,6 +55,7 @@ mobs:
       CREEPER:
         - CreeperCargado
         - CREEPER_27
+        - CreeperPollo
       ZOMBIE:
         - ZOMBIE_27
       SKELETON:
