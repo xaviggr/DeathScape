@@ -2,14 +2,14 @@
   "xaviggr": {
     "name": "xaviggr",
     "isDead": true,
-    "deaths": 0,
+    "deaths": 1,
     "hostAddress": "127.0.0.1",
     "timePlayed": "0",
     "uuid": "cb185b4b-cea7-43bb-a340-571c9bb6c3a5",
-    "points": 72,
+    "points": 67,
     "banDate": "0",
     "bantime": "0",
-    "coords": "38.78203537293097,68.0,56.98880607718343",
+    "coords": "-80.2564050115266,62.0,-14.746375997709924",
     "group": "owner"
   },
   "Gery_345": {
