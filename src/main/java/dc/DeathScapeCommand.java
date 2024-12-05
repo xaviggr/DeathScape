@@ -55,6 +55,8 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
                     if (groupPermissions.contains("group") || player.isOp()) {
                         options.add("añadirUsuarioAGrupo");
                         options.add("quitarUsuarioDeGrupo");
+                        options.add("inventorysee");
+                        options.add("endersee");
                     }
 
                     if (groupPermissions.contains("teleport")) {
@@ -65,21 +67,27 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
                     if (groupPermissions.contains("ban")) {
                         options.add("quitarban");
                     }
+
                     if (groupPermissions.contains("reload")) {
                         options.add("reload");
                     }
+
                     if (groupPermissions.contains("reports")) {
                         options.add("reportes");
                     }
+
                     if (groupPermissions.contains("banshee")) {
                         options.add("banshee");
                     }
+
                     if (groupPermissions.contains("heal")) {
                         options.add("heal");
                     }
+
                     if (groupPermissions.contains("days")) {
                         options.add("setdia");
                     }
+
                     if (groupPermissions.contains("chat")) {
                         options.add("añadirbannedword");
                         options.add("quitarbannedword");
