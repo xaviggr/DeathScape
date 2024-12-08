@@ -5,6 +5,7 @@ import dc.Business.groups.GroupData;
 import dc.Business.groups.Permission;
 import dc.Business.inventory.ReportInventory;
 import dc.Business.inventory.ReportsInventory;
+import dc.Business.inventory.ReviveInventory;
 import dc.Business.log.LogData;
 import dc.Business.player.PlayerData;
 import dc.Persistence.chat.BannedWordsDatabase;
@@ -22,6 +23,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 
+import java.lang.annotation.Target;
 import java.util.*;
 
 public class DeathScapeCommand implements CommandExecutor, TabCompleter {
@@ -32,12 +34,14 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
     private final PlayerController playerController;
     private final ReportInventory reportInventory;
     private final ReportsInventory reportsInventory;
+    private final ReviveInventory reviveInventory;
 
-    public DeathScapeCommand(DeathScape plugin, ReportInventory reportInventory, ReportsInventory reportsInventory, PlayerController playerController) {
+    public DeathScapeCommand(DeathScape plugin, ReportInventory reportInventory, ReportsInventory reportsInventory, PlayerController playerController, ReviveInventory reviveInventory) {
         this.plugin = plugin;
         this.reportInventory = reportInventory;
         this.reportsInventory = reportsInventory;
         this.playerController = playerController;
+        this.reviveInventory = reviveInventory;
     }
 
     @Override
@@ -102,7 +106,16 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player player)) {
-            sender.sendMessage("Este comando solo puede ser usado por jugadores.");
+            if (args[0].equalsIgnoreCase("revive")) {
+                Player target = Bukkit.getPlayer(args[1]);
+                if (target == null || !target.isOnline()) {
+                    sender.sendMessage(ChatColor.RED + "El jugador especificado no está en línea.");
+                } else {
+                    reviveInventory.openInventory(target);
+                }
+            } else {
+                sender.sendMessage(ChatColor.RED + "Este comando solo puede ser ejecutado por un jugador.");
+            }
             return true;
         }
 

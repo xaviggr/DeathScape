@@ -58,6 +58,17 @@ public class PlayerJoinEventListener implements Listener {
             }
         }
 
+        String prefix = null;
+        if (groupData != null) {
+            prefix = groupData.getPrefix();
+        }
+        if (prefix == null) {
+            prefix = "&b[Warrior]";
+        }
+        prefix = ChatColor.translateAlternateColorCodes('&', prefix);
+        event.setJoinMessage(prefix + " " + ChatColor.YELLOW + player.getName() + " ha entrado al mundo DeathScape");
+
+        playerController.setPlayerRank(player, prefix);
         playerController.setUpTabList(player);
     }
 }

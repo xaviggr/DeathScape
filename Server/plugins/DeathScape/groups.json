@@ -61,20 +61,22 @@
     "name": "vip",
     "prefix": "\u0026d[VIP]",
     "permissions": [],
-    "players": []
+    "players": [
+      "4gymo"
+    ]
   },
   "nitro": {
     "name": "nitro",
     "prefix": "\u00267[Nitro Booster]",
     "permissions": [],
-    "players": [
-      "xaviggr"
-    ]
+    "players": []
   },
   "default": {
     "name": "default",
     "prefix": "\u0026b[Warrior]",
     "permissions": [],
-    "players": []
+    "players": [
+      "xaviggr"
+    ]
   }
 }

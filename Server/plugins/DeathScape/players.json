@@ -2,14 +2,27 @@
   "xaviggr": {
     "name": "xaviggr",
     "isDead": false,
-    "deaths": 0,
+    "deaths": 2,
     "hostAddress": "192.168.1.134",
     "timePlayed": "0",
     "uuid": "cb185b4b-cea7-43bb-a340-571c9bb6c3a5",
     "points": 0,
     "banDate": "0",
     "bantime": "0",
-    "coords": "0.49601126663603745,101.0,0.6651248785822469",
-    "group": "nitro"
+    "coords": "4060.462846290073,143.0,-549.3965773845248",
+    "group": "default"
+  },
+  "4gymo": {
+    "name": "4gymo",
+    "isDead": false,
+    "deaths": 0,
+    "hostAddress": "81.35.249.142",
+    "timePlayed": "0",
+    "uuid": "19cef73f-c4d2-46ec-8481-81ea7417e2f3",
+    "points": 0,
+    "banDate": "0",
+    "bantime": "0",
+    "coords": "0",
+    "group": "vip"
   }
 }

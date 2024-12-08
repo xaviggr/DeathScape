@@ -1,16 +1,12 @@
 package dc.Business.listeners.Player;
 
 import dc.Business.controllers.PlayerController;
-import dc.utils.Message;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Monster;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
-import org.bukkit.inventory.ItemStack;
 
 public class PlayerKillListener implements Listener {
 
