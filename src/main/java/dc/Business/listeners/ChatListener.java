@@ -1,8 +1,10 @@
 package dc.Business.listeners;
 
+import dc.Business.controllers.PlayerController;
 import dc.Business.inventory.ReportInventory;
 import dc.Persistence.chat.BannedWordsDatabase;
 import dc.Persistence.chat.ReportsDatabase;
+import dc.Persistence.groups.GroupDatabase;
 import dc.utils.Message;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -11,8 +13,16 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
 import java.util.Map;
+import java.util.Objects;
 
 public class ChatListener implements Listener {
+
+    private final PlayerController playerController;
+
+    // Constructor
+    public ChatListener(PlayerController playerController) {
+        this.playerController = playerController;
+    }
 
     /**
      * Handles player chat events. Processes reports and banned word detection.
@@ -32,7 +42,27 @@ public class ChatListener implements Listener {
         // Check for banned words in the message
         if (containsBannedWords(message)) {
             handleBannedWords(event, player);
+            return; // Exit after handling the banned words
         }
+
+        // Add group prefix and color to the message
+        String group = playerController.getGroupFromPlayer(player);
+        String prefix = ChatColor.translateAlternateColorCodes(
+                '&',
+                Objects.requireNonNull(GroupDatabase.getPrefixFromGroup(group))
+        );
+
+        // Format: Prefix only colored, message follows in default color
+        String formattedMessage = String.format(
+                "%s%s %s%s: %s",
+                prefix,
+                ChatColor.RESET, // Reset colors after the prefix
+                ChatColor.WHITE, // Optional: Add white color to name for clarity
+                player.getDisplayName(),
+                message
+        );
+
+        event.setFormat(formattedMessage);
     }
 
     /**

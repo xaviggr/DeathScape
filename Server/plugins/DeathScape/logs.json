@@ -1,0 +1,304 @@
+{
+  "logs": [
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[dia]",
+      "dateTime": "2024-11-24 18:13:08"
+    },
+    {
+      "logType": "command",
+      "author": "4gymo",
+      "logInfo": "[tp, xaviggr]",
+      "dateTime": "2024-11-24 18:14:23"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[tp, 4gymo, xaviggr]",
+      "dateTime": "2024-11-24 18:14:27"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[añadirUsuarioAGrupo, 4gymo, admin]",
+      "dateTime": "2024-11-24 18:14:36"
+    },
+    {
+      "logType": "command",
+      "author": "4gymo",
+      "logInfo": "[tp, xaviggr]",
+      "dateTime": "2024-11-24 18:14:40"
+    },
+    {
+      "logType": "command",
+      "author": "4gymo",
+      "logInfo": "[tp, xaviggr]",
+      "dateTime": "2024-11-24 18:14:41"
+    },
+    {
+      "logType": "command",
+      "author": "4gymo",
+      "logInfo": "[tp, xaviggr]",
+      "dateTime": "2024-11-24 18:14:42"
+    },
+    {
+      "logType": "command",
+      "author": "4gymo",
+      "logInfo": "[tp, xaviggrt]",
+      "dateTime": "2024-11-24 18:14:42"
+    },
+    {
+      "logType": "command",
+      "author": "4gymo",
+      "logInfo": "[banshee]",
+      "dateTime": "2024-11-24 18:14:47"
+    },
+    {
+      "logType": "command",
+      "author": "4gymo",
+      "logInfo": "[banshee]",
+      "dateTime": "2024-11-24 18:14:49"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[dia]",
+      "dateTime": "2024-11-24 18:42:15"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[setdia, 1]",
+      "dateTime": "2024-11-24 18:42:20"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[dia]",
+      "dateTime": "2024-11-24 18:42:24"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[tiempojugado]",
+      "dateTime": "2024-11-24 22:03:04"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[tiempojugado]",
+      "dateTime": "2024-11-24 22:03:10"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[setdia, 0]",
+      "dateTime": "2024-11-26 10:31:03"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[dia]",
+      "dateTime": "2024-11-26 10:31:54"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[setdia, 40]",
+      "dateTime": "2024-11-26 10:32:03"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[quitarban, Gery_345]",
+      "dateTime": "2024-11-26 10:44:56"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[añadirUsuarioAGrupo, Gery_345, default]",
+      "dateTime": "2024-11-26 10:45:45"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[quitarUsuarioDeGrupo, Gery_345]",
+      "dateTime": "2024-11-26 10:48:34"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[añadirUsuarioAGrupo, Gery_345, vip]",
+      "dateTime": "2024-11-26 10:48:45"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[añadirUsuarioAGrupo]",
+      "dateTime": "2024-11-26 10:49:03"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[añadirUsuarioAGrupo, Gery_345]",
+      "dateTime": "2024-11-26 10:49:09"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[añadirUsuarioAGrupo, Gery_345, vip]",
+      "dateTime": "2024-11-26 10:49:12"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[quitarUsuarioDeGrupo, Gery_345]",
+      "dateTime": "2024-11-26 10:49:26"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[quitarUsuarioDeGrupo, Gery_345]",
+      "dateTime": "2024-11-26 10:49:51"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[quitarUsuarioDeGrupo, Gery_345]",
+      "dateTime": "2024-11-26 10:53:04"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[quitarUsuarioDeGrupo, Gery_345]",
+      "dateTime": "2024-11-26 10:53:10"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[quitarUsuarioDeGrupo, Gery_345]",
+      "dateTime": "2024-11-26 10:53:11"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[quitarUsuarioDeGrupo, Gery_345]",
+      "dateTime": "2024-11-26 10:53:12"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[añadirUsuarioAGrupo, Gery_345, soporte]",
+      "dateTime": "2024-11-26 10:53:21"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[quitarUsuarioDeGrupo, Gery_345]",
+      "dateTime": "2024-11-26 10:53:41"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[heal, xaviggr]",
+      "dateTime": "2024-11-28 14:26:23"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[añadirUsuarioAGrupo, xaviggr, owner]",
+      "dateTime": "2024-12-08 12:44:39"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[añadirUsuarioAGrupo, xaviggr, owner]",
+      "dateTime": "2024-12-08 12:45:57"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[quitarUsuarioDeGrupo, xaviggr]",
+      "dateTime": "2024-12-08 12:46:08"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[quitarUsuarioDeGrupo, xaviggr]",
+      "dateTime": "2024-12-08 12:46:09"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[añadirUsuarioAGrupo, xaviggr, owner]",
+      "dateTime": "2024-12-08 12:47:52"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[añadirUsuarioAGrupo, xaviggr, owner]",
+      "dateTime": "2024-12-08 12:48:30"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[añadirUsuarioAGrupo, xaviggr, owner]",
+      "dateTime": "2024-12-08 12:51:56"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[añadirUsuarioAGrupo, xaviggr, vip]",
+      "dateTime": "2024-12-08 12:52:07"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[añadirUsuarioAGrupo, xaviggr, owner]",
+      "dateTime": "2024-12-08 13:04:38"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[inventorysee]",
+      "dateTime": "2024-12-08 13:04:45"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[inventorysee, xaviggr]",
+      "dateTime": "2024-12-08 13:04:47"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[inventorysee, xaviggr]",
+      "dateTime": "2024-12-08 13:04:53"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[añadirUsuarioAGrupo, xaviggr, vip]",
+      "dateTime": "2024-12-08 13:05:10"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[añadirUsuarioAGrupo, xaviggr, streamer]",
+      "dateTime": "2024-12-08 13:05:25"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[añadirUsuarioAGrupo, xaviggr, streamer]",
+      "dateTime": "2024-12-08 13:05:29"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[añadirUsuarioAGrupo, xaviggr, nitro]",
+      "dateTime": "2024-12-08 13:05:36"
+    }
+  ]
+}

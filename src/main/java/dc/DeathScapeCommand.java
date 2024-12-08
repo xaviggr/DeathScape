@@ -293,7 +293,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
     }
 
     private void handleAddUserToGroupCommand(Player player, String[] args, GroupData group) {
-        if (!group.getPermissions().contains(Permission.GROUP) || !player.isOp()) {
+        if (!group.getPermissions().contains(Permission.GROUP) && !player.isOp()) {
             sendNoPermissionMessage(player);
             return;
         }
@@ -308,7 +308,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
     }
 
     private void handleRemoveUserFromGroupCommand(Player player, String[] args, GroupData group) {
-        if (!group.getPermissions().contains(Permission.GROUP) || !player.isOp()) {
+        if (!group.getPermissions().contains(Permission.GROUP) && !player.isOp()) {
             sendNoPermissionMessage(player);
             return;
         }
