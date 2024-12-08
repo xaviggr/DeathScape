@@ -5,6 +5,42 @@
       "author": "xaviggr",
       "logInfo": "[añadirUsuarioAGrupo, 4gymo, vip]",
       "dateTime": "2024-12-08 13:45:36"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[añadirUsuarioAGrupo, xaviggr, owner]",
+      "dateTime": "2024-12-08 22:24:38"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[añadirbannedword, puta]",
+      "dateTime": "2024-12-08 22:24:59"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[añadirbannedword, gay]",
+      "dateTime": "2024-12-08 22:25:15"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[reportar]",
+      "dateTime": "2024-12-08 22:25:35"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[inventorysee]",
+      "dateTime": "2024-12-08 22:36:18"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[inventorysee, xaviggr]",
+      "dateTime": "2024-12-08 22:36:21"
     }
   ]
 }

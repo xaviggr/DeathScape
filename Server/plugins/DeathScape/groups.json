@@ -14,7 +14,9 @@
       "HEAL",
       "DAYS"
     ],
-    "players": []
+    "players": [
+      "xaviggr"
+    ]
   },
   "admin": {
     "name": "admin",
@@ -75,8 +77,6 @@
     "name": "default",
     "prefix": "\u0026b[Warrior]",
     "permissions": [],
-    "players": [
-      "xaviggr"
-    ]
+    "players": []
   }
 }

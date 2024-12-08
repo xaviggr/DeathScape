@@ -1,5 +1,11 @@
 [
   {
+    "uuid": "cb185b4b-cea7-43bb-a340-571c9bb6c3a5",
+    "name": "xaviggr",
+    "level": 4,
+    "bypassesPlayerLimit": false
+  },
+  {
     "uuid": "edd62276-4a49-32bb-b0ec-762ffd8505c4",
     "name": "xaviggr",
     "level": 4,

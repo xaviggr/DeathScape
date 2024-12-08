@@ -23,13 +23,14 @@ public class BannedWordsDatabase {
             try {
                 file.createNewFile();
                 try (FileWriter writer = new FileWriter(file)) {
-                    writer.write("{\"bannedWords\": [\"\"]}");  // Inicia con un array vacío de palabras prohibidas
+                    writer.write("{\"bannedWords\": []}");
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
+
 
     private static JsonObject readJsonFile() {
         File file = new File(bannedWordsFile);
@@ -66,10 +67,16 @@ public class BannedWordsDatabase {
         Set<String> bannedWords = new HashSet<>();
 
         if (bannedWordsArray != null) {
-            bannedWordsArray.forEach(word -> bannedWords.add(word.getAsString()));
+            bannedWordsArray.forEach(word -> {
+                String bannedWord = word.getAsString().trim();
+                if (!bannedWord.isEmpty()) {
+                    bannedWords.add(bannedWord);
+                }
+            });
         }
         return bannedWords;
     }
+
 
     public static void addBannedWord(String word) {
         JsonObject jsonObject = readJsonFile();
