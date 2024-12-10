@@ -45,6 +45,12 @@ public class ChatListener implements Listener {
             return; // Exit after handling the banned words
         }
 
+        if (playerController.isMuted(player)) {
+            event.setCancelled(true);  // Cancel the chat message
+            Message.enviarMensajeColorido(player, "Estás silenciado. No puedes enviar mensajes.", ChatColor.RED);
+            return; // Exit after handling the mute
+        }
+
         // Add group prefix and color to the message
         String group = playerController.getGroupFromPlayer(player);
         String prefix = ChatColor.translateAlternateColorCodes(

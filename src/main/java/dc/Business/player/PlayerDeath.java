@@ -7,6 +7,7 @@ import dc.utils.Message;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.Skull;
+import org.bukkit.block.data.type.Slab;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.EntityType;
@@ -88,18 +89,18 @@ public class PlayerDeath implements Listener {
         World world = player.getWorld();
         Block deathLocationBlock = player.getLocation().getBlock();
 
-        // Place a bedrock block below the death location
-        Block bedrockBlock = deathLocationBlock.getRelative(0, -1, 0);
-        bedrockBlock.setType(Material.BEDROCK);
+        // Colocar un bloque de obsidiana llorosa debajo de la ubicación de muerte
+        Block cryingObsidianBlock = deathLocationBlock.getRelative(0, -1, 0);
+        cryingObsidianBlock.setType(Material.CRYING_OBSIDIAN);
 
-        // Place a chain block at the death location
+        // Colocar un bloque de cadena en la ubicación de muerte
         deathLocationBlock.setType(Material.CHAIN);
 
-        // Place a player skull above the chain block
+        // Colocar una cabeza de jugador encima del bloque de cadena
         Block skullBlock = deathLocationBlock.getRelative(0, 1, 0);
         skullBlock.setType(Material.PLAYER_HEAD);
 
-        // Set the player's head on the skull block
+        // Configurar la cabeza del jugador en el bloque
         try {
             Skull skull = (Skull) skullBlock.getState();
             skull.setOwningPlayer(player);
@@ -108,43 +109,8 @@ public class PlayerDeath implements Listener {
             Bukkit.getLogger().severe("Error al crear la cabeza de la estatua para " + player.getName() + ": " + e.getMessage());
         }
 
-        // Create an armor stand with the player's name above the skull
-        ArmorStand nameStand = (ArmorStand) world.spawnEntity(bedrockBlock.getLocation().add(0.5, 0.5, 0.5), EntityType.ARMOR_STAND);
-        nameStand.setCustomName(player.getName());
-        nameStand.setCustomNameVisible(true);
-        nameStand.setGravity(false);
-        nameStand.setVisible(false);
-
-        // Generate a fire aura around the death location
-        generateFireAura(player, deathLocationBlock);
-
-        // Play a sound at the death location
+        // Reproducir un sonido en la ubicación de muerte
         world.playSound(player.getLocation(), Sound.ENTITY_WITHER_DEATH, 1.0f, 0.5f);
     }
 
-    /**
-     * Generates a fire aura around the player's death location using particles.
-     * @param player The player who died.
-     * @param baseBlock The block where the aura should be generated.
-     */
-    private void generateFireAura(Player player, Block baseBlock) {
-        World world = baseBlock.getWorld();
-
-        new BukkitRunnable() {
-            int count = 0;
-
-            @Override
-            public void run() {
-                if (count >= 200) {  // Stop after 200 ticks (about 10 seconds)
-                    cancel();
-                    return;
-                }
-
-                // Generate flame particles around the death location
-                world.spawnParticle(Particle.FLAME, baseBlock.getLocation().add(0.5, 1.5, 0.5), 20, 0.5, 0.5, 0.5, 0);
-
-                count++;
-            }
-        }.runTaskTimer(plugin, 0, 10);  // Run every 10 ticks
-    }
 }

@@ -1,5 +1,6 @@
 package dc.Business.listeners.Player;
 
+import dc.DeathScape;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -18,7 +19,7 @@ public class PlayerDamageListener implements Listener {
     private static final long DAMAGE_TIME_THRESHOLD = 6000; // 6 segundos en milisegundos
     private static final long CLEANUP_INTERVAL = 12000; // 12 segundos en milisegundos
 
-    public PlayerDamageListener(Plugin plugin) {
+    public PlayerDamageListener(DeathScape plugin) {
         // Programar una tarea para limpiar las entradas obsoletas
         Bukkit.getScheduler().runTaskTimer(plugin, this::cleanupOldEntries, CLEANUP_INTERVAL / 50, CLEANUP_INTERVAL / 50);
     }

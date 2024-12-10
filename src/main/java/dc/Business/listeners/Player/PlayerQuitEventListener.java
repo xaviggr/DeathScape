@@ -1,6 +1,8 @@
 package dc.Business.listeners.Player;
 
 import dc.Business.controllers.PlayerController;
+import dc.DeathScape;
+import dc.Persistence.player.PlayerDatabase;
 import dc.Persistence.player.PlayerEditDatabase;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -12,9 +14,11 @@ import org.bukkit.entity.Player;
 public class PlayerQuitEventListener implements Listener {
 
     private final PlayerController playerController;
+    private final DeathScape plugin;
 
-    public PlayerQuitEventListener(PlayerController playerController) {
+    public PlayerQuitEventListener(DeathScape plugin, PlayerController playerController) {
         this.playerController = playerController;
+        this.plugin = plugin;
     }
 
     @EventHandler
@@ -33,7 +37,22 @@ public class PlayerQuitEventListener implements Listener {
 
         // Save player time played and coordinates
         PlayerEditDatabase.setPlayerCoords(player);
+        handleTimePlayed(player);
         playerController.deactivateBanshee(player);
+    }
+
+    private void handleTimePlayed(Player player) {
+        if (plugin.time_of_connection.containsKey(player.getName())) {
+            long initTime = plugin.time_of_connection.get(player.getName());
+            long actualTime = System.currentTimeMillis();
+            long onlineTime = actualTime - initTime;
+
+            int segundos = Integer.parseInt(String.valueOf((int) (onlineTime / 1000) % 60));
+            int minutos = Integer.parseInt(String.valueOf((int) ((onlineTime / (1000 * 60)) % 60)));
+            int horas = Integer.parseInt(String.valueOf((int) ((onlineTime / (1000 * 60 * 60)) % 24)));
+            PlayerEditDatabase.setPlayerTimePlayed(player, segundos, minutos, horas);
+            plugin.time_of_connection.remove(player.getName());
+        }
     }
 
     private void handlePlayerBan(Player player) {

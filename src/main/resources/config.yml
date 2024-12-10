@@ -32,6 +32,7 @@ groups:
       - "chat"
       - "heal"
       - "days"
+      - "mute"
     players:
 
   admin:
@@ -44,6 +45,7 @@ groups:
       - "banshee"
       - "chat"
       - "heal"
+      - "mute"
     players:
 
   mod:
@@ -54,6 +56,7 @@ groups:
       - "reports"
       - "banshee"
       - "chat"
+      - "mute"
     players:
 
   soporte:

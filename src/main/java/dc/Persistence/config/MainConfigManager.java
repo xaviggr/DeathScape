@@ -42,7 +42,7 @@ public class MainConfigManager {
             instance = new MainConfigManager();
             instance.plugin = plugin;
             PlayerDatabase.setNameFile(plugin.getDataFolder() + File.separator + "players.json");
-            BannedWordsDatabase.setBannedWordsFile(plugin.getDataFolder() + File.separator + "bannedWords.json");
+            BannedWordsDatabase.setDatabaseFile(plugin.getDataFolder() + File.separator + "bannedWords.json");
             ReportsDatabase.setReportsFile(plugin.getDataFolder() + File.separator + "reports.json");
             GroupDatabase.setNameFile(plugin.getDataFolder() + File.separator + "groups.json");
             LogDatabase.setLogFile(plugin.getDataFolder() + File.separator + "logs.json");

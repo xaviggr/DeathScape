@@ -3,44 +3,464 @@
     {
       "logType": "command",
       "author": "xaviggr",
-      "logInfo": "[añadirUsuarioAGrupo, 4gymo, vip]",
-      "dateTime": "2024-12-08 13:45:36"
+      "logInfo": "[mute, xaviggr]",
+      "dateTime": "2024-12-09 10:34:12"
     },
     {
       "logType": "command",
       "author": "xaviggr",
       "logInfo": "[añadirUsuarioAGrupo, xaviggr, owner]",
-      "dateTime": "2024-12-08 22:24:38"
+      "dateTime": "2024-12-09 10:36:42"
     },
     {
       "logType": "command",
       "author": "xaviggr",
-      "logInfo": "[añadirbannedword, puta]",
-      "dateTime": "2024-12-08 22:24:59"
+      "logInfo": "[añadirbannedword, gymo]",
+      "dateTime": "2024-12-09 10:36:53"
     },
     {
       "logType": "command",
       "author": "xaviggr",
-      "logInfo": "[añadirbannedword, gay]",
-      "dateTime": "2024-12-08 22:25:15"
+      "logInfo": "[setdia, 5]",
+      "dateTime": "2024-12-09 10:38:19"
     },
     {
       "logType": "command",
       "author": "xaviggr",
-      "logInfo": "[reportar]",
-      "dateTime": "2024-12-08 22:25:35"
+      "logInfo": "[setdia, 0]",
+      "dateTime": "2024-12-09 10:38:35"
     },
     {
       "logType": "command",
       "author": "xaviggr",
-      "logInfo": "[inventorysee]",
-      "dateTime": "2024-12-08 22:36:18"
+      "logInfo": "[tp]",
+      "dateTime": "2024-12-09 10:38:40"
     },
     {
       "logType": "command",
       "author": "xaviggr",
-      "logInfo": "[inventorysee, xaviggr]",
-      "dateTime": "2024-12-08 22:36:21"
+      "logInfo": "[back]",
+      "dateTime": "2024-12-09 10:38:57"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[tp, spawn]",
+      "dateTime": "2024-12-09 10:39:08"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[back]",
+      "dateTime": "2024-12-09 10:39:14"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[tp, xaviggr, 200, 60, 200]",
+      "dateTime": "2024-12-09 10:39:23"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[tp, 3500, 70, 100]",
+      "dateTime": "2024-12-09 10:39:39"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[tp, 3500, 100, 2000]",
+      "dateTime": "2024-12-09 10:59:19"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[tp, 3500, 100, 0]",
+      "dateTime": "2024-12-09 10:59:40"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[tp, 3500, 100, 200]",
+      "dateTime": "2024-12-09 10:59:44"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[tp, 3500, 100, 500]",
+      "dateTime": "2024-12-09 10:59:47"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[tp, 2000, 100, 40]",
+      "dateTime": "2024-12-09 10:59:56"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[tp, 0, 100, 0]",
+      "dateTime": "2024-12-09 11:00:03"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[mute, xaviggr]",
+      "dateTime": "2024-12-09 11:02:00"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[unmute, xaviggr]",
+      "dateTime": "2024-12-09 11:02:07"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[tp, 3500, 70, 3700]",
+      "dateTime": "2024-12-09 11:27:49"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[tp, 3500, 70, -700]",
+      "dateTime": "2024-12-09 11:27:53"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[tp, 2500, 70, -700]",
+      "dateTime": "2024-12-09 11:28:06"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[tp, 3500, 70, -700]",
+      "dateTime": "2024-12-09 11:28:13"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[back]",
+      "dateTime": "2024-12-09 11:28:16"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[tp, 3500, 70, -700]",
+      "dateTime": "2024-12-09 11:28:18"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[tp, 3900, 70, -500]",
+      "dateTime": "2024-12-09 11:28:34"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[tp, Link825_, xaviggr]",
+      "dateTime": "2024-12-09 11:31:26"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[inventorysee, Link825_]",
+      "dateTime": "2024-12-09 11:31:52"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[endersee, Link825_]",
+      "dateTime": "2024-12-09 11:32:17"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[endersee, Link825_]",
+      "dateTime": "2024-12-09 11:33:17"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[tp, Link825_, xaviggr]",
+      "dateTime": "2024-12-09 11:33:39"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[añadirbannedword, gymo]",
+      "dateTime": "2024-12-09 11:34:06"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[heal, Link825_]",
+      "dateTime": "2024-12-09 11:34:22"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[heal, Link825_]",
+      "dateTime": "2024-12-09 11:34:35"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[heal, Link825_]",
+      "dateTime": "2024-12-09 11:34:39"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[heal, Link825_]",
+      "dateTime": "2024-12-09 11:34:41"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[mute, Link825_]",
+      "dateTime": "2024-12-09 11:34:49"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[unmute, Link825_]",
+      "dateTime": "2024-12-09 11:35:02"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[añadirUsuarioAGrupo, vip]",
+      "dateTime": "2024-12-09 11:35:10"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[añadirUsuarioAGrupo, Link825_, vip]",
+      "dateTime": "2024-12-09 11:35:13"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[tiempojugado]",
+      "dateTime": "2024-12-09 11:36:01"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[tiempojugado]",
+      "dateTime": "2024-12-09 11:36:06"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[tiempojugado]",
+      "dateTime": "2024-12-09 11:36:06"
+    },
+    {
+      "logType": "command",
+      "author": "Link825_",
+      "logInfo": "[tiempojugado]",
+      "dateTime": "2024-12-09 11:36:07"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[banshee]",
+      "dateTime": "2024-12-09 11:37:00"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[banshee]",
+      "dateTime": "2024-12-09 11:37:24"
+    },
+    {
+      "logType": "command",
+      "author": "Link825_",
+      "logInfo": "[añadirUsuarioAGrupo, Link825_, owner]",
+      "dateTime": "2024-12-09 11:38:14"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[tp, Gery_345, xaviggr]",
+      "dateTime": "2024-12-09 19:13:11"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[tp, Gery_345, xaviggr]",
+      "dateTime": "2024-12-09 19:15:10"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[tp, Link825_, Gery_345]",
+      "dateTime": "2024-12-09 19:18:50"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[tp, Link825_]",
+      "dateTime": "2024-12-09 19:24:10"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[tp, Link825_, xaviggr]",
+      "dateTime": "2024-12-09 19:28:48"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[endersee]",
+      "dateTime": "2024-12-09 19:39:01"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[endersee, xaviggr]",
+      "dateTime": "2024-12-09 19:39:04"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[banshee]",
+      "dateTime": "2024-12-09 19:39:08"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[banshee]",
+      "dateTime": "2024-12-09 19:42:41"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[mute, 4gymo]",
+      "dateTime": "2024-12-09 19:44:41"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[unmute, 4gymo]",
+      "dateTime": "2024-12-09 19:44:55"
+    },
+    {
+      "logType": "command",
+      "author": "4gymo",
+      "logInfo": "[emute, 4gymo]",
+      "dateTime": "2024-12-09 19:45:05"
+    },
+    {
+      "logType": "command",
+      "author": "4gymo",
+      "logInfo": "[mute, 4gymo]",
+      "dateTime": "2024-12-09 19:45:14"
+    },
+    {
+      "logType": "command",
+      "author": "4gymo",
+      "logInfo": "[añadirUsuarioAGrupo, 4gymo, owner]",
+      "dateTime": "2024-12-09 19:45:28"
+    },
+    {
+      "logType": "command",
+      "author": "4gymo",
+      "logInfo": "[mute, 4gymo]",
+      "dateTime": "2024-12-09 19:45:31"
+    },
+    {
+      "logType": "command",
+      "author": "4gymo",
+      "logInfo": "[mute, 4gymo]",
+      "dateTime": "2024-12-09 19:45:33"
+    },
+    {
+      "logType": "command",
+      "author": "4gymo",
+      "logInfo": "[unmute, 4gymo]",
+      "dateTime": "2024-12-09 19:45:38"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[help]",
+      "dateTime": "2024-12-09 19:45:49"
+    },
+    {
+      "logType": "command",
+      "author": "4gymo",
+      "logInfo": "[info]",
+      "dateTime": "2024-12-09 19:45:51"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[info]",
+      "dateTime": "2024-12-09 19:45:55"
+    },
+    {
+      "logType": "command",
+      "author": "4gymo",
+      "logInfo": "[help]",
+      "dateTime": "2024-12-09 19:46:01"
+    },
+    {
+      "logType": "command",
+      "author": "4gymo",
+      "logInfo": "[help]",
+      "dateTime": "2024-12-09 19:47:35"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[añadirUsuarioAGrupo, 4gymo, vip]",
+      "dateTime": "2024-12-09 19:56:31"
+    },
+    {
+      "logType": "command",
+      "author": "4gymo",
+      "logInfo": "[añadirUsuarioAGrupo, 4gymo, owner]",
+      "dateTime": "2024-12-09 19:57:14"
+    },
+    {
+      "logType": "command",
+      "author": "4gymo",
+      "logInfo": "[inventorysee, Link825_]",
+      "dateTime": "2024-12-09 19:57:26"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[añadirUsuarioAGrupo, admin]",
+      "dateTime": "2024-12-09 19:57:32"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[añadirbannedword, boludo]",
+      "dateTime": "2024-12-09 19:57:42"
+    },
+    {
+      "logType": "command",
+      "author": "4gymo",
+      "logInfo": "[añadirbannedword, nigga]",
+      "dateTime": "2024-12-09 19:57:44"
+    },
+    {
+      "logType": "command",
+      "author": "4gymo",
+      "logInfo": "[añadirbannedword, niga]",
+      "dateTime": "2024-12-09 19:57:55"
+    },
+    {
+      "logType": "command",
+      "author": "4gymo",
+      "logInfo": "[añadirbannedword, panchito]",
+      "dateTime": "2024-12-09 19:57:59"
     }
   ]
 }

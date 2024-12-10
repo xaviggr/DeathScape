@@ -4,6 +4,7 @@ import dc.Business.player.PlayerBan;
 import dc.Business.player.PlayerDeath;
 import dc.Business.player.PlayerTabList;
 import dc.DeathScape;
+import dc.Persistence.chat.BannedWordsDatabase;
 import dc.Persistence.config.MainConfigManager;
 import dc.Business.player.PlayerData;
 import dc.Persistence.groups.GroupDatabase;
@@ -230,5 +231,19 @@ public class PlayerController {
         player.setHealth(20);
         player.setFoodLevel(20);
         player.setSaturation(20);
+    }
+
+    public boolean isMuted(Player player) {
+        return BannedWordsDatabase.getMutedUsers().contains(player.getName());
+    }
+
+    public void mutePlayer(Player player, Player target) {
+        BannedWordsDatabase.addMutedUser(target.getName());
+        player.sendMessage(ChatColor.GREEN + "El jugador " + target.getName() + " ha sido silenciado.");
+    }
+
+    public void unmutePlayer(Player player, Player target) {
+        BannedWordsDatabase.removeMutedUser(target.getName());
+        player.sendMessage(ChatColor.GREEN + "El jugador " + target.getName() + " ha sido desilenciado.");
     }
 }

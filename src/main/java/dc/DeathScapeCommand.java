@@ -23,7 +23,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 
-import java.lang.annotation.Target;
 import java.util.*;
 
 public class DeathScapeCommand implements CommandExecutor, TabCompleter {
@@ -96,6 +95,10 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
                         options.add("añadirbannedword");
                         options.add("quitarbannedword");
                     }
+
+                    if (groupPermissions.contains("mute")) {
+                        options.add("mute");
+                    }
                 }
             }
             return options;
@@ -159,6 +162,8 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         commandMap.put("quitarban", () -> handleUnbanPlayerCommand(player, args, group));
         commandMap.put("inventorysee", () -> handleInventorySee(player, args, group));
         commandMap.put("endersee", () -> handleEnderSee(player, args, group));
+        commandMap.put("mute", () -> handleMutePlayer(player, args, group));
+        commandMap.put("unmute", () -> handleUnMutePlayer(player, args, group));
 
 
         // Ejecuta el comando correspondiente
@@ -174,14 +179,54 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         return true;
     }
 
-    private void handleEnderSee(Player player, String[] args, GroupData group) {
-        if (args.length < 2) {
-            player.sendMessage(ChatColor.RED + "Uso: /endersee <nombre del jugador>");
+    private void handleUnMutePlayer(Player player, String[] args, GroupData group) {
+        if (!group.getPermissions().contains(Permission.MUTE)) {
+            sendNoPermissionMessage(player);
             return;
         }
 
+        if (args.length < 2) {
+            player.sendMessage(ChatColor.RED + "Uso: /unmute <nombre del jugador>");
+            return;
+        }
+
+        Player target = Bukkit.getPlayer(args[1]);
+        if (target == null || !target.isOnline()) {
+            player.sendMessage(ChatColor.RED + "El jugador especificado no está en línea.");
+            return;
+        }
+
+        playerController.unmutePlayer(player, target);
+    }
+
+    private void handleMutePlayer(Player player, String[] args, GroupData group) {
+        if (!group.getPermissions().contains(Permission.MUTE)) {
+            sendNoPermissionMessage(player);
+            return;
+        }
+
+        if (args.length < 2) {
+            player.sendMessage(ChatColor.RED + "Uso: /mute <nombre del jugador>");
+            return;
+        }
+
+        Player target = Bukkit.getPlayer(args[1]);
+        if (target == null || !target.isOnline()) {
+            player.sendMessage(ChatColor.RED + "El jugador especificado no está en línea.");
+            return;
+        }
+
+        playerController.mutePlayer(player, target);
+    }
+
+    private void handleEnderSee(Player player, String[] args, GroupData group) {
         if (!group.getPermissions().contains(Permission.GROUP)) {
             sendNoPermissionMessage(player);
+            return;
+        }
+
+        if (args.length < 2) {
+            player.sendMessage(ChatColor.RED + "Uso: /endersee <nombre del jugador>");
             return;
         }
 
@@ -196,13 +241,13 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
     }
 
     private void handleInventorySee(Player player, String[] args, GroupData group) {
-        if (args.length < 2) {
-            player.sendMessage(ChatColor.RED + "Uso: /inventorysee <nombre del jugador>");
+        if (!group.getPermissions().contains(Permission.GROUP)) {
+            sendNoPermissionMessage(player);
             return;
         }
 
-        if (!group.getPermissions().contains(Permission.GROUP)) {
-            sendNoPermissionMessage(player);
+        if (args.length < 2) {
+            player.sendMessage(ChatColor.RED + "Uso: /inventorysee <nombre del jugador>");
             return;
         }
 
@@ -437,6 +482,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
                 "/deathscape reportar - Abre el menú de reportes",
                 "/deathscape tiempojugado - Muestra el tiempo jugado",
                 "/deathscape tiempolluvia - Muestra el tiempo de lluvia pendiente"
+
         };
         for (String msg : helpMessages) {
             Message.enviarMensajeColorido(player, msg, ChatColor.BLUE);

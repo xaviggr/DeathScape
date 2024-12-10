@@ -2,6 +2,7 @@ package dc.Business.listeners.Player;
 
 import dc.Business.controllers.PlayerController;
 import dc.Business.groups.GroupData;
+import dc.DeathScape;
 import dc.Persistence.groups.GroupDatabase;
 import dc.Persistence.player.PlayerDatabase;
 import dc.Business.player.PlayerData;
@@ -16,9 +17,11 @@ import java.util.Objects;
 public class PlayerJoinEventListener implements Listener {
 
     private final PlayerController playerController;
+    private final DeathScape plugin;
 
-    public PlayerJoinEventListener(PlayerController playerController) {
+    public PlayerJoinEventListener(DeathScape plugin, PlayerController playerController) {
         this.playerController = playerController;
+        this.plugin = plugin;
     }
 
     @EventHandler
@@ -68,6 +71,9 @@ public class PlayerJoinEventListener implements Listener {
         prefix = ChatColor.translateAlternateColorCodes('&', prefix);
         event.setJoinMessage(prefix + " " + ChatColor.YELLOW + player.getName() + " ha entrado al mundo DeathScape");
 
+        if (player.isOnline()) {
+            plugin.time_of_connection.put(player.getName(), System.currentTimeMillis());
+        }
         playerController.setPlayerRank(player, prefix);
         playerController.setUpTabList(player);
     }

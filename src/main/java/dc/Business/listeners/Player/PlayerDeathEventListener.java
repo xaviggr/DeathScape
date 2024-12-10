@@ -70,5 +70,4 @@ public class PlayerDeathEventListener implements Listener {
         // Enviar mensaje al webhook
         discordController.sendWebhookMessage(jsonPayload);
     }
-
 }
