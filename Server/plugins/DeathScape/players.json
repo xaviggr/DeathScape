@@ -2,53 +2,43 @@
   "xaviggr": {
     "name": "xaviggr",
     "isDead": true,
-    "deaths": 1,
+    "deaths": 2,
     "hostAddress": "192.168.1.134",
-    "timePlayed": "32s 12m 0h",
+    "timePlayed": "58s 36m 0h",
     "uuid": "cb185b4b-cea7-43bb-a340-571c9bb6c3a5",
     "points": 0,
     "banDate": "0",
     "bantime": "0",
-    "coords": "3951.7299067621266,76.0,-550.0548523939449",
-    "group": "owner"
+    "coords": "3988.7143785685894,80.84264709715524,-494.3814223783837",
+    "dimension": "world",
+    "group": "default"
   },
   "Link825_": {
     "name": "Link825_",
     "isDead": true,
-    "deaths": 4,
-    "hostAddress": "79.158.181.39",
-    "timePlayed": "34s 42m 0h",
+    "deaths": 1,
+    "hostAddress": "83.50.199.232",
+    "timePlayed": "50s 16m 0h",
     "uuid": "a3a49fea-23f2-407c-b31d-d3e63cabbc96",
     "points": 0,
     "banDate": "0",
     "bantime": "0",
-    "coords": "3957.558895369058,76.0,-548.7198157902327",
-    "group": "owner"
-  },
-  "Gery_345": {
-    "name": "Gery_345",
-    "isDead": false,
-    "deaths": 1,
-    "hostAddress": "79.158.181.39",
-    "timePlayed": "9s 7m 0h",
-    "uuid": "c84063b4-6e39-4e72-8b79-9ea3cc4db41c",
-    "points": 0,
-    "banDate": "0",
-    "bantime": "0",
-    "coords": "3959.159782831637,76.0,-546.2191951014946",
+    "coords": "3954.4141300950605,78.93351314877873,-548.6194357772706",
+    "dimension": "world",
     "group": "default"
   },
   "4gymo": {
     "name": "4gymo",
     "isDead": true,
-    "deaths": 1,
+    "deaths": 4,
     "hostAddress": "81.34.127.250",
-    "timePlayed": "0",
+    "timePlayed": "30s 46m 0h",
     "uuid": "19cef73f-c4d2-46ec-8481-81ea7417e2f3",
     "points": 0,
     "banDate": "0",
     "bantime": "0",
-    "coords": "-5.858681469949997,-139.77824921330665,-94.45705147789644",
-    "group": "owner"
+    "coords": "3947.5,67.10000000149012,-540.5",
+    "dimension": "world",
+    "group": "default"
   }
 }

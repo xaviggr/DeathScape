@@ -35,24 +35,7 @@ public class PlayerQuitEventListener implements Listener {
             handlePlayerBan(player);
         }
 
-        // Save player time played and coordinates
-        PlayerEditDatabase.setPlayerCoords(player);
-        handleTimePlayed(player);
-        playerController.deactivateBanshee(player);
-    }
-
-    private void handleTimePlayed(Player player) {
-        if (plugin.time_of_connection.containsKey(player.getName())) {
-            long initTime = plugin.time_of_connection.get(player.getName());
-            long actualTime = System.currentTimeMillis();
-            long onlineTime = actualTime - initTime;
-
-            int segundos = Integer.parseInt(String.valueOf((int) (onlineTime / 1000) % 60));
-            int minutos = Integer.parseInt(String.valueOf((int) ((onlineTime / (1000 * 60)) % 60)));
-            int horas = Integer.parseInt(String.valueOf((int) ((onlineTime / (1000 * 60 * 60)) % 24)));
-            PlayerEditDatabase.setPlayerTimePlayed(player, segundos, minutos, horas);
-            plugin.time_of_connection.remove(player.getName());
-        }
+        playerController.removePlayerFromServer(player);
     }
 
     private void handlePlayerBan(Player player) {

@@ -2,6 +2,7 @@ package dc.Business.controllers;
 
 import dc.DeathScape;
 import org.bukkit.Bukkit;
+import org.bukkit.GameRule;
 import org.bukkit.World;
 
 public class DimensionController {
@@ -16,6 +17,23 @@ public class DimensionController {
     //Init method to initialize the dimensions
     private void init() {
         initRift();
+        initSpawn();
+    }
+
+    private void initSpawn() {
+        World spawnDimension = Bukkit.getWorld("world_minecraft_spawn");
+
+        if (spawnDimension != null) {
+            // Configuración básica del mundo
+            spawnDimension.setGameRule(GameRule.DO_DAYLIGHT_CYCLE, false);
+            spawnDimension.setGameRule(GameRule.DO_WEATHER_CYCLE, false);
+            spawnDimension.setGameRule(GameRule.DO_MOB_SPAWNING, false);
+            spawnDimension.setTime(6000); // Configura el tiempo en el día
+
+            Bukkit.getLogger().info("[DeathScape] Spawn dimension initialized successfully.");
+        } else {
+            Bukkit.getLogger().severe("[DeathScape] Failed to load or create spawn dimension.");
+        }
     }
 
     private void initRift() {

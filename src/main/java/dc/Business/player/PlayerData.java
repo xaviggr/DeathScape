@@ -1,6 +1,8 @@
 package dc.Business.player;
 
 import com.google.gson.Gson;
+import org.bukkit.Bukkit;
+import org.bukkit.World;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -19,6 +21,7 @@ public class PlayerData {
     private String bantime;
 
     private String coords;
+    private String dimension;
     private String group;
 
     public String getBanDate() {
@@ -109,7 +112,7 @@ public class PlayerData {
         this.coords = coords;
         this.points = points;
         this.group = group;
-
+        this.dimension = "world";
     }
 
     public void setBanTime() {
@@ -193,5 +196,13 @@ public class PlayerData {
     @Override
     public String toString() {
         return new Gson().toJson(this);
+    }
+
+    public World getDimension() {
+        return Bukkit.getWorld(dimension);
+    }
+
+    public void setDimension(String dimension) {
+        this.dimension = dimension;
     }
 }

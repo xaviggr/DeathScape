@@ -15,11 +15,7 @@
       "DAYS",
       "MUTE"
     ],
-    "players": [
-      "xaviggr",
-      "Link825_",
-      "4gymo"
-    ]
+    "players": []
   },
   "admin": {
     "name": "admin",
@@ -81,7 +77,9 @@
     "prefix": "\u0026b[Warrior]",
     "permissions": [],
     "players": [
-      "Gery_345"
+      "xaviggr",
+      "Link825_",
+      "4gymo"
     ]
   }
 }

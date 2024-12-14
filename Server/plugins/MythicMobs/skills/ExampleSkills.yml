@@ -1,11 +1,7 @@
-# For more information, check out the plugin manual or join us on Discord:
-# http://www.mythicmobs.net
-#  
-
 SmashAttack:
   Cooldown: 8
   Conditions:
-  - targetwithin 25
+  - targetwithin{d=25}
   Skills:
   - message{cooldown=30;m="<mob.name><&co> Hahahah! I will crush you, fool!"} @PlayersInRadius{r=40}
   - teleport @target
@@ -14,18 +10,10 @@ SmashAttack:
   - damage{amount=5;ignorearmor=true} @PlayersInRadius{r=5}
   - throw{velocity=10;velocityY=5} @PlayersInRadius{r=5}
   - effect:explosion @Self
-SmashAttack2:
-  Cooldown: 8
-  Conditions:
-  - targetwithin 25
-  Skills:
-  - teleport @target
-  - effect:sound{s=mob.endermen.portal;volume=1.0;pitch=0.5}
-  - delay 10
-  - damage{amount=4;ignorearmor=true} @PlayersInRadius{r=5}
 SummonSkeletons:
   Cooldown: 15
   Skills:
+  - message{m="<caster.name><&co> Arise, my minions!"} @PlayersInRadius{r=40}
   - delay 20
   - summon{mob=SkeletalMinion;amount=2;noise=5} @Self
   - delay 20
@@ -36,103 +24,5 @@ AngrySludgePoison:
   Cooldown: 10
   Skills:
   - potion{type=POISON;lvl=2;duration=100} @PlayersInRadius{r=15}
-  - effect:particles{p=happyVillager;amount=1000;hSpread=15;ySpread=1;speed=0;yOFfset=0.5}
+  - effect:particles{p=happyVillager;amount=1000;hSpread=15;ySpread=1;speed=0;yOffset=0.5}
     @Self
-DañoAlFlecharle:
-  Skills:
-  - potion{type=POISON;lvl=2;duration=200} @PlayersInRadius{r=15} ~onExplode
-DañoCercano:
-  Skills:
-  - damage{a=1;ignorearmor=true} @PlayersInRadius{r=10}
-LentitudCercano:
-  Skills:
-  - potion{type=SLOW;lvl=1;duration=100} @PlayersInRadius{r=10}
-  - potion{type=POISON;lvl=1;duration=100} @PlayersInRadius{r=10}
-SummonEvokers:
-  Cooldown: 5
-  Skills:
-  - delay 20
-  - summon{mob=ILLUSIONER;amount=2;noise=5} @Self
-  - delay 20
-  - summon{mob=ILLUSIONER;amount=2;noise=5} @Self
-  - delay 20
-  - summon{mob=ILLUSIONER;amount=2;noise=5} @Self
-SummonPhantoms:
-  Cooldown: 5
-  Skills:
-  - delay 20
-  - summon{mob=Phantom1;amount=2;noise=5} @Self
-  - delay 20
-  - summon{mob=Phantom1;amount=2;noise=5} @Self
-PerroProtectorSkills:
-  - potion{type=REGENERATION;duration=200;level=1} @PlayersInRadius{r=10}
-  
-SummonBobs:
-  Cooldown: 5
-  Skills:
-  - delay 20
-  - summon{mob=Bob1;amount=2;noise=5} @Self
-  - delay 20
-  - summon{mob=Bob1;amount=2;noise=5} @Self
-  - potion{type=WEAKNESS;duration=100;level=2} @PlayersInRadius{r=10}
-MontarCaballoEsqueleto:
-    Skills:
-    - mount{type=CaballoEsqueleto}
-    Cooldown: 200
-MontarVex:
-    Skills:
-    - mount{type=Vexx}
-    Cooldown: 200
-GroundSlam:
-    Skills:
-    - effect:explosion @Self
-    - damage{amount=10} @PlayersInRadius{r=5}
-    - throw{velocity=15;velocityY=5} @PlayersInRadius{r=3}
-SkullBarrage:
-  Skills:
-  - shootskull{y=1;v=4} @target
-  - delay 10
-  - shootskull{y=1;v=4} @target
-  - delay 10
-  - shootskull{y=1;v=4} @target
-FireballBarrage:
-  Cooldown: 6
-  Skills:
-  - shootfireball{y=1;v=1} @target
-  - delay 10
-  - shootfireball{y=1;v=1} @target
-  - delay 10
-  - shootfireball{y=1;v=1} @target
-
-SummonBlazes:
-  Cooldown: 5
-  Skills:
-  - delay 20
-  - summon{mob=Blaze1;amount=2;noise=5} @Self
-TestingShootShulkerBullet:
-  Skills:
-  - ShootShulkerBullet{oT=TSSB_oT;oH=TSSB_oH;oE=TSSB_oE;i=1} @target
-  
-TSSB_oT:
-  Skills:
-  - particles{particle=reddust;color=#ffffff;size=0.66;a=2;hs=0;vs=0;s=0;y=0} @origin
-TSSB_oH:
-  Skills:
-  - damage{a=55}
-TSSB_oE:
-  Skills:
-  - particlesphere{particle=reddust;color=#ffffff;size=0.66;a=30;r=1;hs=0;vs=0;s=0;y=0} @origin
-SummonSubditosHeraldo:
-  Cooldown: 5
-  Skills:
-  - delay 20
-  - summon{mob=HeraldoSubditos;amount=2;noise=5} @Self
-MontarTortuga:
-    Skills:
-    - mount{type=ArañaTortuga}
-    Cooldown: 200
-SummonEnderGhasts:
-  Cooldown: 5
-  Skills:
-  - delay 20
-  - summon{mob=EnderGhast;amount=2;noise=5} @Self

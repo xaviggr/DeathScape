@@ -1,11 +1,4 @@
 {
-  "mutedUsers": [],
-  "bannedWords": [
-    "gymo",
-    "gymo",
-    "boludo",
-    "nigga",
-    "niga",
-    "panchito"
-  ]
+  "bannedWords": [],
+  "mutedUsers": []
 }
