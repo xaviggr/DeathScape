@@ -11,19 +11,22 @@ import java.util.Set;
 
 public class BannedWordsDatabase {
 
-    private static String bannedWordsFile;
+    private static String databaseFile;
 
-    public static void setBannedWordsFile(String filename) {
-        bannedWordsFile = filename;
+    public static void setDatabaseFile(String filename) {
+        databaseFile = filename;
     }
 
-    public static void initBannedWordsDatabase() {
-        File file = new File(bannedWordsFile);
+    public static void initDatabase() {
+        File file = new File(databaseFile);
         if (!file.exists()) {
             try {
                 file.createNewFile();
                 try (FileWriter writer = new FileWriter(file)) {
-                    writer.write("{\"bannedWords\": [\"\"]}");  // Inicia con un array vacío de palabras prohibidas
+                    JsonObject jsonObject = new JsonObject();
+                    jsonObject.add("bannedWords", new JsonArray());
+                    jsonObject.add("mutedUsers", new JsonArray());
+                    writeJsonFile(jsonObject);
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -32,9 +35,9 @@ public class BannedWordsDatabase {
     }
 
     private static JsonObject readJsonFile() {
-        File file = new File(bannedWordsFile);
+        File file = new File(databaseFile);
         if (!file.exists()) {
-            initBannedWordsDatabase();
+            initDatabase();
             return new JsonObject();
         }
 
@@ -52,7 +55,7 @@ public class BannedWordsDatabase {
     }
 
     private static void writeJsonFile(JsonObject jsonObject) {
-        try (FileWriter fileWriter = new FileWriter(bannedWordsFile)) {
+        try (FileWriter fileWriter = new FileWriter(databaseFile)) {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             fileWriter.write(gson.toJson(jsonObject));
         } catch (IOException e) {
@@ -60,13 +63,19 @@ public class BannedWordsDatabase {
         }
     }
 
+    // Métodos para palabras prohibidas
     public static Set<String> getBannedWords() {
         JsonObject jsonObject = readJsonFile();
         JsonArray bannedWordsArray = jsonObject.getAsJsonArray("bannedWords");
         Set<String> bannedWords = new HashSet<>();
 
         if (bannedWordsArray != null) {
-            bannedWordsArray.forEach(word -> bannedWords.add(word.getAsString()));
+            bannedWordsArray.forEach(word -> {
+                String bannedWord = word.getAsString().trim();
+                if (!bannedWord.isEmpty()) {
+                    bannedWords.add(bannedWord);
+                }
+            });
         }
         return bannedWords;
     }
@@ -97,6 +106,53 @@ public class BannedWordsDatabase {
                 }
             }
             jsonObject.add("bannedWords", newBannedWordsArray);
+            writeJsonFile(jsonObject);
+        }
+    }
+
+    // Métodos para usuarios silenciados
+    public static Set<String> getMutedUsers() {
+        JsonObject jsonObject = readJsonFile();
+        JsonArray mutedUsersArray = jsonObject.getAsJsonArray("mutedUsers");
+        Set<String> mutedUsers = new HashSet<>();
+
+        if (mutedUsersArray != null) {
+            mutedUsersArray.forEach(user -> {
+                String mutedUser = user.getAsString().trim();
+                if (!mutedUser.isEmpty()) {
+                    mutedUsers.add(mutedUser);
+                }
+            });
+        }
+        return mutedUsers;
+    }
+
+    public static void addMutedUser(String username) {
+        JsonObject jsonObject = readJsonFile();
+        JsonArray mutedUsersArray = jsonObject.getAsJsonArray("mutedUsers");
+
+        if (mutedUsersArray == null) {
+            mutedUsersArray = new JsonArray();
+            jsonObject.add("mutedUsers", mutedUsersArray);
+        }
+
+        mutedUsersArray.add(username);
+        writeJsonFile(jsonObject);
+    }
+
+    public static void removeMutedUser(String username) {
+        JsonObject jsonObject = readJsonFile();
+        JsonArray mutedUsersArray = jsonObject.getAsJsonArray("mutedUsers");
+
+        if (mutedUsersArray != null) {
+            JsonArray newMutedUsersArray = new JsonArray();
+            for (int i = 0; i < mutedUsersArray.size(); i++) {
+                String mutedUser = mutedUsersArray.get(i).getAsString();
+                if (!mutedUser.equalsIgnoreCase(username)) {
+                    newMutedUsersArray.add(mutedUser);
+                }
+            }
+            jsonObject.add("mutedUsers", newMutedUsersArray);
             writeJsonFile(jsonObject);
         }
     }

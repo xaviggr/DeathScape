@@ -4,6 +4,7 @@ import dc.Business.player.PlayerBan;
 import dc.Business.player.PlayerDeath;
 import dc.Business.player.PlayerTabList;
 import dc.DeathScape;
+import dc.Persistence.chat.BannedWordsDatabase;
 import dc.Persistence.config.MainConfigManager;
 import dc.Business.player.PlayerData;
 import dc.Persistence.groups.GroupDatabase;
@@ -30,12 +31,14 @@ public class PlayerController {
     private final PlayerDeath playerDeath;
     private final PlayerTabList playerTabList;
     private final Map<UUID, Location> previousLocations = new HashMap<>();
+    private final DeathScape plugin;
 
     // Constructor to initialize necessary components
     public PlayerController(DeathScape plugin) {
         PlayerBan playerBan = new PlayerBan(); // Initialized player ban functionality
         this.playerTabList = new PlayerTabList(plugin, this); // Initialize TabList animation
         this.playerDeath = new PlayerDeath(plugin, playerBan); // Initialize death functionality
+        this.plugin = plugin;
     }
 
     /**
@@ -230,5 +233,60 @@ public class PlayerController {
         player.setHealth(20);
         player.setFoodLevel(20);
         player.setSaturation(20);
+    }
+
+    public boolean isMuted(Player player) {
+        return BannedWordsDatabase.getMutedUsers().contains(player.getName());
+    }
+
+    public void mutePlayer(Player player, Player target) {
+        BannedWordsDatabase.addMutedUser(target.getName());
+        player.sendMessage(ChatColor.GREEN + "El jugador " + target.getName() + " ha sido silenciado.");
+    }
+
+    public void unmutePlayer(Player player, Player target) {
+        BannedWordsDatabase.removeMutedUser(target.getName());
+        player.sendMessage(ChatColor.GREEN + "El jugador " + target.getName() + " ha sido desilenciado.");
+    }
+
+    private void addPlayerToQueue(Player player) {
+        plugin.getServerData().addPlayerToQueue(player);
+    }
+
+    private void removePlayerFromQueue(Player player) {
+        plugin.getServerData().removePlayerFromQueue(player);
+    }
+
+    public void addPlayerToServer(Player player) {
+        addPlayerToQueue(player);
+    }
+
+    public void removePlayerFromServer(Player player) {
+        // Save player time played and coordinates if is not in spawn world
+        if (!Objects.requireNonNull(player.getLocation().getWorld()).getName().equals("world_minecraft_spawn")) {
+            PlayerEditDatabase.setPlayerCoords(player);
+            handleTimePlayed(player);
+        }
+        deactivateBanshee(player);
+        plugin.getServerData().decreasePlayerCounter();
+        removePlayerFromQueue(player);
+    }
+
+    private void handleTimePlayed(Player player) {
+        if (plugin.time_of_connection.containsKey(player.getName())) {
+            long initTime = plugin.time_of_connection.get(player.getName());
+            long actualTime = System.currentTimeMillis();
+            long onlineTime = actualTime - initTime;
+
+            int segundos = Integer.parseInt(String.valueOf((int) (onlineTime / 1000) % 60));
+            int minutos = Integer.parseInt(String.valueOf((int) ((onlineTime / (1000 * 60)) % 60)));
+            int horas = Integer.parseInt(String.valueOf((int) ((onlineTime / (1000 * 60 * 60)) % 24)));
+            PlayerEditDatabase.setPlayerTimePlayed(player, segundos, minutos, horas);
+            plugin.time_of_connection.remove(player.getName());
+        }
+    }
+
+    public int getQueuePosition(Player player) {
+        return plugin.getServerData().getQueuePosition(player);
     }
 }

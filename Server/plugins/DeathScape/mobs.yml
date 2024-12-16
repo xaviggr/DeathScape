@@ -1,19 +1,72 @@
 mobs:
   day_1:
     world:
-      - Mago
+      ZOMBIE:
+        - Dif2Zombie
+      SKELETON:
+        - Dif2Esqueleto
+      SPIDER:
+        - Dif2Araña
+      WITCH:
+        - Dif2Bruja
+      VEX:
+        - Vexx
+      ENDERMAN:
+        - Enderman1
+      PHANTOM:
+        - Phantom1
   day_2:
     world:
-      - Gigante
+      SPIDER:
+        - ArañaTipo1
+        - ArañaTipo2
+        - ArañaTipo3
+        - ArañaTipo4
+        - ArañaTipo5
+      CREEPER:
+        - CreeperCargado
+      VEX:
+        - VEX_8
+        - Vexx
+    world_nether:
+      ZOMBIFIED_PIGLIN:
+        - ZOMBIFIED_PIGLIN_8
+      ZOGLIN:
+        - ZOGLIN_8
+      PIGLIN_BRUTE:
+        - PIGLIN_BRUTE_8
+      PIGLIN:
+        - PIGLIN_8
+      BLAZE:
+        - BLAZE_8
+      SLIME:
+        - SLIME_8
+      MAGMA_CUBE:
+        - MAGMA_CUBE_8
   day_3:
     world:
-      - TitanPillager
+      CREEPER:
+        - CreeperPollo
+      ZOMBIE:
+        - ZombieVaca
   day_4:
     world:
-      - CreeperCargado
+      CREEPER:
+        - CreeperCargado
+        - CREEPER_27
+      ZOMBIE:
+        - ZOMBIE_27
+      SKELETON:
+        - SKELETON_27
   day_5:
-    world:
-      - Bob
+    world_the_end:
+      SHULKER:
+        - ShulkerMamado
+      ENDERMAN:
+        - EndermanPrueba
   day_6:
     world:
-      - PerroProtector
+      ZOMBIE:
+        - JefeGery
+        - Jefe4gymo
+        - JefeLink

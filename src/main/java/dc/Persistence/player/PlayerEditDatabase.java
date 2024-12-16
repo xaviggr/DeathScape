@@ -3,6 +3,8 @@ package dc.Persistence.player;
 import dc.Business.groups.GroupData;
 import dc.Business.player.PlayerData;
 import dc.Persistence.groups.GroupDatabase;
+import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
 
 import java.util.Objects;
@@ -112,5 +114,15 @@ public class PlayerEditDatabase {
         }
         groupData.removePlayer(player);
         GroupDatabase.addGroupData(groupData);
+    }
+
+    public static Location getPlayerLocation(String name) {
+        PlayerData playerData = PlayerDatabase.getPlayerDataFromDatabase(name);
+        if (playerData == null) {
+            return null;
+        }
+        String[] coords = playerData.getCoords().split(",");
+        World world = playerData.getDimension();
+        return new Location(world, Double.parseDouble(coords[0]), Double.parseDouble(coords[1]), Double.parseDouble(coords[2]));
     }
 }

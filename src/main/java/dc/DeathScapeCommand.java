@@ -5,6 +5,7 @@ import dc.Business.groups.GroupData;
 import dc.Business.groups.Permission;
 import dc.Business.inventory.ReportInventory;
 import dc.Business.inventory.ReportsInventory;
+import dc.Business.inventory.ReviveInventory;
 import dc.Business.log.LogData;
 import dc.Business.player.PlayerData;
 import dc.Persistence.chat.BannedWordsDatabase;
@@ -34,12 +35,14 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
     private final PlayerController playerController;
     private final ReportInventory reportInventory;
     private final ReportsInventory reportsInventory;
+    private final ReviveInventory reviveInventory;
 
-    public DeathScapeCommand(DeathScape plugin, ReportInventory reportInventory, ReportsInventory reportsInventory, PlayerController playerController) {
+    public DeathScapeCommand(DeathScape plugin, ReportInventory reportInventory, ReportsInventory reportsInventory, PlayerController playerController, ReviveInventory reviveInventory) {
         this.plugin = plugin;
         this.reportInventory = reportInventory;
         this.reportsInventory = reportsInventory;
         this.playerController = playerController;
+        this.reviveInventory = reviveInventory;
     }
 
     @Override
@@ -94,6 +97,10 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
                         options.add("añadirbannedword");
                         options.add("quitarbannedword");
                     }
+
+                    if (groupPermissions.contains("mute")) {
+                        options.add("mute");
+                    }
                 }
             }
             return options;
@@ -104,7 +111,16 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player player)) {
-            sender.sendMessage("Este comando solo puede ser usado por jugadores.");
+            if (args[0].equalsIgnoreCase("revive")) {
+                Player target = Bukkit.getPlayer(args[1]);
+                if (target == null || !target.isOnline()) {
+                    sender.sendMessage(ChatColor.RED + "El jugador especificado no está en línea.");
+                } else {
+                    reviveInventory.openInventory(target);
+                }
+            } else {
+                sender.sendMessage(ChatColor.RED + "Este comando solo puede ser ejecutado por un jugador.");
+            }
             return true;
         }
 
@@ -149,6 +165,8 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         commandMap.put("dificultad", () -> handleDifficultyCommand(player, args));
         commandMap.put("inventorysee", () -> handleInventorySee(player, args, group));
         commandMap.put("endersee", () -> handleEnderSee(player, args, group));
+        commandMap.put("mute", () -> handleMutePlayer(player, args, group));
+        commandMap.put("unmute", () -> handleUnMutePlayer(player, args, group));
 
         // Ejecuta el comando correspondiente
         Runnable commandAction = commandMap.get(args[0].toLowerCase());
@@ -163,14 +181,54 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         return true;
     }
 
-    private void handleEnderSee(Player player, String[] args, GroupData group) {
-        if (args.length < 2) {
-            player.sendMessage(ChatColor.RED + "Uso: /endersee <nombre del jugador>");
+    private void handleUnMutePlayer(Player player, String[] args, GroupData group) {
+        if (!group.getPermissions().contains(Permission.MUTE)) {
+            sendNoPermissionMessage(player);
             return;
         }
 
+        if (args.length < 2) {
+            player.sendMessage(ChatColor.RED + "Uso: /unmute <nombre del jugador>");
+            return;
+        }
+
+        Player target = Bukkit.getPlayer(args[1]);
+        if (target == null || !target.isOnline()) {
+            player.sendMessage(ChatColor.RED + "El jugador especificado no está en línea.");
+            return;
+        }
+
+        playerController.unmutePlayer(player, target);
+    }
+
+    private void handleMutePlayer(Player player, String[] args, GroupData group) {
+        if (!group.getPermissions().contains(Permission.MUTE)) {
+            sendNoPermissionMessage(player);
+            return;
+        }
+
+        if (args.length < 2) {
+            player.sendMessage(ChatColor.RED + "Uso: /mute <nombre del jugador>");
+            return;
+        }
+
+        Player target = Bukkit.getPlayer(args[1]);
+        if (target == null || !target.isOnline()) {
+            player.sendMessage(ChatColor.RED + "El jugador especificado no está en línea.");
+            return;
+        }
+
+        playerController.mutePlayer(player, target);
+    }
+
+    private void handleEnderSee(Player player, String[] args, GroupData group) {
         if (!group.getPermissions().contains(Permission.GROUP)) {
             sendNoPermissionMessage(player);
+            return;
+        }
+
+        if (args.length < 2) {
+            player.sendMessage(ChatColor.RED + "Uso: /endersee <nombre del jugador>");
             return;
         }
 
@@ -185,13 +243,13 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
     }
 
     private void handleInventorySee(Player player, String[] args, GroupData group) {
-        if (args.length < 2) {
-            player.sendMessage(ChatColor.RED + "Uso: /inventorysee <nombre del jugador>");
+        if (!group.getPermissions().contains(Permission.GROUP)) {
+            sendNoPermissionMessage(player);
             return;
         }
 
-        if (!group.getPermissions().contains(Permission.GROUP)) {
-            sendNoPermissionMessage(player);
+        if (args.length < 2) {
+            player.sendMessage(ChatColor.RED + "Uso: /inventorysee <nombre del jugador>");
             return;
         }
 
@@ -295,7 +353,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
     }
 
     private void handleAddUserToGroupCommand(Player player, String[] args, GroupData group) {
-        if (!group.getPermissions().contains(Permission.GROUP) || !player.isOp()) {
+        if (!group.getPermissions().contains(Permission.GROUP) && !player.isOp()) {
             sendNoPermissionMessage(player);
             return;
         }
@@ -310,7 +368,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
     }
 
     private void handleRemoveUserFromGroupCommand(Player player, String[] args, GroupData group) {
-        if (!group.getPermissions().contains(Permission.GROUP) || !player.isOp()) {
+        if (!group.getPermissions().contains(Permission.GROUP) && !player.isOp()) {
             sendNoPermissionMessage(player);
             return;
         }
@@ -426,7 +484,8 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
                 "/deathscape reportar - Abre el menú de reportes",
                 "/deathscape tiempojugado - Muestra el tiempo jugado",
                 "/deathscape tiempolluvia - Muestra el tiempo de lluvia pendiente",
-                "/deathscape dificultad <día> - Muestra la información de la dificultad de ese día"
+                "/deathscape dificultad <día> - Muestra la información de la dificultad de ese día",
+                "/deathscape tiempolluvia - Muestra el tiempo de lluvia pendiente"
         };
         for (String msg : helpMessages) {
             Message.enviarMensajeColorido(player, msg, ChatColor.BLUE);

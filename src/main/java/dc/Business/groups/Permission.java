@@ -11,7 +11,9 @@ public enum Permission {
     BANSHEE,
     CHAT,
     HEAL,
-    DAYS;
+    DAYS,
+    MUTE;
+
 
     @Override
     public String toString() {

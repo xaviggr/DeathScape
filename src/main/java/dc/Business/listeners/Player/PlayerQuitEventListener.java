@@ -1,6 +1,8 @@
 package dc.Business.listeners.Player;
 
 import dc.Business.controllers.PlayerController;
+import dc.DeathScape;
+import dc.Persistence.player.PlayerDatabase;
 import dc.Persistence.player.PlayerEditDatabase;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -12,9 +14,11 @@ import org.bukkit.entity.Player;
 public class PlayerQuitEventListener implements Listener {
 
     private final PlayerController playerController;
+    private final DeathScape plugin;
 
-    public PlayerQuitEventListener(PlayerController playerController) {
+    public PlayerQuitEventListener(DeathScape plugin, PlayerController playerController) {
         this.playerController = playerController;
+        this.plugin = plugin;
     }
 
     @EventHandler
@@ -31,9 +35,7 @@ public class PlayerQuitEventListener implements Listener {
             handlePlayerBan(player);
         }
 
-        // Save player time played and coordinates
-        PlayerEditDatabase.setPlayerCoords(player);
-        playerController.deactivateBanshee(player);
+        playerController.removePlayerFromServer(player);
     }
 
     private void handlePlayerBan(Player player) {

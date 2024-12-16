@@ -1,0 +1,418 @@
+CancelEventSkill:
+    Skills:
+        - CancelEvent
+
+### gm_galaxy_dragon #########
+
+
+gm_galaxy_dragon_attack1:
+  Conditions:
+  - incombat true
+  - offgcd{} true
+  TargetConditions:
+  - distance{d=0to8}
+  Skills:
+  - gcd{ticks=45} @self
+  - state{state=attack1} @self
+  - potion{type=SLOW;l=99;d=18;p=false} @self
+  - effect:sound{s=entity.ender_dragon.growl;v=1;p=0.9} @self
+  - delay 18
+  - lunge{v=1;vy=0.1} @target
+  - delay 20
+  - potion{type=SLOW;l=99;d=24;p=false} @self 
+  - totem{ch=1;md=2;oH=totemrobot_gm_prototipo_one_attack1;repeat=5;repeatInterval=1;hnp=true;vR=6;hR=6} @modelpart{m=gm_galaxy_dragon;p=subpatadliz;off=LOCAL;y=-0.8}
+
+
+gm_galaxy_dragon_pisada:
+  Cooldown: 5
+  Conditions:
+  - incombat true
+  - offgcd{} true
+  TargetConditions:
+  - distance{d=0to8}
+  Skills:
+  - gcd{ticks=52} @self
+  - state{state=pisada} @self
+  - potion{type=SLOW;l=99;d=51;p=false} @self
+  - effect:sound{s=entity.ender_dragon.growl;v=1;p=0.9} @self
+  - delay 12
+  - sound{s=gm_dragon_galaxia:gamitamodels.gm_dragon_galax.drag02;v=1;p=0.6} @self
+  - delay 10
+  - effect:sound{s=entity.generic.explode;v=1;p=0.6} @self
+  - effect:particles{p=campfire_cosy_smoke;amount=85;speed=0.25;hs=10;vs=0.5}
+  - throw{v=6;vy=7} @eir{r=12;ignore=samefaction}
+  - damage{a=5} @eir{r=8;ignore=samefaction}
+  - skill{s=gm_galaxy_dragonrecoil_effectss;sync=true} @pir{r=16}
+
+gm_galaxy_dragon_cabun:
+  Cooldown: 5
+  Conditions:
+  - incombat true
+  - offgcd{} true
+  TargetConditions:
+  - distance{d=0to8}
+  Skills:
+  - gcd{ticks=52} @self
+  - state{state=cabun} @self
+  - potion{type=SLOW;l=99;d=45;p=false} @self
+  - effect:sound{s=entity.ender_dragon.growl;v=1;p=0.9} @self
+  - delay 12
+  - sound{s=gm_dragon_galaxia:gamitamodels.gm_dragon_galax.drag02;v=1;p=0.8} @self
+  - delay 10
+  - effect:sound{s=entity.generic.explode;v=1;p=0.6} @self
+  - effect:particles{p=campfire_cosy_smoke;amount=85;speed=0.25;hs=10;vs=0.5}
+  - throw{v=6;vy=7} @eir{r=12;ignore=samefaction}
+  - damage{a=5} @eir{r=8;ignore=samefaction}
+  - skill{s=gm_galaxy_dragonrecoil_effectss;sync=true} @pir{r=16}
+
+gm_galaxy_dragonrecoil_effectss:
+  Skills:
+    - recoil{r=1;pitch=4to4} 
+    - delay 1
+    - recoil{r=1;pitch=-4to-4} 
+    - delay 1
+    - recoil{r=1;pitch=4to4} 
+    - delay 1
+    - recoil{r=1;pitch=-4to-4} 
+    - delay 1
+    - recoil{r=1;pitch=2to2} 
+    - delay 1
+    - recoil{r=1;pitch=-2to-2} 
+    - delay 1
+    - recoil{r=1;pitch=2to2} 
+    - delay 1
+    - recoil{r=1;pitch=-2to-2} 
+    - delay 1
+
+gm_galaxy_dragon_magic1:
+  Cooldown: 10
+  Conditions:
+  - incombat true
+  - offgcd{} true
+  TargetConditions:
+  - distance{d=0to20}
+  Skills:
+  - gcd{ticks=30} @self
+  - state{state=magic1} @self
+  - potion{type=SLOW;l=99;d=30;p=false} @self
+  - delay 10
+  - sound{s=gm_dragon_galaxia:gamitamodels.gm_dragon_galax.magic1;v=2;p=1} @self
+  - sound{s=gm_dragon_galaxia:gamitamodels.gm_dragon_galax.magic1;v=2;p=1} @pir{r=40}
+  - effect:sound{s=entity.ender_dragon.growl;v=7;p=0.9} @self
+  - delay 12
+  - totem{ch=1;md=2;oH=gm_galaxy_dragon_mgicdrag1hit;hnp=true;hR=2;vR=7} @forward{f=3}
+  - totem{ch=1;md=2;oH=gm_galaxy_dragon_mgicdrag1hit;hnp=true;hR=2;vR=7} @forward{f=4}
+  - totem{ch=1;md=2;oH=gm_galaxy_dragon_mgicdrag1hit;hnp=true;hR=2;vR=7} @forward{f=5}
+  - totem{ch=1;md=2;oH=gm_galaxy_dragon_mgicdrag1hit;hnp=true;hR=2;vR=7} @forward{f=6}
+  - totem{ch=1;md=2;oH=gm_galaxy_dragon_mgicdrag1hit;hnp=true;hR=2;vR=7} @forward{f=7}
+  - totem{ch=1;md=2;oH=gm_galaxy_dragon_mgicdrag1hit;hnp=true;hR=2;vR=7} @forward{f=8}
+  - totem{ch=1;md=2;oH=gm_galaxy_dragon_mgicdrag1hit;hnp=true;hR=2;vR=7} @forward{f=9}
+  - totem{ch=1;md=2;oH=gm_galaxy_dragon_mgicdrag1hit;hnp=true;hR=2;vR=7} @forward{f=10}
+  - totem{ch=1;md=2;oH=gm_galaxy_dragon_mgicdrag1hit;hnp=true;hR=2;vR=7} @forward{f=11}
+  - totem{ch=1;md=2;oH=gm_galaxy_dragon_mgicdrag1hit;hnp=true;hR=2;vR=7} @forward{f=12}
+  - totem{ch=1;md=2;oH=gm_galaxy_dragon_mgicdrag1hit;hnp=true;hR=2;vR=7} @forward{f=13}
+  - totem{ch=1;md=2;oH=gm_galaxy_dragon_mgicdrag1hit;hnp=true;hR=2;vR=7} @forward{f=14}
+  - totem{ch=1;md=2;oH=gm_galaxy_dragon_mgicdrag1hit;hnp=true;hR=2;vR=7} @forward{f=15}
+  - totem{ch=1;md=2;oH=gm_galaxy_dragon_mgicdrag1hit;hnp=true;hR=2;vR=7} @forward{f=16}
+  - effect:particles{p=reddust;color=#e96c6c;amount=35;speed=0.25;hs=0.15;vs=2.5;size=1} @forward{f=3}
+  - effect:particles{p=reddust;color=#e96c6c;amount=35;speed=0.25;hs=0.15;vs=2.5;;size=1} @forward{f=4}
+  - effect:particles{p=reddust;color=#e96c6c;amount=35;speed=0.25;hs=0.15;vs=2.5;size=1} @forward{f=5}
+  - effect:particles{p=reddust;color=#e96c6c;amount=35;speed=0.25;hs=0.15;vs=2.5;size=1} @forward{f=6}
+  - effect:particles{p=reddust;color=#e96c6c;amount=35;speed=0.25;hs=0.15;vs=2.5;size=1} @forward{f=7}
+  - effect:particles{p=reddust;color=#e96c6c;amount=35;speed=0.25;hs=0.15;vs=2.5;size=1} @forward{f=8}
+  - effect:particles{p=reddust;color=#e96c6c;amount=35;speed=0.25;hs=0.15;vs=2.5;size=1} @forward{f=9}
+  - effect:particles{p=reddust;color=#e96c6c;amount=35;speed=0.25;hs=0.15;vs=2.5;size=1} @forward{f=10}
+  - effect:particles{p=reddust;color=#e96c6c;amount=35;speed=0.25;hs=0.15;vs=2.5;size=1} @forward{f=11}
+  - effect:particles{p=reddust;color=#e96c6c;amount=35;speed=0.25;hs=0.15;vs=2.5;size=1} @forward{f=12}
+  - effect:particles{p=reddust;color=#e96c6c;amount=35;speed=0.25;hs=0.15;vs=2.5;size=1} @forward{f=13}
+  - effect:particles{p=reddust;color=#e96c6c;amount=35;speed=0.25;hs=0.15;vs=2.5;size=1} @forward{f=14}
+  - effect:particles{p=reddust;color=#e96c6c;amount=35;speed=0.25;hs=0.15;vs=2.5;size=1} @forward{f=15}
+  - effect:particles{p=reddust;color=#e96c6c;amount=35;speed=0.25;hs=0.15;vs=2.5;size=1} @forward{f=16}
+  - effect:particles{p=reddust;color=#e96c6c;amount=35;speed=0.25;hs=0.15;vs=2.5;size=1} @forward{f=17}
+  - effect:particles{p=crimson_spore;amount=35;speed=0.25;hs=0.15;vs=2.5;size=1} @forward{f=3}
+  - effect:particles{p=crimson_spore;amount=35;speed=0.25;hs=0.15;vs=2.5;;size=1} @forward{f=4}
+  - effect:particles{p=crimson_spore;amount=35;speed=0.25;hs=0.15;vs=2.5;size=1} @forward{f=5}
+  - effect:particles{p=crimson_spore;amount=35;speed=0.25;hs=0.15;vs=2.5;size=1} @forward{f=6}
+  - effect:particles{p=crimson_spore;amount=35;speed=0.25;hs=0.15;vs=2.5;size=1} @forward{f=7}
+  - effect:particles{p=crimson_spore;amount=35;speed=0.25;hs=0.15;vs=2.5;size=1} @forward{f=8}
+  - effect:particles{p=crimson_spore;amount=35;speed=0.25;hs=0.15;vs=2.5;size=1} @forward{f=9}
+  - effect:particles{p=crimson_spore;amount=35;speed=0.25;hs=0.15;vs=2.5;size=1} @forward{f=10}
+  - effect:particles{p=crimson_spore;amount=35;speed=0.25;hs=0.15;vs=2.5;size=1} @forward{f=11}
+  - effect:particles{p=crimson_spore;amount=35;speed=0.25;hs=0.15;vs=2.5;size=1} @forward{f=12}
+  - effect:particles{p=crimson_spore;amount=35;speed=0.25;hs=0.15;vs=2.5;size=1} @forward{f=13}
+  - effect:particles{p=crimson_spore;amount=35;speed=0.25;hs=0.15;vs=2.5;size=1} @forward{f=14}
+  - effect:particles{p=crimson_spore;amount=35;speed=0.25;hs=0.15;vs=2.5;size=1} @forward{f=15}
+  - effect:particles{p=crimson_spore;amount=35;speed=0.25;hs=0.15;vs=2.5;size=1} @forward{f=16}
+  - effect:particles{p=crimson_spore;amount=35;speed=0.25;hs=0.15;vs=2.5;size=1} @forward{f=17}
+
+
+gm_galaxy_dragon_mgicdrag1hit:
+  Skills:
+    - damage{a=12;i=true}
+    - throw{v=7;vy=7}
+
+
+
+gm_galaxy_dragon_alintookill:
+  Skills:
+  - damage{a=15}
+  - ignite{ticks=40}
+
+
+
+gm_galaxy_dragon_alint1:
+  Cooldown: 10
+  Conditions:
+  - incombat true
+  - offgcd{} true
+  TargetConditions:
+  - distance{d=0to25}
+  Skills:
+  - gcd{ticks=115} @self
+  - state{state=alint1} @self
+  - potion{type=SLOW;l=99;d=100;p=false} @self
+  - effect:sound{s=entity.ender_dragon.growl;v=1;p=0.9} @self
+  - delay 24
+  - sound{s=gm_dragon_galaxia:gamitamodels.gm_dragon_galax.drag01;v=1;p=1} @self
+  - sound{s=gm_dragon_galaxia:gamitamodels.gm_dragon_galax.llarm;v=1;p=1;repeat=2;repeatinterval=22} @pir{r=40}
+  - sound{s=gm_dragon_galaxia:gamitamodels.gm_dragon_galax.llarm;v=1;p=1;repeat=2;repeatinterval=22} @selfparticles{p=soul_fire_flame;amount=10;speed=0;hS=0.8;vS=0.0;repeat=14;repeatinterval=4} @modelpart{m=gm_galaxy_dragon;p=head}
+  - projectile{onTick=tick_gm_galaxy_dragon_alint1;onHit=hit_gm_galaxy_dragon_alint1;v=12;i=1;hR=1;vR=1;hnp=true;repeat=14;repeatinterval=4;syo=2.8} @target
+  - projectile{onTick=tick_gm_galaxy_dragon_alint1;onHit=hit_gm_galaxy_dragon_alint1;v=12;i=1;hR=1;vR=1;hnp=true;hO=6;repeat=14;repeatinterval=4;syo=2.8} @target
+  - projectile{onTick=tick_gm_galaxy_dragon_alint1;onHit=hit_gm_galaxy_dragon_alint1;v=12;i=1;hR=1;vR=1;hnp=true;hO=-6;repeat=14;repeatinterval=4;syo=2.8} @target
+  - projectile{onTick=tick_gm_galaxy_dragon_alint1;onHit=hit_gm_galaxy_dragon_alint1;v=12;i=1;hR=1;vR=1;hnp=true;hO=3;repeat=14;repeatinterval=4;syo=2.8} @target
+  - projectile{onTick=tick_gm_galaxy_dragon_alint1;onHit=hit_gm_galaxy_dragon_alint1;v=12;i=1;hR=1;vR=1;hnp=true;hO=-3;repeat=14;repeatinterval=4;syo=2.8} @target
+
+
+
+tick_gm_galaxy_dragon_alint1:
+  Skills:
+    - effect:particles{p=soul_fire_flame;amount=1;speed=0;hS=0.2;vS=0.2} @origin
+    - effect:particles{p=reddust;color=#77C6CE;amount=1;speed=0;hS=0.3;vS=0.3} @origin
+
+
+hit_gm_galaxy_dragon_alint1:
+  Skills:
+    - aura{d=20;i=1;onTick=[  - ignite{ticks=20} - damage{a=3;cd=2} ]}
+    - potion{type=SLOW;duration=100;lvl=2}
+    - throw{v=2;vy=2} 
+
+
+
+
+
+gm_galaxy_dragon_impulso:
+  Cooldown: 5
+  Conditions:
+  - incombat true
+  - offgcd{} true
+  TargetConditions:
+  - distance{d=15to40}
+  Skills:
+  - gcd{ticks=102} @self
+  - state{state=impulso} @self
+  - potion{type=SLOW;l=99;d=12;p=false} @self
+  - effect:sound{s=entity.ender_dragon.growl;v=1;p=0.9} @self
+  - delay 12
+  - setspeed{s=2.5;type=WALKING} @self
+  - lunge{v=2} @target
+  - delay 33
+  - sound{s=gm_dragon_galaxia:gamitamodels.gm_dragon_galax.drag03;v=1;p=1} @self
+  - setspeed{s=1;type=WALKING} @self
+  - leap{velocity=300} @forward{f=2;y=-7}
+  - delay 10
+  - effect:sound{s=entity.generic.explode;v=1;p=0.6} @self
+  - effect:particles{p=campfire_cosy_smoke;amount=85;speed=0.25;hs=10;vs=0.5}
+  - delay 1
+  - damage{a=5} @eir{r=8;ignore=samefaction}
+  - skill{s=gm_galaxy_dragonrecoil_effectss;sync=true} @pir{r=16}
+  - delay 1
+  - summon{type=skill_gm_galaxy_dragon_impulso;amount=1;radius=0;yRadius=0;onSurface=true;os=true} @Ring{radius=5;points=8;xRotation=360}
+  - delay 1
+  - skill{s=gm_galaxy_dragon_impulsotot;sync=true} @MobsInRadius{r=60;types=skill_gm_galaxy_dragon_impulso}
+  - delay 2
+  - summon{type=skill_gm_galaxy_dragon_impulso;amount=1;radius=0;yRadius=0;onSurface=true;os=true} @Ring{radius=8;points=8;xRotation=360}
+  - delay 1
+  - skill{s=gm_galaxy_dragon_impulsotot;sync=true} @MobsInRadius{r=60;types=skill_gm_galaxy_dragon_impulso}
+  - delay 2
+  - summon{type=skill_gm_galaxy_dragon_impulso;amount=1;radius=0;yRadius=0;onSurface=true;os=true} @Ring{radius=11;points=8;xRotation=360}
+  - delay 1
+  - skill{s=gm_galaxy_dragon_impulsotot;sync=true} @MobsInRadius{r=60;types=skill_gm_galaxy_dragon_impulso}
+  - delay 2
+  - summon{type=skill_gm_galaxy_dragon_impulso;amount=1;radius=0;yRadius=0;onSurface=true;os=true} @Ring{radius=14;points=8;xRotation=360}
+  - delay 1
+  - skill{s=gm_galaxy_dragon_impulsotot;sync=true} @MobsInRadius{r=60;types=skill_gm_galaxy_dragon_impulso}
+
+gm_galaxy_dragon_impulsotot:
+  Skills:
+    - throw{vy=5}
+    - damage{a=17}
+
+gm_galaxy_dragon_impulsotot:
+  Skills:
+  - totem{ch=1;md=2;oH=gm_galaxy_dragon_mgicdrag1hit;hnp=true;hR=2;vR=7}
+  - sound{s=gm_dragon_galaxia:gamitamodels.gm_dragon_galax.impulss;v=1;p=1}
+
+
+
+
+
+gm_galaxy_dragon_galaxxx:
+  Cooldown: 25
+  Conditions:
+  - incombat true
+  - offgcd{} true
+  TargetConditions:
+  - distance{d=0to40}
+  Skills:
+  - gcd{ticks=299} @self
+  - state{state=galaxxx} @self
+  - sendtitle{title="";subtitle="&c&lGalaxy";d=7;fi=5;fo=5;repeat=10;repeatinterval=10} @PIR{r=50}
+  - potion{type=SLOW;l=99;d=112;p=false} @self
+  - effect:sound{s=entity.ender_dragon.growl;v=1;p=0.9} @self
+  - sound{s=gm_dragon_galaxia:gamitamodels.gm_dragon_galax.voic01;v=1;p=1} @PIR{r=50}
+  - delay 22
+  - sound{s=gm_dragon_galaxia:gamitamodels.gm_dragon_galax.drag01;v=1;p=0.6} @self
+  - summon{type=skill_gm_galaxy_dragon_skill_gm_galaxy_dragon_galax1;amount=1;radius=10;repeat=5;repeatinterval=12} @RingAroundOrigin{radius=16;points=8;xRotation=360}
+  - summon{type=skill_gm_galaxy_dragon_skill_gm_galaxy_dragon_galax2;amount=1;radius=10;repeat=5;repeatinterval=12} @RingAroundOrigin{radius=16;points=8;xRotation=360}
+  - summon{type=skill_gm_galaxy_dragon_skill_rainstars;amount=1;radius=6;yRadius=0;onSurface=true;os=true;repeat=3;repeatinterval=20} @RingAroundOrigin{radius=16;points=8;xRotation=360}
+  - delay 1
+  - skill{s=gm_galaxy_dragon_impulsolltot;sync=true;repeat=3;repeatinterval=20;delay=6} @MobsInRadius{r=60;types=skill_gm_galaxy_dragon_skill_rainstars}
+  - delay 5
+  - totem{ch=1;md=2;oH=gm_galaxy_dragon_galaxxxxxstototot;hnp=true;hR=4;vR=4;repeat=5;repeatinterval=12;delay=16} @MobsInRadius{r=60;types=skill_gm_galaxy_dragon_skill_gm_galaxy_dragon_galax1}
+  - totem{ch=1;md=2;oH=gm_galaxy_dragon_galaxxxxxstototot2;hnp=true;hR=4;vR=4;repeat=5;repeatinterval=12;delay=16} @MobsInRadius{r=60;types=skill_gm_galaxy_dragon_skill_gm_galaxy_dragon_galax2}
+
+
+gm_galaxy_dragon_galaxxxxxstototot:
+  Skills:
+    - throw{vy=10;v=5}
+    - damage{a=12;i=true}
+    - ignite{ticks=25}
+
+
+gm_galaxy_dragon_galaxxxxxstototot2:
+  Skills:
+    - damage{a=4;i=true}
+
+
+
+gm_galaxy_dragon_galaxxxskilll:
+  Skills:
+  - delay 22
+  - effect:particles{p=Flash;amount=1;speed=0.25;hs=0.5;vs=0.5} @self
+  - effect:particles{p=Lava;amount=15;speed=0.25;hs=2;vs=1} @self
+  - randomskill{s=[
+      - sound{s=gm_dragon_galaxia:gamitamodels.gm_dragon_galax.xplod01;v=1;p=1.2} @self
+    ],
+      [
+      - sound{s=gm_dragon_galaxia:gamitamodels.gm_dragon_galax.xplod01;v=1;p=0.6} @self
+    ],
+      [
+      - sound{s=gm_dragon_galaxia:gamitamodels.gm_dragon_galax.xplod01;v=1;p=0.8} @self
+    ]}
+  - delay 1
+  - remove @self
+
+
+gm_galaxy_dragon_galaxxxskilll2:
+  Skills:
+  - delay 22
+  - effect:particles{p=Flash;amount=1;speed=0.25;hs=0.5;vs=0.5}
+  - randomskill{s=[
+      - sound{s=gm_dragon_galaxia:gamitamodels.gm_dragon_galax.xplod01;v=1;p=1.2} @self
+    ],
+      [
+      - sound{s=gm_dragon_galaxia:gamitamodels.gm_dragon_galax.xplod01;v=1;p=0.6} @self
+    ],
+      [
+      - sound{s=gm_dragon_galaxia:gamitamodels.gm_dragon_galax.xplod01;v=1;p=0.8} @self
+    ]}
+  - pull{v=100} @pir{r=12}
+  - delay 1
+  - remove @self
+
+
+###########################
+######################
+###########################
+######################
+###########################
+######################
+###########################
+######################
+
+
+gm_galaxy_dragon_rainstarsxax:
+  Skills:
+    - throw{vy=2;v=2}
+    - damage{a=22}
+
+gm_galaxy_dragon_rainstars:
+  Cooldown: 20
+  Conditions:
+  - incombat true
+  - offgcd{} true
+  TargetConditions:
+  - distance{d=0to40}
+  Skills:
+  - gcd{ticks=122} @self
+  - state{state=rainstars} @self
+  - sound{s=gm_dragon_galaxia:gamitamodels.gm_dragon_galax.voic02x;v=1;p=1} @PIR{r=50}
+  - sendtitle{subtitle="&6&lRain of stars";d=7;fi=5;fo=5;repeat=10;repeatinterval=10} @PIR{r=50}
+  - potion{type=SLOW;l=99;d=112;p=false} @self
+  - effect:sound{s=entity.ender_dragon.growl;v=1;p=0.9} @self
+  - sound{s=gm_dragon_galaxia:gamitamodels.gm_dragon_galax.drag02;v=1;p=1} @self
+  - delay 12
+  - sound{s=gm_dragon_galaxia:gamitamodels.gm_dragon_galax.drag02;v=1;p=0.5} @self
+  - delay 10
+  - summon{type=skill_gm_galaxy_dragon_skill_rainstars;amount=3;radius=8;yRadius=0;onSurface=true;os=true;repeat=16;repeatinterval=5} @target
+  - delay 1
+  - skill{s=gm_galaxy_dragon_impulsolltot;sync=true;repeat=16;repeatinterval=5} @MobsInRadius{r=60;types=skill_gm_galaxy_dragon_skill_rainstars}
+
+gm_galaxy_dragon_rainstarstot:
+  Skills:
+  - delay 16
+  - effect:particles{p=campfire_cosy_smoke;amount=1;speed=0.25;hs=0.5;vs=0.5} @self
+  - effect:particles{p=Flash;amount=1;speed=0.25;hs=0.5;vs=0.5} @self
+  - sound{s=gm_dragon_galaxia:gamitamodels.gm_dragon_galax.xplod01;v=1;p=1} @self
+  - delay 1
+  - remove @self
+
+
+
+gm_galaxy_dragon_impulsolltot:
+  Skills:
+  - totem{ch=1;md=2;oH=gm_galaxy_dragon_rainstarsxax;hnp=true;hR=2;vR=7}
+
+
+
+
+gm_galaxy_dragon_galaxia01y02:
+  Cooldown: 10
+  Conditions:
+  - incombat true
+  - offgcd{} true
+  TargetConditions:
+  - distance{d=0to29}
+  Skills:
+  - gcd{ticks=40} @self
+  - state{state=galaxia01y02} @self
+  - potion{type=SLOW;l=99;d=29;p=false} @self
+  - delay 6
+  - randomskill{s=[
+      - sendtitle{subtitle="&6&lGalaxy I";d=7;fi=5;fo=5;repeat=2;repeatinterval=10} @PIR{r=50}
+      - sound{s=gm_dragon_galaxia:gamitamodels.gm_dragon_galax.drag02;v=1;p=1} @PIR{r=50}
+      - summon{type=skill_gm_galaxy_dragon_skill_gm_galaxy_dragon_galax2;amount=6;radius=6;yRadius=0;onSurface=true;os=true} @target
+      - delay 22
+      - totem{ch=1;md=2;oH=gm_galaxy_dragon_galaxxxxxstototot;hnp=true;hR=4;vR=4;repeat=8;repeatinterval=1} @MobsInRadius{r=60;types=skill_gm_galaxy_dragon_skill_gm_galaxy_dragon_galax2}
+    ],
+      [
+      - sendtitle{subtitle="&1&lGalaxy II";d=7;fi=5;fo=5;repeat=2;repeatinterval=10} @PIR{r=50}
+      - sound{s=gm_dragon_galaxia:gamitamodels.gm_dragon_galax.drag02;v=1;p=1} @PIR{r=50}
+      - summon{type=skill_gm_galaxy_dragon_skill_gm_galaxy_dragon_galax1;amount=1;radius=9;yRadius=0;onSurface=true;os=true;repeat=5;repeatinterval=4} @target
+      - delay 22
+      - totem{ch=1;md=2;oH=gm_galaxy_dragon_galaxxxxxstototot2;hnp=true;hR=4;vR=4;repeat=5;repeatinterval=4} @MobsInRadius{r=60;types=skill_gm_galaxy_dragon_skill_gm_galaxy_dragon_galax1}
+    ]}
+
+
+
+

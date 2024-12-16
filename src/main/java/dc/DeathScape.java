@@ -6,7 +6,6 @@ import dc.Business.inventory.ReportsInventory;
 import dc.Business.inventory.ReviveInventory;
 import dc.Business.listeners.ChatListener;
 import dc.Business.listeners.MobSpawnListener;
-import dc.Business.listeners.Player.PlayerDeathEventListener;
 import dc.Business.listeners.Player.PlayerListener;
 import dc.Persistence.config.MainConfigManager;
 import dc.Persistence.groups.GroupDatabase;
@@ -23,6 +22,7 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Objects;
 
+@SuppressWarnings({"FieldCanBeLocal", "unused"})
 public class DeathScape extends JavaPlugin {
     // Configuración
     private FileConfiguration mobsConfig;
@@ -69,9 +69,7 @@ public class DeathScape extends JavaPlugin {
         }
 
         // Inicialización de controladores
-        serverController = new ServerController(this);
-        playerController = new PlayerController(this);
-        weatherController = new WeatherController(this, serverController);
+        initializeControllers();
 
         // Inicialización de inventarios
         initializeInventories();
@@ -112,8 +110,8 @@ public class DeathScape extends JavaPlugin {
         AnimationController animationController = new AnimationController(this);
         playerListener = new PlayerListener(this, playerController, weatherController, animationController, totemController);
         mobSpawnListener = new MobSpawnListener(this, mobSpawnController);
-        deathScapeCommand = new DeathScapeCommand(this, reportInventory, reportsInventory, playerController);
-        chatListener = new ChatListener();
+        deathScapeCommand = new DeathScapeCommand(this, reportInventory, reportsInventory, playerController, reviveInventory);
+        chatListener = new ChatListener(playerController);
     }
 
     // Método para cargar mobs.yml

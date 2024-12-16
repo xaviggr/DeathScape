@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:overworld",
+  "generator": {
+      "type": "minecraft:flat",
+      "settings": {
+          "layers": [
+              {
+                  "name": "Air",
+                  "height": 256,
+                  "material": {
+                      "tag": "minecraft:air"
+                  }
+              }
+          ],
+          "biome": "minecraft:plains"
+      }
+  }
+}

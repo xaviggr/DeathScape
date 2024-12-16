@@ -32,6 +32,7 @@ public class MainConfigManager {
     private boolean kickIfIpChanged;
     private int stormTime;
     private int pointsToReduceOnDeath;
+    private int maxPlayersInWorld;
 
     // Constructor privado
     private MainConfigManager() {}
@@ -42,7 +43,7 @@ public class MainConfigManager {
             instance = new MainConfigManager();
             instance.plugin = plugin;
             PlayerDatabase.setNameFile(plugin.getDataFolder() + File.separator + "players.json");
-            BannedWordsDatabase.setBannedWordsFile(plugin.getDataFolder() + File.separator + "bannedWords.json");
+            BannedWordsDatabase.setDatabaseFile(plugin.getDataFolder() + File.separator + "bannedWords.json");
             ReportsDatabase.setReportsFile(plugin.getDataFolder() + File.separator + "reports.json");
             GroupDatabase.setNameFile(plugin.getDataFolder() + File.separator + "groups.json");
             LogDatabase.setLogFile(plugin.getDataFolder() + File.separator + "logs.json");
@@ -74,6 +75,7 @@ public class MainConfigManager {
         kickIfIpChanged = getConfig().getBoolean("config.kick_if_ip_changed");
         stormTime = getConfig().getInt("config.storm_time");
         pointsToReduceOnDeath = getConfig().getInt("config.points_to_reduce_on_death");
+        maxPlayersInWorld = getConfig().getInt("config.max_players_in_world");
     }
 
     // Cargar grupos desde la configuración
@@ -174,5 +176,9 @@ public class MainConfigManager {
 
     public int getPointsToReduceOnDeath() {
         return pointsToReduceOnDeath;
+    }
+
+    public int getMaxPlayersInWorld() {
+        return maxPlayersInWorld;
     }
 }
