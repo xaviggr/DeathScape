@@ -13,6 +13,7 @@ public class PlayerListener {
         // Register event listeners
         plugin.getServer().getPluginManager().registerEvents(new PlayerDeathEventListener(playerController, weatherController, animationController), plugin);
         plugin.getServer().getPluginManager().registerEvents(new PlayerJoinEventListener(playerController), plugin);
+        plugin.getServer().getPluginManager().registerEvents(new PlayerDamageListener(plugin), plugin);
         plugin.getServer().getPluginManager().registerEvents(new PlayerQuitEventListener(playerController), plugin);
         plugin.getServer().getPluginManager().registerEvents(new PlayerSleepEventListener(), plugin);
         plugin.getServer().getPluginManager().registerEvents(new PlayerWakeEventListener(), plugin);

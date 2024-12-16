@@ -6,10 +6,12 @@ import dc.Business.inventory.ReportsInventory;
 import dc.Business.inventory.ReviveInventory;
 import dc.Business.listeners.ChatListener;
 import dc.Business.listeners.MobSpawnListener;
+import dc.Business.listeners.Player.PlayerDeathEventListener;
 import dc.Business.listeners.Player.PlayerListener;
 import dc.Persistence.config.MainConfigManager;
 import dc.Persistence.groups.GroupDatabase;
 import dc.Persistence.player.PlayerDatabase;
+import dc.Business.controllers.AnimationController;
 import io.lumine.mythic.api.MythicProvider;
 import io.lumine.mythic.api.mobs.MobManager;
 import org.bukkit.Bukkit;
@@ -58,11 +60,18 @@ public class DeathScape extends JavaPlugin {
         PlayerDatabase.initPlayerDatabase();
         GroupDatabase.initGroupDatabase();
 
-        // Inicialización de MobManager
-        mobManager = MythicProvider.get().getMobManager();
+        // Verificar MythicMobs
+        if (getServer().getPluginManager().isPluginEnabled("MythicMobs")) {
+            mobManager = MythicProvider.get().getMobManager();
+        } else {
+            mobManager = null;
+            getLogger().warning("MythicMobs no encontrado. Algunas funciones estarán limitadas.");
+        }
 
         // Inicialización de controladores
-        initializeControllers();
+        serverController = new ServerController(this);
+        playerController = new PlayerController(this);
+        weatherController = new WeatherController(this, serverController);
 
         // Inicialización de inventarios
         initializeInventories();

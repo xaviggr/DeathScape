@@ -57,6 +57,8 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
                     if (groupPermissions.contains("group") || player.isOp()) {
                         options.add("añadirUsuarioAGrupo");
                         options.add("quitarUsuarioDeGrupo");
+                        options.add("inventorysee");
+                        options.add("endersee");
                     }
 
                     if (groupPermissions.contains("teleport")) {
@@ -67,21 +69,27 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
                     if (groupPermissions.contains("ban")) {
                         options.add("quitarban");
                     }
+
                     if (groupPermissions.contains("reload")) {
                         options.add("reload");
                     }
+
                     if (groupPermissions.contains("reports")) {
                         options.add("reportes");
                     }
+
                     if (groupPermissions.contains("banshee")) {
                         options.add("banshee");
                     }
+
                     if (groupPermissions.contains("heal")) {
                         options.add("heal");
                     }
+
                     if (groupPermissions.contains("days")) {
                         options.add("setdia");
                     }
+
                     if (groupPermissions.contains("chat")) {
                         options.add("añadirbannedword");
                         options.add("quitarbannedword");
@@ -139,6 +147,8 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         commandMap.put("quitarbannedword", () -> handleRemoveBannedWordCommand(player, args, group));
         commandMap.put("quitarban", () -> handleUnbanPlayerCommand(player, args, group));
         commandMap.put("dificultad", () -> handleDifficultyCommand(player, args));
+        commandMap.put("inventorysee", () -> handleInventorySee(player, args, group));
+        commandMap.put("endersee", () -> handleEnderSee(player, args, group));
 
         // Ejecuta el comando correspondiente
         Runnable commandAction = commandMap.get(args[0].toLowerCase());
@@ -151,6 +161,48 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         LogDatabase.addLog(new LogData("command", player.getName(), Arrays.toString(args)));
 
         return true;
+    }
+
+    private void handleEnderSee(Player player, String[] args, GroupData group) {
+        if (args.length < 2) {
+            player.sendMessage(ChatColor.RED + "Uso: /endersee <nombre del jugador>");
+            return;
+        }
+
+        if (!group.getPermissions().contains(Permission.GROUP)) {
+            sendNoPermissionMessage(player);
+            return;
+        }
+
+        Player target = Bukkit.getPlayer(args[1]);
+        if (target == null || !target.isOnline()) {
+            player.sendMessage(ChatColor.RED + "El jugador especificado no está en línea.");
+            return;
+        }
+
+        player.openInventory(target.getEnderChest());
+        player.sendMessage(ChatColor.GREEN + "Estás viendo el cofre de Ender de " + target.getName() + ".");
+    }
+
+    private void handleInventorySee(Player player, String[] args, GroupData group) {
+        if (args.length < 2) {
+            player.sendMessage(ChatColor.RED + "Uso: /inventorysee <nombre del jugador>");
+            return;
+        }
+
+        if (!group.getPermissions().contains(Permission.GROUP)) {
+            sendNoPermissionMessage(player);
+            return;
+        }
+
+        Player target = Bukkit.getPlayer(args[1]);
+        if (target == null || !target.isOnline()) {
+            player.sendMessage(ChatColor.RED + "El jugador especificado no está en línea.");
+            return;
+        }
+
+        player.openInventory(target.getInventory());
+        player.sendMessage(ChatColor.GREEN + "Estás viendo el inventario de " + target.getName() + ".");
     }
 
     private boolean validateGroup(Player player, PlayerData playerData) {
