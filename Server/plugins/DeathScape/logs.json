@@ -17,6 +17,18 @@
       "author": "xaviggr",
       "logInfo": "[tiempojugado]",
       "dateTime": "2024-12-14 20:58:07"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[tienda]",
+      "dateTime": "2024-12-16 11:59:51"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[help]",
+      "dateTime": "2024-12-16 11:59:55"
     }
   ]
 }

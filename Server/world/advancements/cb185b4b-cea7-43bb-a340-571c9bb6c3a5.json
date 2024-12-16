@@ -867,5 +867,17 @@
     },
     "done": true
   },
+  "minecraft:recipes/misc/creeper_banner_pattern": {
+    "criteria": {
+      "has_creeper_head": "2024-12-15 20:59:07 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/bamboo_planks": {
+    "criteria": {
+      "has_logs": "2024-12-16 11:49:18 +0100"
+    },
+    "done": true
+  },
   "DataVersion": 3700
 }

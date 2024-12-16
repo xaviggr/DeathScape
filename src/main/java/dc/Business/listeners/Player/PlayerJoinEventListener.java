@@ -127,7 +127,7 @@ public class PlayerJoinEventListener implements Listener {
                                 cancel(); // Detener el bucle una vez que el jugador es procesado.
                             }
                         }
-                    }.runTaskTimer(plugin, 0L, 200L); // Repetir cada 10 segundos
+                    }.runTaskTimer(plugin, 0, 800); // Repetir cada 40 segundos
                 }
             }.runTaskLater(plugin, 100); // 5 segundos = 100 ticks
 

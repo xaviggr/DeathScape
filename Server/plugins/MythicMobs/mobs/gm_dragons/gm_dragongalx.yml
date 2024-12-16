@@ -1,0 +1,158 @@
+gm_dragon_galaxy:
+  Display: "dragon_galaxy"
+  Type: IRON_GOLEM
+  Faction: dragon
+  Health: 200
+  Damage: 5.5
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 randomstroll
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 monsters
+  - 3 otherfaction
+  DamageModifiers:
+  - POISON 0
+  - WITHER 0
+  - MAGIC 0
+  - HOT_FLOOR 0
+  - FIRE_TICK 0
+  - BLOCK_EXPLOSION 0
+  - ENTITY_EXPLOSION 0
+  - SUFFOCATION 0
+  - CONTACT 0
+  - PROJECTILE 0.5 
+  - FIRE 0
+  - LAVA -0.01
+  Options:
+    PreventSunburn: true
+    #AlwaysShowName: true
+    #Invincible: true
+    Silent: true
+    Collidable: true
+    MovementSpeed: 0.16
+    MaxCombatDistance: 52
+    PreventOtherDrops: true
+    FollowRange: 52
+  BossBar:
+    Enabled: true
+    Title: '§c&l# Dragon Galaxy #'
+    Range: 20
+    Color: RED
+    Style: SEGMENTED_10
+  Skills:
+  - model{mid=gm_galaxy_dragon;n=name} @self ~onSpawn
+  - effect:particles{p=campfire_cosy_smoke;amount=85;speed=0.25;hs=10;vs=0.5;delay=26} @origin ~onDeath
+  - effect:particles{p=reddust;color=#ae9366;amount=1;hs=0.4;vs=1;size=1.7;speed=0.8} @self ~onTimer:20
+  - skill{s=CancelEventSkill;sync=true} @self ~onAttack
+  - randomskill{s=gm_galaxy_dragon_impulso,gm_galaxy_dragon_alint1,gm_galaxy_dragon_pisada,gm_galaxy_dragon_cabun,gm_galaxy_dragon_magic1} @target ~onTimer:5
+  - skill{s=gm_galaxy_dragon_galaxxx} @target ~onTimer:1 <40%
+  - skill{s=gm_galaxy_dragon_rainstars} @target ~onTimer:2 <60%
+  - skill{s=gm_galaxy_dragon_galaxia01y02} @target ~onTimer:3 <79%
+  - sendtitle{title="";subtitle="&a&lDragon Galaxy has died";d=7;fi=5;fo=5;repeat=10;repeatinterval=10} @PIR{r=50} ~onDeath
+  - sendtitle{title="";subtitle="&d&lDragon Galaxy";d=7;fi=5;fo=5;repeat=10;repeatinterval=10} @PIR{r=50} ~onSpawn
+  - sound{s=gm_dragon_galaxia:gamitamodels.gm_dragon_galax.voic01;v=1;p=0.5} @PIR{r=50} ~onDeath
+  - sound{s=gm_dragon_galaxia:gamitamodels.gm_dragon_galax.xplod01;v=1;p=0.5} @PIR{r=50} ~onDeath
+
+
+
+skill_gm_galaxy_dragon_impulso:
+  Display: "dragon_galaxy"
+  Type: cat
+  Faction: dragon
+  Health: 222
+  Damage: 5.5
+  Options:
+    PreventSunburn: true
+    #AlwaysShowName: true
+    Invisible: true
+    Invincible: true
+    Silent: true
+    Collidable: true
+    MovementSpeed: 0
+    MaxCombatDistance: 52
+    PreventOtherDrops: true
+    FollowRange: 52
+  Skills:
+  - remove{delay=50} @self ~onSpawn
+  - setAI{ai=false} @self ~onSpawn
+  - effect:particles{p=crimson_spore;amount=35;speed=0.25;hs=0.15;vs=2.5;size=1} @self ~onSpawn
+  - effect:particles{p=reddust;color=#666587;amount=29;speed=0.25;hs=0.25;vs=2.5;size=2} @self ~onSpawn
+  - effect:particles{p=reddust;color=#e87a7a;amount=29;speed=0.25;hs=0.25;vs=2.5;size=2} @self ~onSpawn
+
+
+
+
+skill_gm_galaxy_dragon_skill_rainstars:
+  Display: "dragon_galaxy"
+  Type: fireball
+  Faction: dragon
+  Health: 222
+  Damage: 5.5
+  Options:
+    PreventSunburn: true
+    #AlwaysShowName: true
+    #Invisible: true
+    Invincible: true
+    Silent: true
+    Collidable: true
+    MovementSpeed: 0
+    MaxCombatDistance: 52
+    PreventOtherDrops: true
+    FollowRange: 52
+  Skills:
+  - effect:particles{p=reddust;color=#e87a7a;amount=29;speed=0.25;hs=0.25;vs=2.5;size=2} @self ~onSpawn
+  - setAI{ai=false} @self ~onSpawn
+  - skill{s=gm_galaxy_dragon_rainstarstot;sync=true} @self ~onSpawn
+  - sound{s=gm_dragon_galaxia:gamitamodels.gm_dragon_galax.caidstargalax;v=0.4;p=0.9} @self ~onSpawn
+
+
+
+
+
+skill_gm_galaxy_dragon_skill_gm_galaxy_dragon_galax2:
+  Display: "dragon_galaxy"
+  Type: cat
+  Faction: dragon
+  Health: 222
+  Damage: 5.5
+  Options:
+    PreventSunburn: true
+    #AlwaysShowName: true
+    Invisible: true
+    Invincible: true
+    Silent: true
+    Collidable: true
+    MovementSpeed: 0
+    MaxCombatDistance: 52
+    PreventOtherDrops: true
+    FollowRange: 52
+  Skills:
+  - effect:particles{p=reddust;color=#e87a7a;amount=29;speed=0.25;hs=0.25;vs=2.5;size=2} @self ~onSpawn
+  - setAI{ai=false} @self ~onSpawn
+  - skill{s=gm_galaxy_dragon_galaxxxskilll;sync=true} @self ~onSpawn
+
+
+skill_gm_galaxy_dragon_skill_gm_galaxy_dragon_galax1:
+  Display: "dragon_galaxy"
+  Type: cat
+  Faction: dragon
+  Health: 222
+  Damage: 5.5
+  Options:
+    PreventSunburn: true
+    #AlwaysShowName: true
+    Invisible: true
+    Invincible: true
+    Silent: true
+    Collidable: true
+    MovementSpeed: 0
+    MaxCombatDistance: 52
+    PreventOtherDrops: true
+    FollowRange: 52
+  Skills:
+  - effect:particles{p=reddust;color=#e87a7a;amount=29;speed=0.25;hs=0.25;vs=2.5;size=2} @self ~onSpawn
+  - setAI{ai=false} @self ~onSpawn
+  - skill{s=gm_galaxy_dragon_galaxxxskilll2;sync=true} @self ~onSpawn

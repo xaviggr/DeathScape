@@ -1,1307 +1,200 @@
-[20:32:12] [ServerMain/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
-[20:32:13] [ServerMain/INFO]: Loaded 1174 recipes
-[20:32:13] [ServerMain/INFO]: Loaded 1271 advancements
-[20:32:13] [Server thread/INFO]: Starting minecraft server version 1.20.4
-[20:32:13] [Server thread/INFO]: Loading properties
-[20:32:14] [Server thread/INFO]: This server is running Purpur version git-Purpur-2176 (MC: 1.20.4) (Implementing API version 1.20.4-R0.1-SNAPSHOT) (Git: 6b1ee98 on HEAD)
-[20:32:14] [Server thread/INFO]: Using 4 threads for Netty based IO
-[20:32:14] [Server thread/INFO]: Server Ping Player Sample Count: 12
-[20:32:14] [Server thread/INFO]: [ChunkTaskScheduler] Chunk system is using 1 I/O threads, 5 worker threads, and gen parallelism of 5 threads
-[20:32:14] [Server thread/INFO]: [Pufferfish] Max SIMD vector size on this system is 256 bits (int)
-[20:32:14] [Server thread/INFO]: [Pufferfish] Max SIMD vector size on this system is 256 bits (float)
-[20:32:14] [Server thread/INFO]: [Pufferfish] SIMD operations detected as functional. Will replace some operations with faster versions.
-[20:32:14] [Server thread/INFO]: Default game type: SURVIVAL
-[20:32:14] [Server thread/INFO]: Generating keypair
-[20:32:14] [Server thread/INFO]: Starting Minecraft server on 192.168.1.134:25565
-[20:32:14] [Server thread/INFO]: Using default channel type
-[20:32:14] [Server thread/INFO]: Paper: Using Java compression from Velocity.
-[20:32:14] [Server thread/INFO]: Paper: Using Java cipher from Velocity.
-[20:32:14] [Server thread/INFO]: [MythicMobs] Loading server plugin MythicMobs v5.6.2-3e052553
-[20:32:14] [Server thread/INFO]: [LumineUtils] (io.lumine.mythic.bukkit.utils.) is bound to plugin MythicMobs - io.lumine.mythic.bukkit.MythicBukkit
-[20:32:15] [Server thread/INFO]: [MythicMobs] §4M§6y§6t§6h§2i§2c§2 §3E§3n§1a§1b§1l§5e§5d§4!
-[20:32:15] [Server thread/INFO]: [spark] Loading server plugin spark v1.10.121
-[20:32:15] [Server thread/INFO]: [WorldEdit] Loading server plugin WorldEdit v7.3.0+6678-55745ad
-[20:32:15] [Server thread/INFO]: Got request to register class com.sk89q.worldedit.bukkit.BukkitServerInterface with WorldEdit [com.sk89q.worldedit.extension.platform.PlatformManager@44179393]
-[20:32:15] [Server thread/INFO]: [SkinsRestorer] Loading server plugin SkinsRestorer v15.5.0
-[20:32:15] [Server thread/INFO]: [ModelEngine] Loading server plugin ModelEngine vR3.1.11
-[20:32:15] [Server thread/INFO]: [DeathScape] Loading server plugin DeathScape v1.0.0
-[20:32:15] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
-[20:32:15] [Server thread/INFO]: [WorldEdit] Enabling WorldEdit v7.3.0+6678-55745ad
-[20:32:15] [Server thread/INFO]: Registering commands with com.sk89q.worldedit.bukkit.BukkitServerInterface
-[20:32:15] [Server thread/INFO]: WEPIF: Using the Bukkit Permissions API.
-[20:32:15] [Server thread/INFO]: Using com.sk89q.worldedit.bukkit.adapter.impl.v1_20_R3.PaperweightAdapter as the Bukkit adapter
-[20:32:16] [Server thread/INFO]: [SkinsRestorer] Enabling SkinsRestorer v15.5.0
-[20:32:16] [Server thread/WARN]: [SkinsRestorer] You must agree to the rules at 'commands.perSkinPermissionsConsent' in the config to use per skin permissions.
-[20:32:16] [Server thread/INFO]: [SkinsRestorer] Running on Minecraft 1.20.4.
-[20:32:17] [Server thread/INFO]: [SkinsRestorer] Using paper join listener!
-[20:32:17] [Server thread/WARN]: [SkinsRestorer] Please update your Java runtime to at least Java 21 (your version is 18).
-[20:32:17] [Server thread/WARN]: [SkinsRestorer] At some point in the future, SkinsRestorer will no longer be compatible with this version of Java.
-[20:32:17] [Server thread/INFO]: Preparing level "world"
-[20:32:17] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
-[20:32:17] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +==================+
-[20:32:17] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |   SkinsRestorer  |
-[20:32:17] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |------------------|
-[20:32:17] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |  Standalone Mode |
-[20:32:17] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +==================+
-[20:32:17] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
-[20:32:17] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Version: 15.5.0
-[20:32:17] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Commit: ad418e4
-[20:32:17] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     This is the latest version!
-[20:32:17] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
-[20:32:17] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Do you have issues? Read our troubleshooting guide: https://skinsrestorer.net/docs/troubleshooting
-[20:32:17] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Want to support SkinsRestorer? Consider donating: https://skinsrestorer.net/donate
-[20:32:18] [Server thread/INFO]: Preparing start region for dimension minecraft:overworld
-[20:32:18] [Server thread/INFO]: Time elapsed: 283 ms
-[20:32:18] [Server thread/INFO]: Preparing start region for dimension minecraft:the_end
-[20:32:18] [Server thread/INFO]: Time elapsed: 16 ms
-[20:32:18] [Server thread/INFO]: Preparing start region for dimension minecraft:spawn
-[20:32:18] [Server thread/INFO]: Time elapsed: 13 ms
-[20:32:18] [Server thread/INFO]: Preparing start region for dimension minecraft:rift
-[20:32:18] [Server thread/INFO]: Time elapsed: 9 ms
-[20:32:18] [Server thread/INFO]: [MythicMobs] Enabling MythicMobs v5.6.2-3e052553
-[20:32:18] [Server thread/INFO]: [MythicMobs] Loading MythicMobs for Paper (MC: 1.20.4)...
-[20:32:18] [Server thread/INFO]: [MythicMobs] The server is running Paper; enabled Paper exclusive functionality
-[20:32:20] [Server thread/INFO]: [MythicMobs] Base directory C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\data
-[20:32:20] [Server thread/INFO]: [MythicMobs] Module directory C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\data\worlds
-[20:32:21] [Server thread/INFO]: [MythicMobs] Loading Packs...
-[20:32:21] [Server thread/INFO]: [MythicMobs] Loading Items...
-[20:32:21] [Server thread/INFO]: [MythicMobs] Loading Item Groups...
-[20:32:21] [Server thread/INFO]: [MythicMobs] Loading Skills...
-[20:32:21] [Server thread/WARN]: [MythicMobs] Failed to parse Placeholder 'R': Math and variables in numeric values require premium! Consider getting MythicMobs Premium at www.mythiccraft.io
-[20:32:21] [Server thread/WARN]: [MythicMobs] Failed to parse Placeholder 'R': Math and variables in numeric values require premium! Consider getting MythicMobs Premium at www.mythiccraft.io
-[20:32:21] [Server thread/INFO]: [MythicMobs] Loading Drop Tables...
-[20:32:21] [Server thread/INFO]: [MythicMobs] Loading Random Spawns...
-[20:32:21] [Server thread/INFO]: [MythicMobs] Loading Spawn Blocks...
-[20:32:21] [Server thread/INFO]: [MythicMobs] ✓ Loaded 17 mobs.
-[20:32:21] [Server thread/INFO]: [MythicMobs] ✓ Loaded 3 vanilla mob overrides.
-[20:32:21] [Server thread/INFO]: [MythicMobs] ✓ Loaded 0 mob stacks.
-[20:32:21] [Server thread/INFO]: [MythicMobs] ✓ Loaded 95 skills.
-[20:32:21] [Server thread/INFO]: [MythicMobs] ✓ Loaded 0 random spawns.
-[20:32:21] [Server thread/INFO]: [MythicMobs] ✓ Loaded 3 mythic items.
-[20:32:21] [Server thread/INFO]: [MythicMobs] ✓ Loaded 2 drop tables.
-[20:32:21] [Server thread/INFO]: [MythicMobs] ✓ Loaded 0 mob spawners.
-[20:32:21] [Server thread/INFO]: [MythicMobs] MythicMobs configuration file loaded successfully.
-[20:32:21] [Server thread/INFO]: [MythicMobs] Started up bStats Metrics
-[20:32:21] [Server thread/INFO]: [MythicMobs] ✓ MythicMobs v5.6.2 ( build 3e052553 ) has been successfully loaded!
-[20:32:21] [Server thread/INFO]: [spark] Enabling spark v1.10.121
-[20:32:22] [Server thread/INFO]: [spark] Using Paper ServerTickStartEvent for tick monitoring
-[20:32:22] [Server thread/INFO]: [spark] Starting background profiler...
-[20:32:22] [Server thread/INFO]: [spark] The async-profiler engine is not supported for your os/arch (windows11/amd64), so the built-in Java engine will be used instead.
-[20:32:22] [Server thread/INFO]: [ModelEngine] Enabling ModelEngine vR3.1.11
-[20:32:22] [Server thread/INFO]: [MythicMobs] Model Engine Compatibility Loaded.
-[20:32:22] [Server thread/INFO]: [ModelEngine] [S] Compatibility applied: MythicMobs
-[20:32:22] [Server thread/INFO]: [ModelEngine] [S] bStats enabled
-[20:32:22] [Server thread/INFO]: [DeathScape] Enabling DeathScape v1.0.0
-[20:32:22] [Server thread/INFO]: [DeathScape] Spawn dimension initialized successfully.
-[20:32:22] [Server thread/INFO]: DeathScape has been enabled!
-[20:32:22] [Server thread/INFO]: Running delayed init tasks
-[20:32:22] [Server thread/INFO]: Días del servidor actualizados automáticamente.
-[20:32:22] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
-[20:32:22] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] [Importing models]
-[20:32:22] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
-[20:32:22] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Importing Rocky.bbmodel.
-[20:32:22] [Server thread/WARN]: [MythicMobs] ✗ Config Error for Targeter line 'selfparticles{p=soul_fire_flame;amount=10;speed=0;hS=0.8;vS=0.0;repeat=14;repeatinterval=4}': Failed to load custom targeter SELFPARTICLES
-[20:32:22] [Server thread/INFO]: Done (8.339s)! For help, type "help"
-[20:32:22] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
-[20:32:22] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Importing darkprincess_gama05.bbmodel.
-[20:32:22] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: Box UV detected. Cube UVs might not generate correctly if Box UV is used.
-[20:32:22] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder8 is rotated in multiple axis. Choosing one axis.
-[20:32:22] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder8 has illegal rotations. Cube rotation can only be -45, -22.5, 0, 22.5 and 45. [ -20.899999618530273 ]
-[20:32:22] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder8 is rotated in multiple axis. Choosing one axis.
-[20:32:22] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder8 has illegal rotations. Cube rotation can only be -45, -22.5, 0, 22.5 and 45. [ 93.4000015258789 ]
-[20:32:22] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder8 has illegal rotations. Cube rotation can only be -45, -22.5, 0, 22.5 and 45. [ 55.0 ]
-[20:32:22] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder6 is rotated in multiple axis. Choosing one axis.
-[20:32:22] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder6 has illegal rotations. Cube rotation can only be -45, -22.5, 0, 22.5 and 45. [ 90.9000015258789 ]
-[20:32:22] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder6 is rotated in multiple axis. Choosing one axis.
-[20:32:22] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder6 has illegal rotations. Cube rotation can only be -45, -22.5, 0, 22.5 and 45. [ 20.899999618530273 ]
-[20:32:22] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder6 has illegal rotations. Cube rotation can only be -45, -22.5, 0, 22.5 and 45. [ 70.0 ]
-[20:32:22] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder2 is rotated in multiple axis. Choosing one axis.
-[20:32:22] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone curpo2 is rotated in multiple axis. Choosing one axis.
-[20:32:22] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
-[20:32:22] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Importing effect_princessdarkness_01.bbmodel.
-[20:32:22] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
-[20:32:22] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Importing gm_galaxy_dragon.bbmodel.
-[20:32:22] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
-[20:32:22] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Importing gm_sun_dragon.bbmodel.
-[20:32:22] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
-[20:32:22] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] [Generating assets]
-[20:32:22] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
-[20:32:22] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Generating rocky.
-[20:32:22] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
-[20:32:22] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Generating darkprincess_gama05.
-[20:32:22] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
-[20:32:22] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Generating effect_princessdarkness_01.
-[20:32:22] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
-[20:32:22] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Generating gm_galaxy_dragon.
-[20:32:22] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
-[20:32:22] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Generating gm_sun_dragon.
-[20:32:22] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
-[20:32:22] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Resource pack zipped.
-[20:32:41] [User Authenticator #0/INFO]: UUID of player xaviggr is cb185b4b-cea7-43bb-a340-571c9bb6c3a5
-[20:32:41] [Server thread/INFO]: [Warrior] xaviggr ha entrado al mundo DeathScape
-[20:32:41] [Server thread/INFO]: xaviggr[IP hidden] logged in with entity id 64 at ([world_minecraft_spawn]0.0, 1.0, 0.0)
-[20:32:46] [Server thread/INFO]: [DeathScape] Jugadores en cola: 1
-[20:32:46] [Server thread/INFO]: [DeathScape] Jugador xaviggr añadido a la cola.
-[20:32:46] [Server thread/INFO]: [DeathScape] Cola de jugadores:
-[20:32:46] [Server thread/INFO]: [DeathScape] Jugadores en el servidor:1
-[20:32:58] [User Authenticator #0/INFO]: UUID of player 4gymo is 19cef73f-c4d2-46ec-8481-81ea7417e2f3
-[20:32:58] [Server thread/INFO]: [Warrior] 4gymo ha entrado al mundo DeathScape
-[20:32:58] [Server thread/INFO]: 4gymo[IP hidden] logged in with entity id 137 at ([world_minecraft_spawn]0.0, 1.0, 0.0)
-[20:32:58] [User Authenticator #0/INFO]: UUID of player Link825_ is a3a49fea-23f2-407c-b31d-d3e63cabbc96
-[20:32:59] [Server thread/INFO]: [Warrior] Link825_ ha entrado al mundo DeathScape
-[20:32:59] [Server thread/INFO]: Link825_[IP hidden] logged in with entity id 143 at ([world_minecraft_spawn]0.0, 1.0, 0.0)
-[20:33:03] [Server thread/INFO]: [DeathScape] Jugadores en cola: 1
-[20:33:03] [Server thread/INFO]: [DeathScape] Jugador 4gymo añadido a la cola.
-[20:33:03] [Server thread/INFO]: [DeathScape] Cola de jugadores:
-[20:33:03] [Server thread/INFO]: [DeathScape] 4gymo
-[20:33:03] [Server thread/INFO]: [DeathScape] Jugadores en el servidor:1
-[20:33:03] [Server thread/INFO]: [DeathScape] Jugadores en cola: 2
-[20:33:03] [Server thread/INFO]: [DeathScape] Jugador Link825_ añadido a la cola.
-[20:33:03] [Server thread/INFO]: [DeathScape] Cola de jugadores:
-[20:33:03] [Server thread/INFO]: [DeathScape] 4gymo
-[20:33:03] [Server thread/INFO]: [DeathScape] Link825_
-[20:33:03] [Server thread/INFO]: [DeathScape] Jugadores en el servidor:1
-[20:33:18] [Server thread/INFO]: xaviggr lost connection: Disconnected
-[20:33:18] [Server thread/INFO]: [DeathScape] Jugadores en cola: 2
-[20:33:18] [Server thread/INFO]: [DeathScape] Jugador xaviggr eliminado de la cola.
-[20:33:18] [Server thread/INFO]: [DeathScape] Cola de jugadores:
-[20:33:18] [Server thread/INFO]: [DeathScape] Link825_
-[20:33:18] [Server thread/INFO]: [DeathScape] Jugadores en el servidor:1
-[20:33:18] [Server thread/INFO]: [Warrior] xaviggr left the game
-[20:33:32] [User Authenticator #0/INFO]: UUID of player xaviggr is cb185b4b-cea7-43bb-a340-571c9bb6c3a5
-[20:33:32] [Server thread/INFO]: [Warrior] xaviggr ha entrado al mundo DeathScape
-[20:33:32] [Server thread/INFO]: xaviggr[IP hidden] logged in with entity id 212 at ([world_minecraft_spawn]0.0, 1.0, 0.0)
-[20:33:37] [Server thread/INFO]: [DeathScape] Jugadores en cola: 2
-[20:33:37] [Server thread/INFO]: [DeathScape] Jugador xaviggr añadido a la cola.
-[20:33:37] [Server thread/INFO]: [DeathScape] Cola de jugadores:
-[20:33:37] [Server thread/INFO]: [DeathScape] Link825_
-[20:33:37] [Server thread/INFO]: [DeathScape] xaviggr
-[20:33:37] [Server thread/INFO]: [DeathScape] Jugadores en el servidor:1
-[20:33:49] [Server thread/INFO]: 4gymo lost connection: Disconnected
-[20:33:49] [Server thread/INFO]: [DeathScape] Jugadores en cola: 2
-[20:33:49] [Server thread/INFO]: [DeathScape] Jugador 4gymo eliminado de la cola.
-[20:33:49] [Server thread/INFO]: [DeathScape] Cola de jugadores:
-[20:33:49] [Server thread/INFO]: [DeathScape] xaviggr
-[20:33:49] [Server thread/INFO]: [DeathScape] Jugadores en el servidor:1
-[20:33:49] [Server thread/INFO]: [Warrior] 4gymo left the game
-[20:33:58] [User Authenticator #0/INFO]: UUID of player 4gymo is 19cef73f-c4d2-46ec-8481-81ea7417e2f3
-[20:33:58] [Server thread/INFO]: [Warrior] 4gymo ha entrado al mundo DeathScape
-[20:33:58] [Server thread/INFO]: 4gymo[IP hidden] logged in with entity id 252 at ([world_minecraft_spawn]0.0, 1.0, 0.0)
-[20:34:03] [Server thread/INFO]: [DeathScape] Jugadores en cola: 2
-[20:34:03] [Server thread/INFO]: [DeathScape] Jugador 4gymo añadido a la cola.
-[20:34:03] [Server thread/INFO]: [DeathScape] Cola de jugadores:
-[20:34:03] [Server thread/INFO]: [DeathScape] xaviggr
-[20:34:03] [Server thread/INFO]: [DeathScape] 4gymo
-[20:34:03] [Server thread/INFO]: [DeathScape] Jugadores en el servidor:1
-[20:39:22] [Server thread/INFO]: Link825_ issued server command: /tp xaviggr
-[20:39:22] [Server thread/INFO]: [[Warrior] Link825_: Teleported [Warrior] Link825_ to [Warrior] xaviggr]
-[20:39:28] [Server thread/INFO]: Link825_ issued server command: //wand
-[20:39:38] [Server thread/INFO]: Link825_ issued server command: /thru
-[20:39:48] [Server thread/INFO]: Link825_ issued server command: /thru
-[20:40:05] [Server thread/INFO]: Link825_ issued server command: //hsphere glass 20
-[20:40:37] [Server thread/INFO]: Link825_ issued server command: //undo
-[20:40:41] [Server thread/INFO]: Link825_ issued server command: //hsphere glass 40
-[20:40:59] [Server thread/INFO]: Link825_ issued server command: /up 1
-[20:41:06] [Server thread/INFO]: Link825_ issued server command: /up 1
-[20:41:10] [Server thread/INFO]: Link825_ issued server command: //set air
-[20:41:35] [Server thread/INFO]: Link825_ issued server command: /up 1
-[20:41:59] [Server thread/INFO]: Link825_ issued server command: /up 1
-[20:42:04] [Server thread/INFO]: Link825_ issued server command: //set glass
-[20:42:08] [Server thread/INFO]: Link825_ issued server command: //undo
-[20:42:24] [Server thread/INFO]: Link825_ issued server command: //set glass
-[20:43:43] [Server thread/INFO]: Link825_ issued server command: /thru
-[20:44:17] [Server thread/INFO]: Link825_ issued server command: /thru
-[20:44:24] [Server thread/INFO]: Link825_ issued server command: /up 1
-[20:44:33] [Server thread/INFO]: Link825_ issued server command: /thru
-[20:44:36] [Server thread/INFO]: Link825_ issued server command: /thru
-[20:44:42] [Server thread/INFO]: Link825_ issued server command: //copy
-[20:44:45] [Server thread/INFO]: Link825_ issued server command: //rotate 90
-[20:44:48] [Server thread/INFO]: Link825_ issued server command: //paste
-[20:45:00] [Server thread/INFO]: Link825_ issued server command: //rotate 90
-[20:45:00] [Server thread/INFO]: Link825_ issued server command: //paste
-[20:45:01] [Server thread/INFO]: Link825_ issued server command: //rotate 90
-[20:45:03] [Server thread/INFO]: Link825_ issued server command: //paste
-[20:45:10] [Server thread/INFO]: Link825_ issued server command: /thru
-[20:45:13] [Server thread/INFO]: Link825_ issued server command: /thru
-[20:45:17] [Server thread/INFO]: Link825_ issued server command: /thru
-[20:45:19] [Server thread/INFO]: Link825_ issued server command: /thru
-[20:45:23] [Server thread/INFO]: Link825_ issued server command: /thru
-[20:45:47] [Server thread/INFO]: Link825_ issued server command: /up 1
-[20:46:05] [Server thread/INFO]: Link825_ issued server command: /up 1
-[20:46:09] [Server thread/INFO]: Link825_ issued server command: //set air
-[20:46:14] [Server thread/ERROR]: Error al crear la cabeza de la estatua para xaviggr: class org.bukkit.craftbukkit.v1_20_R3.block.CraftBlockState cannot be cast to class org.bukkit.block.Skull (org.bukkit.craftbukkit.v1_20_R3.block.CraftBlockState and org.bukkit.block.Skull are in unnamed module of loader java.net.URLClassLoader @368102c8)
-[20:46:14] [Server thread/INFO]: Played sound minecraft:muerte to 3 players
-[20:46:14] [Server thread/INFO]: Applied effect Blindness to [Warrior] xaviggr
-[20:46:14] [Server thread/INFO]: Changed title display times for 3 players
-[20:46:15] [Server thread/INFO]: [DeathScape] Mensaje enviado al webhook correctamente.
-[20:46:15] [Server thread/INFO]: [Warrior] xaviggr fell out of the world
-[20:46:15] [Server thread/INFO]: Showing new title for 3 players
-[20:46:15] [Server thread/INFO]: Showing new title for 3 players
-[20:46:15] [Server thread/INFO]: Showing new title for 3 players
-[20:46:15] [Server thread/INFO]: Showing new title for 3 players
-[20:46:15] [Server thread/INFO]: Showing new title for 3 players
-[20:46:15] [Server thread/INFO]: Showing new title for 3 players
-[20:46:15] [Server thread/INFO]: Showing new title for 3 players
-[20:46:15] [Server thread/INFO]: Showing new title for 3 players
-[20:46:15] [Server thread/INFO]: Showing new title for 3 players
-[20:46:15] [Server thread/INFO]: Showing new title for 3 players
-[20:46:15] [Server thread/INFO]: Showing new title for 3 players
-[20:46:15] [Server thread/INFO]: Showing new title for 3 players
-[20:46:15] [Server thread/INFO]: Showing new title for 3 players
-[20:46:15] [Server thread/INFO]: Showing new title for 3 players
-[20:46:15] [Server thread/INFO]: Showing new title for 3 players
-[20:46:15] [Server thread/INFO]: Showing new title for 3 players
-[20:46:15] [Server thread/INFO]: Showing new title for 3 players
-[20:46:15] [Server thread/INFO]: Showing new title for 3 players
-[20:46:15] [Server thread/INFO]: Showing new title for 3 players
-[20:46:15] [Server thread/INFO]: Showing new title for 3 players
-[20:46:15] [Server thread/INFO]: Showing new title for 3 players
-[20:46:15] [Server thread/INFO]: Showing new title for 3 players
-[20:46:15] [Server thread/INFO]: Showing new title for 3 players
-[20:46:15] [Server thread/INFO]: Showing new title for 3 players
-[20:46:16] [Server thread/INFO]: Showing new title for 3 players
-[20:46:16] [Server thread/INFO]: Showing new title for 3 players
-[20:46:16] [Server thread/INFO]: Showing new title for 3 players
-[20:46:16] [Server thread/INFO]: Showing new title for 3 players
-[20:46:16] [Server thread/INFO]: Showing new title for 3 players
-[20:46:16] [Server thread/INFO]: Showing new title for 3 players
-[20:46:16] [Server thread/INFO]: Showing new title for 3 players
-[20:46:16] [Server thread/INFO]: Showing new title for 3 players
-[20:46:16] [Server thread/INFO]: Showing new title for 3 players
-[20:46:16] [Server thread/ERROR]: Error al crear la cabeza de la estatua para 4gymo: class org.bukkit.craftbukkit.v1_20_R3.block.CraftBlockState cannot be cast to class org.bukkit.block.Skull (org.bukkit.craftbukkit.v1_20_R3.block.CraftBlockState and org.bukkit.block.Skull are in unnamed module of loader java.net.URLClassLoader @368102c8)
-[20:46:16] [Server thread/INFO]: Played sound minecraft:muerte to 3 players
-[20:46:16] [Server thread/INFO]: Applied effect Blindness to [Warrior] 4gymo
-[20:46:16] [Server thread/INFO]: Changed title display times for 3 players
-[20:46:16] [Server thread/INFO]: [DeathScape] Mensaje enviado al webhook correctamente.
-[20:46:16] [Server thread/INFO]: [Warrior] 4gymo fell out of the world
-[20:46:16] [Server thread/INFO]: Showing new title for 3 players
-[20:46:16] [Server thread/INFO]: Showing new title for 3 players
-[20:46:16] [Server thread/INFO]: Showing new title for 3 players
-[20:46:16] [Server thread/INFO]: Showing new title for 3 players
-[20:46:16] [Server thread/INFO]: Showing new title for 3 players
-[20:46:16] [Server thread/INFO]: Showing new title for 3 players
-[20:46:16] [Server thread/INFO]: Showing new title for 3 players
-[20:46:16] [Server thread/INFO]: Showing new title for 3 players
-[20:46:16] [Server thread/INFO]: Showing new title for 3 players
-[20:46:16] [Server thread/INFO]: Showing new title for 3 players
-[20:46:16] [Server thread/INFO]: Showing new title for 3 players
-[20:46:16] [Server thread/INFO]: Showing new title for 3 players
-[20:46:16] [Server thread/INFO]: Showing new title for 3 players
-[20:46:16] [Server thread/INFO]: Showing new title for 3 players
-[20:46:16] [Server thread/INFO]: Showing new title for 3 players
-[20:46:16] [Server thread/INFO]: Showing new title for 3 players
-[20:46:16] [Server thread/INFO]: Showing new title for 3 players
-[20:46:16] [Server thread/INFO]: Showing new title for 3 players
-[20:46:16] [Server thread/INFO]: Showing new title for 3 players
-[20:46:16] [Server thread/INFO]: Showing new title for 3 players
-[20:46:16] [Server thread/INFO]: Showing new title for 3 players
-[20:46:16] [Server thread/INFO]: Showing new title for 3 players
-[20:46:17] [Server thread/INFO]: Showing new title for 3 players
-[20:46:17] [Server thread/INFO]: Showing new title for 3 players
-[20:46:17] [Server thread/INFO]: Showing new title for 3 players
-[20:46:17] [Server thread/INFO]: Showing new title for 3 players
-[20:46:17] [Server thread/INFO]: Showing new title for 3 players
-[20:46:17] [Server thread/INFO]: Showing new title for 3 players
-[20:46:17] [Server thread/INFO]: Showing new title for 3 players
-[20:46:17] [Server thread/INFO]: Showing new title for 3 players
-[20:46:17] [Server thread/INFO]: Showing new title for 3 players
-[20:46:17] [Server thread/INFO]: Showing new title for 3 players
-[20:46:17] [Server thread/INFO]: Showing new title for 3 players
-[20:46:17] [Server thread/INFO]: Showing new title for 3 players
-[20:46:17] [Server thread/INFO]: Showing new title for 3 players
-[20:46:17] [Server thread/INFO]: Showing new title for 3 players
-[20:46:17] [Server thread/INFO]: Showing new title for 3 players
-[20:46:17] [Server thread/INFO]: Showing new title for 3 players
-[20:46:17] [Server thread/INFO]: Showing new title for 3 players
-[20:46:17] [Server thread/INFO]: Showing new title for 3 players
-[20:46:17] [Server thread/INFO]: Showing new title for 3 players
-[20:46:17] [Server thread/INFO]: Showing new title for 3 players
-[20:46:17] [Server thread/INFO]: Showing new title for 3 players
-[20:46:17] [Server thread/INFO]: Showing new title for 3 players
-[20:46:17] [Server thread/INFO]: Showing new title for 3 players
-[20:46:17] [Server thread/INFO]: Showing new title for 3 players
-[20:46:17] [Server thread/INFO]: Showing new title for 3 players
-[20:46:17] [Server thread/INFO]: Showing new title for 3 players
-[20:46:17] [Server thread/INFO]: Showing new title for 3 players
-[20:46:17] [Server thread/INFO]: Showing new title for 3 players
-[20:46:17] [Server thread/INFO]: Showing new title for 3 players
-[20:46:17] [Server thread/INFO]: Showing new title for 3 players
-[20:46:17] [Server thread/INFO]: Showing new title for 3 players
-[20:46:17] [Server thread/INFO]: Showing new title for 3 players
-[20:46:17] [Server thread/INFO]: Showing new title for 3 players
-[20:46:17] [Server thread/INFO]: Showing new title for 3 players
-[20:46:17] [Server thread/INFO]: Showing new title for 3 players
-[20:46:17] [Server thread/INFO]: Showing new title for 3 players
-[20:46:17] [Server thread/INFO]: Showing new title for 3 players
-[20:46:17] [Server thread/INFO]: Showing new title for 3 players
-[20:46:17] [Server thread/INFO]: Showing new title for 3 players
-[20:46:17] [Server thread/INFO]: Showing new title for 3 players
-[20:46:18] [Server thread/INFO]: Showing new title for 3 players
-[20:46:18] [Server thread/INFO]: Showing new title for 3 players
-[20:46:18] [Server thread/INFO]: Showing new title for 3 players
-[20:46:18] [Server thread/INFO]: Showing new title for 3 players
-[20:46:18] [Server thread/INFO]: Showing new title for 3 players
-[20:46:18] [Server thread/INFO]: Showing new title for 3 players
-[20:46:18] [Server thread/INFO]: Showing new title for 3 players
-[20:46:18] [Server thread/INFO]: Showing new title for 3 players
-[20:46:18] [Server thread/INFO]: Showing new title for 3 players
-[20:46:18] [Server thread/INFO]: Showing new title for 3 players
-[20:46:18] [Server thread/INFO]: Showing new title for 3 players
-[20:46:18] [Server thread/INFO]: Showing new title for 3 players
-[20:46:18] [Server thread/INFO]: Showing new title for 3 players
-[20:46:18] [Server thread/INFO]: Showing new title for 3 players
-[20:46:18] [Server thread/INFO]: Showing new title for 3 players
-[20:46:18] [Server thread/INFO]: Showing new title for 3 players
-[20:46:18] [Server thread/INFO]: Showing new title for 3 players
-[20:46:18] [Server thread/INFO]: Showing new title for 3 players
-[20:46:18] [Server thread/INFO]: Showing new title for 3 players
-[20:46:18] [Server thread/INFO]: Showing new title for 3 players
-[20:46:18] [Server thread/INFO]: Showing new title for 3 players
-[20:46:18] [Server thread/INFO]: Showing new title for 3 players
-[20:46:18] [Server thread/INFO]: Showing new title for 3 players
-[20:46:18] [Server thread/INFO]: Showing new title for 3 players
-[20:46:18] [Server thread/INFO]: Showing new title for 3 players
-[20:46:18] [Server thread/INFO]: Showing new title for 3 players
-[20:46:18] [Server thread/INFO]: Showing new title for 3 players
-[20:46:18] [Server thread/INFO]: Showing new title for 3 players
-[20:46:18] [Server thread/INFO]: Showing new title for 3 players
-[20:46:18] [Server thread/INFO]: Showing new title for 3 players
-[20:46:18] [Server thread/INFO]: Showing new title for 3 players
-[20:46:18] [Server thread/INFO]: Showing new title for 3 players
-[20:46:18] [Server thread/INFO]: Showing new title for 3 players
-[20:46:18] [Server thread/INFO]: Showing new title for 3 players
-[20:46:18] [Server thread/INFO]: Showing new title for 3 players
-[20:46:18] [Server thread/INFO]: Showing new title for 3 players
-[20:46:18] [Server thread/INFO]: Showing new title for 3 players
-[20:46:18] [Server thread/INFO]: Showing new title for 3 players
-[20:46:18] [Server thread/INFO]: Showing new title for 3 players
-[20:46:18] [Server thread/INFO]: Showing new title for 3 players
-[20:46:19] [Server thread/INFO]: Showing new title for 3 players
-[20:46:19] [Server thread/INFO]: Showing new title for 3 players
-[20:46:19] [Server thread/INFO]: Showing new title for 3 players
-[20:46:19] [Server thread/INFO]: Showing new title for 3 players
-[20:46:19] [Server thread/INFO]: Showing new title for 3 players
-[20:46:19] [Server thread/INFO]: Showing new title for 3 players
-[20:46:19] [Server thread/INFO]: Showing new title for 3 players
-[20:46:19] [Server thread/INFO]: Showing new title for 3 players
-[20:46:19] [Server thread/INFO]: Showing new title for 3 players
-[20:46:19] [Server thread/INFO]: Showing new title for 3 players
-[20:46:19] [Server thread/INFO]: Showing new title for 3 players
-[20:46:19] [Server thread/INFO]: Showing new title for 3 players
-[20:46:19] [Server thread/INFO]: Showing new title for 3 players
-[20:46:19] [Server thread/INFO]: Showing new title for 3 players
-[20:46:19] [Server thread/INFO]: Showing new title for 3 players
-[20:46:19] [Server thread/INFO]: Showing new title for 3 players
-[20:46:19] [Server thread/INFO]: Showing new title for 3 players
-[20:46:19] [Server thread/INFO]: Showing new title for 3 players
-[20:46:19] [Server thread/INFO]: Showing new title for 3 players
-[20:46:19] [Server thread/INFO]: Showing new title for 3 players
-[20:46:19] [Server thread/INFO]: Showing new title for 3 players
-[20:46:19] [Server thread/INFO]: Showing new title for 3 players
-[20:46:19] [Server thread/INFO]: Showing new title for 3 players
-[20:46:19] [Server thread/INFO]: Showing new title for 3 players
-[20:46:19] [Server thread/INFO]: Showing new title for 3 players
-[20:46:19] [Server thread/INFO]: Showing new title for 3 players
-[20:46:19] [Server thread/INFO]: Showing new title for 3 players
-[20:46:19] [Server thread/INFO]: Showing new title for 3 players
-[20:46:19] [Server thread/INFO]: Showing new title for 3 players
-[20:46:19] [Server thread/INFO]: Showing new title for 3 players
-[20:46:19] [Server thread/INFO]: Showing new title for 3 players
-[20:46:19] [Server thread/INFO]: Showing new title for 3 players
-[20:46:19] [Server thread/INFO]: Showing new title for 3 players
-[20:46:19] [Server thread/INFO]: Showing new title for 3 players
-[20:46:19] [Server thread/INFO]: Showing new title for 3 players
-[20:46:19] [Server thread/INFO]: Showing new title for 3 players
-[20:46:19] [Server thread/INFO]: Showing new title for 3 players
-[20:46:19] [Server thread/INFO]: Showing new title for 3 players
-[20:46:19] [Server thread/INFO]: Showing new title for 3 players
-[20:46:19] [Server thread/INFO]: Showing new title for 3 players
-[20:46:20] [Server thread/INFO]: Showing new title for 3 players
-[20:46:20] [Server thread/INFO]: Showing new title for 3 players
-[20:46:20] [Server thread/INFO]: Showing new title for 3 players
-[20:46:20] [Server thread/INFO]: Showing new title for 3 players
-[20:46:20] [Server thread/INFO]: Showing new title for 3 players
-[20:46:20] [Server thread/INFO]: Showing new title for 3 players
-[20:46:20] [Server thread/INFO]: Showing new title for 3 players
-[20:46:20] [Server thread/INFO]: Showing new title for 3 players
-[20:46:20] [Server thread/INFO]: Showing new title for 3 players
-[20:46:20] [Server thread/INFO]: Showing new title for 3 players
-[20:46:20] [Server thread/INFO]: Showing new title for 3 players
-[20:46:20] [Server thread/INFO]: Showing new title for 3 players
-[20:46:20] [Server thread/INFO]: Showing new title for 3 players
-[20:46:20] [Server thread/INFO]: Showing new title for 3 players
-[20:46:20] [Server thread/INFO]: Showing new title for 3 players
-[20:46:20] [Server thread/INFO]: Showing new title for 3 players
-[20:46:20] [Server thread/INFO]: Showing new title for 3 players
-[20:46:20] [Server thread/INFO]: Showing new title for 3 players
-[20:46:20] [Server thread/INFO]: Showing new title for 3 players
-[20:46:20] [Server thread/INFO]: Showing new title for 3 players
-[20:46:20] [Server thread/INFO]: Showing new title for 3 players
-[20:46:20] [Server thread/INFO]: Showing new title for 3 players
-[20:46:20] [Server thread/INFO]: Showing new title for 3 players
-[20:46:20] [Server thread/INFO]: Showing new title for 3 players
-[20:46:20] [Server thread/INFO]: Showing new title for 3 players
-[20:46:20] [Server thread/INFO]: Showing new title for 3 players
-[20:46:20] [Server thread/INFO]: Showing new title for 3 players
-[20:46:20] [Server thread/INFO]: Showing new title for 3 players
-[20:46:20] [Server thread/INFO]: Showing new title for 3 players
-[20:46:20] [Server thread/INFO]: Showing new title for 3 players
-[20:46:20] [Server thread/INFO]: Showing new title for 3 players
-[20:46:20] [Server thread/INFO]: Showing new title for 3 players
-[20:46:20] [Server thread/INFO]: Showing new title for 3 players
-[20:46:20] [Server thread/INFO]: Showing new title for 3 players
-[20:46:20] [Server thread/INFO]: Showing new title for 3 players
-[20:46:20] [Server thread/INFO]: Showing new title for 3 players
-[20:46:20] [Server thread/INFO]: Showing new title for 3 players
-[20:46:20] [Server thread/INFO]: Showing new title for 3 players
-[20:46:20] [Server thread/INFO]: Showing new title for 3 players
-[20:46:20] [Server thread/INFO]: Showing new title for 3 players
-[20:46:21] [Server thread/INFO]: Showing new title for 3 players
-[20:46:21] [Server thread/INFO]: Showing new title for 3 players
-[20:46:21] [Server thread/INFO]: Showing new title for 3 players
-[20:46:21] [Server thread/INFO]: Showing new title for 3 players
-[20:46:21] [Server thread/INFO]: Showing new title for 3 players
-[20:46:21] [Server thread/INFO]: Showing new title for 3 players
-[20:46:21] [Server thread/INFO]: Showing new title for 3 players
-[20:46:21] [Server thread/INFO]: Showing new title for 3 players
-[20:46:21] [Server thread/INFO]: Showing new title for 3 players
-[20:46:21] [Server thread/INFO]: Showing new title for 3 players
-[20:46:21] [Server thread/INFO]: Showing new title for 3 players
-[20:46:21] [Server thread/INFO]: Showing new title for 3 players
-[20:46:21] [Server thread/INFO]: Showing new title for 3 players
-[20:46:21] [Server thread/INFO]: Showing new title for 3 players
-[20:46:21] [Server thread/INFO]: Showing new title for 3 players
-[20:46:21] [Server thread/INFO]: Showing new title for 3 players
-[20:46:21] [Server thread/INFO]: Showing new title for 3 players
-[20:46:21] [Server thread/INFO]: Showing new title for 3 players
-[20:46:21] [Server thread/INFO]: Showing new title for 3 players
-[20:46:21] [Server thread/INFO]: Showing new title for 3 players
-[20:46:21] [Server thread/INFO]: Showing new title for 3 players
-[20:46:21] [Server thread/INFO]: Showing new title for 3 players
-[20:46:21] [Server thread/INFO]: Showing new title for 3 players
-[20:46:21] [Server thread/INFO]: Showing new title for 3 players
-[20:46:21] [Server thread/INFO]: Showing new title for 3 players
-[20:46:21] [Server thread/INFO]: Showing new title for 3 players
-[20:46:21] [Server thread/INFO]: Showing new title for 3 players
-[20:46:21] [Server thread/INFO]: Showing new title for 3 players
-[20:46:21] [Server thread/INFO]: Showing new title for 3 players
-[20:46:21] [Server thread/INFO]: Showing new title for 3 players
-[20:46:21] [Server thread/INFO]: Showing new title for 3 players
-[20:46:21] [Server thread/INFO]: Showing new title for 3 players
-[20:46:21] [Server thread/INFO]: Showing new title for 3 players
-[20:46:21] [Server thread/INFO]: Showing new title for 3 players
-[20:46:21] [Server thread/INFO]: Showing new title for 3 players
-[20:46:21] [Server thread/INFO]: Showing new title for 3 players
-[20:46:21] [Server thread/INFO]: Showing new title for 3 players
-[20:46:21] [Server thread/INFO]: Showing new title for 3 players
-[20:46:21] [Server thread/INFO]: Showing new title for 3 players
-[20:46:21] [Server thread/INFO]: Showing new title for 3 players
-[20:46:22] [Server thread/INFO]: Showing new title for 3 players
-[20:46:22] [Server thread/INFO]: Showing new title for 3 players
-[20:46:22] [Server thread/INFO]: Showing new title for 3 players
-[20:46:22] [Server thread/INFO]: Showing new title for 3 players
-[20:46:22] [Server thread/INFO]: Showing new title for 3 players
-[20:46:22] [Server thread/INFO]: Showing new title for 3 players
-[20:46:22] [Server thread/INFO]: Showing new title for 3 players
-[20:46:22] [Server thread/INFO]: Showing new title for 3 players
-[20:46:22] [Server thread/INFO]: Showing new title for 3 players
-[20:46:22] [Server thread/INFO]: Showing new title for 3 players
-[20:46:22] [Server thread/INFO]: Showing new title for 3 players
-[20:46:22] [Server thread/INFO]: Showing new title for 3 players
-[20:46:22] [Server thread/INFO]: Showing new title for 3 players
-[20:46:22] [Server thread/INFO]: Showing new title for 3 players
-[20:46:22] [Server thread/INFO]: Showing new title for 3 players
-[20:46:22] [Server thread/INFO]: Showing new title for 3 players
-[20:46:22] [Server thread/INFO]: Showing new title for 3 players
-[20:46:22] [Server thread/INFO]: Showing new title for 3 players
-[20:46:22] [Server thread/INFO]: Showing new title for 3 players
-[20:46:22] [Server thread/INFO]: Showing new title for 3 players
-[20:46:22] [Server thread/INFO]: Showing new title for 3 players
-[20:46:22] [Server thread/INFO]: Showing new title for 3 players
-[20:46:22] [Server thread/INFO]: Showing new title for 3 players
-[20:46:22] [Server thread/INFO]: Showing new title for 3 players
-[20:46:22] [Server thread/INFO]: Showing new title for 3 players
-[20:46:22] [Server thread/INFO]: Showing new title for 3 players
-[20:46:22] [Server thread/INFO]: Showing new title for 3 players
-[20:46:22] [Server thread/INFO]: Showing new title for 3 players
-[20:46:22] [Server thread/INFO]: Showing new title for 3 players
-[20:46:22] [Server thread/INFO]: Showing new title for 3 players
-[20:46:22] [Server thread/INFO]: Showing new title for 3 players
-[20:46:22] [Server thread/INFO]: Showing new title for 3 players
-[20:46:22] [Server thread/INFO]: Showing new title for 3 players
-[20:46:22] [Server thread/INFO]: Showing new title for 3 players
-[20:46:22] [Server thread/INFO]: Showing new title for 3 players
-[20:46:22] [Server thread/INFO]: Showing new title for 3 players
-[20:46:22] [Server thread/INFO]: Showing new title for 3 players
-[20:46:22] [Server thread/INFO]: Showing new title for 3 players
-[20:46:22] [Server thread/INFO]: Showing new title for 3 players
-[20:46:22] [Server thread/INFO]: Showing new title for 3 players
-[20:46:23] [Server thread/INFO]: Showing new title for 3 players
-[20:46:23] [Server thread/INFO]: Showing new title for 3 players
-[20:46:23] [Server thread/INFO]: Showing new title for 3 players
-[20:46:23] [Server thread/INFO]: Showing new title for 3 players
-[20:46:23] [Server thread/INFO]: Showing new title for 3 players
-[20:46:23] [Server thread/INFO]: Showing new title for 3 players
-[20:46:23] [Server thread/INFO]: Showing new title for 3 players
-[20:46:23] [Server thread/INFO]: Showing new title for 3 players
-[20:46:23] [Server thread/INFO]: Showing new title for 3 players
-[20:46:23] [Server thread/INFO]: Showing new title for 3 players
-[20:46:23] [Server thread/INFO]: Played sound minecraft:entity.lightning_bolt.impact to 3 players
-[20:46:23] [Server thread/INFO]: Changed title display times for 3 players
-[20:46:23] [Server thread/INFO]: Showing new title for 3 players
-[20:46:23] [Server thread/INFO]: Showing new title for 3 players
-[20:46:23] [Server thread/INFO]: Link825_ issued server command: //undo
-[20:46:23] [Server thread/INFO]: Showing new title for 3 players
-[20:46:23] [Server thread/INFO]: Showing new title for 3 players
-[20:46:23] [Server thread/INFO]: Showing new title for 3 players
-[20:46:23] [Server thread/INFO]: Showing new title for 3 players
-[20:46:23] [Server thread/INFO]: Showing new title for 3 players
-[20:46:23] [Server thread/INFO]: Showing new title for 3 players
-[20:46:23] [Server thread/INFO]: Showing new title for 3 players
-[20:46:23] [Server thread/INFO]: Showing new title for 3 players
-[20:46:23] [Server thread/INFO]: Showing new title for 3 players
-[20:46:23] [Server thread/INFO]: Showing new title for 3 players
-[20:46:23] [Server thread/INFO]: Showing new title for 3 players
-[20:46:23] [Server thread/INFO]: Showing new title for 3 players
-[20:46:23] [Server thread/INFO]: Showing new title for 3 players
-[20:46:24] [Server thread/INFO]: Showing new title for 3 players
-[20:46:24] [Server thread/INFO]: Showing new title for 3 players
-[20:46:24] [Server thread/INFO]: Showing new title for 3 players
-[20:46:24] [Server thread/INFO]: Showing new title for 3 players
-[20:46:24] [Server thread/INFO]: Showing new title for 3 players
-[20:46:24] [Server thread/INFO]: Showing new title for 3 players
-[20:46:24] [Server thread/INFO]: Showing new title for 3 players
-[20:46:24] [Server thread/INFO]: Showing new title for 3 players
-[20:46:24] [Server thread/INFO]: Showing new title for 3 players
-[20:46:24] [Server thread/INFO]: Showing new title for 3 players
-[20:46:24] [Server thread/INFO]: Showing new title for 3 players
-[20:46:24] [Server thread/INFO]: Showing new title for 3 players
-[20:46:24] [Server thread/INFO]: Showing new title for 3 players
-[20:46:24] [Server thread/INFO]: Showing new title for 3 players
-[20:46:24] [Server thread/INFO]: Showing new title for 3 players
-[20:46:24] [Server thread/INFO]: Showing new title for 3 players
-[20:46:24] [Server thread/INFO]: Showing new title for 3 players
-[20:46:24] [Server thread/INFO]: Showing new title for 3 players
-[20:46:24] [Server thread/INFO]: Played sound minecraft:entity.lightning_bolt.impact to 3 players
-[20:46:24] [Server thread/INFO]: Changed title display times for 3 players
-[20:46:41] [Server thread/INFO]: xaviggr issued server command: /gamemode creative
-[20:46:41] [Server thread/INFO]: [[Warrior] xaviggr: Set own game mode to Creative Mode]
-[20:46:47] [Server thread/INFO]: Link825_ issued server command: /up 1
-[20:46:50] [Server thread/INFO]: xaviggr issued server command: /tp Link825_
-[20:46:50] [Server thread/INFO]: [[Warrior] xaviggr: Teleported [Warrior] xaviggr to [Warrior] Link825_]
-[20:46:50] [Server thread/INFO]: Link825_ issued server command: //set air
-[20:46:58] [Server thread/INFO]: xaviggr issued server command: /gamemode spectator
-[20:46:58] [Server thread/INFO]: [[Warrior] xaviggr: Set own game mode to Spectator Mode]
-[20:46:59] [Server thread/INFO]: xaviggr issued server command: /gamemode creative
-[20:46:59] [Server thread/INFO]: [[Warrior] xaviggr: Set own game mode to Creative Mode]
-[20:47:02] [Server thread/INFO]: Link825_ issued server command: /thru
-[20:47:02] [Server thread/WARN]: Link825_ moved too quickly! 0.19999998807907104,-10.0,2.033805534673995
-[20:47:04] [Server thread/INFO]: xaviggr issued server command: /tp 4gymo xaviggr
-[20:47:04] [Server thread/INFO]: [[Warrior] xaviggr: Teleported [Warrior] 4gymo to [Warrior] xaviggr]
-[20:47:17] [Server thread/INFO]: xaviggr issued server command: /gamemode creative 4gymo
-[20:47:17] [Server thread/INFO]: [[Warrior] xaviggr: Set [Warrior] 4gymo's game mode to Creative Mode]
-[20:50:47] [Server thread/INFO]: Link825_ issued server command: /up 1
-[20:50:54] [Server thread/INFO]: Link825_ issued server command: //walls glass
-[20:50:56] [Server thread/INFO]: Link825_ issued server command: //walls glass
-[20:50:57] [Server thread/INFO]: Link825_ issued server command: //walls glass
-[20:50:57] [Server thread/INFO]: Link825_ issued server command: //walls glass
-[20:50:58] [Server thread/INFO]: Link825_ issued server command: //walls glass
-[20:50:59] [Server thread/INFO]: Link825_ issued server command: //walls glass
-[20:51:00] [Server thread/INFO]: Link825_ issued server command: //walls glass
-[20:51:00] [Server thread/INFO]: Link825_ issued server command: //walls glass
-[20:51:01] [Server thread/INFO]: Link825_ issued server command: //walls glass
-[20:51:02] [Server thread/INFO]: Link825_ issued server command: //walls glass
-[20:51:03] [Server thread/INFO]: Link825_ issued server command: //walls glass
-[20:51:10] [Server thread/INFO]: Link825_ issued server command: //walls glass
-[20:51:11] [Server thread/INFO]: Link825_ issued server command: //walls glass
-[20:51:13] [Server thread/INFO]: Link825_ issued server command: //walls glass
-[20:51:14] [Server thread/INFO]: Link825_ issued server command: //walls glass
-[20:51:16] [Server thread/INFO]: Link825_ issued server command: //walls glass
-[20:51:17] [Server thread/INFO]: Link825_ issued server command: //walls glass
-[20:51:20] [Server thread/INFO]: Link825_ issued server command: //walls glass
-[20:51:22] [Server thread/INFO]: Link825_ issued server command: /up 1
-[20:51:25] [Server thread/INFO]: Link825_ issued server command: //walls glass
-[20:51:27] [Server thread/INFO]: Link825_ issued server command: //walls glass
-[20:51:29] [Server thread/INFO]: Link825_ issued server command: //walls glass
-[20:51:33] [Server thread/INFO]: Link825_ issued server command: //walls glass
-[20:51:35] [Server thread/INFO]: Link825_ issued server command: //walls glass
-[20:51:43] [Server thread/INFO]: Link825_ issued server command: //walls glass
-[20:51:45] [Server thread/INFO]: Link825_ issued server command: //walls glass
-[20:51:48] [Server thread/INFO]: Link825_ issued server command: //walls glass
-[20:51:50] [Server thread/INFO]: Link825_ issued server command: //walls glass
-[20:51:52] [Server thread/INFO]: Link825_ issued server command: //walls glass
-[20:52:23] [Server thread/INFO]: Link825_ issued server command: //walls glass
-[20:52:40] [Server thread/INFO]: Link825_ issued server command: //walls glass
-[20:52:51] [Server thread/INFO]: Link825_ issued server command: //walls glass
-[20:53:05] [Server thread/INFO]: Link825_ issued server command: //walls glass
-[20:53:21] [Server thread/INFO]: Link825_ issued server command: //walls glass
-[20:53:32] [Server thread/INFO]: Link825_ issued server command: //walls glass
-[20:53:45] [Server thread/INFO]: Link825_ issued server command: //walls glass
-[20:53:58] [Server thread/INFO]: Link825_ issued server command: //walls glass
-[20:54:20] [Server thread/INFO]: Link825_ issued server command: //walls glass
-[20:54:26] [Server thread/INFO]: Link825_ issued server command: //walls glass
-[20:54:27] [Server thread/INFO]: Link825_ issued server command: //walls glass
-[20:54:34] [Server thread/INFO]: Link825_ issued server command: //walls bedrock
-[20:54:44] [Server thread/INFO]: Link825_ issued server command: //undo
-[20:54:52] [Server thread/INFO]: Link825_ issued server command: //walls barrier
-[20:55:14] [Server thread/INFO]: Link825_ issued server command: //undo
-[20:55:37] [Server thread/INFO]: Link825_ lost connection: Disconnected
-[20:55:37] [Server thread/INFO]: [DeathScape] Jugadores en cola: 2
-[20:55:37] [Server thread/INFO]: [DeathScape] Jugador Link825_ eliminado de la cola.
-[20:55:37] [Server thread/INFO]: [DeathScape] Cola de jugadores:
-[20:55:37] [Server thread/INFO]: [DeathScape] 4gymo
-[20:55:37] [Server thread/INFO]: [DeathScape] Jugadores en el servidor:1
-[20:55:37] [Server thread/INFO]: [Warrior] Link825_ left the game
-[20:55:39] [Server thread/ERROR]: Error al crear la cabeza de la estatua para xaviggr: class org.bukkit.craftbukkit.v1_20_R3.block.CraftBlockState cannot be cast to class org.bukkit.block.Skull (org.bukkit.craftbukkit.v1_20_R3.block.CraftBlockState and org.bukkit.block.Skull are in unnamed module of loader java.net.URLClassLoader @368102c8)
-[20:55:39] [Server thread/INFO]: Played sound minecraft:muerte to 2 players
-[20:55:39] [Server thread/INFO]: Applied effect Blindness to [Warrior] xaviggr
-[20:55:39] [Server thread/INFO]: Changed title display times for 2 players
-[20:55:39] [Server thread/INFO]: [DeathScape] Mensaje enviado al webhook correctamente.
-[20:55:39] [Server thread/INFO]: [Warrior] xaviggr fell out of the world
-[20:55:39] [Server thread/INFO]: Showing new title for 2 players
-[20:55:39] [Server thread/INFO]: Showing new title for 2 players
-[20:55:39] [Server thread/INFO]: Showing new title for 2 players
-[20:55:39] [Server thread/INFO]: Showing new title for 2 players
-[20:55:39] [Server thread/INFO]: Showing new title for 2 players
-[20:55:39] [Server thread/INFO]: Showing new title for 2 players
-[20:55:39] [Server thread/INFO]: Showing new title for 2 players
-[20:55:40] [Server thread/INFO]: Showing new title for 2 players
-[20:55:40] [Server thread/INFO]: Showing new title for 2 players
-[20:55:40] [Server thread/INFO]: Showing new title for 2 players
-[20:55:40] [Server thread/INFO]: Showing new title for 2 players
-[20:55:40] [Server thread/INFO]: Showing new title for 2 players
-[20:55:40] [Server thread/INFO]: Showing new title for 2 players
-[20:55:40] [Server thread/INFO]: Showing new title for 2 players
-[20:55:40] [Server thread/INFO]: Showing new title for 2 players
-[20:55:40] [Server thread/INFO]: Showing new title for 2 players
-[20:55:40] [Server thread/INFO]: Showing new title for 2 players
-[20:55:40] [Server thread/INFO]: Showing new title for 2 players
-[20:55:40] [Server thread/INFO]: Showing new title for 2 players
-[20:55:40] [Server thread/INFO]: Showing new title for 2 players
-[20:55:40] [Server thread/INFO]: Showing new title for 2 players
-[20:55:40] [Server thread/INFO]: Showing new title for 2 players
-[20:55:40] [Server thread/INFO]: Showing new title for 2 players
-[20:55:40] [Server thread/INFO]: Showing new title for 2 players
-[20:55:40] [Server thread/INFO]: Showing new title for 2 players
-[20:55:40] [Server thread/INFO]: Showing new title for 2 players
-[20:55:40] [Server thread/INFO]: Showing new title for 2 players
-[20:55:41] [Server thread/INFO]: Showing new title for 2 players
-[20:55:41] [Server thread/INFO]: Showing new title for 2 players
-[20:55:41] [Server thread/INFO]: Showing new title for 2 players
-[20:55:41] [Server thread/INFO]: Showing new title for 2 players
-[20:55:41] [Server thread/INFO]: Showing new title for 2 players
-[20:55:41] [Server thread/INFO]: Showing new title for 2 players
-[20:55:41] [Server thread/INFO]: Showing new title for 2 players
-[20:55:41] [Server thread/INFO]: Showing new title for 2 players
-[20:55:41] [Server thread/INFO]: Showing new title for 2 players
-[20:55:41] [Server thread/INFO]: Showing new title for 2 players
-[20:55:41] [Server thread/INFO]: Showing new title for 2 players
-[20:55:41] [Server thread/INFO]: Showing new title for 2 players
-[20:55:41] [Server thread/INFO]: Showing new title for 2 players
-[20:55:41] [Server thread/INFO]: Showing new title for 2 players
-[20:55:41] [Server thread/INFO]: Showing new title for 2 players
-[20:55:41] [Server thread/INFO]: Showing new title for 2 players
-[20:55:41] [Server thread/INFO]: Showing new title for 2 players
-[20:55:41] [Server thread/INFO]: Showing new title for 2 players
-[20:55:41] [Server thread/INFO]: Showing new title for 2 players
-[20:55:41] [Server thread/INFO]: Showing new title for 2 players
-[20:55:42] [Server thread/INFO]: Showing new title for 2 players
-[20:55:42] [Server thread/INFO]: Showing new title for 2 players
-[20:55:42] [Server thread/INFO]: Showing new title for 2 players
-[20:55:42] [Server thread/INFO]: Showing new title for 2 players
-[20:55:42] [Server thread/INFO]: Showing new title for 2 players
-[20:55:42] [Server thread/INFO]: Showing new title for 2 players
-[20:55:42] [Server thread/INFO]: Showing new title for 2 players
-[20:55:42] [Server thread/INFO]: Showing new title for 2 players
-[20:55:42] [Server thread/INFO]: Showing new title for 2 players
-[20:55:42] [Server thread/INFO]: Showing new title for 2 players
-[20:55:42] [Server thread/INFO]: Showing new title for 2 players
-[20:55:42] [Server thread/INFO]: Showing new title for 2 players
-[20:55:42] [Server thread/INFO]: Showing new title for 2 players
-[20:55:42] [Server thread/INFO]: Showing new title for 2 players
-[20:55:42] [Server thread/INFO]: Showing new title for 2 players
-[20:55:42] [Server thread/INFO]: Showing new title for 2 players
-[20:55:42] [Server thread/INFO]: Showing new title for 2 players
-[20:55:42] [Server thread/INFO]: Showing new title for 2 players
-[20:55:42] [Server thread/INFO]: Showing new title for 2 players
-[20:55:42] [Server thread/INFO]: Showing new title for 2 players
-[20:55:43] [Server thread/INFO]: Showing new title for 2 players
-[20:55:43] [Server thread/INFO]: Showing new title for 2 players
-[20:55:43] [Server thread/INFO]: Showing new title for 2 players
-[20:55:43] [Server thread/INFO]: Showing new title for 2 players
-[20:55:43] [Server thread/INFO]: Showing new title for 2 players
-[20:55:43] [Server thread/INFO]: Showing new title for 2 players
-[20:55:43] [Server thread/INFO]: Showing new title for 2 players
-[20:55:43] [Server thread/INFO]: Showing new title for 2 players
-[20:55:43] [Server thread/INFO]: Showing new title for 2 players
-[20:55:43] [Server thread/INFO]: Showing new title for 2 players
-[20:55:43] [Server thread/INFO]: Showing new title for 2 players
-[20:55:43] [Server thread/INFO]: Showing new title for 2 players
-[20:55:43] [Server thread/INFO]: Showing new title for 2 players
-[20:55:43] [Server thread/INFO]: Showing new title for 2 players
-[20:55:43] [Server thread/INFO]: Showing new title for 2 players
-[20:55:43] [Server thread/INFO]: Showing new title for 2 players
-[20:55:43] [Server thread/INFO]: Showing new title for 2 players
-[20:55:43] [Server thread/INFO]: Showing new title for 2 players
-[20:55:43] [Server thread/INFO]: Showing new title for 2 players
-[20:55:43] [Server thread/INFO]: Showing new title for 2 players
-[20:55:44] [Server thread/INFO]: Showing new title for 2 players
-[20:55:44] [Server thread/INFO]: Showing new title for 2 players
-[20:55:44] [Server thread/INFO]: Showing new title for 2 players
-[20:55:44] [Server thread/INFO]: Showing new title for 2 players
-[20:55:44] [Server thread/INFO]: Showing new title for 2 players
-[20:55:44] [Server thread/INFO]: Showing new title for 2 players
-[20:55:44] [Server thread/INFO]: Showing new title for 2 players
-[20:55:44] [User Authenticator #1/INFO]: UUID of player Link825_ is a3a49fea-23f2-407c-b31d-d3e63cabbc96
-[20:55:44] [Server thread/INFO]: Showing new title for 2 players
-[20:55:44] [Server thread/INFO]: Showing new title for 2 players
-[20:55:44] [Server thread/INFO]: [Warrior] Link825_ ha entrado al mundo DeathScape
-[20:55:44] [Server thread/INFO]: Link825_[IP hidden] logged in with entity id 636 at ([world_minecraft_spawn]0.0, 1.0, 0.0)
-[20:55:44] [Server thread/INFO]: Showing new title for 3 players
-[20:55:44] [Server thread/INFO]: Showing new title for 3 players
-[20:55:44] [Server thread/INFO]: Showing new title for 3 players
-[20:55:44] [Server thread/INFO]: Showing new title for 3 players
-[20:55:44] [Server thread/INFO]: Showing new title for 3 players
-[20:55:44] [Server thread/INFO]: Showing new title for 3 players
-[20:55:44] [Server thread/INFO]: Showing new title for 3 players
-[20:55:44] [Server thread/INFO]: Showing new title for 3 players
-[20:55:44] [Server thread/INFO]: Showing new title for 3 players
-[20:55:44] [Server thread/INFO]: Showing new title for 3 players
-[20:55:44] [Server thread/INFO]: xaviggr issued server command: /gamemode creative
-[20:55:44] [Server thread/INFO]: [[Warrior] xaviggr: Set own game mode to Creative Mode]
-[20:55:44] [Server thread/INFO]: Showing new title for 3 players
-[20:55:45] [Server thread/INFO]: Showing new title for 3 players
-[20:55:45] [Server thread/INFO]: Showing new title for 3 players
-[20:55:45] [Server thread/INFO]: Showing new title for 3 players
-[20:55:45] [Server thread/INFO]: Showing new title for 3 players
-[20:55:45] [Server thread/INFO]: Showing new title for 3 players
-[20:55:45] [Server thread/INFO]: Showing new title for 3 players
-[20:55:45] [Server thread/INFO]: Showing new title for 3 players
-[20:55:45] [Server thread/INFO]: Showing new title for 3 players
-[20:55:45] [Server thread/INFO]: Showing new title for 3 players
-[20:55:45] [Server thread/INFO]: Showing new title for 3 players
-[20:55:45] [Server thread/INFO]: Showing new title for 3 players
-[20:55:45] [Server thread/INFO]: Showing new title for 3 players
-[20:55:45] [Server thread/INFO]: Showing new title for 3 players
-[20:55:45] [Server thread/INFO]: Showing new title for 3 players
-[20:55:45] [Server thread/INFO]: Showing new title for 3 players
-[20:55:45] [Server thread/INFO]: Showing new title for 3 players
-[20:55:45] [Server thread/INFO]: Showing new title for 3 players
-[20:55:45] [Server thread/INFO]: Showing new title for 3 players
-[20:55:45] [Server thread/INFO]: Showing new title for 3 players
-[20:55:45] [Server thread/INFO]: Showing new title for 3 players
-[20:55:46] [Server thread/INFO]: Showing new title for 3 players
-[20:55:46] [Server thread/INFO]: Showing new title for 3 players
-[20:55:46] [Server thread/INFO]: Showing new title for 3 players
-[20:55:46] [Server thread/INFO]: Showing new title for 3 players
-[20:55:46] [Server thread/INFO]: Showing new title for 3 players
-[20:55:46] [Server thread/INFO]: Showing new title for 3 players
-[20:55:46] [Server thread/INFO]: Showing new title for 3 players
-[20:55:46] [Server thread/INFO]: Showing new title for 3 players
-[20:55:46] [Server thread/INFO]: Showing new title for 3 players
-[20:55:46] [Server thread/INFO]: Showing new title for 3 players
-[20:55:46] [Server thread/INFO]: Showing new title for 3 players
-[20:55:46] [Server thread/INFO]: Showing new title for 3 players
-[20:55:46] [Server thread/INFO]: Showing new title for 3 players
-[20:55:46] [Server thread/INFO]: Showing new title for 3 players
-[20:55:46] [Server thread/INFO]: Showing new title for 3 players
-[20:55:46] [Server thread/INFO]: Showing new title for 3 players
-[20:55:46] [Server thread/INFO]: Showing new title for 3 players
-[20:55:46] [Server thread/INFO]: Showing new title for 3 players
-[20:55:46] [Server thread/INFO]: Showing new title for 3 players
-[20:55:46] [Server thread/INFO]: Showing new title for 3 players
-[20:55:47] [Server thread/INFO]: Showing new title for 3 players
-[20:55:47] [Server thread/INFO]: Showing new title for 3 players
-[20:55:47] [Server thread/INFO]: Showing new title for 3 players
-[20:55:47] [Server thread/INFO]: Showing new title for 3 players
-[20:55:47] [Server thread/INFO]: Showing new title for 3 players
-[20:55:47] [Server thread/INFO]: Showing new title for 3 players
-[20:55:47] [Server thread/INFO]: Showing new title for 3 players
-[20:55:47] [Server thread/INFO]: Showing new title for 3 players
-[20:55:47] [Server thread/INFO]: Showing new title for 3 players
-[20:55:47] [Server thread/INFO]: Showing new title for 3 players
-[20:55:47] [Server thread/INFO]: Showing new title for 3 players
-[20:55:47] [Server thread/INFO]: Showing new title for 3 players
-[20:55:47] [Server thread/INFO]: Showing new title for 3 players
-[20:55:47] [Server thread/INFO]: Showing new title for 3 players
-[20:55:47] [Server thread/INFO]: Showing new title for 3 players
-[20:55:47] [Server thread/INFO]: Showing new title for 3 players
-[20:55:47] [Server thread/INFO]: Showing new title for 3 players
-[20:55:47] [Server thread/INFO]: Showing new title for 3 players
-[20:55:47] [Server thread/INFO]: Showing new title for 3 players
-[20:55:47] [Server thread/INFO]: Showing new title for 3 players
-[20:55:48] [Server thread/INFO]: Showing new title for 3 players
-[20:55:48] [Server thread/INFO]: Showing new title for 3 players
-[20:55:48] [Server thread/INFO]: Played sound minecraft:entity.lightning_bolt.impact to 3 players
-[20:55:48] [Server thread/INFO]: Changed title display times for 3 players
-[20:55:49] [Server thread/INFO]: [DeathScape] Jugadores en cola: 2
-[20:55:49] [Server thread/INFO]: [DeathScape] Jugador Link825_ añadido a la cola.
-[20:55:49] [Server thread/INFO]: [DeathScape] Cola de jugadores:
-[20:55:49] [Server thread/INFO]: [DeathScape] 4gymo
-[20:55:49] [Server thread/INFO]: [DeathScape] Link825_
-[20:55:49] [Server thread/INFO]: [DeathScape] Jugadores en el servidor:1
-[20:56:21] [Server thread/INFO]: xaviggr lost connection: Disconnected
-[20:56:21] [Server thread/INFO]: [DeathScape] Jugadores en cola: 2
-[20:56:21] [Server thread/INFO]: [DeathScape] Jugador xaviggr eliminado de la cola.
-[20:56:21] [Server thread/INFO]: [DeathScape] Cola de jugadores:
-[20:56:21] [Server thread/INFO]: [DeathScape] Link825_
-[20:56:21] [Server thread/INFO]: [DeathScape] Jugadores en el servidor:1
-[20:56:21] [Server thread/INFO]: [Warrior] xaviggr left the game
-[20:56:24] [Server thread/ERROR]: Error al crear la cabeza de la estatua para 4gymo: class org.bukkit.craftbukkit.v1_20_R3.block.CraftBlockState cannot be cast to class org.bukkit.block.Skull (org.bukkit.craftbukkit.v1_20_R3.block.CraftBlockState and org.bukkit.block.Skull are in unnamed module of loader java.net.URLClassLoader @368102c8)
-[20:56:24] [Server thread/INFO]: Played sound minecraft:muerte to 2 players
-[20:56:24] [Server thread/INFO]: Applied effect Blindness to [Warrior] 4gymo
-[20:56:24] [Server thread/INFO]: Changed title display times for 2 players
-[20:56:24] [Server thread/INFO]: [DeathScape] Mensaje enviado al webhook correctamente.
-[20:56:24] [Server thread/INFO]: [Warrior] 4gymo fell out of the world
-[20:56:24] [Server thread/INFO]: Showing new title for 2 players
-[20:56:24] [Server thread/INFO]: Showing new title for 2 players
-[20:56:24] [Server thread/INFO]: Showing new title for 2 players
-[20:56:24] [Server thread/INFO]: Showing new title for 2 players
-[20:56:24] [Server thread/INFO]: Showing new title for 2 players
-[20:56:24] [Server thread/INFO]: Showing new title for 2 players
-[20:56:24] [Server thread/INFO]: Showing new title for 2 players
-[20:56:24] [Server thread/INFO]: Showing new title for 2 players
-[20:56:24] [Server thread/INFO]: Showing new title for 2 players
-[20:56:24] [Server thread/INFO]: Showing new title for 2 players
-[20:56:24] [Server thread/INFO]: Showing new title for 2 players
-[20:56:24] [Server thread/INFO]: Showing new title for 2 players
-[20:56:24] [Server thread/INFO]: Showing new title for 2 players
-[20:56:24] [Server thread/INFO]: Showing new title for 2 players
-[20:56:24] [Server thread/INFO]: Showing new title for 2 players
-[20:56:24] [Server thread/INFO]: Showing new title for 2 players
-[20:56:24] [Server thread/INFO]: Showing new title for 2 players
-[20:56:24] [Server thread/INFO]: Showing new title for 2 players
-[20:56:24] [Server thread/INFO]: Showing new title for 2 players
-[20:56:25] [Server thread/INFO]: Showing new title for 2 players
-[20:56:25] [Server thread/INFO]: Showing new title for 2 players
-[20:56:25] [Server thread/INFO]: Showing new title for 2 players
-[20:56:25] [Server thread/INFO]: Showing new title for 2 players
-[20:56:25] [Server thread/INFO]: Showing new title for 2 players
-[20:56:25] [Server thread/INFO]: Showing new title for 2 players
-[20:56:25] [Server thread/INFO]: Showing new title for 2 players
-[20:56:25] [Server thread/INFO]: Showing new title for 2 players
-[20:56:25] [Server thread/INFO]: Showing new title for 2 players
-[20:56:25] [Server thread/INFO]: Showing new title for 2 players
-[20:56:25] [Server thread/INFO]: Showing new title for 2 players
-[20:56:25] [Server thread/INFO]: Showing new title for 2 players
-[20:56:25] [Server thread/INFO]: Showing new title for 2 players
-[20:56:25] [Server thread/INFO]: Showing new title for 2 players
-[20:56:25] [Server thread/INFO]: Showing new title for 2 players
-[20:56:25] [Server thread/INFO]: Showing new title for 2 players
-[20:56:25] [Server thread/INFO]: Showing new title for 2 players
-[20:56:25] [Server thread/INFO]: Showing new title for 2 players
-[20:56:25] [Server thread/INFO]: Showing new title for 2 players
-[20:56:25] [Server thread/INFO]: Showing new title for 2 players
-[20:56:26] [Server thread/INFO]: Showing new title for 2 players
-[20:56:26] [User Authenticator #1/INFO]: UUID of player xaviggr is cb185b4b-cea7-43bb-a340-571c9bb6c3a5
-[20:56:26] [Server thread/INFO]: Showing new title for 2 players
-[20:56:26] [Server thread/INFO]: [Warrior] xaviggr ha entrado al mundo DeathScape
-[20:56:26] [Server thread/INFO]: xaviggr[IP hidden] logged in with entity id 791 at ([world_minecraft_spawn]0.0, 1.0, 0.0)
-[20:56:26] [Server thread/INFO]: Showing new title for 3 players
-[20:56:26] [Server thread/INFO]: Showing new title for 3 players
-[20:56:26] [Server thread/INFO]: Showing new title for 3 players
-[20:56:26] [Server thread/INFO]: Showing new title for 3 players
-[20:56:26] [Server thread/INFO]: Showing new title for 3 players
-[20:56:26] [Server thread/INFO]: Showing new title for 3 players
-[20:56:26] [Server thread/INFO]: Showing new title for 3 players
-[20:56:26] [Server thread/INFO]: Showing new title for 3 players
-[20:56:26] [Server thread/INFO]: Showing new title for 3 players
-[20:56:26] [Server thread/INFO]: Showing new title for 3 players
-[20:56:26] [Server thread/INFO]: Showing new title for 3 players
-[20:56:26] [Server thread/INFO]: Showing new title for 3 players
-[20:56:26] [Server thread/INFO]: Showing new title for 3 players
-[20:56:26] [Server thread/INFO]: Showing new title for 3 players
-[20:56:26] [Server thread/INFO]: Showing new title for 3 players
-[20:56:26] [Server thread/INFO]: Showing new title for 3 players
-[20:56:26] [Server thread/INFO]: Showing new title for 3 players
-[20:56:26] [Server thread/INFO]: Showing new title for 3 players
-[20:56:27] [Server thread/INFO]: Showing new title for 3 players
-[20:56:27] [Server thread/INFO]: Showing new title for 3 players
-[20:56:27] [Server thread/INFO]: Showing new title for 3 players
-[20:56:27] [Server thread/INFO]: Showing new title for 3 players
-[20:56:27] [Server thread/INFO]: Showing new title for 3 players
-[20:56:27] [Server thread/INFO]: Showing new title for 3 players
-[20:56:27] [Server thread/INFO]: Showing new title for 3 players
-[20:56:27] [Server thread/INFO]: Showing new title for 3 players
-[20:56:27] [Server thread/INFO]: Showing new title for 3 players
-[20:56:27] [Server thread/INFO]: Showing new title for 3 players
-[20:56:27] [Server thread/INFO]: Showing new title for 3 players
-[20:56:27] [Server thread/INFO]: Showing new title for 3 players
-[20:56:27] [Server thread/INFO]: Showing new title for 3 players
-[20:56:27] [Server thread/INFO]: Showing new title for 3 players
-[20:56:27] [Server thread/INFO]: Showing new title for 3 players
-[20:56:27] [Server thread/INFO]: Showing new title for 3 players
-[20:56:27] [Server thread/INFO]: Showing new title for 3 players
-[20:56:27] [Server thread/INFO]: Showing new title for 3 players
-[20:56:27] [Server thread/INFO]: Showing new title for 3 players
-[20:56:27] [Server thread/INFO]: Showing new title for 3 players
-[20:56:28] [Server thread/INFO]: Showing new title for 3 players
-[20:56:28] [Server thread/INFO]: Showing new title for 3 players
-[20:56:28] [Server thread/INFO]: Showing new title for 3 players
-[20:56:28] [Server thread/INFO]: Showing new title for 3 players
-[20:56:28] [Server thread/INFO]: Showing new title for 3 players
-[20:56:28] [Server thread/INFO]: Showing new title for 3 players
-[20:56:28] [Server thread/INFO]: Showing new title for 3 players
-[20:56:28] [Server thread/INFO]: Showing new title for 3 players
-[20:56:28] [Server thread/INFO]: Showing new title for 3 players
-[20:56:28] [Server thread/INFO]: Showing new title for 3 players
-[20:56:28] [Server thread/INFO]: Showing new title for 3 players
-[20:56:28] [Server thread/INFO]: Showing new title for 3 players
-[20:56:28] [Server thread/INFO]: Showing new title for 3 players
-[20:56:28] [Server thread/INFO]: Showing new title for 3 players
-[20:56:28] [Server thread/INFO]: Showing new title for 3 players
-[20:56:28] [Server thread/INFO]: Showing new title for 3 players
-[20:56:28] [Server thread/INFO]: Showing new title for 3 players
-[20:56:28] [Server thread/INFO]: Showing new title for 3 players
-[20:56:28] [Server thread/INFO]: Showing new title for 3 players
-[20:56:28] [Server thread/INFO]: Showing new title for 3 players
-[20:56:29] [Server thread/INFO]: Showing new title for 3 players
-[20:56:29] [Server thread/INFO]: Showing new title for 3 players
-[20:56:29] [Server thread/INFO]: Showing new title for 3 players
-[20:56:29] [Server thread/INFO]: Showing new title for 3 players
-[20:56:29] [Server thread/INFO]: Showing new title for 3 players
-[20:56:29] [Server thread/INFO]: Showing new title for 3 players
-[20:56:29] [Server thread/INFO]: Showing new title for 3 players
-[20:56:29] [Server thread/INFO]: Showing new title for 3 players
-[20:56:29] [Server thread/INFO]: Showing new title for 3 players
-[20:56:29] [Server thread/INFO]: Showing new title for 3 players
-[20:56:29] [Server thread/INFO]: Showing new title for 3 players
-[20:56:29] [Server thread/INFO]: Showing new title for 3 players
-[20:56:29] [Server thread/INFO]: Showing new title for 3 players
-[20:56:29] [Server thread/INFO]: Showing new title for 3 players
-[20:56:29] [Server thread/INFO]: Showing new title for 3 players
-[20:56:29] [Server thread/INFO]: Showing new title for 3 players
-[20:56:29] [Server thread/INFO]: Showing new title for 3 players
-[20:56:29] [Server thread/INFO]: Showing new title for 3 players
-[20:56:29] [Server thread/INFO]: Showing new title for 3 players
-[20:56:29] [Server thread/INFO]: Showing new title for 3 players
-[20:56:30] [Server thread/INFO]: Showing new title for 3 players
-[20:56:30] [Server thread/INFO]: Showing new title for 3 players
-[20:56:30] [Server thread/INFO]: Showing new title for 3 players
-[20:56:30] [Server thread/INFO]: Showing new title for 3 players
-[20:56:30] [Server thread/INFO]: Showing new title for 3 players
-[20:56:30] [Server thread/INFO]: Showing new title for 3 players
-[20:56:30] [Server thread/INFO]: Showing new title for 3 players
-[20:56:30] [Server thread/INFO]: Showing new title for 3 players
-[20:56:30] [Server thread/INFO]: Showing new title for 3 players
-[20:56:30] [Server thread/INFO]: Showing new title for 3 players
-[20:56:30] [Server thread/INFO]: Showing new title for 3 players
-[20:56:30] [Server thread/INFO]: Showing new title for 3 players
-[20:56:30] [Server thread/INFO]: Showing new title for 3 players
-[20:56:30] [Server thread/INFO]: Showing new title for 3 players
-[20:56:30] [Server thread/INFO]: Showing new title for 3 players
-[20:56:30] [Server thread/INFO]: Showing new title for 3 players
-[20:56:30] [Server thread/INFO]: Showing new title for 3 players
-[20:56:30] [Server thread/INFO]: Showing new title for 3 players
-[20:56:30] [Server thread/INFO]: Showing new title for 3 players
-[20:56:30] [Server thread/INFO]: Showing new title for 3 players
-[20:56:31] [Server thread/INFO]: Showing new title for 3 players
-[20:56:31] [Server thread/INFO]: Showing new title for 3 players
-[20:56:31] [Server thread/INFO]: [DeathScape] Jugadores en cola: 2
-[20:56:31] [Server thread/INFO]: [DeathScape] Jugador xaviggr añadido a la cola.
-[20:56:31] [Server thread/INFO]: [DeathScape] Cola de jugadores:
-[20:56:31] [Server thread/INFO]: [DeathScape] Link825_
-[20:56:31] [Server thread/INFO]: [DeathScape] xaviggr
-[20:56:31] [Server thread/INFO]: [DeathScape] Jugadores en el servidor:1
-[20:56:31] [Server thread/INFO]: Showing new title for 3 players
-[20:56:31] [Server thread/INFO]: Showing new title for 3 players
-[20:56:31] [Server thread/INFO]: Showing new title for 3 players
-[20:56:31] [Server thread/INFO]: Showing new title for 3 players
-[20:56:31] [Server thread/INFO]: Showing new title for 3 players
-[20:56:31] [Server thread/INFO]: Showing new title for 3 players
-[20:56:31] [Server thread/INFO]: Showing new title for 3 players
-[20:56:31] [Server thread/INFO]: Showing new title for 3 players
-[20:56:31] [Server thread/INFO]: Showing new title for 3 players
-[20:56:31] [Server thread/INFO]: Showing new title for 3 players
-[20:56:31] [Server thread/INFO]: Showing new title for 3 players
-[20:56:31] [Server thread/INFO]: Showing new title for 3 players
-[20:56:31] [Server thread/INFO]: Showing new title for 3 players
-[20:56:31] [Server thread/INFO]: Showing new title for 3 players
-[20:56:31] [Server thread/INFO]: Showing new title for 3 players
-[20:56:31] [Server thread/INFO]: Showing new title for 3 players
-[20:56:31] [Server thread/INFO]: Showing new title for 3 players
-[20:56:31] [Server thread/INFO]: Showing new title for 3 players
-[20:56:32] [Server thread/INFO]: Showing new title for 3 players
-[20:56:32] [Server thread/INFO]: Showing new title for 3 players
-[20:56:32] [Server thread/INFO]: Showing new title for 3 players
-[20:56:32] [Server thread/INFO]: Showing new title for 3 players
-[20:56:32] [Server thread/INFO]: Showing new title for 3 players
-[20:56:32] [Server thread/INFO]: Showing new title for 3 players
-[20:56:32] [Server thread/INFO]: Showing new title for 3 players
-[20:56:32] [Server thread/INFO]: Showing new title for 3 players
-[20:56:32] [Server thread/INFO]: Showing new title for 3 players
-[20:56:32] [Server thread/INFO]: Showing new title for 3 players
-[20:56:32] [Server thread/INFO]: Played sound minecraft:entity.lightning_bolt.impact to 3 players
-[20:56:32] [Server thread/INFO]: Changed title display times for 3 players
-[20:56:40] [Server thread/INFO]: 4gymo lost connection: Disconnected
-[20:56:40] [Server thread/INFO]: [DeathScape] Jugadores en cola: 2
-[20:56:40] [Server thread/INFO]: [DeathScape] Jugador 4gymo eliminado de la cola.
-[20:56:40] [Server thread/INFO]: [DeathScape] Cola de jugadores:
-[20:56:40] [Server thread/INFO]: [DeathScape] xaviggr
-[20:56:40] [Server thread/INFO]: [DeathScape] Jugadores en el servidor:1
-[20:56:40] [Server thread/INFO]: [Warrior] 4gymo left the game
-[20:56:48] [User Authenticator #1/INFO]: UUID of player 4gymo is 19cef73f-c4d2-46ec-8481-81ea7417e2f3
-[20:56:48] [Server thread/INFO]: [Warrior] 4gymo ha entrado al mundo DeathScape
-[20:56:48] [Server thread/INFO]: 4gymo[IP hidden] logged in with entity id 837 at ([world_minecraft_spawn]0.0, 1.0, 0.0)
-[20:56:50] [Server thread/INFO]: Link825_ issued server command: /kill Link825_
-[20:56:50] [Server thread/INFO]: [DeathScape] Mensaje enviado al webhook correctamente.
-[20:56:50] [Server thread/INFO]: [Warrior] Link825_ was killed
-[20:56:50] [Server thread/INFO]: [[Warrior] Link825_: Killed [Warrior] Link825_]
-[20:56:50] [Server thread/INFO]: Played sound minecraft:muerte to 3 players
-[20:56:50] [Server thread/INFO]: Applied effect Blindness to [Warrior] Link825_
-[20:56:50] [Server thread/INFO]: Changed title display times for 3 players
-[20:56:50] [Server thread/INFO]: Showing new title for 3 players
-[20:56:50] [Server thread/INFO]: Showing new title for 3 players
-[20:56:50] [Server thread/INFO]: Showing new title for 3 players
-[20:56:50] [Server thread/INFO]: Showing new title for 3 players
-[20:56:50] [Server thread/INFO]: Showing new title for 3 players
-[20:56:50] [Server thread/INFO]: Showing new title for 3 players
-[20:56:50] [Server thread/INFO]: Showing new title for 3 players
-[20:56:50] [Server thread/INFO]: Showing new title for 3 players
-[20:56:50] [Server thread/INFO]: Showing new title for 3 players
-[20:56:51] [Server thread/INFO]: Showing new title for 3 players
-[20:56:51] [Server thread/INFO]: Showing new title for 3 players
-[20:56:51] [Server thread/INFO]: Showing new title for 3 players
-[20:56:51] [Server thread/INFO]: Showing new title for 3 players
-[20:56:51] [Server thread/INFO]: Showing new title for 3 players
-[20:56:51] [Server thread/INFO]: Showing new title for 3 players
-[20:56:51] [Server thread/INFO]: Showing new title for 3 players
-[20:56:51] [Server thread/INFO]: Showing new title for 3 players
-[20:56:51] [Server thread/INFO]: Showing new title for 3 players
-[20:56:51] [Server thread/INFO]: Showing new title for 3 players
-[20:56:51] [Server thread/INFO]: Showing new title for 3 players
-[20:56:51] [Server thread/INFO]: Showing new title for 3 players
-[20:56:51] [Server thread/INFO]: Showing new title for 3 players
-[20:56:51] [Server thread/INFO]: Showing new title for 3 players
-[20:56:51] [Server thread/INFO]: Showing new title for 3 players
-[20:56:51] [Server thread/INFO]: Showing new title for 3 players
-[20:56:51] [Server thread/INFO]: Showing new title for 3 players
-[20:56:51] [Server thread/INFO]: Showing new title for 3 players
-[20:56:51] [Server thread/INFO]: Showing new title for 3 players
-[20:56:51] [Server thread/INFO]: Showing new title for 3 players
-[20:56:52] [Server thread/INFO]: Showing new title for 3 players
-[20:56:52] [Server thread/INFO]: Showing new title for 3 players
-[20:56:52] [Server thread/INFO]: Showing new title for 3 players
-[20:56:52] [Server thread/INFO]: Showing new title for 3 players
-[20:56:52] [Server thread/INFO]: Showing new title for 3 players
-[20:56:52] [Server thread/INFO]: Showing new title for 3 players
-[20:56:52] [Server thread/INFO]: Showing new title for 3 players
-[20:56:52] [Server thread/INFO]: Showing new title for 3 players
-[20:56:52] [Server thread/INFO]: Showing new title for 3 players
-[20:56:52] [Server thread/INFO]: Showing new title for 3 players
-[20:56:52] [Server thread/INFO]: Showing new title for 3 players
-[20:56:52] [Server thread/INFO]: Showing new title for 3 players
-[20:56:52] [Server thread/INFO]: Showing new title for 3 players
-[20:56:52] [Server thread/INFO]: Showing new title for 3 players
-[20:56:52] [Server thread/INFO]: Showing new title for 3 players
-[20:56:52] [Server thread/INFO]: Showing new title for 3 players
-[20:56:52] [Server thread/INFO]: Showing new title for 3 players
-[20:56:52] [Server thread/INFO]: Showing new title for 3 players
-[20:56:52] [Server thread/INFO]: Showing new title for 3 players
-[20:56:52] [Server thread/INFO]: Showing new title for 3 players
-[20:56:53] [Server thread/INFO]: Showing new title for 3 players
-[20:56:53] [Server thread/INFO]: Showing new title for 3 players
-[20:56:53] [Server thread/INFO]: Showing new title for 3 players
-[20:56:53] [Server thread/INFO]: Showing new title for 3 players
-[20:56:53] [Server thread/INFO]: Showing new title for 3 players
-[20:56:53] [Server thread/INFO]: Showing new title for 3 players
-[20:56:53] [Server thread/INFO]: Showing new title for 3 players
-[20:56:53] [Server thread/INFO]: Showing new title for 3 players
-[20:56:53] [Server thread/INFO]: Showing new title for 3 players
-[20:56:53] [Server thread/INFO]: Showing new title for 3 players
-[20:56:53] [Server thread/INFO]: Showing new title for 3 players
-[20:56:53] [Server thread/INFO]: Showing new title for 3 players
-[20:56:53] [Server thread/INFO]: Showing new title for 3 players
-[20:56:53] [Server thread/INFO]: Showing new title for 3 players
-[20:56:53] [Server thread/INFO]: Showing new title for 3 players
-[20:56:53] [Server thread/INFO]: Showing new title for 3 players
-[20:56:53] [Server thread/INFO]: Showing new title for 3 players
-[20:56:53] [Server thread/INFO]: [DeathScape] Jugadores en cola: 2
-[20:56:53] [Server thread/INFO]: [DeathScape] Jugador 4gymo añadido a la cola.
-[20:56:53] [Server thread/INFO]: [DeathScape] Cola de jugadores:
-[20:56:53] [Server thread/INFO]: [DeathScape] xaviggr
-[20:56:53] [Server thread/INFO]: [DeathScape] 4gymo
-[20:56:53] [Server thread/INFO]: [DeathScape] Jugadores en el servidor:1
-[20:56:53] [Server thread/INFO]: Showing new title for 3 players
-[20:56:53] [Server thread/INFO]: Showing new title for 3 players
-[20:56:53] [Server thread/INFO]: Showing new title for 3 players
-[20:56:54] [Server thread/INFO]: Showing new title for 3 players
-[20:56:54] [Server thread/INFO]: Showing new title for 3 players
-[20:56:54] [Server thread/INFO]: Showing new title for 3 players
-[20:56:54] [Server thread/INFO]: Showing new title for 3 players
-[20:56:54] [Server thread/INFO]: Showing new title for 3 players
-[20:56:54] [Server thread/INFO]: Showing new title for 3 players
-[20:56:54] [Server thread/INFO]: Showing new title for 3 players
-[20:56:54] [Server thread/INFO]: Showing new title for 3 players
-[20:56:54] [Server thread/INFO]: Showing new title for 3 players
-[20:56:54] [Server thread/INFO]: Showing new title for 3 players
-[20:56:54] [Server thread/INFO]: Showing new title for 3 players
-[20:56:54] [Server thread/INFO]: Showing new title for 3 players
-[20:56:54] [Server thread/INFO]: Showing new title for 3 players
-[20:56:54] [Server thread/INFO]: Showing new title for 3 players
-[20:56:54] [Server thread/INFO]: Showing new title for 3 players
-[20:56:54] [Server thread/INFO]: Showing new title for 3 players
-[20:56:54] [Server thread/INFO]: Showing new title for 3 players
-[20:56:54] [Server thread/INFO]: Showing new title for 3 players
-[20:56:54] [Server thread/INFO]: Showing new title for 3 players
-[20:56:54] [Server thread/INFO]: Showing new title for 3 players
-[20:56:55] [Server thread/INFO]: Showing new title for 3 players
-[20:56:55] [Server thread/INFO]: Showing new title for 3 players
-[20:56:55] [Server thread/INFO]: Showing new title for 3 players
-[20:56:55] [Server thread/INFO]: Showing new title for 3 players
-[20:56:55] [Server thread/INFO]: Showing new title for 3 players
-[20:56:55] [Server thread/INFO]: Showing new title for 3 players
-[20:56:55] [Server thread/INFO]: Showing new title for 3 players
-[20:56:55] [Server thread/INFO]: Showing new title for 3 players
-[20:56:55] [Server thread/INFO]: Showing new title for 3 players
-[20:56:55] [Server thread/INFO]: Showing new title for 3 players
-[20:56:55] [Server thread/INFO]: Showing new title for 3 players
-[20:56:55] [Server thread/INFO]: Showing new title for 3 players
-[20:56:55] [Server thread/INFO]: Showing new title for 3 players
-[20:56:55] [Server thread/INFO]: Showing new title for 3 players
-[20:56:55] [Server thread/INFO]: Showing new title for 3 players
-[20:56:55] [Server thread/INFO]: Showing new title for 3 players
-[20:56:55] [Server thread/INFO]: Showing new title for 3 players
-[20:56:55] [Server thread/INFO]: Showing new title for 3 players
-[20:56:55] [Server thread/INFO]: Showing new title for 3 players
-[20:56:55] [Server thread/INFO]: Showing new title for 3 players
-[20:56:56] [Server thread/INFO]: Showing new title for 3 players
-[20:56:56] [Server thread/INFO]: Showing new title for 3 players
-[20:56:56] [Server thread/INFO]: Showing new title for 3 players
-[20:56:56] [Server thread/INFO]: Showing new title for 3 players
-[20:56:56] [Server thread/INFO]: Showing new title for 3 players
-[20:56:56] [Server thread/INFO]: Showing new title for 3 players
-[20:56:56] [Server thread/INFO]: Showing new title for 3 players
-[20:56:56] [Server thread/INFO]: Showing new title for 3 players
-[20:56:56] [Server thread/INFO]: Showing new title for 3 players
-[20:56:56] [Server thread/INFO]: Showing new title for 3 players
-[20:56:56] [Server thread/INFO]: Showing new title for 3 players
-[20:56:56] [Server thread/INFO]: Showing new title for 3 players
-[20:56:56] [Server thread/INFO]: Showing new title for 3 players
-[20:56:56] [Server thread/INFO]: Showing new title for 3 players
-[20:56:56] [Server thread/INFO]: Showing new title for 3 players
-[20:56:56] [Server thread/INFO]: Showing new title for 3 players
-[20:56:56] [Server thread/INFO]: Showing new title for 3 players
-[20:56:56] [Server thread/INFO]: Showing new title for 3 players
-[20:56:56] [Server thread/INFO]: Showing new title for 3 players
-[20:56:56] [Server thread/INFO]: Showing new title for 3 players
-[20:56:57] [Server thread/INFO]: Showing new title for 3 players
-[20:56:57] [Server thread/INFO]: Showing new title for 3 players
-[20:56:57] [Server thread/INFO]: Showing new title for 3 players
-[20:56:57] [Server thread/INFO]: Showing new title for 3 players
-[20:56:57] [Server thread/INFO]: Showing new title for 3 players
-[20:56:57] [Server thread/INFO]: Showing new title for 3 players
-[20:56:57] [Server thread/INFO]: Showing new title for 3 players
-[20:56:57] [Server thread/INFO]: Showing new title for 3 players
-[20:56:57] [Server thread/INFO]: Showing new title for 3 players
-[20:56:57] [Server thread/INFO]: Showing new title for 3 players
-[20:56:57] [Server thread/INFO]: Showing new title for 3 players
-[20:56:57] [Server thread/INFO]: Showing new title for 3 players
-[20:56:57] [Server thread/INFO]: Showing new title for 3 players
-[20:56:57] [Server thread/INFO]: Showing new title for 3 players
-[20:56:57] [Server thread/INFO]: Showing new title for 3 players
-[20:56:57] [Server thread/INFO]: Showing new title for 3 players
-[20:56:57] [Server thread/INFO]: Showing new title for 3 players
-[20:56:57] [Server thread/INFO]: Showing new title for 3 players
-[20:56:57] [Server thread/INFO]: Showing new title for 3 players
-[20:56:57] [Server thread/INFO]: Showing new title for 3 players
-[20:56:58] [Server thread/INFO]: Showing new title for 3 players
-[20:56:58] [Server thread/INFO]: Showing new title for 3 players
-[20:56:58] [Server thread/INFO]: Showing new title for 3 players
-[20:56:58] [Server thread/INFO]: Showing new title for 3 players
-[20:56:58] [Server thread/INFO]: Showing new title for 3 players
-[20:56:58] [Server thread/INFO]: Showing new title for 3 players
-[20:56:58] [Server thread/INFO]: Showing new title for 3 players
-[20:56:58] [Server thread/INFO]: Showing new title for 3 players
-[20:56:58] [Server thread/INFO]: Showing new title for 3 players
-[20:56:58] [Server thread/INFO]: Showing new title for 3 players
-[20:56:58] [Server thread/INFO]: Showing new title for 3 players
-[20:56:58] [Server thread/INFO]: Showing new title for 3 players
-[20:56:58] [Server thread/INFO]: Showing new title for 3 players
-[20:56:58] [Server thread/INFO]: Showing new title for 3 players
-[20:56:58] [Server thread/INFO]: Showing new title for 3 players
-[20:56:58] [Server thread/INFO]: Showing new title for 3 players
-[20:56:58] [Server thread/INFO]: Showing new title for 3 players
-[20:56:58] [Server thread/INFO]: Showing new title for 3 players
-[20:56:58] [Server thread/INFO]: Showing new title for 3 players
-[20:56:58] [Server thread/INFO]: Showing new title for 3 players
-[20:56:59] [Server thread/INFO]: Played sound minecraft:entity.lightning_bolt.impact to 3 players
-[20:56:59] [Server thread/INFO]: Changed title display times for 3 players
-[20:57:12] [Server thread/INFO]: Link825_ issued server command: /gamemode creative
-[20:57:12] [Server thread/INFO]: [[Warrior] Link825_: Set own game mode to Creative Mode]
-[20:57:36] [Server thread/INFO]: xaviggr issued server command: /kick Link825_
-[20:57:36] [Server thread/INFO]: Link825_ lost connection: Kicked by an operator
-[20:57:36] [Server thread/INFO]: [DeathScape] Jugadores en cola: 2
-[20:57:36] [Server thread/INFO]: [DeathScape] Jugador Link825_ eliminado de la cola.
-[20:57:36] [Server thread/INFO]: [DeathScape] Cola de jugadores:
-[20:57:36] [Server thread/INFO]: [DeathScape] 4gymo
-[20:57:36] [Server thread/INFO]: [DeathScape] Jugadores en el servidor:1
-[20:57:36] [Server thread/INFO]: [Warrior] Link825_ left the game
-[20:57:36] [Server thread/INFO]: [[Warrior] xaviggr: Kicked [Warrior] Link825_: Kicked by an operator]
-[20:57:40] [Server thread/INFO]: 4gymo issued server command: /gamemode creative
-[20:57:40] [Server thread/INFO]: [[Warrior] 4gymo: Set own game mode to Creative Mode]
-[20:58:07] [Server thread/INFO]: xaviggr issued server command: /ds tiempojugado
-[20:59:49] [Server thread/INFO]: xaviggr lost connection: Disconnected
-[20:59:49] [Server thread/INFO]: [DeathScape] Jugadores en cola: 1
-[20:59:49] [Server thread/INFO]: [DeathScape] Jugador xaviggr eliminado de la cola.
-[20:59:49] [Server thread/INFO]: [DeathScape] Cola de jugadores:
-[20:59:49] [Server thread/INFO]: [DeathScape] Jugadores en el servidor:1
-[20:59:49] [Server thread/INFO]: [Warrior] xaviggr left the game
-[20:59:53] [Server thread/INFO]: Unknown command. Type "/help" for help.
-[20:59:54] [Server thread/INFO]: Stopping the server
-[20:59:54] [Server thread/INFO]: Stopping server
-[20:59:54] [Server thread/INFO]: [DeathScape] Disabling DeathScape v1.0.0
-[20:59:54] [Server thread/INFO]: DeathScape has been disabled!
-[20:59:54] [Server thread/INFO]: [ModelEngine] Disabling ModelEngine vR3.1.11
-[20:59:54] [Server thread/INFO]: [SkinsRestorer] Disabling SkinsRestorer v15.5.0
-[20:59:54] [Server thread/INFO]: [WorldEdit] Disabling WorldEdit v7.3.0+6678-55745ad
-[20:59:54] [Server thread/INFO]: Unregistering com.sk89q.worldedit.bukkit.BukkitServerInterface from WorldEdit
-[20:59:54] [Server thread/INFO]: [spark] Disabling spark v1.10.121
-[20:59:54] [Server thread/INFO]: [MythicMobs] Disabling MythicMobs v5.6.2-3e052553
-[20:59:54] [Server thread/INFO]: [MythicMobs] ------------------------------------------------------------
-[20:59:54] [Server thread/INFO]: [MythicMobs] - 
-[20:59:54] [Server thread/INFO]: [MythicMobs] - Unloading Mythic...
-[20:59:54] [Server thread/INFO]: [MythicMobs] - 
-[20:59:54] [Server thread/INFO]: [MythicMobs] ------------------------------------------------------------
-[20:59:54] [Server thread/INFO]: [MythicMobs] - Spawners saved and unloaded...
-[20:59:54] [Server thread/INFO]: [MythicMobs] - Mobs saved and unloaded...
-[20:59:54] [Server thread/INFO]: [MythicMobs] Saving plugin data...
-[20:59:54] [Server thread/INFO]: [MythicMobs] ✓Saving Finished
-[20:59:54] [Server thread/INFO]: [MythicMobs] - Variables saved...
-[20:59:54] [Server thread/INFO]: [MythicMobs] - All active settings have been saved!
-[20:59:54] [Server thread/INFO]: [MythicMobs] - Mythic has been unloaded!
-[20:59:54] [Server thread/INFO]: [MythicMobs] ------------------------------------------------------------
-[20:59:54] [Server thread/INFO]: [MythicMobs] Saving plugin data...
-[20:59:54] [Server thread/INFO]: [MythicMobs] ✓Saving Finished
-[20:59:54] [Server thread/INFO]: Saving players
-[20:59:54] [Server thread/INFO]: 4gymo lost connection: Server closed
-[20:59:54] [Server thread/INFO]: [Warrior] 4gymo left the game
-[20:59:55] [Server thread/INFO]: Saving worlds
-[20:59:55] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
-[20:59:55] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world'
-[20:59:55] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world'
-[20:59:55] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world'
-[20:59:55] [Server thread/INFO]: [ChunkHolderManager] Saved 523 block chunks, 523 entity chunks, 0 poi chunks in world 'world' in 0,48s
-[20:59:55] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
-[20:59:55] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_the_end]'/minecraft:the_end
-[20:59:55] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_the_end'
-[20:59:55] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_the_end'
-[20:59:55] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_the_end'
-[20:59:55] [Server thread/INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'world_the_end' in 0,00s
-[20:59:55] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
-[20:59:55] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_minecraft_spawn]'/minecraft:spawn
-[20:59:55] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_minecraft_spawn'
-[20:59:55] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_minecraft_spawn'
-[20:59:55] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_minecraft_spawn'
-[20:59:55] [Server thread/INFO]: [ChunkHolderManager] Saved 1225 block chunks, 0 entity chunks, 0 poi chunks in world 'world_minecraft_spawn' in 0,14s
-[20:59:55] [Server thread/INFO]: ThreadedAnvilChunkStorage (spawn): All chunks are saved
-[20:59:55] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_minecraft_rift]'/minecraft:rift
-[20:59:55] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_minecraft_rift'
-[20:59:55] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_minecraft_rift'
-[20:59:55] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_minecraft_rift'
-[20:59:55] [Server thread/INFO]: [ChunkHolderManager] Saved 0 block chunks, 4 entity chunks, 0 poi chunks in world 'world_minecraft_rift' in 0,00s
-[20:59:55] [Server thread/INFO]: ThreadedAnvilChunkStorage (rift): All chunks are saved
-[20:59:55] [Server thread/INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
-[20:59:55] [Server thread/INFO]: Flushing Chunk IO
-[20:59:55] [Server thread/INFO]: Closing Thread Pool
-[20:59:55] [Server thread/INFO]: Closing Server
+[12:16:05] [ServerMain/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
+[12:16:06] [ServerMain/INFO]: Loaded 1174 recipes
+[12:16:06] [ServerMain/INFO]: Loaded 1271 advancements
+[12:16:06] [Server thread/INFO]: Starting minecraft server version 1.20.4
+[12:16:06] [Server thread/INFO]: Loading properties
+[12:16:06] [Server thread/INFO]: This server is running Purpur version git-Purpur-2176 (MC: 1.20.4) (Implementing API version 1.20.4-R0.1-SNAPSHOT) (Git: 6b1ee98 on HEAD)
+[12:16:06] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[12:16:06] [Server thread/INFO]: Using 4 threads for Netty based IO
+[12:16:07] [Server thread/INFO]: [ChunkTaskScheduler] Chunk system is using 1 I/O threads, 5 worker threads, and gen parallelism of 5 threads
+[12:16:07] [Server thread/INFO]: [Pufferfish] Max SIMD vector size on this system is 256 bits (int)
+[12:16:07] [Server thread/INFO]: [Pufferfish] Max SIMD vector size on this system is 256 bits (float)
+[12:16:07] [Server thread/INFO]: [Pufferfish] SIMD operations detected as functional. Will replace some operations with faster versions.
+[12:16:07] [Server thread/INFO]: Default game type: SURVIVAL
+[12:16:07] [Server thread/INFO]: Generating keypair
+[12:16:07] [Server thread/INFO]: Starting Minecraft server on 192.168.1.134:25565
+[12:16:07] [Server thread/INFO]: Using default channel type
+[12:16:07] [Server thread/INFO]: Paper: Using Java compression from Velocity.
+[12:16:07] [Server thread/INFO]: Paper: Using Java cipher from Velocity.
+[12:16:07] [Server thread/INFO]: [MythicMobs] Loading server plugin MythicMobs v5.6.2-3e052553
+[12:16:07] [Server thread/INFO]: [LumineUtils] (io.lumine.mythic.bukkit.utils.) is bound to plugin MythicMobs - io.lumine.mythic.bukkit.MythicBukkit
+[12:16:07] [Server thread/INFO]: [MythicMobs] §4M§6y§6t§6h§2i§2c§2 §3E§3n§1a§1b§1l§5e§5d§4!
+[12:16:07] [Server thread/INFO]: [spark] Loading server plugin spark v1.10.121
+[12:16:07] [Server thread/INFO]: [WorldEdit] Loading server plugin WorldEdit v7.3.0+6678-55745ad
+[12:16:08] [Server thread/INFO]: Got request to register class com.sk89q.worldedit.bukkit.BukkitServerInterface with WorldEdit [com.sk89q.worldedit.extension.platform.PlatformManager@5e520109]
+[12:16:08] [Server thread/INFO]: [SkinsRestorer] Loading server plugin SkinsRestorer v15.5.0
+[12:16:08] [Server thread/INFO]: [ModelEngine] Loading server plugin ModelEngine vR3.1.11
+[12:16:08] [Server thread/INFO]: [DeathScape] Loading server plugin DeathScape v1.0.0
+[12:16:08] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[12:16:08] [Server thread/INFO]: [WorldEdit] Enabling WorldEdit v7.3.0+6678-55745ad
+[12:16:08] [Server thread/INFO]: Registering commands with com.sk89q.worldedit.bukkit.BukkitServerInterface
+[12:16:08] [Server thread/INFO]: WEPIF: Using the Bukkit Permissions API.
+[12:16:08] [Server thread/INFO]: Using com.sk89q.worldedit.bukkit.adapter.impl.v1_20_R3.PaperweightAdapter as the Bukkit adapter
+[12:16:08] [Server thread/INFO]: [SkinsRestorer] Enabling SkinsRestorer v15.5.0
+[12:16:09] [Server thread/WARN]: [SkinsRestorer] You must agree to the rules at 'commands.perSkinPermissionsConsent' in the config to use per skin permissions.
+[12:16:09] [Server thread/INFO]: [SkinsRestorer] Running on Minecraft 1.20.4.
+[12:16:09] [Server thread/INFO]: [SkinsRestorer] Using paper join listener!
+[12:16:09] [Server thread/WARN]: [SkinsRestorer] Please update your Java runtime to at least Java 21 (your version is 18).
+[12:16:09] [Server thread/WARN]: [SkinsRestorer] At some point in the future, SkinsRestorer will no longer be compatible with this version of Java.
+[12:16:09] [Server thread/INFO]: Preparing level "world"
+[12:16:09] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[12:16:09] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +==================+
+[12:16:09] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |   SkinsRestorer  |
+[12:16:09] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |------------------|
+[12:16:09] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |  Standalone Mode |
+[12:16:09] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +==================+
+[12:16:09] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[12:16:09] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Version: 15.5.0
+[12:16:09] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Commit: ad418e4
+[12:16:09] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     This is the latest version!
+[12:16:09] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[12:16:09] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Do you have issues? Read our troubleshooting guide: https://skinsrestorer.net/docs/troubleshooting
+[12:16:09] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Want to support SkinsRestorer? Consider donating: https://skinsrestorer.net/donate
+[12:16:10] [Server thread/INFO]: Preparing start region for dimension minecraft:overworld
+[12:16:10] [Server thread/INFO]: Time elapsed: 266 ms
+[12:16:10] [Server thread/INFO]: Preparing start region for dimension minecraft:the_end
+[12:16:10] [Server thread/INFO]: Time elapsed: 13 ms
+[12:16:10] [Server thread/INFO]: Preparing start region for dimension minecraft:rift
+[12:16:10] [Server thread/INFO]: Time elapsed: 42 ms
+[12:16:10] [Server thread/INFO]: Preparing start region for dimension minecraft:spawn
+[12:16:10] [Server thread/INFO]: Time elapsed: 9 ms
+[12:16:10] [Server thread/INFO]: [MythicMobs] Enabling MythicMobs v5.6.2-3e052553
+[12:16:11] [Server thread/INFO]: [MythicMobs] Loading MythicMobs for Paper (MC: 1.20.4)...
+[12:16:11] [Server thread/INFO]: [MythicMobs] The server is running Paper; enabled Paper exclusive functionality
+[12:16:12] [Server thread/INFO]: [MythicMobs] Base directory C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\data
+[12:16:12] [Server thread/INFO]: [MythicMobs] Module directory C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\data\worlds
+[12:16:13] [Server thread/INFO]: [MythicMobs] Loading Packs...
+[12:16:14] [Server thread/INFO]: [MythicMobs] Loading Items...
+[12:16:14] [Server thread/INFO]: [MythicMobs] Loading Item Groups...
+[12:16:14] [Server thread/INFO]: [MythicMobs] Loading Skills...
+[12:16:14] [Server thread/WARN]: [MythicMobs] Failed to parse Placeholder 'R': Math and variables in numeric values require premium! Consider getting MythicMobs Premium at www.mythiccraft.io
+[12:16:14] [Server thread/WARN]: [MythicMobs] Failed to parse Placeholder 'R': Math and variables in numeric values require premium! Consider getting MythicMobs Premium at www.mythiccraft.io
+[12:16:14] [Server thread/INFO]: [MythicMobs] Loading Drop Tables...
+[12:16:14] [Server thread/INFO]: [MythicMobs] Loading Random Spawns...
+[12:16:14] [Server thread/INFO]: [MythicMobs] Loading Spawn Blocks...
+[12:16:14] [Server thread/INFO]: [MythicMobs] ✓ Loaded 17 mobs.
+[12:16:14] [Server thread/INFO]: [MythicMobs] ✓ Loaded 3 vanilla mob overrides.
+[12:16:14] [Server thread/INFO]: [MythicMobs] ✓ Loaded 0 mob stacks.
+[12:16:14] [Server thread/INFO]: [MythicMobs] ✓ Loaded 95 skills.
+[12:16:14] [Server thread/INFO]: [MythicMobs] ✓ Loaded 0 random spawns.
+[12:16:14] [Server thread/INFO]: [MythicMobs] ✓ Loaded 3 mythic items.
+[12:16:14] [Server thread/INFO]: [MythicMobs] ✓ Loaded 2 drop tables.
+[12:16:14] [Server thread/INFO]: [MythicMobs] ✓ Loaded 0 mob spawners.
+[12:16:14] [Server thread/INFO]: [MythicMobs] MythicMobs configuration file loaded successfully.
+[12:16:14] [Server thread/INFO]: [MythicMobs] Started up bStats Metrics
+[12:16:14] [Server thread/INFO]: [MythicMobs] ✓ MythicMobs v5.6.2 ( build 3e052553 ) has been successfully loaded!
+[12:16:14] [Server thread/INFO]: [spark] Enabling spark v1.10.121
+[12:16:14] [Server thread/INFO]: [spark] Using Paper ServerTickStartEvent for tick monitoring
+[12:16:14] [Server thread/INFO]: [spark] Starting background profiler...
+[12:16:14] [Server thread/INFO]: [spark] The async-profiler engine is not supported for your os/arch (windows11/amd64), so the built-in Java engine will be used instead.
+[12:16:14] [Server thread/INFO]: [ModelEngine] Enabling ModelEngine vR3.1.11
+[12:16:14] [Server thread/INFO]: [MythicMobs] Model Engine Compatibility Loaded.
+[12:16:14] [Server thread/INFO]: [ModelEngine] [S] Compatibility applied: MythicMobs
+[12:16:14] [Server thread/INFO]: [ModelEngine] [S] bStats enabled
+[12:16:14] [Server thread/INFO]: [DeathScape] Enabling DeathScape v1.0.0
+[12:16:14] [Server thread/INFO]: [DeathScape] Spawn dimension initialized successfully.
+[12:16:14] [Server thread/INFO]: DeathScape has been enabled!
+[12:16:14] [Server thread/INFO]: Running delayed init tasks
+[12:16:14] [Server thread/INFO]: Días del servidor actualizados automáticamente.
+[12:16:14] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
+[12:16:14] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] [Importing models]
+[12:16:14] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
+[12:16:14] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Importing Rocky.bbmodel.
+[12:16:14] [Server thread/INFO]: [Tienda]: ¡Visita nuestra tienda y mejora tu experiencia! Usa /tienda para más información.
+[12:16:14] [Server thread/WARN]: [MythicMobs] ✗ Config Error for Targeter line 'selfparticles{p=soul_fire_flame;amount=10;speed=0;hS=0.8;vS=0.0;repeat=14;repeatinterval=4}': Failed to load custom targeter SELFPARTICLES
+[12:16:14] [Server thread/INFO]: Done (8.176s)! For help, type "help"
+[12:16:14] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
+[12:16:14] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Importing darkprincess_gama05.bbmodel.
+[12:16:14] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: Box UV detected. Cube UVs might not generate correctly if Box UV is used.
+[12:16:14] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder8 is rotated in multiple axis. Choosing one axis.
+[12:16:14] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder8 has illegal rotations. Cube rotation can only be -45, -22.5, 0, 22.5 and 45. [ -20.899999618530273 ]
+[12:16:14] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder8 is rotated in multiple axis. Choosing one axis.
+[12:16:14] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder8 has illegal rotations. Cube rotation can only be -45, -22.5, 0, 22.5 and 45. [ 93.4000015258789 ]
+[12:16:14] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder8 has illegal rotations. Cube rotation can only be -45, -22.5, 0, 22.5 and 45. [ 55.0 ]
+[12:16:14] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder6 is rotated in multiple axis. Choosing one axis.
+[12:16:14] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder6 has illegal rotations. Cube rotation can only be -45, -22.5, 0, 22.5 and 45. [ 90.9000015258789 ]
+[12:16:14] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder6 is rotated in multiple axis. Choosing one axis.
+[12:16:14] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder6 has illegal rotations. Cube rotation can only be -45, -22.5, 0, 22.5 and 45. [ 20.899999618530273 ]
+[12:16:14] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder6 has illegal rotations. Cube rotation can only be -45, -22.5, 0, 22.5 and 45. [ 70.0 ]
+[12:16:14] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder2 is rotated in multiple axis. Choosing one axis.
+[12:16:14] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone curpo2 is rotated in multiple axis. Choosing one axis.
+[12:16:14] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
+[12:16:14] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Importing effect_princessdarkness_01.bbmodel.
+[12:16:14] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
+[12:16:14] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Importing gm_galaxy_dragon.bbmodel.
+[12:16:14] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
+[12:16:14] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Importing gm_sun_dragon.bbmodel.
+[12:16:14] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
+[12:16:14] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] [Generating assets]
+[12:16:14] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
+[12:16:14] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Generating rocky.
+[12:16:14] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
+[12:16:14] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Generating darkprincess_gama05.
+[12:16:14] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
+[12:16:14] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Generating effect_princessdarkness_01.
+[12:16:14] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
+[12:16:14] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Generating gm_galaxy_dragon.
+[12:16:14] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
+[12:16:14] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Generating gm_sun_dragon.
+[12:16:15] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
+[12:16:15] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Resource pack zipped.
+[12:17:29] [User Authenticator #0/INFO]: UUID of player xaviggr is cb185b4b-cea7-43bb-a340-571c9bb6c3a5
+[12:17:30] [Server thread/INFO]: [Warrior] xaviggr ha entrado al mundo DeathScape
+[12:17:30] [Server thread/INFO]: xaviggr[IP hidden] logged in with entity id 66 at ([world_minecraft_spawn]0.0, 1.0, 0.0)
+[12:18:09] [Server thread/INFO]: xaviggr lost connection: Disconnected
+[12:18:09] [Server thread/INFO]: [Warrior] xaviggr left the game
+[12:18:12] [Server thread/INFO]: Stopping the server
+[12:18:12] [Server thread/INFO]: Stopping server
+[12:18:12] [Server thread/INFO]: [DeathScape] Disabling DeathScape v1.0.0
+[12:18:12] [Server thread/INFO]: DeathScape has been disabled!
+[12:18:12] [Server thread/INFO]: [ModelEngine] Disabling ModelEngine vR3.1.11
+[12:18:12] [Server thread/INFO]: [SkinsRestorer] Disabling SkinsRestorer v15.5.0
+[12:18:12] [Server thread/INFO]: [WorldEdit] Disabling WorldEdit v7.3.0+6678-55745ad
+[12:18:12] [Server thread/INFO]: Unregistering com.sk89q.worldedit.bukkit.BukkitServerInterface from WorldEdit
+[12:18:12] [Server thread/INFO]: [spark] Disabling spark v1.10.121
+[12:18:12] [Server thread/INFO]: [MythicMobs] Disabling MythicMobs v5.6.2-3e052553
+[12:18:12] [Server thread/INFO]: [MythicMobs] ------------------------------------------------------------
+[12:18:12] [Server thread/INFO]: [MythicMobs] - 
+[12:18:12] [Server thread/INFO]: [MythicMobs] - Unloading Mythic...
+[12:18:12] [Server thread/INFO]: [MythicMobs] - 
+[12:18:12] [Server thread/INFO]: [MythicMobs] ------------------------------------------------------------
+[12:18:12] [Server thread/INFO]: [MythicMobs] - Spawners saved and unloaded...
+[12:18:12] [Server thread/INFO]: [MythicMobs] - Mobs saved and unloaded...
+[12:18:12] [Server thread/INFO]: [MythicMobs] Saving plugin data...
+[12:18:12] [Server thread/INFO]: [MythicMobs] ✓Saving Finished
+[12:18:12] [Server thread/INFO]: [MythicMobs] - Variables saved...
+[12:18:12] [Server thread/INFO]: [MythicMobs] - All active settings have been saved!
+[12:18:12] [Server thread/INFO]: [MythicMobs] - Mythic has been unloaded!
+[12:18:12] [Server thread/INFO]: [MythicMobs] ------------------------------------------------------------
+[12:18:12] [Server thread/INFO]: [MythicMobs] Saving plugin data...
+[12:18:12] [Server thread/INFO]: [MythicMobs] ✓Saving Finished
+[12:18:12] [Server thread/INFO]: Saving players
+[12:18:12] [Server thread/INFO]: Saving worlds
+[12:18:12] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[12:18:12] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world'
+[12:18:12] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world'
+[12:18:12] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world'
+[12:18:13] [Server thread/INFO]: [ChunkHolderManager] Saved 529 block chunks, 529 entity chunks, 0 poi chunks in world 'world' in 0,66s
+[12:18:13] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[12:18:13] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_the_end]'/minecraft:the_end
+[12:18:13] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_the_end'
+[12:18:13] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_the_end'
+[12:18:13] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_the_end'
+[12:18:13] [Server thread/INFO]: [ChunkHolderManager] Saved 529 block chunks, 529 entity chunks, 0 poi chunks in world 'world_the_end' in 0,09s
+[12:18:13] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[12:18:13] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_minecraft_rift]'/minecraft:rift
+[12:18:13] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_minecraft_rift'
+[12:18:13] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_minecraft_rift'
+[12:18:13] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_minecraft_rift'
+[12:18:13] [Server thread/INFO]: [ChunkHolderManager] Saved 529 block chunks, 529 entity chunks, 0 poi chunks in world 'world_minecraft_rift' in 0,09s
+[12:18:13] [Server thread/INFO]: ThreadedAnvilChunkStorage (rift): All chunks are saved
+[12:18:13] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_minecraft_spawn]'/minecraft:spawn
+[12:18:13] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_minecraft_spawn'
+[12:18:13] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_minecraft_spawn'
+[12:18:13] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_minecraft_spawn'
+[12:18:13] [Server thread/INFO]: [ChunkHolderManager] Saved 702 block chunks, 702 entity chunks, 0 poi chunks in world 'world_minecraft_spawn' in 0,07s
+[12:18:13] [Server thread/INFO]: ThreadedAnvilChunkStorage (spawn): All chunks are saved
+[12:18:13] [Server thread/INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
+[12:18:13] [Server thread/INFO]: Flushing Chunk IO
+[12:18:13] [Server thread/INFO]: Closing Thread Pool
+[12:18:13] [Server thread/INFO]: Closing Server

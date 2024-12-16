@@ -1,0 +1,83 @@
+gm_medievalsoldiers_darkprincess:
+  Type: IRON_GOLEM
+  Faction: medievalsoldiers
+  Display: 'Dark_Princess'
+  Health: 1050
+  KillMessages:
+  - '§6<target.name> got shattered by Tired Dark princess'
+  Damage: 10
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 randomstroll
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 monsters
+  - 3 otherfaction
+  BossBar:
+    Enabled: true
+    Title: '§6&l# Dark Princess #'
+    Range: 35
+    Color: RED
+    Style: SEGMENTED_10
+  Modules:
+    ThreatTable: true
+  Options:
+    PreventOtherDrops: true
+    Despawn: true
+    Persistent: false
+    KnockbackResistance: 1
+    Collidable: true
+    Silent: true
+    FollowRange: 42
+  Skills:
+  - skill{s=CancelEventSkill;sync=true} @self ~onAttack
+  - model{mid=darkprincess_gama05;d=false;i=true;step=1;ride=true} @self ~onSpawn
+  - model{mid=cdarkprincess_gama05;d=false;i=true;step=1;ride=true} @self ~onLoad
+  - skill{s=darkprincess_gama05_tirarsus} @target ~onTimer:1 <85%
+  - skill{s=darkprincess_gama05_effect_princessdarkness_02fire} @target ~onTimer:1 <40%
+  - randomskill{skills=darkprincess_gama05_estocada1,darkprincess_gama05_impulso1attacks,darkprincess_gama05_vltereta1} @target ~onTimer:5
+  - randomskill{skills=darkprincess_gama05_rd,darkprincess_gama05_dragchang} @target ~onTimer:6
+  - skill{s=darkprincess_gama05_death} @self ~onDeath
+  - skill{s=darkprincess_gama05_spawn} @self ~onSpawn
+  - bodyclamp{m=darkprincess_gama05;mh=5;mb=5;} @self ~onSpawn
+
+
+effect_princessdarkness_01:
+  Type: IRON_GOLEM
+  Faction: medievalsoldiers
+  Health: 150
+  KillMessages:
+  - '§6<target.name> got shattered by Tired Dark princess'
+  Damage: 10
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 randomstroll
+  AITargetSelectors:
+  - 1 players
+  - 2 monsters
+  - 3 otherfaction
+  Modules:
+    ThreatTable: true
+  Options:
+    PreventOtherDrops: true
+    Despawn: true
+    Persistent: false
+    KnockbackResistance: 1
+    Collidable: false
+    Silent: true
+    FollowRange: 42
+    Invincible: true
+    MovementSpeed: 0
+  Skills:
+  - skill{s=CancelEventSkill;sync=true} @self ~onAttack
+  ##- setAI{ai=false} @self ~onSpawn
+  - model{mid=effect_princessdarkness_01;d=false;i=true;step=1;ride=true} @self ~onSpawn
+  - model{mid=effect_princessdarkness_01;d=false;i=true;step=1;ride=true} @self ~onLoad
+  - sound{s=darkprincess_gm:darkprincess_gm.spc1;v=1;p=1} @self ~onDeath
+  - skill{s=darkprincess_gama05_princessdarknessfirr1} @pir{r=1.5;ignore=samefaction} ~onTimer:2
+  - remove{delay=105} @self ~onSpawn
+  - effect:sound{s=block.blastfurnace.fire_crackle;v=1;p=1} @self ~onSpawn
+  - effect:sound{delay=5;s=block.fire.extinguish;v=1;p=0.6} @self ~onSpawn

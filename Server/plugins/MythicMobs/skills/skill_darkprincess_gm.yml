@@ -1,0 +1,362 @@
+##
+### Dark Princess ###
+
+CancelEventSkill:
+    Skills:
+        - CancelEvent
+
+darkprincess_gama05_death:
+    Skills:
+        - gcd{ticks=479} @self
+        - sendtitle{title="";subtitle="&a&lDark Princess has been defeated";d=7;fi=5;fo=5;repeat=5;repeatinterval=10} @pir{r=50}
+        - effect:sound{s=entity.generic.explode;v=2;p=0.7;repeat=3;repeatinteval=2} @self
+        - effect:particles{particle=cloud;a=80;s=1;hs=1.2;vs=2.} @self
+        - effect:particles{p=squid_ink;amount=45;hS=1;vS=0.5;y=0.5} @self
+
+darkprincess_gama05_spawn:
+    Skills:
+        - sendtitle{title="";subtitle="&6&lDark Princess";d=7;fi=5;fo=5;repeat=5;repeatinterval=10} @pir{r=50}
+        - potion{type=SLOW;l=99;d=78;p=false} @self
+        - gcd{ticks=79} @self
+        #- partvis{m=darkprincess_gama05;p=bone5;child=true} @self
+        - delay 78
+        - potionclear{} @self
+
+darkprincess_gama05summons_spawn:
+    Skills:
+        - gcd{ticks=104} @self
+        - potion{type=SLOW;l=99;d=104;p=false} @self
+        - sound{s=darkprincess_gm:darkprincess_gm.spc1;v=1;p=0.7;repeat=15;repeatinterval=2} @self
+        ###- summon{type=effect_princessdarkness_01;amount=1;radius=0;yRadius=0;onSurface=true;os=true} @RingAroundOrigin{radius=2.5;points=8;xRotation=360}
+
+darkprincess_gama05_dps1:
+  Skills:
+  - damage{a=16}
+  - throw{v=2;vy=1} 
+
+darkprincess_gama05_dps2:
+  Skills:
+  - damage{a=20}
+  - throw{v=12;vy=1}
+  - recoil{r=1;pitch=2to2} 
+  - delay 1
+  - recoil{r=1;pitch=-2to-2} 
+  - delay 1
+  - recoil{r=1;pitch=2to2} 
+  - delay 1
+  - recoil{r=1;pitch=-2to-2} 
+  - delay 1
+  - recoil{r=1;pitch=2to2} 
+  - delay 1
+  - recoil{r=1;pitch=-2to-2} 
+
+darkprincess_gama05_dps2empj:
+  Skills:
+  - damage{a=20}
+  - throw{v=22;vy=0}
+  - recoil{r=1;pitch=2to2} 
+  - delay 1
+  - recoil{r=1;pitch=-2to-2} 
+  - delay 1
+  - recoil{r=1;pitch=2to2} 
+  - delay 1
+  - recoil{r=1;pitch=-2to-2} 
+  - delay 1
+  - recoil{r=1;pitch=2to2} 
+  - delay 1
+  - recoil{r=1;pitch=-2to-2} 
+
+
+darkprincess_gama05_dps2empj2:
+  Skills:
+  - damage{a=15}
+  - throw{v=7;vy=0.25}
+  - recoil{r=1;pitch=2to2} 
+  - delay 1
+  - recoil{r=1;pitch=-2to-2} 
+  - delay 1
+  - recoil{r=1;pitch=2to2} 
+  - delay 1
+  - recoil{r=1;pitch=-2to-2} 
+  - delay 1
+  - recoil{r=1;pitch=2to2} 
+  - delay 1
+  - recoil{r=1;pitch=-2to-2}
+  - delay 1
+  - recoil{r=1;pitch=2to2} 
+  - delay 1
+  - recoil{r=1;pitch=-2to-2} 
+  - delay 1
+  - recoil{r=1;pitch=2to2} 
+  - delay 1
+  - recoil{r=1;pitch=-2to-2} 
+
+darkprincess_gama05_effect_princessdarkness_02fire:
+    Cooldown: 7
+    Conditions:
+        - incombat true
+        - offgcd
+    TargetConditions:
+        - distance{d=0to25} true
+    Skills:
+        - state{s=firr1} @self
+        - gcd{ticks=75} @self
+        - potion{type=SLOW;l=99;d=75;p=false} @self
+        - delay 24
+        - summon{type=effect_princessdarkness_01;amount=1;radius=0;yRadius=0;onSurface=true;os=true} @forward{f=3}
+        - summon{type=effect_princessdarkness_01;amount=1;radius=0;yRadius=0;onSurface=true;os=true} @forward{f=5}
+        - summon{type=effect_princessdarkness_01;amount=1;radius=0;yRadius=0;onSurface=true;os=true} @forward{f=7}
+        - summon{type=effect_princessdarkness_01;amount=1;radius=0;yRadius=0;onSurface=true;os=true} @forward{f=9}
+        - summon{type=effect_princessdarkness_01;amount=1;radius=0;yRadius=0;onSurface=true;os=true} @forward{f=11}
+        - summon{type=effect_princessdarkness_01;amount=1;radius=0;yRadius=0;onSurface=true;os=true} @forward{f=13}
+        - summon{type=effect_princessdarkness_01;amount=1;radius=0;yRadius=0;onSurface=true;os=true} @forward{f=15}
+        - summon{type=effect_princessdarkness_01;amount=1;radius=0;yRadius=0;onSurface=true;os=true} @forward{f=17}
+        - summon{type=effect_princessdarkness_01;amount=1;radius=0;yRadius=0;onSurface=true;os=true} @forward{f=19}
+        - summon{type=effect_princessdarkness_01;amount=1;radius=0;yRadius=0;onSurface=true;os=true} @forward{f=21}
+        - summon{type=effect_princessdarkness_01;amount=1;radius=0;yRadius=0;onSurface=true;os=true} @forward{f=23}
+        - summon{type=effect_princessdarkness_01;amount=1;radius=0;yRadius=0;onSurface=true;os=true} @forward{f=25}
+        - summon{type=effect_princessdarkness_01;amount=1;radius=0;yRadius=0;onSurface=true;os=true} @forward{f=27}
+
+
+darkprincess_gama05_estocada1:
+    Cooldown: 1
+    Conditions:
+        - incombat true
+        - offgcd
+    TargetConditions:
+        - distance{d=0to4} true
+    Skills:
+        - potion{type=SLOW;l=99;d=25;p=false} @self
+        - state{s=estocada1} @self
+        - gcd{ticks=27} @self
+        - delay 5
+        - sound{s=darkprincess_gm:darkprincess_gm.jia2;v=1;p=1} @self
+        - delay 6
+        - sound{s=darkprincess_gm:darkprincess_gm.attack2;v=1;p=1} @self
+        - delay 2
+        - skill{s=darkprincess_gama05_dps1;sync=true} @eir{r=4;ignore=samefaction}
+        - effect:particles{p=sweep_attack;amount=3;y=3} @forward{f=.9;x=-1}
+
+
+darkprincess_gama05_impulso1attacks:
+    Cooldown: 2
+    Conditions:
+        - incombat true
+        - offgcd
+    Skills:
+        - state{s=impulso1} @self
+        - gcd{ticks=23} @self
+        - effect:particles{p=campfire_cosy_smoke;amount=4;hs=0.6;vs=0.1;y=0.2} @self
+        - delay 5
+        - sound{s=darkprincess_gm:darkprincess_gm.jia2;v=1;p=1.2} @self
+        - delay 6
+        - lunge{velocity=2} @forward
+        - sound{s=darkprincess_gm:darkprincess_gm.attack1;v=1;p=1} @self
+        - delay 6
+        - potion{type=SLOW;l=99;d=6;p=false} @self
+        - skill{s=darkprincess_gama05_dps2;sync=true} @eir{r=5;ignore=samefact
+
+
+darkprincess_gama05_vltereta1:
+    Cooldown: 6
+    Conditions:
+        - incombat true
+        - offgcd
+    TargetConditions:
+        - distance{d=5to10} true
+    Skills:
+        - state{s=vltereta1} @self
+        - potion{type=SLOW;l=99;d=15;p=false} @self
+        - gcd{ticks=57} @self
+        #- effect:particleorbital{r=2;points=16;t=60;i=1;vy=20;particle=campfire_cosy_smoke} @self
+        - delay 15
+        - potionclear{} @self
+        - lunge{velocity=1} @target
+        - setspeed{s=2.2;type=WALKING} @self
+        - sound{s=darkprincess_gm:darkprincess_gm.jia3;v=1;p=1} @self
+        - delay 16
+        - sound{s=darkprincess_gm:darkprincess_gm.attack1;v=1;p=1} @self
+        - delay 5
+        - potion{type=SLOW;l=99;d=20;p=false} @self
+        - lockmodel{l=true} @self
+        #- effect:particleorbital{r=2;points=16;t=60;i=1;vy=20;particle=campfire_cosy_smoke} @self
+        - effect:sound{s=item.trident.hit_ground;v=1;p=0.5} @self
+        - setspeed{s=1;type=WALKING} @self
+        - skill{s=darkprincess_gama05_dps2;sync=true} @eir{r=5;ignore=samefaction}
+        - effect:particles{p=explosion_large;amount=3;speed=0.25;hs=0.5;vs=0.1;y=0.4} @self
+        - effect:particles{p=campfire_cosy_smoke;amount=11;hs=3.5;vs=0.1;y=0.2} @self
+        #- blockwave{duration=15;radius=5;radiusY=1;velocity=0.4;shape=sphere} @self
+        - delay 20
+        - lockmodel{l=false} @self
+        - potionclear{} @self
+
+
+darkprincess_gama05_dragchangxx:
+    Skills:
+        - throw{v=12;vy=.1}
+        - damage{a=13} 
+
+
+
+darkprincess_gama05_dragchang:
+    Cooldown: 11
+    Conditions:
+        - incombat true
+        - offgcd
+    TargetConditions:
+        - distance{d=0to10} true
+    Skills:
+        - gcd{ticks=57} @self
+        - state{s=coltazo1} @self
+        - delay 1
+        - sound{s=darkprincess_gm:darkprincess_gm.drag1;v=1;p=1} @self
+        #- partvis{m=darkprincess_gama05;p=bone5;v=true;child=true} @self
+        #- partvis{m=darkprincess_gama05;p=curpo6;v=true;child=true} @self
+        - totem{delay=22;ch=1;md=2;oH=darkprincess_gama05_dragchangxx;repeat=8;repeatInterval=1;hnp=true;vR=2.6;hR=2.6} @modelpart{m=darkprincess_gama05;p=curpo6;off=LOCAL}
+        - totem{delay=22;ch=1;md=2;oH=darkprincess_gama05_dragchangxx;repeat=8;repeatInterval=1;hnp=true;vR=2.6;hR=2.6} @modelpart{m=darkprincess_gama05;p=curpo7;off=LOCAL}
+        - totem{delay=22;ch=1;md=2;oH=darkprincess_gama05_dragchangxx;repeat=8;repeatInterval=1;hnp=true;vR=2.6;hR=2.6} @modelpart{m=darkprincess_gama05;p=curpo5;off=LOCAL}
+        - totem{delay=22;ch=1;md=2;oH=darkprincess_gama05_dragchangxx;repeat=8;repeatInterval=1;hnp=true;vR=2.6;hR=2.6} @modelpart{m=darkprincess_gama05;p=curpo9;off=LOCAL}
+        - sound{delay=15;s=darkprincess_gm:darkprincess_gm.jia3;v=1;p=1} @self
+        - sound{delay=17;s=darkprincess_gm:darkprincess_gm.golpmtl;v=1;p=1.4} @self
+        - delay 48
+        #- partvis{m=darkprincess_gama05;p=curpo2} @self
+        #- partvis{m=darkprincess_gama05;p=bone5} @self
+        #- partvis{m=darkprincess_gama05;p=curpo1} @self
+        #- partvis{m=darkprincess_gama05;p=cullo} @self
+        #- partvis{m=darkprincess_gama05;p=headd} @self
+        #- partvis{m=darkprincess_gama05;p=curpo5} @self
+        #- partvis{m=darkprincess_gama05;p=curpo6} @self
+        #- partvis{m=darkprincess_gama05;p=curpo7} @self
+        #- partvis{m=darkprincess_gama05;p=curpo9} @self
+        #- partvis{m=darkprincess_gama05;p=brazodragder8} @self
+        #- partvis{m=darkprincess_gama05;p=brazodragder6} @self
+        #- partvis{m=darkprincess_gama05;p=brazodragder2} @self
+
+
+
+darkprincess_gama05_rd:
+    Cooldown: 29
+    Conditions:
+        - incombat true
+        - offgcd
+    TargetConditions:
+        - distance{d=0to10} true
+    Skills:
+        - gcd{ticks=190} @self
+        - state{s=rd} @self
+        - sound{s=darkprincess_gm:darkprincess_gm.invocdrag;v=1;p=1} @self
+        - delay 1
+        #- partvis{m=darkprincess_gama05;p=bone5;v=true;child=true} @self
+        #- partvis{m=darkprincess_gama05;p=curpo6;v=true;child=true} @self
+        - totem{delay=22;ch=1;md=2;oH=darkprincess_gama05_dragchangxx;repeat=54;repeatInterval=3;hnp=true;vR=1.6;hR=1.6} @modelpart{m=darkprincess_gama05;p=curpo6;off=LOCAL}
+        - totem{delay=22;ch=1;md=2;oH=darkprincess_gama05_dragchangxx;repeat=54;repeatInterval=3;hnp=true;vR=1.6;hR=1.6} @modelpart{m=darkprincess_gama05;p=curpo7;off=LOCAL}
+        - totem{delay=22;ch=1;md=2;oH=darkprincess_gama05_dragchangxx;repeat=54;repeatInterval=3;hnp=true;vR=1.6;hR=1.6} @modelpart{m=darkprincess_gama05;p=curpo5;off=LOCAL}
+        - totem{delay=22;ch=1;md=2;oH=darkprincess_gama05_dragchangxx;repeat=54;repeatInterval=3;hnp=true;vR=1.6;hR=1.6} @modelpart{m=darkprincess_gama05;p=curpo9;off=LOCAL}
+        - delay 176
+        #- partvis{m=darkprincess_gama05;p=curpo2} @self
+        #- partvis{m=darkprincess_gama05;p=bone5} @self
+        #- partvis{m=darkprincess_gama05;p=curpo1} @self
+        #- partvis{m=darkprincess_gama05;p=cullo} @self
+        #- partvis{m=darkprincess_gama05;p=headd} @self
+        #- partvis{m=darkprincess_gama05;p=curpo5} @self
+        #- partvis{m=darkprincess_gama05;p=curpo6} @self
+        #- partvis{m=darkprincess_gama05;p=curpo7} @self
+        #- partvis{m=darkprincess_gama05;p=curpo9} @self
+        #- partvis{m=darkprincess_gama05;p=brazodragder8} @self
+        #- partvis{m=darkprincess_gama05;p=brazodragder6} @self
+        #- partvis{m=darkprincess_gama05;p=brazodragder2} @self
+
+darkprincess_gama05_princessdarknessfirr:
+  Skills:
+  - damage{a=9}
+  - effect:particles{p=squid_ink;amount=1;hS=0.5;vS=1;y=1}
+
+
+
+darkprincess_gama05_princessdarknessfirr1:
+  Skills:
+  - damage{a=11}
+  - ignite{ticks=100} 
+
+
+darkprincess_gama05_tirarsus:
+    Cooldown: 12
+    Conditions:
+        - incombat true
+        - offgcd
+    TargetConditions:
+        - distance{d=0to22} true
+    Skills:
+        - gcd{ticks=58} @self
+        - state{s=tirarsus} @self
+        - potion{type=SLOW;l=99;d=84;p=false} @self
+        - delay 12
+        - sound{s=darkprincess_gm:darkprincess_gm.jia2;v=1;p=1.2} @self
+        - delay 12
+        - sound{s=darkprincess_gm:darkprincess_gm.attack1;v=1;p=1.2} @self
+        - sound{s=darkprincess_gm:darkprincess_gm.spc1;v=1;p=1.6} @self
+        #- partvis{m=darkprincess_gama05;p=bone} @self
+        - projectile{bulletType=TRACKING;bulletMaterial=INK_SAC;bulletModel=1;onTick=darkprincess_gama05_tirarsustick;onHit=darkprincess_gama05_tirarsushit;v=8;i=1;hR=2;vR=2;hnp=true} @Forward{f=29;y=0;sideOffset=0.0}
+        - delay 4
+        - sound{s=darkprincess_gm:darkprincess_gm.attack1;v=1;p=1.2} @self
+        - sound{s=darkprincess_gm:darkprincess_gm.spc1;v=1;p=1.6} @self
+        #- partvis{m=darkprincess_gama05;p=bone2} @self
+        - projectile{bulletType=TRACKING;bulletMaterial=INK_SAC;bulletModel=1;onTick=darkprincess_gama05_tirarsustick;onHit=darkprincess_gama05_tirarsushit;v=8;i=1;hR=2;vR=2;hnp=true} @Forward{f=29;y=0;sideOffset=0.0}
+        - delay 4
+        - sound{s=darkprincess_gm:darkprincess_gm.attack1;v=1;p=1.2} @self
+        - sound{s=darkprincess_gm:darkprincess_gm.spc1;v=1;p=1.6} @self
+        #- partvis{m=darkprincess_gama05;p=bone3} @self
+        - projectile{bulletType=TRACKING;bulletMaterial=INK_SAC;bulletModel=1;onTick=darkprincess_gama05_tirarsustick;onHit=darkprincess_gama05_tirarsushit;v=8;i=1;hR=2;vR=2;hnp=true} @Forward{f=29;y=0;sideOffset=0.0}
+        - delay 4
+        - sound{s=darkprincess_gm:darkprincess_gm.attack1;v=1;p=1.2} @self
+        - sound{s=darkprincess_gm:darkprincess_gm.spc1;v=1;p=1.6} @self
+        #- partvis{m=darkprincess_gama05;p=bone4} @self
+        - projectile{bulletType=TRACKING;bulletMaterial=INK_SAC;bulletModel=1;onTick=darkprincess_gama05_tirarsustick;onHit=darkprincess_gama05_tirarsushit;v=8;i=1;hR=2;vR=2;hnp=true} @Forward{f=29;y=0;sideOffset=0.0}
+        - delay 44
+        #- partvis{m=darkprincess_gama05;p=bone;v=true;child=true} @self
+        #- partvis{m=darkprincess_gama05;p=bone2;v=true;child=true} @self
+        #- partvis{m=darkprincess_gama05;p=bone4;v=true;child=true} @self
+        #- partvis{m=darkprincess_gama05;p=bone3;v=true;child=true} @self
+
+
+
+darkprincess_gama05_tirarsustick:
+  Skills:
+    - effect:particles{p=crimson_spore;amount=1;speed=0;hS=0.05;vS=0.05;y=0.6} @origin
+
+darkprincess_gama05_tirarsushit:
+  Skills:
+    - effect:particles{p=squid_ink;amount=5;speed=0;hS=1;vS=1}
+    - damage{a=4;i=true} 
+    - sound{s=darkprincess_gm:darkprincess_gm.attack1;v=1;p=0.7}
+
+
+
+
+##
+##
+##
+##
+
+darkprincess_gama05_mttl142:
+  Skills:
+  - randomskill{s=[
+      
+    ],
+      [
+      - sound{s=darkprincess_gm:darkprincess_gm.mttl2;v=1;p=1} @self
+    ],
+      [
+      - sound{s=darkprincess_gm:darkprincess_gm.mttl2;v=1;p=1.2} @self
+    ]} @self
+
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##

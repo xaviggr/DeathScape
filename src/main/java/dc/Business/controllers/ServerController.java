@@ -1,8 +1,10 @@
 package dc.Business.controllers;
 
 import dc.DeathScape;
+import dc.Persistence.config.MainConfigManager;
 import dc.Persistence.player.PlayerEditDatabase;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -12,10 +14,7 @@ import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Objects;
-import java.util.Queue;
+import java.util.*;
 
 public class ServerController {
     private final File configFile;
@@ -44,13 +43,38 @@ public class ServerController {
         rainTaskActive = false;
         checkDay();
         startDayUpdater();
+        startPromotionMessages();
     }
 
     private void startDayUpdater() {
         Bukkit.getScheduler().runTaskTimer(plugin, () -> {
             checkDay();
             Bukkit.getConsoleSender().sendMessage("Días del servidor actualizados automáticamente.");
-        }, 0L, 24 * 60 * 60 * 20L);
+        }, 0L, 24 * 60 * 60 * 20L); // 24 horas
+    }
+
+    //Coroutine Mensajes cada x tiempo por el chat para promocionar la tienda y eventos del servidor.
+    private void startPromotionMessages() {
+        // Lista de mensajes promocionales
+        List<String> messages = new ArrayList<>();
+        messages.add(ChatColor.GOLD + "[Tienda]: " + ChatColor.YELLOW + "¡Visita nuestra tienda y mejora tu experiencia! " + ChatColor.AQUA + "Usa /tienda para más información.");
+        messages.add(ChatColor.GREEN + "[Eventos]: " + ChatColor.LIGHT_PURPLE + "¡No te pierdas los eventos semanales! " + ChatColor.WHITE + "Consulta el calendario con " + ChatColor.AQUA + "/eventos.");
+        messages.add(ChatColor.BLUE + "[Tienda]: " + ChatColor.YELLOW + "¡Kits exclusivos disponibles ahora! " + ChatColor.AQUA + "¡Corre a la tienda y échales un vistazo! /tienda");
+        messages.add(ChatColor.RED + "[Eventos]: " + ChatColor.GOLD + "¡Participa en los torneos y gana grandes premios! " + ChatColor.WHITE + "Regístrate ahora con " + ChatColor.AQUA + "/torneos.");
+        messages.add(ChatColor.DARK_GREEN + "[Tienda]: " + ChatColor.YELLOW + "¡Ofertas especiales este mes! No pierdas la oportunidad de conseguir tus items favoritos. /tienda");
+
+        // Índice de mensajes
+        int[] currentIndex = {0};
+
+        // Iniciar el scheduler
+        Bukkit.getScheduler().runTaskTimer(plugin, () -> {
+            // Enviar el mensaje actual a todos los jugadores
+            String message = messages.get(currentIndex[0]);
+            Bukkit.broadcastMessage(message);
+
+            // Actualizar el índice al siguiente mensaje
+            currentIndex[0] = (currentIndex[0] + 1) % messages.size();
+        }, 0L, 20 * 60 * 20L); // 20 minutos
     }
 
     public void checkDay() {
@@ -108,10 +132,9 @@ public class ServerController {
     }
 
     public void checkQueueStatus() {
-        System.out.println("Jugadores en cola: " + queue.size());
         // Comprueba si hay jugadores en la cola
         // Máximo de jugadores permitidos en el Overworld
-        int maxPlayersInWorld = 1;
+        int maxPlayersInWorld = MainConfigManager.getInstance().getMaxPlayersInWorld();
         if (!queue.isEmpty() && playerCounter < maxPlayersInWorld) {
             Player player = queue.poll();
             Location location = PlayerEditDatabase.getPlayerLocation(Objects.requireNonNull(player).getName());
@@ -139,24 +162,11 @@ public class ServerController {
     public void addPlayerToQueue(Player player) {
         queue.add(player);
         checkQueueStatus();
-        System.out.println("Jugador " + player.getName() + " añadido a la cola.");
-        printQueu();
     }
 
     public void removePlayerFromQueue(Player player) {
         queue.remove(player);
         checkQueueStatus();
-        System.out.println("Jugador " + player.getName() + " eliminado de la cola.");
-        printQueu();
-    }
-
-    private void printQueu() {
-        System.out.println("Cola de jugadores:");
-        for (Player player : queue) {
-            System.out.println(player.getName());
-        }
-
-        System.out.println("Jugadores en el servidor:" + playerCounter);
     }
 
     public int getQueuePosition(Player player) {
