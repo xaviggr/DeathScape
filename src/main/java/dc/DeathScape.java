@@ -26,6 +26,7 @@ import java.util.Objects;
 public class DeathScape extends JavaPlugin {
     // Configuración
     private FileConfiguration mobsConfig;
+    private FileConfiguration difficultiesConfig;
 
     // Controladores
     private ServerController serverController;
@@ -55,6 +56,7 @@ public class DeathScape extends JavaPlugin {
         // Inicialización de configuración y singleton
         MainConfigManager.setInstance(this);
         loadMobsConfig();
+        loadDifficultiesConfig();
         PlayerDatabase.initPlayerDatabase();
         GroupDatabase.initGroupDatabase();
 
@@ -121,8 +123,20 @@ public class DeathScape extends JavaPlugin {
         mobsConfig = YamlConfiguration.loadConfiguration(mobsFile);
     }
 
+    public void loadDifficultiesConfig() {
+        File difficultiesFile = new File(getDataFolder(), "dificultades_info.yml");
+        if (!difficultiesFile.exists()) {
+            saveResource("dificultades_info.yml", false);
+        }
+        difficultiesConfig = YamlConfiguration.loadConfiguration(difficultiesFile);
+    }
+
     public FileConfiguration getMobsConfig() {
         return mobsConfig;
+    }
+
+    public FileConfiguration getDifficultiesConfig() {
+        return difficultiesConfig;
     }
 
     @Override

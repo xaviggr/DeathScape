@@ -21,6 +21,8 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
+import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
 import java.util.*;
@@ -46,7 +48,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         if (command.getName().equalsIgnoreCase("deathscape") && args.length == 1) {
-            List<String> options = new ArrayList<>(List.of("dia", "discord", "help", "info", "reportar","tiempojugado", "tiempolluvia"));
+            List<String> options = new ArrayList<>(List.of("dia", "discord", "help", "info", "reportar","tiempojugado", "tiempolluvia", "dificultad"));
 
             if (sender instanceof Player player) {
                 GroupData groupData = GroupDatabase.getGroupData(Objects.requireNonNull(PlayerDatabase.getPlayerDataFromDatabase(player.getName())).getGroup());
@@ -160,11 +162,11 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         commandMap.put("añadirbannedword", () -> handleAddBannedWordCommand(player, args, group));
         commandMap.put("quitarbannedword", () -> handleRemoveBannedWordCommand(player, args, group));
         commandMap.put("quitarban", () -> handleUnbanPlayerCommand(player, args, group));
+        commandMap.put("dificultad", () -> handleDifficultyCommand(player, args));
         commandMap.put("inventorysee", () -> handleInventorySee(player, args, group));
         commandMap.put("endersee", () -> handleEnderSee(player, args, group));
         commandMap.put("mute", () -> handleMutePlayer(player, args, group));
         commandMap.put("unmute", () -> handleUnMutePlayer(player, args, group));
-
 
         // Ejecuta el comando correspondiente
         Runnable commandAction = commandMap.get(args[0].toLowerCase());
@@ -481,8 +483,9 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
                 "/deathscape reload - Recarga la configuración",
                 "/deathscape reportar - Abre el menú de reportes",
                 "/deathscape tiempojugado - Muestra el tiempo jugado",
+                "/deathscape tiempolluvia - Muestra el tiempo de lluvia pendiente",
+                "/deathscape dificultad <día> - Muestra la información de la dificultad de ese día",
                 "/deathscape tiempolluvia - Muestra el tiempo de lluvia pendiente"
-
         };
         for (String msg : helpMessages) {
             Message.enviarMensajeColorido(player, msg, ChatColor.BLUE);
@@ -527,4 +530,59 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
     private void sendNoPermissionMessage(Player player) {
         Message.enviarMensajeColorido(player, "No tienes permiso para usar este comando.", ChatColor.RED);
     }
+
+    private void handleDifficultyCommand(Player player, String[] args) {
+        if (args.length < 2) {
+            Message.enviarMensajeColorido(player, "Uso: /dificultad <día>", ChatColor.RED);
+            return;
+        }
+
+        // Convertir el argumento del día solicitado a un entero
+        int requestedDay;
+        try {
+            requestedDay = Integer.parseInt(args[1]);
+        } catch (NumberFormatException e) {
+            Message.enviarMensajeColorido(player, "El día ingresado no es válido. Por favor, ingrese un número.", ChatColor.RED);
+            return;
+        }
+
+        int currentDay = plugin.getServerData().getServerDays();
+
+        // Comparar el día solicitado con el día actual
+        if (requestedDay > currentDay) {
+            Message.enviarMensajeColorido(player, "No puedes solicitar información para un día superior al actual (" + currentDay + ").", ChatColor.RED);
+            return;
+        }
+
+        // Clave esperada en el archivo difficulties.yml
+        String dayKey = "day_" + requestedDay;
+        FileConfiguration difficultiesConfig = plugin.getDifficultiesConfig(); // Usamos el método del plugin
+
+        // Validar si la sección "dificultades_info" existe
+        ConfigurationSection difficultiesSection = difficultiesConfig.getConfigurationSection("dificultades_info");
+        if (difficultiesSection == null) {
+            Message.enviarMensajeColorido(player, "No se encontró la sección 'dificultades_info' en el archivo de configuración.", ChatColor.RED);
+            return;
+        }
+
+        // Validar si la clave específica del día existe
+        if (!difficultiesSection.contains(dayKey)) {
+            Message.enviarMensajeColorido(player, "No se encontró información para el día: " + requestedDay, ChatColor.RED);
+            return;
+        }
+
+        // Obtener la lista de líneas para la clave del día
+        List<String> infoLines = difficultiesSection.getStringList(dayKey);
+        if (infoLines == null || infoLines.isEmpty()) {
+            Message.enviarMensajeColorido(player, "No hay detalles disponibles para el día: " + requestedDay, ChatColor.RED);
+            return;
+        }
+
+        // Enviar los detalles al jugador
+        player.sendMessage(ChatColor.BOLD + "" + ChatColor.DARK_GREEN + "Dificultades" + ChatColor.DARK_GREEN + " para el día " + requestedDay + ":");
+        for (String line : infoLines) {
+            player.sendMessage(ChatColor.translateAlternateColorCodes('&', line));
+        }
+    }
+
 }

@@ -1,0 +1,66 @@
+dificultades_info:
+  day_0:
+    - "&f Ningún cambio en el día 0"
+  day_1:
+    - "&6&lCambios en el OverWorld"
+    - "&f - Los Zombies ahora hacen más daño"
+    - "&f - Los Esqueletos ahora hacen más daño"
+    - "&f - Las Arañas hacen más daño y són más rápidas"
+    - "&f - Las Brujas lanzan rayos y spawnean murciélagos"
+    - "&f - Los Vexes hacen más daño y tienen más vida"
+    - "&f - Los Enderman ahora hacen más daño y 
+              se mueven más rápido"
+    - "&f - Los Phantoms ahora hacen más daño"
+  day_2:
+    - "&6&lCambios en el OverWorld"
+    - "&f - Las arañas pueden salir de 5 tipos distintos:"
+    - "&f     > Más daño y más rápida"
+    - "&f     > Más vida y glowing"
+    - "&f     > Más vida, más daño, más velocidad y glowing"
+    - "&f     > Más vida, más rápida e invisible"
+    - "&f     > Más daño, invisible y con glowing"
+    - "&f - Los Creepers són cargados, hacen más daño, 
+              són más rápidos, cargan antes la explosión y 
+              su radio de explosión es mayor"
+    - "&f - Los Vexes pueden ser de dos tipos:"
+    - "&f     > Los Vexes mencionados en el día 1"
+    - "&f     > Más vida"
+    - "&6&lCambios en el Nether"
+    - "&f - Los Zombified Piglins hacen más daño"
+    - "&f - Los Zoglins hacen más daño"
+    - "&f - Los Piglin Brutes hacen más daño"
+    - "&f - Los Piglins hacen más daño"
+    - "&f - Los Blazes hacen más daño y tienen más vida"
+    - "&f - Los Slimes tienen más vida"
+    - "&f - Los Magma Cubes tienen más vida"
+  day_3:
+    - "&6&lCambios en el OverWorld"
+    - "&f - Los Creepers pueden aparecer de dos tipos:"
+    - "&f     > Creepers mencionados en el día 2"
+    - "&f     > Creepers disfrazados de pollo, cargados y 
+              que cuando cargan la explosión se les oye poner
+              un huevo"
+    - "&f - Los Zombies ahora tienen apariencia de vaca
+              y hacen más daño"
+  day_4:
+    - "&6&lCambios en el OverWorld"
+    - "&f - Los Creepers pueden aparecer de tres tipos:"
+    - "&f     > Creepers mencionados en el día 2"
+    - "&f     > Creepers mencionados en el día 3"
+    - "&f     > Hacen mucho más daño y cargan antes"
+    - "&f - Los Zombies ahora tienen más daño, poseen una
+              espada de diamante y pueden atraer al jugador
+              a su posición"
+    - "&f - Los Esqueletos van equipados enteros de diamante
+              y un arco encantado en la mano"
+  day_5:
+    - "&6&lCambios en el End"
+    - "&f - Los Shulkers ahora hacen mucho más daño"
+    - "&f - Los Endermans ahora hacen más daño y 
+              son más veloces"
+  day_6:
+    - "&6&lCambios en el OverWorld"
+    - "&f - Los Zombies pueden aparecer de tres tipos:"
+    - "&f     > JefeGery"
+    - "&f     > Jefe4Gymo"
+    - "&f     > JefeLink"
