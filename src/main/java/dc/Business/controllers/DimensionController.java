@@ -28,6 +28,12 @@ public class DimensionController {
             spawnDimension.setGameRule(GameRule.DO_DAYLIGHT_CYCLE, false);
             spawnDimension.setGameRule(GameRule.DO_WEATHER_CYCLE, false);
             spawnDimension.setGameRule(GameRule.DO_MOB_SPAWNING, false);
+            // No damage
+            spawnDimension.setGameRule(GameRule.DISABLE_RAIDS, true);
+            // No fall damage
+            spawnDimension.setGameRule(GameRule.FALL_DAMAGE, false);
+            // No fire damage
+            spawnDimension.setGameRule(GameRule.FIRE_DAMAGE, false);
             spawnDimension.setTime(6000); // Configura el tiempo en el día
 
             Bukkit.getLogger().info("[DeathScape] Spawn dimension initialized successfully.");

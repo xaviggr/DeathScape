@@ -128,6 +128,7 @@ public class DeathScape extends JavaPlugin {
     @Override
     public void onDisable() {
         Bukkit.getConsoleSender().sendMessage("DeathScape has been disabled!");
+        playerController.removePlayersFromServer();
     }
 
     private void registerEvents() {

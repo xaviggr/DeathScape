@@ -7,7 +7,6 @@ import dc.DeathScape;
 import dc.Persistence.chat.BannedWordsDatabase;
 import dc.Persistence.config.MainConfigManager;
 import dc.Business.player.PlayerData;
-import dc.Persistence.groups.GroupDatabase;
 import dc.Persistence.player.PlayerDatabase;
 import dc.Persistence.player.PlayerEditDatabase;
 import org.bukkit.Bukkit;
@@ -16,6 +15,7 @@ import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.ScoreboardManager;
 import org.bukkit.scoreboard.Team;
@@ -39,6 +39,7 @@ public class PlayerController {
         this.playerTabList = new PlayerTabList(plugin, this); // Initialize TabList animation
         this.playerDeath = new PlayerDeath(plugin, playerBan); // Initialize death functionality
         this.plugin = plugin;
+        handleSavingPlayerData();
     }
 
     /**
@@ -270,6 +271,34 @@ public class PlayerController {
         deactivateBanshee(player);
         plugin.getServerData().decreasePlayerCounter();
         removePlayerFromQueue(player);
+    }
+
+    public void removePlayersFromServer() {
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            removePlayerFromServer(player);
+        }
+    }
+
+    private void savePlayerData(Player player) {
+        if (!Objects.requireNonNull(player.getLocation().getWorld()).getName().equals("world_minecraft_spawn")) {
+            PlayerEditDatabase.setPlayerCoords(player);
+            handleTimePlayed(player);
+        }
+    }
+
+    public void savePlayersData() {
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            savePlayerData(player);
+        }
+    }
+
+    public void handleSavingPlayerData() {
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                savePlayersData();
+            }
+        }.runTaskTimer(plugin, 0, 6000); // 5 minutos
     }
 
     private void handleTimePlayed(Player player) {

@@ -41,7 +41,7 @@ public class PlayerKillListener implements Listener {
     // Method to handle the monster kill and filter by type
     private void handleMonsterKill(Player player, Monster monster) {
         String monsterType = monster.getType().name(); // Get the type of the monster as a string
-        int points = 0;  // Initialize points to 0
+        int points;  // Initialize points to 0
 
         // Handle different monster types and assign points accordingly
         switch (monsterType) {
