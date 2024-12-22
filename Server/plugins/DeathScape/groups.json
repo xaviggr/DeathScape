@@ -15,7 +15,9 @@
       "DAYS",
       "MUTE"
     ],
-    "players": []
+    "players": [
+      "xaviggr"
+    ]
   },
   "admin": {
     "name": "admin",
@@ -76,10 +78,6 @@
     "name": "default",
     "prefix": "\u0026b[Warrior]",
     "permissions": [],
-    "players": [
-      "xaviggr",
-      "Link825_",
-      "4gymo"
-    ]
+    "players": []
   }
 }

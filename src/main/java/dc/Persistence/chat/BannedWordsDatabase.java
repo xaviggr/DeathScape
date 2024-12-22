@@ -21,18 +21,22 @@ public class BannedWordsDatabase {
         File file = new File(databaseFile);
         if (!file.exists()) {
             try {
+                // Crear el archivo si no existe
                 file.createNewFile();
-                try (FileWriter writer = new FileWriter(file)) {
-                    JsonObject jsonObject = new JsonObject();
-                    jsonObject.add("bannedWords", new JsonArray());
-                    jsonObject.add("mutedUsers", new JsonArray());
-                    writeJsonFile(jsonObject);
-                }
+
+                // Crear el objeto JSON inicial
+                JsonObject jsonObject = new JsonObject();
+                jsonObject.add("bannedWords", new JsonArray());
+                jsonObject.add("mutedUsers", new JsonArray());
+
+                // Escribir el objeto JSON al archivo
+                writeJsonFile(jsonObject);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
+
 
     private static JsonObject readJsonFile() {
         File file = new File(databaseFile);
@@ -118,7 +122,8 @@ public class BannedWordsDatabase {
 
         if (mutedUsersArray != null) {
             mutedUsersArray.forEach(user -> {
-                String mutedUser = user.getAsString().trim();
+                JsonObject mutedUserObject = user.getAsJsonObject();
+                String mutedUser = mutedUserObject.get("username").getAsString().trim();
                 if (!mutedUser.isEmpty()) {
                     mutedUsers.add(mutedUser);
                 }
@@ -127,7 +132,7 @@ public class BannedWordsDatabase {
         return mutedUsers;
     }
 
-    public static void addMutedUser(String username) {
+    public static void addMutedUser(String username, long unmuteTime) {
         JsonObject jsonObject = readJsonFile();
         JsonArray mutedUsersArray = jsonObject.getAsJsonArray("mutedUsers");
 
@@ -136,7 +141,12 @@ public class BannedWordsDatabase {
             jsonObject.add("mutedUsers", mutedUsersArray);
         }
 
-        mutedUsersArray.add(username);
+        // Crear un objeto JSON para el usuario silenciado
+        JsonObject mutedUserObject = new JsonObject();
+        mutedUserObject.addProperty("username", username);
+        mutedUserObject.addProperty("unmuteTime", unmuteTime);
+
+        mutedUsersArray.add(mutedUserObject);
         writeJsonFile(jsonObject);
     }
 
@@ -147,13 +157,46 @@ public class BannedWordsDatabase {
         if (mutedUsersArray != null) {
             JsonArray newMutedUsersArray = new JsonArray();
             for (int i = 0; i < mutedUsersArray.size(); i++) {
-                String mutedUser = mutedUsersArray.get(i).getAsString();
+                JsonObject mutedUserObject = mutedUsersArray.get(i).getAsJsonObject();
+                String mutedUser = mutedUserObject.get("username").getAsString();
                 if (!mutedUser.equalsIgnoreCase(username)) {
-                    newMutedUsersArray.add(mutedUser);
+                    newMutedUsersArray.add(mutedUserObject);
                 }
             }
             jsonObject.add("mutedUsers", newMutedUsersArray);
             writeJsonFile(jsonObject);
         }
+    }
+
+    public static boolean isUserMuted(String username) {
+        JsonObject jsonObject = readJsonFile();
+        JsonArray mutedUsersArray = jsonObject.getAsJsonArray("mutedUsers");
+
+        if (mutedUsersArray != null) {
+            long currentTime = System.currentTimeMillis();
+            JsonArray newMutedUsersArray = new JsonArray();
+
+            for (int i = 0; i < mutedUsersArray.size(); i++) {
+                JsonObject mutedUserObject = mutedUsersArray.get(i).getAsJsonObject();
+                String mutedUser = mutedUserObject.get("username").getAsString();
+                long unmuteTime = mutedUserObject.get("unmuteTime").getAsLong();
+
+                if (mutedUser.equalsIgnoreCase(username)) {
+                    // Verificar si el tiempo de silencio ha pasado
+                    if (currentTime > unmuteTime) {
+                        // No añadir de nuevo al array (remueve el silencio)
+                        continue;
+                    } else {
+                        return true; // Usuario sigue silenciado
+                    }
+                }
+                newMutedUsersArray.add(mutedUserObject); // Añadir usuarios aún silenciados
+            }
+
+            // Actualizar la base de datos con los usuarios que aún están silenciados
+            jsonObject.add("mutedUsers", newMutedUsersArray);
+            writeJsonFile(jsonObject);
+        }
+        return false; // Usuario no está silenciado
     }
 }

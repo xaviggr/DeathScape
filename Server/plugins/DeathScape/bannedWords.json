@@ -1,4 +1,12 @@
 {
-  "bannedWords": [],
-  "mutedUsers": []
+  "mutedUsers": [
+    {
+      "username": "xaviggr",
+      "unmuteTime": 1734870422133
+    }
+  ],
+  "bannedWords": [
+    "perro",
+    "david"
+  ]
 }

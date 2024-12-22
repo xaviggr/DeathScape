@@ -3,6 +3,7 @@ package dc.Persistence.player;
 import dc.Business.groups.GroupData;
 import dc.Business.player.PlayerData;
 import dc.Persistence.groups.GroupDatabase;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
@@ -77,6 +78,21 @@ public class PlayerEditDatabase {
             player.kickPlayer ("Error al cargar tus datos, contacta con un administrador.");
         } else {
             playerdata.setCoords(player.getLocation().getX() + "," + player.getLocation().getY() + "," + player.getLocation().getZ());
+            playerdata.setDimension(player.getWorld().getName());
+            PlayerDatabase.addPlayerDataToDatabase (playerdata);
+        }
+    }
+
+    public static void setPlayerCoords(String position, String playerName) {
+        PlayerData playerdata = PlayerDatabase.getPlayerDataFromDatabase (playerName);
+        Player player = Bukkit.getPlayer(playerName);
+
+        if (playerdata == null) {
+            Objects.requireNonNull(player).kickPlayer ("Error al cargar tus datos, contacta con un administrador.");
+        } else {
+            playerdata.setCoords(position);
+            assert player != null;
+            playerdata.setDimension(player.getWorld().getName());
             PlayerDatabase.addPlayerDataToDatabase (playerdata);
         }
     }

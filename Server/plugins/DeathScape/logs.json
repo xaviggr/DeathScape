@@ -3,32 +3,44 @@
     {
       "logType": "command",
       "author": "xaviggr",
-      "logInfo": "[tiempojugado]",
-      "dateTime": "2024-12-14 20:01:12"
+      "logInfo": "[añadirUsuarioAGrupo, xaviggr, owner]",
+      "dateTime": "2024-12-22 13:18:24"
     },
     {
       "logType": "command",
       "author": "xaviggr",
-      "logInfo": "[tiempolluvia]",
-      "dateTime": "2024-12-14 20:01:15"
+      "logInfo": "[mute, xaviggr, 5]",
+      "dateTime": "2024-12-22 13:18:28"
     },
     {
       "logType": "command",
       "author": "xaviggr",
-      "logInfo": "[tiempojugado]",
-      "dateTime": "2024-12-14 20:58:07"
+      "logInfo": "[mute, xaviggr, 10]",
+      "dateTime": "2024-12-22 13:19:54"
     },
     {
       "logType": "command",
       "author": "xaviggr",
-      "logInfo": "[tienda]",
-      "dateTime": "2024-12-16 11:59:51"
+      "logInfo": "[mute, xaviggr, 10]",
+      "dateTime": "2024-12-22 13:21:32"
     },
     {
       "logType": "command",
       "author": "xaviggr",
-      "logInfo": "[help]",
-      "dateTime": "2024-12-16 11:59:55"
+      "logInfo": "[añadirbannedword, perro]",
+      "dateTime": "2024-12-22 13:24:47"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[mute, xaviggr, 2]",
+      "dateTime": "2024-12-22 13:25:02"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[añadirbannedword, david]",
+      "dateTime": "2024-12-22 13:25:14"
     }
   ]
 }

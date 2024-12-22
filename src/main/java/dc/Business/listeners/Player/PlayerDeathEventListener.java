@@ -3,7 +3,10 @@ package dc.Business.listeners.Player;
 import dc.Business.controllers.PlayerController;
 import dc.Business.controllers.WeatherController;
 import dc.Business.controllers.AnimationController;
+import dc.Persistence.player.PlayerEditDatabase;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
@@ -34,6 +37,7 @@ public class PlayerDeathEventListener implements Listener {
         worldNameMap.put("world", "Overworld");
         worldNameMap.put("world_nether", "Nether");
         worldNameMap.put("world_the_end", "End");
+        worldNameMap.put("world_minecraft_rift", "Rift");
     }
 
     @EventHandler
@@ -60,6 +64,14 @@ public class PlayerDeathEventListener implements Listener {
             // Eliminar prefijos específicos del formato [Warrior]
             deathCause = deathCause.replaceAll("\\[[^]]*\\] ", "");
         }
+
+        // Establecer coordenadas específicas al jugador
+        World targetWorld = Bukkit.getWorld("world"); // Cambia "world" por el nombre del mundo donde quieres teletransportarlos
+        double targetX = 4104; // Coordenada X deseada
+        double targetY = 53;  // Coordenada Y deseada
+        double targetZ = -547; // Coordenada Z deseada
+
+        PlayerEditDatabase.setPlayerCoords(targetX + "," + targetY + "," + targetZ, playerName);
 
         // Cambiar el nombre del mundo a algo más amigable
         worldName = worldNameMap.getOrDefault(worldName, worldName); // Si no está en el mapa, usar el original

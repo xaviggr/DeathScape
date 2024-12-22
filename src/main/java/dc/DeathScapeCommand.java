@@ -48,15 +48,24 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         if (command.getName().equalsIgnoreCase("deathscape") && args.length == 1) {
-            List<String> options = new ArrayList<>(List.of("dia", "discord", "help", "info", "reportar","tiempojugado", "tiempolluvia", "dificultad"));
+            // Lista base de comandos
+            List<String> options = new ArrayList<>(List.of(
+                    "dia", "discord", "help", "info", "reportar", "tiempojugado",
+                    "tiempolluvia", "dificultad"
+            ));
 
             if (sender instanceof Player player) {
-                GroupData groupData = GroupDatabase.getGroupData(Objects.requireNonNull(PlayerDatabase.getPlayerDataFromDatabase(player.getName())).getGroup());
+                // Obtener datos del grupo del jugador
+                GroupData groupData = GroupDatabase.getGroupData(
+                        Objects.requireNonNull(PlayerDatabase.getPlayerDataFromDatabase(player.getName())).getGroup()
+                );
 
                 if (groupData != null) {
                     List<String> groupPermissions = groupData.getPermissions().stream()
                             .map(Permission::toString)
                             .toList();
+
+                    // Añadir comandos según los permisos
                     if (groupPermissions.contains("group") || player.isOp()) {
                         options.add("añadirUsuarioAGrupo");
                         options.add("quitarUsuarioDeGrupo");
@@ -66,9 +75,9 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
 
                     if (groupPermissions.contains("teleport")) {
                         options.add("tp");
+                        options.add("back");
                     }
 
-                    // Add specific commands based on group permissions
                     if (groupPermissions.contains("ban")) {
                         options.add("quitarban");
                     }
@@ -100,10 +109,21 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
 
                     if (groupPermissions.contains("mute")) {
                         options.add("mute");
+                        options.add("unmute");
                     }
                 }
             }
-            return options;
+
+            // Filtrar los comandos según la entrada del usuario
+            String input = args[0].toLowerCase();
+            List<String> filteredOptions = new ArrayList<>();
+            for (String option : options) {
+                if (option.toLowerCase().startsWith(input)) {
+                    filteredOptions.add(option);
+                }
+            }
+
+            return filteredOptions;
         }
         return null;
     }
@@ -118,6 +138,14 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
                 } else {
                     reviveInventory.openInventory(target);
                 }
+            } else if (args[0].equalsIgnoreCase("addPoints")) {
+                Player target = Bukkit.getPlayer(args[1]);
+                if (target == null || !target.isOnline()) {
+                    sender.sendMessage(ChatColor.RED + "El jugador especificado no está en línea.");
+                } else {
+                    playerController.addPointsToPlayer(target, Integer.parseInt(args[2]));
+                }
+
             } else {
                 sender.sendMessage(ChatColor.RED + "Este comando solo puede ser ejecutado por un jugador.");
             }
@@ -142,6 +170,19 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         }
 
         // Mapa de comandos y sus respectivos manejadores
+        Runnable commandAction = getRunnable(args, player, group);
+        if (commandAction != null) {
+            commandAction.run();
+        } else {
+            sendInvalidCommandMessage(player);
+        }
+
+        LogDatabase.addLog(new LogData("command", player.getName(), Arrays.toString(args)));
+
+        return true;
+    }
+
+    private Runnable getRunnable(String[] args, Player player, GroupData group) {
         Map<String, Runnable> commandMap = new HashMap<>();
         commandMap.put("help", () -> showHelp(player));
         commandMap.put("tiempolluvia", () -> showStormTime(player));
@@ -149,12 +190,12 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         commandMap.put("reportar", () -> handleMakeReport(player));
         commandMap.put("reportes", () -> handleShowReports(player, group));
         commandMap.put("reload", () -> handleReloadConfig(player, group));
-        commandMap.put("banshee", () -> handleBansheeCommand(player,group));
+        commandMap.put("banshee", () -> handleBansheeCommand(player, group));
         commandMap.put("discord", () -> showDiscord(player));
         commandMap.put("tiempojugado", () -> showPlayTime(player));
         commandMap.put("dia", () -> showDay(player));
         commandMap.put("heal", () -> playerController.healPlayer(player));
-        commandMap.put("back", () -> handleBackCommand(player,group));
+        commandMap.put("back", () -> handleBackCommand(player, group));
         commandMap.put("añadirusuarioagrupo", () -> handleAddUserToGroupCommand(player, args, group));
         commandMap.put("quitarusuariodegrupo", () -> handleRemoveUserFromGroupCommand(player, args, group));
         commandMap.put("tp", () -> handleTeleportCommand(player, args, group));
@@ -169,16 +210,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         commandMap.put("unmute", () -> handleUnMutePlayer(player, args, group));
 
         // Ejecuta el comando correspondiente
-        Runnable commandAction = commandMap.get(args[0].toLowerCase());
-        if (commandAction != null) {
-            commandAction.run();
-        } else {
-            sendInvalidCommandMessage(player);
-        }
-
-        LogDatabase.addLog(new LogData("command", player.getName(), Arrays.toString(args)));
-
-        return true;
+        return commandMap.get(args[0].toLowerCase());
     }
 
     private void handleUnMutePlayer(Player player, String[] args, GroupData group) {
@@ -207,8 +239,8 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
             return;
         }
 
-        if (args.length < 2) {
-            player.sendMessage(ChatColor.RED + "Uso: /mute <nombre del jugador>");
+        if (args.length < 3) {
+            player.sendMessage(ChatColor.RED + "Uso: /mute <nombre del jugador> <duración en minutos>");
             return;
         }
 
@@ -218,7 +250,9 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
             return;
         }
 
-        playerController.mutePlayer(player, target);
+        int duration = Integer.parseInt(args[2]);
+
+        playerController.mutePlayer(player, target, duration);
     }
 
     private void handleEnderSee(Player player, String[] args, GroupData group) {
@@ -300,6 +334,10 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
 
         switch (args.length) {
             case 2 -> {
+                if (args[1].equalsIgnoreCase("lobby")) {
+                    player.teleport(Objects.requireNonNull(plugin.getServer().getWorld("world")).getSpawnLocation());
+                    return;
+                }
                 // Teletransportarse a un jugador
                 if (playerController.teleportToPlayer(player, args[1])) {
                     Message.enviarMensajeColorido(player, "Te has teletransportado a " + args[1], ChatColor.GREEN);
@@ -474,21 +512,85 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
     }
 
     private void showHelp(Player player) {
-        String[] helpMessages = {
-                "DeathScape Comandos:",
-                "/deathscape dia - Muestra el día actual del servidor",
-                "/deathscape discord - Muestra el link de discord",
-                "/deathscape help - Muestra este mensaje",
-                "/deathscape info - Muestra información sobre el plugin",
-                "/deathscape reload - Recarga la configuración",
-                "/deathscape reportar - Abre el menú de reportes",
-                "/deathscape tiempojugado - Muestra el tiempo jugado",
-                "/deathscape tiempolluvia - Muestra el tiempo de lluvia pendiente",
-                "/deathscape dificultad <día> - Muestra la información de la dificultad de ese día",
-                "/deathscape tiempolluvia - Muestra el tiempo de lluvia pendiente"
-        };
-        for (String msg : helpMessages) {
-            Message.enviarMensajeColorido(player, msg, ChatColor.BLUE);
+        // Obtener datos del grupo del jugador
+        PlayerData playerData = PlayerDatabase.getPlayerDataFromDatabase(player.getName());
+        if (playerData == null) {
+            Message.enviarMensajeColorido(player, "No se pudo cargar tu información de grupo.", ChatColor.RED);
+            return;
+        }
+
+        GroupData groupData = GroupDatabase.getGroupData(playerData.getGroup());
+        if (groupData == null) {
+            Message.enviarMensajeColorido(player, "No tienes un grupo asignado.", ChatColor.RED);
+            return;
+        }
+
+        List<String> groupPermissions = groupData.getPermissions().stream()
+                .map(Permission::toString)
+                .toList();
+
+        // Crear un mapa de comandos y descripciones
+        Map<String, String> commands = new LinkedHashMap<>();
+        commands.put("dia", "Muestra el día actual del servidor.");
+        commands.put("discord", "Muestra el enlace del servidor de Discord.");
+        commands.put("help", "Muestra esta lista de comandos.");
+        commands.put("info", "Muestra información sobre el plugin.");
+        commands.put("reportar", "Abre el menú de reportes.");
+        commands.put("tiempojugado", "Muestra el tiempo jugado.");
+        commands.put("tiempolluvia", "Muestra el tiempo de lluvia pendiente.");
+        commands.put("dificultad", "Muestra información sobre la dificultad de un día específico.");
+
+        // Comandos adicionales según permisos
+        if (groupPermissions.contains("group") || player.isOp()) {
+            commands.put("añadirUsuarioAGrupo", "Añade un usuario a un grupo.");
+            commands.put("quitarUsuarioDeGrupo", "Quita a un usuario de un grupo.");
+            commands.put("inventorysee", "Permite ver el inventario de otro jugador.");
+            commands.put("endersee", "Permite ver el Ender Chest de otro jugador.");
+        }
+
+        if (groupPermissions.contains("teleport")) {
+            commands.put("tp", "Teletransporta a un jugador o a una ubicación.");
+            commands.put("back", "Te teletransporta a tu última ubicación.");
+        }
+
+        if (groupPermissions.contains("ban")) {
+            commands.put("quitarban", "Quita el ban a un jugador.");
+        }
+
+        if (groupPermissions.contains("reload")) {
+            commands.put("reload", "Recarga la configuración del plugin.");
+        }
+
+        if (groupPermissions.contains("reports")) {
+            commands.put("reportes", "Abre el menú de reportes recibidos.");
+        }
+
+        if (groupPermissions.contains("banshee")) {
+            commands.put("banshee", "Activa o desactiva el modo Banshee.");
+        }
+
+        if (groupPermissions.contains("heal")) {
+            commands.put("heal", "Cura al jugador.");
+        }
+
+        if (groupPermissions.contains("days")) {
+            commands.put("setdia", "Establece el día actual del servidor.");
+        }
+
+        if (groupPermissions.contains("chat")) {
+            commands.put("añadirbannedword", "Añade una palabra prohibida al chat.");
+            commands.put("quitarbannedword", "Quita una palabra prohibida del chat.");
+        }
+
+        if (groupPermissions.contains("mute")) {
+            commands.put("mute", "Silencia a un jugador.");
+            commands.put("unmute", "Quita el silencio a un jugador.");
+        }
+
+        // Mostrar los comandos y descripciones al jugador
+        player.sendMessage(ChatColor.BOLD + "" + ChatColor.DARK_GREEN + "Comandos disponibles:");
+        for (Map.Entry<String, String> entry : commands.entrySet()) {
+            player.sendMessage(ChatColor.GREEN + "/" + entry.getKey() + ChatColor.WHITE + " - " + entry.getValue());
         }
     }
 
@@ -573,7 +675,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
 
         // Obtener la lista de líneas para la clave del día
         List<String> infoLines = difficultiesSection.getStringList(dayKey);
-        if (infoLines == null || infoLines.isEmpty()) {
+        if (infoLines.isEmpty()) {
             Message.enviarMensajeColorido(player, "No hay detalles disponibles para el día: " + requestedDay, ChatColor.RED);
             return;
         }

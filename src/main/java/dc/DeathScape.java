@@ -111,7 +111,7 @@ public class DeathScape extends JavaPlugin {
         playerListener = new PlayerListener(this, playerController, weatherController, animationController, totemController);
         mobSpawnListener = new MobSpawnListener(this, mobSpawnController);
         deathScapeCommand = new DeathScapeCommand(this, reportInventory, reportsInventory, playerController, reviveInventory);
-        chatListener = new ChatListener(playerController);
+        chatListener = new ChatListener(playerController, this);
     }
 
     // Método para cargar mobs.yml

@@ -34,6 +34,10 @@ public class DimensionController {
             spawnDimension.setGameRule(GameRule.FALL_DAMAGE, false);
             // No fire damage
             spawnDimension.setGameRule(GameRule.FIRE_DAMAGE, false);
+            // No food loss
+            spawnDimension.setGameRule(GameRule.NATURAL_REGENERATION, false);
+            // No mob griefing
+            spawnDimension.setGameRule(GameRule.MOB_GRIEFING, false);
             spawnDimension.setTime(6000); // Configura el tiempo en el día
 
             Bukkit.getLogger().info("[DeathScape] Spawn dimension initialized successfully.");

@@ -237,13 +237,20 @@ public class PlayerController {
     }
 
     public boolean isMuted(Player player) {
-        return BannedWordsDatabase.getMutedUsers().contains(player.getName());
+        return BannedWordsDatabase.isUserMuted(player.getName());
     }
 
-    public void mutePlayer(Player player, Player target) {
-        BannedWordsDatabase.addMutedUser(target.getName());
-        player.sendMessage(ChatColor.GREEN + "El jugador " + target.getName() + " ha sido silenciado.");
+    public void mutePlayer(Player player, Player target, long muteDurationInMinutes) {
+        // Calcula el tiempo de desilencio en milisegundos
+        long muteTime = System.currentTimeMillis() + (muteDurationInMinutes * 60 * 1000);
+
+        // Añade al jugador a la lista de silenciados
+        BannedWordsDatabase.addMutedUser(target.getName(), muteTime);
+
+        // Notifica al administrador que el jugador ha sido silenciado
+        player.sendMessage(ChatColor.GREEN + "El jugador " + target.getName() + " ha sido silenciado por " + muteDurationInMinutes + " minutos.");
     }
+
 
     public void unmutePlayer(Player player, Player target) {
         BannedWordsDatabase.removeMutedUser(target.getName());
@@ -279,7 +286,7 @@ public class PlayerController {
         }
     }
 
-    private void savePlayerData(Player player) {
+    public void savePlayerData(Player player) {
         if (!Objects.requireNonNull(player.getLocation().getWorld()).getName().equals("world_minecraft_spawn")) {
             PlayerEditDatabase.setPlayerCoords(player);
             handleTimePlayed(player);

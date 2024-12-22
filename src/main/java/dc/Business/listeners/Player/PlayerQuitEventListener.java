@@ -36,6 +36,7 @@ public class PlayerQuitEventListener implements Listener {
         }
 
         playerController.removePlayerFromServer(player);
+        playerController.savePlayerData(player);
     }
 
     private void handlePlayerBan(Player player) {

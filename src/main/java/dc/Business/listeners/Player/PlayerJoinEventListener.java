@@ -16,10 +16,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.entity.Player;
 import org.bukkit.ChatColor;
 import org.bukkit.scheduler.BukkitRunnable;
-
-import java.util.LinkedList;
 import java.util.Objects;
-import java.util.Queue;
 
 public class PlayerJoinEventListener implements Listener {
 
