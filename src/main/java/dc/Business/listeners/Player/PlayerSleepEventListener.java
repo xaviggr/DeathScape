@@ -1,30 +1,64 @@
 package dc.Business.listeners.Player;
 
+import dc.Business.controllers.ServerController;
+import dc.Business.controllers.WeatherController;
 import dc.utils.Message;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.World;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerBedEnterEvent;
-import org.bukkit.entity.Player;
-import org.bukkit.ChatColor;
-import org.bukkit.Bukkit;
-
-import java.util.HashSet;
-import java.util.Set;
+import org.bukkit.event.player.PlayerBedLeaveEvent;
 
 public class PlayerSleepEventListener implements Listener {
 
-    private final Set<Player> sleepingPlayers = new HashSet<>(); // Set to track sleeping players
+    private final WeatherController weatherController;
+
+    // Constructor
+    public PlayerSleepEventListener(WeatherController weatherController) {
+        this.weatherController = weatherController;
+    }
 
     @EventHandler
     public void onPlayerSleep(PlayerBedEnterEvent event) {
         Player player = event.getPlayer();
-        sleepingPlayers.add(player); // Add player to sleeping list
+        World world = player.getWorld();
 
-        // Check if it's nighttime and the player is the first to sleep
-        org.bukkit.World world = player.getWorld();
-        if (sleepingPlayers.size() == 1 && (world.getTime() >= 13000 && world.getTime() <= 23000)) {
-            Bukkit.getWorlds().forEach(w -> w.setTime(0)); // Set time to day
-            Message.enviarMensajeColorido(player, "You have made the day arrive!", ChatColor.GOLD);
+        // Verificar si es de noche
+        if (!weatherController.isNightTime()) {
+            Message.enviarMensajeColorido(player, "¡Solo puedes dormir durante la noche!", ChatColor.RED);
+            event.setCancelled(true);
+            return; // Salir si no es de noche
         }
+
+        if (weatherController.isThundering()) {
+            Message.enviarMensajeColorido(player, "¡No puedes dormir durante una tormenta!", ChatColor.RED);
+            event.setCancelled(true);
+            return; // Salir si hay tormenta
+        }
+
+        // Agregar jugador a la lista de durmiendo
+        ServerController.SleepingPlayers.add(player);
+
+        // Si es el primer jugador durmiendo, cambia el tiempo a día
+        if (ServerController.SleepingPlayers.size() == 1) {
+            if (weatherController.isNightTime()) { // Verificar si es de noche nuevamente por seguridad
+                world.setTime(0); // Cambiar el tiempo a día
+                Message.sendMessageAllPlayers("El jugador " + player.getName() + " ha hecho que amanezca.", ChatColor.GOLD);
+            }
+
+            // Asegúrate de que la lluvia no se detenga
+            if (world.hasStorm()) {
+                world.setStorm(true); // Mantén la lluvia si ya estaba activa
+            }
+        }
+    }
+
+    @EventHandler
+    public void onPlayerWake(PlayerBedLeaveEvent event) {
+        Player player = event.getPlayer();
+        ServerController.SleepingPlayers.remove(player); // Eliminar jugador de la lista de durmiendo
     }
 }

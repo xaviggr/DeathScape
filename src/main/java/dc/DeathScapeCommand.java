@@ -613,6 +613,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
     }
 
     private void showPlayTime(Player player) {
+        playerController.savePlayerData(player);
         String tiempoJugado = Objects.requireNonNull(PlayerDatabase.getPlayerDataFromDatabase(player.getName())).getTimePlayed();
         Message.enviarMensajeColorido(player, "Has jugado un total de: " + tiempoJugado, ChatColor.GREEN);
     }

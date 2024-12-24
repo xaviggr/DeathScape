@@ -8,14 +8,15 @@ import dc.Persistence.player.PlayerDatabase;
 import dc.Business.player.PlayerData;
 import dc.Persistence.config.MainConfigManager;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.World;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.entity.Player;
-import org.bukkit.ChatColor;
 import org.bukkit.scheduler.BukkitRunnable;
+
 import java.util.Objects;
 
 public class PlayerJoinEventListener implements Listener {
@@ -24,113 +25,141 @@ public class PlayerJoinEventListener implements Listener {
     private final DeathScape plugin;
 
     public PlayerJoinEventListener(DeathScape plugin, PlayerController playerController) {
-        this.playerController = playerController;
         this.plugin = plugin;
+        this.playerController = playerController;
     }
 
     @EventHandler
     public void onPlayerJoinServer(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         String hostAddress = Objects.requireNonNull(player.getAddress()).getAddress().getHostAddress();
-        GroupData groupData = null;
-        World queueWorld = Bukkit.getWorld("world_minecraft_spawn");
-        World overworld = Bukkit.getWorld("world");
 
-        // Cargar o crear los datos del jugador
+        // Cargar o inicializar datos del jugador
+        PlayerData playerData = loadOrCreatePlayerData(player, hostAddress);
+        if (playerData == null) return; // Si ocurre un error, el jugador ya fue expulsado.
+
+        // Configurar el grupo del jugador
+        GroupData groupData = configurePlayerGroup(player, playerData);
+        if (groupData == null) return; // Si ocurre un error, el jugador ya fue expulsado.
+
+        // Configurar mensajes de bienvenida y prefijo
+        setupPlayerEnvironment(event, player, groupData);
+
+        // Teletransportar y manejar vida en mundos específicos
+        handlePlayerTeleportAndHealth(player, playerData);
+    }
+
+    private PlayerData loadOrCreatePlayerData(Player player, String hostAddress) {
         PlayerData playerData = PlayerDatabase.getPlayerDataFromDatabase(player.getName());
+
         if (playerData == null) {
-
-            Location spawnLocation = (overworld != null) ? overworld.getSpawnLocation() : new Location(null, 0, 0, 0);
-            String spawnCoordinates = spawnLocation.getX() + "," + spawnLocation.getY() + "," + spawnLocation.getZ();
-
-            playerData = new PlayerData(player.getName(), false, 0, hostAddress, "0", player.getUniqueId(), "0", "0", spawnCoordinates, 0, "default");
+            // Crear nuevos datos de jugador
+            playerData = new PlayerData(player.getName(), false, 0, hostAddress, "0", player.getUniqueId(), "0", "0",
+                    "0,0,0", 0, "default");
 
             if (!PlayerDatabase.addPlayerDataToDatabase(playerData)) {
                 player.kickPlayer(ChatColor.RED + "Error loading your data, please contact an administrator.");
-                return; // Detener el flujo
+                return null;
             }
         } else {
-            // Obtener datos del grupo
-            groupData = GroupDatabase.getGroupData(playerData.getGroup());
-            if (groupData == null) {
-                player.kickPlayer(ChatColor.RED + "You don't have a group assigned, please contact an administrator.");
-                return; // Detener el flujo
-            }
-
-            // Validar si el jugador está marcado como muerto
-            if (playerData.isDead() && !player.isOp()) {
-                player.kickPlayer(ChatColor.RED + "You are dead, please contact an administrator.");
-                return; // Detener el flujo
-            }
-
-            // Validar si la IP ha cambiado
-            if (!Objects.equals(playerData.getHostAddress(), hostAddress)
-                    && MainConfigManager.getInstance().isKickIfIpChanged()
-                    && !player.isOp()) {
-                player.kickPlayer(ChatColor.RED + "Your IP has changed, please contact an administrator.");
-                return; // Detener el flujo
-            }
+            // Validar estado del jugador
+            if (!validatePlayerState(player, playerData, hostAddress)) return null;
         }
 
-        String prefix = null;
-        if (groupData != null) {
-            prefix = groupData.getPrefix();
+        return playerData;
+    }
+
+    private boolean validatePlayerState(Player player, PlayerData playerData, String hostAddress) {
+        if (playerData.isDead() && !player.isOp()) {
+            player.kickPlayer(ChatColor.RED + "You are dead, please contact an administrator.");
+            return false;
         }
-        if (prefix == null) {
-            prefix = "&b[Warrior]";
+
+        if (!Objects.equals(playerData.getHostAddress(), hostAddress)
+                && MainConfigManager.getInstance().isKickIfIpChanged()
+                && !player.isOp()) {
+            player.kickPlayer(ChatColor.RED + "Your IP has changed, please contact an administrator.");
+            return false;
         }
+
+        return true;
+    }
+
+    private GroupData configurePlayerGroup(Player player, PlayerData playerData) {
+        GroupData groupData = GroupDatabase.getGroupData(playerData.getGroup());
+
+        if (groupData == null) {
+            player.kickPlayer(ChatColor.RED + "You don't have a group assigned, please contact an administrator.");
+            return null;
+        }
+
+        return groupData;
+    }
+
+    private void setupPlayerEnvironment(PlayerJoinEvent event, Player player, GroupData groupData) {
+        String prefix = (groupData != null) ? groupData.getPrefix() : "&b[Warrior]";
         prefix = ChatColor.translateAlternateColorCodes('&', prefix);
+
         event.setJoinMessage(prefix + " " + ChatColor.YELLOW + player.getName() + " ha entrado al mundo DeathScape");
 
         if (player.isOnline()) {
             plugin.time_of_connection.put(player.getName(), System.currentTimeMillis());
         }
+
         playerController.setPlayerRank(player, prefix);
         playerController.setUpTabList(player);
+    }
 
-        // Teletransportar al jugador al mundo de espera
-        if (queueWorld != null) {
-            Location queueSpawn = new Location(queueWorld, 0, 1, 0); // Coordenadas de la isla de espera
-            player.teleport(queueSpawn);
+    private void handlePlayerTeleportAndHealth(Player player, PlayerData playerData) {
+        World spawnWorld = Bukkit.getWorld("world_minecraft_spawn");
+        World overworld = Bukkit.getWorld("world");
+
+        if (spawnWorld != null) {
+            // Teletransportar al spawn y establecer vida máxima
+            player.teleport(new Location(spawnWorld, 0, 1, 0));
+            player.setHealth(player.getMaxHealth());
             player.sendTitle(
                     ChatColor.AQUA + "🌐 Bienvenido a " + ChatColor.BOLD + "DeathScape",
                     ChatColor.YELLOW + "Estamos verificando el estado del servidor...",
                     20, 100, 20
             );
 
-            // Espera de 3 segundos para comprobar el estado de la cola.
-            new BukkitRunnable() {
-                @Override
-                public void run() {
-                    playerController.addPlayerToServer(player);
-
-                    // Inicia el bucle de comprobación de la posición en la cola.
-                    new BukkitRunnable() {
-                        @Override
-                        public void run() {
-                            int position = playerController.getQueuePosition(player); // Obtener la posición del jugador en la cola
-                            if (position > 0) {
-                                player.sendTitle(
-                                        ChatColor.AQUA + "🌐 DeathScape",
-                                        ChatColor.YELLOW + "Estás en la posición " + ChatColor.AQUA + position + ChatColor.YELLOW + " de la cola.",
-                                        20, 100, 20
-                                );
-                            } else {
-                                player.sendTitle(
-                                        ChatColor.AQUA + "🌐 DeathScape",
-                                        ChatColor.YELLOW + "¡Es tu turno! ¡Bienvenido a DeathScape!",
-                                        20, 100, 20
-                                );
-                                cancel(); // Detener el bucle una vez que el jugador es procesado.
-                            }
-                        }
-                    }.runTaskTimer(plugin, 0, 800); // Repetir cada 40 segundos
-                }
-            }.runTaskLater(plugin, 100); // 5 segundos = 100 ticks
-
+            // Manejo de cola y verificación
+            handleQueue(player);
         } else {
-            player.kickPlayer(ChatColor.RED + "The queue world is not available. Please contact an administrator.");
-            return; // Detener el flujo
+            player.kickPlayer(ChatColor.RED + "The spawn world is not available. Please contact an administrator.");
         }
+    }
+
+    private void handleQueue(Player player) {
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                playerController.addPlayerToServer(player);
+
+                // Bucle para verificar posición en la cola
+                new BukkitRunnable() {
+                    @Override
+                    public void run() {
+                        int position = playerController.getQueuePosition(player);
+
+                        if (position > 0) {
+                            player.sendTitle(
+                                    ChatColor.AQUA + "🌐 DeathScape",
+                                    ChatColor.YELLOW + "Estás en la posición " + ChatColor.AQUA + position + ChatColor.YELLOW + " de la cola.",
+                                    20, 100, 20
+                            );
+                        } else {
+                            player.sendTitle(
+                                    ChatColor.AQUA + "🌐 DeathScape",
+                                    ChatColor.YELLOW + "¡Es tu turno! ¡Bienvenido a DeathScape!",
+                                    20, 100, 20
+                            );
+                            cancel(); // Detener bucle
+                        }
+                    }
+                }.runTaskTimer(plugin, 0, 800); // Repetir cada 40 segundos
+            }
+        }.runTaskLater(plugin, 100); // Ejecutar después de 5 segundos (100 ticks)
     }
 }

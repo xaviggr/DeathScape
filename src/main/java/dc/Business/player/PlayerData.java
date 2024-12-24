@@ -23,9 +23,18 @@ public class PlayerData {
     private String coords;
     private String dimension;
     private String group;
+    private double health;
 
     public String getBanDate() {
         return banDate;
+    }
+
+    public double getHealth() {
+        return health;
+    }
+
+    public void setHealth(double health) {
+        this.health = health;
     }
 
     public String getName() {
@@ -113,6 +122,7 @@ public class PlayerData {
         this.points = points;
         this.group = group;
         this.dimension = "world";
+        this.health = 20;
     }
 
     public void setBanTime() {

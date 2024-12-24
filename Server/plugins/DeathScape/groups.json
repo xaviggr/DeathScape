@@ -43,7 +43,8 @@
       "REPORTS",
       "BANSHEE",
       "CHAT",
-      "MUTE"
+      "MUTE",
+      "HEAL"
     ],
     "players": []
   },
@@ -52,7 +53,10 @@
     "prefix": "\u0026a[Soporte]",
     "permissions": [
       "BANSHEE",
-      "TELEPORT"
+      "TELEPORT",
+      "HEAL",
+      "MUTE",
+      "CHAT"
     ],
     "players": []
   },

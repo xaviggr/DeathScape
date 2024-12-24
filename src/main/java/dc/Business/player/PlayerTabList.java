@@ -60,7 +60,7 @@ public class PlayerTabList {
         int health = (int) player.getHealth();
         player.setPlayerListName(
                         ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(GroupDatabase.getPrefixFromGroup(playerController.getGroupFromPlayer(player)))) +
-                        ChatColor.WHITE + player.getName() +
+                        " " + ChatColor.WHITE + player.getName() +
                         ChatColor.RED + " " + health + "❤" +
                         ChatColor.YELLOW + " " + playerData.getPoints() + "⦿");
         player.setPlayerListHeaderFooter(modifiedHeader, footer);

@@ -67,8 +67,8 @@ public class PlayerEditDatabase {
             }
             horas += new_horas;
 
-            playerdata.setTimePlayed(segundos + "s " + minutos + "m " + horas + "h");
-            PlayerDatabase.addPlayerDataToDatabase (playerdata);
+            playerdata.setTimePlayed(horas + "h " + minutos + "m " + segundos + "s");
+            PlayerDatabase.addPlayerDataToDatabase(playerdata);
         }
     }
 
@@ -140,5 +140,16 @@ public class PlayerEditDatabase {
         String[] coords = playerData.getCoords().split(",");
         World world = playerData.getDimension();
         return new Location(world, Double.parseDouble(coords[0]), Double.parseDouble(coords[1]), Double.parseDouble(coords[2]));
+    }
+
+    public static void setPlayerHealth(Player player) {
+        PlayerData playerData = PlayerDatabase.getPlayerDataFromDatabase(player.getName());
+        if (playerData == null) {
+            player.kickPlayer("Error al cargar tus datos, contacta con un administrador.");
+        } else {
+            playerData.setHealth(player.getHealth());
+            PlayerDatabase.addPlayerDataToDatabase(playerData);
+        }
+
     }
 }

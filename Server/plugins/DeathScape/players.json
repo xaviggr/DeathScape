@@ -4,13 +4,14 @@
     "isDead": false,
     "deaths": 0,
     "hostAddress": "192.168.1.134",
-    "timePlayed": "32s 11m 0h",
+    "timePlayed": "0h 7m 25s",
     "uuid": "cb185b4b-cea7-43bb-a340-571c9bb6c3a5",
     "points": 0,
     "banDate": "0",
     "bantime": "0",
-    "coords": "3980.7829260270555,76.0,-547.5504892360995",
+    "coords": "4082.538417475356,76.0,-555.9454888729433",
     "dimension": "world",
-    "group": "owner"
+    "group": "owner",
+    "health": 497.0
   }
 }

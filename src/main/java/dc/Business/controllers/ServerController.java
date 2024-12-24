@@ -1,14 +1,18 @@
 package dc.Business.controllers;
 
+import dc.Business.player.PlayerData;
 import dc.DeathScape;
 import dc.Persistence.config.MainConfigManager;
+import dc.Persistence.player.PlayerDatabase;
 import dc.Persistence.player.PlayerEditDatabase;
+import dc.utils.Info;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.io.File;
 import java.io.IOException;
@@ -24,6 +28,7 @@ public class ServerController {
 
     private int playerCounter = 0; // Contador de jugadores
     private final Queue<Player> queue = new LinkedList<>(); // Cola de jugadores
+    public static List<Player> SleepingPlayers = new ArrayList<>();
 
     public ServerController(DeathScape plugin) {
         this.plugin = plugin;
@@ -143,6 +148,8 @@ public class ServerController {
                 return;
             }
             player.teleport(location);
+            PlayerData playerData = PlayerDatabase.getPlayerDataFromDatabase(player.getName());
+            player.setHealth(playerData.getHealth());
             increasePlayerCounter();
         }
     }

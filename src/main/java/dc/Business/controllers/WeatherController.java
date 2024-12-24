@@ -24,7 +24,12 @@ public class WeatherController {
         startStormIfNeeded();
     }
 
-    private void startStormIfNeeded() {
+    public boolean isNightTime() {
+        long time = Bukkit.getWorlds().get(0).getTime();
+        return time >= 13000 && time <= 23000;
+    }
+
+    public void startStormIfNeeded() {
         // Activa la tormenta si hay tiempo pendiente y la tarea no está activa
         if (serverController.getStormPendingTime() > 0 && !serverController.isRainTaskActive()) {
             Bukkit.getWorlds().get(0).setStorm(true);
@@ -52,5 +57,14 @@ public class WeatherController {
         // Detiene la tormenta y marca la tarea como inactiva
         Bukkit.getWorlds().get(0).setStorm(false);
         serverController.setRainTaskActive(false);
+    }
+
+    public void setDayTime() {
+        // Establece el tiempo del mundo a día
+        Bukkit.getWorlds().get(0).setTime(0);
+    }
+
+    public boolean isThundering() {
+        return Bukkit.getWorlds().get(0).isThundering();
     }
 }

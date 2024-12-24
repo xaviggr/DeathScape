@@ -3,16 +3,11 @@ package dc.Business.player;
 import dc.DeathScape;
 import dc.Persistence.config.MainConfigManager;
 import dc.Persistence.player.PlayerEditDatabase;
-import dc.utils.Message;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.Skull;
-import org.bukkit.block.data.type.Slab;
-import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Player;
-import org.bukkit.entity.EntityType;
 import org.bukkit.event.Listener;
-import org.bukkit.scheduler.BukkitRunnable;
 
 import static org.bukkit.Bukkit.getServer;
 
@@ -37,8 +32,6 @@ public class PlayerDeath implements Listener {
 
         // Notify all players about the death
         for (Player checkingPlayer : Bukkit.getOnlinePlayers()) {
-            Message.enviarMensajeColorido(player, "El jugador " + victim + " ha muerto!", ChatColor.RED);
-
             String deathTitle = MainConfigManager.getInstance().getDeathMessageTitle();
             String deathSubtitle = MainConfigManager.getInstance().getDeathMessageSubtitle();
 

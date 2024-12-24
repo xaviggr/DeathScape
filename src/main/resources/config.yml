@@ -14,7 +14,7 @@ messages:
   totem_failure: "&cEl jugador &a{playerName} &cusó un tótem con probabilidad &4{randomValue}&f/&9{successProbability}"
   totem_broadcast_success: "&a¡El jugador &b{playerName} &aha sobrevivido gracias a su tótem con una probabilidad de &b{randomValue}&f/&c{successProbability}&a!"
 config:
-  kick_if_ip_changed: true
+  kick_if_ip_changed: false
   storm_time: 10
   points_to_reduce_on_death: 5
   totem_success_probability: 50
@@ -58,6 +58,7 @@ groups:
       - "banshee"
       - "chat"
       - "mute"
+      - "heal"
     players:
 
   soporte:
@@ -65,6 +66,9 @@ groups:
     permissions:
       - "banshee"
       - "teleport"
+      - "heal"
+      - "mute"
+      - "chat"
     players:
 
   youtuber_streamer:

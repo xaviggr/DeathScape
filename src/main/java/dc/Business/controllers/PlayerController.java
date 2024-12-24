@@ -273,7 +273,7 @@ public class PlayerController {
         // Save player time played and coordinates if is not in spawn world
         if (!Objects.requireNonNull(player.getLocation().getWorld()).getName().equals("world_minecraft_spawn")) {
             PlayerEditDatabase.setPlayerCoords(player);
-            handleTimePlayed(player);
+            handleTimePlayedAndRemove(player);
         }
         deactivateBanshee(player);
         plugin.getServerData().decreasePlayerCounter();
@@ -289,7 +289,8 @@ public class PlayerController {
     public void savePlayerData(Player player) {
         if (!Objects.requireNonNull(player.getLocation().getWorld()).getName().equals("world_minecraft_spawn")) {
             PlayerEditDatabase.setPlayerCoords(player);
-            handleTimePlayed(player);
+            PlayerEditDatabase.setPlayerHealth(player);
+            updateTimePlayed(player);
         }
     }
 
@@ -308,17 +309,38 @@ public class PlayerController {
         }.runTaskTimer(plugin, 0, 6000); // 5 minutos
     }
 
-    private void handleTimePlayed(Player player) {
+    public void updateTimePlayed(Player player) {
+        // Actualizar tiempo en la base de datos sin eliminar al jugador
+        calculateAndUpdateTime(player, false);
+    }
+
+    public void handleTimePlayedAndRemove(Player player) {
+        // Actualizar tiempo en la base de datos y eliminar al jugador
+        calculateAndUpdateTime(player, true);
+    }
+
+    private void calculateAndUpdateTime(Player player, boolean removeAfterUpdate) {
+        // Verificar si el jugador tiene un tiempo de conexión registrado
         if (plugin.time_of_connection.containsKey(player.getName())) {
             long initTime = plugin.time_of_connection.get(player.getName());
             long actualTime = System.currentTimeMillis();
             long onlineTime = actualTime - initTime;
 
-            int segundos = Integer.parseInt(String.valueOf((int) (onlineTime / 1000) % 60));
-            int minutos = Integer.parseInt(String.valueOf((int) ((onlineTime / (1000 * 60)) % 60)));
-            int horas = Integer.parseInt(String.valueOf((int) ((onlineTime / (1000 * 60 * 60)) % 24)));
+            // Convertir el tiempo en horas, minutos y segundos
+            int segundos = (int) ((onlineTime / 1000) % 60);
+            int minutos = (int) ((onlineTime / (1000 * 60)) % 60);
+            int horas = (int) ((onlineTime / (1000 * 60 * 60)));
+
+            // Actualizar el tiempo en la base de datos
             PlayerEditDatabase.setPlayerTimePlayed(player, segundos, minutos, horas);
-            plugin.time_of_connection.remove(player.getName());
+
+            if (removeAfterUpdate) {
+                // Eliminar al jugador de la lista de conexión
+                plugin.time_of_connection.remove(player.getName());
+            } else {
+                // Actualizar el tiempo inicial para el próximo cálculo
+                plugin.time_of_connection.put(player.getName(), actualTime);
+            }
         }
     }
 
