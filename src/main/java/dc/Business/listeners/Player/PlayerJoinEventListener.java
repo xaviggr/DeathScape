@@ -46,16 +46,22 @@ public class PlayerJoinEventListener implements Listener {
         setupPlayerEnvironment(event, player, groupData);
 
         // Teletransportar y manejar vida en mundos específicos
-        handlePlayerTeleportAndHealth(player, playerData);
+        handlePlayerTeleportAndHealth(player);
     }
 
     private PlayerData loadOrCreatePlayerData(Player player, String hostAddress) {
         PlayerData playerData = PlayerDatabase.getPlayerDataFromDatabase(player.getName());
 
         if (playerData == null) {
+            //Get world spawn point overworld
+            World world = Bukkit.getWorld("world");
+            assert world != null;
+            Location location = world.getSpawnLocation();
+            String spawnPos = location.getBlockX() + "," + location.getBlockY() + "," + location.getBlockZ();
+
             // Crear nuevos datos de jugador
             playerData = new PlayerData(player.getName(), false, 0, hostAddress, "0", player.getUniqueId(), "0", "0",
-                    "0,0,0", 0, "default");
+                    spawnPos, 0, "default");
 
             if (!PlayerDatabase.addPlayerDataToDatabase(playerData)) {
                 player.kickPlayer(ChatColor.RED + "Error loading your data, please contact an administrator.");
@@ -110,9 +116,8 @@ public class PlayerJoinEventListener implements Listener {
         playerController.setUpTabList(player);
     }
 
-    private void handlePlayerTeleportAndHealth(Player player, PlayerData playerData) {
+    private void handlePlayerTeleportAndHealth(Player player) {
         World spawnWorld = Bukkit.getWorld("world_minecraft_spawn");
-        World overworld = Bukkit.getWorld("world");
 
         if (spawnWorld != null) {
             // Teletransportar al spawn y establecer vida máxima

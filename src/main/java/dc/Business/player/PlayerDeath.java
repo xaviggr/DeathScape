@@ -53,7 +53,6 @@ public class PlayerDeath implements Listener {
 
         // Update player status in database
         PlayerEditDatabase.setPlayerAsDeath(player);
-        PlayerEditDatabase.setPlayerCoords(player);
     }
 
     /**
@@ -62,11 +61,8 @@ public class PlayerDeath implements Listener {
      */
     private void handlePlayerBan(Player player) {
         if (player.isOnline()) {
-            // Schedule ban and kick the player after a short delay
-            getServer().getScheduler().runTaskLater(plugin, () -> {
-                playerBan.Ban(player, ChatColor.RED + MainConfigManager.getInstance().getBanMessage(), null);
-                player.kickPlayer(ChatColor.RED + MainConfigManager.getInstance().getBanMessage());
-            }, 2 * 20L);  // Delay of 2 seconds
+            playerBan.Ban(player, ChatColor.RED + MainConfigManager.getInstance().getBanMessage(), null);
+            player.kickPlayer(ChatColor.RED + MainConfigManager.getInstance().getBanMessage());
         } else {
             // If player is offline, immediately ban them
             playerBan.Ban(player, ChatColor.RED + MainConfigManager.getInstance().getBanMessage(), null);
@@ -105,5 +101,4 @@ public class PlayerDeath implements Listener {
         // Reproducir un sonido en la ubicación de muerte
         world.playSound(player.getLocation(), Sound.ENTITY_WITHER_DEATH, 1.0f, 0.5f);
     }
-
 }

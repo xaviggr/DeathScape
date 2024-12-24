@@ -27,7 +27,7 @@ public class PlayerQuitEventListener implements Listener {
 
         // Verificar si el jugador tiene poca vida
         double healthThreshold = 4.0; // Cambia esto según el umbral de vida deseado
-        if (player.getHealth() <= healthThreshold && PlayerDamageListener.hasReceivedRecentDamage(player)) {
+        if (player.getHealth() <= healthThreshold && PlayerDamageListener.hasReceivedRecentDamage(player) && !player.isDead()) {
             // Notificar a los jugadores sobre el baneo
             Bukkit.broadcastMessage(ChatColor.RED + "El jugador " + player.getName() + " ha sido baneado por desconectarse tras recibir daño con poca vida.");
 
@@ -37,6 +37,15 @@ public class PlayerQuitEventListener implements Listener {
 
         playerController.removePlayerFromServer(player);
         playerController.savePlayerData(player);
+
+        if (player.isDead() || player.getHealth() <= 0) {
+            double x = 4104; // Cambia estas coordenadas según tu mundo
+            double y = 53;
+            double z = -547;
+
+            String position = x + "," + y + "," + z;
+            PlayerEditDatabase.setPlayerReSpawnCoords(position, player.getName());
+        }
     }
 
     private void handlePlayerBan(Player player) {

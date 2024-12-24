@@ -2,16 +2,16 @@
   "xaviggr": {
     "name": "xaviggr",
     "isDead": false,
-    "deaths": 0,
+    "deaths": 2,
     "hostAddress": "192.168.1.134",
-    "timePlayed": "0h 7m 25s",
+    "timePlayed": "0h 5m 14s",
     "uuid": "cb185b4b-cea7-43bb-a340-571c9bb6c3a5",
     "points": 0,
-    "banDate": "0",
-    "bantime": "0",
-    "coords": "4082.538417475356,76.0,-555.9454888729433",
+    "banDate": "25/12/2024",
+    "bantime": "00:48:56",
+    "coords": "4104.0,53.0,-547.0",
     "dimension": "world",
-    "group": "owner",
-    "health": 497.0
+    "group": "default",
+    "health": 10.0
   }
 }

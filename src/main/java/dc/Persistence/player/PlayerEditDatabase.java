@@ -97,12 +97,25 @@ public class PlayerEditDatabase {
         }
     }
 
+    public static void setPlayerReSpawnCoords(String position, String playerName) {
+        PlayerData playerdata = PlayerDatabase.getPlayerDataFromDatabase (playerName);
+
+        if (playerdata == null) {
+            Objects.requireNonNull(Bukkit.getPlayer(playerName)).kickPlayer ("Error al cargar tus datos, contacta con un administrador.");
+        } else {
+            playerdata.setCoords(position);
+            playerdata.setDimension(Objects.requireNonNull(Bukkit.getWorld("world")).getName());
+            PlayerDatabase.addPlayerDataToDatabase (playerdata);
+        }
+    }
+
     public static void UnbanPlayer(String player_name) {
         PlayerData playerdata = PlayerDatabase.getPlayerDataFromDatabase (player_name);
         if (playerdata != null) {
             playerdata.setDead(false);
             playerdata.setBanDate("0");
             playerdata.setBantime("0");
+            playerdata.setHealth(20);
             PlayerDatabase.addPlayerDataToDatabase (playerdata);
         }
     }
@@ -151,5 +164,13 @@ public class PlayerEditDatabase {
             PlayerDatabase.addPlayerDataToDatabase(playerData);
         }
 
+    }
+
+    public static boolean isPlayerBanned(String targetPlayer) {
+        PlayerData playerData = PlayerDatabase.getPlayerDataFromDatabase(targetPlayer);
+        if (playerData == null) {
+            return false;
+        }
+        return playerData.isDead();
     }
 }

@@ -18,5 +18,6 @@ public class PlayerListener {
         plugin.getServer().getPluginManager().registerEvents(new PlayerSleepEventListener(weatherController), plugin);
         plugin.getServer().getPluginManager().registerEvents(new EntityResurrectEventListener(totemController, playerController), plugin);
         plugin.getServer().getPluginManager().registerEvents(new PlayerKillListener(playerController), plugin);
+        plugin.getServer().getPluginManager().registerEvents(new PlayerRespawnListener(playerController), plugin);
     }
 }

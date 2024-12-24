@@ -26,17 +26,18 @@ public class PlayerSleepEventListener implements Listener {
         Player player = event.getPlayer();
         World world = player.getWorld();
 
-        // Verificar si es de noche
+        // Cancelar el evento si es de noche
         if (!weatherController.isNightTime()) {
-            Message.enviarMensajeColorido(player, "¡Solo puedes dormir durante la noche!", ChatColor.RED);
             event.setCancelled(true);
-            return; // Salir si no es de noche
+            Message.enviarMensajeColorido(player, "No puedes dormir durante el día.", ChatColor.RED);
+            return;
         }
 
-        if (weatherController.isThundering()) {
-            Message.enviarMensajeColorido(player, "¡No puedes dormir durante una tormenta!", ChatColor.RED);
+        // Cancelar el evento si intenta dormir durante el dia con tormenta
+        if (world.hasStorm() && !weatherController.isNightTime()) {
             event.setCancelled(true);
-            return; // Salir si hay tormenta
+            Message.enviarMensajeColorido(player, "No puedes dormir durante la tormenta.", ChatColor.RED);
+            return;
         }
 
         // Agregar jugador a la lista de durmiendo

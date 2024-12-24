@@ -194,7 +194,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         commandMap.put("discord", () -> showDiscord(player));
         commandMap.put("tiempojugado", () -> showPlayTime(player));
         commandMap.put("dia", () -> showDay(player));
-        commandMap.put("heal", () -> playerController.healPlayer(player));
+        commandMap.put("heal", () -> handleHealCommand(player, group, args));
         commandMap.put("back", () -> handleBackCommand(player, group));
         commandMap.put("añadirusuarioagrupo", () -> handleAddUserToGroupCommand(player, args, group));
         commandMap.put("quitarusuariodegrupo", () -> handleRemoveUserFromGroupCommand(player, args, group));
@@ -211,6 +211,26 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
 
         // Ejecuta el comando correspondiente
         return commandMap.get(args[0].toLowerCase());
+    }
+
+    private void handleHealCommand(Player player, GroupData group, String[] args) {
+        if (!group.getPermissions().contains(Permission.HEAL)) {
+            sendNoPermissionMessage(player);
+            return;
+        }
+
+        if (args.length < 2) {
+            player.sendMessage(ChatColor.RED + "Uso: /heal <nombre del jugador>");
+            return;
+        }
+
+        Player target = Bukkit.getPlayer(args[1]);
+        if (target == null || !target.isOnline()) {
+            player.sendMessage(ChatColor.RED + "El jugador especificado no está en línea.");
+            return;
+        }
+
+        playerController.healPlayer(target);
     }
 
     private void handleUnMutePlayer(Player player, String[] args, GroupData group) {
@@ -502,8 +522,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         }
 
         String targetPlayer = args[1];
-        if (Bukkit.getBanList(org.bukkit.BanList.Type.NAME).isBanned(targetPlayer)) {
-            Bukkit.getBanList(org.bukkit.BanList.Type.NAME).pardon(targetPlayer);
+        if (PlayerEditDatabase.isPlayerBanned(targetPlayer)) {
             PlayerEditDatabase.UnbanPlayer(targetPlayer);
             Message.enviarMensajeColorido(player, "El jugador " + targetPlayer + " ha sido desbaneado.", ChatColor.GREEN);
         } else {

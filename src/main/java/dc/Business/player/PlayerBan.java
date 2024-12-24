@@ -9,7 +9,6 @@ import java.util.Date;
 
 public class PlayerBan {
     public void Ban(Player player, String Reason, Date date) {
-        Bukkit.getBanList (BanList.Type.NAME).addBan (player.getName (), Reason, date, "console");
         PlayerEditDatabase.setPlayerBanDate(player);
     }
 }
