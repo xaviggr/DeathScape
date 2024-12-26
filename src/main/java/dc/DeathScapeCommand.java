@@ -161,28 +161,22 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player player)) {
-            if (args[0].equalsIgnoreCase("revive")) {
-                Player target = Bukkit.getPlayer(args[1]);
-                if (target == null || !target.isOnline()) {
-                    sender.sendMessage(ChatColor.RED + "El jugador especificado no está en línea.");
-                } else {
-                    reviveInventory.openInventory(target);
-                }
-            } else if (args[0].equalsIgnoreCase("addPoints")) {
-                Player target = Bukkit.getPlayer(args[1]);
-                if (target == null || !target.isOnline()) {
-                    sender.sendMessage(ChatColor.RED + "El jugador especificado no está en línea.");
-                } else {
-                    playerController.addPointsToPlayer(target, Integer.parseInt(args[2]));
-                }
+            // Handle server commands using the server-specific command map
+            if (args.length == 0) {
+                sender.sendMessage(ChatColor.RED + "Invalid command! Use /deathscape help for a list of commands.");
+                return false;
+            }
 
+            Runnable serverCommandAction = getServerRunnable(args, sender);
+            if (serverCommandAction != null) {
+                serverCommandAction.run();
             } else {
-                sender.sendMessage(ChatColor.RED + "Este comando solo puede ser ejecutado por un jugador.");
+                sender.sendMessage(ChatColor.RED + "Unknown server command. Use /deathscape help for valid commands.");
             }
             return true;
         }
 
-        // Verificación de datos del jugador y su grupo
+        // Verifications for player commands
         PlayerData playerData = PlayerDatabase.getPlayerDataFromDatabase(player.getName());
         if (playerData == null || !validateGroup(player, playerData)) {
             return true;
@@ -199,7 +193,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
             return false;
         }
 
-        // Mapa de comandos y sus respectivos manejadores
+        // Map commands to their corresponding actions
         Runnable commandAction = getRunnable(args, player, group);
         if (commandAction != null) {
             commandAction.run();
@@ -249,6 +243,82 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
 
         // Ejecuta el comando correspondiente
         return commandMap.get(args[0].toLowerCase());
+    }
+
+    /**
+     * Maps server commands to their corresponding actions.
+     * @param args The arguments provided by the user.
+     * @param sender The command sender.
+     * @return The action to be executed, or null if the command is invalid.
+     */
+    private Runnable getServerRunnable(String[] args, CommandSender sender) {
+        Map<String, Runnable> commandMap = new HashMap<>();
+
+        commandMap.put("revive", () -> handleReviveCommand(args, sender));
+        commandMap.put("addPoints", () -> handleAddPointsCommand(args, sender));
+        commandMap.put("quitarban", () -> handleUnbanPlayerCommandServer(sender, args));
+
+        // Add more server commands here as needed...
+
+        return commandMap.get(args[0].toLowerCase());
+    }
+
+    private void handleUnbanPlayerCommandServer(CommandSender sender, String[] args) {
+        if (args.length < 2) {
+            sender.sendMessage(ChatColor.RED + "Usage: /quitarban <player>");
+            return;
+        }
+
+        String targetPlayer = args[1];
+        if (PlayerEditDatabase.isPlayerBanned(targetPlayer)) {
+            PlayerEditDatabase.UnbanPlayer(targetPlayer);
+            sender.sendMessage(ChatColor.GREEN + "Player " + targetPlayer + " has been unbanned.");
+        } else {
+            sender.sendMessage(ChatColor.RED + "Player " + targetPlayer + " is not banned.");
+        }
+    }
+
+    /**
+     * Method to handle the addition of points to a player.
+     * @param args The arguments provided by the user.
+     * @param sender The command sender.
+     */
+    private void handleAddPointsCommand(String[] args, CommandSender sender) {
+        if (args.length < 3) {
+            sender.sendMessage(ChatColor.RED + "Usage: /addPoints <player> <amount>");
+            return;
+        }
+        Player target = Bukkit.getPlayer(args[1]);
+        if (target == null || !target.isOnline()) {
+            sender.sendMessage(ChatColor.RED + "The specified player is not online.");
+        } else {
+            try {
+                int points = Integer.parseInt(args[2]);
+                playerController.addPointsToPlayer(target, points);
+                sender.sendMessage(ChatColor.GREEN + "Added " + points + " points to " + target.getName() + ".");
+            } catch (NumberFormatException e) {
+                sender.sendMessage(ChatColor.RED + "Invalid points amount. Please enter a number.");
+            }
+        }
+    }
+
+    /**
+     * Method that handles the "/revive" command.
+     * @param args The arguments provided by the user.
+     * @param sender The command sender.
+     */
+    private void handleReviveCommand(String[] args, CommandSender sender) {
+        if (args.length < 2) {
+            sender.sendMessage(ChatColor.RED + "Usage: /revive <player>");
+            return;
+        }
+        Player target = Bukkit.getPlayer(args[1]);
+        if (target == null || !target.isOnline()) {
+            sender.sendMessage(ChatColor.RED + "The specified player is not online.");
+        } else {
+            reviveInventory.openInventory(target);
+            sender.sendMessage(ChatColor.GREEN + "Revive menu opened for " + target.getName() + ".");
+        }
     }
 
     /**
