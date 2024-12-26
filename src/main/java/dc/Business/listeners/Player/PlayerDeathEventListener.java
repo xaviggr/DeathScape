@@ -3,7 +3,6 @@ package dc.Business.listeners.Player;
 import dc.Business.controllers.PlayerController;
 import dc.Business.controllers.WeatherController;
 import dc.Business.controllers.AnimationController;
-import dc.Persistence.player.PlayerEditDatabase;
 import org.bukkit.Location;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -13,63 +12,86 @@ import org.bukkit.entity.Player;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+
 import dc.Business.controllers.DiscordController;
 
+/**
+ * Listener for handling player death events. Integrates with multiple controllers
+ * to manage player state, weather effects, animations, and Discord notifications.
+ */
 public class PlayerDeathEventListener implements Listener {
 
     private final PlayerController playerController;
     private final WeatherController weatherController;
     private final AnimationController animationController;
-    private final String webhookURL = "https://discord.com/api/webhooks/1312191406810468363/K6Qg0h3FtcxtKpFvxeqcl4d915Z3oWpOoFw6S1xpvcZOGkCjdZ_QCk7UvnvNlSnQ9nV9";
-    DiscordController discordController = new DiscordController(webhookURL);
 
-    // Mapeo de nombres de mundos
+    /**
+     * Discord webhook URL for sending death notifications.
+     */
+    private final String webhookURL = "https://discord.com/api/webhooks/1312191406810468363/K6Qg0h3FtcxtKpFvxeqcl4d915Z3oWpOoFw6S1xpvcZOGkCjdZ_QCk7UvnvNlSnQ9nV9";
+    private final DiscordController discordController = new DiscordController(webhookURL);
+
+    /**
+     * A map to translate internal world names into user-friendly names.
+     */
     private final Map<String, String> worldNameMap = new HashMap<>();
 
+    /**
+     * Constructs a `PlayerDeathEventListener` and initializes its dependencies.
+     *
+     * @param playerController    The controller managing player-related functionality.
+     * @param weatherController   The controller managing weather-related functionality.
+     * @param animationController The controller managing death animations.
+     */
     public PlayerDeathEventListener(PlayerController playerController, WeatherController weatherController, AnimationController animationController) {
         this.playerController = playerController;
         this.weatherController = weatherController;
         this.animationController = animationController;
 
-        // Inicialización del mapa de nombres de mundos
+        // Initialize the world name mapping
         worldNameMap.put("world", "Overworld");
         worldNameMap.put("world_nether", "Nether");
         worldNameMap.put("world_the_end", "End");
         worldNameMap.put("world_minecraft_rift", "Rift");
     }
 
+    /**
+     * Handles the `PlayerDeathEvent` triggered when a player dies.
+     * Updates player state, triggers weather effects, starts death animations,
+     * and sends a notification to Discord.
+     *
+     * @param event The `PlayerDeathEvent` triggered on player death.
+     */
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event) {
         Player player = Objects.requireNonNull(event.getEntity().getPlayer());
+
+        // Update player state, weather, and start death animation
         playerController.setPlayerAsDead(player);
         weatherController.updateStormOnPlayerDeath();
         animationController.startDeathAnimation(player);
 
-        player = event.getEntity();
-        Player killer = player.getKiller(); // Puede ser null si no hay asesino
-
-        // Detalles de la muerte
+        // Extract death details
         String playerName = player.getName();
         String worldName = player.getWorld().getName();
         Location location = player.getLocation();
         String deathCause = event.getDeathMessage();
+
         if (deathCause == null) {
-            deathCause = "Unknown cause"; // Mensaje por defecto si es nulo
+            deathCause = "Unknown cause"; // Default message if null
         } else {
-            // Eliminar colores y formatos (caracteres como §b, §r, etc.)
+            // Remove color codes and formatting (e.g., §b, §r, etc.)
             deathCause = deathCause.replaceAll("§[0-9a-fk-or]", "");
 
-            // Eliminar prefijos específicos del formato [Warrior]
+            // Remove specific prefixes like [Warrior]
             deathCause = deathCause.replaceAll("\\[[^]]*] ", "");
         }
 
-        // Cambiar el nombre del mundo a algo más amigable
-        worldName = worldNameMap.getOrDefault(worldName, worldName); // Si no está en el mapa, usar el original
+        // Convert internal world name to user-friendly name
+        worldName = worldNameMap.getOrDefault(worldName, worldName); // Use original if not in the map
 
-        // Mensaje de Discord
+        // Create and send Discord notification
         String jsonPayload = discordController.createDiscordMessage(playerName, worldName, location, deathCause);
-
-        // Enviar mensaje al webhook
         discordController.sendWebhookMessage(jsonPayload);
     }
 }

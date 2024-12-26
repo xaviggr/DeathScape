@@ -9,27 +9,41 @@ import java.io.*;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Handles the management of banned words and muted users for the chat system.
+ * This class provides methods to add, remove, and retrieve banned words and muted users
+ * from a JSON-based database file.
+ */
 public class BannedWordsDatabase {
 
-    private static String databaseFile;
+    private static String databaseFile; // Path to the JSON database file
 
+    /**
+     * Sets the path to the JSON database file.
+     *
+     * @param filename The path to the database file.
+     */
     public static void setDatabaseFile(String filename) {
         databaseFile = filename;
     }
 
+    /**
+     * Initializes the database file. If the file does not exist, it creates a new one
+     * with default JSON structure for banned words and muted users.
+     */
     public static void initDatabase() {
         File file = new File(databaseFile);
         if (!file.exists()) {
             try {
-                // Crear el archivo si no existe
+                // Create the file if it does not exist
                 file.createNewFile();
 
-                // Crear el objeto JSON inicial
+                // Create the initial JSON structure
                 JsonObject jsonObject = new JsonObject();
                 jsonObject.add("bannedWords", new JsonArray());
                 jsonObject.add("mutedUsers", new JsonArray());
 
-                // Escribir el objeto JSON al archivo
+                // Write the JSON structure to the file
                 writeJsonFile(jsonObject);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -37,7 +51,11 @@ public class BannedWordsDatabase {
         }
     }
 
-
+    /**
+     * Reads the JSON database file and returns its contents as a `JsonObject`.
+     *
+     * @return The `JsonObject` representation of the database file.
+     */
     private static JsonObject readJsonFile() {
         File file = new File(databaseFile);
         if (!file.exists()) {
@@ -58,6 +76,11 @@ public class BannedWordsDatabase {
         return new JsonObject();
     }
 
+    /**
+     * Writes a `JsonObject` to the database file.
+     *
+     * @param jsonObject The `JsonObject` to write to the file.
+     */
     private static void writeJsonFile(JsonObject jsonObject) {
         try (FileWriter fileWriter = new FileWriter(databaseFile)) {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -67,7 +90,13 @@ public class BannedWordsDatabase {
         }
     }
 
-    // Métodos para palabras prohibidas
+    // ------------------- Banned Words Management -------------------
+
+    /**
+     * Retrieves the set of banned words from the database.
+     *
+     * @return A set of banned words.
+     */
     public static Set<String> getBannedWords() {
         JsonObject jsonObject = readJsonFile();
         JsonArray bannedWordsArray = jsonObject.getAsJsonArray("bannedWords");
@@ -84,6 +113,11 @@ public class BannedWordsDatabase {
         return bannedWords;
     }
 
+    /**
+     * Adds a new banned word to the database.
+     *
+     * @param word The word to ban.
+     */
     public static void addBannedWord(String word) {
         JsonObject jsonObject = readJsonFile();
         JsonArray bannedWordsArray = jsonObject.getAsJsonArray("bannedWords");
@@ -97,6 +131,11 @@ public class BannedWordsDatabase {
         writeJsonFile(jsonObject);
     }
 
+    /**
+     * Removes a banned word from the database.
+     *
+     * @param word The word to unban.
+     */
     public static void removeBannedWord(String word) {
         JsonObject jsonObject = readJsonFile();
         JsonArray bannedWordsArray = jsonObject.getAsJsonArray("bannedWords");
@@ -114,7 +153,13 @@ public class BannedWordsDatabase {
         }
     }
 
-    // Métodos para usuarios silenciados
+    // ------------------- Muted Users Management -------------------
+
+    /**
+     * Retrieves the set of muted users from the database.
+     *
+     * @return A set of muted usernames.
+     */
     public static Set<String> getMutedUsers() {
         JsonObject jsonObject = readJsonFile();
         JsonArray mutedUsersArray = jsonObject.getAsJsonArray("mutedUsers");
@@ -132,6 +177,12 @@ public class BannedWordsDatabase {
         return mutedUsers;
     }
 
+    /**
+     * Adds a user to the muted users list with a specified unmute time.
+     *
+     * @param username   The username to mute.
+     * @param unmuteTime The time (in milliseconds) when the user will be unmuted.
+     */
     public static void addMutedUser(String username, long unmuteTime) {
         JsonObject jsonObject = readJsonFile();
         JsonArray mutedUsersArray = jsonObject.getAsJsonArray("mutedUsers");
@@ -141,7 +192,6 @@ public class BannedWordsDatabase {
             jsonObject.add("mutedUsers", mutedUsersArray);
         }
 
-        // Crear un objeto JSON para el usuario silenciado
         JsonObject mutedUserObject = new JsonObject();
         mutedUserObject.addProperty("username", username);
         mutedUserObject.addProperty("unmuteTime", unmuteTime);
@@ -150,6 +200,11 @@ public class BannedWordsDatabase {
         writeJsonFile(jsonObject);
     }
 
+    /**
+     * Removes a user from the muted users list.
+     *
+     * @param username The username to unmute.
+     */
     public static void removeMutedUser(String username) {
         JsonObject jsonObject = readJsonFile();
         JsonArray mutedUsersArray = jsonObject.getAsJsonArray("mutedUsers");
@@ -168,6 +223,13 @@ public class BannedWordsDatabase {
         }
     }
 
+    /**
+     * Checks if a user is currently muted.
+     * Automatically removes the user from the muted list if the mute duration has expired.
+     *
+     * @param username The username to check.
+     * @return True if the user is muted, false otherwise.
+     */
     public static boolean isUserMuted(String username) {
         JsonObject jsonObject = readJsonFile();
         JsonArray mutedUsersArray = jsonObject.getAsJsonArray("mutedUsers");
@@ -182,21 +244,20 @@ public class BannedWordsDatabase {
                 long unmuteTime = mutedUserObject.get("unmuteTime").getAsLong();
 
                 if (mutedUser.equalsIgnoreCase(username)) {
-                    // Verificar si el tiempo de silencio ha pasado
                     if (currentTime > unmuteTime) {
-                        // No añadir de nuevo al array (remueve el silencio)
+                        // Remove the user if the mute duration has expired
                         continue;
                     } else {
-                        return true; // Usuario sigue silenciado
+                        return true; // User is still muted
                     }
                 }
-                newMutedUsersArray.add(mutedUserObject); // Añadir usuarios aún silenciados
+                newMutedUsersArray.add(mutedUserObject);
             }
 
-            // Actualizar la base de datos con los usuarios que aún están silenciados
+            // Update the database with the remaining muted users
             jsonObject.add("mutedUsers", newMutedUsersArray);
             writeJsonFile(jsonObject);
         }
-        return false; // Usuario no está silenciado
+        return false; // User is not muted
     }
 }

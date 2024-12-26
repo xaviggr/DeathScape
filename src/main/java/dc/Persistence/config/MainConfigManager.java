@@ -2,7 +2,6 @@ package dc.Persistence.config;
 
 import dc.Business.groups.GroupData;
 import dc.Business.groups.Permission;
-import dc.Business.log.LogData;
 import dc.DeathScape;
 import dc.Persistence.chat.BannedWordsDatabase;
 import dc.Persistence.chat.ReportsDatabase;
@@ -16,11 +15,16 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Singleton class that manages the server's main configuration.
+ * This includes message configurations, general settings, and group management.
+ */
 public class MainConfigManager {
-    private static MainConfigManager instance;
-    private DeathScape plugin;
 
-    // Configuración de mensajes
+    private static MainConfigManager instance; // Singleton instance
+    private DeathScape plugin; // Reference to the main plugin
+
+    // Message Configuration
     private Boolean isWelcomeMessageEnabled;
     private String welcomeMessage;
     private String deathMessageTitle;
@@ -28,39 +32,55 @@ public class MainConfigManager {
     private String banMessage;
     private boolean isBanMessageEnabled;
 
-    // Configuración general
+    // General Configuration
     private boolean kickIfIpChanged;
     private int stormTime;
     private int pointsToReduceOnDeath;
     private int maxPlayersInWorld;
 
-    // Constructor privado
+    // Private constructor for Singleton
     private MainConfigManager() {}
 
-    // Método estático para acceder al Singleton
+    /**
+     * Initializes the MainConfigManager Singleton instance and loads the configuration.
+     *
+     * @param plugin The main plugin instance.
+     */
     public static void setInstance(DeathScape plugin) {
         if (instance == null) {
             instance = new MainConfigManager();
             instance.plugin = plugin;
+
+            // Set up database file paths
             PlayerDatabase.setNameFile(plugin.getDataFolder() + File.separator + "players.json");
             BannedWordsDatabase.setDatabaseFile(plugin.getDataFolder() + File.separator + "bannedWords.json");
             ReportsDatabase.setReportsFile(plugin.getDataFolder() + File.separator + "reports.json");
             GroupDatabase.setNameFile(plugin.getDataFolder() + File.separator + "groups.json");
             LogDatabase.setLogFile(plugin.getDataFolder() + File.separator + "logs.json");
+
+            // Load the configuration
             instance.loadConfig();
         }
     }
 
-    // Obtener la instancia del Singleton
+    /**
+     * Retrieves the Singleton instance of MainConfigManager.
+     *
+     * @return The Singleton instance.
+     */
     public static MainConfigManager getInstance() {
         return instance;
     }
 
-    // Cargar la configuración
+    /**
+     * Loads the configuration from the file.
+     */
     public void loadConfig() {
         loadMessageConfig();
         loadGeneralConfig();
     }
+
+    // ------------------- Message Configuration -------------------
 
     private void loadMessageConfig() {
         isWelcomeMessageEnabled = getConfig().getBoolean("messages.welcome_message.enabled");
@@ -71,6 +91,8 @@ public class MainConfigManager {
         banMessage = getConfig().getString("messages.ban_message.message");
     }
 
+    // ------------------- General Configuration -------------------
+
     private void loadGeneralConfig() {
         kickIfIpChanged = getConfig().getBoolean("config.kick_if_ip_changed");
         stormTime = getConfig().getInt("config.storm_time");
@@ -78,7 +100,13 @@ public class MainConfigManager {
         maxPlayersInWorld = getConfig().getInt("config.max_players_in_world");
     }
 
-    // Cargar grupos desde la configuración
+    // ------------------- Group Management -------------------
+
+    /**
+     * Retrieves a list of groups defined in the configuration file.
+     *
+     * @return A list of GroupData objects.
+     */
     public List<GroupData> getGroupsFromConfig() {
         List<GroupData> groups = new ArrayList<>();
         ConfigurationSection groupsSection = getConfig().getConfigurationSection("groups");
@@ -114,9 +142,15 @@ public class MainConfigManager {
         return new ArrayList<>(groupSection.getStringList("players"));
     }
 
-    // Acceso a la configuración de archivo
+    // ------------------- Configuration File Access -------------------
+
     private FileConfiguration fileConfiguration = null;
 
+    /**
+     * Retrieves the FileConfiguration object for accessing the configuration file.
+     *
+     * @return The FileConfiguration object.
+     */
     public FileConfiguration getConfig() {
         if (fileConfiguration == null) {
             reloadConfig();
@@ -124,6 +158,11 @@ public class MainConfigManager {
         return fileConfiguration;
     }
 
+    /**
+     * Reloads the configuration file from disk.
+     *
+     * @return True if the configuration was reloaded successfully, false otherwise.
+     */
     public boolean reloadConfig() {
         try {
             if (fileConfiguration == null) {
@@ -141,7 +180,8 @@ public class MainConfigManager {
         return true;
     }
 
-    // Métodos de acceso a la configuración
+    // ------------------- Getters for Configuration Values -------------------
+
     public boolean isKickIfIpChanged() {
         return kickIfIpChanged;
     }

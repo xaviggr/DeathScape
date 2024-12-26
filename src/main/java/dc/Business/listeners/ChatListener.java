@@ -16,75 +16,91 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.*;
 
+/**
+ * Listener for handling chat messages. Includes spam protection, banned word filtering,
+ * report handling, and custom formatting with group prefixes.
+ */
 public class ChatListener implements Listener {
 
-    private static final int SPAM_TIME_LIMIT = 2000; // Tiempo límite entre mensajes en milisegundos (2 segundos)
-    private static final int MESSAGE_HISTORY_LIMIT = 2; // Número máximo de mensajes en el historial
-    private static final int MESSAGE_EXPIRATION_TIME = 15000; // Tiempo para limpiar mensajes antiguos (15 segundos)
+    private static final int SPAM_TIME_LIMIT = 2000; // Time limit between messages in milliseconds (2 seconds)
+    private static final int MESSAGE_HISTORY_LIMIT = 2; // Maximum number of messages in history
+    private static final int MESSAGE_EXPIRATION_TIME = 15000; // Expiration time for old messages in milliseconds (15 seconds)
 
     private final PlayerController playerController;
     private final DeathScape plugin;
 
-    // Mapas para rastrear mensajes, timestamps y tiempo del último mensaje
     private final Map<Player, List<String>> playerMessages = new HashMap<>();
     private final Map<Player, List<Long>> messageTimestamps = new HashMap<>();
     private final Map<Player, Long> lastMessageTimes = new HashMap<>();
 
+    /**
+     * Constructs a `ChatListener` with the required player controller and plugin instance.
+     *
+     * @param playerController The controller managing player-related functionality.
+     * @param plugin           The instance of the DeathScape plugin.
+     */
     public ChatListener(PlayerController playerController, DeathScape plugin) {
         this.playerController = playerController;
         this.plugin = plugin;
     }
 
     /**
-     * Maneja el evento de chat de los jugadores.
+     * Handles player chat messages. Includes checks for spam, repeated messages,
+     * banned words, pending reports, and mutes.
+     *
+     * @param event The `AsyncPlayerChatEvent` triggered when a player sends a chat message.
      */
     @EventHandler
     public void onPlayerChat(AsyncPlayerChatEvent event) {
         Player player = event.getPlayer();
         String message = event.getMessage();
 
-        // Verificar si el jugador está spameando
-        if (isSpamming(player)) {
+        // Check for spam and cancel if necessary
+        if (isSpamming(player) && !player.isOp()) {
             cancelChat(event, player, "Estás escribiendo demasiado rápido. Por favor, reduce la velocidad.");
             return;
         }
 
-        // Verificar si el mensaje es repetido
-        if (isRepeatedMessage(player, message)) {
+        // Check for repeated messages and cancel if necessary
+        if (isRepeatedMessage(player, message) && !player.isOp()) {
             cancelChat(event, player, "No puedes enviar el mismo mensaje repetidamente.");
             return;
         }
 
-        // Guardar el mensaje y su timestamp
+        // Save the message and its timestamp
         saveMessage(player, message);
 
-        // Limpiar mensajes antiguos
+        // Clean up old messages
         startCleanupTask(player);
 
-        // Verificar si el jugador está reportando
+        // Handle reports if the player is reporting another player
         if (isPendingReport(player)) {
             handlePlayerReport(event, player, message);
             return;
         }
 
-        // Verificar si el mensaje contiene palabras prohibidas
+        // Check for banned words and cancel if necessary
         if (containsBannedWords(message)) {
             handleBannedWords(event, player);
             return;
         }
 
-        // Verificar si el jugador está silenciado
+        // Check if the player is muted and cancel if necessary
         if (playerController.isMuted(player)) {
             cancelChat(event, player, "Estás silenciado. No puedes enviar mensajes.");
             return;
         }
 
-        // Añadir prefijo del grupo y formatear el mensaje
+        // Format and send the chat message
         formatAndSendMessage(event, player, message);
     }
 
     /**
-     * Cancela el mensaje de chat y envía un mensaje al jugador.
+     * Cancels the player's chat message and sends them a reason for the cancellation.
+     *
+     * @param event  The chat event being handled.
+     * @param player The player whose message is being canceled.
+     * @param reason The reason for canceling the message.
      */
     private void cancelChat(AsyncPlayerChatEvent event, Player player, String reason) {
         event.setCancelled(true);
@@ -92,13 +108,16 @@ public class ChatListener implements Listener {
     }
 
     /**
-     * Guarda el mensaje del jugador y su timestamp.
+     * Saves the player's chat message and its timestamp for spam and repeat checks.
+     *
+     * @param player  The player who sent the message.
+     * @param message The message sent by the player.
      */
     private void saveMessage(Player player, String message) {
         playerMessages.computeIfAbsent(player, k -> new ArrayList<>()).add(message);
         messageTimestamps.computeIfAbsent(player, k -> new ArrayList<>()).add(System.currentTimeMillis());
 
-        // Limitar el historial a los últimos MESSAGE_HISTORY_LIMIT mensajes
+        // Limit the message history size
         List<String> messages = playerMessages.get(player);
         List<Long> timestamps = messageTimestamps.get(player);
         while (messages.size() > MESSAGE_HISTORY_LIMIT) {
@@ -108,7 +127,9 @@ public class ChatListener implements Listener {
     }
 
     /**
-     * Limpia mensajes antiguos de un jugador.
+     * Starts a cleanup task to remove old messages and timestamps.
+     *
+     * @param player The player whose message history is being cleaned.
      */
     private void startCleanupTask(Player player) {
         new BukkitRunnable() {
@@ -122,18 +143,21 @@ public class ChatListener implements Listener {
                 timestamps.removeIf(timestamp -> now - timestamp > MESSAGE_EXPIRATION_TIME);
                 messages.removeIf(msg -> timestamps.isEmpty());
             }
-        }.runTaskLater(plugin, 20L); // Limpiar después de 1 segundo
+        }.runTaskLater(plugin, 20L); // Run after 1 second
     }
 
     /**
-     * Verifica si el jugador está spameando.
+     * Checks if the player is sending messages too quickly (spamming).
+     *
+     * @param player The player to check for spam.
+     * @return True if the player is spamming, false otherwise.
      */
     private boolean isSpamming(Player player) {
         long now = System.currentTimeMillis();
         long lastMessageTime = lastMessageTimes.getOrDefault(player, 0L);
 
         if (now - lastMessageTime < SPAM_TIME_LIMIT) {
-            return true; // Considerar como spam
+            return true;
         }
 
         lastMessageTimes.put(player, now);
@@ -141,7 +165,11 @@ public class ChatListener implements Listener {
     }
 
     /**
-     * Verifica si el mensaje es repetido.
+     * Checks if the player's message is repeated.
+     *
+     * @param player  The player to check for repeated messages.
+     * @param message The message to check.
+     * @return True if the message is repeated, false otherwise.
      */
     private boolean isRepeatedMessage(Player player, String message) {
         List<String> recentMessages = playerMessages.getOrDefault(player, Collections.emptyList());
@@ -149,14 +177,21 @@ public class ChatListener implements Listener {
     }
 
     /**
-     * Verifica si el jugador está haciendo un reporte.
+     * Checks if the player is in the process of reporting another player.
+     *
+     * @param player The player to check for a pending report.
+     * @return True if the player is reporting, false otherwise.
      */
     private boolean isPendingReport(Player player) {
         return ReportInventory.getPendingReports().containsKey(player);
     }
 
     /**
-     * Maneja el mensaje si el jugador está reportando.
+     * Handles the player's report submission.
+     *
+     * @param event    The chat event being handled.
+     * @param player   The player submitting the report.
+     * @param comment  The report comment provided by the player.
      */
     private void handlePlayerReport(AsyncPlayerChatEvent event, Player player, String comment) {
         event.setCancelled(true);
@@ -167,14 +202,21 @@ public class ChatListener implements Listener {
     }
 
     /**
-     * Envía un reporte al sistema de base de datos.
+     * Submits the report to the database.
+     *
+     * @param reporter      The player submitting the report.
+     * @param reportedPlayer The player being reported.
+     * @param comment       The comment provided with the report.
      */
     private void sendReport(Player reporter, String reportedPlayer, String comment) {
         ReportsDatabase.addReport(reporter.getName(), reportedPlayer, comment);
     }
 
     /**
-     * Verifica si el mensaje contiene palabras prohibidas.
+     * Checks if the message contains banned words.
+     *
+     * @param message The message to check.
+     * @return True if the message contains banned words, false otherwise.
      */
     private boolean containsBannedWords(String message) {
         return BannedWordsDatabase.getBannedWords().stream()
@@ -182,40 +224,44 @@ public class ChatListener implements Listener {
     }
 
     /**
-     * Maneja un mensaje con palabras prohibidas.
+     * Handles chat messages containing banned words.
+     *
+     * @param event  The chat event being handled.
+     * @param player The player who sent the message.
      */
     private void handleBannedWords(AsyncPlayerChatEvent event, Player player) {
         cancelChat(event, player, "Por favor, no uses palabras prohibidas.");
     }
 
     /**
-     * Formatea el mensaje con el prefijo del grupo y lo envía.
+     * Formats the player's chat message with their group prefix and sends it to the server.
+     *
+     * @param event   The chat event being handled.
+     * @param player  The player who sent the message.
+     * @param message The player's message.
      */
     private void formatAndSendMessage(AsyncPlayerChatEvent event, Player player, String message) {
-        // Escapar cualquier "%" en el mensaje del jugador
+        // Escape any "%" in the player's message
         message = message.replace("%", "%%");
 
-        // Obtener el prefijo del grupo
+        // Get the group prefix
         String group = playerController.getGroupFromPlayer(player);
         String prefix = ChatColor.translateAlternateColorCodes(
                 '&',
                 Objects.requireNonNull(GroupDatabase.getPrefixFromGroup(group))
         );
 
-        // Configurar el prefijo en negrita
-        String boldPrefix = ChatColor.BOLD + prefix;
-
-        // Formatear el mensaje con colores
+        // Configure the formatted message
         String formattedMessage = String.format(
                 "%s%s %s%s: %s",
-                boldPrefix, // Prefijo con color y negrita
-                ChatColor.RESET, // Reset para limpiar colores después del prefijo
-                ChatColor.WHITE, // Color blanco para el nombre del jugador
+                ChatColor.BOLD + prefix, // Bold group prefix
+                ChatColor.RESET,         // Reset colors after prefix
+                ChatColor.WHITE,         // White player name
                 player.getDisplayName(),
-                message // El mensaje del jugador
+                message                  // Player's message
         );
 
-        // Configurar el formato del evento de chat
+        // Set the formatted message for the chat event
         event.setFormat(formattedMessage);
     }
 }

@@ -11,20 +11,31 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A specialized inventory system for viewing reports. Displays all reports stored in the database
+ * and allows players to interact with individual reports to view their details.
+ */
 public class ReportsInventory extends InventorySystem {
 
+    /**
+     * Constructs a ReportsInventory with the title "Reportes".
+     */
     public ReportsInventory() {
         super("Reportes");
     }
 
+    /**
+     * Populates the inventory with items representing individual reports.
+     * Each item displays the report's details such as the reporter, reported player, reason, and timestamp.
+     */
     @Override
     protected void generateInventory() {
         items.clear();
 
-        // Obtener los reportes desde la base de datos
+        // Retrieve reports from the database
         JsonArray reports = ReportsDatabase.getReports();
 
-        // Crear los items para cada reporte
+        // Create items for each report
         for (int i = 0; i < reports.size(); i++) {
             JsonObject report = reports.get(i).getAsJsonObject();
 
@@ -33,7 +44,7 @@ public class ReportsInventory extends InventorySystem {
             String reason = report.get("reason").getAsString();
             String timestamp = report.get("timestamp").getAsString();
 
-            // Crear un item para el reporte
+            // Create an item for the report
             ItemStack reportItem = new ItemStack(Material.PAPER);
             ItemMeta meta = reportItem.getItemMeta();
             if (meta != null) {
@@ -48,11 +59,18 @@ public class ReportsInventory extends InventorySystem {
                 reportItem.setItemMeta(meta);
             }
 
-            // Agregar el item a la lista
+            // Add the item to the inventory list
             items.add(reportItem);
         }
     }
 
+    /**
+     * Handles interactions with report items in the inventory. When a player clicks on a report,
+     * its details are displayed in the chat.
+     *
+     * @param player The player interacting with the inventory.
+     * @param item   The item clicked in the inventory.
+     */
     @Override
     protected void onItemClicked(Player player, ItemStack item) {
         if (item.getType() == Material.PAPER && item.hasItemMeta()) {
@@ -60,7 +78,7 @@ public class ReportsInventory extends InventorySystem {
             if (meta != null && meta.hasDisplayName()) {
                 String reportTitle = meta.getDisplayName();
                 if (reportTitle.startsWith("Reporte de ")) {
-                    // Extraer la información del reporte desde el nombre o el lore
+                    // Extract report details from the item's lore
                     List<String> lore = meta.getLore();
                     if (lore != null && lore.size() >= 3) {
                         String reporter = reportTitle.replace("Reporte de ", "");
@@ -68,7 +86,7 @@ public class ReportsInventory extends InventorySystem {
                         String reason = lore.get(1).replace("Razón: ", "");
                         String timestamp = lore.get(2).replace("Fecha: ", "");
 
-                        // Mostrar los detalles del reporte al jugador
+                        // Display report details to the player
                         player.sendMessage("Detalles del reporte:");
                         player.sendMessage("Reportado por: " + reporter);
                         player.sendMessage("Reportado: " + reported);

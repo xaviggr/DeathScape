@@ -1,387 +1,200 @@
-[00:47:09] [ServerMain/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
-[00:47:11] [ServerMain/INFO]: Loaded 1174 recipes
-[00:47:11] [ServerMain/INFO]: Loaded 1271 advancements
-[00:47:11] [Server thread/INFO]: Starting minecraft server version 1.20.4
-[00:47:11] [Server thread/INFO]: Loading properties
-[00:47:11] [Server thread/INFO]: This server is running Purpur version git-Purpur-2176 (MC: 1.20.4) (Implementing API version 1.20.4-R0.1-SNAPSHOT) (Git: 6b1ee98 on HEAD)
-[00:47:11] [Server thread/INFO]: Server Ping Player Sample Count: 12
-[00:47:11] [Server thread/INFO]: Using 4 threads for Netty based IO
-[00:47:11] [Server thread/INFO]: [ChunkTaskScheduler] Chunk system is using 1 I/O threads, 5 worker threads, and gen parallelism of 5 threads
-[00:47:12] [Server thread/INFO]: [Pufferfish] Max SIMD vector size on this system is 256 bits (int)
-[00:47:12] [Server thread/INFO]: [Pufferfish] Max SIMD vector size on this system is 256 bits (float)
-[00:47:12] [Server thread/INFO]: [Pufferfish] SIMD operations detected as functional. Will replace some operations with faster versions.
-[00:47:12] [Server thread/INFO]: Default game type: SURVIVAL
-[00:47:12] [Server thread/INFO]: Generating keypair
-[00:47:12] [Server thread/INFO]: Starting Minecraft server on 192.168.1.134:25565
-[00:47:12] [Server thread/INFO]: Using default channel type
-[00:47:12] [Server thread/INFO]: Paper: Using Java compression from Velocity.
-[00:47:12] [Server thread/INFO]: Paper: Using Java cipher from Velocity.
-[00:47:12] [Server thread/INFO]: [MythicMobs] Loading server plugin MythicMobs v5.6.2-3e052553
-[00:47:12] [Server thread/INFO]: [LumineUtils] (io.lumine.mythic.bukkit.utils.) is bound to plugin MythicMobs - io.lumine.mythic.bukkit.MythicBukkit
-[00:47:12] [Server thread/INFO]: [MythicMobs] §4M§6y§6t§6h§2i§2c§2 §3E§3n§1a§1b§1l§5e§5d§4!
-[00:47:12] [Server thread/INFO]: [spark] Loading server plugin spark v1.10.121
-[00:47:12] [Server thread/INFO]: [WorldEdit] Loading server plugin WorldEdit v7.3.0+6678-55745ad
-[00:47:13] [Server thread/INFO]: Got request to register class com.sk89q.worldedit.bukkit.BukkitServerInterface with WorldEdit [com.sk89q.worldedit.extension.platform.PlatformManager@79377162]
-[00:47:13] [Server thread/INFO]: [SkinsRestorer] Loading server plugin SkinsRestorer v15.5.1
-[00:47:13] [Server thread/INFO]: [ModelEngine] Loading server plugin ModelEngine vR3.1.11
-[00:47:13] [Server thread/INFO]: [DeathScape] Loading server plugin DeathScape v1.0.0
-[00:47:13] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
-[00:47:13] [Server thread/INFO]: [WorldEdit] Enabling WorldEdit v7.3.0+6678-55745ad
-[00:47:13] [Server thread/INFO]: Registering commands with com.sk89q.worldedit.bukkit.BukkitServerInterface
-[00:47:13] [Server thread/INFO]: WEPIF: Using the Bukkit Permissions API.
-[00:47:13] [Server thread/INFO]: Using com.sk89q.worldedit.bukkit.adapter.impl.v1_20_R3.PaperweightAdapter as the Bukkit adapter
-[00:47:14] [Server thread/INFO]: [SkinsRestorer] Enabling SkinsRestorer v15.5.1
-[00:47:14] [Server thread/WARN]: [SkinsRestorer] You must agree to the rules at 'commands.perSkinPermissionsConsent' in the config to use per skin permissions.
-[00:47:14] [Server thread/INFO]: [SkinsRestorer] Running on Minecraft 1.20.4.
-[00:47:15] [Server thread/INFO]: [SkinsRestorer] Using paper join listener!
-[00:47:15] [Server thread/WARN]: [SkinsRestorer] Please update your Java runtime to at least Java 21 (your version is 18).
-[00:47:15] [Server thread/WARN]: [SkinsRestorer] At some point in the future, SkinsRestorer will no longer be compatible with this version of Java.
-[00:47:15] [Server thread/INFO]: Preparing level "world"
-[00:47:15] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
-[00:47:15] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +==================+
-[00:47:15] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |   SkinsRestorer  |
-[00:47:15] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |------------------|
-[00:47:15] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |  Standalone Mode |
-[00:47:15] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +==================+
-[00:47:15] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
-[00:47:15] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Version: 15.5.1
-[00:47:15] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Commit: d5d8613
-[00:47:15] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     This is the latest version!
-[00:47:15] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
-[00:47:15] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Do you have issues? Read our troubleshooting guide: https://skinsrestorer.net/docs/troubleshooting
-[00:47:15] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Want to support SkinsRestorer? Consider donating: https://skinsrestorer.net/donate
-[00:47:16] [Server thread/INFO]: Preparing start region for dimension minecraft:overworld
-[00:47:16] [Server thread/INFO]: Time elapsed: 320 ms
-[00:47:16] [Server thread/INFO]: Preparing start region for dimension minecraft:the_end
-[00:47:16] [Server thread/INFO]: Time elapsed: 31 ms
-[00:47:16] [Server thread/INFO]: Preparing start region for dimension minecraft:rift
-[00:47:16] [Server thread/INFO]: Time elapsed: 32 ms
-[00:47:16] [Server thread/INFO]: Preparing start region for dimension minecraft:spawn
-[00:47:17] [Server thread/INFO]: Time elapsed: 1307 ms
-[00:47:17] [Server thread/INFO]: [MythicMobs] Enabling MythicMobs v5.6.2-3e052553
-[00:47:17] [Server thread/INFO]: [MythicMobs] Loading MythicMobs for Paper (MC: 1.20.4)...
-[00:47:17] [Server thread/INFO]: [MythicMobs] The server is running Paper; enabled Paper exclusive functionality
-[00:47:19] [Server thread/INFO]: [MythicMobs] Base directory C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\data
-[00:47:19] [Server thread/INFO]: [MythicMobs] Module directory C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\data\worlds
-[00:47:20] [Server thread/INFO]: [MythicMobs] Loading Packs...
-[00:47:20] [Server thread/INFO]: [MythicMobs] Loading Items...
-[00:47:20] [Server thread/INFO]: [MythicMobs] Loading Item Groups...
-[00:47:20] [Server thread/INFO]: [MythicMobs] Loading Skills...
-[00:47:20] [Server thread/WARN]: [MythicMobs] Failed to parse Placeholder 'R': Math and variables in numeric values require premium! Consider getting MythicMobs Premium at www.mythiccraft.io
-[00:47:20] [Server thread/WARN]: [MythicMobs] Failed to parse Placeholder 'R': Math and variables in numeric values require premium! Consider getting MythicMobs Premium at www.mythiccraft.io
-[00:47:21] [Server thread/INFO]: [MythicMobs] Loading Drop Tables...
-[00:47:21] [Server thread/INFO]: [MythicMobs] Loading Random Spawns...
-[00:47:21] [Server thread/INFO]: [MythicMobs] Loading Spawn Blocks...
-[00:47:21] [Server thread/INFO]: [MythicMobs] ✓ Loaded 17 mobs.
-[00:47:21] [Server thread/INFO]: [MythicMobs] ✓ Loaded 3 vanilla mob overrides.
-[00:47:21] [Server thread/INFO]: [MythicMobs] ✓ Loaded 0 mob stacks.
-[00:47:21] [Server thread/INFO]: [MythicMobs] ✓ Loaded 95 skills.
-[00:47:21] [Server thread/INFO]: [MythicMobs] ✓ Loaded 0 random spawns.
-[00:47:21] [Server thread/INFO]: [MythicMobs] ✓ Loaded 3 mythic items.
-[00:47:21] [Server thread/INFO]: [MythicMobs] ✓ Loaded 2 drop tables.
-[00:47:21] [Server thread/INFO]: [MythicMobs] ✓ Loaded 0 mob spawners.
-[00:47:21] [Server thread/INFO]: [MythicMobs] MythicMobs configuration file loaded successfully.
-[00:47:21] [Server thread/INFO]: [MythicMobs] Started up bStats Metrics
-[00:47:21] [Server thread/INFO]: [MythicMobs] ✓ MythicMobs v5.6.2 ( build 3e052553 ) has been successfully loaded!
-[00:47:21] [Server thread/INFO]: [spark] Enabling spark v1.10.121
-[00:47:21] [Server thread/INFO]: [spark] Using Paper ServerTickStartEvent for tick monitoring
-[00:47:21] [Server thread/INFO]: [spark] Starting background profiler...
-[00:47:21] [Server thread/INFO]: [spark] The async-profiler engine is not supported for your os/arch (windows11/amd64), so the built-in Java engine will be used instead.
-[00:47:21] [Server thread/INFO]: [ModelEngine] Enabling ModelEngine vR3.1.11
-[00:47:21] [Server thread/INFO]: [MythicMobs] Model Engine Compatibility Loaded.
-[00:47:21] [Server thread/INFO]: [ModelEngine] [S] Compatibility applied: MythicMobs
-[00:47:21] [Server thread/INFO]: [ModelEngine] [S] bStats enabled
-[00:47:21] [Server thread/INFO]: [DeathScape] Enabling DeathScape v1.0.0
-[00:47:21] [Server thread/INFO]: [DeathScape] Spawn dimension initialized successfully.
-[00:47:21] [Server thread/INFO]: DeathScape has been enabled!
-[00:47:21] [Server thread/INFO]: Running delayed init tasks
-[00:47:21] [Server thread/INFO]: Días del servidor actualizados automáticamente.
-[00:47:21] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
-[00:47:21] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] [Importing models]
-[00:47:21] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
-[00:47:21] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Importing Rocky.bbmodel.
-[00:47:21] [Server thread/INFO]: [Tienda]: ¡Visita nuestra tienda y mejora tu experiencia! Usa /tienda para más información.
-[00:47:21] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
-[00:47:21] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Importing darkprincess_gama05.bbmodel.
-[00:47:21] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: Box UV detected. Cube UVs might not generate correctly if Box UV is used.
-[00:47:21] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder8 is rotated in multiple axis. Choosing one axis.
-[00:47:21] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder8 has illegal rotations. Cube rotation can only be -45, -22.5, 0, 22.5 and 45. [ -20.899999618530273 ]
-[00:47:21] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder8 is rotated in multiple axis. Choosing one axis.
-[00:47:21] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder8 has illegal rotations. Cube rotation can only be -45, -22.5, 0, 22.5 and 45. [ 93.4000015258789 ]
-[00:47:21] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder8 has illegal rotations. Cube rotation can only be -45, -22.5, 0, 22.5 and 45. [ 55.0 ]
-[00:47:21] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder6 is rotated in multiple axis. Choosing one axis.
-[00:47:21] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder6 has illegal rotations. Cube rotation can only be -45, -22.5, 0, 22.5 and 45. [ 90.9000015258789 ]
-[00:47:21] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder6 is rotated in multiple axis. Choosing one axis.
-[00:47:21] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder6 has illegal rotations. Cube rotation can only be -45, -22.5, 0, 22.5 and 45. [ 20.899999618530273 ]
-[00:47:21] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder6 has illegal rotations. Cube rotation can only be -45, -22.5, 0, 22.5 and 45. [ 70.0 ]
-[00:47:21] [Server thread/WARN]: [MythicMobs] ✗ Config Error for Targeter line 'selfparticles{p=soul_fire_flame;amount=10;speed=0;hS=0.8;vS=0.0;repeat=14;repeatinterval=4}': Failed to load custom targeter SELFPARTICLES
-[00:47:21] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder2 is rotated in multiple axis. Choosing one axis.
-[00:47:21] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone curpo2 is rotated in multiple axis. Choosing one axis.
-[00:47:21] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
-[00:47:21] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Importing effect_princessdarkness_01.bbmodel.
-[00:47:21] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
-[00:47:21] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Importing gm_galaxy_dragon.bbmodel.
-[00:47:21] [Server thread/INFO]: Done (10.555s)! For help, type "help"
-[00:47:21] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
-[00:47:21] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Importing gm_sun_dragon.bbmodel.
-[00:47:21] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
-[00:47:21] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] [Generating assets]
-[00:47:21] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
-[00:47:21] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Generating rocky.
-[00:47:22] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
-[00:47:22] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Generating darkprincess_gama05.
-[00:47:22] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
-[00:47:22] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Generating effect_princessdarkness_01.
-[00:47:22] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
-[00:47:22] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Generating gm_galaxy_dragon.
-[00:47:22] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
-[00:47:22] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Generating gm_sun_dragon.
-[00:47:22] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
-[00:47:22] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Resource pack zipped.
-[00:47:58] [User Authenticator #0/INFO]: UUID of player xaviggr is cb185b4b-cea7-43bb-a340-571c9bb6c3a5
-[00:47:58] [Server thread/INFO]: [Warrior] xaviggr ha entrado al mundo DeathScape
-[00:47:58] [Server thread/INFO]: xaviggr[IP hidden] logged in with entity id 65 at ([world_minecraft_spawn]0.0, 1.0, 0.0)
-[00:48:56] [Server thread/INFO]: xaviggr lost connection: Has sido permabaneado del server!
-[00:48:56] [Server thread/INFO]: [Warrior] xaviggr left the game
-[00:48:56] [Server thread/INFO]: No player was found
-[00:48:56] [Server thread/INFO]: No entity was found
-[00:48:56] [Server thread/INFO]: No player was found
-[00:48:56] [Server thread/INFO]: [DeathScape] Mensaje enviado al webhook correctamente.
-[00:48:56] [Server thread/INFO]: [Warrior] xaviggr fell from a high place
-[00:48:56] [Server thread/INFO]: No player was found
-[00:48:56] [Server thread/INFO]: No player was found
-[00:48:56] [Server thread/INFO]: No player was found
-[00:48:56] [Server thread/INFO]: No player was found
-[00:48:56] [Server thread/INFO]: No player was found
-[00:48:56] [Server thread/INFO]: No player was found
-[00:48:56] [Server thread/INFO]: No player was found
-[00:48:56] [Server thread/INFO]: No player was found
-[00:48:56] [Server thread/INFO]: No player was found
-[00:48:56] [Server thread/INFO]: No player was found
-[00:48:56] [Server thread/INFO]: No player was found
-[00:48:56] [Server thread/INFO]: No player was found
-[00:48:56] [Server thread/INFO]: No player was found
-[00:48:56] [Server thread/INFO]: No player was found
-[00:48:57] [Server thread/INFO]: No player was found
-[00:48:57] [Server thread/INFO]: No player was found
-[00:48:57] [Server thread/INFO]: No player was found
-[00:48:57] [Server thread/INFO]: No player was found
-[00:48:57] [Server thread/INFO]: No player was found
-[00:48:57] [Server thread/INFO]: No player was found
-[00:48:57] [Server thread/INFO]: No player was found
-[00:48:57] [Server thread/INFO]: No player was found
-[00:48:57] [Server thread/INFO]: No player was found
-[00:48:57] [Server thread/INFO]: No player was found
-[00:48:57] [Server thread/INFO]: No player was found
-[00:48:57] [Server thread/INFO]: No player was found
-[00:48:57] [Server thread/INFO]: No player was found
-[00:48:57] [Server thread/INFO]: No player was found
-[00:48:57] [Server thread/INFO]: No player was found
-[00:48:57] [Server thread/INFO]: No player was found
-[00:48:57] [Server thread/INFO]: No player was found
-[00:48:57] [Server thread/INFO]: No player was found
-[00:48:57] [Server thread/INFO]: No player was found
-[00:48:57] [Server thread/INFO]: No player was found
-[00:48:58] [Server thread/INFO]: No player was found
-[00:48:58] [Server thread/INFO]: No player was found
-[00:48:58] [Server thread/INFO]: No player was found
-[00:48:58] [Server thread/INFO]: No player was found
-[00:48:58] [Server thread/INFO]: No player was found
-[00:48:58] [Server thread/INFO]: No player was found
-[00:48:58] [Server thread/INFO]: No player was found
-[00:48:58] [Server thread/INFO]: No player was found
-[00:48:58] [Server thread/INFO]: No player was found
-[00:48:58] [Server thread/INFO]: No player was found
-[00:48:58] [Server thread/INFO]: No player was found
-[00:48:58] [Server thread/INFO]: No player was found
-[00:48:58] [Server thread/INFO]: No player was found
-[00:48:58] [Server thread/INFO]: No player was found
-[00:48:58] [Server thread/INFO]: No player was found
-[00:48:58] [Server thread/INFO]: No player was found
-[00:48:58] [Server thread/INFO]: No player was found
-[00:48:58] [Server thread/INFO]: No player was found
-[00:48:58] [Server thread/INFO]: No player was found
-[00:48:58] [Server thread/INFO]: No player was found
-[00:48:59] [Server thread/INFO]: No player was found
-[00:48:59] [Server thread/INFO]: No player was found
-[00:48:59] [Server thread/INFO]: No player was found
-[00:48:59] [Server thread/INFO]: No player was found
-[00:48:59] [Server thread/INFO]: No player was found
-[00:48:59] [Server thread/INFO]: No player was found
-[00:48:59] [Server thread/INFO]: No player was found
-[00:48:59] [Server thread/INFO]: No player was found
-[00:48:59] [Server thread/INFO]: No player was found
-[00:48:59] [Server thread/INFO]: No player was found
-[00:48:59] [User Authenticator #1/INFO]: UUID of player xaviggr is cb185b4b-cea7-43bb-a340-571c9bb6c3a5
-[00:48:59] [Server thread/INFO]: No player was found
-[00:48:59] [Server thread/INFO]: xaviggr lost connection: You are dead, please contact an administrator.
-[00:48:59] [Server thread/INFO]: [Warrior] xaviggr left the game
-[00:48:59] [Server thread/INFO]: No player was found
-[00:48:59] [Server thread/INFO]: No player was found
-[00:48:59] [Server thread/INFO]: No player was found
-[00:48:59] [Server thread/INFO]: No player was found
-[00:48:59] [Server thread/INFO]: No player was found
-[00:48:59] [Server thread/INFO]: No player was found
-[00:48:59] [Server thread/INFO]: No player was found
-[00:48:59] [Server thread/INFO]: No player was found
-[00:48:59] [Server thread/INFO]: No player was found
-[00:49:00] [Server thread/INFO]: No player was found
-[00:49:00] [Server thread/INFO]: No player was found
-[00:49:00] [Server thread/INFO]: No player was found
-[00:49:00] [Server thread/INFO]: No player was found
-[00:49:00] [Server thread/INFO]: No player was found
-[00:49:00] [Server thread/INFO]: No player was found
-[00:49:00] [Server thread/INFO]: No player was found
-[00:49:00] [Server thread/INFO]: No player was found
-[00:49:00] [Server thread/INFO]: No player was found
-[00:49:00] [Server thread/INFO]: No player was found
-[00:49:00] [Server thread/INFO]: No player was found
-[00:49:00] [Server thread/INFO]: No player was found
-[00:49:00] [Server thread/INFO]: No player was found
-[00:49:00] [Server thread/INFO]: No player was found
-[00:49:00] [Server thread/INFO]: No player was found
-[00:49:00] [Server thread/INFO]: No player was found
-[00:49:00] [Server thread/INFO]: No player was found
-[00:49:00] [Server thread/INFO]: No player was found
-[00:49:00] [Server thread/INFO]: No player was found
-[00:49:00] [Server thread/INFO]: No player was found
-[00:49:01] [Server thread/INFO]: No player was found
-[00:49:01] [Server thread/INFO]: No player was found
-[00:49:01] [Server thread/INFO]: No player was found
-[00:49:01] [Server thread/INFO]: No player was found
-[00:49:01] [Server thread/INFO]: No player was found
-[00:49:01] [Server thread/INFO]: No player was found
-[00:49:01] [Server thread/INFO]: No player was found
-[00:49:01] [Server thread/INFO]: No player was found
-[00:49:01] [Server thread/INFO]: No player was found
-[00:49:01] [Server thread/INFO]: No player was found
-[00:49:01] [Server thread/INFO]: No player was found
-[00:49:01] [Server thread/INFO]: No player was found
-[00:49:01] [Server thread/INFO]: No player was found
-[00:49:01] [Server thread/INFO]: No player was found
-[00:49:01] [Server thread/INFO]: No player was found
-[00:49:01] [Server thread/INFO]: No player was found
-[00:49:01] [Server thread/INFO]: No player was found
-[00:49:01] [Server thread/INFO]: No player was found
-[00:49:01] [Server thread/INFO]: No player was found
-[00:49:01] [Server thread/INFO]: No player was found
-[00:49:02] [Server thread/INFO]: No player was found
-[00:49:02] [Server thread/INFO]: No player was found
-[00:49:02] [Server thread/INFO]: No player was found
-[00:49:02] [Server thread/INFO]: No player was found
-[00:49:02] [Server thread/INFO]: No player was found
-[00:49:02] [Server thread/INFO]: No player was found
-[00:49:02] [Server thread/INFO]: No player was found
-[00:49:02] [Server thread/INFO]: No player was found
-[00:49:02] [Server thread/INFO]: No player was found
-[00:49:02] [Server thread/INFO]: No player was found
-[00:49:02] [Server thread/INFO]: No player was found
-[00:49:02] [Server thread/INFO]: No player was found
-[00:49:02] [Server thread/INFO]: No player was found
-[00:49:02] [Server thread/INFO]: No player was found
-[00:49:02] [Server thread/INFO]: No player was found
-[00:49:02] [Server thread/INFO]: No player was found
-[00:49:02] [Server thread/INFO]: No player was found
-[00:49:02] [Server thread/INFO]: No player was found
-[00:49:02] [Server thread/INFO]: No player was found
-[00:49:02] [Server thread/INFO]: No player was found
-[00:49:03] [Server thread/INFO]: No player was found
-[00:49:03] [Server thread/INFO]: No player was found
-[00:49:03] [Server thread/INFO]: No player was found
-[00:49:03] [Server thread/INFO]: No player was found
-[00:49:03] [Server thread/INFO]: No player was found
-[00:49:03] [Server thread/INFO]: No player was found
-[00:49:03] [Server thread/INFO]: No player was found
-[00:49:03] [Server thread/INFO]: No player was found
-[00:49:03] [Server thread/INFO]: No player was found
-[00:49:03] [Server thread/INFO]: No player was found
-[00:49:03] [Server thread/INFO]: No player was found
-[00:49:03] [Server thread/INFO]: No player was found
-[00:49:03] [Server thread/INFO]: No player was found
-[00:49:03] [Server thread/INFO]: No player was found
-[00:49:03] [Server thread/INFO]: No player was found
-[00:49:03] [Server thread/INFO]: No player was found
-[00:49:03] [Server thread/INFO]: No player was found
-[00:49:03] [Server thread/INFO]: No player was found
-[00:49:03] [Server thread/INFO]: No player was found
-[00:49:03] [Server thread/INFO]: No player was found
-[00:49:04] [Server thread/INFO]: No player was found
-[00:49:04] [Server thread/INFO]: No player was found
-[00:49:04] [Server thread/INFO]: No player was found
-[00:49:04] [Server thread/INFO]: No player was found
-[00:49:04] [Server thread/INFO]: No player was found
-[00:49:04] [Server thread/INFO]: No player was found
-[00:49:04] [Server thread/INFO]: No player was found
-[00:49:04] [Server thread/INFO]: No player was found
-[00:49:04] [Server thread/INFO]: No player was found
-[00:49:04] [Server thread/INFO]: No player was found
-[00:49:04] [Server thread/INFO]: No player was found
-[00:49:04] [Server thread/INFO]: No player was found
-[00:49:04] [Server thread/INFO]: No player was found
-[00:49:04] [Server thread/INFO]: No player was found
-[00:49:04] [Server thread/INFO]: No player was found
-[00:49:04] [Server thread/INFO]: No player was found
-[00:49:04] [Server thread/INFO]: No player was found
-[00:49:13] [User Authenticator #1/INFO]: UUID of player xaviggr is cb185b4b-cea7-43bb-a340-571c9bb6c3a5
-[00:49:13] [Server thread/INFO]: xaviggr lost connection: You are dead, please contact an administrator.
-[00:49:13] [Server thread/INFO]: [Warrior] xaviggr left the game
-[00:49:40] [User Authenticator #1/INFO]: UUID of player xaviggr is cb185b4b-cea7-43bb-a340-571c9bb6c3a5
-[00:49:40] [Server thread/INFO]: [Warrior] xaviggr ha entrado al mundo DeathScape
-[00:49:40] [Server thread/INFO]: xaviggr[IP hidden] logged in with entity id 210 at ([world]4100.715196558345, 76.0625, -550.075982144899)
-[00:50:06] [Server thread/INFO]: Stopping the server
-[00:50:06] [Server thread/INFO]: Stopping server
-[00:50:06] [Server thread/INFO]: [DeathScape] Disabling DeathScape v1.0.0
-[00:50:06] [Server thread/INFO]: DeathScape has been disabled!
-[00:50:06] [Server thread/INFO]: [ModelEngine] Disabling ModelEngine vR3.1.11
-[00:50:06] [Server thread/INFO]: [SkinsRestorer] Disabling SkinsRestorer v15.5.1
-[00:50:06] [Server thread/INFO]: [WorldEdit] Disabling WorldEdit v7.3.0+6678-55745ad
-[00:50:06] [Server thread/INFO]: Unregistering com.sk89q.worldedit.bukkit.BukkitServerInterface from WorldEdit
-[00:50:06] [Server thread/INFO]: [spark] Disabling spark v1.10.121
-[00:50:06] [Server thread/INFO]: [MythicMobs] Disabling MythicMobs v5.6.2-3e052553
-[00:50:06] [Server thread/INFO]: [MythicMobs] ------------------------------------------------------------
-[00:50:06] [Server thread/INFO]: [MythicMobs] - 
-[00:50:06] [Server thread/INFO]: [MythicMobs] - Unloading Mythic...
-[00:50:06] [Server thread/INFO]: [MythicMobs] - 
-[00:50:06] [Server thread/INFO]: [MythicMobs] ------------------------------------------------------------
-[00:50:06] [Server thread/INFO]: [MythicMobs] - Spawners saved and unloaded...
-[00:50:06] [Server thread/INFO]: [MythicMobs] - Mobs saved and unloaded...
-[00:50:06] [Server thread/INFO]: [MythicMobs] Saving plugin data...
-[00:50:06] [Server thread/INFO]: [MythicMobs] ✓Saving Finished
-[00:50:06] [Server thread/INFO]: [MythicMobs] - Variables saved...
-[00:50:06] [Server thread/INFO]: [MythicMobs] - All active settings have been saved!
-[00:50:06] [Server thread/INFO]: [MythicMobs] - Mythic has been unloaded!
-[00:50:06] [Server thread/INFO]: [MythicMobs] ------------------------------------------------------------
-[00:50:06] [Server thread/INFO]: [MythicMobs] Saving plugin data...
-[00:50:06] [Server thread/INFO]: [MythicMobs] ✓Saving Finished
-[00:50:06] [Server thread/INFO]: Saving players
-[00:50:06] [Server thread/INFO]: xaviggr lost connection: Server closed
-[00:50:06] [Server thread/INFO]: [Warrior] xaviggr left the game
-[00:50:06] [Server thread/INFO]: Saving worlds
-[00:50:06] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
-[00:50:06] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world'
-[00:50:06] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world'
-[00:50:06] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world'
-[00:50:07] [Server thread/INFO]: [ChunkHolderManager] Saved 907 block chunks, 907 entity chunks, 0 poi chunks in world 'world' in 0,94s
-[00:50:07] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
-[00:50:07] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_the_end]'/minecraft:the_end
-[00:50:07] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_the_end'
-[00:50:07] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_the_end'
-[00:50:07] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_the_end'
-[00:50:07] [Server thread/INFO]: [ChunkHolderManager] Saved 529 block chunks, 529 entity chunks, 0 poi chunks in world 'world_the_end' in 0,07s
-[00:50:07] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
-[00:50:07] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_minecraft_rift]'/minecraft:rift
-[00:50:07] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_minecraft_rift'
-[00:50:07] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_minecraft_rift'
-[00:50:07] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_minecraft_rift'
-[00:50:07] [Server thread/INFO]: [ChunkHolderManager] Saved 529 block chunks, 529 entity chunks, 0 poi chunks in world 'world_minecraft_rift' in 0,09s
-[00:50:07] [Server thread/INFO]: ThreadedAnvilChunkStorage (rift): All chunks are saved
-[00:50:07] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_minecraft_spawn]'/minecraft:spawn
-[00:50:07] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_minecraft_spawn'
-[00:50:07] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_minecraft_spawn'
-[00:50:07] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_minecraft_spawn'
-[00:50:08] [Server thread/INFO]: [ChunkHolderManager] Saved 598 block chunks, 598 entity chunks, 0 poi chunks in world 'world_minecraft_spawn' in 0,11s
-[00:50:08] [Server thread/INFO]: ThreadedAnvilChunkStorage (spawn): All chunks are saved
-[00:50:08] [Server thread/INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
-[00:50:08] [Server thread/INFO]: Flushing Chunk IO
-[00:50:08] [Server thread/INFO]: Closing Thread Pool
-[00:50:08] [Server thread/INFO]: Closing Server
+[12:18:46] [ServerMain/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
+[12:18:48] [ServerMain/INFO]: Loaded 1174 recipes
+[12:18:48] [ServerMain/INFO]: Loaded 1271 advancements
+[12:18:48] [Server thread/INFO]: Starting minecraft server version 1.20.4
+[12:18:48] [Server thread/INFO]: Loading properties
+[12:18:48] [Server thread/INFO]: This server is running Purpur version git-Purpur-2176 (MC: 1.20.4) (Implementing API version 1.20.4-R0.1-SNAPSHOT) (Git: 6b1ee98 on HEAD)
+[12:18:49] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[12:18:49] [Server thread/INFO]: Using 4 threads for Netty based IO
+[12:18:49] [Server thread/INFO]: [ChunkTaskScheduler] Chunk system is using 1 I/O threads, 5 worker threads, and gen parallelism of 5 threads
+[12:18:49] [Server thread/INFO]: [Pufferfish] Max SIMD vector size on this system is 256 bits (int)
+[12:18:49] [Server thread/INFO]: [Pufferfish] Max SIMD vector size on this system is 256 bits (float)
+[12:18:49] [Server thread/INFO]: [Pufferfish] SIMD operations detected as functional. Will replace some operations with faster versions.
+[12:18:49] [Server thread/INFO]: Default game type: SURVIVAL
+[12:18:49] [Server thread/INFO]: Generating keypair
+[12:18:49] [Server thread/INFO]: Starting Minecraft server on 192.168.1.134:25565
+[12:18:49] [Server thread/INFO]: Using default channel type
+[12:18:49] [Server thread/INFO]: Paper: Using Java compression from Velocity.
+[12:18:49] [Server thread/INFO]: Paper: Using Java cipher from Velocity.
+[12:18:49] [Server thread/INFO]: [MythicMobs] Loading server plugin MythicMobs v5.6.2-3e052553
+[12:18:49] [Server thread/INFO]: [LumineUtils] (io.lumine.mythic.bukkit.utils.) is bound to plugin MythicMobs - io.lumine.mythic.bukkit.MythicBukkit
+[12:18:50] [Server thread/INFO]: [MythicMobs] §4M§6y§6t§6h§2i§2c§2 §3E§3n§1a§1b§1l§5e§5d§4!
+[12:18:50] [Server thread/INFO]: [spark] Loading server plugin spark v1.10.121
+[12:18:50] [Server thread/INFO]: [WorldEdit] Loading server plugin WorldEdit v7.3.0+6678-55745ad
+[12:18:50] [Server thread/INFO]: Got request to register class com.sk89q.worldedit.bukkit.BukkitServerInterface with WorldEdit [com.sk89q.worldedit.extension.platform.PlatformManager@7a69e8a6]
+[12:18:50] [Server thread/INFO]: [SkinsRestorer] Loading server plugin SkinsRestorer v15.5.1
+[12:18:50] [Server thread/INFO]: [ModelEngine] Loading server plugin ModelEngine vR3.1.11
+[12:18:50] [Server thread/INFO]: [DeathScape] Loading server plugin DeathScape v1.0.0
+[12:18:50] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[12:18:50] [Server thread/INFO]: [WorldEdit] Enabling WorldEdit v7.3.0+6678-55745ad
+[12:18:50] [Server thread/INFO]: Registering commands with com.sk89q.worldedit.bukkit.BukkitServerInterface
+[12:18:51] [Server thread/INFO]: WEPIF: Using the Bukkit Permissions API.
+[12:18:51] [Server thread/INFO]: Using com.sk89q.worldedit.bukkit.adapter.impl.v1_20_R3.PaperweightAdapter as the Bukkit adapter
+[12:18:52] [Server thread/INFO]: [SkinsRestorer] Enabling SkinsRestorer v15.5.1
+[12:18:52] [Server thread/WARN]: [SkinsRestorer] You must agree to the rules at 'commands.perSkinPermissionsConsent' in the config to use per skin permissions.
+[12:18:52] [Server thread/INFO]: [SkinsRestorer] Running on Minecraft 1.20.4.
+[12:18:53] [Server thread/INFO]: [SkinsRestorer] Using paper join listener!
+[12:18:53] [Server thread/WARN]: [SkinsRestorer] Please update your Java runtime to at least Java 21 (your version is 18).
+[12:18:53] [Server thread/WARN]: [SkinsRestorer] At some point in the future, SkinsRestorer will no longer be compatible with this version of Java.
+[12:18:53] [Server thread/INFO]: Preparing level "world"
+[12:18:53] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[12:18:53] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +==================+
+[12:18:53] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |   SkinsRestorer  |
+[12:18:53] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |------------------|
+[12:18:53] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |  Standalone Mode |
+[12:18:53] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +==================+
+[12:18:53] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[12:18:53] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Version: 15.5.1
+[12:18:53] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Commit: d5d8613
+[12:18:53] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     This is the latest version!
+[12:18:53] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[12:18:53] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Do you have issues? Read our troubleshooting guide: https://skinsrestorer.net/docs/troubleshooting
+[12:18:53] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Want to support SkinsRestorer? Consider donating: https://skinsrestorer.net/donate
+[12:18:54] [Server thread/INFO]: Preparing start region for dimension minecraft:overworld
+[12:18:54] [Server thread/INFO]: Time elapsed: 311 ms
+[12:18:54] [Server thread/INFO]: Preparing start region for dimension minecraft:the_end
+[12:18:54] [Server thread/INFO]: Time elapsed: 30 ms
+[12:18:54] [Server thread/INFO]: Preparing start region for dimension minecraft:rift
+[12:18:54] [Server thread/INFO]: Time elapsed: 26 ms
+[12:18:54] [Server thread/INFO]: Preparing start region for dimension minecraft:spawn
+[12:18:54] [Server thread/INFO]: Time elapsed: 34 ms
+[12:18:54] [Server thread/INFO]: [MythicMobs] Enabling MythicMobs v5.6.2-3e052553
+[12:18:55] [Server thread/INFO]: [MythicMobs] Loading MythicMobs for Paper (MC: 1.20.4)...
+[12:18:55] [Server thread/INFO]: [MythicMobs] The server is running Paper; enabled Paper exclusive functionality
+[12:18:56] [Server thread/INFO]: [MythicMobs] Base directory C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\data
+[12:18:56] [Server thread/INFO]: [MythicMobs] Module directory C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\data\worlds
+[12:18:57] [Server thread/INFO]: [MythicMobs] Loading Packs...
+[12:18:57] [Server thread/INFO]: [MythicMobs] Loading Items...
+[12:18:57] [Server thread/INFO]: [MythicMobs] Loading Item Groups...
+[12:18:57] [Server thread/INFO]: [MythicMobs] Loading Skills...
+[12:18:57] [Server thread/WARN]: [MythicMobs] Failed to parse Placeholder 'R': Math and variables in numeric values require premium! Consider getting MythicMobs Premium at www.mythiccraft.io
+[12:18:57] [Server thread/WARN]: [MythicMobs] Failed to parse Placeholder 'R': Math and variables in numeric values require premium! Consider getting MythicMobs Premium at www.mythiccraft.io
+[12:18:58] [Server thread/INFO]: [MythicMobs] Loading Drop Tables...
+[12:18:58] [Server thread/INFO]: [MythicMobs] Loading Random Spawns...
+[12:18:58] [Server thread/INFO]: [MythicMobs] Loading Spawn Blocks...
+[12:18:58] [Server thread/INFO]: [MythicMobs] ✓ Loaded 17 mobs.
+[12:18:58] [Server thread/INFO]: [MythicMobs] ✓ Loaded 3 vanilla mob overrides.
+[12:18:58] [Server thread/INFO]: [MythicMobs] ✓ Loaded 0 mob stacks.
+[12:18:58] [Server thread/INFO]: [MythicMobs] ✓ Loaded 95 skills.
+[12:18:58] [Server thread/INFO]: [MythicMobs] ✓ Loaded 0 random spawns.
+[12:18:58] [Server thread/INFO]: [MythicMobs] ✓ Loaded 3 mythic items.
+[12:18:58] [Server thread/INFO]: [MythicMobs] ✓ Loaded 2 drop tables.
+[12:18:58] [Server thread/INFO]: [MythicMobs] ✓ Loaded 0 mob spawners.
+[12:18:58] [Server thread/INFO]: [MythicMobs] MythicMobs configuration file loaded successfully.
+[12:18:58] [Server thread/INFO]: [MythicMobs] Started up bStats Metrics
+[12:18:58] [Server thread/INFO]: [MythicMobs] ✓ MythicMobs v5.6.2 ( build 3e052553 ) has been successfully loaded!
+[12:18:58] [Server thread/INFO]: [spark] Enabling spark v1.10.121
+[12:18:58] [Server thread/INFO]: [spark] Using Paper ServerTickStartEvent for tick monitoring
+[12:18:58] [Server thread/INFO]: [spark] Starting background profiler...
+[12:18:58] [Server thread/INFO]: [spark] The async-profiler engine is not supported for your os/arch (windows11/amd64), so the built-in Java engine will be used instead.
+[12:18:58] [Server thread/INFO]: [ModelEngine] Enabling ModelEngine vR3.1.11
+[12:18:58] [Server thread/INFO]: [MythicMobs] Model Engine Compatibility Loaded.
+[12:18:58] [Server thread/INFO]: [ModelEngine] [S] Compatibility applied: MythicMobs
+[12:18:58] [Server thread/INFO]: [ModelEngine] [S] bStats enabled
+[12:18:58] [Server thread/INFO]: [DeathScape] Enabling DeathScape v1.0.0
+[12:18:58] [Server thread/INFO]: [DeathScape] Spawn dimension initialized successfully.
+[12:18:58] [Server thread/INFO]: DeathScape has been enabled!
+[12:18:58] [Server thread/INFO]: Running delayed init tasks
+[12:18:58] [Server thread/INFO]: Días del servidor actualizados automáticamente.
+[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
+[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] [Importing models]
+[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
+[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Importing Rocky.bbmodel.
+[12:18:58] [Server thread/INFO]: [Tienda]: ¡Visita nuestra tienda y mejora tu experiencia! Usa /tienda para más información.
+[12:18:58] [Server thread/WARN]: [MythicMobs] ✗ Config Error for Targeter line 'selfparticles{p=soul_fire_flame;amount=10;speed=0;hS=0.8;vS=0.0;repeat=14;repeatinterval=4}': Failed to load custom targeter SELFPARTICLES
+[12:18:58] [Server thread/INFO]: Done (9.943s)! For help, type "help"
+[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
+[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Importing darkprincess_gama05.bbmodel.
+[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: Box UV detected. Cube UVs might not generate correctly if Box UV is used.
+[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder8 is rotated in multiple axis. Choosing one axis.
+[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder8 has illegal rotations. Cube rotation can only be -45, -22.5, 0, 22.5 and 45. [ -20.899999618530273 ]
+[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder8 is rotated in multiple axis. Choosing one axis.
+[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder8 has illegal rotations. Cube rotation can only be -45, -22.5, 0, 22.5 and 45. [ 93.4000015258789 ]
+[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder8 has illegal rotations. Cube rotation can only be -45, -22.5, 0, 22.5 and 45. [ 55.0 ]
+[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder6 is rotated in multiple axis. Choosing one axis.
+[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder6 has illegal rotations. Cube rotation can only be -45, -22.5, 0, 22.5 and 45. [ 90.9000015258789 ]
+[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder6 is rotated in multiple axis. Choosing one axis.
+[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder6 has illegal rotations. Cube rotation can only be -45, -22.5, 0, 22.5 and 45. [ 20.899999618530273 ]
+[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder6 has illegal rotations. Cube rotation can only be -45, -22.5, 0, 22.5 and 45. [ 70.0 ]
+[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder2 is rotated in multiple axis. Choosing one axis.
+[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone curpo2 is rotated in multiple axis. Choosing one axis.
+[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
+[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Importing effect_princessdarkness_01.bbmodel.
+[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
+[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Importing gm_galaxy_dragon.bbmodel.
+[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
+[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Importing gm_sun_dragon.bbmodel.
+[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
+[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] [Generating assets]
+[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
+[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Generating rocky.
+[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
+[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Generating darkprincess_gama05.
+[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
+[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Generating effect_princessdarkness_01.
+[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
+[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Generating gm_galaxy_dragon.
+[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
+[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Generating gm_sun_dragon.
+[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
+[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Resource pack zipped.
+[12:19:01] [User Authenticator #0/INFO]: UUID of player xaviggr is cb185b4b-cea7-43bb-a340-571c9bb6c3a5
+[12:19:01] [Server thread/INFO]: [Owner] xaviggr ha entrado al mundo DeathScape
+[12:19:01] [Server thread/INFO]: xaviggr[IP hidden] logged in with entity id 89 at ([world_minecraft_spawn]0.0, 1.0, 0.0)
+[12:21:44] [Server thread/INFO]: xaviggr lost connection: Disconnected
+[12:21:44] [Server thread/INFO]: [Owner] xaviggr left the game
+[12:21:57] [Server thread/INFO]: Stopping the server
+[12:21:57] [Server thread/INFO]: Stopping server
+[12:21:57] [Server thread/INFO]: [DeathScape] Disabling DeathScape v1.0.0
+[12:21:57] [Server thread/INFO]: DeathScape has been disabled!
+[12:21:57] [Server thread/INFO]: [ModelEngine] Disabling ModelEngine vR3.1.11
+[12:21:57] [Server thread/INFO]: [SkinsRestorer] Disabling SkinsRestorer v15.5.1
+[12:21:57] [Server thread/INFO]: [WorldEdit] Disabling WorldEdit v7.3.0+6678-55745ad
+[12:21:57] [Server thread/INFO]: Unregistering com.sk89q.worldedit.bukkit.BukkitServerInterface from WorldEdit
+[12:21:57] [Server thread/INFO]: [spark] Disabling spark v1.10.121
+[12:21:57] [Server thread/INFO]: [MythicMobs] Disabling MythicMobs v5.6.2-3e052553
+[12:21:57] [Server thread/INFO]: [MythicMobs] ------------------------------------------------------------
+[12:21:57] [Server thread/INFO]: [MythicMobs] - 
+[12:21:57] [Server thread/INFO]: [MythicMobs] - Unloading Mythic...
+[12:21:57] [Server thread/INFO]: [MythicMobs] - 
+[12:21:57] [Server thread/INFO]: [MythicMobs] ------------------------------------------------------------
+[12:21:57] [Server thread/INFO]: [MythicMobs] - Spawners saved and unloaded...
+[12:21:57] [Server thread/INFO]: [MythicMobs] - Mobs saved and unloaded...
+[12:21:57] [Server thread/INFO]: [MythicMobs] Saving plugin data...
+[12:21:57] [Server thread/INFO]: [MythicMobs] ✓Saving Finished
+[12:21:57] [Server thread/INFO]: [MythicMobs] - Variables saved...
+[12:21:57] [Server thread/INFO]: [MythicMobs] - All active settings have been saved!
+[12:21:57] [Server thread/INFO]: [MythicMobs] - Mythic has been unloaded!
+[12:21:57] [Server thread/INFO]: [MythicMobs] ------------------------------------------------------------
+[12:21:57] [Server thread/INFO]: [MythicMobs] Saving plugin data...
+[12:21:57] [Server thread/INFO]: [MythicMobs] ✓Saving Finished
+[12:21:57] [Server thread/INFO]: Saving players
+[12:21:57] [Server thread/INFO]: Saving worlds
+[12:21:57] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[12:21:57] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world'
+[12:21:57] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world'
+[12:21:57] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world'
+[12:21:58] [Server thread/INFO]: [ChunkHolderManager] Saved 529 block chunks, 529 entity chunks, 0 poi chunks in world 'world' in 0,65s
+[12:21:58] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[12:21:58] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_the_end]'/minecraft:the_end
+[12:21:58] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_the_end'
+[12:21:58] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_the_end'
+[12:21:58] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_the_end'
+[12:21:58] [Server thread/INFO]: [ChunkHolderManager] Saved 529 block chunks, 529 entity chunks, 0 poi chunks in world 'world_the_end' in 0,07s
+[12:21:58] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[12:21:58] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_minecraft_rift]'/minecraft:rift
+[12:21:58] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_minecraft_rift'
+[12:21:58] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_minecraft_rift'
+[12:21:58] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_minecraft_rift'
+[12:21:58] [Server thread/INFO]: [ChunkHolderManager] Saved 529 block chunks, 529 entity chunks, 0 poi chunks in world 'world_minecraft_rift' in 0,08s
+[12:21:58] [Server thread/INFO]: ThreadedAnvilChunkStorage (rift): All chunks are saved
+[12:21:58] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_minecraft_spawn]'/minecraft:spawn
+[12:21:58] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_minecraft_spawn'
+[12:21:58] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_minecraft_spawn'
+[12:21:58] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_minecraft_spawn'
+[12:21:58] [Server thread/INFO]: [ChunkHolderManager] Saved 625 block chunks, 625 entity chunks, 0 poi chunks in world 'world_minecraft_spawn' in 0,10s
+[12:21:58] [Server thread/INFO]: ThreadedAnvilChunkStorage (spawn): All chunks are saved
+[12:21:58] [Server thread/INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
+[12:21:58] [Server thread/INFO]: Flushing Chunk IO
+[12:21:58] [Server thread/INFO]: Closing Thread Pool
+[12:21:58] [Server thread/INFO]: Closing Server

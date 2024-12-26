@@ -19,62 +19,97 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.Objects;
 
+/**
+ * Listener for handling player join events. Manages player data loading, group configuration,
+ * queue handling, and teleportation to the spawn world.
+ */
 public class PlayerJoinEventListener implements Listener {
 
     private final PlayerController playerController;
     private final DeathScape plugin;
 
+    /**
+     * Constructs a `PlayerJoinEventListener` with the required plugin and player controller.
+     *
+     * @param plugin           The instance of the DeathScape plugin.
+     * @param playerController The controller managing player-related functionality.
+     */
     public PlayerJoinEventListener(DeathScape plugin, PlayerController playerController) {
         this.plugin = plugin;
         this.playerController = playerController;
     }
 
+    /**
+     * Handles the `PlayerJoinEvent` triggered when a player joins the server.
+     * Manages player data initialization, group setup, queue handling, and teleportation.
+     *
+     * @param event The `PlayerJoinEvent` triggered when a player joins.
+     */
     @EventHandler
     public void onPlayerJoinServer(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         String hostAddress = Objects.requireNonNull(player.getAddress()).getAddress().getHostAddress();
 
-        // Cargar o inicializar datos del jugador
+        // Load or initialize player data
         PlayerData playerData = loadOrCreatePlayerData(player, hostAddress);
-        if (playerData == null) return; // Si ocurre un error, el jugador ya fue expulsado.
+        if (playerData == null) return;
 
-        // Configurar el grupo del jugador
+        // Configure the player's group
         GroupData groupData = configurePlayerGroup(player, playerData);
-        if (groupData == null) return; // Si ocurre un error, el jugador ya fue expulsado.
+        if (groupData == null) return;
 
-        // Configurar mensajes de bienvenida y prefijo
+        // Setup player environment
         setupPlayerEnvironment(event, player, groupData);
 
-        // Teletransportar y manejar vida en mundos específicos
+        // Teleport and handle health in specific worlds
         handlePlayerTeleportAndHealth(player);
+
+        // Manage invisibility during queue
+        playerController.addInvisiblePlayer(player);
+        playerController.applyInvisibilityToPlayer(player);
     }
 
+    /**
+     * Loads existing player data or creates new data if the player is joining for the first time.
+     *
+     * @param player      The player joining the server.
+     * @param hostAddress The host address of the player's connection.
+     * @return The `PlayerData` object for the player, or null if loading fails.
+     */
     private PlayerData loadOrCreatePlayerData(Player player, String hostAddress) {
         PlayerData playerData = PlayerDatabase.getPlayerDataFromDatabase(player.getName());
 
         if (playerData == null) {
-            //Get world spawn point overworld
+            // Initialize new player data
             World world = Bukkit.getWorld("world");
             assert world != null;
             Location location = world.getSpawnLocation();
             String spawnPos = location.getBlockX() + "," + location.getBlockY() + "," + location.getBlockZ();
 
-            // Crear nuevos datos de jugador
-            playerData = new PlayerData(player.getName(), false, 0, hostAddress, "0", player.getUniqueId(), "0", "0",
-                    spawnPos, 0, "default");
+            playerData = new PlayerData(
+                    player.getName(), false, 0, hostAddress, "0", player.getUniqueId(), "0", "0",
+                    spawnPos, 0, "default"
+            );
 
             if (!PlayerDatabase.addPlayerDataToDatabase(playerData)) {
                 player.kickPlayer(ChatColor.RED + "Error loading your data, please contact an administrator.");
                 return null;
             }
         } else {
-            // Validar estado del jugador
             if (!validatePlayerState(player, playerData, hostAddress)) return null;
         }
 
         return playerData;
     }
 
+    /**
+     * Validates the state of the player, ensuring they are not dead or joining with a different IP address.
+     *
+     * @param player      The player joining the server.
+     * @param playerData  The `PlayerData` object for the player.
+     * @param hostAddress The host address of the player's connection.
+     * @return True if the player's state is valid, false otherwise.
+     */
     private boolean validatePlayerState(Player player, PlayerData playerData, String hostAddress) {
         if (playerData.isDead() && !player.isOp()) {
             player.kickPlayer(ChatColor.RED + "You are dead, please contact an administrator.");
@@ -91,6 +126,13 @@ public class PlayerJoinEventListener implements Listener {
         return true;
     }
 
+    /**
+     * Configures the player's group by retrieving group data from the database.
+     *
+     * @param player     The player joining the server.
+     * @param playerData The `PlayerData` object for the player.
+     * @return The `GroupData` object for the player's group, or null if the group is not found.
+     */
     private GroupData configurePlayerGroup(Player player, PlayerData playerData) {
         GroupData groupData = GroupDatabase.getGroupData(playerData.getGroup());
 
@@ -102,6 +144,13 @@ public class PlayerJoinEventListener implements Listener {
         return groupData;
     }
 
+    /**
+     * Sets up the player's environment, including setting up prefixes, tab lists, and welcome messages.
+     *
+     * @param event     The `PlayerJoinEvent` triggered when the player joins.
+     * @param player    The player joining the server.
+     * @param groupData The `GroupData` object for the player's group.
+     */
     private void setupPlayerEnvironment(PlayerJoinEvent event, Player player, GroupData groupData) {
         String prefix = (groupData != null) ? groupData.getPrefix() : "&b[Warrior]";
         prefix = ChatColor.translateAlternateColorCodes('&', prefix);
@@ -116,11 +165,15 @@ public class PlayerJoinEventListener implements Listener {
         playerController.setUpTabList(player);
     }
 
+    /**
+     * Teleports the player to the spawn world and restores their health.
+     *
+     * @param player The player joining the server.
+     */
     private void handlePlayerTeleportAndHealth(Player player) {
         World spawnWorld = Bukkit.getWorld("world_minecraft_spawn");
 
         if (spawnWorld != null) {
-            // Teletransportar al spawn y establecer vida máxima
             player.teleport(new Location(spawnWorld, 0, 1, 0));
             player.setHealth(player.getMaxHealth());
             player.sendTitle(
@@ -129,20 +182,23 @@ public class PlayerJoinEventListener implements Listener {
                     20, 100, 20
             );
 
-            // Manejo de cola y verificación
             handleQueue(player);
         } else {
             player.kickPlayer(ChatColor.RED + "The spawn world is not available. Please contact an administrator.");
         }
     }
 
+    /**
+     * Handles the queue system for players joining the server.
+     *
+     * @param player The player joining the server.
+     */
     private void handleQueue(Player player) {
         new BukkitRunnable() {
             @Override
             public void run() {
                 playerController.addPlayerToServer(player);
 
-                // Bucle para verificar posición en la cola
                 new BukkitRunnable() {
                     @Override
                     public void run() {
@@ -160,11 +216,12 @@ public class PlayerJoinEventListener implements Listener {
                                     ChatColor.YELLOW + "¡Es tu turno! ¡Bienvenido a DeathScape!",
                                     20, 100, 20
                             );
-                            cancel(); // Detener bucle
+                            playerController.removeInvisiblePlayer(player);
+                            cancel();
                         }
                     }
-                }.runTaskTimer(plugin, 0, 800); // Repetir cada 40 segundos
+                }.runTaskTimer(plugin, 0, 800);
             }
-        }.runTaskLater(plugin, 100); // Ejecutar después de 5 segundos (100 ticks)
+        }.runTaskLater(plugin, 100);
     }
 }

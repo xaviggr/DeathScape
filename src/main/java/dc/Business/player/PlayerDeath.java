@@ -9,96 +9,85 @@ import org.bukkit.block.Skull;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 
-import static org.bukkit.Bukkit.getServer;
-
+/**
+ * Handles player deaths in the game. Includes features for broadcasting death messages,
+ * banning players, and creating statues at death locations.
+ */
 public class PlayerDeath implements Listener {
 
     private final DeathScape plugin;
-    private final PlayerBan playerBan;
 
-    // Constructor to initialize the plugin and player ban handler
-    public PlayerDeath(DeathScape plugin, PlayerBan playerBan) {
+    /**
+     * Constructor to initialize the `PlayerDeath` class.
+     * Registers event listeners with the server.
+     *
+     * @param plugin The DeathScape plugin instance.
+     */
+    public PlayerDeath(DeathScape plugin) {
         this.plugin = plugin;
-        this.playerBan = playerBan;
-        plugin.getServer().getPluginManager().registerEvents(this, plugin);  // Register events for this listener
+        plugin.getServer().getPluginManager().registerEvents(this, plugin); // Register events
     }
 
     /**
-     * Called when a player dies. This handles death messages, bans (if applicable), and creates a death statue.
-     * @param player The player who died.
+     * Handles player death events. Broadcasts death messages, bans players (if applicable),
+     * and creates a statue at the player's death location.
+     *
+     * @param player The player who has died.
      */
     public void Dead(Player player) {
         String victim = player.getName();
 
-        // Notify all players about the death
+        // Notify all online players about the death
         for (Player checkingPlayer : Bukkit.getOnlinePlayers()) {
             String deathTitle = MainConfigManager.getInstance().getDeathMessageTitle();
             String deathSubtitle = MainConfigManager.getInstance().getDeathMessageSubtitle();
 
-            // Send title and subtitle to all players
+            // Send death title and subtitle to all players
             checkingPlayer.sendTitle(deathTitle, deathSubtitle.replace("%player%", victim), 20, 100, 20);
             checkingPlayer.playSound(checkingPlayer.getLocation(), Sound.ENTITY_BLAZE_DEATH, Float.MAX_VALUE, -0.1f);
         }
 
-        // Handle admin case (do not ban, just spectate)
-        if (player.isOp()) {
-            player.setGameMode(GameMode.SPECTATOR);
-        } else {
-            // If not an admin, ban the player
-            handlePlayerBan(player);
-        }
-
         // Create a statue at the player's death location
         createStatueOnDeath(player);
+        player.spigot().respawn(); // Respawn the player
 
-        // Update player status in database
+        // Update player status in the database
         PlayerEditDatabase.setPlayerAsDeath(player);
-    }
-
-    /**
-     * Handles banning the player after they die.
-     * @param player The player to be banned.
-     */
-    private void handlePlayerBan(Player player) {
-        if (player.isOnline()) {
-            playerBan.Ban(player, ChatColor.RED + MainConfigManager.getInstance().getBanMessage(), null);
-            player.kickPlayer(ChatColor.RED + MainConfigManager.getInstance().getBanMessage());
-        } else {
-            // If player is offline, immediately ban them
-            playerBan.Ban(player, ChatColor.RED + MainConfigManager.getInstance().getBanMessage(), null);
-        }
+        PlayerEditDatabase.setPlayerBanDate(player);
     }
 
     /**
      * Creates a statue at the location where the player died.
-     * This includes a bedrock block, chain, player skull, and an armor stand with the player's name.
-     * @param player The player who died.
+     * The statue consists of a crying obsidian block, a chain, a player skull,
+     * and plays a sound effect at the death location.
+     *
+     * @param player The player who has died.
      */
     private void createStatueOnDeath(Player player) {
         World world = player.getWorld();
         Block deathLocationBlock = player.getLocation().getBlock();
 
-        // Colocar un bloque de obsidiana llorosa debajo de la ubicación de muerte
+        // Place a crying obsidian block below the death location
         Block cryingObsidianBlock = deathLocationBlock.getRelative(0, -1, 0);
         cryingObsidianBlock.setType(Material.CRYING_OBSIDIAN);
 
-        // Colocar un bloque de cadena en la ubicación de muerte
+        // Place a chain block at the death location
         deathLocationBlock.setType(Material.CHAIN);
 
-        // Colocar una cabeza de jugador encima del bloque de cadena
+        // Place a player head block above the chain
         Block skullBlock = deathLocationBlock.getRelative(0, 1, 0);
         skullBlock.setType(Material.PLAYER_HEAD);
 
-        // Configurar la cabeza del jugador en el bloque
+        // Set the player head to represent the deceased player
         try {
             Skull skull = (Skull) skullBlock.getState();
             skull.setOwningPlayer(player);
             skull.update();
         } catch (ClassCastException e) {
-            Bukkit.getLogger().severe("Error al crear la cabeza de la estatua para " + player.getName() + ": " + e.getMessage());
+            Bukkit.getLogger().severe("Error while creating the statue head for " + player.getName() + ": " + e.getMessage());
         }
 
-        // Reproducir un sonido en la ubicación de muerte
+        // Play a sound at the death location
         world.playSound(player.getLocation(), Sound.ENTITY_WITHER_DEATH, 1.0f, 0.5f);
     }
 }

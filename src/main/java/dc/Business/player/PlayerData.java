@@ -7,34 +7,75 @@ import org.bukkit.World;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+/**
+ * Represents the data associated with a player, including information about
+ * their deaths, bans, coordinates, health, group, and more.
+ */
 public class PlayerData {
 
-    private final String name;
-    private boolean isDead;
-    private int deaths;
-    private final String hostAddress;
-    private String timePlayed;
-    private final UUID uuid;
-    private int points;
+    private final String name; // The player's name
+    private boolean isDead; // Whether the player is dead
+    private int deaths; // Number of times the player has died
+    private final String hostAddress; // The player's IP address
+    private String timePlayed; // Total time the player has spent in the game
+    private final UUID uuid; // The player's unique ID
+    private int points; // The player's points in the game
 
-    private String banDate;
-    private String bantime;
+    private String banDate; // Date of the player's ban
+    private String bantime; // Time of the player's ban
 
-    private String coords;
-    private String dimension;
-    private String group;
-    private double health;
+    private String coords; // The player's coordinates
+    private String dimension; // The player's current dimension
+    private String group; // The player's group
+    private double health; // The player's health
+
+    /**
+     * Constructs a `PlayerData` object with the specified details.
+     *
+     * @param name        The player's name.
+     * @param isDead      Whether the player is dead.
+     * @param deaths      Number of deaths for the player.
+     * @param hostAddress The player's IP address.
+     * @param timePlayed  Total time the player has spent in the game.
+     * @param uniqueId    The player's unique ID.
+     * @param banDate     The date of the player's ban.
+     * @param bantime     The time of the player's ban.
+     * @param coords      The player's coordinates.
+     * @param points      The player's points.
+     * @param group       The player's group.
+     */
+    public PlayerData(String name, boolean isDead, int deaths, String hostAddress, String timePlayed, UUID uniqueId, String banDate, String bantime, String coords, int points, String group) {
+        this.name = name;
+        this.isDead = isDead;
+        this.deaths = deaths;
+        this.hostAddress = hostAddress;
+        this.timePlayed = timePlayed;
+        this.uuid = uniqueId;
+        this.banDate = banDate;
+        this.bantime = bantime;
+        this.coords = coords;
+        this.points = points;
+        this.group = group;
+        this.dimension = "world"; // Default dimension
+        this.health = 20; // Default health
+    }
+
+    // ------------------- Getters and Setters -------------------
 
     public String getBanDate() {
         return banDate;
     }
 
-    public double getHealth() {
-        return health;
+    public void setBanDate(String banDate) {
+        this.banDate = banDate;
     }
 
-    public void setHealth(double health) {
-        this.health = health;
+    public String getBantime() {
+        return bantime;
+    }
+
+    public void setBantime(String bantime) {
+        this.bantime = bantime;
     }
 
     public String getName() {
@@ -73,32 +114,20 @@ public class PlayerData {
         return uuid;
     }
 
-    public String getCoords() {
-        return coords;
-    }
-
-    public void setCoords(String coords) {
-        this.coords = coords;
-    }
-
-    public void setBanDate(String banDate) {
-        this.banDate = banDate;
-    }
-
-    public String getBantime() {
-        return bantime;
-    }
-
-    public void setBantime(String bantime) {
-        this.bantime = bantime;
-    }
-
     public int getPoints() {
         return points;
     }
 
     public void setPoints(int points) {
         this.points = points;
+    }
+
+    public String getCoords() {
+        return coords;
+    }
+
+    public void setCoords(String coords) {
+        this.coords = coords;
     }
 
     public String getGroup() {
@@ -109,103 +138,12 @@ public class PlayerData {
         this.group = group;
     }
 
-    public PlayerData(String name, boolean isDead, int deaths, String hostAddress, String timePlayed, UUID uniqueId, String banDate, String bantime, String coords, int points, String group) {
-        this.name = name;
-        this.isDead = isDead;
-        this.deaths = deaths;
-        this.hostAddress = hostAddress;
-        this.timePlayed = timePlayed;
-        this.uuid = uniqueId;
-        this.banDate = banDate;
-        this.bantime= bantime;
-        this.coords = coords;
-        this.points = points;
-        this.group = group;
-        this.dimension = "world";
-        this.health = 20;
+    public double getHealth() {
+        return health;
     }
 
-    public void setBanTime() {
-
-        LocalDateTime fechaActual = LocalDateTime.now();
-
-        int sec = fechaActual.getSecond();
-        int min = fechaActual.getMinute();
-        int hour = fechaActual.getHour();
-
-        String fSec;
-        String fMin;
-        String fHour;
-
-        if (sec < 10) {
-
-            fSec = "0" + sec;
-        } else {
-
-            fSec = String.valueOf(sec);
-        }
-
-        if (min < 10) {
-
-            fMin = "0" + min;
-        } else {
-
-            fMin = String.valueOf(min);
-        }
-
-        if (hour < 10) {
-
-            fHour = "0" + hour;
-        } else {
-
-            fHour = String.valueOf(hour);
-        }
-
-        bantime = fHour + ":" + fMin + ":" + fSec;
-    }
-
-    public void setBanDate() {
-
-            LocalDateTime fechaActual = LocalDateTime.now();
-
-            int day = fechaActual.getDayOfMonth();
-            int month = fechaActual.getMonthValue();
-            int year = fechaActual.getYear();
-
-            String fDay;
-            String fMonth;
-            String fYear;
-
-            if (day < 10) {
-
-                fDay = "0" + day;
-            } else {
-
-                fDay = String.valueOf(day);
-            }
-
-            if (month < 10) {
-
-                fMonth = "0" + month;
-            } else {
-
-                fMonth = String.valueOf(month);
-            }
-
-            if (year < 10) {
-
-                fYear = "0" + year;
-            } else {
-
-                fYear = String.valueOf(year);
-            }
-
-            banDate = fDay + "/" + fMonth + "/" + fYear;
-    }
-
-    @Override
-    public String toString() {
-        return new Gson().toJson(this);
+    public void setHealth(double health) {
+        this.health = health;
     }
 
     public World getDimension() {
@@ -214,5 +152,39 @@ public class PlayerData {
 
     public void setDimension(String dimension) {
         this.dimension = dimension;
+    }
+
+    // ------------------- Custom Methods -------------------
+
+    /**
+     * Sets the current date as the ban date.
+     */
+    public void setBanDate() {
+        LocalDateTime currentDate = LocalDateTime.now();
+        banDate = String.format("%02d/%02d/%d",
+                currentDate.getDayOfMonth(),
+                currentDate.getMonthValue(),
+                currentDate.getYear());
+    }
+
+    /**
+     * Sets the current time as the ban time.
+     */
+    public void setBanTime() {
+        LocalDateTime currentTime = LocalDateTime.now();
+        bantime = String.format("%02d:%02d:%02d",
+                currentTime.getHour(),
+                currentTime.getMinute(),
+                currentTime.getSecond());
+    }
+
+    /**
+     * Converts the `PlayerData` object to a JSON string representation.
+     *
+     * @return The JSON representation of the `PlayerData` object.
+     */
+    @Override
+    public String toString() {
+        return new Gson().toJson(this);
     }
 }

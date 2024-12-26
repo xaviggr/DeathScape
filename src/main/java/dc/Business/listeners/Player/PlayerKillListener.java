@@ -8,72 +8,79 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 
+/**
+ * Listener for handling player kills. Tracks when a player kills a monster
+ * and awards points based on the monster type.
+ */
 public class PlayerKillListener implements Listener {
 
     private final PlayerController playerController;
 
+    /**
+     * Constructs a `PlayerKillListener` with the required `PlayerController`.
+     *
+     * @param playerController The controller managing player-related functionality.
+     */
     public PlayerKillListener(PlayerController playerController) {
         this.playerController = playerController;
     }
 
+    /**
+     * Handles the `EntityDeathEvent` triggered when an entity dies.
+     * Checks if the entity was killed by a player and, if it's a monster, awards points.
+     *
+     * @param event The `EntityDeathEvent` triggered when an entity dies.
+     */
     @EventHandler
     public void onEntityDeath(EntityDeathEvent event) {
         LivingEntity entity = event.getEntity();
 
         // Check if the entity was killed by a player
-        Player player = entity.getKiller();  // The player who killed the entity
+        Player player = entity.getKiller();
 
-        // If the entity was killed by a player
         if (player != null) {
-            // Call another method to handle the monster type and reward points
+            // Handle monster kills specifically
             if (entity instanceof Monster) {
-                handleMonsterKill(player, (Monster) entity);  // Pass the player and the specific monster
+                handleMonsterKill(player, (Monster) entity);
             }
-
-            // If you want to do something with the items dropped by the entity
-            /*
-            for (ItemStack item : event.getDrops()) {
-
-            }*/
         }
     }
 
-    // Method to handle the monster kill and filter by type
+    /**
+     * Handles the logic for awarding points to a player based on the type of monster they killed.
+     *
+     * @param player  The player who killed the monster.
+     * @param monster The monster that was killed.
+     */
     private void handleMonsterKill(Player player, Monster monster) {
-        String monsterType = monster.getType().name(); // Get the type of the monster as a string
-        int points;  // Initialize points to 0
+        String monsterType = monster.getType().name(); // Get the monster type as a string
+        int points; // Points to award
 
-        // Handle different monster types and assign points accordingly
+        // Assign points based on the monster type
         switch (monsterType) {
             case "ZOMBIE":
-                // Example: Add points for killing a zombie
                 points = 10;
                 player.sendMessage("You gained 10 points for killing a Zombie!");
                 break;
             case "SKELETON":
-                // Example: Add points for killing a skeleton
                 points = 15;
                 player.sendMessage("You gained 15 points for killing a Skeleton!");
                 break;
             case "CREEPER":
-                // Example: Add points for killing a creeper
                 points = 20;
                 player.sendMessage("You gained 20 points for killing a Creeper!");
                 break;
             case "SPIDER":
-                // Example: Add points for killing a spider
                 points = 12;
                 player.sendMessage("You gained 12 points for killing a Spider!");
                 break;
-            // Add more cases here for other monster types as needed
             default:
-                // If no specific case matches, give default points for a monster
-                points = 5;
+                points = 5; // Default points for other monsters
                 player.sendMessage("You gained 5 points for killing a " + monsterType + "!");
                 break;
         }
 
-        // Add points to the player using your method (you can customize this)
+        // Add points to the player using the PlayerController
         playerController.addPointsToPlayer(player, points);
     }
 }

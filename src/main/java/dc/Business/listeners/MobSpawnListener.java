@@ -9,26 +9,42 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 
-import java.util.Random;
-
+/**
+ * Listener for handling mob spawns. Replaces natural spawns of vanilla mobs
+ * with custom MythicMobs based on the server's configuration.
+ */
 public class MobSpawnListener implements Listener {
 
     private final MobSpawnController mobSpawnController;
     private final DeathScape plugin;
 
+    /**
+     * Constructs a `MobSpawnListener` with the required plugin and mob spawn controller.
+     *
+     * @param plugin              The instance of the DeathScape plugin.
+     * @param mobSpawnController  The controller managing custom mob spawns.
+     */
     public MobSpawnListener(DeathScape plugin, MobSpawnController mobSpawnController) {
         this.mobSpawnController = mobSpawnController;
         this.plugin = plugin;
     }
 
+    /**
+     * Handles the `CreatureSpawnEvent` triggered when an entity spawns.
+     * Replaces natural spawns of vanilla mobs with custom MythicMobs if configured.
+     *
+     * @param event The `CreatureSpawnEvent` triggered when a creature spawns.
+     */
     @EventHandler
     public void onCreatureSpawn(CreatureSpawnEvent event) {
+        // Only handle naturally spawned mobs
         if (!event.getSpawnReason().equals(CreatureSpawnEvent.SpawnReason.NATURAL)) {
             return;
         }
 
         Entity entity = event.getEntity();
 
+        // Check if the spawned entity is a Monster
         if (!(entity instanceof Monster)) {
             return;
         }
@@ -37,22 +53,23 @@ public class MobSpawnListener implements Listener {
 
         try {
             String worldName = entity.getWorld().getName();
-            String vanillaMobType = entity.getType().toString(); // Tipo del mob vanilla (ZOMBIE, SPIDER, etc.)
+            String vanillaMobType = entity.getType().toString(); // Get the vanilla mob type (e.g., ZOMBIE, SPIDER)
 
-            // Obtén el mob custom configurado para el mob vanilla
+            // Retrieve the custom mob type configured for this vanilla mob
             String customMobType = mobSpawnController.getCustomMobForVanillaMob(worldName, vanillaMobType);
 
             if (customMobType == null) {
-                return; // Si no hay configuración, no hacemos nada
+                return; // If no custom mob is configured, do nothing
             }
 
-            // Cancelamos el spawn natural
+            // Cancel the natural spawn
             event.setCancelled(true);
 
-            // Spawneamos el mob custom
+            // Spawn the custom MythicMob
             mobSpawnController.spawnMythicMob(spawnLocation, customMobType);
 
         } catch (Exception e) {
+            // Log errors in mob spawning
             plugin.getLogger().severe("Error in mob spawn: " + e.getMessage());
             e.printStackTrace();
         }

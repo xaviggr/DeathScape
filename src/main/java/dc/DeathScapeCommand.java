@@ -27,6 +27,9 @@ import org.bukkit.entity.Player;
 
 import java.util.*;
 
+/**
+ * Handles commands and tab completion for the DeathScape plugin.
+ */
 public class DeathScapeCommand implements CommandExecutor, TabCompleter {
     private static final String DISCORD_URL = "https://discord.gg/Pe9wYt9bcV";
     private static final String INVALID_COMMAND_MESSAGE = "Comando invalido! Escribe /deathscape help para la lista de comandos!";
@@ -37,6 +40,15 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
     private final ReportsInventory reportsInventory;
     private final ReviveInventory reviveInventory;
 
+    /**
+     * Constructor for the DeathScapeCommand class.
+     *
+     * @param plugin          The main plugin instance.
+     * @param reportInventory The inventory used for reporting.
+     * @param reportsInventory The inventory used to view reports.
+     * @param playerController The player controller for managing players.
+     * @param reviveInventory  The inventory used for reviving players.
+     */
     public DeathScapeCommand(DeathScape plugin, ReportInventory reportInventory, ReportsInventory reportsInventory, PlayerController playerController, ReviveInventory reviveInventory) {
         this.plugin = plugin;
         this.reportInventory = reportInventory;
@@ -45,6 +57,15 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         this.reviveInventory = reviveInventory;
     }
 
+    /**
+     * Provides tab completion for the "/deathscape" command.
+     *
+     * @param sender  The command sender.
+     * @param command The command being executed.
+     * @param alias   The alias used for the command.
+     * @param args    The arguments provided by the user.
+     * @return A list of suggested completions for the command.
+     */
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         if (command.getName().equalsIgnoreCase("deathscape") && args.length == 1) {
@@ -128,6 +149,15 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         return null;
     }
 
+    /**
+     * Handles the execution of the "/deathscape" command.
+     *
+     * @param sender  The command sender.
+     * @param command The command being executed.
+     * @param label   The alias used for the command.
+     * @param args    The arguments provided by the user.
+     * @return true if the command was handled successfully, false otherwise.
+     */
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player player)) {
@@ -182,6 +212,14 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         return true;
     }
 
+    /**
+     * Maps commands to their corresponding actions.
+     *
+     * @param args   The arguments provided by the user.
+     * @param player The player executing the command.
+     * @param group  The group data of the player.
+     * @return The action to be executed, or null if the command is invalid.
+     */
     private Runnable getRunnable(String[] args, Player player, GroupData group) {
         Map<String, Runnable> commandMap = new HashMap<>();
         commandMap.put("help", () -> showHelp(player));
@@ -213,6 +251,13 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         return commandMap.get(args[0].toLowerCase());
     }
 
+    /**
+     * Handles the "/heal" command.
+     *
+     * @param player The player executing the command.
+     * @param group  The group data of the player.
+     * @param args   The arguments provided by the user.
+     */
     private void handleHealCommand(Player player, GroupData group, String[] args) {
         if (!group.getPermissions().contains(Permission.HEAL)) {
             sendNoPermissionMessage(player);
@@ -233,6 +278,13 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         playerController.healPlayer(target);
     }
 
+    /**
+     * Handles the "/mute" and "/unmute" commands.
+     *
+     * @param player The player executing the command.
+     * @param args   The arguments provided by the user.
+     * @param group  The group data of the player.
+     */
     private void handleUnMutePlayer(Player player, String[] args, GroupData group) {
         if (!group.getPermissions().contains(Permission.MUTE)) {
             sendNoPermissionMessage(player);
@@ -253,6 +305,13 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         playerController.unmutePlayer(player, target);
     }
 
+    /**
+     * Handles the "/mute" command.
+     *
+     * @param player The player executing the command.
+     * @param args   The arguments provided by the user.
+     * @param group  The group data of the player.
+     */
     private void handleMutePlayer(Player player, String[] args, GroupData group) {
         if (!group.getPermissions().contains(Permission.MUTE)) {
             sendNoPermissionMessage(player);
@@ -275,6 +334,13 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         playerController.mutePlayer(player, target, duration);
     }
 
+    /**
+     * Handles the "/endersee" command.
+     *
+     * @param player The player executing the command.
+     * @param args   The arguments provided by the user.
+     * @param group  The group data of the player.
+     */
     private void handleEnderSee(Player player, String[] args, GroupData group) {
         if (!group.getPermissions().contains(Permission.GROUP)) {
             sendNoPermissionMessage(player);
@@ -296,6 +362,13 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         player.sendMessage(ChatColor.GREEN + "Estás viendo el cofre de Ender de " + target.getName() + ".");
     }
 
+    /**
+     * Handles the "/inventorysee" command.
+     *
+     * @param player The player executing the command.
+     * @param args   The arguments provided by the user.
+     * @param group  The group data of the player.
+     */
     private void handleInventorySee(Player player, String[] args, GroupData group) {
         if (!group.getPermissions().contains(Permission.GROUP)) {
             sendNoPermissionMessage(player);
@@ -317,6 +390,13 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         player.sendMessage(ChatColor.GREEN + "Estás viendo el inventario de " + target.getName() + ".");
     }
 
+    /**
+     * Validates the group of the player.
+     *
+     * @param player     The player executing the command.
+     * @param playerData The player data of the player.
+     * @return true if the group is valid, false otherwise.
+     */
     private boolean validateGroup(Player player, PlayerData playerData) {
         GroupData group = GroupDatabase.getGroupData(playerData.getGroup());
         if (group == null) {
@@ -326,10 +406,21 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         return true;
     }
 
+    /**
+     * Handles the "/reportar" command.
+     *
+     * @param player The player executing the command.
+     */
     private void handleMakeReport(Player player) {
         reportInventory.openInventory(player);
     }
 
+    /**
+     * Handles the "/reportes" command.
+     *
+     * @param player The player executing the command.
+     * @param group  The group data of the player.
+     */
     private void handleShowReports(Player player, GroupData group) {
         if (group.getPermissions().contains(Permission.REPORTS)) {
             reportsInventory.openInventory(player);
@@ -338,6 +429,12 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         }
     }
 
+    /**
+     * Handles the "/reload" command.
+     *
+     * @param player The player executing the command.
+     * @param group  The group data of the player.
+     */
     private void handleReloadConfig(Player player, GroupData group) {
         if (group.getPermissions().contains(Permission.RELOAD)) {
             reloadConfig(player);
@@ -346,6 +443,13 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         }
     }
 
+    /**
+     * Handles the "/tp" command.
+     *
+     * @param player The player executing the command.
+     * @param args   The arguments provided by the user.
+     * @param group  The group data of the player.
+     */
     private void handleTeleportCommand(Player player, String[] args, GroupData group) {
         if (!group.getPermissions().contains(Permission.TELEPORT)) {
             sendNoPermissionMessage(player);
@@ -395,6 +499,12 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         }
     }
 
+    /**
+     * Handles the "/banshee" command.
+     *
+     * @param player The player executing the command.
+     * @param group  The group data of the player.
+     */
     private void handleBansheeCommand(Player player, GroupData group) {
         if (!group.getPermissions().contains(Permission.BANSHEE)) {
             sendNoPermissionMessage(player);
@@ -410,6 +520,13 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         }
     }
 
+    /**
+     * Handles the "/añadirusuarioagrupo" and "/quitarusuariodegrupo" commands.
+     *
+     * @param player The player executing the command.
+     * @param args   The arguments provided by the user.
+     * @param group  The group data of the player.
+     */
     private void handleAddUserToGroupCommand(Player player, String[] args, GroupData group) {
         if (!group.getPermissions().contains(Permission.GROUP) && !player.isOp()) {
             sendNoPermissionMessage(player);
@@ -425,6 +542,13 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         Message.enviarMensajeColorido(player, "Usuario añadido al grupo correctamente.", ChatColor.GREEN);
     }
 
+    /**
+     * Handles the "/quitarusuariodegrupo" command.
+     *
+     * @param player The player executing the command.
+     * @param args   The arguments provided by the user.
+     * @param group  The group data of the player.
+     */
     private void handleRemoveUserFromGroupCommand(Player player, String[] args, GroupData group) {
         if (!group.getPermissions().contains(Permission.GROUP) && !player.isOp()) {
             sendNoPermissionMessage(player);
@@ -440,6 +564,12 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         Message.enviarMensajeColorido(player, "Usuario eliminado del grupo correctamente.", ChatColor.GREEN);
     }
 
+    /**
+     * Handles the "/back" command.
+     *
+     * @param player The player executing the command.
+     * @param group  The group data of the player.
+     */
     private void handleBackCommand(Player player, GroupData group) {
         if (!group.getPermissions().contains(Permission.TELEPORT)) {
             sendNoPermissionMessage(player);
@@ -453,6 +583,13 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         }
     }
 
+    /**
+     * Handles the "/setdia" command.
+     *
+     * @param player The player executing the command.
+     * @param args   The arguments provided by the user.
+     * @param group  The group data of the player.
+     */
     private void handleSetDayCommand(Player player, String[] args, GroupData group) {
         if (!group.getPermissions().contains(Permission.DAYS)) {
             sendNoPermissionMessage(player);
@@ -478,6 +615,13 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         }
     }
 
+    /**
+     * Handles the "/añadirbannedword" command.
+     *
+     * @param player The player executing the command.
+     * @param args   The arguments provided by the user.
+     * @param group  The group data of the player.
+     */
     private void handleAddBannedWordCommand(Player player, String[] args, GroupData group) {
         if (!group.getPermissions().contains(Permission.CHAT)) {
             sendNoPermissionMessage(player);
@@ -494,6 +638,13 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         Message.enviarMensajeColorido(player, "La palabra " + word + " ha sido añadida a la lista de palabras prohibidas.", ChatColor.GREEN);
     }
 
+    /**
+     * Handles the "/quitarbannedword" command.
+     *
+     * @param player The player executing the command.
+     * @param args   The arguments provided by the user.
+     * @param group  The group data of the player.
+     */
     private void handleRemoveBannedWordCommand(Player player, String[] args, GroupData group) {
         if (!group.getPermissions().contains(Permission.CHAT)) {
             sendNoPermissionMessage(player);
@@ -510,6 +661,13 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         Message.enviarMensajeColorido(player, "La palabra " + word + " ha sido eliminada de la lista de palabras prohibidas.", ChatColor.GREEN);
     }
 
+    /**
+     * Handles the "/quitarban" command.
+     *
+     * @param player The player executing the command.
+     * @param args   The arguments provided by the user.
+     * @param group  The group data of the player.
+     */
     private void handleUnbanPlayerCommand(Player player, String[] args, GroupData group) {
         if (!group.getPermissions().contains(Permission.BAN)) {
             sendNoPermissionMessage(player);
@@ -530,6 +688,11 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         }
     }
 
+    /**
+     * Handles the "/deathscape" command.
+     *
+     * @param player The player executing the command.
+     */
     private void showHelp(Player player) {
         // Obtener datos del grupo del jugador
         PlayerData playerData = PlayerDatabase.getPlayerDataFromDatabase(player.getName());
@@ -613,30 +776,59 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         }
     }
 
+    /**
+     * Handles the "/deathscape info" command.
+     *
+     * @param player The player executing the command.
+     */
     private void showInfo(Player player) {
         String infoMessage = "DeathScape V" + plugin.getDescription().getVersion() + " por " + plugin.getDescription().getAuthors();
         Message.enviarMensajeColorido(player, infoMessage, ChatColor.GREEN);
     }
 
+    /** Handles the "/discord" command.
+     *
+     * @param player The player executing the command.
+     */
     private void showDiscord(Player player) {
         Message.enviarMensajeColorido(player, "Discord: " + DISCORD_URL, ChatColor.BLUE);
     }
 
+    /**
+     * Handles the "/deathscape tiempolluvia" command.
+     *
+     * @param player The player executing the command.
+     */
     private void showStormTime(Player player) {
         int rainTimePending = plugin.getServerData().getStormPendingTime();
         Message.enviarMensajeColorido(player, "Tiempo de lluvia pendiente: " + rainTimePending + " minutos.", ChatColor.GREEN);
     }
 
+    /**
+     * Handles the "/deathscape dia" command.
+     *
+     * @param player The player executing the command.
+     */
     private void showDay(Player player) {
         Message.enviarMensajeColorido(player, "El día actual es: " + plugin.getServerData().getServerDays(), ChatColor.GREEN);
     }
 
+    /**
+     * Handles the "/deathscape tiempojugado" command.
+     *
+     * @param player The player executing the command.
+     */
     private void showPlayTime(Player player) {
         playerController.savePlayerData(player);
         String tiempoJugado = Objects.requireNonNull(PlayerDatabase.getPlayerDataFromDatabase(player.getName())).getTimePlayed();
         Message.enviarMensajeColorido(player, "Has jugado un total de: " + tiempoJugado, ChatColor.GREEN);
     }
 
+    /**
+     * Reloads the plugin configuration.
+     *
+     * @param player The player executing the command.
+     */
     private void reloadConfig(Player player) {
         if (MainConfigManager.getInstance().reloadConfig()) {
             Message.ConfigLoadedOK(player);
@@ -645,14 +837,30 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         }
     }
 
+    /**
+     * Sends an invalid command message to the player.
+     *
+     * @param player The player executing the command.
+     */
     private void sendInvalidCommandMessage(Player player) {
         Message.enviarMensajeColorido(player, INVALID_COMMAND_MESSAGE, ChatColor.RED);
     }
 
+    /**
+     * Sends a no permission message to the player.
+     *
+     * @param player The player executing the command.
+     */
     private void sendNoPermissionMessage(Player player) {
         Message.enviarMensajeColorido(player, "No tienes permiso para usar este comando.", ChatColor.RED);
     }
 
+    /**
+     * Handles the "/dificultad" command.
+     *
+     * @param player The player executing the command.
+     * @param args   The arguments provided by the user.
+     */
     private void handleDifficultyCommand(Player player, String[] args) {
         if (args.length < 2) {
             Message.enviarMensajeColorido(player, "Uso: /dificultad <día>", ChatColor.RED);
@@ -706,5 +914,4 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
             player.sendMessage(ChatColor.translateAlternateColorCodes('&', line));
         }
     }
-
 }
