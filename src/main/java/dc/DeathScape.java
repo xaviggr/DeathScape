@@ -39,6 +39,8 @@ public class DeathScape extends JavaPlugin {
     private MobSpawnController mobSpawnController;
     private TotemController totemController;
     private DimensionController dimensionController;
+    private DungeonController dungeonController;
+    private ItemsController itemsController;
 
     // Listeners
     private PlayerListener playerListener;
@@ -105,6 +107,8 @@ public class DeathScape extends JavaPlugin {
         totemController = new TotemController(this);
         mobSpawnController = new MobSpawnController(this);
         dimensionController = new DimensionController(this);
+        dungeonController = new DungeonController(this, playerController);
+        itemsController = new ItemsController(this);
     }
 
     /**
@@ -123,7 +127,7 @@ public class DeathScape extends JavaPlugin {
         AnimationController animationController = new AnimationController(this);
         playerListener = new PlayerListener(this, playerController, weatherController, animationController, totemController);
         mobSpawnListener = new MobSpawnListener(this, mobSpawnController);
-        deathScapeCommand = new DeathScapeCommand(this, reportInventory, reportsInventory, playerController, reviveInventory);
+        deathScapeCommand = new DeathScapeCommand(this, reportInventory, reportsInventory, playerController, reviveInventory, dungeonController);
         chatListener = new ChatListener(playerController, this);
     }
 

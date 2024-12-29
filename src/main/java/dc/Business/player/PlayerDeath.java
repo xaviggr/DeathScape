@@ -3,6 +3,7 @@ package dc.Business.player;
 import dc.DeathScape;
 import dc.Persistence.config.MainConfigManager;
 import dc.Persistence.player.PlayerEditDatabase;
+import dc.utils.Message;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.Skull;
@@ -37,23 +38,21 @@ public class PlayerDeath implements Listener {
     public void Dead(Player player) {
         String victim = player.getName();
 
-        // Notify all online players about the death
-        for (Player checkingPlayer : Bukkit.getOnlinePlayers()) {
-            String deathTitle = MainConfigManager.getInstance().getDeathMessageTitle();
-            String deathSubtitle = MainConfigManager.getInstance().getDeathMessageSubtitle();
+        String deathTitle = MainConfigManager.getInstance().getDeathMessageTitle();
+        String deathSubtitle = MainConfigManager.getInstance().getDeathMessageSubtitle();
+        deathSubtitle.replace("%player%", victim);
 
-            // Send death title and subtitle to all players
-            checkingPlayer.sendTitle(deathTitle, deathSubtitle.replace("%player%", victim), 20, 100, 20);
-            checkingPlayer.playSound(checkingPlayer.getLocation(), Sound.ENTITY_BLAZE_DEATH, Float.MAX_VALUE, -0.1f);
-        }
+        Message.sendTitleToAllPlayers(deathTitle, deathSubtitle, 10, 40, 10); // Send a title to all players
+        Message.playSoundToAllPlayers(Sound.ENTITY_WITHER_DEATH); // Play a sound to all players
 
         // Create a statue at the player's death location
         createStatueOnDeath(player);
-        player.spigot().respawn(); // Respawn the player
 
         // Update player status in the database
         PlayerEditDatabase.setPlayerAsDeath(player);
         PlayerEditDatabase.setPlayerBanDate(player);
+
+        player.spigot().respawn(); // Respawn the player
     }
 
     /**

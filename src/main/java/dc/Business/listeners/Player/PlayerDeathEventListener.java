@@ -66,11 +66,6 @@ public class PlayerDeathEventListener implements Listener {
     public void onPlayerDeath(PlayerDeathEvent event) {
         Player player = Objects.requireNonNull(event.getEntity().getPlayer());
 
-        // Update player state, weather, and start death animation
-        playerController.setPlayerAsDead(player);
-        weatherController.updateStormOnPlayerDeath();
-        animationController.startDeathAnimation(player);
-
         // Extract death details
         String playerName = player.getName();
         String worldName = player.getWorld().getName();
@@ -93,5 +88,10 @@ public class PlayerDeathEventListener implements Listener {
         // Create and send Discord notification
         String jsonPayload = discordController.createDiscordMessage(playerName, worldName, location, deathCause);
         discordController.sendWebhookMessage(jsonPayload);
+
+        // Update player state, weather, and start death animation
+        playerController.setPlayerAsDead(player);
+        weatherController.updateStormOnPlayerDeath();
+        animationController.startDeathAnimation(player);
     }
 }

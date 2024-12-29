@@ -42,6 +42,9 @@ public class PlayerKillListener implements Listener {
             // Handle monster kills specifically
             if (entity instanceof Monster) {
                 handleMonsterKill(player, (Monster) entity);
+            } else {
+                player.sendMessage("You gained 5 deathpoints for killing a " + entity.getType().name() + "!");
+                playerController.addPointsToPlayer(player, 5);
             }
         }
     }
@@ -60,25 +63,27 @@ public class PlayerKillListener implements Listener {
         switch (monsterType) {
             case "ZOMBIE":
                 points = 10;
-                player.sendMessage("You gained 10 points for killing a Zombie!");
+                player.sendMessage("You gained 10 deathpoints for killing a Zombie!");
                 break;
             case "SKELETON":
                 points = 15;
-                player.sendMessage("You gained 15 points for killing a Skeleton!");
+                player.sendMessage("You gained 15 deathpoints for killing a Skeleton!");
                 break;
             case "CREEPER":
                 points = 20;
-                player.sendMessage("You gained 20 points for killing a Creeper!");
+                player.sendMessage("You gained 20 deathpoints for killing a Creeper!");
                 break;
             case "SPIDER":
                 points = 12;
-                player.sendMessage("You gained 12 points for killing a Spider!");
+                player.sendMessage("You gained 12 deathpoints for killing a Spider!");
                 break;
             default:
                 points = 5; // Default points for other monsters
-                player.sendMessage("You gained 5 points for killing a " + monsterType + "!");
+                player.sendMessage("You gained 5 deathpoints for killing a " + monsterType + "!");
                 break;
         }
+
+
 
         // Add points to the player using the PlayerController
         playerController.addPointsToPlayer(player, points);

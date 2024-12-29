@@ -18,7 +18,7 @@ config:
   storm_time: 10
   points_to_reduce_on_death: 5
   totem_success_probability: 50
-  max_players_in_world: 0
+  max_players_in_world: 70
 groups:
   owner:
     prefix: "&4[Owner]"

@@ -1,11 +1,13 @@
-CAVE_SPIDER:
-  Health: 30
-  Damage: 7
-WITHER_SKELETON:
-  Health: 50
-  Damage: 10
 GIANT:
   Health: 1000
   Damage: 20
   Skills:
   - potion{type=POISON;duration=100;lvl=1} @target ~onAttack
+ENDER_DRAGON:
+  Damage: 50
+  Display: '&k&1sa&2gf&3xn&r&f&lDeath&6Scape &4Demon&r&k&1sa&2gf&3nx'
+  Health: 400
+  Skills: 
+  - damage{a=45} ~onAttack
+  - skill{s=SummonEnderGhasts} ~onTimer:900
+  - lightning{d=32} @PlayersInRadius{r=25} ~onTimer:100

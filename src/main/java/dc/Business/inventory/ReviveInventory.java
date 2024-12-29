@@ -67,9 +67,9 @@ public class ReviveInventory extends PlayersInventory {
         double currentMaxHealth = Objects.requireNonNull(reviver.getAttribute(Attribute.GENERIC_MAX_HEALTH)).getBaseValue();
         if (currentMaxHealth > 2) { // Ensure the player doesn't drop below 1 heart
             reviver.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(currentMaxHealth - 2);
-            Message.enviarMensajeColorido(reviver, "Has perdido un corazón por revivir a " + playerName + ".", ChatColor.RED);
+            Message.sendMessage(reviver, "Has perdido un corazón por revivir a " + playerName + ".", ChatColor.RED);
         } else {
-            Message.enviarMensajeColorido(reviver, "¡No puedes perder más corazones!", ChatColor.RED);
+            Message.sendMessage(reviver, "¡No puedes perder más corazones!", ChatColor.RED);
         }
     }
 }

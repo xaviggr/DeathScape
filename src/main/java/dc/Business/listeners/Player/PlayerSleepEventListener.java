@@ -1,6 +1,5 @@
 package dc.Business.listeners.Player;
 
-import dc.Business.controllers.ServerController;
 import dc.Business.controllers.WeatherController;
 import dc.utils.Message;
 import org.bukkit.ChatColor;
@@ -42,31 +41,26 @@ public class PlayerSleepEventListener implements Listener {
         // Cancel the event if it's not nighttime
         if (!weatherController.isNightTime()) {
             event.setCancelled(true);
-            Message.enviarMensajeColorido(player, "No puedes dormir durante el día.", ChatColor.RED);
+            Message.sendMessage(player, "No puedes dormir durante el día.", ChatColor.RED);
             return;
         }
 
         // Cancel the event if it's storming during the daytime
         if (world.hasStorm() && !weatherController.isNightTime()) {
             event.setCancelled(true);
-            Message.enviarMensajeColorido(player, "No puedes dormir durante la tormenta.", ChatColor.RED);
+            Message.sendMessage(player, "No puedes dormir durante la tormenta.", ChatColor.RED);
             return;
         }
 
-        // Add the player to the list of sleeping players
-        ServerController.SleepingPlayers.add(player);
-
         // If this is the first player sleeping, transition to daytime
-        if (ServerController.SleepingPlayers.size() == 1) {
-            if (weatherController.isNightTime()) { // Double-check if it's still nighttime
-                world.setTime(0); // Set the time to daytime
-                Message.sendMessageAllPlayers("El jugador " + player.getName() + " ha hecho que amanezca.", ChatColor.GOLD);
-            }
+        if (weatherController.isNightTime()) { // Double-check if it's still nighttime
+            world.setTime(0); // Set the time to daytime
+            Message.sendMessageAllPlayers("El jugador " + player.getName() + " ha hecho que amanezca.", ChatColor.GOLD);
+        }
 
-            // Ensure storm weather remains active if it was active
-            if (world.hasStorm()) {
-                world.setStorm(true);
-            }
+        // Ensure storm weather remains active if it was active
+        if (world.hasStorm()) {
+            world.setStorm(true);
         }
     }
 
@@ -78,7 +72,6 @@ public class PlayerSleepEventListener implements Listener {
      */
     @EventHandler
     public void onPlayerWake(PlayerBedLeaveEvent event) {
-        Player player = event.getPlayer();
-        ServerController.SleepingPlayers.remove(player); // Remove the player from the list of sleeping players
+
     }
 }

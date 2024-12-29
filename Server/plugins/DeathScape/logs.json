@@ -3,152 +3,416 @@
     {
       "logType": "command",
       "author": "xaviggr",
-      "logInfo": "[tiempolluvia]",
-      "dateTime": "2024-12-25 11:03:21"
+      "logInfo": "[banshee]",
+      "dateTime": "2024-12-27 20:26:10"
     },
     {
       "logType": "command",
       "author": "xaviggr",
       "logInfo": "[añadirUsuarioAGrupo, xaviggr, owner]",
-      "dateTime": "2024-12-25 11:03:56"
+      "dateTime": "2024-12-27 20:26:26"
     },
     {
       "logType": "command",
       "author": "xaviggr",
-      "logInfo": "[quitarban, 4gymo]",
-      "dateTime": "2024-12-25 11:06:25"
+      "logInfo": "[banshee]",
+      "dateTime": "2024-12-27 20:26:34"
     },
     {
       "logType": "command",
       "author": "xaviggr",
-      "logInfo": "[quitarban, 4gymo]",
-      "dateTime": "2024-12-25 11:07:24"
+      "logInfo": "[banshee]",
+      "dateTime": "2024-12-27 20:26:51"
     },
     {
       "logType": "command",
       "author": "xaviggr",
-      "logInfo": "[quitarban, 4gymo]",
-      "dateTime": "2024-12-25 11:19:30"
+      "logInfo": "[banshee]",
+      "dateTime": "2024-12-27 20:29:59"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[banshee]",
+      "dateTime": "2024-12-27 20:30:17"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[banshee]",
+      "dateTime": "2024-12-27 20:30:47"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[banshee]",
+      "dateTime": "2024-12-27 20:30:48"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[tp, 5019, 7, 205]",
+      "dateTime": "2024-12-27 20:30:50"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[banshee]",
+      "dateTime": "2024-12-27 20:30:56"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[banshee]",
+      "dateTime": "2024-12-27 20:31:03"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[banshee]",
+      "dateTime": "2024-12-27 20:31:10"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[banshee]",
+      "dateTime": "2024-12-27 20:32:14"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[tp, 0, 100, 0]",
+      "dateTime": "2024-12-28 11:53:16"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[tp, 0, 100, 0]",
+      "dateTime": "2024-12-28 11:53:43"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[banshee]",
+      "dateTime": "2024-12-28 12:09:40"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[tp, Link825_, xaviggr]",
+      "dateTime": "2024-12-28 12:09:57"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[banshee]",
+      "dateTime": "2024-12-28 12:17:37"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[banshee]",
+      "dateTime": "2024-12-28 12:17:39"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[banshee]",
+      "dateTime": "2024-12-28 12:19:55"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[tp, Link825_]",
+      "dateTime": "2024-12-28 12:22:20"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[banshee]",
+      "dateTime": "2024-12-28 12:30:28"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[tp, lobby]",
+      "dateTime": "2024-12-28 12:48:15"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[tp, Link825_, xaviggr]",
+      "dateTime": "2024-12-28 12:48:22"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[dungeon]",
+      "dateTime": "2024-12-28 12:48:34"
+    },
+    {
+      "logType": "command",
+      "author": "Link825_",
+      "logInfo": "[dungeon]",
+      "dateTime": "2024-12-28 12:48:53"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[tp, Link825_]",
+      "dateTime": "2024-12-28 12:49:00"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[dungeon]",
+      "dateTime": "2024-12-28 12:49:12"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[dungeon]",
+      "dateTime": "2024-12-28 12:49:13"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[dungeon]",
+      "dateTime": "2024-12-28 12:49:13"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[dungeon]",
+      "dateTime": "2024-12-28 12:49:14"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[dungeon]",
+      "dateTime": "2024-12-28 12:49:15"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[dungeon]",
+      "dateTime": "2024-12-28 12:49:15"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[dungeon]",
+      "dateTime": "2024-12-28 12:49:16"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[dungeon]",
+      "dateTime": "2024-12-28 12:49:16"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[dungeon]",
+      "dateTime": "2024-12-28 12:49:17"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[dungeon]",
+      "dateTime": "2024-12-28 12:49:17"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[dungeon]",
+      "dateTime": "2024-12-28 12:49:18"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[dungeon]",
+      "dateTime": "2024-12-28 12:49:18"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[dungeon]",
+      "dateTime": "2024-12-28 12:49:19"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[dungeon]",
+      "dateTime": "2024-12-28 12:49:19"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[dungeon]",
+      "dateTime": "2024-12-28 12:49:20"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[dungeon]",
+      "dateTime": "2024-12-28 12:49:20"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[dungeon]",
+      "dateTime": "2024-12-28 12:49:22"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[dungeon]",
+      "dateTime": "2024-12-28 12:49:22"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[dungeon]",
+      "dateTime": "2024-12-28 12:49:23"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[tp, Link825_, xaviggr]",
+      "dateTime": "2024-12-28 12:49:27"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[dungeon]",
+      "dateTime": "2024-12-28 12:49:29"
+    },
+    {
+      "logType": "command",
+      "author": "Link825_",
+      "logInfo": "[dungeon]",
+      "dateTime": "2024-12-28 12:49:36"
+    },
+    {
+      "logType": "command",
+      "author": "Link825_",
+      "logInfo": "[dungeon]",
+      "dateTime": "2024-12-28 12:53:59"
+    },
+    {
+      "logType": "command",
+      "author": "Link825_",
+      "logInfo": "[dungeon]",
+      "dateTime": "2024-12-28 12:54:01"
+    },
+    {
+      "logType": "command",
+      "author": "Link825_",
+      "logInfo": "[dungeon]",
+      "dateTime": "2024-12-28 12:54:02"
+    },
+    {
+      "logType": "command",
+      "author": "Link825_",
+      "logInfo": "[dungeon]",
+      "dateTime": "2024-12-28 12:54:03"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[tp, Link825_]",
+      "dateTime": "2024-12-28 12:54:18"
+    },
+    {
+      "logType": "command",
+      "author": "Link825_",
+      "logInfo": "[dungeon]",
+      "dateTime": "2024-12-28 12:54:19"
+    },
+    {
+      "logType": "command",
+      "author": "Link825_",
+      "logInfo": "[dungeon]",
+      "dateTime": "2024-12-28 12:59:19"
+    },
+    {
+      "logType": "command",
+      "author": "xaviggr",
+      "logInfo": "[banshee]",
+      "dateTime": "2024-12-28 13:01:38"
+    },
+    {
+      "logType": "command",
+      "author": "4gymo",
+      "logInfo": "[tp, xaviggr]",
+      "dateTime": "2024-12-28 13:06:57"
+    },
+    {
+      "logType": "command",
+      "author": "4gymo",
+      "logInfo": "[añadirUsuarioAGrupo, 4gymo, owner]",
+      "dateTime": "2024-12-28 13:07:03"
+    },
+    {
+      "logType": "command",
+      "author": "4gymo",
+      "logInfo": "[tp, xaviggr]",
+      "dateTime": "2024-12-28 13:07:07"
+    },
+    {
+      "logType": "command",
+      "author": "4gymo",
+      "logInfo": "[tp, xaviggr]",
+      "dateTime": "2024-12-28 13:07:29"
     },
     {
       "logType": "command",
       "author": "xaviggr",
       "logInfo": "[tp, 4gymo]",
-      "dateTime": "2024-12-25 11:34:57"
+      "dateTime": "2024-12-28 13:14:46"
     },
     {
       "logType": "command",
       "author": "xaviggr",
-      "logInfo": "[tp, 4gymo]",
-      "dateTime": "2024-12-25 11:35:27"
+      "logInfo": "[dungeon]",
+      "dateTime": "2024-12-28 13:30:39"
     },
     {
       "logType": "command",
       "author": "xaviggr",
-      "logInfo": "[tp, 4gymo]",
-      "dateTime": "2024-12-25 11:51:13"
+      "logInfo": "[dungeon]",
+      "dateTime": "2024-12-28 13:39:21"
     },
     {
       "logType": "command",
       "author": "xaviggr",
-      "logInfo": "[tp, 4gymo]",
-      "dateTime": "2024-12-25 11:51:34"
+      "logInfo": "[dungeon]",
+      "dateTime": "2024-12-28 14:21:13"
     },
     {
       "logType": "command",
       "author": "xaviggr",
-      "logInfo": "[banshee]",
-      "dateTime": "2024-12-25 11:52:04"
-    },
-    {
-      "logType": "command",
-      "author": "xaviggr",
-      "logInfo": "[banshee]",
-      "dateTime": "2024-12-25 11:52:16"
+      "logInfo": "[dungeon]",
+      "dateTime": "2024-12-28 14:21:17"
     },
     {
       "logType": "command",
       "author": "xaviggr",
       "logInfo": "[banshee]",
-      "dateTime": "2024-12-25 11:52:20"
+      "dateTime": "2024-12-28 14:28:07"
     },
     {
       "logType": "command",
       "author": "xaviggr",
-      "logInfo": "[banshee]",
-      "dateTime": "2024-12-25 11:52:21"
+      "logInfo": "[dungeon]",
+      "dateTime": "2024-12-28 14:31:00"
     },
     {
       "logType": "command",
       "author": "xaviggr",
-      "logInfo": "[banshee]",
-      "dateTime": "2024-12-25 11:52:22"
-    },
-    {
-      "logType": "command",
-      "author": "xaviggr",
-      "logInfo": "[banshee]",
-      "dateTime": "2024-12-25 11:57:04"
-    },
-    {
-      "logType": "command",
-      "author": "xaviggr",
-      "logInfo": "[banshee]",
-      "dateTime": "2024-12-25 11:57:10"
-    },
-    {
-      "logType": "command",
-      "author": "xaviggr",
-      "logInfo": "[tp, 4gymo, xaviggr]",
-      "dateTime": "2024-12-25 11:59:02"
-    },
-    {
-      "logType": "command",
-      "author": "xaviggr",
-      "logInfo": "[banshee]",
-      "dateTime": "2024-12-25 11:59:06"
-    },
-    {
-      "logType": "command",
-      "author": "xaviggr",
-      "logInfo": "[banshee]",
-      "dateTime": "2024-12-25 11:59:17"
-    },
-    {
-      "logType": "command",
-      "author": "xaviggr",
-      "logInfo": "[banshee]",
-      "dateTime": "2024-12-25 11:59:57"
-    },
-    {
-      "logType": "command",
-      "author": "xaviggr",
-      "logInfo": "[banshee]",
-      "dateTime": "2024-12-25 12:00:05"
-    },
-    {
-      "logType": "command",
-      "author": "xaviggr",
-      "logInfo": "[banshee]",
-      "dateTime": "2024-12-25 12:00:11"
-    },
-    {
-      "logType": "command",
-      "author": "xaviggr",
-      "logInfo": "[banshee]",
-      "dateTime": "2024-12-25 12:00:13"
-    },
-    {
-      "logType": "command",
-      "author": "xaviggr",
-      "logInfo": "[tp, 4gymo, Gery_345]",
-      "dateTime": "2024-12-25 12:00:40"
-    },
-    {
-      "logType": "command",
-      "author": "xaviggr",
-      "logInfo": "[tp, 4gymo]",
-      "dateTime": "2024-12-25 12:00:43"
+      "logInfo": "[dungeon]",
+      "dateTime": "2024-12-29 12:45:43"
     }
   ]
 }

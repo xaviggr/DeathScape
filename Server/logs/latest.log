@@ -1,200 +1,453 @@
-[12:18:46] [ServerMain/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
-[12:18:48] [ServerMain/INFO]: Loaded 1174 recipes
-[12:18:48] [ServerMain/INFO]: Loaded 1271 advancements
-[12:18:48] [Server thread/INFO]: Starting minecraft server version 1.20.4
-[12:18:48] [Server thread/INFO]: Loading properties
-[12:18:48] [Server thread/INFO]: This server is running Purpur version git-Purpur-2176 (MC: 1.20.4) (Implementing API version 1.20.4-R0.1-SNAPSHOT) (Git: 6b1ee98 on HEAD)
-[12:18:49] [Server thread/INFO]: Server Ping Player Sample Count: 12
-[12:18:49] [Server thread/INFO]: Using 4 threads for Netty based IO
-[12:18:49] [Server thread/INFO]: [ChunkTaskScheduler] Chunk system is using 1 I/O threads, 5 worker threads, and gen parallelism of 5 threads
-[12:18:49] [Server thread/INFO]: [Pufferfish] Max SIMD vector size on this system is 256 bits (int)
-[12:18:49] [Server thread/INFO]: [Pufferfish] Max SIMD vector size on this system is 256 bits (float)
-[12:18:49] [Server thread/INFO]: [Pufferfish] SIMD operations detected as functional. Will replace some operations with faster versions.
-[12:18:49] [Server thread/INFO]: Default game type: SURVIVAL
-[12:18:49] [Server thread/INFO]: Generating keypair
-[12:18:49] [Server thread/INFO]: Starting Minecraft server on 192.168.1.134:25565
-[12:18:49] [Server thread/INFO]: Using default channel type
-[12:18:49] [Server thread/INFO]: Paper: Using Java compression from Velocity.
-[12:18:49] [Server thread/INFO]: Paper: Using Java cipher from Velocity.
-[12:18:49] [Server thread/INFO]: [MythicMobs] Loading server plugin MythicMobs v5.6.2-3e052553
-[12:18:49] [Server thread/INFO]: [LumineUtils] (io.lumine.mythic.bukkit.utils.) is bound to plugin MythicMobs - io.lumine.mythic.bukkit.MythicBukkit
-[12:18:50] [Server thread/INFO]: [MythicMobs] §4M§6y§6t§6h§2i§2c§2 §3E§3n§1a§1b§1l§5e§5d§4!
-[12:18:50] [Server thread/INFO]: [spark] Loading server plugin spark v1.10.121
-[12:18:50] [Server thread/INFO]: [WorldEdit] Loading server plugin WorldEdit v7.3.0+6678-55745ad
-[12:18:50] [Server thread/INFO]: Got request to register class com.sk89q.worldedit.bukkit.BukkitServerInterface with WorldEdit [com.sk89q.worldedit.extension.platform.PlatformManager@7a69e8a6]
-[12:18:50] [Server thread/INFO]: [SkinsRestorer] Loading server plugin SkinsRestorer v15.5.1
-[12:18:50] [Server thread/INFO]: [ModelEngine] Loading server plugin ModelEngine vR3.1.11
-[12:18:50] [Server thread/INFO]: [DeathScape] Loading server plugin DeathScape v1.0.0
-[12:18:50] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
-[12:18:50] [Server thread/INFO]: [WorldEdit] Enabling WorldEdit v7.3.0+6678-55745ad
-[12:18:50] [Server thread/INFO]: Registering commands with com.sk89q.worldedit.bukkit.BukkitServerInterface
-[12:18:51] [Server thread/INFO]: WEPIF: Using the Bukkit Permissions API.
-[12:18:51] [Server thread/INFO]: Using com.sk89q.worldedit.bukkit.adapter.impl.v1_20_R3.PaperweightAdapter as the Bukkit adapter
-[12:18:52] [Server thread/INFO]: [SkinsRestorer] Enabling SkinsRestorer v15.5.1
-[12:18:52] [Server thread/WARN]: [SkinsRestorer] You must agree to the rules at 'commands.perSkinPermissionsConsent' in the config to use per skin permissions.
-[12:18:52] [Server thread/INFO]: [SkinsRestorer] Running on Minecraft 1.20.4.
-[12:18:53] [Server thread/INFO]: [SkinsRestorer] Using paper join listener!
-[12:18:53] [Server thread/WARN]: [SkinsRestorer] Please update your Java runtime to at least Java 21 (your version is 18).
-[12:18:53] [Server thread/WARN]: [SkinsRestorer] At some point in the future, SkinsRestorer will no longer be compatible with this version of Java.
-[12:18:53] [Server thread/INFO]: Preparing level "world"
-[12:18:53] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
-[12:18:53] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +==================+
-[12:18:53] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |   SkinsRestorer  |
-[12:18:53] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |------------------|
-[12:18:53] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |  Standalone Mode |
-[12:18:53] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +==================+
-[12:18:53] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
-[12:18:53] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Version: 15.5.1
-[12:18:53] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Commit: d5d8613
-[12:18:53] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     This is the latest version!
-[12:18:53] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
-[12:18:53] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Do you have issues? Read our troubleshooting guide: https://skinsrestorer.net/docs/troubleshooting
-[12:18:53] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Want to support SkinsRestorer? Consider donating: https://skinsrestorer.net/donate
-[12:18:54] [Server thread/INFO]: Preparing start region for dimension minecraft:overworld
-[12:18:54] [Server thread/INFO]: Time elapsed: 311 ms
-[12:18:54] [Server thread/INFO]: Preparing start region for dimension minecraft:the_end
-[12:18:54] [Server thread/INFO]: Time elapsed: 30 ms
-[12:18:54] [Server thread/INFO]: Preparing start region for dimension minecraft:rift
-[12:18:54] [Server thread/INFO]: Time elapsed: 26 ms
-[12:18:54] [Server thread/INFO]: Preparing start region for dimension minecraft:spawn
-[12:18:54] [Server thread/INFO]: Time elapsed: 34 ms
-[12:18:54] [Server thread/INFO]: [MythicMobs] Enabling MythicMobs v5.6.2-3e052553
-[12:18:55] [Server thread/INFO]: [MythicMobs] Loading MythicMobs for Paper (MC: 1.20.4)...
-[12:18:55] [Server thread/INFO]: [MythicMobs] The server is running Paper; enabled Paper exclusive functionality
-[12:18:56] [Server thread/INFO]: [MythicMobs] Base directory C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\data
-[12:18:56] [Server thread/INFO]: [MythicMobs] Module directory C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\data\worlds
-[12:18:57] [Server thread/INFO]: [MythicMobs] Loading Packs...
-[12:18:57] [Server thread/INFO]: [MythicMobs] Loading Items...
-[12:18:57] [Server thread/INFO]: [MythicMobs] Loading Item Groups...
-[12:18:57] [Server thread/INFO]: [MythicMobs] Loading Skills...
-[12:18:57] [Server thread/WARN]: [MythicMobs] Failed to parse Placeholder 'R': Math and variables in numeric values require premium! Consider getting MythicMobs Premium at www.mythiccraft.io
-[12:18:57] [Server thread/WARN]: [MythicMobs] Failed to parse Placeholder 'R': Math and variables in numeric values require premium! Consider getting MythicMobs Premium at www.mythiccraft.io
-[12:18:58] [Server thread/INFO]: [MythicMobs] Loading Drop Tables...
-[12:18:58] [Server thread/INFO]: [MythicMobs] Loading Random Spawns...
-[12:18:58] [Server thread/INFO]: [MythicMobs] Loading Spawn Blocks...
-[12:18:58] [Server thread/INFO]: [MythicMobs] ✓ Loaded 17 mobs.
-[12:18:58] [Server thread/INFO]: [MythicMobs] ✓ Loaded 3 vanilla mob overrides.
-[12:18:58] [Server thread/INFO]: [MythicMobs] ✓ Loaded 0 mob stacks.
-[12:18:58] [Server thread/INFO]: [MythicMobs] ✓ Loaded 95 skills.
-[12:18:58] [Server thread/INFO]: [MythicMobs] ✓ Loaded 0 random spawns.
-[12:18:58] [Server thread/INFO]: [MythicMobs] ✓ Loaded 3 mythic items.
-[12:18:58] [Server thread/INFO]: [MythicMobs] ✓ Loaded 2 drop tables.
-[12:18:58] [Server thread/INFO]: [MythicMobs] ✓ Loaded 0 mob spawners.
-[12:18:58] [Server thread/INFO]: [MythicMobs] MythicMobs configuration file loaded successfully.
-[12:18:58] [Server thread/INFO]: [MythicMobs] Started up bStats Metrics
-[12:18:58] [Server thread/INFO]: [MythicMobs] ✓ MythicMobs v5.6.2 ( build 3e052553 ) has been successfully loaded!
-[12:18:58] [Server thread/INFO]: [spark] Enabling spark v1.10.121
-[12:18:58] [Server thread/INFO]: [spark] Using Paper ServerTickStartEvent for tick monitoring
-[12:18:58] [Server thread/INFO]: [spark] Starting background profiler...
-[12:18:58] [Server thread/INFO]: [spark] The async-profiler engine is not supported for your os/arch (windows11/amd64), so the built-in Java engine will be used instead.
-[12:18:58] [Server thread/INFO]: [ModelEngine] Enabling ModelEngine vR3.1.11
-[12:18:58] [Server thread/INFO]: [MythicMobs] Model Engine Compatibility Loaded.
-[12:18:58] [Server thread/INFO]: [ModelEngine] [S] Compatibility applied: MythicMobs
-[12:18:58] [Server thread/INFO]: [ModelEngine] [S] bStats enabled
-[12:18:58] [Server thread/INFO]: [DeathScape] Enabling DeathScape v1.0.0
-[12:18:58] [Server thread/INFO]: [DeathScape] Spawn dimension initialized successfully.
-[12:18:58] [Server thread/INFO]: DeathScape has been enabled!
-[12:18:58] [Server thread/INFO]: Running delayed init tasks
-[12:18:58] [Server thread/INFO]: Días del servidor actualizados automáticamente.
-[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
-[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] [Importing models]
-[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
-[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Importing Rocky.bbmodel.
-[12:18:58] [Server thread/INFO]: [Tienda]: ¡Visita nuestra tienda y mejora tu experiencia! Usa /tienda para más información.
-[12:18:58] [Server thread/WARN]: [MythicMobs] ✗ Config Error for Targeter line 'selfparticles{p=soul_fire_flame;amount=10;speed=0;hS=0.8;vS=0.0;repeat=14;repeatinterval=4}': Failed to load custom targeter SELFPARTICLES
-[12:18:58] [Server thread/INFO]: Done (9.943s)! For help, type "help"
-[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
-[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Importing darkprincess_gama05.bbmodel.
-[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: Box UV detected. Cube UVs might not generate correctly if Box UV is used.
-[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder8 is rotated in multiple axis. Choosing one axis.
-[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder8 has illegal rotations. Cube rotation can only be -45, -22.5, 0, 22.5 and 45. [ -20.899999618530273 ]
-[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder8 is rotated in multiple axis. Choosing one axis.
-[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder8 has illegal rotations. Cube rotation can only be -45, -22.5, 0, 22.5 and 45. [ 93.4000015258789 ]
-[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder8 has illegal rotations. Cube rotation can only be -45, -22.5, 0, 22.5 and 45. [ 55.0 ]
-[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder6 is rotated in multiple axis. Choosing one axis.
-[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder6 has illegal rotations. Cube rotation can only be -45, -22.5, 0, 22.5 and 45. [ 90.9000015258789 ]
-[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder6 is rotated in multiple axis. Choosing one axis.
-[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder6 has illegal rotations. Cube rotation can only be -45, -22.5, 0, 22.5 and 45. [ 20.899999618530273 ]
-[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder6 has illegal rotations. Cube rotation can only be -45, -22.5, 0, 22.5 and 45. [ 70.0 ]
-[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder2 is rotated in multiple axis. Choosing one axis.
-[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone curpo2 is rotated in multiple axis. Choosing one axis.
-[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
-[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Importing effect_princessdarkness_01.bbmodel.
-[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
-[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Importing gm_galaxy_dragon.bbmodel.
-[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
-[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Importing gm_sun_dragon.bbmodel.
-[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
-[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] [Generating assets]
-[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
-[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Generating rocky.
-[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
-[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Generating darkprincess_gama05.
-[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
-[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Generating effect_princessdarkness_01.
-[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
-[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Generating gm_galaxy_dragon.
-[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
-[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Generating gm_sun_dragon.
-[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] 
-[12:18:58] [Craft Scheduler Thread - 6 - ModelEngine/INFO]: [ModelEngine] [A] Resource pack zipped.
-[12:19:01] [User Authenticator #0/INFO]: UUID of player xaviggr is cb185b4b-cea7-43bb-a340-571c9bb6c3a5
-[12:19:01] [Server thread/INFO]: [Owner] xaviggr ha entrado al mundo DeathScape
-[12:19:01] [Server thread/INFO]: xaviggr[IP hidden] logged in with entity id 89 at ([world_minecraft_spawn]0.0, 1.0, 0.0)
-[12:21:44] [Server thread/INFO]: xaviggr lost connection: Disconnected
-[12:21:44] [Server thread/INFO]: [Owner] xaviggr left the game
-[12:21:57] [Server thread/INFO]: Stopping the server
-[12:21:57] [Server thread/INFO]: Stopping server
-[12:21:57] [Server thread/INFO]: [DeathScape] Disabling DeathScape v1.0.0
-[12:21:57] [Server thread/INFO]: DeathScape has been disabled!
-[12:21:57] [Server thread/INFO]: [ModelEngine] Disabling ModelEngine vR3.1.11
-[12:21:57] [Server thread/INFO]: [SkinsRestorer] Disabling SkinsRestorer v15.5.1
-[12:21:57] [Server thread/INFO]: [WorldEdit] Disabling WorldEdit v7.3.0+6678-55745ad
-[12:21:57] [Server thread/INFO]: Unregistering com.sk89q.worldedit.bukkit.BukkitServerInterface from WorldEdit
-[12:21:57] [Server thread/INFO]: [spark] Disabling spark v1.10.121
-[12:21:57] [Server thread/INFO]: [MythicMobs] Disabling MythicMobs v5.6.2-3e052553
-[12:21:57] [Server thread/INFO]: [MythicMobs] ------------------------------------------------------------
-[12:21:57] [Server thread/INFO]: [MythicMobs] - 
-[12:21:57] [Server thread/INFO]: [MythicMobs] - Unloading Mythic...
-[12:21:57] [Server thread/INFO]: [MythicMobs] - 
-[12:21:57] [Server thread/INFO]: [MythicMobs] ------------------------------------------------------------
-[12:21:57] [Server thread/INFO]: [MythicMobs] - Spawners saved and unloaded...
-[12:21:57] [Server thread/INFO]: [MythicMobs] - Mobs saved and unloaded...
-[12:21:57] [Server thread/INFO]: [MythicMobs] Saving plugin data...
-[12:21:57] [Server thread/INFO]: [MythicMobs] ✓Saving Finished
-[12:21:57] [Server thread/INFO]: [MythicMobs] - Variables saved...
-[12:21:57] [Server thread/INFO]: [MythicMobs] - All active settings have been saved!
-[12:21:57] [Server thread/INFO]: [MythicMobs] - Mythic has been unloaded!
-[12:21:57] [Server thread/INFO]: [MythicMobs] ------------------------------------------------------------
-[12:21:57] [Server thread/INFO]: [MythicMobs] Saving plugin data...
-[12:21:57] [Server thread/INFO]: [MythicMobs] ✓Saving Finished
-[12:21:57] [Server thread/INFO]: Saving players
-[12:21:57] [Server thread/INFO]: Saving worlds
-[12:21:57] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
-[12:21:57] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world'
-[12:21:57] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world'
-[12:21:57] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world'
-[12:21:58] [Server thread/INFO]: [ChunkHolderManager] Saved 529 block chunks, 529 entity chunks, 0 poi chunks in world 'world' in 0,65s
-[12:21:58] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
-[12:21:58] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_the_end]'/minecraft:the_end
-[12:21:58] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_the_end'
-[12:21:58] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_the_end'
-[12:21:58] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_the_end'
-[12:21:58] [Server thread/INFO]: [ChunkHolderManager] Saved 529 block chunks, 529 entity chunks, 0 poi chunks in world 'world_the_end' in 0,07s
-[12:21:58] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
-[12:21:58] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_minecraft_rift]'/minecraft:rift
-[12:21:58] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_minecraft_rift'
-[12:21:58] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_minecraft_rift'
-[12:21:58] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_minecraft_rift'
-[12:21:58] [Server thread/INFO]: [ChunkHolderManager] Saved 529 block chunks, 529 entity chunks, 0 poi chunks in world 'world_minecraft_rift' in 0,08s
-[12:21:58] [Server thread/INFO]: ThreadedAnvilChunkStorage (rift): All chunks are saved
-[12:21:58] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_minecraft_spawn]'/minecraft:spawn
-[12:21:58] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_minecraft_spawn'
-[12:21:58] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_minecraft_spawn'
-[12:21:58] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_minecraft_spawn'
-[12:21:58] [Server thread/INFO]: [ChunkHolderManager] Saved 625 block chunks, 625 entity chunks, 0 poi chunks in world 'world_minecraft_spawn' in 0,10s
-[12:21:58] [Server thread/INFO]: ThreadedAnvilChunkStorage (spawn): All chunks are saved
-[12:21:58] [Server thread/INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
-[12:21:58] [Server thread/INFO]: Flushing Chunk IO
-[12:21:58] [Server thread/INFO]: Closing Thread Pool
-[12:21:58] [Server thread/INFO]: Closing Server
+[12:43:46] [ServerMain/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
+[12:43:48] [ServerMain/INFO]: Loaded 1174 recipes
+[12:43:48] [ServerMain/INFO]: Loaded 1271 advancements
+[12:43:48] [Server thread/INFO]: Starting minecraft server version 1.20.4
+[12:43:48] [Server thread/INFO]: Loading properties
+[12:43:48] [Server thread/INFO]: This server is running Purpur version git-Purpur-2176 (MC: 1.20.4) (Implementing API version 1.20.4-R0.1-SNAPSHOT) (Git: 6b1ee98 on HEAD)
+[12:43:48] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[12:43:48] [Server thread/INFO]: Using 4 threads for Netty based IO
+[12:43:48] [Server thread/INFO]: [ChunkTaskScheduler] Chunk system is using 1 I/O threads, 5 worker threads, and gen parallelism of 5 threads
+[12:43:49] [Server thread/INFO]: [Pufferfish] Max SIMD vector size on this system is 256 bits (int)
+[12:43:49] [Server thread/INFO]: [Pufferfish] Max SIMD vector size on this system is 256 bits (float)
+[12:43:49] [Server thread/INFO]: [Pufferfish] SIMD operations detected as functional. Will replace some operations with faster versions.
+[12:43:49] [Server thread/INFO]: Default game type: SURVIVAL
+[12:43:49] [Server thread/INFO]: Generating keypair
+[12:43:49] [Server thread/INFO]: Starting Minecraft server on 192.168.1.134:25565
+[12:43:49] [Server thread/INFO]: Using default channel type
+[12:43:49] [Server thread/INFO]: Paper: Using Java compression from Velocity.
+[12:43:49] [Server thread/INFO]: Paper: Using Java cipher from Velocity.
+[12:43:49] [Server thread/INFO]: [SpigotLibraryLoader] [Denizen] Loading 2 libraries... please wait
+[12:43:49] [Server thread/INFO]: [SpigotLibraryLoader] [Denizen] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\org\mongodb\mongodb-driver-sync\4.8.1\mongodb-driver-sync-4.8.1.jar
+[12:43:49] [Server thread/INFO]: [SpigotLibraryLoader] [Denizen] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\org\mongodb\bson\4.8.1\bson-4.8.1.jar
+[12:43:49] [Server thread/INFO]: [SpigotLibraryLoader] [Denizen] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\org\mongodb\mongodb-driver-core\4.8.1\mongodb-driver-core-4.8.1.jar
+[12:43:49] [Server thread/INFO]: [SpigotLibraryLoader] [Denizen] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\org\mongodb\bson-record-codec\4.8.1\bson-record-codec-4.8.1.jar
+[12:43:49] [Server thread/INFO]: [SpigotLibraryLoader] [Denizen] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\redis\clients\jedis\4.3.1\jedis-4.3.1.jar
+[12:43:49] [Server thread/INFO]: [SpigotLibraryLoader] [Denizen] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\org\slf4j\slf4j-api\1.7.36\slf4j-api-1.7.36.jar
+[12:43:49] [Server thread/INFO]: [SpigotLibraryLoader] [Denizen] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\org\apache\commons\commons-pool2\2.11.1\commons-pool2-2.11.1.jar
+[12:43:49] [Server thread/INFO]: [SpigotLibraryLoader] [Denizen] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\org\json\json\20220320\json-20220320.jar
+[12:43:49] [Server thread/INFO]: [SpigotLibraryLoader] [Denizen] Loaded library C:\Users\xavi2\Desktop\DeathScape\Server\libraries\com\google\code\gson\gson\2.8.9\gson-2.8.9.jar
+[12:43:49] [Server thread/INFO]: [WorldEdit] Loading server plugin WorldEdit v7.3.0+6678-55745ad
+[12:43:50] [Server thread/INFO]: Got request to register class com.sk89q.worldedit.bukkit.BukkitServerInterface with WorldEdit [com.sk89q.worldedit.extension.platform.PlatformManager@685eb46c]
+[12:43:50] [Server thread/INFO]: [ProtocolLib] Loading server plugin ProtocolLib v5.3.0
+[12:43:50] [Server thread/INFO]: [WorldGuard] Loading server plugin WorldGuard v7.0.9+5934e49
+[12:43:50] [Server thread/INFO]: [Citizens] Loading server plugin Citizens v2.0.33-SNAPSHOT (build 3399)
+[12:43:50] [Server thread/INFO]: [LibsDisguises] Loading server plugin LibsDisguises v10.0.44
+[12:43:50] [Server thread/INFO]: [Denizen] Loading server plugin Denizen v1.3.0-SNAPSHOT (build 1803-REL)
+[12:43:50] [Server thread/INFO]: [MythicMobs] Loading server plugin MythicMobs v5.6.2-3e052553
+[12:43:50] [Server thread/INFO]: [LumineUtils] (io.lumine.mythic.bukkit.utils.) is bound to plugin MythicMobs - io.lumine.mythic.bukkit.MythicBukkit
+[12:43:50] [Server thread/INFO]: [MythicMobs] §4M§6y§6t§6h§2i§2c§2 §3E§3n§1a§1b§1l§5e§5d§4!
+[12:43:50] [Server thread/INFO]: [BetonQuest] Loading server plugin BetonQuest v2.2.0
+[12:43:50] [Server thread/INFO]: [spark] Loading server plugin spark v1.10.121
+[12:43:50] [Server thread/INFO]: [voicechat] Loading server plugin voicechat v2.5.25
+[12:43:50] [Server thread/INFO]: [SkinsRestorer] Loading server plugin SkinsRestorer v15.5.1
+[12:43:50] [Server thread/INFO]: [RedProtect] Loading server plugin RedProtect v8.1.2-SNAPSHOT
+[12:43:50] [Server thread/INFO]: [ModelEngine] Loading server plugin ModelEngine vR3.1.11
+[12:43:50] [Server thread/INFO]: [Depenizen] Loading server plugin Depenizen v2.1.1 (build 867)
+[12:43:50] [Server thread/INFO]: [DeathScape] Loading server plugin DeathScape v1.0.0
+[12:43:50] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[12:43:50] [Server thread/INFO]: [WorldEdit] Enabling WorldEdit v7.3.0+6678-55745ad
+[12:43:50] [Server thread/INFO]: Registering commands with com.sk89q.worldedit.bukkit.BukkitServerInterface
+[12:43:50] [Server thread/INFO]: WEPIF: Using the Bukkit Permissions API.
+[12:43:51] [Server thread/INFO]: Using com.sk89q.worldedit.bukkit.adapter.impl.v1_20_R3.PaperweightAdapter as the Bukkit adapter
+[12:43:51] [Server thread/INFO]: [ProtocolLib] Enabling ProtocolLib v5.3.0
+[12:43:51] [Server thread/INFO]: [SkinsRestorer] Enabling SkinsRestorer v15.5.1
+[12:43:52] [Server thread/WARN]: [SkinsRestorer] You must agree to the rules at 'commands.perSkinPermissionsConsent' in the config to use per skin permissions.
+[12:43:52] [Server thread/INFO]: [SkinsRestorer] Running on Minecraft 1.20.4.
+[12:43:52] [Server thread/INFO]: [SkinsRestorer] Using paper join listener!
+[12:43:52] [Server thread/WARN]: [SkinsRestorer] Please update your Java runtime to at least Java 21 (your version is 18).
+[12:43:52] [Server thread/WARN]: [SkinsRestorer] At some point in the future, SkinsRestorer will no longer be compatible with this version of Java.
+[12:43:52] [Server thread/INFO]: Preparing level "world"
+[12:43:52] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[12:43:52] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +==================+
+[12:43:52] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |   SkinsRestorer  |
+[12:43:52] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |------------------|
+[12:43:52] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |  Standalone Mode |
+[12:43:52] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +==================+
+[12:43:52] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[12:43:52] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Version: 15.5.1
+[12:43:52] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Commit: d5d8613
+[12:43:52] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     This is the latest version!
+[12:43:52] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[12:43:52] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Do you have issues? Read our troubleshooting guide: https://skinsrestorer.net/docs/troubleshooting
+[12:43:52] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Want to support SkinsRestorer? Consider donating: https://skinsrestorer.net/donate
+[12:43:53] [Server thread/INFO]: Preparing start region for dimension minecraft:overworld
+[12:43:54] [Server thread/INFO]: Time elapsed: 313 ms
+[12:43:54] [Server thread/INFO]: Preparing start region for dimension minecraft:the_end
+[12:43:54] [Server thread/INFO]: Time elapsed: 11 ms
+[12:43:54] [Server thread/INFO]: Preparing start region for dimension minecraft:rift
+[12:43:54] [Server thread/INFO]: Time elapsed: 9 ms
+[12:43:54] [Server thread/INFO]: Preparing start region for dimension minecraft:spawn
+[12:43:54] [Server thread/INFO]: Time elapsed: 14 ms
+[12:43:54] [Server thread/INFO]: [WorldGuard] Enabling WorldGuard v7.0.9+5934e49
+[12:43:54] [Server thread/INFO]: [WorldGuard] (world) TNT ignition is PERMITTED.
+[12:43:54] [Server thread/INFO]: [WorldGuard] (world) Lighters are PERMITTED.
+[12:43:54] [Server thread/INFO]: [WorldGuard] (world) Lava fire is PERMITTED.
+[12:43:54] [Server thread/INFO]: [WorldGuard] (world) Fire spread is UNRESTRICTED.
+[12:43:54] [Server thread/INFO]: [WorldGuard] Loaded configuration for world 'world'
+[12:43:54] [Server thread/INFO]: [WorldGuard] (world_the_end) TNT ignition is PERMITTED.
+[12:43:54] [Server thread/INFO]: [WorldGuard] (world_the_end) Lighters are PERMITTED.
+[12:43:54] [Server thread/INFO]: [WorldGuard] (world_the_end) Lava fire is PERMITTED.
+[12:43:54] [Server thread/INFO]: [WorldGuard] (world_the_end) Fire spread is UNRESTRICTED.
+[12:43:54] [Server thread/INFO]: [WorldGuard] Loaded configuration for world 'world_the_end'
+[12:43:54] [Server thread/INFO]: [WorldGuard] (world_minecraft_rift) TNT ignition is PERMITTED.
+[12:43:54] [Server thread/INFO]: [WorldGuard] (world_minecraft_rift) Lighters are PERMITTED.
+[12:43:54] [Server thread/INFO]: [WorldGuard] (world_minecraft_rift) Lava fire is PERMITTED.
+[12:43:54] [Server thread/INFO]: [WorldGuard] (world_minecraft_rift) Fire spread is UNRESTRICTED.
+[12:43:54] [Server thread/INFO]: [WorldGuard] Loaded configuration for world 'world_minecraft_rift'
+[12:43:54] [Server thread/INFO]: [WorldGuard] (world_minecraft_spawn) TNT ignition is PERMITTED.
+[12:43:54] [Server thread/INFO]: [WorldGuard] (world_minecraft_spawn) Lighters are PERMITTED.
+[12:43:54] [Server thread/INFO]: [WorldGuard] (world_minecraft_spawn) Lava fire is PERMITTED.
+[12:43:54] [Server thread/INFO]: [WorldGuard] (world_minecraft_spawn) Fire spread is UNRESTRICTED.
+[12:43:54] [Server thread/INFO]: [WorldGuard] Loaded configuration for world 'world_minecraft_spawn'
+[12:43:54] [Server thread/INFO]: [WorldGuard] Loading region data...
+[12:43:55] [Server thread/INFO]: [Citizens] Enabling Citizens v2.0.33-SNAPSHOT (build 3399)
+[12:43:55] [Server thread/INFO]: [Citizens] Loading external libraries
+[12:43:55] [Server thread/INFO]: [Citizens] Detected system language [[es]]. If youd like you can contribute to Citizens translations via our Discord! https://discord.gg/Q6pZGSR
+[12:43:55] [Server thread/INFO]: [Citizens] Loaded 0 templates.
+[12:43:55] [Server thread/INFO]: [LibsDisguises] Enabling LibsDisguises v10.0.44
+[12:43:55] [Server thread/INFO]: [LibsDisguises] File Name: LibsDisguises-10.0.44-Free.jar
+[12:43:55] [Server thread/INFO]: [LibsDisguises] Discovered nms version: (Package: v1_20_R3) (LD: v1_20_R3) (MC: 1.20.4)
+[12:43:55] [Server thread/INFO]: [LibsDisguises] Jenkins Build: #1314
+[12:43:55] [Server thread/INFO]: [LibsDisguises] Build Date: 10/04/2024 02:12
+[12:43:55] [Server thread/INFO]: [LibsDisguises] If you own the plugin, place the premium jar downloaded from https://www.spigotmc.org/resources/libs-disguises.32453/ in plugins/LibsDisguises/
+[12:43:55] [Server thread/INFO]: [LibsDisguises] You are running the free version, commands limited to non-players and operators. (Console, Command Blocks, Admins)
+[12:43:55] [Server thread/INFO]: [LibsDisguises] Config 'TallSelfDisguises' is set to 'false', LD will hide oversized disguises from self disguise. https://www.spigotmc.org/wiki/lib-s-disguises-faq/#tall-disguises-self-disguises
+[12:43:56] [Server thread/ERROR]: [LibsDisguises] Invalid modded name 'gm_dragon_sun' in disguises.yml!
+[12:43:56] [Server thread/INFO]: [LibsDisguises] Loaded custom disguise libraryaddict
+[12:43:56] [Server thread/INFO]: [LibsDisguises] Loaded 1 custom disguise
+[12:43:56] [Server thread/INFO]: [LibsDisguises] Config is up to date!
+[12:43:56] [Server thread/INFO]: [Denizen] Enabling Denizen v1.3.0-SNAPSHOT (build 1803-REL)
+[12:43:56] [Server thread/INFO]: +> [DenizenCore] Initializing Denizen Core v1.91.0-SNAPSHOT (Build 1374), impl for Spigot v1.3.0-SNAPSHOT (build 1803-REL) 
+[12:43:56] [Server thread/INFO]: +> [Denizen] Running on java version: 18.0.2.1 
+[12:43:56] [Server thread/WARN]: [Denizen] Running unreliable future Java version. modern Minecraft versions are built for Java 17. Other Java versions are not guaranteed to function properly.
+[12:43:56] [Server thread/INFO]: +> [Denizen] +-------------------------+ 
+[12:43:56] [Server thread/INFO]: +> [Denizen]  Denizen  scriptable minecraft 
+[12:43:56] [Server thread/INFO]: +> [Denizen]  
+[12:43:56] [Server thread/INFO]: +> [Denizen] by: The DenizenScript team 
+[12:43:56] [Server thread/INFO]: +> [Denizen] Chat with us at: https://discord.gg/Q6pZGSR 
+[12:43:56] [Server thread/INFO]: +> [Denizen] Or learn more at: https://denizenscript.com 
+[12:43:56] [Server thread/INFO]: +> [Denizen] version: 1.3.0-SNAPSHOT (build 1803-REL) 
+[12:43:56] [Server thread/INFO]: +> [Denizen] +-------------------------+ 
+[12:43:56] [Server thread/INFO]: +> [TriggerRegistry] Loaded 4 core triggers 
+[12:43:57] [Server thread/INFO]: +> [PaperModule] Loading Paper support module... 
+[12:43:57] [Server thread/INFO]: +> [Denizen] Loaded 152 core commands and 30 core object types, at 1209ms from start. 
+[12:43:57] [Server thread/INFO]: +> [ScriptRegistry] Loading 1 script files... 
+[12:43:57] [Server thread/INFO]: +> [DenizenCore] Scripts loaded! File load took 7ms, processing 6ms. 
+[12:43:57] [Server thread/INFO]: +> [Denizen] Final full init took 1260ms. 
+[12:43:57] [Server thread/INFO]: [MythicMobs] Enabling MythicMobs v5.6.2-3e052553
+[12:43:57] [Server thread/INFO]: [MythicMobs] Loading MythicMobs for Paper (MC: 1.20.4)...
+[12:43:57] [Server thread/INFO]: [MythicMobs] The server is running Paper; enabled Paper exclusive functionality
+[12:43:58] [Server thread/INFO]: [MythicMobs] Mythic LibsDisguises Support has been enabled!
+[12:43:58] [Server thread/INFO]: [MythicMobs] Mythic ProtocolLib Support has been enabled!
+[12:43:58] [Server thread/INFO]: [MythicMobs] Mythic WorldGuard Support has been enabled!
+[12:43:58] [Server thread/INFO]: [MythicMobs] Base directory C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\data
+[12:43:58] [Server thread/INFO]: [MythicMobs] Module directory C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\data\worlds
+[12:43:59] [Server thread/INFO]: [MythicMobs] Loading Packs...
+[12:44:00] [Server thread/INFO]: [MythicMobs] Loading Items...
+[12:44:00] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item botas
+[12:44:00] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\botas.yml
+[12:44:00] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[12:44:00] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item botas2
+[12:44:00] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\botas2.yml
+[12:44:00] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[12:44:00] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item botas3
+[12:44:00] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\botas3.yml
+[12:44:00] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[12:44:00] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item casco
+[12:44:00] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\casco.yml
+[12:44:00] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[12:44:00] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item casco2
+[12:44:00] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\casco2.yml
+[12:44:00] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[12:44:00] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item casco3
+[12:44:00] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\casco3.yml
+[12:44:00] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[12:44:00] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item pechera
+[12:44:00] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\pechera.yml
+[12:44:00] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[12:44:00] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item pechera2
+[12:44:00] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\pechera2.yml
+[12:44:00] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[12:44:00] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item pechera3
+[12:44:00] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\pechera3.yml
+[12:44:00] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[12:44:00] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item perneras
+[12:44:00] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\perneras.yml
+[12:44:00] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[12:44:00] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item perneras2
+[12:44:00] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\perneras2.yml
+[12:44:00] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[12:44:00] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Item perneras3
+[12:44:00] [Server thread/WARN]: [MythicMobs] --| File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\items\perneras3.yml
+[12:44:00] [Server thread/WARN]: [MythicMobs] --| Error Message: Couldn't get name/lore of ItemStack
+[12:44:00] [Server thread/INFO]: [MythicMobs] Loading Item Groups...
+[12:44:00] [Server thread/INFO]: [MythicMobs] Loading Skills...
+[12:44:00] [Server thread/WARN]: [MythicMobs] Failed to parse Placeholder 'R': Math and variables in numeric values require premium! Consider getting MythicMobs Premium at www.mythiccraft.io
+[12:44:00] [Server thread/WARN]: [MythicMobs] Failed to parse Placeholder 'R': Math and variables in numeric values require premium! Consider getting MythicMobs Premium at www.mythiccraft.io
+[12:44:00] [Server thread/INFO]: [MythicMobs] Loading Drop Tables...
+[12:44:00] [Server thread/INFO]: [MythicMobs] Loading Random Spawns...
+[12:44:00] [Server thread/INFO]: [MythicMobs] Loading Spawn Blocks...
+[12:44:00] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Mechanic metaskill
+[12:44:00] [Server thread/WARN]: [MythicMobs] --| Mob: Dif2Bruja | File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\mobs\ExampleMobs.yml
+[12:44:00] [Server thread/WARN]: [MythicMobs] --| Error Message: Could not find MetaSkill SummonMurciélagos
+[12:44:00] [Server thread/WARN]: [MythicMobs] --| Mechanic Line: skill{s=SummonMurciélagos}
+[12:44:00] [Server thread/INFO]: [MythicMobs] ✓ Loaded 91 mobs.
+[12:44:00] [Server thread/INFO]: [MythicMobs] ✓ Loaded 2 vanilla mob overrides.
+[12:44:00] [Server thread/INFO]: [MythicMobs] ✓ Loaded 0 mob stacks.
+[12:44:00] [Server thread/INFO]: [MythicMobs] ✓ Loaded 118 skills.
+[12:44:00] [Server thread/INFO]: [MythicMobs] ✓ Loaded 0 random spawns.
+[12:44:00] [Server thread/INFO]: [MythicMobs] ✓ Loaded 29 mythic items.
+[12:44:00] [Server thread/INFO]: [MythicMobs] ✓ Loaded 4 drop tables.
+[12:44:00] [Server thread/INFO]: [MythicMobs] ✓ Loaded 2 mob spawners.
+[12:44:00] [Server thread/INFO]: [MythicMobs] MythicMobs configuration file loaded successfully.
+[12:44:00] [Server thread/INFO]: [MythicMobs] Started up bStats Metrics
+[12:44:00] [Server thread/INFO]: [MythicMobs] ✓ MythicMobs v5.6.2 ( build 3e052553 ) has been successfully loaded!
+[12:44:00] [Server thread/INFO]: [BetonQuest] Enabling BetonQuest v2.2.0
+[12:44:00] [Server thread/INFO]: [BetonQuest] Running on JRE 18.0.2.1 (build 1, optional 1, pre-release info N/A) by Oracle Corporation
+[12:44:01] [Server thread/INFO]: [BetonQuest] Using SQLite for storing data!
+[12:44:01] [Server thread/INFO]: [BetonQuest] Hooking into WorldEdit
+[12:44:01] [Server thread/INFO]: [BetonQuest] Hooking into ProtocolLib
+[12:44:01] [Server thread/INFO]: [BetonQuest] Hooking into WorldGuard
+[12:44:01] [Server thread/INFO]: [BetonQuest] Hooking into Citizens
+[12:44:01] [Server thread/INFO]: [BetonQuest] Hooking into Denizen
+[12:44:01] [Server thread/INFO]: [BetonQuest] Hooking into MythicMobs
+[12:44:01] [Server thread/INFO]: [BetonQuest] BetonQuest successfully enabled!
+[12:44:01] [Server thread/INFO]: [spark] Enabling spark v1.10.121
+[12:44:01] [Server thread/INFO]: [spark] Using Paper ServerTickStartEvent for tick monitoring
+[12:44:01] [Server thread/INFO]: [spark] Starting background profiler...
+[12:44:01] [Server thread/INFO]: [spark] The async-profiler engine is not supported for your os/arch (windows11/amd64), so the built-in Java engine will be used instead.
+[12:44:01] [Server thread/INFO]: [voicechat] Enabling voicechat v2.5.25
+[12:44:01] [Server thread/INFO]: [voicechat] Initializing compatibility for Bukkit version 1.20.4-R0.1
+[12:44:01] [Server thread/INFO]: [voicechat] Compatibility version 18
+[12:44:01] [Server thread/INFO]: [voicechat] Successfully initialized commodore command completion
+[12:44:01] [Server thread/INFO]: [RedProtect] Enabling RedProtect v8.1.2-SNAPSHOT
+[12:44:01] [Server thread/INFO]: [RedProtect] Server version: 1.20.4-R0.1-SNAPSHOT
+[12:44:01] [Server thread/INFO]: [RedProtect] All configurations loaded!
+[12:44:01] [Server thread/INFO]: [RedProtect] Language file loaded - Using: ES-ES
+[12:44:01] [Server thread/INFO]: [RedProtect] Registering commands...
+[12:44:01] [Server thread/INFO]: [RedProtect] Registering listeners...
+[12:44:01] [Server thread/INFO]: [RedProtect] WorldEdit found. Hooked.
+[12:44:01] [Server thread/INFO]: [RedProtect] This version is only compatible with server version running on 1.19+. WorldGuard not hooked!
+[12:44:01] [Server thread/INFO]: [RedProtect] - Loading world's regions...
+[12:44:01] [Server thread/INFO]: [RedProtect] - Loading world_the_end's regions...
+[12:44:01] [Server thread/INFO]: [RedProtect] - Loading world_minecraft_rift's regions...
+[12:44:01] [Server thread/INFO]: [RedProtect] - Loading world_minecraft_spawn's regions...
+[12:44:01] [Server thread/INFO]: [RedProtect] Auto-save Scheduler: Saving file database every 60 minutes!
+[12:44:01] [Server thread/INFO]: [RedProtect] There are 20 regions on (file) database!
+[12:44:01] [Server thread/INFO]: [RedProtect] Helper version: Latest
+[12:44:01] [Server thread/INFO]: [RedProtect] Loading GuiFlags for 1.14+
+[12:44:01] [Server thread/INFO]: [RedProtect] Metrics enabled! See our stats here: https://bstats.org/plugin/bukkit/RedProtect
+[12:44:01] [Server thread/INFO]: [RedProtect] Loading API...
+[12:44:01] [Server thread/INFO]: [RedProtect] API Loaded!
+[12:44:01] [Server thread/INFO]:  _   _  _   _   _   _  _ _  _  _ _ _  _
+[12:44:01] [Server thread/INFO]: |_| |_ | \ |_| |_| | |  |  |_ |   |  |_|
+[12:44:01] [Server thread/INFO]: | \ |_ |_/ |   | \ |_|  |  |_ |_  |  |_|
+[12:44:01] [Server thread/INFO]: » RedProtect v8.1.2-SNAPSHOT enabled
+[12:44:01] [Server thread/INFO]: 
+[12:44:01] [Server thread/INFO]: [ModelEngine] Enabling ModelEngine vR3.1.11
+[12:44:01] [Server thread/INFO]: [MythicMobs] Model Engine Compatibility Loaded.
+[12:44:01] [Server thread/INFO]: [ModelEngine] [S] Compatibility applied: MythicMobs
+[12:44:01] [Server thread/INFO]: [ModelEngine] [S] Compatibility applied: Citizens
+[12:44:01] [Server thread/INFO]: [ModelEngine] [S] bStats enabled
+[12:44:02] [Server thread/INFO]: [Depenizen] Enabling Depenizen v2.1.1 (build 867)
+[12:44:02] [Server thread/INFO]: +> [Depenizen] Depenizen loading... 
+[12:44:02] [Server thread/INFO]: +> [Depenizen] Loaded bridge for 'WorldEdit'! 
+[12:44:02] [Server thread/INFO]: +> [Depenizen] Loaded bridge for 'BetonQuest'! 
+[12:44:02] [Server thread/INFO]: +> [Depenizen] Loaded bridge for 'WorldGuard'! 
+[12:44:02] [Server thread/INFO]: +> [Depenizen] Loaded bridge for 'LibsDisguises'! 
+[12:44:02] [Server thread/INFO]: +> [Depenizen] Loaded bridge for 'MythicMobs'! 
+[12:44:02] [Server thread/INFO]: +> [Depenizen] Depenizen loaded! 5 plugin bridge(s) loaded (of 42 available) 
+[12:44:02] [Server thread/INFO]: [DeathScape] Enabling DeathScape v1.0.0
+[12:44:02] [Server thread/INFO]: Next day update scheduled in 375 minutes.
+[12:44:02] [Server thread/INFO]: [DeathScape] Spawn dimension initialized successfully.
+[12:44:02] [Server thread/INFO]: DeathScape has been enabled!
+[12:44:02] [Server thread/INFO]: Running delayed init tasks
+[12:44:02] [Craft Scheduler Thread - 7 - ModelEngine/INFO]: [ModelEngine] [A] 
+[12:44:02] [Craft Scheduler Thread - 7 - ModelEngine/INFO]: [ModelEngine] [A] [Importing models]
+[12:44:02] [Craft Scheduler Thread - 7 - ModelEngine/INFO]: [ModelEngine] [A] 
+[12:44:02] [Craft Scheduler Thread - 7 - ModelEngine/INFO]: [ModelEngine] [A] Importing Rocky.bbmodel.
+[12:44:02] [Server thread/INFO]: [BetonQuest] Enabled compatibility for WorldEdit, Denizen, WorldGuard, ProtocolLib, Citizens, MythicMobs!
+[12:44:02] [Craft Scheduler Thread - 7 - ModelEngine/INFO]: [ModelEngine] [A] 
+[12:44:02] [Craft Scheduler Thread - 7 - ModelEngine/INFO]: [ModelEngine] [A] Importing darkprincess_gama05.bbmodel.
+[12:44:02] [Craft Scheduler Thread - 7 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: Box UV detected. Cube UVs might not generate correctly if Box UV is used.
+[12:44:02] [Craft Scheduler Thread - 7 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder8 is rotated in multiple axis. Choosing one axis.
+[12:44:02] [Craft Scheduler Thread - 7 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder8 has illegal rotations. Cube rotation can only be -45, -22.5, 0, 22.5 and 45. [ -20.899999618530273 ]
+[12:44:02] [Craft Scheduler Thread - 7 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder8 is rotated in multiple axis. Choosing one axis.
+[12:44:02] [Craft Scheduler Thread - 7 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder8 has illegal rotations. Cube rotation can only be -45, -22.5, 0, 22.5 and 45. [ 93.4000015258789 ]
+[12:44:02] [Craft Scheduler Thread - 7 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder8 has illegal rotations. Cube rotation can only be -45, -22.5, 0, 22.5 and 45. [ 55.0 ]
+[12:44:02] [Craft Scheduler Thread - 7 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder6 is rotated in multiple axis. Choosing one axis.
+[12:44:02] [Craft Scheduler Thread - 7 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder6 has illegal rotations. Cube rotation can only be -45, -22.5, 0, 22.5 and 45. [ 90.9000015258789 ]
+[12:44:02] [Craft Scheduler Thread - 7 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder6 is rotated in multiple axis. Choosing one axis.
+[12:44:02] [Craft Scheduler Thread - 7 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder6 has illegal rotations. Cube rotation can only be -45, -22.5, 0, 22.5 and 45. [ 20.899999618530273 ]
+[12:44:02] [Craft Scheduler Thread - 7 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder6 has illegal rotations. Cube rotation can only be -45, -22.5, 0, 22.5 and 45. [ 70.0 ]
+[12:44:02] [Craft Scheduler Thread - 7 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone brazodragder2 is rotated in multiple axis. Choosing one axis.
+[12:44:02] [Craft Scheduler Thread - 7 - ModelEngine/WARN]: [ModelEngine] [A] --Warning: The cube cube in bone curpo2 is rotated in multiple axis. Choosing one axis.
+[12:44:02] [Craft Scheduler Thread - 7 - ModelEngine/INFO]: [ModelEngine] [A] 
+[12:44:02] [Craft Scheduler Thread - 7 - ModelEngine/INFO]: [ModelEngine] [A] Importing effect_princessdarkness_01.bbmodel.
+[12:44:02] [Craft Scheduler Thread - 7 - ModelEngine/INFO]: [ModelEngine] [A] 
+[12:44:02] [Craft Scheduler Thread - 7 - ModelEngine/INFO]: [ModelEngine] [A] Importing gm_galaxy_dragon.bbmodel.
+[12:44:02] [Craft Scheduler Thread - 7 - ModelEngine/INFO]: [ModelEngine] [A] 
+[12:44:02] [Craft Scheduler Thread - 7 - ModelEngine/INFO]: [ModelEngine] [A] Importing gm_sun_dragon.bbmodel.
+[12:44:02] [Craft Scheduler Thread - 7 - ModelEngine/INFO]: [ModelEngine] [A] 
+[12:44:02] [Craft Scheduler Thread - 7 - ModelEngine/INFO]: [ModelEngine] [A] [Generating assets]
+[12:44:02] [Craft Scheduler Thread - 7 - ModelEngine/INFO]: [ModelEngine] [A] 
+[12:44:02] [Craft Scheduler Thread - 7 - ModelEngine/INFO]: [ModelEngine] [A] Generating rocky.
+[12:44:02] [Craft Scheduler Thread - 7 - ModelEngine/INFO]: [ModelEngine] [A] 
+[12:44:02] [Craft Scheduler Thread - 7 - ModelEngine/INFO]: [ModelEngine] [A] Generating darkprincess_gama05.
+[12:44:02] [Craft Scheduler Thread - 7 - ModelEngine/INFO]: [ModelEngine] [A] 
+[12:44:02] [Craft Scheduler Thread - 7 - ModelEngine/INFO]: [ModelEngine] [A] Generating effect_princessdarkness_01.
+[12:44:02] [Craft Scheduler Thread - 7 - ModelEngine/INFO]: [ModelEngine] [A] 
+[12:44:02] [Craft Scheduler Thread - 7 - ModelEngine/INFO]: [ModelEngine] [A] Generating gm_galaxy_dragon.
+[12:44:02] [Craft Scheduler Thread - 7 - ModelEngine/INFO]: [ModelEngine] [A] 
+[12:44:02] [Craft Scheduler Thread - 7 - ModelEngine/INFO]: [ModelEngine] [A] Generating gm_sun_dragon.
+[12:44:03] [Server thread/INFO]: [BetonQuest] There are 30 conditions, 69 events, 1 objectives and 24 conversations loaded from 24 packages.
+[12:44:03] [Server thread/INFO]: [BetonQuest] §aReloaded 0§a menus
+[12:44:03] [Server thread/INFO]: [Store]: Visit our store to enhance your experience! Use /store for more information.
+[12:44:03] [Craft Scheduler Thread - 7 - ModelEngine/INFO]: [ModelEngine] [A] 
+[12:44:03] [Craft Scheduler Thread - 7 - ModelEngine/INFO]: [ModelEngine] [A] Resource pack zipped.
+[12:44:03] [Server thread/INFO]:  ERROR!
+                 Error Message: NPC 18 has assignment 'npc_wandering_in_region' which does not exist. 
+[12:44:03] [Server thread/INFO]: [Citizens] Cargando a 29 NPCs.
+[12:44:03] [Server thread/INFO]: +> [ScriptEvent] Processed 0 script event paths. 
+[12:44:03] [Server thread/INFO]:  ERROR!
+                 Error Message: NPC 18 has assignment 'npc_wandering_in_region' which does not exist. 
+[12:44:03] [Server thread/INFO]: +> [Denizen] +-------------------------+ 
+[12:44:03] [Server thread/INFO]: +> [Denizen] Denizen fully loaded at: 2024/12/29 12:43:56 
+[12:44:03] [Server thread/WARN]: [MythicMobs] ✗ Config Error for Targeter line 'selfparticles{p=soul_fire_flame;amount=10;speed=0;hS=0.8;vS=0.0;repeat=14;repeatinterval=4}': Failed to load custom targeter SELFPARTICLES
+[12:44:03] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Mechanic CustomMechanic:NULL
+[12:44:03] [Server thread/WARN]: [MythicMobs] --| Skill: gm_dragon_sun_walk_on_lava | File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\skills\gm_dragon_skills\skill_gm_drgonsun.yml
+[12:44:03] [Server thread/WARN]: [MythicMobs] --| Error Message: Failed to load custom mechanic EFFECT:IMMUNE
+[12:44:03] [Server thread/WARN]: [MythicMobs] --| Mechanic Line: effect:immune{type=FIRE_LAVA}
+[12:44:03] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Mechanic CustomMechanic:NULL
+[12:44:03] [Server thread/WARN]: [MythicMobs] --| Skill: gm_dragon_sun_walk_on_lava | File: C:\Users\xavi2\Desktop\DeathScape\Server\plugins\MythicMobs\skills\gm_dragon_skills\skill_gm_drgonsun.yml
+[12:44:03] [Server thread/WARN]: [MythicMobs] --| Error Message: Failed to load custom mechanic MOTION
+[12:44:03] [Server thread/WARN]: [MythicMobs] --| Mechanic Line: motion{x=0;y=0.2;z=0}
+[12:44:03] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Condition CustomCondition
+[12:44:03] [Server thread/WARN]: [MythicMobs] --| File: Unknown
+[12:44:03] [Server thread/WARN]: [MythicMobs] --| Error Message: Failed to load custom condition allentities
+[12:44:03] [Server thread/WARN]: [MythicMobs] --| Mechanic Line: allentities{}
+[12:44:03] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Condition CustomCondition
+[12:44:03] [Server thread/WARN]: [MythicMobs] --| File: Unknown
+[12:44:03] [Server thread/WARN]: [MythicMobs] --| Error Message: Failed to load custom condition NoMobsInRadius
+[12:44:03] [Server thread/WARN]: [MythicMobs] --| Mechanic Line: NoMobsInRadius{r=50;m=gm_dragon_sun}
+[12:44:03] [Server thread/WARN]: [MythicMobs] ✗ Configuration Error in Condition CustomCondition
+[12:44:03] [Server thread/WARN]: [MythicMobs] --| File: Unknown
+[12:44:03] [Server thread/WARN]: [MythicMobs] --| Error Message: Failed to load custom condition NoMobsInRadius
+[12:44:03] [Server thread/WARN]: [MythicMobs] --| Mechanic Line: NoMobsInRadius{r=400;m=enderman}
+[12:44:03] [Server thread/INFO]: Done (15.010s)! For help, type "help"
+[12:44:03] [Server thread/INFO]: [voicechat] Loading plugins
+[12:44:03] [Server thread/INFO]: [voicechat] Loaded 0 plugin(s)
+[12:44:03] [Server thread/INFO]: [voicechat] Initializing plugins
+[12:44:03] [Server thread/INFO]: [voicechat] Initialized 0 plugin(s)
+[12:44:03] [VoiceChatServerThread/INFO]: [voicechat] Using server-ip as bind address: 192.168.1.134
+[12:44:03] [VoiceChatServerThread/INFO]: [voicechat] Voice chat server started at 192.168.1.134:28525
+[12:45:29] [User Authenticator #0/INFO]: UUID of player xaviggr is cb185b4b-cea7-43bb-a340-571c9bb6c3a5
+[12:45:30] [Server thread/INFO]: [Owner] xaviggr ha entrado al mundo DeathScape
+[12:45:30] [Server thread/INFO]: xaviggr[IP hidden] logged in with entity id 654 at ([world_minecraft_spawn]0.0, 1.0, 0.0)
+[12:45:43] [Server thread/INFO]: xaviggr issued server command: /ds dungeon
+[12:45:43] [Server thread/WARN]: xaviggr moved too quickly! -2.1612599567667417,1.0,-19.469307193852195
+[12:51:25] [Server thread/INFO]: xaviggr issued server command: /gamemode spectator
+[12:51:25] [Server thread/INFO]: [[Owner] xaviggr: Set own game mode to Spectator Mode]
+[12:51:28] [Server thread/INFO]: xaviggr issued server command: /gamemode creative
+[12:51:28] [Server thread/INFO]: [[Owner] xaviggr: Set own game mode to Creative Mode]
+[12:51:31] [Server thread/INFO]: xaviggr issued server command: //wand
+[12:52:02] [Server thread/INFO]: xaviggr issued server command: //set stone_slab
+[12:52:24] [Server thread/INFO]: xaviggr issued server command: //set stone_slab
+[12:52:39] [Server thread/INFO]: xaviggr issued server command: //set stone_slab
+[12:52:51] [Server thread/INFO]: xaviggr issued server command: //set stone_slab
+[12:53:08] [Server thread/INFO]: xaviggr issued server command: //set stone_slab
+[12:53:17] [Server thread/INFO]: xaviggr issued server command: //set stone_slab
+[12:53:32] [Server thread/INFO]: xaviggr issued server command: //set stone_slab
+[12:53:43] [Server thread/INFO]: xaviggr issued server command: //set stone_slab
+[12:54:09] [Server thread/INFO]: xaviggr issued server command: //set stone_slab
+[12:54:15] [Server thread/INFO]: xaviggr issued server command: //set stone_slab
+[12:54:25] [Server thread/INFO]: xaviggr issued server command: /difficulty peaceful
+[12:54:25] [Server thread/INFO]: [[Owner] xaviggr: The difficulty has been set to Peaceful]
+[12:54:27] [Server thread/INFO]: xaviggr issued server command: /difficulty hard
+[12:54:27] [Server thread/INFO]: [[Owner] xaviggr: The difficulty has been set to Hard]
+[12:54:31] [Server thread/INFO]: xaviggr issued server command: /gamemode spectator
+[12:54:31] [Server thread/INFO]: [[Owner] xaviggr: Set own game mode to Spectator Mode]
+[12:54:35] [Server thread/INFO]: xaviggr issued server command: /gamemode creative
+[12:54:35] [Server thread/INFO]: [[Owner] xaviggr: Set own game mode to Creative Mode]
+[13:04:02] [Server thread/INFO]: [Events]: Don't miss the weekly events! Check the calendar with /events.
+[13:08:02] [Server thread/INFO]: xaviggr lost connection: Disconnected
+[13:08:02] [Server thread/INFO]: [voicechat] Disconnecting client xaviggr
+[13:08:02] [Server thread/INFO]: [Owner] xaviggr left the game
+[13:08:05] [User Authenticator #1/INFO]: UUID of player xaviggr is cb185b4b-cea7-43bb-a340-571c9bb6c3a5
+[13:08:05] [Server thread/INFO]: [Owner] xaviggr ha entrado al mundo DeathScape
+[13:08:05] [Server thread/INFO]: xaviggr[IP hidden] logged in with entity id 1937 at ([world_minecraft_spawn]0.0, 1.0, 0.0)
+[13:11:38] [Server thread/INFO]: Stopping the server
+[13:11:38] [Server thread/INFO]: Stopping server
+[13:11:38] [Server thread/INFO]: [DeathScape] Disabling DeathScape v1.0.0
+[13:11:38] [Server thread/INFO]: DeathScape has been disabled!
+[13:11:38] [Server thread/INFO]: [Depenizen] Disabling Depenizen v2.1.1 (build 867)
+[13:11:38] [Server thread/INFO]: [Denizen]  v1.3.0-SNAPSHOT (build 1803-REL) disabled.
+[13:11:38] [Server thread/INFO]: [ModelEngine] Disabling ModelEngine vR3.1.11
+[13:11:38] [Server thread/INFO]: [RedProtect] Disabling RedProtect v8.1.2-SNAPSHOT
+[13:11:38] [Server thread/INFO]: [RedProtect] Saving world's regions...
+[13:11:38] [Server thread/INFO]: [RedProtect] Saving world_the_end's regions...
+[13:11:38] [Server thread/INFO]: [RedProtect] Saving world_minecraft_rift's regions...
+[13:11:38] [Server thread/INFO]: [RedProtect] Saving world_minecraft_spawn's regions...
+[13:11:38] [Server thread/INFO]: [RedProtect] Unregistering listeners...
+[13:11:38] [Server thread/INFO]: [RedProtect] RedProtect v8.1.2-SNAPSHOT turned off...
+[13:11:38] [Server thread/INFO]: [SkinsRestorer] Disabling SkinsRestorer v15.5.1
+[13:11:38] [Server thread/INFO]: [voicechat] Disabling voicechat v2.5.25
+[13:11:38] [Server thread/INFO]: [spark] Disabling spark v1.10.121
+[13:11:38] [Server thread/INFO]: [BetonQuest] Disabling BetonQuest v2.2.0
+[13:11:38] [Server thread/INFO]: [BetonQuest] BetonQuest successfully disabled!
+[13:11:38] [Server thread/INFO]: [MythicMobs] Disabling MythicMobs v5.6.2-3e052553
+[13:11:38] [Server thread/INFO]: [MythicMobs] ------------------------------------------------------------
+[13:11:38] [Server thread/INFO]: [MythicMobs] - 
+[13:11:38] [Server thread/INFO]: [MythicMobs] - Unloading Mythic...
+[13:11:38] [Server thread/INFO]: [MythicMobs] - 
+[13:11:38] [Server thread/INFO]: [MythicMobs] ------------------------------------------------------------
+[13:11:38] [Server thread/INFO]: [MythicMobs] - Spawners saved and unloaded...
+[13:11:38] [Server thread/INFO]: [MythicMobs] - Mobs saved and unloaded...
+[13:11:38] [Server thread/INFO]: [MythicMobs] Saving plugin data...
+[13:11:38] [Server thread/INFO]: [MythicMobs] ✓Saving Finished
+[13:11:38] [Server thread/INFO]: [MythicMobs] - Variables saved...
+[13:11:38] [Server thread/INFO]: [MythicMobs] - All active settings have been saved!
+[13:11:38] [Server thread/INFO]: [MythicMobs] - Mythic has been unloaded!
+[13:11:38] [Server thread/INFO]: [MythicMobs] ------------------------------------------------------------
+[13:11:38] [Server thread/INFO]: [MythicMobs] Saving plugin data...
+[13:11:38] [Server thread/INFO]: [MythicMobs] ✓Saving Finished
+[13:11:38] [Server thread/INFO]: [Denizen] Disabling Denizen v1.3.0-SNAPSHOT (build 1803-REL)
+[13:11:38] [Server thread/INFO]: [LibsDisguises] Disabling LibsDisguises v10.0.44
+[13:11:38] [Server thread/INFO]: [Citizens] Disabling Citizens v2.0.33-SNAPSHOT (build 3399)
+[13:11:38] [Server thread/INFO]: [WorldGuard] Disabling WorldGuard v7.0.9+5934e49
+[13:11:38] [Server thread/INFO]: [WorldGuard] Shutting down executor and cancelling any pending tasks...
+[13:11:38] [Server thread/INFO]: [ProtocolLib] Disabling ProtocolLib v5.3.0
+[13:11:38] [Server thread/INFO]: [WorldEdit] Disabling WorldEdit v7.3.0+6678-55745ad
+[13:11:38] [Server thread/INFO]: Unregistering com.sk89q.worldedit.bukkit.BukkitServerInterface from WorldEdit
+[13:11:38] [Server thread/INFO]: Saving players
+[13:11:38] [Server thread/INFO]: xaviggr lost connection: Server closed
+[13:11:38] [Server thread/INFO]: [Owner] xaviggr left the game
+[13:11:38] [Server thread/INFO]: Saving worlds
+[13:11:38] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[13:11:38] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world'
+[13:11:38] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world'
+[13:11:38] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world'
+[13:11:38] [Server thread/INFO]: [ChunkHolderManager] Saved 0 block chunks, 139 entity chunks, 0 poi chunks in world 'world' in 0,03s
+[13:11:38] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[13:11:38] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_the_end]'/minecraft:the_end
+[13:11:38] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_the_end'
+[13:11:38] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_the_end'
+[13:11:38] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_the_end'
+[13:11:38] [Server thread/INFO]: [ChunkHolderManager] Saved 1 block chunks, 17 entity chunks, 0 poi chunks in world 'world_the_end' in 0,01s
+[13:11:38] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[13:11:38] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_minecraft_rift]'/minecraft:rift
+[13:11:38] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_minecraft_rift'
+[13:11:38] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_minecraft_rift'
+[13:11:38] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_minecraft_rift'
+[13:11:38] [Server thread/INFO]: [ChunkHolderManager] Saved 351 block chunks, 350 entity chunks, 0 poi chunks in world 'world_minecraft_rift' in 0,12s
+[13:11:39] [Server thread/INFO]: ThreadedAnvilChunkStorage (rift): All chunks are saved
+[13:11:39] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_minecraft_spawn]'/minecraft:spawn
+[13:11:39] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_minecraft_spawn'
+[13:11:39] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_minecraft_spawn'
+[13:11:39] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_minecraft_spawn'
+[13:11:39] [Server thread/INFO]: [ChunkHolderManager] Saved 8 block chunks, 8 entity chunks, 0 poi chunks in world 'world_minecraft_spawn' in 0,00s
+[13:11:39] [Server thread/INFO]: ThreadedAnvilChunkStorage (spawn): All chunks are saved
+[13:11:39] [Server thread/INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
+[13:11:39] [Server thread/INFO]: Flushing Chunk IO
+[13:11:39] [Server thread/INFO]: Closing Thread Pool
+[13:11:39] [Server thread/INFO]: Closing Server

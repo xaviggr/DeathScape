@@ -62,14 +62,13 @@ public class PlayerEditDatabase {
             String[] parts = playerData.getTimePlayed().split("\\s+");
             int seconds = 0, minutes = 0, hours = 0;
 
-            for (String part : parts) {
-                int values = Integer.parseInt(part.substring(0, part.length() - 1));
-                if (part.endsWith("s")) {
-                    seconds = values;
-                } else if (part.endsWith("m")) {
-                    minutes = values;
-                } else if (part.endsWith("h")) {
-                    hours = values;
+            for (String parte : parts) {
+                if (parte.endsWith("s")) {
+                    seconds = Integer.parseInt(parte.substring(0, parte.length() - 1)); // Convertir los segundos a entero
+                } else if (parte.endsWith("m")) {
+                    minutes = Integer.parseInt(parte.substring(0, parte.length() - 1));// Convertir los minutos a entero
+                } else if (parte.endsWith("h")) {
+                    hours = Integer.parseInt(parte.substring(0, parte.length() - 1));// Convertir las horas a entero
                 }
             }
 

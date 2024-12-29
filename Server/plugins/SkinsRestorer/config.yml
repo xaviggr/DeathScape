@@ -109,7 +109,7 @@ commands:
     # - Do not force players to steve skins and make them pay to use their own skin
     # - You can charge them for custom skins, but not their own skin
     # If you agree, set this to: 'I will follow the rules'
-    perSkinPermissionsConsent: false
+    perSkinPermissionsConsent: ''
     # Allows the usage of per-skin permission.
     # Example: skinsrestorer.skin.xknat OR skinsrestorer.skin.Pistonmaster
     # with "skinsrestorer.ownskin" players can run /skin set <their own name>.

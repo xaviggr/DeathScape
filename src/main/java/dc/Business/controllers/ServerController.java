@@ -16,7 +16,10 @@ import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
 import java.time.Instant;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Manages server-related functionalities, including player queues, server day tracking,
@@ -53,7 +56,6 @@ public class ServerController {
         saveConfig();
 
         rainTaskActive = false;
-        checkDay();
         startDayUpdater();
         startPromotionMessages();
     }
@@ -66,23 +68,71 @@ public class ServerController {
      * Starts a task to update server days automatically every 24 hours.
      */
     private void startDayUpdater() {
-        Bukkit.getScheduler().runTaskTimer(plugin, () -> {
-            checkDay();
-            Bukkit.getConsoleSender().sendMessage("Server days updated automatically.");
-        }, 0L, 24 * 60 * 60 * 20L); // Every 24 hours
+        ZoneId zoneId = ZoneId.of("Europe/Madrid");
+
+        // Calcula cuánto falta hasta las 19:00
+        Bukkit.getScheduler().runTaskLater(plugin, () -> scheduleDayUpdaterAt19(zoneId), calculateDelayTo19(zoneId));
+    }
+
+
+    /**
+     * Calcula el tiempo en ticks hasta las 19:00 hora local.
+     */
+    private long calculateDelayTo19(ZoneId zoneId) {
+        ZonedDateTime now = ZonedDateTime.now(zoneId);
+        ZonedDateTime next19;
+
+        // Si ya pasaron las 19:00, programa para mañana
+        if (now.getHour() >= 19) {
+            next19 = now.plusDays(1).withHour(19).withMinute(0).withSecond(0).withNano(0);
+        } else {
+            // Programa para hoy a las 19:00
+            next19 = now.withHour(19).withMinute(0).withSecond(0).withNano(0);
+        }
+
+        // Calcula la diferencia en milisegundos y lo convierte a ticks
+        long delayMillis = Duration.between(now, next19).toMillis();
+        Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "Next day update scheduled in " + TimeUnit.MILLISECONDS.toMinutes(delayMillis) + " minutes.");
+        return TimeUnit.MILLISECONDS.toSeconds(delayMillis) * 20; // 20 ticks por segundo
+    }
+
+    /**
+     * Programa la ejecución diaria a las 19:00 hora local.
+     */
+    private void scheduleDayUpdaterAt19(ZoneId zoneId) {
+        // Ejecuta checkDay y programa la siguiente ejecución
+        checkDay();
+        Bukkit.getScheduler().runTaskLater(plugin, () -> scheduleDayUpdaterAt19(zoneId), 24 * 60 * 60 * 20L); // 24 horas en ticks
     }
 
     /**
      * Updates the number of server days based on the time elapsed since the last update.
+     * This method calculates the difference in full days between the last recorded update
+     * and the current time and increments the server days accordingly.
      */
     public void checkDay() {
+        // Get the last update time from the config file
         Instant lastUpdate = Instant.ofEpochMilli(config.getLong("last_update"));
         Instant now = Instant.now();
+
+        // Calculate the number of full days elapsed
         long daysElapsed = Duration.between(lastUpdate, now).toDays();
 
-        config.set("server_days", config.getInt("server_days", 0) + daysElapsed);
-        config.set("last_update", Instant.now().toEpochMilli());
-        saveConfig();
+        if (daysElapsed > 0) {
+            // Increment the server days by the number of days elapsed
+            int currentDays = config.getInt("server_days", 0);
+            config.set("server_days", currentDays + (int) daysElapsed);
+
+            // Update the last update time to now
+            config.set("last_update", now.toEpochMilli());
+            saveConfig();
+
+            // Log the update to the console
+            Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "Server days updated. Total days: " + (currentDays + daysElapsed));
+        } else {
+            // Log that no days have elapsed
+            Bukkit.getConsoleSender().sendMessage(ChatColor.YELLOW + "No new days to update. Last update was recent.");
+        }
     }
 
     /**

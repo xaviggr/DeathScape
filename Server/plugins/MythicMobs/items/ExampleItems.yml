@@ -1,5 +1,10 @@
+# For more information, check out the plugin manual or join us on Discord:
+# http://www.mythicmobs.net
+#  
+
 SkeletonKingSword:
   Id: DIAMOND_SWORD
+  Data: 0
   Display: '&3Greatsword of the Skeleton King'
   Lore:
   - '&6A powerful sword used by'
@@ -14,6 +19,8 @@ SkeletonKingSword:
       MovementSpeed: 0.1
 KingsCrown:
   Id: GOLDEN_HELMET
+  Data: 0
+  Amount: 1
   Display: '&dCrown of the King'
   Lore:
   - '&6A kingly crowl that grants'
@@ -38,3 +45,57 @@ BanditTunic:
   - '&6the corpse of a bandit.'
   Options:
     Color: 255,40,40
+HachaFilo3:
+  Id: DIAMOND_SWORD
+  Enchantments:
+  - DAMAGE_ALL:30
+ArcoFuego:
+  Id: BOW
+  Enchantments:
+  - ARROW_FIRE:1
+  - ARROW_DAMAGE:30
+ArcoFuego1:
+  Id: BOW
+  Enchantments:
+  - ARROW_FIRE:1
+  - ARROW_DAMAGE:10
+Arco1:
+  Id: BOW
+  Enchantments:
+  - ARROW_DAMAGE:20
+Arco2:
+  Id: BOW
+  Enchantments:
+  - ARROW_DAMAGE:20
+Arco3:
+  Id: BOW
+  Enchantments:
+  - ARROW_DAMAGE:20
+Ballesta1:
+  Id: CROSSBOW
+  Enchantments:
+  - QUICK_CHARGE:5
+Espada1:
+  Id: IRON_SWORD
+  Enchantments:
+  - DAMAGE_ALL:2
+Espada2:
+  Id: NETHERITE_SWORD
+  Enchantments:
+  - DAMAGE_ALL:3
+ArcoD19:
+  Id: BOW
+  Enchantments:
+  - ARROW_DAMAGE:10
+ArcoD41:
+  Id: BOW
+  Enchantments:
+  - ARROW_DAMAGE:15
+EspadaD31:
+  Id: NETHERITE_SWORD
+  Enchantments:
+  - DAMAGE_ALL:10
+EspadaD44:
+  Id: NETHERITE_SWORD
+  Enchantments:
+  - DAMAGE_ALL:15

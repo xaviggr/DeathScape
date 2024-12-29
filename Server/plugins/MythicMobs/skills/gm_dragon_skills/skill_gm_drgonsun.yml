@@ -3,14 +3,27 @@ CancelEventSkill:
         - CancelEvent
 
 ### gm_dragon_sun #########
-
+UpdateTarget:
+  Skills:
+  - damage{amount=0} @self # No hace daño pero refresca el objetivo.
+  - target{type=PLAYER} @self # Redefine el objetivo a cualquier jugador.
 
 gm_dragon_sun_alintookill:
   Skills:
-  - damage{a=15}
+  - damage{a=56}
   - ignite{ticks=40}
 
-
+gm_dragon_sun_walk_on_lava:
+  Cooldown: 10
+  Conditions:
+  - incombat true
+  - offgcd{} true
+  - score{o=mi_walk;v=>0} true
+  Skills:
+  - setspeed{s=1.5;type=WALKING} @self
+  - effect:immune{type=FIRE_LAVA} @self
+  - effect:particles{particle=lava;amount=20;speed=0.1;hS=1;vS=0.2} @self
+  - motion{x=0;y=0.2;z=0} @self
 
 gm_dragon_sun_alint1:
   Cooldown: 10
@@ -44,7 +57,7 @@ tick_gm_dragon_sun_alint1:
 
 hit_gm_dragon_sun_alint1:
   Skills:
-    - aura{d=20;i=1;onTick=[  - ignite{ticks=20} - damage{a=3;cd=2} ]}
+    - aura{d=20;i=1;onTick=[  - ignite{ticks=20} - damage{a=56;cd=2} ]}
 
 
 gm_dragon_sun_empujar:
@@ -139,7 +152,7 @@ tick_gm_dragon_sun_alint2:
 
 hit_gm_dragon_sun_alint2:
   Skills:
-    - aura{d=20;i=1;onTick=[  - ignite{ticks=20} - damage{a=3;cd=2} ]}
+    - aura{d=20;i=1;onTick=[  - ignite{ticks=20} - damage{a=56;cd=2} ]}
 
 
 
@@ -210,7 +223,7 @@ ssgm_sun_dragon_attack01:
 sbssgm_sun_dragon_attack01:
   Skills:
     - throw{vy=1;v=11}
-    - damage{a=16}
+    - damage{a=56}
 
 
 ssgm_sun_dragon_aplast1:
@@ -239,7 +252,7 @@ ssgm_sun_dragon_aplast1:
 sbssgm_sun_dragon_aplast1:
   Skills:
     - throw{vy=15;v=2}
-    - damage{a=16}
+    - damage{a=56}
 
 
 tick_gm_dragon_sun_aplast1:
@@ -287,7 +300,7 @@ ssgm_sun_dragon_flyattack1:
 
 sbssgm_sun_dragon_flyattack1xx:
   Skills:
-    - damage{a=16}
+    - damage{a=56}
     - throw{vy=1;v=15}
 
 
@@ -324,7 +337,7 @@ ssgm_sun_dragon_flyattack2:
 
 sbssgm_sun_dragon_flyattack2xx:
   Skills:
-    - damage{a=4;i=true}
+    - damage{a=56;i=true}
     - recoil{r=1;pitch=4to4} 
     - delay 1
     - recoil{r=1;pitch=-4to-4} 
@@ -342,6 +355,7 @@ gm_dragon_sun_lluviadefuego:
   - score{o=mi_fly;v=>0} true
   TargetConditions:
   - distance{d=0to25}
+  - allentities{}       # Aplica a todas las entidades dentro del área
   Skills:
   - sound{s=gm_dragon_sun:gamitamodels.gm_dragon_sun.roar6;v=1;p=1} @self
   - sendtitle{title="";subtitle="&k&4ax &6&lMagma Rain &k&4xa";d=7;fi=5;fo=5;repeat=10;repeatinterval=10} @PIR{r=50}
@@ -351,19 +365,19 @@ gm_dragon_sun_lluviadefuego:
   - potion{type=SLOW;l=99;d=112;p=false} @self
   - effect:sound{s=entity.ender_dragon.growl;v=1;p=0.9} @self
   - delay 16
-  - projectile{type=METEOR;bulletType=BLOCK;bulletMaterial=MAGMA_BLOCK;hfs=20;v=12;g=0.2;i=1;hR=2;vR=1;hnp=true;onTick=tick_gm_dragon_sun_alintxx;onHit=hit_gm_dragon_sun_alintxx;ohb=hit_gm_dragon_sun_alintxx} @RingAroundOrigin{radius=19;points=8;xRotation=360}
+  - projectile{type=METEOR;bulletType=BLOCK;bulletMaterial=MAGMA_BLOCK;hfs=40;v=12;g=0.2;i=1;hR=2;vR=1;hnp=true;onTick=tick_gm_dragon_sun_alintxx;onHit=hit_gm_dragon_sun_alintxx;ohb=hit_gm_dragon_sun_alintxx} @RingAroundOrigin{radius=49;points=15;xRotation=360}
   - delay 8
-  - projectile{type=METEOR;bulletType=BLOCK;bulletMaterial=MAGMA_BLOCK;hfs=20;v=12;g=0.2;i=1;hR=2;vR=1;hnp=true;onTick=tick_gm_dragon_sun_alintxx;onHit=hit_gm_dragon_sun_alintxx;ohb=hit_gm_dragon_sun_alintxx} @RingAroundOrigin{radius=10;points=8;xRotation=360}
+  - projectile{type=METEOR;bulletType=BLOCK;bulletMaterial=MAGMA_BLOCK;hfs=40;v=12;g=0.2;i=1;hR=2;vR=1;hnp=true;onTick=tick_gm_dragon_sun_alintxx;onHit=hit_gm_dragon_sun_alintxx;ohb=hit_gm_dragon_sun_alintxx} @RingAroundOrigin{radius=21;points=15;xRotation=360}
   - delay 8
-  - projectile{type=METEOR;bulletType=BLOCK;bulletMaterial=MAGMA_BLOCK;hfs=20;v=12;g=0.2;i=1;hR=2;vR=1;hnp=true;onTick=tick_gm_dragon_sun_alintxx;onHit=hit_gm_dragon_sun_alintxx;ohb=hit_gm_dragon_sun_alintxx} @RingAroundOrigin{radius=22;points=8;xRotation=360}
+  - projectile{type=METEOR;bulletType=BLOCK;bulletMaterial=MAGMA_BLOCK;hfs=40;v=12;g=0.2;i=1;hR=2;vR=1;hnp=true;onTick=tick_gm_dragon_sun_alintxx;onHit=hit_gm_dragon_sun_alintxx;ohb=hit_gm_dragon_sun_alintxx} @RingAroundOrigin{radius=52;points=15;xRotation=360}
   - delay 8
-  - projectile{type=METEOR;bulletType=BLOCK;bulletMaterial=MAGMA_BLOCK;hfs=20;v=12;g=0.2;i=1;hR=2;vR=1;hnp=true;onTick=tick_gm_dragon_sun_alintxx;onHit=hit_gm_dragon_sun_alintxx;ohb=hit_gm_dragon_sun_alintxx} @RingAroundOrigin{radius=14;points=8;xRotation=360}
+  - projectile{type=METEOR;bulletType=BLOCK;bulletMaterial=MAGMA_BLOCK;hfs=40;v=12;g=0.2;i=1;hR=2;vR=1;hnp=true;onTick=tick_gm_dragon_sun_alintxx;onHit=hit_gm_dragon_sun_alintxx;ohb=hit_gm_dragon_sun_alintxx} @RingAroundOrigin{radius=30;points=13;xRotation=360}
   - delay 8
-  - projectile{type=METEOR;bulletType=BLOCK;bulletMaterial=MAGMA_BLOCK;hfs=20;v=12;g=0.2;i=1;hR=2;vR=1;hnp=true;onTick=tick_gm_dragon_sun_alintxx;onHit=hit_gm_dragon_sun_alintxx;ohb=hit_gm_dragon_sun_alintxx} @RingAroundOrigin{radius=5;points=6;xRotation=360}
+  - projectile{type=METEOR;bulletType=BLOCK;bulletMaterial=MAGMA_BLOCK;hfs=40;v=12;g=0.2;i=1;hR=2;vR=1;hnp=true;onTick=tick_gm_dragon_sun_alintxx;onHit=hit_gm_dragon_sun_alintxx;ohb=hit_gm_dragon_sun_alintxx} @RingAroundOrigin{radius=6;points=15;xRotation=360}
   - delay 8
-  - projectile{type=METEOR;bulletType=BLOCK;bulletMaterial=MAGMA_BLOCK;hfs=20;v=12;g=0.2;i=1;hR=2;vR=1;hnp=true;onTick=tick_gm_dragon_sun_alintxx;onHit=hit_gm_dragon_sun_alintxx;ohb=hit_gm_dragon_sun_alintxx} @RingAroundOrigin{radius=8;points=8;xRotation=360}
+  - projectile{type=METEOR;bulletType=BLOCK;bulletMaterial=MAGMA_BLOCK;hfs=40;v=12;g=0.2;i=1;hR=2;vR=1;hnp=true;onTick=tick_gm_dragon_sun_alintxx;onHit=hit_gm_dragon_sun_alintxx;ohb=hit_gm_dragon_sun_alintxx} @RingAroundOrigin{radius=38;points=15;xRotation=360}
   - delay 8
-  - projectile{type=METEOR;bulletType=BLOCK;bulletMaterial=MAGMA_BLOCK;hfs=20;v=12;g=0.2;i=1;hR=2;vR=1;hnp=true;onTick=tick_gm_dragon_sun_alintxx;onHit=hit_gm_dragon_sun_alintxx;ohb=hit_gm_dragon_sun_alintxx} @RingAroundOrigin{radius=12;points=8;xRotation=360}
+  - projectile{type=METEOR;bulletType=BLOCK;bulletMaterial=MAGMA_BLOCK;hfs=40;v=12;g=0.2;i=1;hR=2;vR=1;hnp=true;onTick=tick_gm_dragon_sun_alintxx;onHit=hit_gm_dragon_sun_alintxx;ohb=hit_gm_dragon_sun_alintxx} @RingAroundOrigin{radius=10;points=13;xRotation=360}
 
 
 
@@ -376,10 +390,12 @@ tick_gm_dragon_sun_alintxx:
   Skills:
   - effect:particles{particle=lava;amount=1;vs=0.1;hs=0.1;speed=0.1;yOffset=0} @origin
   - effect:particles{particle=flame;amount=1;vs=0.1;hs=0.1;speed=0.1;yOffset=0} @origin
+  - damage{a=56}
 
 
 hit_gm_dragon_sun_alintxx:
   Skills:
+  - damage{a=56}
   - effect:particles{particle=largeexplode} @origin
   - effect:sound{s=entity.generic.explode;v=1;p=1} @origin
   - totem{ch=1;md=2;oH=hit_gm_dragon_sun_alintxtotemx;repeat=2;repeatInterval=1;hnp=true;hR=5;vr=R} @origin
@@ -388,5 +404,5 @@ hit_gm_dragon_sun_alintxx:
 hit_gm_dragon_sun_alintxtotemx:
   Skills:
   - ignite{ticks=20} 
-  - damage{a=3;cd=2}
+  - damage{a=56}
   - velocity{v=1;vY=1}

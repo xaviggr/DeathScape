@@ -1,6 +1,10 @@
+# For more information, check out the plugin manual or join us on Discord:
+# http://www.mythicmobs.net
+#  
+
 SkeletonKingDrops:
   Conditions:
-  - playerwithin{d=40}
+  - playerwithin 40
   Drops:
   - SkeletonKingItemDrops 1
   - experience 100
@@ -11,5 +15,11 @@ SkeletonKingItemDrops:
   Drops:
   - KingsCrown 1 0.01
   - SkeletonKingSword 0.1
-  - GOLD_NUGGET 32-64 1
+  - GOLD_NUGGET 32-64 1 1
   - DIAMOND 1-12 0.8
+BruteDrops:
+  Drops:
+  - END_STONE 1 0.05
+EsqueletoDrops:
+  Drops:
+  - ArcoFuego 1 0.01

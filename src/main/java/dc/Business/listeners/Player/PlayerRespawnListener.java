@@ -3,14 +3,18 @@ package dc.Business.listeners.Player;
 import dc.Business.controllers.PlayerController;
 import dc.DeathScape;
 import dc.Persistence.config.MainConfigManager;
+import dc.Persistence.player.PlayerEditDatabase;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerRespawnEvent;
+
+import java.util.Objects;
 
 /**
  * Listener for handling player respawn events. Manages respawn locations and bans players
@@ -41,27 +45,31 @@ public class PlayerRespawnListener implements Listener {
     @EventHandler
     public void onPlayerRespawn(PlayerRespawnEvent event) {
         Player player = event.getPlayer();
+        boolean banned = PlayerEditDatabase.isPlayerBanned(player.getName());
+        System.out.println("PlayerRespawnListener: Player " + player.getName() + " is banned: " + banned);
 
-        // Coordinates for the respawn location
-        double x = 4104; // Change these coordinates based on your server's world
-        double y = 53;
-        double z = -547;
+        // Handle banned player case after respawn
+        if (banned) {
+            // Coordinates for the respawn location
+            double x = 4104.557; // Change these coordinates based on your server's world
+            double y = 53.5;
+            double z = -547.535;
 
-        // Name of the world where the player will respawn
-        String worldName = "world"; // Update this if your world has a different name
+            // Name of the world where the player will respawn
+            String worldName = "world"; // Update this if your world has a different name
 
-        // Create the respawn location
-        Location respawnLocation = new Location(Bukkit.getWorld(worldName), x, y, z);
+            // Create the respawn location
+            Location respawnLocation = new Location(Bukkit.getWorld(worldName), x, y, z);
 
-        // Set the respawn location
-        event.setRespawnLocation(respawnLocation);
+            // Set the respawn location for normal deaths
+            event.setRespawnLocation(respawnLocation);
 
-        // Handle admin case: set to spectator mode
-        if (player.isOp()) {
-            player.setGameMode(GameMode.SPECTATOR);
+            // Handle admin case: set to spectator mode
+            if (!player.isOp()) {
+                handlePlayerBan(player);
+            }
         } else {
-            // If not an admin, handle banning the player
-            handlePlayerBan(player);
+            event.setRespawnLocation(Objects.requireNonNull(Bukkit.getWorld("world")).getSpawnLocation());
         }
     }
 

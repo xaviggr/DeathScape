@@ -1,5 +1,6 @@
 package dc;
 
+import dc.Business.controllers.DungeonController;
 import dc.Business.controllers.PlayerController;
 import dc.Business.groups.GroupData;
 import dc.Business.groups.Permission;
@@ -40,6 +41,8 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
     private final ReportsInventory reportsInventory;
     private final ReviveInventory reviveInventory;
 
+    private final DungeonController dungeonController;
+
     /**
      * Constructor for the DeathScapeCommand class.
      *
@@ -49,12 +52,13 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
      * @param playerController The player controller for managing players.
      * @param reviveInventory  The inventory used for reviving players.
      */
-    public DeathScapeCommand(DeathScape plugin, ReportInventory reportInventory, ReportsInventory reportsInventory, PlayerController playerController, ReviveInventory reviveInventory) {
+    public DeathScapeCommand(DeathScape plugin, ReportInventory reportInventory, ReportsInventory reportsInventory, PlayerController playerController, ReviveInventory reviveInventory, DungeonController dungeonController) {
         this.plugin = plugin;
         this.reportInventory = reportInventory;
         this.reportsInventory = reportsInventory;
         this.playerController = playerController;
         this.reviveInventory = reviveInventory;
+        this.dungeonController = dungeonController;
     }
 
     /**
@@ -240,6 +244,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         commandMap.put("endersee", () -> handleEnderSee(player, args, group));
         commandMap.put("mute", () -> handleMutePlayer(player, args, group));
         commandMap.put("unmute", () -> handleUnMutePlayer(player, args, group));
+        commandMap.put("dungeon", () -> dungeonController.teleportPlayerToDungeon(player));
 
         // Ejecuta el comando correspondiente
         return commandMap.get(args[0].toLowerCase());
@@ -255,7 +260,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         Map<String, Runnable> commandMap = new HashMap<>();
 
         commandMap.put("revive", () -> handleReviveCommand(args, sender));
-        commandMap.put("addPoints", () -> handleAddPointsCommand(args, sender));
+        commandMap.put("addpoints", () -> handleAddPointsCommand(args, sender));
         commandMap.put("quitarban", () -> handleUnbanPlayerCommandServer(sender, args));
 
         // Add more server commands here as needed...
@@ -534,9 +539,9 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
                 }
                 // Teletransportarse a un jugador
                 if (playerController.teleportToPlayer(player, args[1])) {
-                    Message.enviarMensajeColorido(player, "Te has teletransportado a " + args[1], ChatColor.GREEN);
+                    Message.sendMessage(player, "Te has teletransportado a " + args[1], ChatColor.GREEN);
                 } else {
-                    Message.enviarMensajeColorido(player, "El jugador " + args[1] + " no está conectado.", ChatColor.RED);
+                    Message.sendMessage(player, "El jugador " + args[1] + " no está conectado.", ChatColor.RED);
                 }
             }
             case 4 -> {
@@ -546,21 +551,21 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
                     double y = Double.parseDouble(args[2]);
                     double z = Double.parseDouble(args[3]);
                     if (playerController.teleportToCoordinates(player, x, y, z)) {
-                        Message.enviarMensajeColorido(player, "Te has teletransportado a las coordenadas: " + x + ", " + y + ", " + z, ChatColor.GREEN);
+                        Message.sendMessage(player, "Te has teletransportado a las coordenadas: " + x + ", " + y + ", " + z, ChatColor.GREEN);
                     }
                 } catch (NumberFormatException e) {
-                    Message.enviarMensajeColorido(player, "Por favor, introduce coordenadas válidas.", ChatColor.RED);
+                    Message.sendMessage(player, "Por favor, introduce coordenadas válidas.", ChatColor.RED);
                 }
             }
             case 3 -> {
                 // Teletransportar a un jugador a otro
                 if (playerController.teleportPlayerToPlayer(args[1], args[2])) {
-                    Message.enviarMensajeColorido(player, "Has teletransportado a " + args[1] + " a " + args[2], ChatColor.GREEN);
+                    Message.sendMessage(player, "Has teletransportado a " + args[1] + " a " + args[2], ChatColor.GREEN);
                 } else {
-                    Message.enviarMensajeColorido(player, "No se pudo completar el teletransporte.", ChatColor.RED);
+                    Message.sendMessage(player, "No se pudo completar el teletransporte.", ChatColor.RED);
                 }
             }
-            default -> Message.enviarMensajeColorido(player, """
+            default -> Message.sendMessage(player, """
                 Uso incorrecto del comando. Formatos válidos:
                 /tp <jugador>
                 /tp <x> <y> <z>
@@ -583,10 +588,10 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
 
         if (playerController.isBansheeActive(player)) {
             playerController.deactivateBanshee(player);
-            Message.enviarMensajeColorido(player, "Banshee desactivado.", ChatColor.GREEN);
+            Message.sendMessage(player, "Banshee desactivado.", ChatColor.GREEN);
         } else {
             playerController.activateBanshee(player);
-            Message.enviarMensajeColorido(player, "Banshee activado.", ChatColor.GREEN);
+            Message.sendMessage(player, "Banshee activado.", ChatColor.GREEN);
         }
     }
 
@@ -604,12 +609,12 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         }
 
         if (args.length < 3) {
-            Message.enviarMensajeColorido(player, "Uso: /añadirusuarioagrupo <usuario> <grupo>", ChatColor.RED);
+            Message.sendMessage(player, "Uso: /añadirusuarioagrupo <usuario> <grupo>", ChatColor.RED);
             return;
         }
 
         PlayerEditDatabase.addPlayerToGroup(args[1], args[2]);
-        Message.enviarMensajeColorido(player, "Usuario añadido al grupo correctamente.", ChatColor.GREEN);
+        Message.sendMessage(player, "Usuario añadido al grupo correctamente.", ChatColor.GREEN);
     }
 
     /**
@@ -626,12 +631,12 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         }
 
         if (args.length < 2) {
-            Message.enviarMensajeColorido(player, "Uso: /quitarusuariodegrupo <usuario>", ChatColor.RED);
+            Message.sendMessage(player, "Uso: /quitarusuariodegrupo <usuario>", ChatColor.RED);
             return;
         }
 
         PlayerEditDatabase.addPlayerToGroup(args[1], "default");
-        Message.enviarMensajeColorido(player, "Usuario eliminado del grupo correctamente.", ChatColor.GREEN);
+        Message.sendMessage(player, "Usuario eliminado del grupo correctamente.", ChatColor.GREEN);
     }
 
     /**
@@ -647,9 +652,9 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         }
 
         if (playerController.teleportBack(player)) {
-            Message.enviarMensajeColorido(player, "Te has teletransportado al punto anterior.", ChatColor.GREEN);
+            Message.sendMessage(player, "Te has teletransportado al punto anterior.", ChatColor.GREEN);
         } else {
-            Message.enviarMensajeColorido(player, "No hay un punto anterior al que teletransportarse.", ChatColor.RED);
+            Message.sendMessage(player, "No hay un punto anterior al que teletransportarse.", ChatColor.RED);
         }
     }
 
@@ -667,7 +672,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         }
 
         if (args.length < 2) {
-            Message.enviarMensajeColorido(player, "Uso: /setdia <número de días>", ChatColor.RED);
+            Message.sendMessage(player, "Uso: /setdia <número de días>", ChatColor.RED);
             return;
         }
 
@@ -679,9 +684,9 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
             } catch (NumberFormatException e) {
                 sendInvalidCommandMessage(player);
             }
-            Message.enviarMensajeColorido(player, "Se ha establecido el día a " + days + " correctamente.", ChatColor.GREEN);
+            Message.sendMessage(player, "Se ha establecido el día a " + days + " correctamente.", ChatColor.GREEN);
         } catch (NumberFormatException e) {
-            Message.enviarMensajeColorido(player, "Por favor, introduce un número válido de días.", ChatColor.RED);
+            Message.sendMessage(player, "Por favor, introduce un número válido de días.", ChatColor.RED);
         }
     }
 
@@ -699,13 +704,13 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         }
 
         if (args.length < 2) {
-            Message.enviarMensajeColorido(player, "Uso: /añadirbannedword <palabra>", ChatColor.RED);
+            Message.sendMessage(player, "Uso: /añadirbannedword <palabra>", ChatColor.RED);
             return;
         }
 
         String word = args[1];
         BannedWordsDatabase.addBannedWord(word);
-        Message.enviarMensajeColorido(player, "La palabra " + word + " ha sido añadida a la lista de palabras prohibidas.", ChatColor.GREEN);
+        Message.sendMessage(player, "La palabra " + word + " ha sido añadida a la lista de palabras prohibidas.", ChatColor.GREEN);
     }
 
     /**
@@ -722,13 +727,13 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         }
 
         if (args.length < 2) {
-            Message.enviarMensajeColorido(player, "Uso: /quitarbannedword <palabra>", ChatColor.RED);
+            Message.sendMessage(player, "Uso: /quitarbannedword <palabra>", ChatColor.RED);
             return;
         }
 
         String word = args[1];
         BannedWordsDatabase.removeBannedWord(word);
-        Message.enviarMensajeColorido(player, "La palabra " + word + " ha sido eliminada de la lista de palabras prohibidas.", ChatColor.GREEN);
+        Message.sendMessage(player, "La palabra " + word + " ha sido eliminada de la lista de palabras prohibidas.", ChatColor.GREEN);
     }
 
     /**
@@ -745,16 +750,16 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         }
 
         if (args.length < 2) {
-            Message.enviarMensajeColorido(player, "Uso: /quitarban <usuario>", ChatColor.RED);
+            Message.sendMessage(player, "Uso: /quitarban <usuario>", ChatColor.RED);
             return;
         }
 
         String targetPlayer = args[1];
         if (PlayerEditDatabase.isPlayerBanned(targetPlayer)) {
             PlayerEditDatabase.UnbanPlayer(targetPlayer);
-            Message.enviarMensajeColorido(player, "El jugador " + targetPlayer + " ha sido desbaneado.", ChatColor.GREEN);
+            Message.sendMessage(player, "El jugador " + targetPlayer + " ha sido desbaneado.", ChatColor.GREEN);
         } else {
-            Message.enviarMensajeColorido(player, "El jugador " + targetPlayer + " no está baneado.", ChatColor.RED);
+            Message.sendMessage(player, "El jugador " + targetPlayer + " no está baneado.", ChatColor.RED);
         }
     }
 
@@ -767,13 +772,13 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         // Obtener datos del grupo del jugador
         PlayerData playerData = PlayerDatabase.getPlayerDataFromDatabase(player.getName());
         if (playerData == null) {
-            Message.enviarMensajeColorido(player, "No se pudo cargar tu información de grupo.", ChatColor.RED);
+            Message.sendMessage(player, "No se pudo cargar tu información de grupo.", ChatColor.RED);
             return;
         }
 
         GroupData groupData = GroupDatabase.getGroupData(playerData.getGroup());
         if (groupData == null) {
-            Message.enviarMensajeColorido(player, "No tienes un grupo asignado.", ChatColor.RED);
+            Message.sendMessage(player, "No tienes un grupo asignado.", ChatColor.RED);
             return;
         }
 
@@ -853,7 +858,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
      */
     private void showInfo(Player player) {
         String infoMessage = "DeathScape V" + plugin.getDescription().getVersion() + " por " + plugin.getDescription().getAuthors();
-        Message.enviarMensajeColorido(player, infoMessage, ChatColor.GREEN);
+        Message.sendMessage(player, infoMessage, ChatColor.GREEN);
     }
 
     /** Handles the "/discord" command.
@@ -861,7 +866,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
      * @param player The player executing the command.
      */
     private void showDiscord(Player player) {
-        Message.enviarMensajeColorido(player, "Discord: " + DISCORD_URL, ChatColor.BLUE);
+        Message.sendMessage(player, "Discord: " + DISCORD_URL, ChatColor.BLUE);
     }
 
     /**
@@ -871,7 +876,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
      */
     private void showStormTime(Player player) {
         int rainTimePending = plugin.getServerData().getStormPendingTime();
-        Message.enviarMensajeColorido(player, "Tiempo de lluvia pendiente: " + rainTimePending + " minutos.", ChatColor.GREEN);
+        Message.sendMessage(player, "Tiempo de lluvia pendiente: " + rainTimePending + " minutos.", ChatColor.GREEN);
     }
 
     /**
@@ -880,7 +885,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
      * @param player The player executing the command.
      */
     private void showDay(Player player) {
-        Message.enviarMensajeColorido(player, "El día actual es: " + plugin.getServerData().getServerDays(), ChatColor.GREEN);
+        Message.sendMessage(player, "El día actual es: " + plugin.getServerData().getServerDays(), ChatColor.GREEN);
     }
 
     /**
@@ -891,7 +896,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
     private void showPlayTime(Player player) {
         playerController.savePlayerData(player);
         String tiempoJugado = Objects.requireNonNull(PlayerDatabase.getPlayerDataFromDatabase(player.getName())).getTimePlayed();
-        Message.enviarMensajeColorido(player, "Has jugado un total de: " + tiempoJugado, ChatColor.GREEN);
+        Message.sendMessage(player, "Has jugado un total de: " + tiempoJugado, ChatColor.GREEN);
     }
 
     /**
@@ -913,7 +918,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
      * @param player The player executing the command.
      */
     private void sendInvalidCommandMessage(Player player) {
-        Message.enviarMensajeColorido(player, INVALID_COMMAND_MESSAGE, ChatColor.RED);
+        Message.sendMessage(player, INVALID_COMMAND_MESSAGE, ChatColor.RED);
     }
 
     /**
@@ -922,7 +927,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
      * @param player The player executing the command.
      */
     private void sendNoPermissionMessage(Player player) {
-        Message.enviarMensajeColorido(player, "No tienes permiso para usar este comando.", ChatColor.RED);
+        Message.sendMessage(player, "No tienes permiso para usar este comando.", ChatColor.RED);
     }
 
     /**
@@ -933,7 +938,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
      */
     private void handleDifficultyCommand(Player player, String[] args) {
         if (args.length < 2) {
-            Message.enviarMensajeColorido(player, "Uso: /dificultad <día>", ChatColor.RED);
+            Message.sendMessage(player, "Uso: /dificultad <día>", ChatColor.RED);
             return;
         }
 
@@ -942,7 +947,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         try {
             requestedDay = Integer.parseInt(args[1]);
         } catch (NumberFormatException e) {
-            Message.enviarMensajeColorido(player, "El día ingresado no es válido. Por favor, ingrese un número.", ChatColor.RED);
+            Message.sendMessage(player, "El día ingresado no es válido. Por favor, ingrese un número.", ChatColor.RED);
             return;
         }
 
@@ -950,7 +955,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
 
         // Comparar el día solicitado con el día actual
         if (requestedDay > currentDay) {
-            Message.enviarMensajeColorido(player, "No puedes solicitar información para un día superior al actual (" + currentDay + ").", ChatColor.RED);
+            Message.sendMessage(player, "No puedes solicitar información para un día superior al actual (" + currentDay + ").", ChatColor.RED);
             return;
         }
 
@@ -961,20 +966,20 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         // Validar si la sección "dificultades_info" existe
         ConfigurationSection difficultiesSection = difficultiesConfig.getConfigurationSection("dificultades_info");
         if (difficultiesSection == null) {
-            Message.enviarMensajeColorido(player, "No se encontró la sección 'dificultades_info' en el archivo de configuración.", ChatColor.RED);
+            Message.sendMessage(player, "No se encontró la sección 'dificultades_info' en el archivo de configuración.", ChatColor.RED);
             return;
         }
 
         // Validar si la clave específica del día existe
         if (!difficultiesSection.contains(dayKey)) {
-            Message.enviarMensajeColorido(player, "No se encontró información para el día: " + requestedDay, ChatColor.RED);
+            Message.sendMessage(player, "No se encontró información para el día: " + requestedDay, ChatColor.RED);
             return;
         }
 
         // Obtener la lista de líneas para la clave del día
         List<String> infoLines = difficultiesSection.getStringList(dayKey);
         if (infoLines.isEmpty()) {
-            Message.enviarMensajeColorido(player, "No hay detalles disponibles para el día: " + requestedDay, ChatColor.RED);
+            Message.sendMessage(player, "No hay detalles disponibles para el día: " + requestedDay, ChatColor.RED);
             return;
         }
 

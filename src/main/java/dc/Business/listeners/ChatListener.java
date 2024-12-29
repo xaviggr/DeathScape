@@ -104,7 +104,7 @@ public class ChatListener implements Listener {
      */
     private void cancelChat(AsyncPlayerChatEvent event, Player player, String reason) {
         event.setCancelled(true);
-        Message.enviarMensajeColorido(player, reason, ChatColor.RED);
+        Message.sendMessage(player, reason, ChatColor.RED);
     }
 
     /**
@@ -198,7 +198,7 @@ public class ChatListener implements Listener {
         String reportedPlayer = ReportInventory.getPendingReports().get(player);
         sendReport(player, reportedPlayer, comment);
         ReportInventory.getPendingReports().remove(player);
-        Message.enviarMensajeColorido(player, "Gracias por tu reporte.", ChatColor.GREEN);
+        Message.sendMessage(player, "Gracias por tu reporte.", ChatColor.GREEN);
     }
 
     /**
