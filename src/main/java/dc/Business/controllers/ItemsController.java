@@ -5,6 +5,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.EnchantmentStorageMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
@@ -204,12 +205,24 @@ public class ItemsController {
         // Personaliza el ítem con encantamientos y lore únicos
         ItemMeta meta = item.getItemMeta();
         if (meta != null) {
-            meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Ítem Único");
-            List<String> lore = new ArrayList<>();
-            lore.add(ChatColor.AQUA + "Un objeto legendario de otro mundo.");
-            lore.add(ChatColor.GOLD + "¡La historia lo recuerda como inmortal!");
-            meta.setLore(lore);
-            item.setItemMeta(meta);
+            if (randomMaterial == Material.ENCHANTED_BOOK) {
+                // Configurar encantamientos superchetados para el libro
+                meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Libro Único");
+                EnchantmentStorageMeta bookMeta = (EnchantmentStorageMeta) meta;
+                bookMeta.addStoredEnchant(Enchantment.DAMAGE_ALL, 10, true); // Filo Nivel 10
+                bookMeta.addStoredEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 10, true); // Protección Nivel 10
+                bookMeta.addStoredEnchant(Enchantment.MENDING, 1, true); // Reparación
+                bookMeta.addStoredEnchant(Enchantment.SWEEPING_EDGE, 5, true); // Barrido Nivel 5
+                item.setItemMeta(bookMeta);
+            } else {
+                // Personalizar lore para otros ítems únicos
+                meta.setDisplayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Ítem Único");
+                List<String> lore = new ArrayList<>();
+                lore.add(ChatColor.AQUA + "Un objeto legendario de otro mundo.");
+                lore.add(ChatColor.GOLD + "¡La historia lo recuerda como inmortal!");
+                meta.setLore(lore);
+                item.setItemMeta(meta);
+            }
         }
 
         return item;

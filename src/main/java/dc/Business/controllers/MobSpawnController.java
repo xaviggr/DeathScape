@@ -105,4 +105,8 @@ public class MobSpawnController {
             plugin.getLogger().warning("Could not find MythicMob with type: " + mobType);
         }
     }
+
+    public void spawnRiftMobs(Location spawnLocation) {
+
+    }
 }

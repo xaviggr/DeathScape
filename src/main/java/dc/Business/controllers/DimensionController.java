@@ -2,6 +2,7 @@ package dc.Business.controllers;
 
 import dc.DeathScape;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.GameRule;
 import org.bukkit.World;
 
@@ -55,10 +56,10 @@ public class DimensionController {
             spawnDimension.setTime(6000);
 
             // Log success message
-            Bukkit.getLogger().info("[DeathScape] Spawn dimension initialized successfully.");
+            Bukkit.getLogger().info(ChatColor.GREEN + "[DeathScape] Spawn dimension initialized successfully.");
         } else {
             // Log an error if the spawn dimension cannot be loaded or created
-            Bukkit.getLogger().severe("[DeathScape] Failed to load or create spawn dimension.");
+            Bukkit.getLogger().severe(ChatColor.RED + "[DeathScape] Failed to load or create spawn dimension.");
         }
     }
 
@@ -70,10 +71,17 @@ public class DimensionController {
 
         // Check if the rift dimension exists
         if (riftDimension != null) {
-            // Schedule a repeating task to keep the time locked at nighttime (e.g., 18000 ticks)
-            Bukkit.getScheduler().runTaskTimer(plugin, () -> {
-                riftDimension.setTime(18000); // Set the time to night (18000 ticks)
-            }, 0L, 100L); // Execute every 5 seconds (100 ticks)
+
+            // Set the time of day to a constant value (e.g., 18000 ticks for nighttime)
+            riftDimension.setTime(18000);
+            riftDimension.setGameRule(GameRule.DO_DAYLIGHT_CYCLE, false); // Disable day-night cycle
+            riftDimension.setPVP(true); // Enable player versus player combat
+
+            // Log success message
+            Bukkit.getLogger().info(ChatColor.GREEN + "[DeathScape] Rift dimension initialized successfully.");
+        } else {
+            // Log an error if the rift dimension cannot be loaded or created
+            Bukkit.getLogger().severe(ChatColor.RED + "[DeathScape] Failed to load or create rift dimension.");
         }
     }
 }
