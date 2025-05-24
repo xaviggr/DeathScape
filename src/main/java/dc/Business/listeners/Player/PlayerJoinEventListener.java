@@ -88,7 +88,7 @@ public class PlayerJoinEventListener implements Listener {
 
             playerData = new PlayerData(
                     player.getName(), false, 0, hostAddress, "0", player.getUniqueId(), "0", "0",
-                    spawnPos, 0, "default"
+                    spawnPos, 0, "default", 1
             );
 
             if (!PlayerDatabase.addPlayerDataToDatabase(playerData)) {

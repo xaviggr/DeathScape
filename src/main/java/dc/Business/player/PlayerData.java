@@ -28,6 +28,7 @@ public class PlayerData {
     private String dimension; // The player's current dimension
     private String group; // The player's group
     private double health; // The player's health
+    private int lifes;
 
     /**
      * Constructs a `PlayerData` object with the specified details.
@@ -43,8 +44,9 @@ public class PlayerData {
      * @param coords      The player's coordinates.
      * @param points      The player's points.
      * @param group       The player's group.
+     * @param lifes       The player's lifes.
      */
-    public PlayerData(String name, boolean isDead, int deaths, String hostAddress, String timePlayed, UUID uniqueId, String banDate, String bantime, String coords, int points, String group) {
+    public PlayerData(String name, boolean isDead, int deaths, String hostAddress, String timePlayed, UUID uniqueId, String banDate, String bantime, String coords, int points, String group, int lifes) {
         this.name = name;
         this.isDead = isDead;
         this.deaths = deaths;
@@ -58,6 +60,7 @@ public class PlayerData {
         this.group = group;
         this.dimension = "world"; // Default dimension
         this.health = 20; // Default health
+        this.lifes = lifes; // Default lifes
     }
 
     // ------------------- Getters and Setters -------------------
@@ -153,6 +156,10 @@ public class PlayerData {
     public void setDimension(String dimension) {
         this.dimension = dimension;
     }
+
+    public int getLifes() { return lifes; }
+
+    public void setLifes(int lifes) { this.lifes = lifes; }
 
     // ------------------- Custom Methods -------------------
 
