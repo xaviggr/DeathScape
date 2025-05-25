@@ -76,7 +76,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
             // Lista base de comandos
             List<String> options = new ArrayList<>(List.of(
                     "dia", "discord", "help", "info", "reportar", "tiempojugado",
-                    "tiempolluvia", "dificultad"
+                    "tiempolluvia", "dificultad", "leaderboard"
             ));
 
             if (sender instanceof Player player) {
@@ -96,6 +96,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
                         options.add("quitarUsuarioDeGrupo");
                         options.add("inventorysee");
                         options.add("endersee");
+                        options.add("leaderboard");
                     }
 
                     if (groupPermissions.contains("teleport")) {
@@ -245,6 +246,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         commandMap.put("mute", () -> handleMutePlayer(player, args, group));
         commandMap.put("unmute", () -> handleUnMutePlayer(player, args, group));
         commandMap.put("dungeon", () -> dungeonController.teleportPlayerToDungeon(player));
+        commandMap.put("leaderboard", () -> handleLeaderboard(player, args));
 
         // Ejecuta el comando correspondiente
         return commandMap.get(args[0].toLowerCase());
@@ -262,6 +264,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         commandMap.put("revive", () -> handleReviveCommand(args, sender));
         commandMap.put("addpoints", () -> handleAddPointsCommand(args, sender));
         commandMap.put("quitarban", () -> handleUnbanPlayerCommandServer(sender, args));
+        commandMap.put("leaderboard", () -> handleLeaderboardServer(sender, args));
 
         // Add more server commands here as needed...
 
@@ -796,6 +799,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         commands.put("tiempojugado", "Muestra el tiempo jugado.");
         commands.put("tiempolluvia", "Muestra el tiempo de lluvia pendiente.");
         commands.put("dificultad", "Muestra información sobre la dificultad de un día específico.");
+        commands.put("leaderboard", "Muestra la tabla de clasificación de los jugadores.");
 
         // Comandos adicionales según permisos
         if (groupPermissions.contains("group") || player.isOp()) {
@@ -987,6 +991,53 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         player.sendMessage(ChatColor.BOLD + "" + ChatColor.DARK_GREEN + "Dificultades" + ChatColor.DARK_GREEN + " para el día " + requestedDay + ":");
         for (String line : infoLines) {
             player.sendMessage(ChatColor.translateAlternateColorCodes('&', line));
+        }
+    }
+
+    private void handleLeaderboardServer(CommandSender sender, String[] args) {
+        if (args.length != 1) {
+            sender.sendMessage(ChatColor.RED + "Uso correcto: /leaderboard");
+            return;
+        }
+
+        List<PlayerData> leaderboard = PlayerDatabase.getLeaderboard();
+
+        if (leaderboard.isEmpty()) {
+            sender.sendMessage(ChatColor.RED + "No hay datos disponibles para mostrar el leaderboard.");
+            return;
+        }
+
+        sender.sendMessage(ChatColor.BOLD + "" + ChatColor.GOLD + "===== Leaderboard de Puntos =====");
+        for (int i = 0; i < leaderboard.size(); i++) {
+            PlayerData data = leaderboard.get(i);
+            sender.sendMessage(ChatColor.YELLOW + "" + (i + 1) + ". "
+                    + ChatColor.AQUA + data.getName()
+                    + ChatColor.GRAY + " - "
+                    + ChatColor.GREEN + data.getPoints() + " puntos");
+        }
+    }
+
+    private void handleLeaderboard(Player player, String[] args) {
+        // Validación de argumentos si algún día quieres extender con más parámetros
+        if (args.length != 1) {
+            Message.sendMessage(player, "Uso correcto: /leaderboard", ChatColor.RED);
+            return;
+        }
+
+        List<PlayerData> leaderboard = PlayerDatabase.getLeaderboard();
+
+        if (leaderboard.isEmpty()) {
+            Message.sendMessage(player, "No hay datos disponibles para mostrar el leaderboard.", ChatColor.RED);
+            return;
+        }
+
+        player.sendMessage(ChatColor.BOLD + "" + ChatColor.GOLD + "===== Leaderboard de Puntos =====");
+        for (int i = 0; i < leaderboard.size(); i++) {
+            PlayerData data = leaderboard.get(i);
+            player.sendMessage(ChatColor.YELLOW + "" + (i + 1) + ". "
+                    + ChatColor.AQUA + data.getName()
+                    + ChatColor.GRAY + " - "
+                    + ChatColor.GREEN + data.getPoints() + " puntos");
         }
     }
 }

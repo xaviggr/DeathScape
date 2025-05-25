@@ -146,4 +146,22 @@ public class PlayerDatabase {
             addPlayerDataToDatabase(playerData);
         }
     }
+
+    /**
+     * Returns a list of PlayerData sorted by points from highest to lowest.
+     *
+     * @return List of PlayerData sorted by points.
+     */
+    public static List<PlayerData> getLeaderboard() {
+        List<PlayerData> leaderboard = new ArrayList<>();
+        JsonObject jsonObject = readJsonFile();
+
+        jsonObject.entrySet().forEach(entry -> {
+            PlayerData data = GSON.fromJson(entry.getValue(), PlayerData.class);
+            leaderboard.add(data);
+        });
+
+        leaderboard.sort((a, b) -> Integer.compare(b.getPoints(), a.getPoints())); // Descending
+        return leaderboard;
+    }
 }
