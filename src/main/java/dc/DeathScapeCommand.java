@@ -803,7 +803,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         }
 
         if (PlayerEditDatabase.isPlayerBanned(target.getName())) {
-            playerController.setLivesToPlayer(target, 1);
+            playerController.setLivesToPlayer(target, 0);
             PlayerEditDatabase.UnbanPlayer(target.getName());
             sender.sendMessage(ChatColor.GREEN + "Jugador " + target.getName() + " ha sido desbaneado con 1 vida.");
         } else {

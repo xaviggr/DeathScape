@@ -44,9 +44,8 @@ public class PlayerData {
      * @param coords      The player's coordinates.
      * @param points      The player's points.
      * @param group       The player's group.
-     * @param lifes       The player's lifes.
      */
-    public PlayerData(String name, boolean isDead, int deaths, String hostAddress, String timePlayed, UUID uniqueId, String banDate, String bantime, String coords, int points, String group, int lifes) {
+    public PlayerData(String name, boolean isDead, int deaths, String hostAddress, String timePlayed, UUID uniqueId, String banDate, String bantime, String coords, int points, String group) {
         this.name = name;
         this.isDead = isDead;
         this.deaths = deaths;
@@ -60,7 +59,7 @@ public class PlayerData {
         this.group = group;
         this.dimension = "world"; // Default dimension
         this.health = 20; // Default health
-        this.lifes = lifes; // Default lifes
+        this.lifes = 0; // Default lifes
     }
 
     // ------------------- Getters and Setters -------------------
