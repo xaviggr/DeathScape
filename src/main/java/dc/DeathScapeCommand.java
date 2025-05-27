@@ -13,6 +13,7 @@ import dc.Persistence.chat.BannedWordsDatabase;
 import dc.Persistence.config.MainConfigManager;
 import dc.Persistence.groups.GroupDatabase;
 import dc.Persistence.logs.LogDatabase;
+import dc.Persistence.player.LeaderboardExporter;
 import dc.Persistence.player.PlayerDatabase;
 import dc.Persistence.player.PlayerEditDatabase;
 import dc.utils.Message;
@@ -1015,6 +1016,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
                     + ChatColor.GRAY + " - "
                     + ChatColor.GREEN + data.getPoints() + " puntos");
         }
+        LeaderboardExporter.exportLeaderboardAsHtml("plugins/DeathScape/leaderboard.html");
     }
 
     private void handleLeaderboard(Player player, String[] args) {
