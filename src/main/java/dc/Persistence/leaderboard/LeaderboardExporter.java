@@ -1,6 +1,7 @@
-package dc.Persistence.player;
+package dc.Persistence.leaderboard;
 
 import dc.Business.player.PlayerData;
+import dc.Persistence.player.PlayerDatabase;
 
 import java.io.File;
 import java.io.FileWriter;
