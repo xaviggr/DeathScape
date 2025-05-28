@@ -1,5 +1,6 @@
 package dc.Persistence.leaderboard;
 
+import dc.Persistence.config.MainConfigManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -10,6 +11,9 @@ public class LeaderboardScheduler {
     private static final String OUTPUT_PATH = "plugins/DeathScape/index.html";
 
     public static void start(JavaPlugin plugin) {
+        int intervalMinutes = MainConfigManager.getInstance().getLeaderboardUpdateInterval();
+        long intervalTicks = 20L * 60 * intervalMinutes;
+
         new BukkitRunnable() {
             @Override
             public void run() {
@@ -23,6 +27,7 @@ public class LeaderboardScheduler {
                     e.printStackTrace();
                 }
             }
-        }.runTaskTimerAsynchronously(plugin, 0L, 20L * 10 * 60); // cada 10 minutos
+        }.runTaskTimerAsynchronously(plugin, 0L, intervalTicks); // cada X minutos según config
     }
 }
+

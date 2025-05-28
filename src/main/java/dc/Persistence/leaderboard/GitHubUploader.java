@@ -1,5 +1,7 @@
 package dc.Persistence.leaderboard;
 
+import dc.Persistence.config.MainConfigManager;
+
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -14,34 +16,21 @@ public class GitHubUploader {
     private static final String USER = "konozca-david-vilar";
     private static final String REPO = "leaderboard";
     private static final String FILE_PATH = "index.html";
-
-    // 🔐 1. Leer el token desde el archivo seguro
-    private static String getToken() throws IOException {
-        File file = new File("plugins/DeathScape/.github_token");
-        if (!file.exists()) {
-            throw new FileNotFoundException("Token file not found: " + file.getAbsolutePath());
-        }
-        return new String(Files.readAllBytes(file.toPath()), StandardCharsets.UTF_8).trim();
-    }
+    private static final String TOKEN = MainConfigManager.getInstance().getGithubToken();
 
     public static void uploadFile(String localFilePath) throws IOException {
-        String token = getToken();
+        File file = new File(localFilePath);
+        if (!file.exists()) return;
 
-        File localFile = new File(localFilePath);
-        if (!localFile.exists()) {
-            throw new FileNotFoundException("Locals file not found: " + localFilePath);
-        }
-
-        // 📦 Codifica el contenido del archivo en base64
-        String content = Base64.getEncoder().encodeToString(Files.readAllBytes(localFile.toPath()));
+        String content = Base64.getEncoder().encodeToString(Files.readAllBytes(file.toPath()));
         String apiUrl = "https://api.github.com/repos/" + USER + "/" + REPO + "/contents/" + FILE_PATH;
 
-        // 📥 Obtener el SHA actual si el archivo ya existe
+        // Paso 1: obtener el SHA actual
         String sha = null;
         try {
             HttpURLConnection getConn = (HttpURLConnection) new URL(apiUrl).openConnection();
             getConn.setRequestMethod("GET");
-            getConn.setRequestProperty("Authorization", "token " + token);
+            getConn.setRequestProperty("Authorization", "token " + TOKEN);
             getConn.setRequestProperty("Accept", "application/vnd.github+json");
 
             if (getConn.getResponseCode() == 200) {
@@ -59,21 +48,22 @@ public class GitHubUploader {
             System.out.println("Archivo no existe aún. Se subirá por primera vez.");
         }
 
-        // 📤 Preparar el JSON con el contenido
+        // Paso 2: hacer PUT con o sin SHA
         StringBuilder payload = new StringBuilder();
         payload.append("{\n");
         payload.append("\"message\": \"Actualización automática del leaderboard\",\n");
         payload.append("\"committer\": { \"name\": \"AutoUploader\", \"email\": \"auto@plugin.com\" },\n");
         payload.append("\"content\": \"").append(content).append("\"");
+
         if (sha != null) {
             payload.append(",\n\"sha\": \"").append(sha).append("\"");
         }
+
         payload.append("\n}");
 
-        // 📡 Hacer la solicitud PUT
         HttpURLConnection putConn = (HttpURLConnection) new URL(apiUrl).openConnection();
         putConn.setRequestMethod("PUT");
-        putConn.setRequestProperty("Authorization", "token " + token);
+        putConn.setRequestProperty("Authorization", "token " + TOKEN);
         putConn.setRequestProperty("Content-Type", "application/json");
         putConn.setDoOutput(true);
 
@@ -83,9 +73,8 @@ public class GitHubUploader {
 
         int responseCode = putConn.getResponseCode();
         if (responseCode >= 200 && responseCode < 300) {
-            System.out.println("Leaderboard actualizado en GitHub.");
         } else {
-            System.err.println("❌ Error subiendo a GitHub: " + responseCode);
+            System.err.println("Error subiendo a GitHub: " + responseCode);
             try (BufferedReader errorReader = new BufferedReader(new InputStreamReader(putConn.getErrorStream()))) {
                 errorReader.lines().forEach(System.err::println);
             }
