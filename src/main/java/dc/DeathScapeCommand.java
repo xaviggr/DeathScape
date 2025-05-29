@@ -997,7 +997,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
 
     private void handleLeaderboardServer(CommandSender sender, String[] args) {
         if (args.length != 1) {
-            sender.sendMessage(ChatColor.RED + "Uso correcto: /leaderboard");
+            sender.sendMessage(ChatColor.RED + "Uso correcto: /ds leaderboard");
             return;
         }
 
@@ -1020,10 +1020,24 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
     }
 
     private void handleLeaderboard(Player player, String[] args) {
-        // Validación de argumentos si algún día quieres extender con más parámetros
-        if (args.length != 1) {
-            Message.sendMessage(player, "Uso correcto: /leaderboard", ChatColor.RED);
+        int page = 1; // Página por defecto
+        int itemsPerPage = 10;
+
+        // Validación de argumentos
+        if (args.length != 2) {
+            Message.sendMessage(player, "Uso correcto: /ds leaderboard [página]", ChatColor.RED);
             return;
+        }
+
+        // Parsear número de página si se pasa como argumento
+        else {
+            try {
+                page = Integer.parseInt(args[1]);
+                if (page < 1) page = 1;
+            } catch (NumberFormatException e) {
+                Message.sendMessage(player, "El número de página debe ser un número válido.", ChatColor.RED);
+                return;
+            }
         }
 
         List<PlayerData> leaderboard = PlayerDatabase.getLeaderboard();
@@ -1033,13 +1047,26 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
             return;
         }
 
-        player.sendMessage(ChatColor.BOLD + "" + ChatColor.GOLD + "===== Leaderboard de Puntos =====");
-        for (int i = 0; i < leaderboard.size(); i++) {
+        int totalPages = (int) Math.ceil(leaderboard.size() / (double) itemsPerPage);
+        if (page > totalPages) page = totalPages;
+
+        int startIndex = (page - 1) * itemsPerPage;
+        int endIndex = Math.min(startIndex + itemsPerPage, leaderboard.size());
+
+        player.sendMessage(ChatColor.BOLD + "" + ChatColor.GOLD + "===== Leaderboard de Puntos (Página " + page + "/" + totalPages + ") =====");
+
+        for (int i = startIndex; i < endIndex; i++) {
             PlayerData data = leaderboard.get(i);
             player.sendMessage(ChatColor.YELLOW + "" + (i + 1) + ". "
                     + ChatColor.AQUA + data.getName()
                     + ChatColor.GRAY + " - "
                     + ChatColor.GREEN + data.getPoints() + " puntos");
+        }
+
+        // Mensaje para navegar entre páginas
+        if (page < totalPages) {
+            player.sendMessage(ChatColor.GRAY + "Usa " + ChatColor.YELLOW + "/leaderboard " + (page + 1)
+                    + ChatColor.GRAY + " para ver la siguiente página.");
         }
     }
 }
