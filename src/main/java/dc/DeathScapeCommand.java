@@ -77,7 +77,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
             // Lista base de comandos
             List<String> options = new ArrayList<>(List.of(
                     "dia", "discord", "help", "info", "reportar", "tiempojugado",
-                    "tiempolluvia", "dificultad", "leaderboard"
+                    "tiempolluvia", "dificultad", "leaderboard", "puntos"
             ));
 
             if (sender instanceof Player player) {
@@ -248,6 +248,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         commandMap.put("unmute", () -> handleUnMutePlayer(player, args, group));
         commandMap.put("dungeon", () -> dungeonController.teleportPlayerToDungeon(player));
         commandMap.put("leaderboard", () -> handleLeaderboard(player, args));
+        commandMap.put("puntos", () -> handlePoints(player, args));
 
         // Ejecuta el comando correspondiente
         return commandMap.get(args[0].toLowerCase());
@@ -801,6 +802,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         commands.put("tiempolluvia", "Muestra el tiempo de lluvia pendiente.");
         commands.put("dificultad", "Muestra información sobre la dificultad de un día específico.");
         commands.put("leaderboard", "Muestra la tabla de clasificación de los jugadores.");
+        commands.put("puntos", "Muestra los puntos del jugador.");
 
         // Comandos adicionales según permisos
         if (groupPermissions.contains("group") || player.isOp()) {
@@ -1068,5 +1070,24 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
             player.sendMessage(ChatColor.GRAY + "Usa " + ChatColor.YELLOW + "/leaderboard " + (page + 1)
                     + ChatColor.GRAY + " para ver la siguiente página.");
         }
+    }
+
+    private void handlePoints(Player player, String[] args) {
+        // Verificamos que no se pasen argumentos (solo /points es válido)
+        if (args.length != 1) {
+            Message.sendMessage(player, "Uso correcto: /puntos", ChatColor.RED);
+            return;
+        }
+
+        PlayerData data = PlayerDatabase.getPlayerDataFromDatabase(player.getName());
+
+        if (data == null) {
+            Message.sendMessage(player, "No se encontraron datos para tu jugador.", ChatColor.RED);
+            return;
+        }
+
+        // Mostramos los puntos
+        int points = data.getPoints();
+        player.sendMessage(ChatColor.GOLD + "Tienes " + ChatColor.GREEN + points + ChatColor.GOLD + " puntos.");
     }
 }

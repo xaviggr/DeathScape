@@ -31,9 +31,9 @@ public class LeaderboardExporter {
             // Pagination style
             writer.write("    .pagination-wrapper { display: flex; justify-content: flex-end; margin-top: 10px; }\n");
             writer.write("    .pagination-controls button { background: none; color: #fff; border: none; font-weight: bold; margin: 0 4px; cursor: pointer; font-size: 14px; position: relative; }\n");
-            writer.write("    .pagination-controls button:hover { color: #ff0; }\n");
+            writer.write("    .pagination-controls button:hover { color: #bfa76f; }\n");
             writer.write("    .pagination-controls input { background-color: #2b2b2b; color: white; width: 40px; text-align: center; border: none; border-bottom: 2px solid yellow; font-weight: bold; border-radius: 4px; }\n");
-            writer.write("    .pagination-controls input:focus { outline: none; border-bottom: 2px solid #ff0; }\n");
+            writer.write("    .pagination-controls input:focus { outline: none; border-bottom: 2px solid #bfa76f; }\n");
 
             writer.write("  </style>\n</head>\n<body>\n");
 
