@@ -13,6 +13,7 @@ import dc.Persistence.chat.BannedWordsDatabase;
 import dc.Persistence.config.MainConfigManager;
 import dc.Persistence.groups.GroupDatabase;
 import dc.Persistence.logs.LogDatabase;
+import dc.Persistence.leaderboard.LeaderboardExporter;
 import dc.Persistence.player.PlayerDatabase;
 import dc.Persistence.player.PlayerEditDatabase;
 import dc.utils.Message;
@@ -76,7 +77,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
             // Lista base de comandos
             List<String> options = new ArrayList<>(List.of(
                     "dia", "discord", "help", "info", "reportar", "tiempojugado",
-                    "tiempolluvia", "dificultad"
+                    "tiempolluvia", "dificultad", "leaderboard", "puntos"
             ));
 
             if (sender instanceof Player player) {
@@ -96,6 +97,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
                         options.add("quitarUsuarioDeGrupo");
                         options.add("inventorysee");
                         options.add("endersee");
+                        options.add("leaderboard");
                     }
 
                     if (groupPermissions.contains("teleport")) {
@@ -245,6 +247,8 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         commandMap.put("mute", () -> handleMutePlayer(player, args, group));
         commandMap.put("unmute", () -> handleUnMutePlayer(player, args, group));
         commandMap.put("dungeon", () -> dungeonController.teleportPlayerToDungeon(player));
+        commandMap.put("leaderboard", () -> handleLeaderboard(player, args));
+        commandMap.put("puntos", () -> handlePoints(player, args));
 
         // Ejecuta el comando correspondiente
         return commandMap.get(args[0].toLowerCase());
@@ -262,6 +266,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         commandMap.put("revive", () -> handleReviveCommand(args, sender));
         commandMap.put("addpoints", () -> handleAddPointsCommand(args, sender));
         commandMap.put("quitarban", () -> handleUnbanPlayerCommandServer(sender, args));
+        commandMap.put("leaderboard", () -> handleLeaderboardServer(sender, args));
 
         // Add more server commands here as needed...
 
@@ -796,6 +801,8 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         commands.put("tiempojugado", "Muestra el tiempo jugado.");
         commands.put("tiempolluvia", "Muestra el tiempo de lluvia pendiente.");
         commands.put("dificultad", "Muestra información sobre la dificultad de un día específico.");
+        commands.put("leaderboard", "Muestra la tabla de clasificación de los jugadores.");
+        commands.put("puntos", "Muestra los puntos del jugador.");
 
         // Comandos adicionales según permisos
         if (groupPermissions.contains("group") || player.isOp()) {
@@ -988,5 +995,99 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         for (String line : infoLines) {
             player.sendMessage(ChatColor.translateAlternateColorCodes('&', line));
         }
+    }
+
+    private void handleLeaderboardServer(CommandSender sender, String[] args) {
+        if (args.length != 1) {
+            sender.sendMessage(ChatColor.RED + "Uso correcto: /ds leaderboard");
+            return;
+        }
+
+        List<PlayerData> leaderboard = PlayerDatabase.getLeaderboard();
+
+        if (leaderboard.isEmpty()) {
+            sender.sendMessage(ChatColor.RED + "No hay datos disponibles para mostrar el leaderboard.");
+            return;
+        }
+
+        sender.sendMessage(ChatColor.BOLD + "" + ChatColor.GOLD + "===== Leaderboard de Puntos =====");
+        for (int i = 0; i < leaderboard.size(); i++) {
+            PlayerData data = leaderboard.get(i);
+            sender.sendMessage(ChatColor.YELLOW + "" + (i + 1) + ". "
+                    + ChatColor.AQUA + data.getName()
+                    + ChatColor.GRAY + " - "
+                    + ChatColor.GREEN + data.getPoints() + " puntos");
+        }
+        LeaderboardExporter.exportLeaderboardAsHtml("plugins/DeathScape/index.html");
+    }
+
+    private void handleLeaderboard(Player player, String[] args) {
+        int page = 1; // Página por defecto
+        int itemsPerPage = 10;
+
+        // Validación de argumentos
+        if (args.length != 2) {
+            Message.sendMessage(player, "Uso correcto: /ds leaderboard [página]", ChatColor.RED);
+            return;
+        }
+
+        // Parsear número de página si se pasa como argumento
+        else {
+            try {
+                page = Integer.parseInt(args[1]);
+                if (page < 1) page = 1;
+            } catch (NumberFormatException e) {
+                Message.sendMessage(player, "El número de página debe ser un número válido.", ChatColor.RED);
+                return;
+            }
+        }
+
+        List<PlayerData> leaderboard = PlayerDatabase.getLeaderboard();
+
+        if (leaderboard.isEmpty()) {
+            Message.sendMessage(player, "No hay datos disponibles para mostrar el leaderboard.", ChatColor.RED);
+            return;
+        }
+
+        int totalPages = (int) Math.ceil(leaderboard.size() / (double) itemsPerPage);
+        if (page > totalPages) page = totalPages;
+
+        int startIndex = (page - 1) * itemsPerPage;
+        int endIndex = Math.min(startIndex + itemsPerPage, leaderboard.size());
+
+        player.sendMessage(ChatColor.BOLD + "" + ChatColor.GOLD + "===== Leaderboard de Puntos (Página " + page + "/" + totalPages + ") =====");
+
+        for (int i = startIndex; i < endIndex; i++) {
+            PlayerData data = leaderboard.get(i);
+            player.sendMessage(ChatColor.YELLOW + "" + (i + 1) + ". "
+                    + ChatColor.AQUA + data.getName()
+                    + ChatColor.GRAY + " - "
+                    + ChatColor.GREEN + data.getPoints() + " puntos");
+        }
+
+        // Mensaje para navegar entre páginas
+        if (page < totalPages) {
+            player.sendMessage(ChatColor.GRAY + "Usa " + ChatColor.YELLOW + "/leaderboard " + (page + 1)
+                    + ChatColor.GRAY + " para ver la siguiente página.");
+        }
+    }
+
+    private void handlePoints(Player player, String[] args) {
+        // Verificamos que no se pasen argumentos (solo /points es válido)
+        if (args.length != 1) {
+            Message.sendMessage(player, "Uso correcto: /puntos", ChatColor.RED);
+            return;
+        }
+
+        PlayerData data = PlayerDatabase.getPlayerDataFromDatabase(player.getName());
+
+        if (data == null) {
+            Message.sendMessage(player, "No se encontraron datos para tu jugador.", ChatColor.RED);
+            return;
+        }
+
+        // Mostramos los puntos
+        int points = data.getPoints();
+        player.sendMessage(ChatColor.GOLD + "Tienes " + ChatColor.GREEN + points + ChatColor.GOLD + " puntos.");
     }
 }

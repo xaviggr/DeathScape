@@ -38,6 +38,10 @@ public class MainConfigManager {
     private int pointsToReduceOnDeath;
     private int maxPlayersInWorld;
 
+    //leaderboard config
+    private String githubToken;
+    private int leaderboardUpdateInterval;
+
     // Private constructor for Singleton
     private MainConfigManager() {}
 
@@ -98,6 +102,16 @@ public class MainConfigManager {
         stormTime = getConfig().getInt("config.storm_time");
         pointsToReduceOnDeath = getConfig().getInt("config.points_to_reduce_on_death");
         maxPlayersInWorld = getConfig().getInt("config.max_players_in_world");
+
+        githubToken = getConfig().getString("leaderboard.github_token");
+        leaderboardUpdateInterval = getConfig().getInt("leaderboard.update_interval", 1);
+
+        if (!getConfig().isSet("leaderboard.github_token")) {
+            getConfig().set("leaderboard.github_token", "<token>");
+        }
+        if (!getConfig().isSet("leaderboard.update_interval_minutes")) {
+            getConfig().set("leaderboard.update_interval_minutes", 10);
+        }
     }
 
     // ------------------- Group Management -------------------
@@ -221,4 +235,8 @@ public class MainConfigManager {
     public int getMaxPlayersInWorld() {
         return maxPlayersInWorld;
     }
+
+    public String getGithubToken() { return githubToken; }
+
+    public int getLeaderboardUpdateInterval() { return leaderboardUpdateInterval; }
 }
