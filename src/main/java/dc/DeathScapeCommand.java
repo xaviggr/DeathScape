@@ -852,7 +852,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
      */
     private void handleVidasCommand(Player player, String[] args) {
         // Si se pasan argumentos, el uso es incorrecto (de momento solo permitir /vidas sin más)
-        if (args.length != 0) {
+        if (args.length != 1) {
             Message.sendMessage(player, "Uso correcto: /deathscape vidas", ChatColor.RED);
             return;
         }
