@@ -82,7 +82,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
             // Lista base de comandos
             List<String> options = new ArrayList<>(List.of(
                     "dia", "discord", "help", "info", "reportar", "tiempojugado",
-                    "tiempolluvia", "dificultad"
+                    "tiempolluvia", "dificultad", "vidas"
             ));
 
             if (sender instanceof Player player) {
@@ -255,6 +255,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         commandMap.put("dungeon", () -> dungeonController.teleportPlayerToDungeon(player));
         commandMap.put("addvidas", () -> handleAddVidasCommand(player, args));
         commandMap.put("removevidas", () -> handleQuitarVidasCommand(player, args));
+        commandMap.put("vidas", () -> handleVidasCommand(player, args));
 
         // Ejecuta el comando correspondiente
         return commandMap.get(args[0].toLowerCase());
@@ -812,6 +813,12 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         }
     }
 
+    /**
+     * Handles the "/removevidas" command.
+     *
+     * @param sender The player executing the command.
+     * @param args   The arguments provided by the user.
+     */
     private void handleQuitarVidasCommand(CommandSender sender, String[] args) {
         if (args.length < 3) {
             sender.sendMessage(ChatColor.RED + "Uso: /deathscape quitarvidas <jugador> <vidas>");
@@ -836,6 +843,27 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         playerController.removeLivesFromPlayer(target, vidas);
         sender.sendMessage(ChatColor.GREEN + "Se han quitado " + vidas + " vidas a " + target.getName() + ".");
     }
+
+    /**
+     * Handles the "/vidas" command.
+     *
+     * @param player The player executing the command.
+     * @param args   The arguments provided by the user.
+     */
+    private void handleVidasCommand(Player player, String[] args) {
+        // Si se pasan argumentos, el uso es incorrecto (de momento solo permitir /vidas sin más)
+        if (args.length != 0) {
+            Message.sendMessage(player, "Uso correcto: /deathscape vidas", ChatColor.RED);
+            return;
+        }
+
+        // Obtenemos las vidas del jugador
+        int vidas = playerController.getLivesOfPlayer(player);
+
+        // Mostramos las vidas al jugador
+        player.sendMessage(ChatColor.GOLD + "Te quedan " + ChatColor.RED + vidas + ChatColor.GOLD + " vidas.");
+    }
+
 
     /**
      * Handles the "/deathscape" command.
@@ -870,6 +898,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         commands.put("tiempojugado", "Muestra el tiempo jugado.");
         commands.put("tiempolluvia", "Muestra el tiempo de lluvia pendiente.");
         commands.put("dificultad", "Muestra información sobre la dificultad de un día específico.");
+        commands.put("vidas", "Muestra las vidas del jugador.");
 
         // Comandos adicionales según permisos
         if (groupPermissions.contains("group") || player.isOp()) {

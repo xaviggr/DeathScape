@@ -103,6 +103,13 @@ public class PlayerController {
         }
     }
 
+    public int getLivesOfPlayer(OfflinePlayer player) {
+        PlayerData playerData = PlayerDatabase.getPlayerDataFromDatabase(player.getName());
+        if (playerData != null) {
+            playerData.getLifes();
+        }
+    }
+
     public void removeLivesFromPlayer(Player player, int lives) {
         PlayerData playerData = PlayerDatabase.getPlayerDataFromDatabase(player.getName());
         if (playerData != null) {
