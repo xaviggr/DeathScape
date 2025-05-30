@@ -28,6 +28,7 @@ public class PlayerData {
     private String dimension; // The player's current dimension
     private String group; // The player's group
     private double health; // The player's health
+    private int lifes;
 
     /**
      * Constructs a `PlayerData` object with the specified details.
@@ -58,6 +59,7 @@ public class PlayerData {
         this.group = group;
         this.dimension = "world"; // Default dimension
         this.health = 20; // Default health
+        this.lifes = 0; // Default lifes
     }
 
     // ------------------- Getters and Setters -------------------
@@ -153,6 +155,10 @@ public class PlayerData {
     public void setDimension(String dimension) {
         this.dimension = dimension;
     }
+
+    public int getLifes() { return lifes; }
+
+    public void setLifes(int lifes) { this.lifes = lifes; }
 
     // ------------------- Custom Methods -------------------
 

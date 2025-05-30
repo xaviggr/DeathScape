@@ -1,6 +1,7 @@
 package dc.Business.listeners.Player;
 
 import dc.Business.controllers.PlayerController;
+import dc.Business.controllers.LifeController;
 import dc.Business.controllers.WeatherController;
 import dc.Business.controllers.AnimationController;
 import org.bukkit.Location;
@@ -36,6 +37,8 @@ public class PlayerDeathEventListener implements Listener {
      */
     private final Map<String, String> worldNameMap = new HashMap<>();
 
+    private final LifeController lifeController;
+
     /**
      * Constructs a `PlayerDeathEventListener` and initializes its dependencies.
      *
@@ -43,10 +46,11 @@ public class PlayerDeathEventListener implements Listener {
      * @param weatherController   The controller managing weather-related functionality.
      * @param animationController The controller managing death animations.
      */
-    public PlayerDeathEventListener(PlayerController playerController, WeatherController weatherController, AnimationController animationController) {
+    public PlayerDeathEventListener(PlayerController playerController, WeatherController weatherController, AnimationController animationController, LifeController lifeController) {
         this.playerController = playerController;
         this.weatherController = weatherController;
         this.animationController = animationController;
+        this.lifeController = lifeController;
 
         // Initialize the world name mapping
         worldNameMap.put("world", "Overworld");
@@ -89,9 +93,10 @@ public class PlayerDeathEventListener implements Listener {
         String jsonPayload = discordController.createDiscordMessage(playerName, worldName, location, deathCause);
         discordController.sendWebhookMessage(jsonPayload);
 
+        playerController.removeLivesFromPlayer(player,1);
         // Update player state, weather, and start death animation
-        playerController.setPlayerAsDead(player);
         weatherController.updateStormOnPlayerDeath();
         animationController.startDeathAnimation(player);
+
     }
 }

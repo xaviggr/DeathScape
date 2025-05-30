@@ -1,9 +1,6 @@
 package dc.Business.listeners.Player;
 
-import dc.Business.controllers.AnimationController;
-import dc.Business.controllers.PlayerController;
-import dc.Business.controllers.TotemController;
-import dc.Business.controllers.WeatherController;
+import dc.Business.controllers.*;
 import dc.DeathScape;
 
 /**
@@ -21,10 +18,10 @@ public class PlayerListener {
      * @param animationController The controller managing animations such as death animations.
      * @param totemController     The controller managing Totem of Undying functionality.
      */
-    public PlayerListener(DeathScape plugin, PlayerController playerController, WeatherController weatherController, AnimationController animationController, TotemController totemController) {
+    public PlayerListener(DeathScape plugin, PlayerController playerController, WeatherController weatherController, AnimationController animationController, TotemController totemController, LifeController lifeController) {
 
         // Register event listeners
-        plugin.getServer().getPluginManager().registerEvents(new PlayerDeathEventListener(playerController, weatherController, animationController), plugin);
+        plugin.getServer().getPluginManager().registerEvents(new PlayerDeathEventListener(playerController, weatherController, animationController, lifeController), plugin);
         plugin.getServer().getPluginManager().registerEvents(new PlayerJoinEventListener(plugin, playerController), plugin);
         plugin.getServer().getPluginManager().registerEvents(new PlayerDamageListener(plugin), plugin);
         plugin.getServer().getPluginManager().registerEvents(new PlayerQuitEventListener(plugin, playerController), plugin);

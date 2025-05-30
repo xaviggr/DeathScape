@@ -1,6 +1,7 @@
 package dc;
 
 import dc.Business.controllers.DungeonController;
+import dc.Business.controllers.LifeController;
 import dc.Business.controllers.PlayerController;
 import dc.Business.groups.GroupData;
 import dc.Business.groups.Permission;
@@ -19,6 +20,7 @@ import dc.Persistence.player.PlayerEditDatabase;
 import dc.utils.Message;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -47,13 +49,14 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
     /**
      * Constructor for the DeathScapeCommand class.
      *
-     * @param plugin          The main plugin instance.
-     * @param reportInventory The inventory used for reporting.
+     * @param plugin           The main plugin instance.
+     * @param reportInventory  The inventory used for reporting.
      * @param reportsInventory The inventory used to view reports.
      * @param playerController The player controller for managing players.
      * @param reviveInventory  The inventory used for reviving players.
+     * @param lifeController
      */
-    public DeathScapeCommand(DeathScape plugin, ReportInventory reportInventory, ReportsInventory reportsInventory, PlayerController playerController, ReviveInventory reviveInventory, DungeonController dungeonController) {
+    public DeathScapeCommand(DeathScape plugin, ReportInventory reportInventory, ReportsInventory reportsInventory, PlayerController playerController, ReviveInventory reviveInventory, DungeonController dungeonController, LifeController lifeController) {
         this.plugin = plugin;
         this.reportInventory = reportInventory;
         this.reportsInventory = reportsInventory;
@@ -77,7 +80,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
             // Lista base de comandos
             List<String> options = new ArrayList<>(List.of(
                     "dia", "discord", "help", "info", "reportar", "tiempojugado",
-                    "tiempolluvia", "dificultad", "leaderboard", "puntos"
+                    "tiempolluvia", "dificultad", "vidas", "leaderboard", "puntos"
             ));
 
             if (sender instanceof Player player) {
@@ -98,6 +101,8 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
                         options.add("inventorysee");
                         options.add("endersee");
                         options.add("leaderboard");
+                        options.add("addvidas");
+                        options.add("removevidas");
                     }
 
                     if (groupPermissions.contains("teleport")) {
@@ -247,6 +252,9 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         commandMap.put("mute", () -> handleMutePlayer(player, args, group));
         commandMap.put("unmute", () -> handleUnMutePlayer(player, args, group));
         commandMap.put("dungeon", () -> dungeonController.teleportPlayerToDungeon(player));
+        commandMap.put("addvidas", () -> handleAddVidasCommand(player, args));
+        commandMap.put("removevidas", () -> handleQuitarVidasCommand(player, args));
+        commandMap.put("vidas", () -> handleVidasCommand(player, args));
         commandMap.put("leaderboard", () -> handleLeaderboard(player, args));
         commandMap.put("puntos", () -> handlePoints(player, args));
 
@@ -267,6 +275,8 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         commandMap.put("addpoints", () -> handleAddPointsCommand(args, sender));
         commandMap.put("quitarban", () -> handleUnbanPlayerCommandServer(sender, args));
         commandMap.put("leaderboard", () -> handleLeaderboardServer(sender, args));
+        commandMap.put("addvidas", () -> handleAddVidasCommand(sender, args));
+        commandMap.put("removevidas", () -> handleQuitarVidasCommand(sender, args));
 
         // Add more server commands here as needed...
 
@@ -769,6 +779,95 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
     }
 
     /**
+     * Handles the "/addvidas" command.
+     *
+     * @param sender The player executing the command.
+     * @param args   The arguments provided by the user.
+     */
+    private void handleAddVidasCommand(CommandSender sender, String[] args) {
+        if (args.length < 3) {
+            sender.sendMessage(ChatColor.RED + "Uso: /deathscape addvidas <jugador> <vidas>");
+            return;
+        }
+
+        String targetName = args[1];
+        int vidas;
+        try {
+            vidas = Integer.parseInt(args[2]);
+        } catch (NumberFormatException e) {
+            sender.sendMessage(ChatColor.RED + "El número de vidas debe ser un entero.");
+            return;
+        }
+
+        OfflinePlayer target = Bukkit.getOfflinePlayer(targetName);
+        if (!target.hasPlayedBefore() && !target.isOnline()) {
+            sender.sendMessage(ChatColor.RED + "El jugador no existe o nunca se ha conectado.");
+            return;
+        }
+
+        if (PlayerEditDatabase.isPlayerBanned(target.getName())) {
+            playerController.setLivesToPlayer(target, 0);
+            PlayerEditDatabase.UnbanPlayer(target.getName());
+            sender.sendMessage(ChatColor.GREEN + "Jugador " + target.getName() + " ha sido desbaneado con 1 vida.");
+        } else {
+            playerController.addLivesToPlayer(target, vidas);
+            sender.sendMessage(ChatColor.GREEN + "Se han añadido " + vidas + " vidas a " + target.getName() + ".");
+        }
+    }
+
+    /**
+     * Handles the "/removevidas" command.
+     *
+     * @param sender The player executing the command.
+     * @param args   The arguments provided by the user.
+     */
+    private void handleQuitarVidasCommand(CommandSender sender, String[] args) {
+        if (args.length < 3) {
+            sender.sendMessage(ChatColor.RED + "Uso: /deathscape quitarvidas <jugador> <vidas>");
+            return;
+        }
+
+        String targetName = args[1];
+        int vidas;
+        try {
+            vidas = Integer.parseInt(args[2]);
+        } catch (NumberFormatException e) {
+            sender.sendMessage(ChatColor.RED + "El número de vidas debe ser un entero.");
+            return;
+        }
+
+        Player target = Bukkit.getPlayer(targetName);
+        if (target == null || !target.isOnline()) {
+            sender.sendMessage(ChatColor.RED + "El jugador debe estar en línea para quitarle vidas.");
+            return;
+        }
+
+        playerController.removeLivesFromPlayer(target, vidas);
+        sender.sendMessage(ChatColor.GREEN + "Se han quitado " + vidas + " vidas a " + target.getName() + ".");
+    }
+
+    /**
+     * Handles the "/vidas" command.
+     *
+     * @param player The player executing the command.
+     * @param args   The arguments provided by the user.
+     */
+    private void handleVidasCommand(Player player, String[] args) {
+        // Si se pasan argumentos, el uso es incorrecto (de momento solo permitir /vidas sin más)
+        if (args.length != 1) {
+            Message.sendMessage(player, "Uso correcto: /deathscape vidas", ChatColor.RED);
+            return;
+        }
+
+        // Obtenemos las vidas del jugador
+        int vidas = playerController.getLivesOfPlayer(player);
+
+        // Mostramos las vidas al jugador
+        player.sendMessage(ChatColor.GOLD + "Te quedan " + ChatColor.RED + vidas + ChatColor.GOLD + " vidas.");
+    }
+
+
+    /**
      * Handles the "/deathscape" command.
      *
      * @param player The player executing the command.
@@ -803,6 +902,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         commands.put("dificultad", "Muestra información sobre la dificultad de un día específico.");
         commands.put("leaderboard", "Muestra la tabla de clasificación de los jugadores.");
         commands.put("puntos", "Muestra los puntos del jugador.");
+        commands.put("vidas", "Muestra las vidas del jugador.");
 
         // Comandos adicionales según permisos
         if (groupPermissions.contains("group") || player.isOp()) {
@@ -810,6 +910,8 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
             commands.put("quitarUsuarioDeGrupo", "Quita a un usuario de un grupo.");
             commands.put("inventorysee", "Permite ver el inventario de otro jugador.");
             commands.put("endersee", "Permite ver el Ender Chest de otro jugador.");
+            commands.put("addvidas", "Permite añadir vidas a otro jugador.");
+            commands.put("removevidas", "Permite quitar vidas a otro jugador.");
         }
 
         if (groupPermissions.contains("teleport")) {

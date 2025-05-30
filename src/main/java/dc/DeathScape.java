@@ -58,6 +58,7 @@ public class DeathScape extends JavaPlugin {
     public HashMap<String, Long> time_of_connection; // Tracks player connection times
     private MobManager mobManager;
     private DeathScapeCommand deathScapeCommand;
+    private LifeController lifeController;
 
     /**
      * Called when the plugin is enabled.
@@ -112,6 +113,7 @@ public class DeathScape extends JavaPlugin {
         dimensionController = new DimensionController(this);
         dungeonController = new DungeonController(this, playerController);
         itemsController = new ItemsController(this);
+        lifeController = new LifeController(this);
     }
 
     /**
@@ -128,9 +130,9 @@ public class DeathScape extends JavaPlugin {
      */
     private void initializeListeners() {
         AnimationController animationController = new AnimationController(this);
-        playerListener = new PlayerListener(this, playerController, weatherController, animationController, totemController);
+        playerListener = new PlayerListener(this, playerController, weatherController, animationController, totemController, lifeController);
         mobSpawnListener = new MobSpawnListener(this, mobSpawnController);
-        deathScapeCommand = new DeathScapeCommand(this, reportInventory, reportsInventory, playerController, reviveInventory, dungeonController);
+        deathScapeCommand = new DeathScapeCommand(this, reportInventory, reportsInventory, playerController, reviveInventory, dungeonController, lifeController);
         chatListener = new ChatListener(playerController, this);
     }
 

@@ -8,9 +8,7 @@ import dc.Persistence.config.MainConfigManager;
 import dc.Business.player.PlayerData;
 import dc.Persistence.player.PlayerDatabase;
 import dc.Persistence.player.PlayerEditDatabase;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
+import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -80,6 +78,48 @@ public class PlayerController {
         if (playerData != null) {
             playerData.setPoints(Math.max(playerData.getPoints() + points, 0));
             PlayerDatabase.addPlayerDataToDatabase(playerData);
+        }
+    }
+
+    /**
+     * Adds a specified number of lives to the player's total.
+     *
+     * @param player The player to receive the points.
+     * @param lives The number of points to add.
+     */
+    public void addLivesToPlayer(OfflinePlayer player, int lives) {
+        PlayerData playerData = PlayerDatabase.getPlayerDataFromDatabase(player.getName());
+        if (playerData != null) {
+            playerData.setLifes(Math.max(playerData.getLifes() + lives, -1));
+            PlayerDatabase.addPlayerDataToDatabase(playerData);
+        }
+    }
+
+    public void setLivesToPlayer(OfflinePlayer player, int lives) {
+        PlayerData playerData = PlayerDatabase.getPlayerDataFromDatabase(player.getName());
+        if (playerData != null) {
+            playerData.setLifes(lives);
+            PlayerDatabase.addPlayerDataToDatabase(playerData);
+        }
+    }
+
+    public int getLivesOfPlayer(OfflinePlayer player) {
+        PlayerData playerData = PlayerDatabase.getPlayerDataFromDatabase(player.getName());
+        assert playerData != null;
+        return playerData.getLifes();
+    }
+
+    public void removeLivesFromPlayer(Player player, int lives) {
+        PlayerData playerData = PlayerDatabase.getPlayerDataFromDatabase(player.getName());
+        if (playerData != null) {
+            playerData.setLifes(playerData.getLifes() - lives);
+            PlayerDatabase.addPlayerDataToDatabase(playerData);
+        }
+        if (playerData.getLifes() < 0) {
+            // Banear al jugador
+            // Update player state, weather, and start death animation
+            setPlayerAsDead(player);
+            player.kickPlayer("Has perdido todas tus vidas.");
         }
     }
 
