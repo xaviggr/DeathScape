@@ -9,6 +9,7 @@ import dc.Business.listeners.MobSpawnListener;
 import dc.Business.listeners.Player.PlayerListener;
 import dc.Persistence.config.MainConfigManager;
 import dc.Persistence.groups.GroupDatabase;
+import dc.Persistence.leaderboard.LeaderboardScheduler;
 import dc.Persistence.player.PlayerDatabase;
 import io.lumine.mythic.api.MythicProvider;
 import io.lumine.mythic.api.mobs.MobManager;
@@ -41,6 +42,7 @@ public class DeathScape extends JavaPlugin {
     private DimensionController dimensionController;
     private DungeonController dungeonController;
     private ItemsController itemsController;
+    private LeaderboardScheduler leaderboardScheduler;
 
     // Listeners
     private PlayerListener playerListener;
@@ -70,6 +72,7 @@ public class DeathScape extends JavaPlugin {
         loadDifficultiesConfig();
         PlayerDatabase.initPlayerDatabase();
         GroupDatabase.initGroupDatabase();
+        LeaderboardScheduler.start(this);
 
         // Check for MythicMobs plugin
         if (getServer().getPluginManager().isPluginEnabled("MythicMobs")) {
