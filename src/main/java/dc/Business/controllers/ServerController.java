@@ -67,7 +67,7 @@ public class ServerController {
     /**
      * Starts a task to update server days automatically every 24 hours.
      */
-    private void startDayUpdater() {
+    public void startDayUpdater() {
         ZoneId zoneId = ZoneId.of("Europe/Madrid");
 
         // Calcula cuánto falta hasta las 19:00
@@ -82,27 +82,26 @@ public class ServerController {
         ZonedDateTime now = ZonedDateTime.now(zoneId);
         ZonedDateTime next19;
 
-        // Si ya pasaron las 19:00, programa para mañana
         if (now.getHour() >= 19) {
             next19 = now.plusDays(1).withHour(19).withMinute(0).withSecond(0).withNano(0);
         } else {
-            // Programa para hoy a las 19:00
             next19 = now.withHour(19).withMinute(0).withSecond(0).withNano(0);
         }
 
-        // Calcula la diferencia en milisegundos y lo convierte a ticks
         long delayMillis = Duration.between(now, next19).toMillis();
-        Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "Next day update scheduled in " + TimeUnit.MILLISECONDS.toMinutes(delayMillis) + " minutes.");
-        return TimeUnit.MILLISECONDS.toSeconds(delayMillis) * 20; // 20 ticks por segundo
+        Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "Siguiente actualización de día en " + TimeUnit.MILLISECONDS.toMinutes(delayMillis) + " minutos.");
+        return TimeUnit.MILLISECONDS.toSeconds(delayMillis) * 20; // 20 ticks/segundo
     }
 
     /**
      * Programa la ejecución diaria a las 19:00 hora local.
      */
     private void scheduleDayUpdaterAt19(ZoneId zoneId) {
-        // Ejecuta checkDay y programa la siguiente ejecución
-        checkDay();
-        Bukkit.getScheduler().runTaskLater(plugin, () -> scheduleDayUpdaterAt19(zoneId), 24 * 60 * 60 * 20L); // 24 horas en ticks
+        checkDay(zoneId); // Usa zona horaria
+
+        // Reprograma siguiente ejecución de forma dinámica, no con 24h fijas
+        long delay = calculateDelayTo19(zoneId);
+        Bukkit.getScheduler().runTaskLater(plugin, () -> scheduleDayUpdaterAt19(zoneId), delay);
     }
 
     /**
@@ -110,28 +109,48 @@ public class ServerController {
      * This method calculates the difference in full days between the last recorded update
      * and the current time and increments the server days accordingly.
      */
-    public void checkDay() {
-        // Get the last update time from the config file
-        Instant lastUpdate = Instant.ofEpochMilli(config.getLong("last_update"));
-        Instant now = Instant.now();
+    public void checkDay(ZoneId zoneId) {
+        ZonedDateTime now = ZonedDateTime.now(zoneId);
+        long lastUpdateMillis = config.getLong("last_update");
+        Bukkit.getConsoleSender().sendMessage(ChatColor.AQUA + "Last update millis: " + lastUpdateMillis);
+        ZonedDateTime lastUpdate = ZonedDateTime.ofInstant(Instant.ofEpochMilli(lastUpdateMillis), zoneId);
+        Bukkit.getConsoleSender().sendMessage(ChatColor.AQUA + "Last update datetime: " + lastUpdate);
 
-        // Calculate the number of full days elapsed
+        if (lastUpdate.getHour() != 19) {
+            lastUpdate = lastUpdate.withHour(19).withMinute(0).withSecond(0).withNano(0);
+            if (lastUpdate.isAfter(now)) {
+                lastUpdate = lastUpdate.minusDays(1);
+            }
+        }
+        Bukkit.getConsoleSender().sendMessage(ChatColor.AQUA + "Adjusted last update datetime: " + lastUpdate);
+
         long daysElapsed = Duration.between(lastUpdate, now).toDays();
+        Bukkit.getConsoleSender().sendMessage(ChatColor.AQUA + "Days elapsed: " + daysElapsed);
 
         if (daysElapsed > 0) {
-            // Increment the server days by the number of days elapsed
             int currentDays = config.getInt("server_days", 0);
-            config.set("server_days", currentDays + (int) daysElapsed);
 
-            // Update the last update time to now
-            config.set("last_update", now.toEpochMilli());
+            int updatedDays = currentDays + (int) daysElapsed;
+
+            if (updatedDays >= 30) {
+                updatedDays = 0;
+                Bukkit.getConsoleSender().sendMessage(ChatColor.AQUA + "¡Temporada acabada! Reiniciando contador de días.");
+            } else {
+                Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "Días del servidor actualizados. Total: " + updatedDays);
+            }
+
+            config.set("server_days", updatedDays);
+
+
+            ZonedDateTime nextCheckpoint = now.withHour(19).withMinute(0).withSecond(0).withNano(0);
+            if (now.getHour() >= 19) nextCheckpoint = nextCheckpoint.plusDays(1);
+
+            config.set("last_update", nextCheckpoint.toInstant().toEpochMilli());
             saveConfig();
 
-            // Log the update to the console
-            Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "Server days updated. Total days: " + (currentDays + daysElapsed));
+            Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "Días del servidor actualizados. Total: " + (currentDays + daysElapsed));
         } else {
-            // Log that no days have elapsed
-            Bukkit.getConsoleSender().sendMessage(ChatColor.YELLOW + "No new days to update. Last update was recent.");
+            Bukkit.getConsoleSender().sendMessage(ChatColor.YELLOW + "No han pasado nuevos días. Última actualización fue reciente.");
         }
     }
 

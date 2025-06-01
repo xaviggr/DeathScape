@@ -19,6 +19,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
+import java.time.ZoneId;
 import java.util.HashMap;
 import java.util.Objects;
 
@@ -96,6 +97,11 @@ public class DeathScape extends JavaPlugin {
 
         // Check storm status on server start
         weatherController.checkStormOnServerStart();
+
+        // Comprobación inmediata al iniciar por si se apagó el servidor antes de una actualización
+        ZoneId zoneId = ZoneId.of("Europe/Madrid");
+        serverController.checkDay(zoneId); // Esto actualiza retroactivamente si pasaron días
+        serverController.startDayUpdater(); // Programa las ejecuciones automáticas a las 19:00
 
         // Console message
         Bukkit.getConsoleSender().sendMessage("DeathScape has been enabled!");
