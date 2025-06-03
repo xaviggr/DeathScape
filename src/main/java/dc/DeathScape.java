@@ -11,6 +11,7 @@ import dc.Persistence.config.MainConfigManager;
 import dc.Persistence.groups.GroupDatabase;
 import dc.Persistence.leaderboard.LeaderboardScheduler;
 import dc.Persistence.player.PlayerDatabase;
+import dc.Persistence.stash.PlayerStashDatabase;
 import io.lumine.mythic.api.MythicProvider;
 import io.lumine.mythic.api.mobs.MobManager;
 import org.bukkit.Bukkit;
@@ -74,6 +75,7 @@ public class DeathScape extends JavaPlugin {
         PlayerDatabase.initPlayerDatabase();
         GroupDatabase.initGroupDatabase();
         LeaderboardScheduler.start(this);
+        PlayerStashDatabase.load();
 
         // Check for MythicMobs plugin
         if (getServer().getPluginManager().isPluginEnabled("MythicMobs")) {
