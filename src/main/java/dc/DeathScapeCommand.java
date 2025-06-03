@@ -20,6 +20,7 @@ import dc.Persistence.player.PlayerEditDatabase;
 import dc.utils.Message;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -28,6 +29,9 @@ import org.bukkit.command.TabCompleter;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.*;
 
@@ -80,7 +84,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
             // Lista base de comandos
             List<String> options = new ArrayList<>(List.of(
                     "dia", "discord", "help", "info", "reportar", "tiempojugado",
-                    "tiempolluvia", "dificultad", "vidas", "leaderboard", "puntos"
+                    "tiempolluvia", "dificultad", "vidas", "leaderboard", "puntos", "alijo"
             ));
 
             if (sender instanceof Player player) {
@@ -257,6 +261,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         commandMap.put("vidas", () -> handleVidasCommand(player, args));
         commandMap.put("leaderboard", () -> handleLeaderboard(player, args));
         commandMap.put("puntos", () -> handlePoints(player, args));
+        commandMap.put("alijo", () -> handlePlayerStash(player, args));
 
         // Ejecuta el comando correspondiente
         return commandMap.get(args[0].toLowerCase());
@@ -903,6 +908,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         commands.put("leaderboard", "Muestra la tabla de clasificación de los jugadores.");
         commands.put("puntos", "Muestra los puntos del jugador.");
         commands.put("vidas", "Muestra las vidas del jugador.");
+        commands.put("alijo", "Permite abrir un inventario que se mantiene durante temporadas.");
 
         // Comandos adicionales según permisos
         if (groupPermissions.contains("group") || player.isOp()) {
@@ -1191,5 +1197,51 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         // Mostramos los puntos
         int points = data.getPoints();
         player.sendMessage(ChatColor.GOLD + "Tienes " + ChatColor.GREEN + points + ChatColor.GOLD + " puntos.");
+    }
+
+    /**
+     * Maneja el comando /alijo.
+     * Sintaxis correcta: /alijo
+     *
+     * @param player Jugador que ejecuta el comando
+     * @param args   Argumentos (se espera solo el nombre del comando)
+     */
+    private void handlePlayerStash(Player player, String[] args) {
+
+        if (args.length != 1) {
+            Message.sendMessage(player, "Uso correcto: /deathscape alijo", ChatColor.RED);
+            return;
+        }
+
+        PlayerData data = PlayerDatabase.getPlayerDataFromDatabase(player.getName());
+
+        if (data == null) {
+            Message.sendMessage(player, "No se encontraron datos para tu jugador.", ChatColor.RED);
+            return;
+        }
+
+        Inventory inv = Bukkit.createInventory(player, 9, ChatColor.DARK_PURPLE + "Tu Alijo");
+
+        // Item para bloquear posiciones
+        ItemStack pane = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
+        ItemMeta meta = pane.getItemMeta();
+        meta.setDisplayName(ChatColor.RED + "Slot bloqueado");
+        pane.setItemMeta(meta);
+
+        // Bloquear todos los slots por defecto
+        for (int i = 0; i < inv.getSize(); i++) {
+            inv.setItem(i, pane);
+        }
+
+        // Slots centrales usables (10-13)
+        int[] usable = {0, 1, 2, 3};
+        ItemStack[] stash = data.getStash();          // tu nuevo campo en PlayerData
+
+        for (int i = 0; i < usable.length; i++) {
+            inv.setItem(usable[i], stash[i]);         // puede ser null → queda vacío
+        }
+
+        // 4) Abrir el inventario al jugador
+        player.openInventory(inv);
     }
 }

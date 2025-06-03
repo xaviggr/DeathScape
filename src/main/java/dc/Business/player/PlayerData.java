@@ -3,6 +3,7 @@ package dc.Business.player;
 import com.google.gson.Gson;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
+import org.bukkit.inventory.ItemStack;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -29,6 +30,9 @@ public class PlayerData {
     private String group; // The player's group
     private double health; // The player's health
     private int lifes;
+
+    private transient ItemStack[] stash = new ItemStack[4];
+
 
     /**
      * Constructs a `PlayerData` object with the specified details.
@@ -159,6 +163,10 @@ public class PlayerData {
     public int getLifes() { return lifes; }
 
     public void setLifes(int lifes) { this.lifes = lifes; }
+
+    public ItemStack[] getStash() { return stash; }
+
+    public void setStash(ItemStack[] stash) { this.stash = stash; }
 
     // ------------------- Custom Methods -------------------
 

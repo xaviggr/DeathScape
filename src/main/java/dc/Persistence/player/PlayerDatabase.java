@@ -1,12 +1,14 @@
 package dc.Persistence.player;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
+import com.google.gson.*;
 import dc.Business.player.PlayerData;
+import dc.Persistence.stash.BukkitSerialization;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.util.io.BukkitObjectInputStream;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 /**
@@ -85,9 +87,15 @@ public class PlayerDatabase {
      * @return true if the operation succeeds.
      */
     public static boolean addPlayerDataToDatabase(PlayerData playerData) {
-        JsonObject jsonObject = readJsonFile();
-        jsonObject.add(playerData.getName(), GSON.toJsonTree(playerData));
-        writeJsonFile(jsonObject);
+        JsonObject db = readJsonFile();
+
+        // Serializamos manualmente el stash
+        JsonObject obj = GSON.toJsonTree(playerData).getAsJsonObject();
+        obj.remove("stash");                            // Evitar que Gson intente serializar ItemStack
+        obj.add("stash", serializeStash(playerData.getStash()));
+
+        db.add(playerData.getName(), obj);
+        writeJsonFile(db);
         PlayerEditDatabase.addPlayerToGroup(playerData.getName(), playerData.getGroup());
         return true;
     }
@@ -103,8 +111,17 @@ public class PlayerDatabase {
         JsonObject playerObject = jsonObject.getAsJsonObject(playerName);
 
         if (playerObject != null) {
-            return GSON.fromJson(playerObject, PlayerData.class);
+            PlayerData playerData = GSON.fromJson(playerObject, PlayerData.class);
+
+            // Deserializar stash manualmente
+            if (playerObject.has("stash") && playerObject.get("stash").isJsonArray()) {
+                JsonArray stashArray = playerObject.getAsJsonArray("stash");
+                playerData.setStash(deserializeStash(stashArray));
+            }
+
+            return playerData;
         }
+
         return null;
     }
 
@@ -163,5 +180,25 @@ public class PlayerDatabase {
 
         leaderboard.sort((a, b) -> Integer.compare(b.getPoints(), a.getPoints())); // Descending
         return leaderboard;
+    }
+
+    private static JsonArray serializeStash(ItemStack[] stash) {
+        JsonArray array = new JsonArray();
+        for (ItemStack it : stash) {
+            array.add(BukkitSerialization.itemToBase64(it));
+        }
+        return array;
+    }
+
+    private static ItemStack[] deserializeStash(JsonArray json) {
+        ItemStack[] stash = new ItemStack[4];
+        for (int i = 0; i < 4; i++) {
+            if (json != null && i < json.size()) {
+                stash[i] = BukkitSerialization.itemFromBase64(json.get(i).getAsString());
+            } else {
+                stash[i] = null;
+            }
+        }
+        return stash;
     }
 }
