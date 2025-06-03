@@ -70,10 +70,24 @@ public class ServerController {
     public void startDayUpdater() {
         ZoneId zoneId = ZoneId.of("Europe/Madrid");
 
-        // Calcula cuánto falta hasta las 19:00
+        if (!config.contains("last_update")) {
+            // Establecer día 0 a las 19:00 del día actual o siguiente
+            ZonedDateTime now = ZonedDateTime.now(zoneId);
+            ZonedDateTime firstCheckpoint = now.withHour(19).withMinute(0).withSecond(0).withNano(0);
+            if (now.getHour() >= 19) firstCheckpoint = firstCheckpoint.plusDays(1);
+
+            long epochMillis = firstCheckpoint.toInstant().toEpochMilli();
+            config.set("last_update", epochMillis);
+            config.set("season_start", epochMillis); // ← Nuevo campo: inicio de temporada
+            config.set("server_days", 0);
+            saveConfig();
+
+            Bukkit.getConsoleSender().sendMessage(ChatColor.YELLOW + "Inicio de temporada registrado: " + firstCheckpoint);
+        }
+
+        // Comienza la planificación del día
         Bukkit.getScheduler().runTaskLater(plugin, () -> scheduleDayUpdaterAt19(zoneId), calculateDelayTo19(zoneId));
     }
-
 
     /**
      * Calcula el tiempo en ticks hasta las 19:00 hora local.
@@ -112,45 +126,48 @@ public class ServerController {
     public void checkDay(ZoneId zoneId) {
         ZonedDateTime now = ZonedDateTime.now(zoneId);
         long lastUpdateMillis = config.getLong("last_update");
-        Bukkit.getConsoleSender().sendMessage(ChatColor.AQUA + "Last update millis: " + lastUpdateMillis);
         ZonedDateTime lastUpdate = ZonedDateTime.ofInstant(Instant.ofEpochMilli(lastUpdateMillis), zoneId);
-        Bukkit.getConsoleSender().sendMessage(ChatColor.AQUA + "Last update datetime: " + lastUpdate);
 
+        Bukkit.getConsoleSender().sendMessage(ChatColor.AQUA + "Última actualización registrada: " + lastUpdate);
+
+        // Alinear a las 19:00 si no lo estaba
         if (lastUpdate.getHour() != 19) {
             lastUpdate = lastUpdate.withHour(19).withMinute(0).withSecond(0).withNano(0);
             if (lastUpdate.isAfter(now)) {
                 lastUpdate = lastUpdate.minusDays(1);
             }
         }
-        Bukkit.getConsoleSender().sendMessage(ChatColor.AQUA + "Adjusted last update datetime: " + lastUpdate);
 
         long daysElapsed = Duration.between(lastUpdate, now).toDays();
-        Bukkit.getConsoleSender().sendMessage(ChatColor.AQUA + "Days elapsed: " + daysElapsed);
+        Bukkit.getConsoleSender().sendMessage(ChatColor.AQUA + "Días transcurridos desde última actualización: " + daysElapsed);
 
         if (daysElapsed > 0) {
             int currentDays = config.getInt("server_days", 0);
-
             int updatedDays = currentDays + (int) daysElapsed;
 
             if (updatedDays >= 30) {
                 updatedDays = 0;
-                Bukkit.getConsoleSender().sendMessage(ChatColor.AQUA + "¡Temporada acabada! Reiniciando contador de días.");
+                Bukkit.getConsoleSender().sendMessage(ChatColor.AQUA + "¡Temporada completada! Reiniciando días a 0.");
             } else {
-                Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "Días del servidor actualizados. Total: " + updatedDays);
+                Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "Días del servidor actualizados a: " + updatedDays);
             }
 
             config.set("server_days", updatedDays);
 
+            // Guardar última actualización real
+            ZonedDateTime effectiveUpdate = lastUpdate.plusDays(daysElapsed);
+            config.set("last_update", effectiveUpdate.toInstant().toEpochMilli());
 
+            // Guardar también la próxima ejecución esperada a las 19:00
             ZonedDateTime nextCheckpoint = now.withHour(19).withMinute(0).withSecond(0).withNano(0);
             if (now.getHour() >= 19) nextCheckpoint = nextCheckpoint.plusDays(1);
+            config.set("next_check", nextCheckpoint.toInstant().toEpochMilli());
 
-            config.set("last_update", nextCheckpoint.toInstant().toEpochMilli());
             saveConfig();
 
-            Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "Días del servidor actualizados. Total: " + (currentDays + daysElapsed));
+            Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "Actualización completada. Última a: " + effectiveUpdate);
         } else {
-            Bukkit.getConsoleSender().sendMessage(ChatColor.YELLOW + "No han pasado nuevos días. Última actualización fue reciente.");
+            Bukkit.getConsoleSender().sendMessage(ChatColor.YELLOW + "No han pasado días completos desde la última actualización.");
         }
     }
 
