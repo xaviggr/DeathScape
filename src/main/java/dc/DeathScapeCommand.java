@@ -17,6 +17,7 @@ import dc.Persistence.logs.LogDatabase;
 import dc.Persistence.leaderboard.LeaderboardExporter;
 import dc.Persistence.player.PlayerDatabase;
 import dc.Persistence.player.PlayerEditDatabase;
+import dc.Persistence.stash.PlayerStashDatabase;
 import dc.utils.Message;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -1207,16 +1208,8 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
      * @param args   Argumentos (se espera solo el nombre del comando)
      */
     private void handlePlayerStash(Player player, String[] args) {
-
         if (args.length != 1) {
             Message.sendMessage(player, "Uso correcto: /deathscape alijo", ChatColor.RED);
-            return;
-        }
-
-        PlayerData data = PlayerDatabase.getPlayerDataFromDatabase(player.getName());
-
-        if (data == null) {
-            Message.sendMessage(player, "No se encontraron datos para tu jugador.", ChatColor.RED);
             return;
         }
 
@@ -1229,19 +1222,21 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         pane.setItemMeta(meta);
 
         // Bloquear todos los slots por defecto
-        for (int i = 0; i < inv.getSize(); i++) {
+        for (int i = 4; i < inv.getSize(); i++) {
             inv.setItem(i, pane);
         }
 
-        // Slots centrales usables (10-13)
+        // Slots centrales usables (0-3)
         int[] usable = {0, 1, 2, 3};
-        ItemStack[] stash = data.getStash();          // tu nuevo campo en PlayerData
+        List<ItemStack> stash = PlayerStashDatabase.getStash(player.getName());
 
         for (int i = 0; i < usable.length; i++) {
-            inv.setItem(usable[i], stash[i]);         // puede ser null → queda vacío
+            if (i < stash.size() && stash.get(i) != null) {
+                inv.setItem(usable[i], stash.get(i));
+            }
         }
 
-        // 4) Abrir el inventario al jugador
+        // Abrir el inventario
         player.openInventory(inv);
     }
 }
