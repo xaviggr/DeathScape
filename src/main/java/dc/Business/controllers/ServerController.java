@@ -14,10 +14,9 @@ import org.bukkit.entity.Player;
 
 import java.io.File;
 import java.io.IOException;
-import java.time.Duration;
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
@@ -35,6 +34,8 @@ public class ServerController {
     private int playerCounter = 0; // Counter for active players
     private final Queue<Player> queue = new LinkedList<>(); // Queue of players
     public static List<Player> SleepingPlayers = new ArrayList<>(); // List of players currently sleeping
+    private static final DateTimeFormatter ISO_FORMATTER = DateTimeFormatter.ISO_OFFSET_DATE_TIME;
+    private static final List<String> TIMESTAMP_KEYS = Arrays.asList("last_update", "season_start", "next_check");
 
     /**
      * Constructor to initialize the ServerController with the required plugin and server data configurations.
@@ -70,22 +71,22 @@ public class ServerController {
     public void startDayUpdater() {
         ZoneId zoneId = ZoneId.of("Europe/Madrid");
 
+        migrateTimestampsToISO(zoneId); // ← Migramos si hay datos antiguos
+
         if (!config.contains("last_update")) {
-            // Establecer día 0 a las 19:00 del día actual o siguiente
             ZonedDateTime now = ZonedDateTime.now(zoneId);
             ZonedDateTime firstCheckpoint = now.withHour(19).withMinute(0).withSecond(0).withNano(0);
             if (now.getHour() >= 19) firstCheckpoint = firstCheckpoint.plusDays(1);
 
-            long epochMillis = firstCheckpoint.toInstant().toEpochMilli();
-            config.set("last_update", epochMillis);
-            config.set("season_start", epochMillis); // ← Nuevo campo: inicio de temporada
+            String isoTime = firstCheckpoint.withZoneSameInstant(ZoneOffset.UTC).format(ISO_FORMATTER);
+            config.set("last_update", isoTime);
+            config.set("season_start", isoTime);
             config.set("server_days", 0);
             saveConfig();
 
             Bukkit.getConsoleSender().sendMessage(ChatColor.YELLOW + "Inicio de temporada registrado: " + firstCheckpoint);
         }
 
-        // Comienza la planificación del día
         Bukkit.getScheduler().runTaskLater(plugin, () -> scheduleDayUpdaterAt19(zoneId), calculateDelayTo19(zoneId));
     }
 
@@ -94,43 +95,52 @@ public class ServerController {
      */
     private long calculateDelayTo19(ZoneId zoneId) {
         ZonedDateTime now = ZonedDateTime.now(zoneId);
-        ZonedDateTime next19;
-
-        if (now.getHour() >= 19) {
-            next19 = now.plusDays(1).withHour(19).withMinute(0).withSecond(0).withNano(0);
-        } else {
-            next19 = now.withHour(19).withMinute(0).withSecond(0).withNano(0);
-        }
+        ZonedDateTime next19 = now.getHour() >= 19
+                ? now.plusDays(1).withHour(19).withMinute(0).withSecond(0).withNano(0)
+                : now.withHour(19).withMinute(0).withSecond(0).withNano(0);
 
         long delayMillis = Duration.between(now, next19).toMillis();
         Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "Siguiente actualización de día en " + TimeUnit.MILLISECONDS.toMinutes(delayMillis) + " minutos.");
-        return TimeUnit.MILLISECONDS.toSeconds(delayMillis) * 20; // 20 ticks/segundo
+        return TimeUnit.MILLISECONDS.toSeconds(delayMillis) * 20;
     }
 
     /**
      * Programa la ejecución diaria a las 19:00 hora local.
      */
     private void scheduleDayUpdaterAt19(ZoneId zoneId) {
-        checkDay(zoneId); // Usa zona horaria
-
-        // Reprograma siguiente ejecución de forma dinámica, no con 24h fijas
+        checkDay(zoneId);
         long delay = calculateDelayTo19(zoneId);
         Bukkit.getScheduler().runTaskLater(plugin, () -> scheduleDayUpdaterAt19(zoneId), delay);
     }
 
     /**
      * Updates the number of server days based on the time elapsed since the last update.
-     * This method calculates the difference in full days between the last recorded update
-     * and the current time and increments the server days accordingly.
      */
     public void checkDay(ZoneId zoneId) {
+        String lastUpdateRaw = config.getString("last_update");
+
+        ZonedDateTime lastUpdate;
+        try {
+            lastUpdate = ZonedDateTime.parse(lastUpdateRaw);
+        } catch (DateTimeParseException e1) {
+            try {
+                long millis = Long.parseLong(lastUpdateRaw);
+                lastUpdate = ZonedDateTime.ofInstant(Instant.ofEpochMilli(millis), zoneId);
+                String isoFormatted = lastUpdate.withZoneSameInstant(ZoneOffset.UTC).format(ISO_FORMATTER);
+                config.set("last_update", isoFormatted);
+                saveConfig();
+                Bukkit.getConsoleSender().sendMessage(ChatColor.YELLOW + "Migrado 'last_update' a ISO: " + isoFormatted);
+            } catch (NumberFormatException e2) {
+                Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "Error al interpretar 'last_update': " + lastUpdateRaw);
+                return;
+            }
+        }
+
+        lastUpdate = lastUpdate.withZoneSameInstant(zoneId);
         ZonedDateTime now = ZonedDateTime.now(zoneId);
-        long lastUpdateMillis = config.getLong("last_update");
-        ZonedDateTime lastUpdate = ZonedDateTime.ofInstant(Instant.ofEpochMilli(lastUpdateMillis), zoneId);
 
         Bukkit.getConsoleSender().sendMessage(ChatColor.AQUA + "Última actualización registrada: " + lastUpdate);
 
-        // Alinear a las 19:00 si no lo estaba
         if (lastUpdate.getHour() != 19) {
             lastUpdate = lastUpdate.withHour(19).withMinute(0).withSecond(0).withNano(0);
             if (lastUpdate.isAfter(now)) {
@@ -154,21 +164,48 @@ public class ServerController {
 
             config.set("server_days", updatedDays);
 
-            // Guardar última actualización real
             ZonedDateTime effectiveUpdate = lastUpdate.plusDays(daysElapsed);
-            config.set("last_update", effectiveUpdate.toInstant().toEpochMilli());
+            String isoEffective = effectiveUpdate.withZoneSameInstant(ZoneOffset.UTC).format(ISO_FORMATTER);
+            config.set("last_update", isoEffective);
 
-            // Guardar también la próxima ejecución esperada a las 19:00
             ZonedDateTime nextCheckpoint = now.withHour(19).withMinute(0).withSecond(0).withNano(0);
             if (now.getHour() >= 19) nextCheckpoint = nextCheckpoint.plusDays(1);
-            config.set("next_check", nextCheckpoint.toInstant().toEpochMilli());
+            String isoNext = nextCheckpoint.withZoneSameInstant(ZoneOffset.UTC).format(ISO_FORMATTER);
+            config.set("next_check", isoNext);
 
             saveConfig();
-
             Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "Actualización completada. Última a: " + effectiveUpdate);
         } else {
             Bukkit.getConsoleSender().sendMessage(ChatColor.YELLOW + "No han pasado días completos desde la última actualización.");
         }
+    }
+
+    private void migrateTimestampsToISO(ZoneId zoneId) {
+        for (String key : TIMESTAMP_KEYS) {
+            if (!config.contains(key)) continue;
+
+            String value = config.getString(key);
+            if (value == null) continue;
+
+            // Si ya está en formato ISO, lo dejamos
+            try {
+                ZonedDateTime.parse(value);
+                continue;
+            } catch (DateTimeParseException ignored) {}
+
+            // Intentamos convertir desde timestamp en milisegundos
+            try {
+                long millis = Long.parseLong(value);
+                ZonedDateTime dt = ZonedDateTime.ofInstant(Instant.ofEpochMilli(millis), zoneId);
+                String iso = dt.withZoneSameInstant(ZoneOffset.UTC).format(ISO_FORMATTER);
+                config.set(key, iso);
+                Bukkit.getConsoleSender().sendMessage(ChatColor.YELLOW + "Migrado '" + key + "' a ISO: " + iso);
+            } catch (NumberFormatException e) {
+                Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "No se pudo migrar '" + key + "' con valor: " + value);
+            }
+        }
+
+        saveConfig();
     }
 
     /**
