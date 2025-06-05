@@ -5,12 +5,15 @@ import dc.DeathScape;
 import dc.Persistence.config.MainConfigManager;
 import dc.Persistence.player.PlayerDatabase;
 import dc.Persistence.player.PlayerEditDatabase;
+import dc.Persistence.stash.PlayerStashDatabase;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 import java.io.File;
 import java.io.IOException;
@@ -158,6 +161,25 @@ public class ServerController {
             if (updatedDays >= 30) {
                 updatedDays = 0;
                 Bukkit.getConsoleSender().sendMessage(ChatColor.AQUA + "¡Temporada completada! Reiniciando días a 0.");
+
+                for (Player online : Bukkit.getOnlinePlayers()) {
+                    List<ItemStack> stash = PlayerStashDatabase.getStash(online.getName());
+                    int given = 0;
+
+                    for (ItemStack item : stash) {
+                        if (item != null && item.getType() != Material.AIR) {
+                            online.getInventory().addItem(item);
+                            given++;
+                        }
+                    }
+
+                    if (given > 0) {
+                        online.sendMessage(ChatColor.GOLD + "Has recuperado " + given + " objetos de tu alijo anterior.");
+                    }
+
+                    PlayerStashDatabase.setStash(online.getName(), Arrays.asList(null, null, null, null));
+                }
+
             } else {
                 Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "Días del servidor actualizados a: " + updatedDays);
             }
