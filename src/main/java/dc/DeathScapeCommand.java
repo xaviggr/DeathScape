@@ -18,6 +18,7 @@ import dc.Persistence.leaderboard.LeaderboardExporter;
 import dc.Persistence.player.PlayerDatabase;
 import dc.Persistence.player.PlayerEditDatabase;
 import dc.Persistence.stash.PlayerStashDatabase;
+import dc.Persistence.stash.PlayerStashLastSeasonDatabase;
 import dc.utils.Message;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -85,7 +86,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
             // Lista base de comandos
             List<String> options = new ArrayList<>(List.of(
                     "dia", "discord", "help", "info", "reportar", "tiempojugado",
-                    "tiempolluvia", "dificultad", "vidas", "leaderboard", "puntos", "alijo"
+                    "tiempolluvia", "dificultad", "vidas", "leaderboard", "puntos", "alijo", "alijoanterior"
             ));
 
             if (sender instanceof Player player) {
@@ -263,6 +264,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         commandMap.put("leaderboard", () -> handleLeaderboard(player, args));
         commandMap.put("puntos", () -> handlePoints(player, args));
         commandMap.put("alijo", () -> handlePlayerStash(player, args, group));
+        commandMap.put("alijoanterior", () -> handlePlayerLastSeasonStash(player, args));
 
         // Ejecuta el comando correspondiente
         return commandMap.get(args[0].toLowerCase());
@@ -921,6 +923,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         commands.put("puntos", "Muestra los puntos del jugador.");
         commands.put("vidas", "Muestra las vidas del jugador.");
         commands.put("alijo", "Permite abrir un inventario que se mantiene durante temporadas.");
+        commands.put("alijoanterior", "Permite abrir un inventario de los alijos de temporadas anteriores.");
 
         // Comandos adicionales según permisos
         if (groupPermissions.contains("group") || player.isOp()) {
@@ -1268,6 +1271,24 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         for (int i = 0; i < usable.length; i++) {
             if (i < stash.size() && stash.get(i) != null) {
                 inv.setItem(usable[i], stash.get(i));
+            }
+        }
+
+        player.openInventory(inv);
+    }
+
+    private void handlePlayerLastSeasonStash(Player player, String[] args) {
+        if (args.length != 1) {
+            Message.sendMessage(player, "Uso correcto: /deathscape alijoanterior", ChatColor.RED);
+            return;
+        }
+
+        Inventory inv = Bukkit.createInventory(player, 9, ChatColor.GOLD + "Tu Alijo Anterior");
+
+        List<ItemStack> stash = PlayerStashLastSeasonDatabase.getStash(player.getName());
+        for (int i = 0; i < Math.min(stash.size(), inv.getSize()); i++) {
+            if (stash.get(i) != null) {
+                inv.setItem(i, stash.get(i));
             }
         }
 
