@@ -19,61 +19,123 @@ import java.util.List;
 
 public class PlayerStashListener implements Listener {
 
-    private static final int[] USABLE = {0, 1, 2, 3};
-    private static final String TITLE = ChatColor.DARK_PURPLE + "Tu Alijo";
+    private static final String STASH_TITLE = "Tu Alijo";
+    private static final String LAST_SEASON_STASH_TITLE = "Tu Alijo Anterior";
 
     @EventHandler
     public void onInvClick(InventoryClickEvent e) {
         if (!(e.getWhoClicked() instanceof Player p)) return;
-        if (!e.getView().getTitle().equals(TITLE)) return;
 
-        int raw = e.getRawSlot();
-        if (raw < 9 && !isUsable(raw)) {
-            e.setCancelled(true);
-            return;
-        }
+        String title = ChatColor.stripColor(e.getView().getTitle());
 
-        // Bloquear shulkers con contenido y cristales tintados
-        ItemStack cursor = e.getCursor();
-        if (raw < 9 && isUsable(raw) && cursor != null && cursor.getType() != Material.AIR) {
-            if (isIllegalItem(cursor)) {
-                p.sendMessage(ChatColor.RED + "¡No puedes meter ese objeto en el alijo!");
+        if (title.equalsIgnoreCase(STASH_TITLE)) {
+            // STASH NORMAL
+            int raw = e.getRawSlot();
+            if (raw < 9 && !isUsable(raw, e.getView().getTopInventory())) {
                 e.setCancelled(true);
                 return;
             }
-        }
 
-        if (e.isShiftClick() && raw >= 9) {
-            boolean free = false;
-            for (int s : USABLE) {
-                ItemStack it = e.getView().getTopInventory().getItem(s);
-                if (it == null || it.getType() == Material.AIR) {
-                    free = true;
+            // Bloquear shulkers con contenido y cristales tintados
+            ItemStack cursor = e.getCursor();
+            if (raw < 9 && isUsable(raw, e.getView().getTopInventory()) && cursor != null && cursor.getType() != Material.AIR) {
+                if (isIllegalItem(cursor)) {
+                    p.sendMessage(ChatColor.RED + "¡No puedes meter ese objeto en el alijo!");
+                    e.setCancelled(true);
+                    return;
+                }
+            }
+
+            if (e.isShiftClick() && raw >= 9) {
+                boolean free = false;
+                for (int i = 0; i < e.getView().getTopInventory().getSize(); i++) {
+                    ItemStack it = e.getView().getTopInventory().getItem(i);
+                    if (isUsable(i, e.getView().getTopInventory()) && (it == null || it.getType() == Material.AIR)) {
+                        free = true;
+                        break;
+                    }
+                }
+                if (!free) e.setCancelled(true);
+            }
+
+        } else if (title.equalsIgnoreCase(LAST_SEASON_STASH_TITLE)) {
+            // STASH ANTERIOR
+            int rawSlot = e.getRawSlot();
+            if (rawSlot >= e.getView().getTopInventory().getSize()) return;
+
+            ItemStack cursor = e.getCursor();
+            if (cursor != null && cursor.getType() != Material.AIR) {
+                e.setCancelled(true);
+                p.sendMessage(ChatColor.RED + "¡No puedes meter objetos en el alijo anterior!");
+                return;
+            }
+        }
+    }
+
+    @EventHandler
+    public void onInvDrag(InventoryDragEvent e) {
+        if (!(e.getWhoClicked() instanceof Player p)) return;
+
+        String title = ChatColor.stripColor(e.getView().getTitle());
+
+        if (title.equalsIgnoreCase(STASH_TITLE)) {
+            // STASH NORMAL
+            ItemStack item = e.getOldCursor();
+            if (item == null || item.getType() == Material.AIR) return;
+            if (!isIllegalItem(item)) return;
+
+            for (int slot : e.getRawSlots()) {
+                if (slot < 9 && isUsable(slot, e.getView().getTopInventory())) {
+                    e.setCancelled(true);
+                    p.sendMessage(ChatColor.RED + "¡No puedes arrastrar ese objeto al alijo!");
                     break;
                 }
             }
-            if (!free) e.setCancelled(true);
+
+        } else if (title.equalsIgnoreCase(LAST_SEASON_STASH_TITLE)) {
+            // STASH ANTERIOR
+            for (int slot : e.getRawSlots()) {
+                if (slot < e.getView().getTopInventory().getSize()) {
+                    e.setCancelled(true);
+                    p.sendMessage(ChatColor.RED + "¡No puedes meter objetos en el alijo anterior!");
+                    return;
+                }
+            }
         }
     }
 
     @EventHandler
     public void onInvClose(InventoryCloseEvent e) {
         if (!(e.getPlayer() instanceof Player p)) return;
-        if (!e.getView().getTitle().equals(TITLE)) return;
 
-        Inventory inv = e.getInventory();
-        List<ItemStack> stash = new ArrayList<>();
-        for (int i = 0; i < 4; i++) {
-            ItemStack item = inv.getItem(USABLE[i]);
-            stash.add(item);
+        String title = ChatColor.stripColor(e.getView().getTitle());
+
+        if (title.equalsIgnoreCase(STASH_TITLE)) {
+            // STASH NORMAL → guardar correctamente según slots usables (NO hardcodear a 4 slots)
+            Inventory inv = e.getInventory();
+            List<ItemStack> stash = new ArrayList<>();
+
+            for (int i = 0; i < inv.getSize(); i++) {
+                if (isUsable(i, inv)) {
+                    ItemStack item = inv.getItem(i);
+                    stash.add(item);
+                }
+            }
+
+            PlayerStashDatabase.setStash(p.getName(), stash);
+            p.sendMessage(ChatColor.GRAY + "Tu alijo ha sido guardado correctamente.");
+
+        } else if (title.equalsIgnoreCase(LAST_SEASON_STASH_TITLE)) {
+            // STASH ANTERIOR → no guardar nada
+            p.sendMessage(ChatColor.GRAY + "Has cerrado el alijo de la temporada anterior.");
         }
-
-        PlayerStashDatabase.setStash(p.getName(), stash);
     }
 
-    private boolean isUsable(int slot) {
-        for (int s : USABLE) if (s == slot) return true;
-        return false;
+    private boolean isUsable(int slot, Inventory inv) {
+        // Un slot usable es cualquier slot que NO contenga el cristal bloqueador
+        ItemStack item = inv.getItem(slot);
+        if (item == null) return true;
+        return item.getType() != Material.GRAY_STAINED_GLASS_PANE;
     }
 
     private boolean isIllegalItem(ItemStack item) {
@@ -92,23 +154,5 @@ public class PlayerStashListener implements Listener {
         }
 
         return false;
-    }
-
-    @EventHandler
-    public void onInvDrag(InventoryDragEvent e) {
-        if (!(e.getWhoClicked() instanceof Player p)) return;
-        if (!e.getView().getTitle().equals(TITLE)) return;
-
-        ItemStack item = e.getOldCursor();
-        if (item == null || item.getType() == Material.AIR) return;
-        if (!isIllegalItem(item)) return;
-
-        for (int slot : e.getRawSlots()) {
-            if (slot < 9 && isUsable(slot)) {
-                e.setCancelled(true);
-                p.sendMessage(ChatColor.RED + "¡No puedes arrastrar ese objeto al alijo!");
-                break;
-            }
-        }
     }
 }

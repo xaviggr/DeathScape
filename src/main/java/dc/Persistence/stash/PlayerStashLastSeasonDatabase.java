@@ -35,7 +35,11 @@ public class PlayerStashLastSeasonDatabase {
     }
 
     public static List<ItemStack> getStash(String playerName) {
-        List<String> encoded = data.getOrDefault(playerName, Arrays.asList("", "", "", ""));
+        List<String> encoded = data.get(playerName);
+        if (encoded == null) {
+            encoded = new ArrayList<>();
+        }
+
         List<ItemStack> stash = new ArrayList<>();
         for (String base64 : encoded) {
             if (base64 != null && !base64.isEmpty()) {
@@ -44,6 +48,7 @@ public class PlayerStashLastSeasonDatabase {
                 stash.add(null);
             }
         }
+
         return stash;
     }
 

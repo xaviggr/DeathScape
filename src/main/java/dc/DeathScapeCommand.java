@@ -1283,10 +1283,16 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
             return;
         }
 
-        Inventory inv = Bukkit.createInventory(player, 9, ChatColor.GOLD + "Tu Alijo Anterior");
-
         List<ItemStack> stash = PlayerStashLastSeasonDatabase.getStash(player.getName());
-        for (int i = 0; i < Math.min(stash.size(), inv.getSize()); i++) {
+
+        // Calcula el tamaño del inventario: múltiplo de 9 para visual correcto (mínimo 9)
+        int slotsNeeded = stash.size();
+        int inventorySize = ((slotsNeeded - 1) / 9 + 1) * 9; // Ejemplo: 4 → 9, 6 → 9, 9 → 9, 10 → 18
+
+        Inventory inv = Bukkit.createInventory(player, inventorySize, ChatColor.GOLD + "Tu Alijo Anterior");
+
+        // Coloca los ítems
+        for (int i = 0; i < stash.size(); i++) {
             if (stash.get(i) != null) {
                 inv.setItem(i, stash.get(i));
             }
