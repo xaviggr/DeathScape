@@ -5,7 +5,10 @@ import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.inventory.ItemStack;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeParseException;
+import java.time.temporal.ChronoUnit;
 import java.util.UUID;
 
 /**
@@ -30,6 +33,8 @@ public class PlayerData {
     private String group; // The player's group
     private double health; // The player's health
     private int lifes;
+    private String joinDate; // yyyy-MM-dd
+
 
 
     /**
@@ -161,6 +166,21 @@ public class PlayerData {
     public int getLifes() { return lifes; }
 
     public void setLifes(int lifes) { this.lifes = lifes; }
+
+    public String getJoinDate() { return joinDate; }
+
+    public void setJoinDate(String joinDate) { this.joinDate = joinDate; }
+
+    public int calculateDaysPlayed() {
+        if (joinDate == null || joinDate.isEmpty()) return 0;
+
+        try {
+            LocalDate joined = LocalDate.parse(joinDate);
+            return (int) ChronoUnit.DAYS.between(joined, LocalDate.now());
+        } catch (DateTimeParseException e) {
+            return 0;
+        }
+    }
 
     // ------------------- Custom Methods -------------------
 
