@@ -33,6 +33,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import dc.Business.menu.MainMenu;
 
 import java.util.*;
 
@@ -50,6 +51,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
     private final ReviveInventory reviveInventory;
 
     private final DungeonController dungeonController;
+    private final MainMenu mainMenu;
 
     /**
      * Constructor for the DeathScapeCommand class.
@@ -68,6 +70,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         this.playerController = playerController;
         this.reviveInventory = reviveInventory;
         this.dungeonController = dungeonController;
+        this.mainMenu = new MainMenu(plugin);
     }
 
     /**
@@ -84,7 +87,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         if (command.getName().equalsIgnoreCase("deathscape") && args.length == 1) {
             // Lista base de comandos
             List<String> options = new ArrayList<>(List.of(
-                    "dia", "discord", "help", "info", "reportar", "tiempojugado",
+                    "menu", "dia", "discord", "help", "info", "reportar", "tiempojugado",
                     "tiempolluvia", "dificultad", "vidas", "leaderboard", "puntos", "alijo"
             ));
 
@@ -263,6 +266,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         commandMap.put("leaderboard", () -> handleLeaderboard(player, args));
         commandMap.put("puntos", () -> handlePoints(player, args));
         commandMap.put("alijo", () -> handlePlayerStash(player, args));
+        commandMap.put("menu", () -> mainMenu.openMainMenu(player));
 
         // Ejecuta el comando correspondiente
         return commandMap.get(args[0].toLowerCase());
@@ -910,6 +914,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         commands.put("puntos", "Muestra los puntos del jugador.");
         commands.put("vidas", "Muestra las vidas del jugador.");
         commands.put("alijo", "Permite abrir un inventario que se mantiene durante temporadas.");
+        commands.put("menu", "Abre el menú principal del servidor de una forma más visual");
 
         // Comandos adicionales según permisos
         if (groupPermissions.contains("group") || player.isOp()) {

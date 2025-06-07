@@ -1,0 +1,12 @@
+{
+    "multipart": [
+        {
+            "apply": { "model": "block/end_stone_grass" }
+        },
+        {
+            "apply": [
+                { "model": "block/end_stone_grass_grass" }
+            ]
+        }
+    ]
+}
