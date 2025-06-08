@@ -110,6 +110,20 @@ public class PlayerDatabase {
     }
 
     /**
+     * Retrieves the group of a player from the database.
+     *
+     * @param player The name of the player.
+     * @return The group of the player, or null if not found.
+     */
+    public static String getPlayerGroup(String player) {
+        PlayerData playerData = getPlayerDataFromDatabase(player);
+        if (playerData != null) {
+            return playerData.getGroup();
+        }
+        return null;
+    }
+
+    /**
      * Retrieves a list of dead players from the database.
      *
      * @return A list of player names who are marked as dead.
