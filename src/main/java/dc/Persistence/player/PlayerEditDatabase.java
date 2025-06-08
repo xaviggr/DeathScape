@@ -134,9 +134,18 @@ public class PlayerEditDatabase {
         if (groupData == null) {
             return false;
         }
+
+        // Obtener el grupo actual del jugador
+        String currentGroup = PlayerDatabase.getPlayerGroup(player);
+        if (currentGroup != null && currentGroup.equalsIgnoreCase("tier2") && group.equalsIgnoreCase("tier1")) {
+            // Si es tier2 y quieren cambiarlo a tier1 --> NO hacer el cambio
+            return false;
+        }
+
         if (groupData.getPlayers().contains(player)) {
             return false;
         }
+
         removePlayerFromGroup(player);
         groupData.addPlayer(player);
         GroupDatabase.addGroupData(groupData);
@@ -147,6 +156,7 @@ public class PlayerEditDatabase {
 
         return true;
     }
+
 
     /**
      * Removes a player from their current group.
