@@ -1,0 +1,12 @@
+{
+	"muerte": {
+		"sounds": [
+			"muerte/muerte"
+		]
+	},
+	"gymoservidor": {
+		"sounds": [
+			"gymoservidor/gymoservidor"
+		]
+	}
+}
