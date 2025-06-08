@@ -5,12 +5,13 @@ import dc.DeathScape;
 import dc.Persistence.config.MainConfigManager;
 import dc.Persistence.player.PlayerDatabase;
 import dc.Persistence.player.PlayerEditDatabase;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
+import dc.Persistence.stash.PlayerStashDatabase;
+import dc.Persistence.stash.PlayerStashLastSeasonDatabase;
+import org.bukkit.*;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 import java.io.File;
 import java.io.IOException;
@@ -158,6 +159,23 @@ public class ServerController {
             if (updatedDays >= 30) {
                 updatedDays = 0;
                 Bukkit.getConsoleSender().sendMessage(ChatColor.AQUA + "¡Temporada completada! Reiniciando días a 0.");
+
+                // Copiar el stash actual a la temporada pasada
+                for (OfflinePlayer offline : Bukkit.getOfflinePlayers()) {
+                    List<ItemStack> stash = PlayerStashDatabase.getStash(offline.getName());
+                    PlayerStashLastSeasonDatabase.setStash(offline.getName(), stash);
+
+                    // Limpiar el stash actual
+                    PlayerStashDatabase.setStash(offline.getName(), Arrays.asList(null, null, null, null));
+                }
+
+                Bukkit.getConsoleSender().sendMessage(ChatColor.LIGHT_PURPLE + "Stash de temporada pasada guardado para todos los jugadores.");
+
+                // NUEVO: aumentar temporada
+                int currentSeason = config.getInt("season", 0);
+                config.set("season", currentSeason + 1);
+                Bukkit.getConsoleSender().sendMessage(ChatColor.LIGHT_PURPLE + "Nueva temporada establecida: " + (currentSeason + 1));
+
             } else {
                 Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "Días del servidor actualizados a: " + updatedDays);
             }

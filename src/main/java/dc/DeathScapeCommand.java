@@ -18,6 +18,7 @@ import dc.Persistence.leaderboard.LeaderboardExporter;
 import dc.Persistence.player.PlayerDatabase;
 import dc.Persistence.player.PlayerEditDatabase;
 import dc.Persistence.stash.PlayerStashDatabase;
+import dc.Persistence.stash.PlayerStashLastSeasonDatabase;
 import dc.utils.Message;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -88,7 +89,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
             // Lista base de comandos
             List<String> options = new ArrayList<>(List.of(
                     "menu", "dia", "discord", "help", "info", "reportar", "tiempojugado",
-                    "tiempolluvia", "dificultad", "vidas", "leaderboard", "puntos", "alijo"
+                    "tiempolluvia", "dificultad", "vidas", "leaderboard", "puntos", "alijo", "alijoanterior"
             ));
 
             if (sender instanceof Player player) {
@@ -265,7 +266,8 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         commandMap.put("vidas", () -> handleVidasCommand(player, args));
         commandMap.put("leaderboard", () -> handleLeaderboard(player, args));
         commandMap.put("puntos", () -> handlePoints(player, args));
-        commandMap.put("alijo", () -> handlePlayerStash(player, args));
+        commandMap.put("alijo", () -> handlePlayerStash(player, args, group));
+        commandMap.put("alijoanterior", () -> handlePlayerLastSeasonStash(player, args));
         commandMap.put("menu", () -> mainMenu.openMainMenu(player));
 
         // Ejecuta el comando correspondiente
@@ -287,6 +289,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         commandMap.put("leaderboard", () -> handleLeaderboardServer(sender, args));
         commandMap.put("addvidas", () -> handleAddVidasCommand(sender, args));
         commandMap.put("removevidas", () -> handleQuitarVidasCommand(sender, args));
+        commandMap.put("añadirusuarioagrupo", () -> handleAddUserToGroupCommand(sender, args));
 
         // Add more server commands here as needed...
 
@@ -642,6 +645,16 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         Message.sendMessage(player, "Usuario añadido al grupo correctamente.", ChatColor.GREEN);
     }
 
+    private void handleAddUserToGroupCommand(CommandSender sender, String[] args) {
+        if (args.length < 3) {
+            sender.sendMessage(ChatColor.RED + "Uso: /añadirusuarioagrupo <usuario> <grupo>");
+            return;
+        }
+
+        PlayerEditDatabase.addPlayerToGroup(args[1], args[2]);
+        sender.sendMessage(ChatColor.GREEN + "Usuario añadido al grupo correctamente.");
+    }
+
     /**
      * Handles the "/quitarusuariodegrupo" command.
      *
@@ -914,6 +927,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         commands.put("puntos", "Muestra los puntos del jugador.");
         commands.put("vidas", "Muestra las vidas del jugador.");
         commands.put("alijo", "Permite abrir un inventario que se mantiene durante temporadas.");
+        commands.put("alijoanterior", "Permite abrir un inventario de los alijos de temporadas anteriores.");
         commands.put("menu", "Abre el menú principal del servidor de una forma más visual");
 
         // Comandos adicionales según permisos
@@ -1212,36 +1226,83 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
      * @param player Jugador que ejecuta el comando
      * @param args   Argumentos (se espera solo el nombre del comando)
      */
-    private void handlePlayerStash(Player player, String[] args) {
+    private void handlePlayerStash(Player player, String[] args, GroupData group) {
         if (args.length != 1) {
             Message.sendMessage(player, "Uso correcto: /deathscape alijo", ChatColor.RED);
             return;
         }
 
-        Inventory inv = Bukkit.createInventory(player, 9, ChatColor.DARK_PURPLE + "Tu Alijo");
+        String groupName = group.getName().toLowerCase();
 
-        // Item para bloquear posiciones
+        int[] usable;
+        int inventorySize;
+
+        switch (groupName) {
+            case "tier2" -> {
+                usable = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8};
+                inventorySize = 9;
+            }
+            case "tier1" -> {
+                usable = new int[]{0, 1, 2, 3, 4, 5};
+                inventorySize = 9;
+            }
+            default -> {
+                usable = new int[]{0, 1, 2, 3};
+                inventorySize = 9;
+            }
+        }
+
+        Inventory inv = Bukkit.createInventory(player, inventorySize, ChatColor.DARK_PURPLE + "Tu Alijo");
+
+        // Bloquear los que no son usables
         ItemStack pane = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
         ItemMeta meta = pane.getItemMeta();
         meta.setDisplayName(ChatColor.RED + "Slot bloqueado");
         pane.setItemMeta(meta);
 
-        // Bloquear todos los slots por defecto
-        for (int i = 4; i < inv.getSize(); i++) {
-            inv.setItem(i, pane);
+        for (int i = 0; i < inventorySize; i++) {
+            boolean isUsable = false;
+            for (int slot : usable) {
+                if (i == slot) {
+                    isUsable = true;
+                    break;
+                }
+            }
+            if (!isUsable) inv.setItem(i, pane);
         }
 
-        // Slots centrales usables (0-3)
-        int[] usable = {0, 1, 2, 3};
+        // Cargar stash
         List<ItemStack> stash = PlayerStashDatabase.getStash(player.getName());
-
         for (int i = 0; i < usable.length; i++) {
             if (i < stash.size() && stash.get(i) != null) {
                 inv.setItem(usable[i], stash.get(i));
             }
         }
 
-        // Abrir el inventario
+        player.openInventory(inv);
+    }
+
+    private void handlePlayerLastSeasonStash(Player player, String[] args) {
+        if (args.length != 1) {
+            Message.sendMessage(player, "Uso correcto: /deathscape alijoanterior", ChatColor.RED);
+            return;
+        }
+
+        List<ItemStack> stash = PlayerStashLastSeasonDatabase.getStash(player.getName());
+
+        // Calcula el tamaño del inventario: múltiplo de 9 para visual correcto (mínimo 9)
+        int slotsNeeded = stash.size();
+        int inventorySize = ((slotsNeeded - 1) / 9 + 1) * 9; // Ejemplo: 4 → 9, 6 → 9, 9 → 9, 10 → 18
+
+        Inventory inv = Bukkit.createInventory(player, inventorySize, ChatColor.GOLD + "Tu Alijo Anterior");
+
+        // Coloca los ítems
+        for (int i = 0; i < stash.size(); i++) {
+            if (stash.get(i) != null) {
+                inv.setItem(i, stash.get(i));
+            }
+        }
+
         player.openInventory(inv);
     }
 }
