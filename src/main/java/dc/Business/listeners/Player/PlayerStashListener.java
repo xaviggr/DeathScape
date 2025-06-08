@@ -40,7 +40,7 @@ public class PlayerStashListener implements Listener {
             ItemStack cursor = e.getCursor();
             if (raw < 9 && isUsable(raw, e.getView().getTopInventory()) && cursor != null && cursor.getType() != Material.AIR) {
                 if (isIllegalItem(cursor)) {
-                    p.sendMessage(ChatColor.RED + "¡No puedes meter ese objeto en el alijo!");
+                    p.sendMessage(ChatColor.RED + "¡No puedes meter shulkers con objetos dentro al alijo!");
                     e.setCancelled(true);
                     return;
                 }
@@ -87,7 +87,7 @@ public class PlayerStashListener implements Listener {
             for (int slot : e.getRawSlots()) {
                 if (slot < 9 && isUsable(slot, e.getView().getTopInventory())) {
                     e.setCancelled(true);
-                    p.sendMessage(ChatColor.RED + "¡No puedes arrastrar ese objeto al alijo!");
+                    p.sendMessage(ChatColor.RED + "¡No puedes meter shulkers con objetos dentro al alijo!");
                     break;
                 }
             }

@@ -171,6 +171,11 @@ public class ServerController {
 
                 Bukkit.getConsoleSender().sendMessage(ChatColor.LIGHT_PURPLE + "Stash de temporada pasada guardado para todos los jugadores.");
 
+                // NUEVO: aumentar temporada
+                int currentSeason = config.getInt("season", 0);
+                config.set("season", currentSeason + 1);
+                Bukkit.getConsoleSender().sendMessage(ChatColor.LIGHT_PURPLE + "Nueva temporada establecida: " + (currentSeason + 1));
+
             } else {
                 Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "Días del servidor actualizados a: " + updatedDays);
             }
