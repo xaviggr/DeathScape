@@ -3,6 +3,7 @@ package dc;
 import dc.Business.controllers.DungeonController;
 import dc.Business.controllers.LifeController;
 import dc.Business.controllers.PlayerController;
+import dc.Business.controllers.WaypointController;
 import dc.Business.groups.GroupData;
 import dc.Business.groups.Permission;
 import dc.Business.inventory.ReportInventory;
@@ -20,10 +21,7 @@ import dc.Persistence.player.PlayerEditDatabase;
 import dc.Persistence.stash.PlayerStashDatabase;
 import dc.Persistence.stash.PlayerStashLastSeasonDatabase;
 import dc.utils.Message;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Material;
-import org.bukkit.OfflinePlayer;
+import org.bukkit.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -37,6 +35,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import dc.Business.menu.MainMenu;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Handles commands and tab completion for the DeathScape plugin.
@@ -49,6 +48,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
     private final PlayerController playerController;
     private final ReportInventory reportInventory;
     private final ReportsInventory reportsInventory;
+    private final WaypointController waypointController;
     private final ReviveInventory reviveInventory;
 
     private final DungeonController dungeonController;
@@ -64,11 +64,12 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
      * @param reviveInventory  The inventory used for reviving players.
      * @param lifeController
      */
-    public DeathScapeCommand(DeathScape plugin, ReportInventory reportInventory, ReportsInventory reportsInventory, PlayerController playerController, ReviveInventory reviveInventory, DungeonController dungeonController, LifeController lifeController) {
+    public DeathScapeCommand(DeathScape plugin, ReportInventory reportInventory, ReportsInventory reportsInventory, PlayerController playerController, ReviveInventory reviveInventory, DungeonController dungeonController, LifeController lifeController, WaypointController waypointController) {
         this.plugin = plugin;
         this.reportInventory = reportInventory;
         this.reportsInventory = reportsInventory;
         this.playerController = playerController;
+        this.waypointController = waypointController;
         this.reviveInventory = reviveInventory;
         this.dungeonController = dungeonController;
         this.mainMenu = new MainMenu(plugin);
@@ -88,8 +89,9 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         if (command.getName().equalsIgnoreCase("deathscape") && args.length == 1) {
             // Lista base de comandos
             List<String> options = new ArrayList<>(List.of(
-                    "menu", "dia", "discord", "help", "info", "reportar", "tiempojugado",
-                    "tiempolluvia", "dificultad", "vidas", "leaderboard", "puntos", "alijo", "alijoanterior"
+                    "dia", "discord", "help", "info", "reportar", "tiempojugado",
+                    "tiempolluvia", "dificultad", "vidas", "leaderboard", "puntos", "alijo",
+                    "waypoint", "alijoanterior"
             ));
 
             if (sender instanceof Player player) {
@@ -163,11 +165,71 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
                     filteredOptions.add(option);
                 }
             }
-
             return filteredOptions;
         }
+
+        // Completado para el subcomando "waypoint"
+        if (args.length >= 1 && args[0].equalsIgnoreCase("waypoint")) {
+            // Sugerir subcomandos de waypoint en el segundo argumento
+            if (args.length == 2) {
+                List<String> waypointSubcommands = List.of("add", "remove", "list", "coords", "compartir", "renombrar");
+                return filterByInput(args[1], waypointSubcommands);
+            }
+
+            // "/ds waypoint add <nombre>" -> no sugerimos nada mientras escribe el nombre
+            if (args.length == 3 && args[1].equalsIgnoreCase("add")) {
+                return null;
+            }
+
+            // Después de escribir el nombre del waypoint en "add", sugerimos "in"
+            if (args.length == 4 && args[1].equalsIgnoreCase("add")) {
+                return filterByInput(args[3], List.of("in"));
+            }
+
+            // Sugerir coordenadas después de "in"
+            if (args.length >= 5 && args[1].equalsIgnoreCase("add") && args[3].equalsIgnoreCase("in")) {
+                switch (args.length) {
+                    case 5: return filterByInput(args[4], List.of("<x>"));
+                    case 6: return filterByInput(args[5], List.of("<y>"));
+                    case 7: return filterByInput(args[6], List.of("<z>"));
+                    default: return null;
+                }
+            }
+
+            // Para los subcomandos que necesitan nombres de waypoint, sugerimos esos nombres
+            if (args.length == 3 && List.of("coords", "remove", "compartir", "renombrar").contains(args[1].toLowerCase())) {
+                if (sender instanceof Player player) {
+                    Map<String, Location> waypoints = waypointController.getWaypointsForPlayer(player);
+                    List<String> waypointNames = new ArrayList<>(waypoints.keySet());
+                    return filterByInput(args[2], waypointNames);
+                }
+            }
+
+            // Sugerir "to" después de escribir el waypoint en "compartir"
+            if (args.length == 4 && args[1].equalsIgnoreCase("compartir")) {
+                return filterByInput(args[3], List.of("to"));
+            }
+
+            // Para "renombrar", sugerimos nombre actual en el tercer argumento y nada en el cuarto (nuevo nombre)
+            if (args.length == 4 && args[1].equalsIgnoreCase("renombrar")) {
+                if (sender instanceof Player player) {
+                    Map<String, Location> waypoints = waypointController.getWaypointsForPlayer(player);
+                    List<String> waypointNames = new ArrayList<>(waypoints.keySet());
+                    return filterByInput(args[2], waypointNames);
+                }
+            }
+        }
+
         return null;
     }
+
+    // Método auxiliar para filtrar opciones según la entrada del usuario
+    private List<String> filterByInput(String input, List<String> options) {
+        return options.stream()
+                .filter(option -> option.toLowerCase().startsWith(input.toLowerCase()))
+                .toList();
+    }
+
 
     /**
      * Handles the execution of the "/deathscape" command.
@@ -269,6 +331,8 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         commandMap.put("alijo", () -> handlePlayerStash(player, args, group));
         commandMap.put("alijoanterior", () -> handlePlayerLastSeasonStash(player, args));
         commandMap.put("menu", () -> mainMenu.openMainMenu(player));
+        // Aquí debes añadir:
+        commandMap.put("waypoint", () -> handleWaypointPlayer(player, args));
 
         // Ejecuta el comando correspondiente
         return commandMap.get(args[0].toLowerCase());
@@ -929,6 +993,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         commands.put("alijo", "Permite abrir un inventario que se mantiene durante temporadas.");
         commands.put("alijoanterior", "Permite abrir un inventario de los alijos de temporadas anteriores.");
         commands.put("menu", "Abre el menú principal del servidor de una forma más visual");
+        commands.put("waypoint", "Permite tener un sistema de marcadores para guardar tus coordenadas");
 
         // Comandos adicionales según permisos
         if (groupPermissions.contains("group") || player.isOp()) {
@@ -1304,5 +1369,15 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         }
 
         player.openInventory(inv);
+    }
+
+    private void handleWaypointPlayer(Player player, String[] args){
+        {
+            // Antes de ejecutar waypoint, carga los waypoints del jugador
+            waypointController.loadPlayerWaypoints(player);
+            // Prepara argumentos: elimina el primer argumento "waypoint"
+            String[] waypointArgs = Arrays.copyOfRange(args, 1, args.length);
+            waypointController.handleWaypointCommand(player, waypointArgs);
+        }
     }
 }
