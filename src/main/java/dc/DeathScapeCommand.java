@@ -332,13 +332,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         commandMap.put("alijoanterior", () -> handlePlayerLastSeasonStash(player, args));
         commandMap.put("menu", () -> mainMenu.openMainMenu(player));
         // Aquí debes añadir:
-        commandMap.put("waypoint", () -> {
-            // Antes de ejecutar waypoint, carga los waypoints del jugador
-            waypointController.loadPlayerWaypoints(player);
-            // Prepara argumentos: elimina el primer argumento "waypoint"
-            String[] waypointArgs = Arrays.copyOfRange(args, 1, args.length);
-            waypointController.handleWaypointCommand(player, waypointArgs);
-        });
+        commandMap.put("waypoint", () -> handleWaypointPlayer(player, args));
 
         // Ejecuta el comando correspondiente
         return commandMap.get(args[0].toLowerCase());
@@ -1375,5 +1369,15 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         }
 
         player.openInventory(inv);
+    }
+
+    private void handleWaypointPlayer(Player player, String[] args){
+        {
+            // Antes de ejecutar waypoint, carga los waypoints del jugador
+            waypointController.loadPlayerWaypoints(player);
+            // Prepara argumentos: elimina el primer argumento "waypoint"
+            String[] waypointArgs = Arrays.copyOfRange(args, 1, args.length);
+            waypointController.handleWaypointCommand(player, waypointArgs);
+        }
     }
 }
