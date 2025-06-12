@@ -3,10 +3,12 @@ package dc.Business.controllers;
 import dc.DeathScape;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.EnchantmentStorageMeta;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.persistence.PersistentDataType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -227,4 +229,39 @@ public class ItemsController {
 
         return item;
     }
+
+    /**
+     * Genera un totem personalizado con NBT TotemType.
+     *
+     * @param type El tipo de totem (por ejemplo "Jump", "Explosion").
+     * @return Un ItemStack representando el totem personalizado.
+     */
+    public ItemStack generateCustomTotem(String type) {
+        ItemStack totem = new ItemStack(Material.TOTEM_OF_UNDYING);
+        ItemMeta meta = totem.getItemMeta();
+
+        meta.setDisplayName(ChatColor.GOLD + "Totem de " + type);
+
+        // Store the totem type in the PersistentDataContainer
+        NamespacedKey key = new NamespacedKey(plugin, "TotemType");
+        meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, type);
+
+        // Set CustomModelData based on type
+        int modelData = 0;
+        if (type.equalsIgnoreCase("Jump")) {
+            modelData = 10;
+        } else if (type.equalsIgnoreCase("Explosion")) {
+            modelData = 11;
+        }
+        meta.setCustomModelData(modelData);
+
+        List<String> lore = new ArrayList<>();
+        lore.add(ChatColor.YELLOW + "Tipo: " + type);
+        lore.add(ChatColor.GRAY + "Se activa al salvarte de la muerte.");
+        meta.setLore(lore);
+
+        totem.setItemMeta(meta);
+        return totem;
+    }
+
 }

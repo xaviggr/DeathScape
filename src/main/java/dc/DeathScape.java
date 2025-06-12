@@ -124,6 +124,7 @@ public class DeathScape extends JavaPlugin {
         dungeonController = new DungeonController(this, playerController);
         itemsController = new ItemsController(this);
         lifeController = new LifeController(this);
+
     }
 
     /**
@@ -142,7 +143,7 @@ public class DeathScape extends JavaPlugin {
         AnimationController animationController = new AnimationController(this);
         playerListener = new PlayerListener(this, playerController, weatherController, animationController, totemController, lifeController);
         mobSpawnListener = new MobSpawnListener(this, mobSpawnController);
-        deathScapeCommand = new DeathScapeCommand(this, reportInventory, reportsInventory, playerController, reviveInventory, dungeonController, lifeController);
+        deathScapeCommand = new DeathScapeCommand(this, reportInventory, reportsInventory, playerController, reviveInventory, dungeonController, lifeController, itemsController);
         chatListener = new ChatListener(playerController, this);
     }
 

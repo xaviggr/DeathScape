@@ -1,6 +1,7 @@
 package dc;
 
 import dc.Business.controllers.DungeonController;
+import dc.Business.controllers.ItemsController;
 import dc.Business.controllers.LifeController;
 import dc.Business.controllers.PlayerController;
 import dc.Business.groups.GroupData;
@@ -20,10 +21,7 @@ import dc.Persistence.player.PlayerEditDatabase;
 import dc.Persistence.stash.PlayerStashDatabase;
 import dc.Persistence.stash.PlayerStashLastSeasonDatabase;
 import dc.utils.Message;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Material;
-import org.bukkit.OfflinePlayer;
+import org.bukkit.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -50,6 +48,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
     private final ReportInventory reportInventory;
     private final ReportsInventory reportsInventory;
     private final ReviveInventory reviveInventory;
+    private final ItemsController itemsController;
 
     private final DungeonController dungeonController;
     private final MainMenu mainMenu;
@@ -64,7 +63,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
      * @param reviveInventory  The inventory used for reviving players.
      * @param lifeController
      */
-    public DeathScapeCommand(DeathScape plugin, ReportInventory reportInventory, ReportsInventory reportsInventory, PlayerController playerController, ReviveInventory reviveInventory, DungeonController dungeonController, LifeController lifeController) {
+    public DeathScapeCommand(DeathScape plugin, ReportInventory reportInventory, ReportsInventory reportsInventory, PlayerController playerController, ReviveInventory reviveInventory, DungeonController dungeonController, LifeController lifeController, ItemsController itemsController) {
         this.plugin = plugin;
         this.reportInventory = reportInventory;
         this.reportsInventory = reportsInventory;
@@ -72,6 +71,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         this.reviveInventory = reviveInventory;
         this.dungeonController = dungeonController;
         this.mainMenu = new MainMenu(plugin);
+        this.itemsController = itemsController;
     }
 
     /**
@@ -112,6 +112,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
                         options.add("leaderboard");
                         options.add("addvidas");
                         options.add("removevidas");
+                        options.add("itemgive");
                     }
 
                     if (groupPermissions.contains("teleport")) {
@@ -269,6 +270,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         commandMap.put("alijo", () -> handlePlayerStash(player, args, group));
         commandMap.put("alijoanterior", () -> handlePlayerLastSeasonStash(player, args));
         commandMap.put("menu", () -> mainMenu.openMainMenu(player));
+        commandMap.put("itemgive", () -> handleTotemGiven(player, args));
 
         // Ejecuta el comando correspondiente
         return commandMap.get(args[0].toLowerCase());
@@ -290,6 +292,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         commandMap.put("addvidas", () -> handleAddVidasCommand(sender, args));
         commandMap.put("removevidas", () -> handleQuitarVidasCommand(sender, args));
         commandMap.put("añadirusuarioagrupo", () -> handleAddUserToGroupCommand(sender, args));
+        commandMap.put("itemgiven", () -> handleTotemGiven(sender, args));
 
         // Add more server commands here as needed...
 
@@ -938,6 +941,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
             commands.put("endersee", "Permite ver el Ender Chest de otro jugador.");
             commands.put("addvidas", "Permite añadir vidas a otro jugador.");
             commands.put("removevidas", "Permite quitar vidas a otro jugador.");
+            commands.put("itemgive", "Proporciona un item custom al jugador indicado.");
         }
 
         if (groupPermissions.contains("teleport")) {
@@ -1304,5 +1308,42 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         }
 
         player.openInventory(inv);
+    }
+
+    /**
+     * Handles the event of giving a custom totem to a target player, broadcasting a success message
+     * and playing a sound.
+     *
+     * @param sender The sender of the command (can be a player or the console).
+     * @param args   The arguments from the command, where args[0] = player name, args[1] = totem type.
+     */
+    public void handleTotemGiven(CommandSender sender, String[] args) {
+        String targetPlayerName = args[1];
+        String type = args[2];
+
+        // Obtener el jugador target
+        Player targetPlayer = Bukkit.getPlayer(targetPlayerName);
+        if (targetPlayer == null) {
+            sender.sendMessage(ChatColor.RED + "El jugador " + targetPlayerName + " no está conectado.");
+            return;
+        }
+
+        // Generar el totem con NBT
+        ItemStack totem = itemsController.generateCustomTotem(type);
+
+        // Dar el totem al jugador
+        targetPlayer.getInventory().addItem(totem);
+
+        // Mensaje hardcoded
+        String message = ChatColor.GOLD + "[Totem] " + ChatColor.AQUA + "El jugador " + ChatColor.GREEN + targetPlayer.getName() +
+                ChatColor.AQUA + " ha recibido un Totem de " + ChatColor.YELLOW + type + ChatColor.AQUA + "!";
+
+        // Broadcast del mensaje
+        Bukkit.broadcastMessage(message);
+
+        // Sonido para todos los jugadores online
+        for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+            onlinePlayer.playSound(onlinePlayer.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0f, 1.0f);
+        }
     }
 }
