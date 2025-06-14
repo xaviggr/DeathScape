@@ -1340,10 +1340,5 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
 
         // Broadcast del mensaje
         Bukkit.broadcastMessage(message);
-
-        // Sonido para todos los jugadores online
-        for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
-            onlinePlayer.playSound(onlinePlayer.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0f, 1.0f);
-        }
     }
 }
