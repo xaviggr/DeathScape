@@ -264,4 +264,33 @@ public class ItemsController {
         return totem;
     }
 
+    /**
+     * Genera un ítem personalizado de utilidad como Dash.
+     *
+     * @param type El tipo de utilidad ("Dash").
+     * @return Un ItemStack representando el objeto personalizado.
+     */
+    public ItemStack generateCustomUtilityItem(String type) {
+        if (!type.equalsIgnoreCase("Dash")) {
+            throw new IllegalArgumentException("Tipo de habilidad no soportado: " + type);
+        }
+
+        ItemStack item = new ItemStack(Material.FEATHER);
+        ItemMeta meta = item.getItemMeta();
+
+        meta.setDisplayName(ChatColor.AQUA + "Habilidad: Dash");
+
+        NamespacedKey key = new NamespacedKey(plugin, "CustomItemType");
+        meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, type);
+
+        meta.setCustomModelData(10); // ← actualizado a 10 como el totem Jump
+
+        List<String> lore = new ArrayList<>();
+        lore.add(ChatColor.YELLOW + "Tipo: Dash");
+        lore.add(ChatColor.GRAY + "Haz click derecho para activarlo.");
+        meta.setLore(lore);
+
+        item.setItemMeta(meta);
+        return item;
+    }
 }

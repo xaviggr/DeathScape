@@ -270,7 +270,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         commandMap.put("alijo", () -> handlePlayerStash(player, args, group));
         commandMap.put("alijoanterior", () -> handlePlayerLastSeasonStash(player, args));
         commandMap.put("menu", () -> mainMenu.openMainMenu(player));
-        commandMap.put("itemgive", () -> handleTotemGiven(player, args));
+        commandMap.put("itemgive", () -> handleItemGive(player, args));
 
         // Ejecuta el comando correspondiente
         return commandMap.get(args[0].toLowerCase());
@@ -292,7 +292,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         commandMap.put("addvidas", () -> handleAddVidasCommand(sender, args));
         commandMap.put("removevidas", () -> handleQuitarVidasCommand(sender, args));
         commandMap.put("añadirusuarioagrupo", () -> handleAddUserToGroupCommand(sender, args));
-        commandMap.put("itemgiven", () -> handleTotemGiven(sender, args));
+        commandMap.put("itemgiven", () -> handleItemGive(sender, args));
 
         // Add more server commands here as needed...
 
@@ -1311,34 +1311,48 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
     }
 
     /**
-     * Handles the event of giving a custom totem to a target player, broadcasting a success message
-     * and playing a sound.
+     * Handles the event of giving a custom item (totem or utility item) to a target player,
+     * broadcasting a success message.
      *
      * @param sender The sender of the command (can be a player or the console).
-     * @param args   The arguments from the command, where args[0] = player name, args[1] = totem type.
+     * @param args   The command arguments:
+     *               args[0] = "totem" or "objeto",
+     *               args[1] = player name,
+     *               args[2] = item type (e.g., "Jump", "Dash", etc.).
      */
-    public void handleTotemGiven(CommandSender sender, String[] args) {
-        String targetPlayerName = args[1];
-        String type = args[2];
+    public void handleItemGive(CommandSender sender, String[] args) {
+        if (args.length < 3) {
+            sender.sendMessage(ChatColor.RED + "Uso: /ds itemgive <totem|objeto> <jugador> <tipo>");
+            return;
+        }
 
-        // Obtener el jugador target
+        String category = args[1]; // "totem" o "objeto"
+        String targetPlayerName = args[2];
+        String type = args[3];
+
         Player targetPlayer = Bukkit.getPlayer(targetPlayerName);
         if (targetPlayer == null) {
             sender.sendMessage(ChatColor.RED + "El jugador " + targetPlayerName + " no está conectado.");
             return;
         }
 
-        // Generar el totem con NBT
-        ItemStack totem = itemsController.generateCustomTotem(type);
+        ItemStack item;
 
-        // Dar el totem al jugador
-        targetPlayer.getInventory().addItem(totem);
+        if (category.equalsIgnoreCase("totem")) {
+            item = itemsController.generateCustomTotem(type);
+            Bukkit.broadcastMessage(ChatColor.GOLD + "[Totem] " + ChatColor.AQUA + "El jugador " +
+                    ChatColor.GREEN + targetPlayer.getName() + ChatColor.AQUA + " ha recibido un Totem de " +
+                    ChatColor.YELLOW + type + ChatColor.AQUA + "!");
+        } else if (category.equalsIgnoreCase("objeto") || category.equalsIgnoreCase("utility")) {
+            item = itemsController.generateCustomUtilityItem(type);
+            Bukkit.broadcastMessage(ChatColor.LIGHT_PURPLE + "[Objeto] " + ChatColor.AQUA + "El jugador " +
+                    ChatColor.GREEN + targetPlayer.getName() + ChatColor.AQUA + " ha recibido el objeto " +
+                    ChatColor.YELLOW + type + ChatColor.AQUA + "!");
+        } else {
+            sender.sendMessage(ChatColor.RED + "Categoría no válida. Usa 'totem' o 'objeto'.");
+            return;
+        }
 
-        // Mensaje hardcoded
-        String message = ChatColor.GOLD + "[Totem] " + ChatColor.AQUA + "El jugador " + ChatColor.GREEN + targetPlayer.getName() +
-                ChatColor.AQUA + " ha recibido un Totem de " + ChatColor.YELLOW + type + ChatColor.AQUA + "!";
-
-        // Broadcast del mensaje
-        Bukkit.broadcastMessage(message);
+        targetPlayer.getInventory().addItem(item);
     }
 }

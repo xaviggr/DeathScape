@@ -32,6 +32,6 @@ public class PlayerListener {
         plugin.getServer().getPluginManager().registerEvents(new PlayerConsumeItem(playerController), plugin);
         plugin.getServer().getPluginManager().registerEvents(new PlayerStashListener(), plugin);
         plugin.getServer().getPluginManager().registerEvents(new PlayerTotemListener(plugin), plugin);
-
+        plugin.getServer().getPluginManager().registerEvents(new PlayerCustomItemListener(plugin), plugin);
     }
 }
