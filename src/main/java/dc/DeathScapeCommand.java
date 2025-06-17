@@ -1,6 +1,7 @@
 package dc;
 
 import dc.Business.controllers.DungeonController;
+import dc.Business.controllers.ItemsController;
 import dc.Business.controllers.LifeController;
 import dc.Business.controllers.PlayerController;
 import dc.Business.controllers.WaypointController;
@@ -50,6 +51,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
     private final ReportsInventory reportsInventory;
     private final WaypointController waypointController;
     private final ReviveInventory reviveInventory;
+    private final ItemsController itemsController;
 
     private final DungeonController dungeonController;
     private final MainMenu mainMenu;
@@ -64,7 +66,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
      * @param reviveInventory  The inventory used for reviving players.
      * @param lifeController
      */
-    public DeathScapeCommand(DeathScape plugin, ReportInventory reportInventory, ReportsInventory reportsInventory, PlayerController playerController, ReviveInventory reviveInventory, DungeonController dungeonController, LifeController lifeController, WaypointController waypointController) {
+    public DeathScapeCommand(DeathScape plugin, ReportInventory reportInventory, ReportsInventory reportsInventory, PlayerController playerController, ReviveInventory reviveInventory, DungeonController dungeonController, LifeController lifeController, WaypointController waypointController, ItemsController itemsController) {
         this.plugin = plugin;
         this.reportInventory = reportInventory;
         this.reportsInventory = reportsInventory;
@@ -73,6 +75,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         this.reviveInventory = reviveInventory;
         this.dungeonController = dungeonController;
         this.mainMenu = new MainMenu(plugin);
+        this.itemsController = itemsController;
     }
 
     /**
@@ -114,6 +117,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
                         options.add("leaderboard");
                         options.add("addvidas");
                         options.add("removevidas");
+                        options.add("itemgive");
                     }
 
                     if (groupPermissions.contains("teleport")) {
@@ -331,7 +335,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         commandMap.put("alijo", () -> handlePlayerStash(player, args, group));
         commandMap.put("alijoanterior", () -> handlePlayerLastSeasonStash(player, args));
         commandMap.put("menu", () -> mainMenu.openMainMenu(player));
-        // Aquí debes añadir:
+        commandMap.put("itemgive", () -> handleItemGive(player, args));
         commandMap.put("waypoint", () -> handleWaypointPlayer(player, args));
 
         // Ejecuta el comando correspondiente
@@ -354,6 +358,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         commandMap.put("addvidas", () -> handleAddVidasCommand(sender, args));
         commandMap.put("removevidas", () -> handleQuitarVidasCommand(sender, args));
         commandMap.put("añadirusuarioagrupo", () -> handleAddUserToGroupCommand(sender, args));
+        commandMap.put("itemgiven", () -> handleItemGive(sender, args));
 
         // Add more server commands here as needed...
 
@@ -1003,6 +1008,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
             commands.put("endersee", "Permite ver el Ender Chest de otro jugador.");
             commands.put("addvidas", "Permite añadir vidas a otro jugador.");
             commands.put("removevidas", "Permite quitar vidas a otro jugador.");
+            commands.put("itemgive", "Proporciona un item custom al jugador indicado.");
         }
 
         if (groupPermissions.contains("teleport")) {
@@ -1379,5 +1385,51 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
             String[] waypointArgs = Arrays.copyOfRange(args, 1, args.length);
             waypointController.handleWaypointCommand(player, waypointArgs);
         }
+    }
+
+    /**
+     * Handles the event of giving a custom item (totem or utility item) to a target player,
+     * broadcasting a success message.
+     *
+     * @param sender The sender of the command (can be a player or the console).
+     * @param args   The command arguments:
+     *               args[0] = "totem" or "objeto",
+     *               args[1] = player name,
+     *               args[2] = item type (e.g., "Jump", "Dash", etc.).
+     */
+    public void handleItemGive(CommandSender sender, String[] args) {
+        if (args.length < 3) {
+            sender.sendMessage(ChatColor.RED + "Uso: /ds itemgive <totem|objeto> <jugador> <tipo>");
+            return;
+        }
+
+        String category = args[1]; // "totem" o "objeto"
+        String targetPlayerName = args[2];
+        String type = args[3];
+
+        Player targetPlayer = Bukkit.getPlayer(targetPlayerName);
+        if (targetPlayer == null) {
+            sender.sendMessage(ChatColor.RED + "El jugador " + targetPlayerName + " no está conectado.");
+            return;
+        }
+
+        ItemStack item;
+
+        if (category.equalsIgnoreCase("totem")) {
+            item = itemsController.generateCustomTotem(type);
+            Bukkit.broadcastMessage(ChatColor.GOLD + "[Totem] " + ChatColor.AQUA + "El jugador " +
+                    ChatColor.GREEN + targetPlayer.getName() + ChatColor.AQUA + " ha recibido un Totem de " +
+                    ChatColor.YELLOW + type + ChatColor.AQUA + "!");
+        } else if (category.equalsIgnoreCase("objeto") || category.equalsIgnoreCase("utility")) {
+            item = itemsController.generateCustomUtilityItem(type);
+            Bukkit.broadcastMessage(ChatColor.LIGHT_PURPLE + "[Objeto] " + ChatColor.AQUA + "El jugador " +
+                    ChatColor.GREEN + targetPlayer.getName() + ChatColor.AQUA + " ha recibido el objeto " +
+                    ChatColor.YELLOW + type + ChatColor.AQUA + "!");
+        } else {
+            sender.sendMessage(ChatColor.RED + "Categoría no válida. Usa 'totem' o 'objeto'.");
+            return;
+        }
+
+        targetPlayer.getInventory().addItem(item);
     }
 }

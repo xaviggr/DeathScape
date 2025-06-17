@@ -3,10 +3,12 @@ package dc.Business.controllers;
 import dc.DeathScape;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.EnchantmentStorageMeta;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.persistence.PersistentDataType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -225,6 +227,70 @@ public class ItemsController {
             }
         }
 
+        return item;
+    }
+
+    /**
+     * Genera un totem personalizado con NBT TotemType.
+     *
+     * @param type El tipo de totem (por ejemplo "Jump", "Explosion").
+     * @return Un ItemStack representando el totem personalizado.
+     */
+    public ItemStack generateCustomTotem(String type) {
+        ItemStack totem = new ItemStack(Material.TOTEM_OF_UNDYING);
+        ItemMeta meta = totem.getItemMeta();
+
+        meta.setDisplayName(ChatColor.GOLD + "Totem de " + type);
+
+        // Store the totem type in the PersistentDataContainer
+        NamespacedKey key = new NamespacedKey(plugin, "TotemType");
+        meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, type);
+
+        // Set CustomModelData based on type
+        int modelData = 0;
+        if (type.equalsIgnoreCase("Jump")) {
+            modelData = 10;
+        } else if (type.equalsIgnoreCase("Explosion")) {
+            modelData = 11;
+        }
+        meta.setCustomModelData(modelData);
+
+        List<String> lore = new ArrayList<>();
+        lore.add(ChatColor.YELLOW + "Tipo: " + type);
+        lore.add(ChatColor.GRAY + "Se activa al salvarte de la muerte.");
+        meta.setLore(lore);
+
+        totem.setItemMeta(meta);
+        return totem;
+    }
+
+    /**
+     * Genera un ítem personalizado de utilidad como Dash.
+     *
+     * @param type El tipo de utilidad ("Dash").
+     * @return Un ItemStack representando el objeto personalizado.
+     */
+    public ItemStack generateCustomUtilityItem(String type) {
+        if (!type.equalsIgnoreCase("Dash")) {
+            throw new IllegalArgumentException("Tipo de habilidad no soportado: " + type);
+        }
+
+        ItemStack item = new ItemStack(Material.FEATHER);
+        ItemMeta meta = item.getItemMeta();
+
+        meta.setDisplayName(ChatColor.AQUA + "Habilidad: Dash");
+
+        NamespacedKey key = new NamespacedKey(plugin, "CustomItemType");
+        meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, type);
+
+        meta.setCustomModelData(10); // ← actualizado a 10 como el totem Jump
+
+        List<String> lore = new ArrayList<>();
+        lore.add(ChatColor.YELLOW + "Tipo: Dash");
+        lore.add(ChatColor.GRAY + "Haz click derecho para activarlo.");
+        meta.setLore(lore);
+
+        item.setItemMeta(meta);
         return item;
     }
 }
