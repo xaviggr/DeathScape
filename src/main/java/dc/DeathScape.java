@@ -12,6 +12,7 @@ import dc.Persistence.groups.GroupDatabase;
 import dc.Persistence.leaderboard.LeaderboardScheduler;
 import dc.Persistence.player.PlayerDatabase;
 import dc.Persistence.stash.PlayerStashDatabase;
+import dc.Persistence.waypoints.WaypointDatabase;
 import dc.Persistence.stash.PlayerStashLastSeasonDatabase;
 import io.lumine.mythic.api.MythicProvider;
 import io.lumine.mythic.api.mobs.MobManager;
@@ -45,6 +46,7 @@ public class DeathScape extends JavaPlugin {
     private DimensionController dimensionController;
     private DungeonController dungeonController;
     private ItemsController itemsController;
+    private WaypointController waypointController;
     private LeaderboardScheduler leaderboardScheduler;
 
     // Listeners
@@ -72,6 +74,7 @@ public class DeathScape extends JavaPlugin {
         // Initialize configuration and singleton instances
         MainConfigManager.setInstance(this);
         loadMobsConfig();
+        WaypointDatabase.load();
         loadDifficultiesConfig();
         PlayerDatabase.initPlayerDatabase();
         GroupDatabase.initGroupDatabase();
@@ -124,7 +127,7 @@ public class DeathScape extends JavaPlugin {
         dungeonController = new DungeonController(this, playerController);
         itemsController = new ItemsController(this);
         lifeController = new LifeController(this);
-
+        waypointController = new WaypointController(this);
     }
 
     /**
@@ -143,7 +146,7 @@ public class DeathScape extends JavaPlugin {
         AnimationController animationController = new AnimationController(this);
         playerListener = new PlayerListener(this, playerController, weatherController, animationController, totemController, lifeController);
         mobSpawnListener = new MobSpawnListener(this, mobSpawnController);
-        deathScapeCommand = new DeathScapeCommand(this, reportInventory, reportsInventory, playerController, reviveInventory, dungeonController, lifeController, itemsController);
+        deathScapeCommand = new DeathScapeCommand(this, reportInventory, reportsInventory, playerController, reviveInventory, dungeonController, lifeController, waypointController, itemsController);
         chatListener = new ChatListener(playerController, this);
     }
 
@@ -191,6 +194,7 @@ public class DeathScape extends JavaPlugin {
     @Override
     public void onDisable() {
         Bukkit.getConsoleSender().sendMessage("DeathScape has been disabled!");
+        WaypointDatabase.save();
         playerController.removePlayersFromServer();
     }
 
