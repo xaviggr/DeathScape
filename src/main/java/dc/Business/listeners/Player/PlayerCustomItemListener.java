@@ -66,9 +66,8 @@ public class PlayerCustomItemListener implements Listener {
             player.setCooldown(event.getItem().getType(), cooldownTicks);
 
             // Movimiento tipo dash
-            Vector dash = player.getLocation().getDirection().normalize().multiply(2.0);
-            dash.setY(0.3);
-            player.setVelocity(dash);
+            Vector direction = player.getLocation().getDirection().normalize().multiply(2.0);
+            player.setVelocity(direction);
             player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1f, 1f);
         }
     }
