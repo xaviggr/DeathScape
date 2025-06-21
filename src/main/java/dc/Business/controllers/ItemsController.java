@@ -265,32 +265,41 @@ public class ItemsController {
     }
 
     /**
-     * Genera un ítem personalizado de utilidad como Dash.
+     * Genera un ítem personalizado de utilidad.
      *
-     * @param type El tipo de utilidad ("Dash").
+     * @param type El tipo de utilidad ("Dash", "Catalizador").
      * @return Un ItemStack representando el objeto personalizado.
      */
     public ItemStack generateCustomUtilityItem(String type) {
-        if (!type.equalsIgnoreCase("Dash")) {
-            throw new IllegalArgumentException("Tipo de habilidad no soportado: " + type);
+        ItemStack item;
+
+        switch (type.toLowerCase()) {
+            case "dash" -> {
+                item = new ItemStack(Material.FEATHER);
+                ItemMeta meta = item.getItemMeta();
+                meta.setDisplayName(ChatColor.AQUA + "Habilidad: Dash");
+                meta.setCustomModelData(10);
+                meta.getPersistentDataContainer().set(new NamespacedKey(plugin, "CustomItemType"), PersistentDataType.STRING, "Dash");
+                meta.setLore(List.of(ChatColor.YELLOW + "Tipo: Dash", ChatColor.GRAY + "Haz click derecho para activarlo."));
+                item.setItemMeta(meta);
+            }
+
+            case "catalizador", "catalyst" -> {
+                item = new ItemStack(Material.GOLDEN_APPLE);
+                ItemMeta meta = item.getItemMeta();
+                meta.setDisplayName(ChatColor.GREEN + "Manzana de Salto Extremo");
+                meta.setCustomModelData(20);
+                meta.getPersistentDataContainer().set(new NamespacedKey(plugin, "CustomItemType"), PersistentDataType.STRING, "JumpBoost");
+                meta.setLore(List.of(
+                        ChatColor.YELLOW + "Tipo: JumpBoost",
+                        ChatColor.GRAY + "Al consumirla, da un salto increíble."
+                ));
+                item.setItemMeta(meta);
+            }
+
+            default -> throw new IllegalArgumentException("Tipo de objeto no soportado: " + type);
         }
 
-        ItemStack item = new ItemStack(Material.FEATHER);
-        ItemMeta meta = item.getItemMeta();
-
-        meta.setDisplayName(ChatColor.AQUA + "Habilidad: Dash");
-
-        NamespacedKey key = new NamespacedKey(plugin, "CustomItemType");
-        meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, type);
-
-        meta.setCustomModelData(10); // ← actualizado a 10 como el totem Jump
-
-        List<String> lore = new ArrayList<>();
-        lore.add(ChatColor.YELLOW + "Tipo: Dash");
-        lore.add(ChatColor.GRAY + "Haz click derecho para activarlo.");
-        meta.setLore(lore);
-
-        item.setItemMeta(meta);
         return item;
     }
 }
