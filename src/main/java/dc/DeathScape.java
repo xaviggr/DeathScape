@@ -48,6 +48,7 @@ public class DeathScape extends JavaPlugin {
     private ItemsController itemsController;
     private WaypointController waypointController;
     private LeaderboardScheduler leaderboardScheduler;
+    private MetaDataManagerController metadataManager;
 
     // Listeners
     private PlayerListener playerListener;
@@ -128,6 +129,7 @@ public class DeathScape extends JavaPlugin {
         itemsController = new ItemsController(this);
         lifeController = new LifeController(this);
         waypointController = new WaypointController(this);
+        metadataManager = new MetaDataManagerController();
     }
 
     /**
@@ -231,4 +233,10 @@ public class DeathScape extends JavaPlugin {
     public MobManager getMobManager() {
         return mobManager;
     }
+
+    /**
+     * Gets the MetaData manager.
+     * @return The MetaData manager.
+     */
+    public MetaDataManagerController getMetadataManager() { return metadataManager; }
 }
