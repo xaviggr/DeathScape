@@ -1,8 +1,6 @@
 package dc.Business.listeners.Player;
 
-import org.bukkit.ChatColor;
-import org.bukkit.Material;
-import org.bukkit.NamespacedKey;
+import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -52,11 +50,23 @@ public class PlayerTotemListener implements Listener {
                         player.getWorld().createExplosion(player.getLocation(), 8.0f, true, true);
                         player.sendMessage(ChatColor.RED + "¡Tu Totem de Explosión se ha activado!");
                     }
+                    else if (totemType.equalsIgnoreCase("Deathscape")) {
+                        Location respawn = player.getBedSpawnLocation();
 
-                    // 🔸 Opcional: Cancelar el efecto vanilla del totem
-                    // event.setCancelled(true);
+                        if (respawn == null) {
+                            respawn = player.getWorld().getSpawnLocation();
+                        }
 
-                    return; // Ya hemos encontrado un totem válido, no seguimos
+                        // Ejecutar el teleport una vez ha finalizado la reanimación
+                        Location finalRespawn = respawn;
+                        Bukkit.getScheduler().runTaskLater(plugin, () -> {
+                            player.teleport(finalRespawn);
+                            player.sendMessage(ChatColor.DARK_PURPLE + "Has sido devuelto a tu último punto de descanso.");
+                            player.playSound(finalRespawn, Sound.ENTITY_ENDERMAN_TELEPORT, 1f, 1f);
+                        }, 5L); // Espera 5 ticks (~0.25s)
+                    }
+
+                    return;
                 }
             }
         }

@@ -240,57 +240,106 @@ public class ItemsController {
         ItemStack totem = new ItemStack(Material.TOTEM_OF_UNDYING);
         ItemMeta meta = totem.getItemMeta();
 
-        meta.setDisplayName(ChatColor.GOLD + "Totem de " + type);
+        String displayName = switch (type.toLowerCase()) {
+            case "jump" -> "Totem de Salto";
+            case "explosion" -> "Totem de Explosión";
+            case "deathscape" -> "DeathScape Totem";
+            default -> "Totem de " + type;
+        };
 
-        // Store the totem type in the PersistentDataContainer
+        meta.setDisplayName(ChatColor.GOLD + displayName);
+
+        // Store the totem type
         NamespacedKey key = new NamespacedKey(plugin, "TotemType");
         meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, type);
 
-        // Set CustomModelData based on type
-        int modelData = 0;
-        if (type.equalsIgnoreCase("Jump")) {
-            modelData = 10;
-        } else if (type.equalsIgnoreCase("Explosion")) {
-            modelData = 11;
-        }
+        // Set custom model
+        int modelData = switch (type.toLowerCase()) {
+            case "jump" -> 10;
+            case "explosion" -> 11;
+            case "deathscape" -> 12;
+            default -> 0;
+        };
         meta.setCustomModelData(modelData);
 
-        List<String> lore = new ArrayList<>();
-        lore.add(ChatColor.YELLOW + "Tipo: " + type);
-        lore.add(ChatColor.GRAY + "Se activa al salvarte de la muerte.");
-        meta.setLore(lore);
+        meta.setLore(List.of(
+                ChatColor.YELLOW + "Tipo: " + type,
+                ChatColor.GRAY + "Se activa al salvarte de la muerte."
+        ));
 
         totem.setItemMeta(meta);
         return totem;
     }
 
     /**
-     * Genera un ítem personalizado de utilidad como Dash.
+     * Genera un ítem personalizado de utilidad.
      *
-     * @param type El tipo de utilidad ("Dash").
+     * @param type El tipo de utilidad ("Dash", "Catalizador").
      * @return Un ItemStack representando el objeto personalizado.
      */
     public ItemStack generateCustomUtilityItem(String type) {
-        if (!type.equalsIgnoreCase("Dash")) {
-            throw new IllegalArgumentException("Tipo de habilidad no soportado: " + type);
+        ItemStack item;
+
+        switch (type.toLowerCase()) {
+            case "dash" -> {
+                item = new ItemStack(Material.FEATHER);
+                ItemMeta meta = item.getItemMeta();
+                meta.setDisplayName(ChatColor.AQUA + "Habilidad: Dash");
+                meta.setCustomModelData(10);
+                meta.getPersistentDataContainer().set(new NamespacedKey(plugin, "CustomItemType"), PersistentDataType.STRING, "Dash");
+                meta.setLore(List.of(ChatColor.YELLOW + "Tipo: Dash", ChatColor.GRAY + "Haz click derecho para activarlo."));
+                item.setItemMeta(meta);
+            }
+
+            case "catalizador", "catalyst" -> {
+                item = new ItemStack(Material.GOLDEN_APPLE);
+                ItemMeta meta = item.getItemMeta();
+                meta.setDisplayName(ChatColor.GREEN + "Catalizador de salto");
+                meta.setCustomModelData(20);
+                meta.getPersistentDataContainer().set(new NamespacedKey(plugin, "CustomItemType"), PersistentDataType.STRING, "JumpBoost");
+                meta.setLore(List.of(
+                        ChatColor.YELLOW + "Tipo: JumpBoost",
+                        ChatColor.GRAY + "Al consumirla, da un salto increíble."
+                ));
+                item.setItemMeta(meta);
+            }
+
+            case "invisibilidad", "invisible" -> {
+                item = new ItemStack(Material.GOLDEN_APPLE);
+                ItemMeta meta = item.getItemMeta();
+                meta.setDisplayName(ChatColor.DARK_PURPLE + "Manzana de Invisibilidad Total");
+                meta.setCustomModelData(21);
+
+                NamespacedKey key = new NamespacedKey(plugin, "CustomItemType");
+                meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, "Invisibilidad");
+
+                meta.setLore(List.of(
+                        ChatColor.YELLOW + "Tipo: Invisibilidad",
+                        ChatColor.GRAY + "Te vuelve invisible para mobs y jugadores durante 10s."
+                ));
+                item.setItemMeta(meta);
+            }
+
+            case "beleño", "beleñonegro" -> {
+                item = new ItemStack(Material.APPLE);
+                ItemMeta meta = item.getItemMeta();
+
+                meta.setDisplayName(ChatColor.DARK_RED + "Beleño Negro");
+                meta.setCustomModelData(22);
+
+                NamespacedKey key = new NamespacedKey(plugin, "CustomItemType");
+                meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, "Beleño");
+
+                meta.setLore(List.of(
+                        ChatColor.RED + "Efecto: +100% daño cuerpo a cuerpo",
+                        ChatColor.GRAY + "pero recibes el doble de daño durante 10s."
+                ));
+                item.setItemMeta(meta);
+            }
+
+            default -> throw new IllegalArgumentException("Tipo de objeto no soportado: " + type);
         }
 
-        ItemStack item = new ItemStack(Material.FEATHER);
-        ItemMeta meta = item.getItemMeta();
-
-        meta.setDisplayName(ChatColor.AQUA + "Habilidad: Dash");
-
-        NamespacedKey key = new NamespacedKey(plugin, "CustomItemType");
-        meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, type);
-
-        meta.setCustomModelData(10); // ← actualizado a 10 como el totem Jump
-
-        List<String> lore = new ArrayList<>();
-        lore.add(ChatColor.YELLOW + "Tipo: Dash");
-        lore.add(ChatColor.GRAY + "Haz click derecho para activarlo.");
-        meta.setLore(lore);
-
-        item.setItemMeta(meta);
         return item;
     }
 }

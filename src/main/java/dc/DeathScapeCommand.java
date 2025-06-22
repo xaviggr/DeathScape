@@ -1398,7 +1398,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
      *               args[2] = item type (e.g., "Jump", "Dash", etc.).
      */
     public void handleItemGive(CommandSender sender, String[] args) {
-        if (args.length < 3) {
+        if (args.length != 4) {
             sender.sendMessage(ChatColor.RED + "Uso: /ds itemgive <totem|objeto> <jugador> <tipo>");
             return;
         }
@@ -1421,7 +1421,13 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
                     ChatColor.GREEN + targetPlayer.getName() + ChatColor.AQUA + " ha recibido un Totem de " +
                     ChatColor.YELLOW + type + ChatColor.AQUA + "!");
         } else if (category.equalsIgnoreCase("objeto") || category.equalsIgnoreCase("utility")) {
-            item = itemsController.generateCustomUtilityItem(type);
+            try {
+                item = itemsController.generateCustomUtilityItem(type);
+            } catch (IllegalArgumentException e) {
+                sender.sendMessage(ChatColor.RED + "Tipo de objeto no reconocido: " + type);
+                return;
+            }
+
             Bukkit.broadcastMessage(ChatColor.LIGHT_PURPLE + "[Objeto] " + ChatColor.AQUA + "El jugador " +
                     ChatColor.GREEN + targetPlayer.getName() + ChatColor.AQUA + " ha recibido el objeto " +
                     ChatColor.YELLOW + type + ChatColor.AQUA + "!");
