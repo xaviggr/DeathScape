@@ -337,6 +337,24 @@ public class ItemsController {
                 item.setItemMeta(meta);
             }
 
+            case "retiro", "pergamino", "scroll" -> {
+                item = new ItemStack(Material.PAPER);
+                ItemMeta meta = item.getItemMeta();
+
+                meta.setDisplayName(ChatColor.GOLD + "Pergamino del Retiro");
+                meta.setCustomModelData(23);
+
+                NamespacedKey key = new NamespacedKey(plugin, "CustomItemType");
+                meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, "ScrollReturn");
+
+                meta.setLore(List.of(
+                        ChatColor.YELLOW + "Tipo: Teletransporte",
+                        ChatColor.GRAY + "Te devuelve a tu último punto de respawn.",
+                        ChatColor.RED + "Un solo uso."
+                ));
+                item.setItemMeta(meta);
+            }
+
             default -> throw new IllegalArgumentException("Tipo de objeto no soportado: " + type);
         }
 
