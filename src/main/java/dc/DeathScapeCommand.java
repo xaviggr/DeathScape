@@ -1398,7 +1398,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
      *               args[2] = item type (e.g., "Jump", "Dash", etc.).
      */
     public void handleItemGive(CommandSender sender, String[] args) {
-        if (args.length < 3) {
+        if (args.length != 4) {
             sender.sendMessage(ChatColor.RED + "Uso: /ds itemgive <totem|objeto> <jugador> <tipo>");
             return;
         }
