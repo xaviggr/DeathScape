@@ -8,6 +8,8 @@ import org.bukkit.event.entity.EntityResurrectEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
 import org.bukkit.plugin.Plugin;
 
@@ -44,6 +46,7 @@ public class PlayerTotemListener implements Listener {
                     // 🔸 Aquí aplicas tu efecto personalizado:
                     if (totemType.equals("Jump")) {
                         player.setVelocity(new Vector(0, 2, 0)); // ~20 bloques de altura
+                        player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW_FALLING, 20 * 20, 0, false, false, false));
                         player.sendMessage(ChatColor.GREEN + "¡Tu Totem de Salto te ha salvado!");
                     }
                     else if (totemType.equals("Explosion")) {

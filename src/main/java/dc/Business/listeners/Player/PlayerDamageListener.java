@@ -52,10 +52,21 @@ public class PlayerDamageListener implements Listener {
      */
     @EventHandler
     public void onPlayerDamage(EntityDamageEvent event) {
-        if (event.getEntity() instanceof Player player) {
-            // Record the current time as the last damage time for the player
-            lastDamageTime.put(player.getUniqueId(), System.currentTimeMillis());
+        if (!(event.getEntity() instanceof Player player)) return;
+
+        UUID uuid = player.getUniqueId();
+
+        // Inmunidad al daño por caída (efecto: Néctar del Guardián)
+        if (event.getCause() == EntityDamageEvent.DamageCause.FALL &&
+                DeathScape.getPlugin(DeathScape.class).getMetadataManager().hasNoFallDamage(uuid)) {
+
+            event.setCancelled(true);
+            player.sendMessage("§7El Néctar del Guardián ha absorbido el daño de la caída.");
+            return; // No registrar como daño recibido
         }
+
+        // Registrar daño normal
+        lastDamageTime.put(uuid, System.currentTimeMillis());
     }
 
     /**

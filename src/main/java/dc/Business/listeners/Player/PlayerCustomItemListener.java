@@ -1,6 +1,7 @@
 package dc.Business.listeners.Player;
 
 import dc.DeathScape;
+import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -69,6 +70,25 @@ public class PlayerCustomItemListener implements Listener {
             Vector direction = player.getLocation().getDirection().normalize().multiply(2.0);
             player.setVelocity(direction);
             player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1f, 1f);
+        }
+
+        else if (type.equalsIgnoreCase("scrollreturn")) {
+            // ⚡ Teletransportar al punto de respawn
+            Location respawn = player.getBedSpawnLocation();
+            if (respawn == null) {
+                respawn = player.getWorld().getSpawnLocation();
+            }
+
+            // Eliminar 1 unidad del ítem
+            if (event.getItem().getAmount() > 1) {
+                event.getItem().setAmount(event.getItem().getAmount() - 1);
+            } else {
+                player.getInventory().removeItem(event.getItem());
+            }
+
+            player.teleport(respawn);
+            player.playSound(respawn, Sound.ENTITY_ENDERMAN_TELEPORT, 1f, 1f);
+            player.sendMessage("§eEl pergamino se ha consumido y te ha llevado a tu punto de descanso.");
         }
     }
 }

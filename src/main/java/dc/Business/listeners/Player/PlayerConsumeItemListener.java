@@ -1,10 +1,7 @@
 package dc.Business.listeners.Player;
 
 import dc.DeathScape;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.NamespacedKey;
-import org.bukkit.Sound;
+import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -78,5 +75,21 @@ public class PlayerConsumeItemListener implements Listener {
                 player.sendMessage(ChatColor.GRAY + "El efecto del beleño ha desaparecido.");
             }, 200L); // 10 segundos
         }**/
+
+        else if (type.equalsIgnoreCase("NectarCaida")) {
+            UUID uuid = player.getUniqueId();
+
+            plugin.getMetadataManager().markPlayerNoFallDamage(uuid, true);
+            player.sendMessage(ChatColor.GOLD + "¡El néctar del guardián te protege de caídas durante 1 minuto!");
+            player.playSound(player.getLocation(), Sound.ITEM_HONEY_BOTTLE_DRINK, 1f, 1f);
+
+            // Efecto visual al activarse
+            player.getWorld().spawnParticle(Particle.END_ROD, player.getLocation().add(0, 1, 0), 30, 0.3, 0.7, 0.3, 0.01);
+
+            Bukkit.getScheduler().runTaskLater(plugin, () -> {
+                plugin.getMetadataManager().markPlayerNoFallDamage(uuid, false);
+                player.sendMessage(ChatColor.GRAY + "La protección contra caídas ha desaparecido.");
+            }, 1200L); // 1 minuto = 1200 ticks
+        }
     }
 }

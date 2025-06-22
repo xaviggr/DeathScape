@@ -337,6 +337,41 @@ public class ItemsController {
                 item.setItemMeta(meta);
             }
 
+            case "retiro", "pergamino", "scroll" -> {
+                item = new ItemStack(Material.PAPER);
+                ItemMeta meta = item.getItemMeta();
+
+                meta.setDisplayName(ChatColor.GOLD + "Pergamino del Retiro");
+                meta.setCustomModelData(23);
+
+                NamespacedKey key = new NamespacedKey(plugin, "CustomItemType");
+                meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, "ScrollReturn");
+
+                meta.setLore(List.of(
+                        ChatColor.YELLOW + "Tipo: Teletransporte",
+                        ChatColor.GRAY + "Te devuelve a tu último punto de respawn.",
+                        ChatColor.RED + "Un solo uso."
+                ));
+                item.setItemMeta(meta);
+            }
+
+            case "nectar", "guardian", "nectarguardian" -> {
+                item = new ItemStack(Material.HONEY_BOTTLE);
+                ItemMeta meta = item.getItemMeta();
+
+                meta.setDisplayName(ChatColor.GOLD + "Néctar del Guardián");
+                meta.setCustomModelData(24);
+
+                NamespacedKey key = new NamespacedKey(plugin, "CustomItemType");
+                meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, "NectarCaida");
+
+                meta.setLore(List.of(
+                        ChatColor.YELLOW + "Tipo: Protección",
+                        ChatColor.GRAY + "Inmunidad al daño de caída durante 1 minuto."
+                ));
+                item.setItemMeta(meta);
+            }
+
             default -> throw new IllegalArgumentException("Tipo de objeto no soportado: " + type);
         }
 
