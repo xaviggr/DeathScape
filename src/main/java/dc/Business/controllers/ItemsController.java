@@ -284,7 +284,7 @@ public class ItemsController {
             case "dash" -> {
                 item = new ItemStack(Material.FEATHER);
                 ItemMeta meta = item.getItemMeta();
-                meta.setDisplayName(ChatColor.AQUA + "Habilidad: Dash");
+                meta.setDisplayName(ChatColor.AQUA + "Propulsor");
                 meta.setCustomModelData(10);
                 meta.getPersistentDataContainer().set(new NamespacedKey(plugin, "CustomItemType"), PersistentDataType.STRING, "Dash");
                 meta.setLore(List.of(ChatColor.YELLOW + "Tipo: Dash", ChatColor.GRAY + "Haz click derecho para activarlo."));
