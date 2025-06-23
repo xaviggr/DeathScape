@@ -9,6 +9,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.util.Vector;
@@ -73,19 +74,21 @@ public class PlayerCustomItemListener implements Listener {
         }
 
         else if (type.equalsIgnoreCase("scrollreturn")) {
-            // ⚡ Teletransportar al punto de respawn
             Location respawn = player.getBedSpawnLocation();
             if (respawn == null) {
                 respawn = player.getWorld().getSpawnLocation();
             }
 
-            // Eliminar 1 unidad del ítem
-            if (event.getItem().getAmount() > 1) {
-                event.getItem().setAmount(event.getItem().getAmount() - 1);
+            // ✅ Consumir solo 1 unidad del ítem
+            ItemStack usedItem = event.getItem();
+            if (usedItem != null && usedItem.getAmount() > 1) {
+                usedItem.setAmount(usedItem.getAmount() - 1);
+                player.getInventory().setItemInMainHand(usedItem);
             } else {
-                player.getInventory().removeItem(event.getItem());
+                player.getInventory().setItemInMainHand(null);
             }
 
+            // ⚡ Teletransportar
             player.teleport(respawn);
             player.playSound(respawn, Sound.ENTITY_ENDERMAN_TELEPORT, 1f, 1f);
             player.sendMessage("§eEl pergamino se ha consumido y te ha llevado a tu punto de descanso.");
