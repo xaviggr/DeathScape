@@ -292,9 +292,9 @@ public class ItemsController {
             }
 
             case "catalizador", "catalyst" -> {
-                item = new ItemStack(Material.GOLDEN_APPLE);
+                item = new ItemStack(Material.APPLE);
                 ItemMeta meta = item.getItemMeta();
-                meta.setDisplayName(ChatColor.GREEN + "Catalizador de salto");
+                meta.setDisplayName(ChatColor.GREEN + "Nube de impulso");
                 meta.setCustomModelData(20);
                 meta.getPersistentDataContainer().set(new NamespacedKey(plugin, "CustomItemType"), PersistentDataType.STRING, "JumpBoost");
                 meta.setLore(List.of(
@@ -305,7 +305,7 @@ public class ItemsController {
             }
 
             case "invisibilidad", "invisible" -> {
-                item = new ItemStack(Material.GOLDEN_APPLE);
+                item = new ItemStack(Material.APPLE);
                 ItemMeta meta = item.getItemMeta();
                 meta.setDisplayName(ChatColor.DARK_PURPLE + "Manzana de Invisibilidad Total");
                 meta.setCustomModelData(21);
