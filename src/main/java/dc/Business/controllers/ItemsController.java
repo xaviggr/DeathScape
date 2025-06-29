@@ -372,6 +372,22 @@ public class ItemsController {
                 item.setItemMeta(meta);
             }
 
+            case "mejora" -> {
+                item = new ItemStack(Material.PAPER);
+                ItemMeta meta = item.getItemMeta();
+
+                meta.setDisplayName(ChatColor.BLUE + "Mejora");
+                meta.setCustomModelData(24);
+
+                NamespacedKey key = new NamespacedKey(plugin, "CustomItemType");
+                meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, "Mejora");
+
+                meta.setLore(List.of(
+                        ChatColor.GRAY + "Mineral que sirve para mejorar ciertos tipos de objeto."
+                ));
+                item.setItemMeta(meta);
+            }
+
             default -> throw new IllegalArgumentException("Tipo de objeto no soportado: " + type);
         }
 
