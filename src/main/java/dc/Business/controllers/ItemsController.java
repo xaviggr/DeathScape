@@ -383,7 +383,7 @@ public class ItemsController {
                 meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, "Mejora");
 
                 meta.setLore(List.of(
-                        ChatColor.GRAY + "Mineral que sirve para mejorar ciertos tipos de objeto."
+                        ChatColor.GRAY + "Mejora ciertos objetos."
                 ));
                 item.setItemMeta(meta);
             }
