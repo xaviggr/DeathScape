@@ -247,6 +247,7 @@ public class ItemsController {
             default -> "Totem de " + type;
         };
 
+        assert meta != null;
         meta.setDisplayName(ChatColor.GOLD + displayName);
 
         // Store the totem type
@@ -284,6 +285,7 @@ public class ItemsController {
             case "dash" -> {
                 item = new ItemStack(Material.FEATHER);
                 ItemMeta meta = item.getItemMeta();
+                assert meta != null;
                 meta.setDisplayName(ChatColor.AQUA + "Propulsor");
                 meta.setCustomModelData(10);
                 meta.getPersistentDataContainer().set(new NamespacedKey(plugin, "CustomItemType"), PersistentDataType.STRING, "Dash");
@@ -294,6 +296,7 @@ public class ItemsController {
             case "catalizador", "catalyst" -> {
                 item = new ItemStack(Material.APPLE);
                 ItemMeta meta = item.getItemMeta();
+                assert meta != null;
                 meta.setDisplayName(ChatColor.GREEN + "Nube de impulso");
                 meta.setCustomModelData(20);
                 meta.getPersistentDataContainer().set(new NamespacedKey(plugin, "CustomItemType"), PersistentDataType.STRING, "JumpBoost");
@@ -307,6 +310,7 @@ public class ItemsController {
             case "invisibilidad", "invisible" -> {
                 item = new ItemStack(Material.APPLE);
                 ItemMeta meta = item.getItemMeta();
+                assert meta != null;
                 meta.setDisplayName(ChatColor.DARK_PURPLE + "Manzana de Invisibilidad Total");
                 meta.setCustomModelData(21);
 
@@ -324,6 +328,7 @@ public class ItemsController {
                 item = new ItemStack(Material.APPLE);
                 ItemMeta meta = item.getItemMeta();
 
+                assert meta != null;
                 meta.setDisplayName(ChatColor.DARK_RED + "Beleño Negro");
                 meta.setCustomModelData(22);
 
@@ -341,6 +346,7 @@ public class ItemsController {
                 item = new ItemStack(Material.PAPER);
                 ItemMeta meta = item.getItemMeta();
 
+                assert meta != null;
                 meta.setDisplayName(ChatColor.GOLD + "Pergamino del Retiro");
                 meta.setCustomModelData(23);
 
@@ -359,6 +365,7 @@ public class ItemsController {
                 item = new ItemStack(Material.HONEY_BOTTLE);
                 ItemMeta meta = item.getItemMeta();
 
+                assert meta != null;
                 meta.setDisplayName(ChatColor.GOLD + "Néctar del Guardián");
                 meta.setCustomModelData(24);
 
@@ -376,6 +383,7 @@ public class ItemsController {
                 item = new ItemStack(Material.PAPER);
                 ItemMeta meta = item.getItemMeta();
 
+                assert meta != null;
                 meta.setDisplayName(ChatColor.BLUE + "Mejora");
                 meta.setCustomModelData(24);
 
@@ -384,6 +392,75 @@ public class ItemsController {
 
                 meta.setLore(List.of(
                         ChatColor.GRAY + "Mejora ciertos objetos."
+                ));
+                item.setItemMeta(meta);
+            }
+
+            case "plat" -> {
+                item = new ItemStack(Material.PAPER);
+                ItemMeta meta = item.getItemMeta();
+
+                assert meta != null;
+                meta.setDisplayName(ChatColor.BLUE + "Corazón de plata");
+                meta.setCustomModelData(2);
+
+                NamespacedKey key = new NamespacedKey(plugin, "CustomItemType");
+                meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, "Plat");
+
+                meta.setLore(List.of(
+                        ChatColor.GRAY + "Un peculiar corazón de plata."
+                ));
+                item.setItemMeta(meta);
+            }
+
+            case "fire" -> {
+                item = new ItemStack(Material.PAPER);
+                ItemMeta meta = item.getItemMeta();
+
+                assert meta != null;
+                meta.setDisplayName(ChatColor.BLUE + "Corazón de fuego");
+                meta.setCustomModelData(3);
+
+                NamespacedKey key = new NamespacedKey(plugin, "CustomItemType");
+                meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, "Fire");
+
+                meta.setLore(List.of(
+                        ChatColor.GRAY + "Un peculiar corazón de fuego."
+                ));
+                item.setItemMeta(meta);
+            }
+
+            case "ice" -> {
+                item = new ItemStack(Material.PAPER);
+                ItemMeta meta = item.getItemMeta();
+
+                assert meta != null;
+                meta.setDisplayName(ChatColor.BLUE + "Corazón de hielo");
+                meta.setCustomModelData(4);
+
+                NamespacedKey key = new NamespacedKey(plugin, "CustomItemType");
+                meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, "Ice");
+
+                meta.setLore(List.of(
+                        ChatColor.GRAY + "Un peculiar corazón de hielo."
+                ));
+                item.setItemMeta(meta);
+            }
+
+            case "res" -> {
+                item = new ItemStack(Material.PAPER);
+                ItemMeta meta = item.getItemMeta();
+
+                assert meta != null;
+                meta.setDisplayName(ChatColor.BLUE + "Corazón de resurrección");
+                meta.setCustomModelData(5);
+
+                NamespacedKey key = new NamespacedKey(plugin, "CustomItemType");
+                meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, "Res");
+
+                meta.setLore(List.of(
+                        ChatColor.GRAY + "Revive a un jugador.",
+                        ChatColor.RED + "Pierde un slot de corazón"
                 ));
                 item.setItemMeta(meta);
             }

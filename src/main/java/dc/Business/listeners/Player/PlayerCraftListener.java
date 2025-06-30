@@ -81,6 +81,15 @@ public class PlayerCraftListener implements Listener {
             return itemsController.generateCustomUtilityItem("retiro");
         }
 
+        // --- Corazón de Resurrección Recipe ---
+        if (
+                isEmpty(matrix[0]) && isEmpty(matrix[1]) && isEmpty(matrix[2]) &&
+                        isHeartPlat(matrix[3]) && isHeartFire(matrix[4]) && isHeartIce(matrix[5]) &&
+                        isEmpty(matrix[6]) && isEmpty(matrix[7]) && isEmpty(matrix[8])
+        ) {
+            return itemsController.generateCustomUtilityItem("res");
+        }
+
         return null; // No crafteo válido
     }
 
@@ -143,4 +152,27 @@ public class PlayerCraftListener implements Listener {
         return meta.getPersistentDataContainer().has(key, PersistentDataType.STRING) &&
                 "deathscape".equalsIgnoreCase(meta.getPersistentDataContainer().get(key, PersistentDataType.STRING));
     }
+
+    private boolean isCustomHeart(ItemStack item, String type) {
+        if (item == null || item.getType() != Material.PAPER) return false;
+        ItemMeta meta = item.getItemMeta();
+        if (meta == null) return false;
+
+        NamespacedKey key = new NamespacedKey(plugin, "CustomItemType");
+        return meta.getPersistentDataContainer().has(key, PersistentDataType.STRING)
+                && type.equalsIgnoreCase(meta.getPersistentDataContainer().get(key, PersistentDataType.STRING));
+    }
+
+    private boolean isHeartPlat(ItemStack item) {
+        return isCustomHeart(item, "Plat");
+    }
+
+    private boolean isHeartFire(ItemStack item) {
+        return isCustomHeart(item, "Fire");
+    }
+
+    private boolean isHeartIce(ItemStack item) {
+        return isCustomHeart(item, "Ice");
+    }
+
 }
