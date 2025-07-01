@@ -146,7 +146,7 @@ public class DeathScape extends JavaPlugin {
      */
     private void initializeListeners() {
         AnimationController animationController = new AnimationController(this);
-        playerListener = new PlayerListener(this, playerController, weatherController, animationController, totemController, lifeController);
+        playerListener = new PlayerListener(this, playerController, weatherController, animationController, totemController, lifeController, itemsController);
         mobSpawnListener = new MobSpawnListener(this, mobSpawnController);
         deathScapeCommand = new DeathScapeCommand(this, reportInventory, reportsInventory, playerController, reviveInventory, dungeonController, lifeController, waypointController, itemsController);
         chatListener = new ChatListener(playerController, this);

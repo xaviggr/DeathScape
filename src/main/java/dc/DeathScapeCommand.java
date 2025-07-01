@@ -326,16 +326,16 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         commandMap.put("endersee", () -> handleEnderSee(player, args, group));
         commandMap.put("mute", () -> handleMutePlayer(player, args, group));
         commandMap.put("unmute", () -> handleUnMutePlayer(player, args, group));
-        commandMap.put("dungeon", () -> dungeonController.teleportPlayerToDungeon(player));
-        commandMap.put("addvidas", () -> handleAddVidasCommand(player, args));
-        commandMap.put("removevidas", () -> handleQuitarVidasCommand(player, args));
+        commandMap.put("dungeon", () -> handleDungeonTP(player, group));
+        commandMap.put("addvidas", () -> handleAddVidasCommand(player, args, group));
+        commandMap.put("removevidas", () -> handleQuitarVidasCommand(player, args, group));
         commandMap.put("vidas", () -> handleVidasCommand(player, args));
         commandMap.put("leaderboard", () -> handleLeaderboard(player, args));
         commandMap.put("puntos", () -> handlePoints(player, args));
         commandMap.put("alijo", () -> handlePlayerStash(player, args, group));
         commandMap.put("alijoanterior", () -> handlePlayerLastSeasonStash(player, args));
         commandMap.put("menu", () -> mainMenu.openMainMenu(player));
-        commandMap.put("itemgive", () -> handleItemGive(player, args));
+        commandMap.put("itemgive", () -> handleItemGive(player, args, group));
         commandMap.put("waypoint", () -> handleWaypointPlayer(player, args));
 
         // Ejecuta el comando correspondiente
@@ -700,7 +700,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
      * @param group  The group data of the player.
      */
     private void handleAddUserToGroupCommand(Player player, String[] args, GroupData group) {
-        if (!group.getPermissions().contains(Permission.GROUP) && !player.isOp()) {
+        if (!player.isOp()) {
             sendNoPermissionMessage(player);
             return;
         }
@@ -732,7 +732,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
      * @param group  The group data of the player.
      */
     private void handleRemoveUserFromGroupCommand(Player player, String[] args, GroupData group) {
-        if (!group.getPermissions().contains(Permission.GROUP) && !player.isOp()) {
+        if (!player.isOp()) {
             sendNoPermissionMessage(player);
             return;
         }
@@ -875,9 +875,57 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
      *
      * @param sender The player executing the command.
      * @param args   The arguments provided by the user.
+     * @param group The player's group.
+     */
+    private void handleAddVidasCommand(CommandSender sender, String[] args, GroupData group) {
+        if (!(sender instanceof Player player)) {
+            sender.sendMessage(ChatColor.RED + "Este comando solo puede ser ejecutado por un jugador.");
+            return;
+        }
+
+        if (!group.getPermissions().contains(Permission.GROUP)) {
+            sendNoPermissionMessage(player);
+            return;
+        }
+
+        if (args.length != 3) {
+            sender.sendMessage(ChatColor.RED + "Uso: /deathscape addvidas <jugador> <vidas>");
+            return;
+        }
+
+        String targetName = args[1];
+        int vidas;
+        try {
+            vidas = Integer.parseInt(args[2]);
+        } catch (NumberFormatException e) {
+            sender.sendMessage(ChatColor.RED + "El número de vidas debe ser un entero.");
+            return;
+        }
+
+        OfflinePlayer target = Bukkit.getOfflinePlayer(targetName);
+        if (!target.hasPlayedBefore() && !target.isOnline()) {
+            sender.sendMessage(ChatColor.RED + "El jugador no existe o nunca se ha conectado.");
+            return;
+        }
+
+        if (PlayerEditDatabase.isPlayerBanned(target.getName())) {
+            playerController.setLivesToPlayer(target, 0);
+            PlayerEditDatabase.UnbanPlayer(target.getName());
+            sender.sendMessage(ChatColor.GREEN + "Jugador " + target.getName() + " ha sido desbaneado con 1 vida.");
+        } else {
+            playerController.addLivesToPlayer(target, vidas);
+            sender.sendMessage(ChatColor.GREEN + "Se han añadido " + vidas + " vidas a " + target.getName() + ".");
+        }
+    }
+
+    /**
+     * Handles the "/addvidas" command.
+     *
+     * @param sender The player executing the command.
+     * @param args   The arguments provided by the user.
      */
     private void handleAddVidasCommand(CommandSender sender, String[] args) {
-        if (args.length < 3) {
+        if (args.length != 3) {
             sender.sendMessage(ChatColor.RED + "Uso: /deathscape addvidas <jugador> <vidas>");
             return;
         }
@@ -912,9 +960,52 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
      *
      * @param sender The player executing the command.
      * @param args   The arguments provided by the user.
+     * @param group The player's group.
+     */
+    private void handleQuitarVidasCommand(CommandSender sender, String[] args, GroupData group) {
+        // Verifica que el sender sea un jugador y que tenga permisos
+        if (!(sender instanceof Player player)) {
+            sender.sendMessage(ChatColor.RED + "Este comando solo puede ser ejecutado por un jugador.");
+            return;
+        }
+
+        if (!group.getPermissions().contains(Permission.GROUP)) {
+            sendNoPermissionMessage(player);
+            return;
+        }
+
+        if (args.length != 3) {
+            sender.sendMessage(ChatColor.RED + "Uso: /deathscape quitarvidas <jugador> <vidas>");
+            return;
+        }
+
+        String targetName = args[1];
+        int vidas;
+        try {
+            vidas = Integer.parseInt(args[2]);
+        } catch (NumberFormatException e) {
+            sender.sendMessage(ChatColor.RED + "El número de vidas debe ser un entero.");
+            return;
+        }
+
+        Player target = Bukkit.getPlayer(targetName);
+        if (target == null || !target.isOnline()) {
+            sender.sendMessage(ChatColor.RED + "El jugador debe estar en línea para quitarle vidas.");
+            return;
+        }
+
+        playerController.removeLivesFromPlayer(target, vidas);
+        sender.sendMessage(ChatColor.GREEN + "Se han quitado " + vidas + " vidas a " + target.getName() + ".");
+    }
+
+    /**
+     * Handles the "/removevidas" command.
+     *
+     * @param sender The player executing the command.
+     * @param args   The arguments provided by the user.
      */
     private void handleQuitarVidasCommand(CommandSender sender, String[] args) {
-        if (args.length < 3) {
+        if (args.length != 3) {
             sender.sendMessage(ChatColor.RED + "Uso: /deathscape quitarvidas <jugador> <vidas>");
             return;
         }
@@ -1167,7 +1258,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
 
         // Clave esperada en el archivo difficulties.yml
         String dayKey = "day_" + requestedDay;
-        FileConfiguration difficultiesConfig = plugin.getDifficultiesConfig(); // Usamos el método del plugin
+        FileConfiguration difficultiesConfig = plugin.getDifficultiesConfig();
 
         // Validar si la sección "dificultades_info" existe
         ConfigurationSection difficultiesSection = difficultiesConfig.getConfigurationSection("dificultades_info");
@@ -1396,6 +1487,67 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
      *               args[0] = "totem" or "objeto",
      *               args[1] = player name,
      *               args[2] = item type (e.g., "Jump", "Dash", etc.).
+     * @param group The player's group.
+     */
+    public void handleItemGive(CommandSender sender, String[] args, GroupData group) {
+        // Verificar si el sender es un jugador con permisos
+        if (sender instanceof Player player) {
+            if (!group.getPermissions().contains(Permission.GROUP)) {
+                sendNoPermissionMessage(player);
+                return;
+            }
+        }
+
+        if (args.length != 4) {
+            sender.sendMessage(ChatColor.RED + "Uso: /ds itemgive <totem|objeto> <jugador> <tipo>");
+            return;
+        }
+
+        String category = args[1]; // "totem" o "objeto"
+        String targetPlayerName = args[2];
+        String type = args[3];
+
+        Player targetPlayer = Bukkit.getPlayer(targetPlayerName);
+        if (targetPlayer == null) {
+            sender.sendMessage(ChatColor.RED + "El jugador " + targetPlayerName + " no está conectado.");
+            return;
+        }
+
+        ItemStack item;
+
+        if (category.equalsIgnoreCase("totem")) {
+            item = itemsController.generateCustomTotem(type);
+            Bukkit.broadcastMessage(ChatColor.GOLD + "[Totem] " + ChatColor.AQUA + "El jugador " +
+                    ChatColor.GREEN + targetPlayer.getName() + ChatColor.AQUA + " ha recibido un Totem de " +
+                    ChatColor.YELLOW + type + ChatColor.AQUA + "!");
+        } else if (category.equalsIgnoreCase("objeto") || category.equalsIgnoreCase("utility")) {
+            try {
+                item = itemsController.generateCustomUtilityItem(type);
+            } catch (IllegalArgumentException e) {
+                sender.sendMessage(ChatColor.RED + "Tipo de objeto no reconocido: " + type);
+                return;
+            }
+
+            Bukkit.broadcastMessage(ChatColor.LIGHT_PURPLE + "[Objeto] " + ChatColor.AQUA + "El jugador " +
+                    ChatColor.GREEN + targetPlayer.getName() + ChatColor.AQUA + " ha recibido el objeto " +
+                    ChatColor.YELLOW + type + ChatColor.AQUA + "!");
+        } else {
+            sender.sendMessage(ChatColor.RED + "Categoría no válida. Usa 'totem' o 'objeto'.");
+            return;
+        }
+
+        targetPlayer.getInventory().addItem(item);
+    }
+
+    /**
+     * Handles the event of giving a custom item (totem or utility item) to a target player,
+     * broadcasting a success message.
+     *
+     * @param sender The sender of the command (can be a player or the console).
+     * @param args   The command arguments:
+     *               args[0] = "totem" or "objeto",
+     *               args[1] = player name,
+     *               args[2] = item type (e.g., "Jump", "Dash", etc.).
      */
     public void handleItemGive(CommandSender sender, String[] args) {
         if (args.length != 4) {
@@ -1438,4 +1590,14 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
 
         targetPlayer.getInventory().addItem(item);
     }
+
+    public void handleDungeonTP(Player player, GroupData group) {
+        if (!group.getPermissions().contains(Permission.GROUP)) {
+            sendNoPermissionMessage(player);
+            return;
+        }
+
+        dungeonController.teleportPlayerToDungeon(player);
+    }
+
 }

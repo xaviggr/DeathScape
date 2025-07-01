@@ -18,7 +18,7 @@ public class PlayerListener {
      * @param animationController The controller managing animations such as death animations.
      * @param totemController     The controller managing Totem of Undying functionality.
      */
-    public PlayerListener(DeathScape plugin, PlayerController playerController, WeatherController weatherController, AnimationController animationController, TotemController totemController, LifeController lifeController) {
+    public PlayerListener(DeathScape plugin, PlayerController playerController, WeatherController weatherController, AnimationController animationController, TotemController totemController, LifeController lifeController, ItemsController itemsController) {
 
         // Register event listeners
         plugin.getServer().getPluginManager().registerEvents(new PlayerDeathEventListener(playerController, weatherController, animationController, lifeController), plugin);
@@ -33,5 +33,6 @@ public class PlayerListener {
         plugin.getServer().getPluginManager().registerEvents(new PlayerTotemListener(plugin), plugin);
         plugin.getServer().getPluginManager().registerEvents(new PlayerCustomItemListener(plugin), plugin);
         plugin.getServer().getPluginManager().registerEvents(new PlayerConsumeItemListener(plugin), plugin);
+        plugin.getServer().getPluginManager().registerEvents(new PlayerCraftListener(plugin, itemsController), plugin);
     }
 }
