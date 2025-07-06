@@ -1400,16 +1400,20 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         int inventorySize;
 
         switch (groupName) {
+            case "tier3" -> {
+                usable = new int[]{0, 1, 2, 3, 4};
+                inventorySize = 9;
+            }
             case "tier2" -> {
-                usable = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8};
+                usable = new int[]{0, 1, 2};
                 inventorySize = 9;
             }
             case "tier1" -> {
-                usable = new int[]{0, 1, 2, 3, 4, 5};
+                usable = new int[]{0, 1};
                 inventorySize = 9;
             }
             default -> {
-                usable = new int[]{0, 1, 2, 3};
+                usable = new int[]{0};
                 inventorySize = 9;
             }
         }
