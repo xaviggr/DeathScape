@@ -204,7 +204,7 @@ public class PlayerJoinEventListener implements Listener {
                     public void run() {
                         int position = playerController.getQueuePosition(player);
 
-                        if (position > 0) {
+                        if (position > 0 && !hasPriority(player)) {
                             player.sendTitle(
                                     ChatColor.AQUA + "🌐 DeathScape",
                                     ChatColor.YELLOW + "Estás en la posición " + ChatColor.AQUA + position + ChatColor.YELLOW + " de la cola.",
@@ -223,5 +223,22 @@ public class PlayerJoinEventListener implements Listener {
                 }.runTaskTimer(plugin, 0, 800);
             }
         }.runTaskLater(plugin, 100);
+    }
+
+
+    /**
+     * Checks if the player belongs to a priority group (Tier1, Tier2, or Tier3).
+     *
+     * @param player The player to check.
+     * @return True if the player has a priority tier permission, false otherwise.
+     */
+    private boolean hasPriority(Player player) {
+        String group = playerController.getGroupFromPlayer(player);
+        return group != null && (
+                group.equalsIgnoreCase("tier1") ||
+                        group.equalsIgnoreCase("tier2") ||
+                        group.equalsIgnoreCase("tier3") ||
+                        group.equalsIgnoreCase("owner")
+        );
     }
 }

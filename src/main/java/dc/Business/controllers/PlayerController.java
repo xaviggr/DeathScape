@@ -466,7 +466,38 @@ public class PlayerController {
      * @param player The player to add to the queue.
      */
     public void addPlayerToServer(Player player) {
-        addPlayerToQueue(player);
+        String group = getGroupFromPlayer(player);
+
+        if (group != null && (
+                group.equalsIgnoreCase("tier1") ||
+                        group.equalsIgnoreCase("tier2") ||
+                        group.equalsIgnoreCase("tier3") ||
+                        group.equalsIgnoreCase("owner")
+        )) {
+            // Salta la cola y entra directamente
+            Location location = PlayerEditDatabase.getPlayerLocation(player.getName());
+            if (location == null) {
+                player.kickPlayer(ChatColor.RED + "Error loading your location. Please contact an administrator.");
+                return;
+            }
+
+            player.teleport(location);
+            PlayerData playerData = PlayerDatabase.getPlayerDataFromDatabase(player.getName());
+            if (playerData != null) {
+                player.setHealth(playerData.getHealth());
+            }
+
+            plugin.getServerData().increasePlayerCounter();
+            removeInvisiblePlayer(player);
+
+            player.sendTitle(
+                    ChatColor.AQUA + "🌐 DeathScape",
+                    ChatColor.YELLOW + "¡Bienvenido de nuevo!",
+                    20, 100, 20
+            );
+        } else {
+            addPlayerToQueue(player);
+        }
     }
 
     /**
