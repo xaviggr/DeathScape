@@ -118,6 +118,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
                         options.add("addvidas");
                         options.add("removevidas");
                         options.add("itemgive");
+                        options.add("menurevivir");
                     }
 
                     if (groupPermissions.contains("teleport")) {
@@ -337,6 +338,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         commandMap.put("menu", () -> mainMenu.openMainMenu(player));
         commandMap.put("itemgive", () -> handleItemGive(player, args, group));
         commandMap.put("waypoint", () -> handleWaypointPlayer(player, args));
+        commandMap.put("menurevivir", () -> handleMenuRevivirCommand(player, args, group));
 
         // Ejecuta el comando correspondiente
         return commandMap.get(args[0].toLowerCase());
@@ -359,6 +361,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         commandMap.put("removevidas", () -> handleQuitarVidasCommand(sender, args));
         commandMap.put("añadirusuarioagrupo", () -> handleAddUserToGroupCommand(sender, args));
         commandMap.put("itemgiven", () -> handleItemGive(sender, args));
+        commandMap.put("menurevivir", () -> handleMenuRevivirCommand(sender, args));
 
         // Add more server commands here as needed...
 
@@ -1100,6 +1103,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
             commands.put("addvidas", "Permite añadir vidas a otro jugador.");
             commands.put("removevidas", "Permite quitar vidas a otro jugador.");
             commands.put("itemgive", "Proporciona un item custom al jugador indicado.");
+            commands.put("menurevivir", "Abre el menú para revivir a un jugador.");
         }
 
         if (groupPermissions.contains("teleport")) {
@@ -1602,6 +1606,57 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         }
 
         dungeonController.teleportPlayerToDungeon(player);
+    }
+
+    /**
+     * Handles the "/ds menurevivir" command.
+     *
+     * @param sender The command sender (must be a player).
+     * @param args   The command arguments.
+     * @param group  The player's group data.
+     */
+    private void handleMenuRevivirCommand(CommandSender sender, String[] args, GroupData group) {
+        // Verifica que el sender sea un jugador
+        if (!(sender instanceof Player player)) {
+            sender.sendMessage(ChatColor.RED + "Este comando solo puede ser ejecutado por un jugador.");
+            return;
+        }
+
+        // Verifica permisos del grupo
+        if (!group.getPermissions().contains(Permission.GROUP) && !player.isOp()) {
+            sendNoPermissionMessage(player);
+            return;
+        }
+
+        // Abre el menú de revivir
+        ReviveInventory reviveInventory = new ReviveInventory();
+        reviveInventory.openInventory(player);
+    }
+
+    /**
+     * Handles the "/ds menurevivir <jugador>" command.
+     *
+     * @param sender The command sender (must be a player).
+     * @param args   The command arguments.
+     */
+    private void handleMenuRevivirCommand(CommandSender sender, String[] args) {
+        // Verifica que el argumento del nombre esté presente
+        if (args.length != 2) {
+            sender.sendMessage(ChatColor.RED + "Uso: /ds menurevivir <jugador>");
+            return;
+        }
+
+        String targetName = args[1];
+        Player target = Bukkit.getPlayerExact(targetName);
+
+        if (target == null || !target.isOnline()) {
+            sender.sendMessage(ChatColor.RED + "El jugador '" + targetName + "' no está en línea.");
+            return;
+        }
+
+        // Abre el inventario al jugador objetivo
+        ReviveInventory reviveInventory = new ReviveInventory();
+        reviveInventory.openInventory(target);
     }
 
 }
