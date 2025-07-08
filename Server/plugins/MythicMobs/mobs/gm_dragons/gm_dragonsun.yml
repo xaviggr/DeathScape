@@ -1,0 +1,55 @@
+gm_dragon_sun:
+  Display: "Bobby"
+  Type: iron_golem
+  Faction: dragon
+  Health: 100000
+  Modules:
+    ThreatTable: true
+  Damage: 45
+  AIGoalSelectors:
+    - clear
+    - meleeattack
+    - randomstroll
+  AITargetSelectors:
+    - clear
+    - nearest            # Selecciona el objetivo más cercano
+    - player
+  DamageModifiers:
+    - POISON 0
+    - WITHER 0
+    - MAGIC 0
+    - HOT_FLOOR 0
+    - FIRE_TICK 0
+    - BLOCK_EXPLOSION 0
+    - ENTITY_EXPLOSION 0
+    - SUFFOCATION 0
+    - CONTACT 0
+    - PROJECTILE 0.5  
+  Options:
+    PreventSunburn: true
+    Silent: true
+    Collidable: true
+    MovementSpeed: 0.19
+    MaxCombatDistance: 100
+    PreventOtherDrops: true
+    FollowRange: 100
+  BossBar:
+    Enabled: true
+    Title: '§c&l# Dragon Sun #'
+    Range: 100
+    Color: RED
+    Style: SEGMENTED_10
+  Skills:
+    - model{mid=gm_sun_dragon;ride=true;n=name} @self ~onSpawn
+    - effect:particles{p=campfire_cosy_smoke;amount=85;speed=0.25;hs=10;vs=0.5;delay=26} @origin ~onDeath
+    - effect:particles{p=reddust;color=#ae9366;amount=1;hs=0.4;vs=1;size=1.7;speed=0.8} @self ~onTimer:20
+    - skill{s=CancelEventSkill;sync=true} @self ~onAttack
+    - randomskill{s=gm_dragon_sun_runnnn,gm_dragon_sun_runnnn,ssgm_sun_dragon_aplast1,ssgm_sun_dragon_attack01,gm_dragon_sun_alint1;sync=true} @target ~onTimer:5
+    - randomskill{s=ssgm_sun_dragon_attack01,gm_dragon_sun_empujar2,gm_dragon_sun_empujar,ssgm_sun_dragon_aplast1,ssgm_sun_dragon_attack01,gm_dragon_sun_alint1;sync=true} @target ~onTimer:1 <50%
+    - randomskill{s=gm_dragon_sun_lluviadefuego;sync=true} @target ~onTimer:1 <50%
+    - skill{s=gm_dragon_sun_walkkk;sync=true} @self ~onDamaged 0.7
+    - modifymobscore{o=mi_walk;e=dummy;a=set;v=1} @Self ~onSpawn
+    - sendtitle{title="";subtitle="&a&lDragon Sun has died";d=7;fi=5;fo=5;repeat=10;repeatinterval=10} @PIR{r=50} ~onDeath
+    - sound{s=draglov_gm:gamitamodels.draglov.cai;v=7;p=0.5;delay=26} @self ~onDeath
+    - sendtitle{title="";subtitle="&c&lDragon Sun";d=7;fi=5;fo=5;repeat=10;repeatinterval=10} @PIR{r=50} ~onSpawn
+    - dismountall{mid=gm_sun_dragon;p=mount} @self ~onDeath

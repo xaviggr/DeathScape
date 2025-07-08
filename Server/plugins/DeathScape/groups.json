@@ -1,0 +1,90 @@
+{
+  "owner": {
+    "name": "owner",
+    "prefix": "\u00264[Owner]",
+    "permissions": [
+      "GROUP",
+      "BAN",
+      "KICK",
+      "TELEPORT",
+      "RELOAD",
+      "REPORTS",
+      "BANSHEE",
+      "CHAT",
+      "HEAL",
+      "DAYS",
+      "MUTE"
+    ],
+    "players": [
+      "xaviggr",
+      "4gymo"
+    ]
+  },
+  "admin": {
+    "name": "admin",
+    "prefix": "\u0026e[Admin]",
+    "permissions": [
+      "BAN",
+      "KICK",
+      "TELEPORT",
+      "REPORTS",
+      "BANSHEE",
+      "CHAT",
+      "HEAL",
+      "MUTE"
+    ],
+    "players": []
+  },
+  "mod": {
+    "name": "mod",
+    "prefix": "\u00265[Mod]",
+    "permissions": [
+      "KICK",
+      "TELEPORT",
+      "REPORTS",
+      "BANSHEE",
+      "CHAT",
+      "MUTE",
+      "HEAL"
+    ],
+    "players": []
+  },
+  "soporte": {
+    "name": "soporte",
+    "prefix": "\u0026a[Soporte]",
+    "permissions": [
+      "BANSHEE",
+      "TELEPORT",
+      "HEAL",
+      "MUTE",
+      "CHAT"
+    ],
+    "players": []
+  },
+  "youtuber_streamer": {
+    "name": "youtuber_streamer",
+    "prefix": "\u00261[Youtuber/Streamer]",
+    "permissions": [],
+    "players": []
+  },
+  "vip": {
+    "name": "vip",
+    "prefix": "\u0026d[VIP]",
+    "permissions": [],
+    "players": []
+  },
+  "nitro": {
+    "name": "nitro",
+    "prefix": "\u00267[Nitro Booster]",
+    "permissions": [],
+    "players": []
+  },
+  "default": {
+    "name": "default",
+    "prefix": "\u0026b[Warrior]",
+    "permissions": [],
+    "players": [
+      "Link825_"
+    ]
+  }
+}

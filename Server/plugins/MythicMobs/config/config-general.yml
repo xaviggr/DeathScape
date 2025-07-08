@@ -1,0 +1,8 @@
+Configuration:
+  General:
+    ThreadPoolSize: -1
+  Worlds:
+  - world
+  - world_nether
+  - world_the_end
+  - rift

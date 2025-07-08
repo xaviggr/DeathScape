@@ -2,7 +2,7 @@
 messages:
   welcome_message:
     enabled: true
-    message: "Bienvenido al server!, %player%!"
+    message: "Bienvenido al server %player%!"
   death_message:
     enabled: true
     title: "MUERTE!"
@@ -10,8 +10,83 @@ messages:
   ban_message:
     enabled: true
     message: "Has sido permabaneado del server!"
-
+  totem_success: "&a¡El tótem te ha salvado con una probabilidad de &b{randomValue}&f/&c{successProbability}&a!"
+  totem_failure: "&cEl jugador &a{playerName} &cusó un tótem con probabilidad &4{randomValue}&f/&9{successProbability}"
+  totem_broadcast_success: "&a¡El jugador &b{playerName} &aha sobrevivido gracias a su tótem con una probabilidad de &b{randomValue}&f/&c{successProbability}&a!"
 config:
-  kick_if_ip_changed: true
+  kick_if_ip_changed: false
   storm_time: 10
   points_to_reduce_on_death: 5
+  totem_success_probability: 50
+  max_players_in_world: 70
+groups:
+  owner:
+    prefix: "&4[Owner]"
+    permissions:
+      - "group"
+      - "ban"
+      - "kick"
+      - "teleport"
+      - "reload"
+      - "reports"
+      - "banshee"
+      - "chat"
+      - "heal"
+      - "days"
+      - "mute"
+    players:
+
+  admin:
+    prefix: "&e[Admin]"
+    permissions:
+      - "ban"
+      - "kick"
+      - "teleport"
+      - "reports"
+      - "banshee"
+      - "chat"
+      - "heal"
+      - "mute"
+    players:
+
+  mod:
+    prefix: "&5[Mod]"
+    permissions:
+      - "kick"
+      - "teleport"
+      - "reports"
+      - "banshee"
+      - "chat"
+      - "mute"
+      - "heal"
+    players:
+
+  soporte:
+    prefix: "&a[Soporte]"
+    permissions:
+      - "banshee"
+      - "teleport"
+      - "heal"
+      - "mute"
+      - "chat"
+    players:
+
+  youtuber_streamer:
+    prefix: "&1[Youtuber/Streamer]"
+    permissions: []
+    players:
+
+  vip:
+    prefix: "&d[VIP]"
+    permissions: []
+    players:
+
+  nitro:
+    prefix: "&7[Nitro Booster]"
+    permissions: []
+    players:
+
+  default:
+    prefix: "&b[Warrior]"
+    permissions: []
+    players:

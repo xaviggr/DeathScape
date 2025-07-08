@@ -1,86 +1,220 @@
 package dc.Persistence.player;
 
+import dc.Business.groups.GroupData;
+import dc.Business.player.PlayerData;
+import dc.Persistence.API.PlayerGroupAPI;
+import dc.Persistence.groups.GroupDatabase;
+import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
 
+import java.util.Objects;
+
+/**
+ * Utility class for managing player data and editing player-related information in the database.
+ */
 public class PlayerEditDatabase {
 
+    /**
+     * Marks the specified player as dead and increments their death count.
+     *
+     * @param playerDeath The player to mark as dead.
+     */
     public static void setPlayerAsDeath(Player playerDeath) {
-
-        PlayerData playerdata = PlayerDatabase.getPlayerDataFromDatabase (playerDeath.getName ());
-        if (playerdata == null) {
-            playerDeath.kickPlayer ("Error al cargar tus datos, contacta con un administrador.");
+        PlayerData playerData = PlayerDatabase.getPlayerDataFromDatabase(playerDeath.getName());
+        if (playerData == null) {
+            playerDeath.kickPlayer("Error al cargar tus datos, contacta con un administrador.");
         } else {
-            playerdata.setDeaths(playerdata.getDeaths() + 1);
-            playerdata.setDead(true);
-            PlayerDatabase.addPlayerDataToDatabase (playerdata);
+            playerData.setDeaths(playerData.getDeaths() + 1);
+            playerData.setDead(true);
+            PlayerDatabase.addPlayerDataToDatabase(playerData);
         }
     }
 
+    /**
+     * Sets the ban date and time for a player.
+     *
+     * @param player The player to update.
+     */
     public static void setPlayerBanDate(Player player) {
-        PlayerData playerdata = PlayerDatabase.getPlayerDataFromDatabase (player.getName ());
-        if (playerdata == null) {
-            player.kickPlayer ("Error al cargar tus datos, contacta con un administrador.");
+        PlayerData playerData = PlayerDatabase.getPlayerDataFromDatabase(player.getName());
+        if (playerData == null) {
+            player.kickPlayer("Error al cargar tus datos, contacta con un administrador.");
         } else {
-            playerdata.setBanTime();
-            playerdata.setBanDate();
-            PlayerDatabase.addPlayerDataToDatabase (playerdata);
+            playerData.setBanTime();
+            playerData.setBanDate();
+            PlayerDatabase.addPlayerDataToDatabase(playerData);
         }
     }
 
-    public static void setPlayerTimePlayed(Player player, int new_segundos, int new_minutos, int new_horas) {
-        PlayerData playerdata = PlayerDatabase.getPlayerDataFromDatabase (player.getName ());
-        if (playerdata == null) {
-            player.kickPlayer ("Error al cargar tus datos, contacta con un administrador.");
+    /**
+     * Updates the total playtime for a player by adding the specified time.
+     *
+     * @param player       The player to update.
+     * @param new_seconds  Seconds to add.
+     * @param new_minutes  Minutes to add.
+     * @param new_hours    Hours to add.
+     */
+    public static void setPlayerTimePlayed(Player player, int new_seconds, int new_minutes, int new_hours) {
+        PlayerData playerData = PlayerDatabase.getPlayerDataFromDatabase(player.getName());
+        if (playerData == null) {
+            player.kickPlayer("Error al cargar tus datos, contacta con un administrador.");
         } else {
+            String[] parts = playerData.getTimePlayed().split("\\s+");
+            int seconds = 0, minutes = 0, hours = 0;
 
-            String[] partes = playerdata.getTimePlayed().split("\\s+");
-
-            int segundos = 0, minutos = 0, horas = 0;
-
-            for (String parte : partes) {
+            for (String parte : parts) {
                 if (parte.endsWith("s")) {
-                    segundos = Integer.parseInt(parte.substring(0, parte.length() - 1)); // Convertir los segundos a entero
+                    seconds = Integer.parseInt(parte.substring(0, parte.length() - 1)); // Convertir los segundos a entero
                 } else if (parte.endsWith("m")) {
-                    minutos = Integer.parseInt(parte.substring(0, parte.length() - 1));// Convertir los minutos a entero
+                    minutes = Integer.parseInt(parte.substring(0, parte.length() - 1));// Convertir los minutos a entero
                 } else if (parte.endsWith("h")) {
-                    horas = Integer.parseInt(parte.substring(0, parte.length() - 1));// Convertir las horas a entero
+                    hours = Integer.parseInt(parte.substring(0, parte.length() - 1));// Convertir las horas a entero
                 }
             }
 
-            segundos += new_segundos;
-            if (segundos >= 60) {
-                new_minutos += segundos / 60;
-                segundos = segundos % 60;
+            seconds += new_seconds;
+            if (seconds >= 60) {
+                new_minutes += seconds / 60;
+                seconds %= 60;
             }
-            minutos += new_minutos;
-            if (minutos >= 60) {
-                new_horas += minutos / 60;
-                minutos = minutos % 60;
+            minutes += new_minutes;
+            if (minutes >= 60) {
+                new_hours += minutes / 60;
+                minutes %= 60;
             }
-            horas += new_horas;
+            hours += new_hours;
 
-            playerdata.setTimePlayed(segundos + "s " + minutos + "m " + horas + "h");
-            PlayerDatabase.addPlayerDataToDatabase (playerdata);
+            playerData.setTimePlayed(hours + "h " + minutes + "m " + seconds + "s");
+            PlayerDatabase.addPlayerDataToDatabase(playerData);
         }
     }
 
+    /**
+     * Saves the current coordinates and dimension of a player.
+     *
+     * @param player The player to update.
+     */
     public static void setPlayerCoords(Player player) {
-        PlayerData playerdata = PlayerDatabase.getPlayerDataFromDatabase (player.getName ());
-        if (playerdata == null) {
-            player.kickPlayer ("Error al cargar tus datos, contacta con un administrador.");
+        PlayerData playerData = PlayerDatabase.getPlayerDataFromDatabase(player.getName());
+        if (playerData == null) {
+            player.kickPlayer("Error al cargar tus datos, contacta con un administrador.");
         } else {
-            playerdata.setCoords(player.getLocation().getX() + "," + player.getLocation().getY() + "," + player.getLocation().getZ());
-            PlayerDatabase.addPlayerDataToDatabase (playerdata);
+            playerData.setCoords(player.getLocation().getX() + "," + player.getLocation().getY() + "," + player.getLocation().getZ());
+            playerData.setDimension(player.getWorld().getName());
+            PlayerDatabase.addPlayerDataToDatabase(playerData);
         }
     }
 
-    public static void UnbanPlayer(String player_name) {
-        PlayerData playerdata = PlayerDatabase.getPlayerDataFromDatabase (player_name);
-        if (playerdata != null) {
-            playerdata.setDead(false);
-            playerdata.setBanDate("0");
-            playerdata.setBantime("0");
-            PlayerDatabase.addPlayerDataToDatabase (playerdata);
+    /**
+     * Unbans a player by resetting their death and ban status.
+     *
+     * @param playerName The name of the player to unban.
+     */
+    public static void UnbanPlayer(String playerName) {
+        PlayerData playerData = PlayerDatabase.getPlayerDataFromDatabase(playerName);
+        if (playerData != null) {
+            playerData.setDead(false);
+            playerData.setBanDate("0");
+            playerData.setBantime("0");
+            playerData.setHealth(20);
+            PlayerDatabase.addPlayerDataToDatabase(playerData);
         }
+    }
+
+    /**
+     * Adds a player to a specific group.
+     *
+     * @param player The name of the player to add.
+     * @param group  The name of the group.
+     * @return True if the operation is successful, false otherwise.
+     */
+    public static boolean addPlayerToGroup(String player, String group) {
+        GroupData groupData = GroupDatabase.getGroupData(group.toLowerCase());
+        if (groupData == null) {
+            return false;
+        }
+
+        // Obtener el grupo actual del jugador
+        String currentGroup = PlayerDatabase.getPlayerGroup(player);
+        if (currentGroup != null && currentGroup.equalsIgnoreCase("tier2") && group.equalsIgnoreCase("tier1")) {
+            // Si es tier2 y quieren cambiarlo a tier1 --> NO hacer el cambio
+            return false;
+        }
+
+        if (groupData.getPlayers().contains(player)) {
+            return false;
+        }
+
+        removePlayerFromGroup(player);
+        groupData.addPlayer(player);
+        GroupDatabase.addGroupData(groupData);
+        PlayerDatabase.setPlayerGroup(player, group);
+
+        // --> Actualizamos en Firebase también
+        PlayerGroupAPI.setPlayerGroup(player, group);
+
+        return true;
+    }
+
+
+    /**
+     * Removes a player from their current group.
+     *
+     * @param player The name of the player to remove.
+     */
+    public static void removePlayerFromGroup(String player) {
+        GroupData groupData = GroupDatabase.getGroupData(Objects.requireNonNull(PlayerDatabase.getPlayerDataFromDatabase(player)).getGroup());
+        assert groupData != null;
+        if (!groupData.getPlayers().contains(player)) {
+            return;
+        }
+        groupData.removePlayer(player);
+        GroupDatabase.addGroupData(groupData);
+    }
+
+    /**
+     * Retrieves the saved location of a player.
+     *
+     * @param name The name of the player.
+     * @return A {@link Location} object representing the player's saved location, or null if not found.
+     */
+    public static Location getPlayerLocation(String name) {
+        PlayerData playerData = PlayerDatabase.getPlayerDataFromDatabase(name);
+        if (playerData == null) {
+            return null;
+        }
+        String[] coords = playerData.getCoords().split(",");
+        World world = playerData.getDimension();
+        return new Location(world, Double.parseDouble(coords[0]), Double.parseDouble(coords[1]), Double.parseDouble(coords[2]));
+    }
+
+    /**
+     * Updates the health value of a player in the database.
+     *
+     * @param player The player whose health is to be updated.
+     */
+    public static void setPlayerHealth(Player player) {
+        PlayerData playerData = PlayerDatabase.getPlayerDataFromDatabase(player.getName());
+        if (playerData == null) {
+            player.kickPlayer("Error al cargar tus datos, contacta con un administrador.");
+        } else {
+            playerData.setHealth(player.getHealth());
+            PlayerDatabase.addPlayerDataToDatabase(playerData);
+        }
+    }
+
+    /**
+     * Checks if a player is currently banned.
+     *
+     * @param targetPlayer The name of the player to check.
+     * @return True if the player is banned, false otherwise.
+     */
+    public static boolean isPlayerBanned(String targetPlayer) {
+        PlayerData playerData = PlayerDatabase.getPlayerDataFromDatabase(targetPlayer);
+        if (playerData == null) {
+            return false;
+        }
+        return playerData.isDead();
     }
 }

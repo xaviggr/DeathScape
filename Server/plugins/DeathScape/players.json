@@ -1,14 +1,47 @@
 {
   "xaviggr": {
-    "Name": "xaviggr",
-    "IsDead": false,
-    "Deaths": 0,
-    "IP": "127.0.0.1",
-    "TimePlayed": "39s 0m 0h",
-    "UUID": "cb185b4b-cea7-43bb-a340-571c9bb6c3a5",
-    "BanDate": "0",
-    "BanTime": "0",
-    "Coords": "18.648845813689384,68.0,18.53103806113979",
-    "Points": 0
+    "name": "xaviggr",
+    "isDead": false,
+    "deaths": 3,
+    "hostAddress": "192.168.1.134",
+    "timePlayed": "2h 47m 11s",
+    "uuid": "cb185b4b-cea7-43bb-a340-571c9bb6c3a5",
+    "points": 5,
+    "banDate": "0",
+    "bantime": "0",
+    "coords": "402.84722458084093,149.5,80.97326507937771",
+    "dimension": "world_minecraft_rift",
+    "group": "owner",
+    "health": 20.0
+  },
+  "Link825_": {
+    "name": "Link825_",
+    "isDead": false,
+    "deaths": 0,
+    "hostAddress": "83.50.199.232",
+    "timePlayed": "1h 13m 29s",
+    "uuid": "a3a49fea-23f2-407c-b31d-d3e63cabbc96",
+    "points": 0,
+    "banDate": "0",
+    "bantime": "0",
+    "coords": "483.8826532881445,149.0,-21.756520124595585",
+    "dimension": "world_minecraft_rift",
+    "group": "default",
+    "health": 20.0
+  },
+  "4gymo": {
+    "name": "4gymo",
+    "isDead": false,
+    "deaths": 0,
+    "hostAddress": "81.34.127.119",
+    "timePlayed": "0h 23m 0s",
+    "uuid": "19cef73f-c4d2-46ec-8481-81ea7417e2f3",
+    "points": 0,
+    "banDate": "0",
+    "bantime": "0",
+    "coords": "421.99943188325403,143.77998344276864,238.80660146182194",
+    "dimension": "world_minecraft_rift",
+    "group": "owner",
+    "health": 20.0
   }
 }

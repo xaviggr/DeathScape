@@ -1,159 +1,182 @@
 package dc.Persistence.player;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
+import com.google.gson.*;
+import dc.Business.player.PlayerData;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.util.io.BukkitObjectInputStream;
 
 import java.io.*;
-import java.util.UUID;
+import java.util.ArrayList;
+import java.util.Base64;
+import java.util.List;
 
+/**
+ * A database class for managing player data.
+ * Provides methods to read, write, and manipulate player information stored in a JSON file.
+ */
 public class PlayerDatabase {
-    public static void setNombreArchivo(String nombreArchivo) {
-        PlayerDatabase.nombreArchivo = nombreArchivo;
+
+    private static String nameFile; // Path to the file storing player data
+    private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
+
+    /**
+     * Sets the file path for the player database.
+     *
+     * @param nameFile The file path to store player data.
+     */
+    public static void setNameFile(String nameFile) {
+        PlayerDatabase.nameFile = nameFile;
     }
 
-    private static String nombreArchivo;
-
+    /**
+     * Initializes the player database by creating the file if it doesn't exist.
+     * The database is initialized with an empty JSON object.
+     */
     public static void initPlayerDatabase() {
-        File archivo = new File (nombreArchivo);
-
-        // Comprueba si el archivo ya existe
-        if (!archivo.exists ()) {
+        File file = new File(nameFile);
+        if (!file.exists()) {
             try {
-                archivo.createNewFile ();
+                file.createNewFile();
+                try (FileWriter writer = new FileWriter(file)) {
+                    writer.write("{}"); // Initialize with an empty JSON object
+                }
             } catch (IOException e) {
-                e.printStackTrace ();
+                e.printStackTrace();
             }
         }
     }
 
-    public static boolean addPlayerDataToDatabase(PlayerData playerData) {
-        File archivo = new File(nombreArchivo);
+    /**
+     * Reads the JSON file containing player data.
+     *
+     * @return A JsonObject containing all player data.
+     */
+    private static JsonObject readJsonFile() {
+        File file = new File(nameFile);
+        if (!file.exists()) {
+            initPlayerDatabase();
+            return new JsonObject();
+        }
 
-        try {
-            Gson gson = new GsonBuilder().setPrettyPrinting().create();
-            JsonObject jsonObject;
-
-            if (archivo.exists()) {
-                // Si el archivo ya existe, leer su contenido y convertirlo a un objeto JSON
-                BufferedReader bufferedReader = new BufferedReader(new FileReader(archivo));
-                StringBuilder jsonString = new StringBuilder();
-                String linea;
-
-                while ((linea = bufferedReader.readLine()) != null) {
-                    jsonString.append(linea);
-                }
-                bufferedReader.close();
-
-                jsonObject = gson.fromJson(jsonString.toString(), JsonObject.class);
-            } else {
-                // Si el archivo no existe, crear un nuevo objeto JSON
-                jsonObject = new JsonObject();
-            }
-
-            if(jsonObject == null) {
-                jsonObject = new JsonObject();
-            }
-
-            // Buscar si ya existe un objeto con el nombre del jugador
-            if (jsonObject.has(playerData.getName())) {
-                // Si existe, obtener el objeto y sobrescribir sus valores
-                JsonObject existingPlayerObject = jsonObject.getAsJsonObject(playerData.getName());
-                existingPlayerObject.addProperty("Name", playerData.getName());
-                existingPlayerObject.addProperty("IsDead", playerData.isDead());
-                existingPlayerObject.addProperty("Deaths", playerData.getDeaths());
-                existingPlayerObject.addProperty("IP", playerData.getHostAddress());
-                existingPlayerObject.addProperty("TimePlayed", playerData.getTimePlayed());
-                existingPlayerObject.addProperty("UUID", playerData.getUuid().toString());
-                existingPlayerObject.addProperty("BanDate", playerData.getBanDate());
-                existingPlayerObject.addProperty("BanTime", playerData.getBantime());
-                existingPlayerObject.addProperty("Coords", playerData.getCoords());
-                existingPlayerObject.addProperty("Points", playerData.getPoints());
-            } else {
-                // Si no existe, crear un nuevo objeto JSON para el jugador
-                JsonObject playerObject = new JsonObject();
-                playerObject.addProperty("Name", playerData.getName());
-                playerObject.addProperty("IsDead", playerData.isDead());
-                playerObject.addProperty("Deaths", playerData.getDeaths());
-                playerObject.addProperty("IP", playerData.getHostAddress());
-                playerObject.addProperty("TimePlayed", playerData.getTimePlayed());
-                playerObject.addProperty("UUID", playerData.getUuid().toString());
-                playerObject.addProperty("BanDate", playerData.getBanDate());
-                playerObject.addProperty("BanTime", playerData.getBantime());
-                playerObject.addProperty("Coords", playerData.getCoords());
-                playerObject.addProperty("Points", playerData.getPoints());
-
-                jsonObject.add(playerData.getName(), playerObject);
-            }
-
-            // Convertir a formato JSON
-            String newJsonString = gson.toJson(jsonObject);
-
-            // Escribir en el archivo
-            FileWriter fileWriter = new FileWriter(archivo);
-            fileWriter.write(newJsonString);
-            fileWriter.flush();
-            fileWriter.close();
-
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
+            return GSON.fromJson(bufferedReader, JsonObject.class);
         } catch (IOException e) {
             e.printStackTrace();
-            return false;
         }
+        return new JsonObject();
+    }
+
+    /**
+     * Writes the given player data to the JSON file.
+     *
+     * @param jsonObject A JsonObject containing the updated player data.
+     */
+    private static void writeJsonFile(JsonObject jsonObject) {
+        try (FileWriter fileWriter = new FileWriter(nameFile)) {
+            fileWriter.write(GSON.toJson(jsonObject));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Adds player data to the database.
+     *
+     * @param playerData The {@link PlayerData} object representing the player data to add.
+     * @return true if the operation succeeds.
+     */
+    public static boolean addPlayerDataToDatabase(PlayerData playerData) {
+        JsonObject jsonObject = readJsonFile();
+        jsonObject.add(playerData.getName(), GSON.toJsonTree(playerData));
+        writeJsonFile(jsonObject);
+        PlayerEditDatabase.addPlayerToGroup(playerData.getName(), playerData.getGroup());
         return true;
     }
 
+    /**
+     * Retrieves player data from the database.
+     *
+     * @param playerName The name of the player to retrieve.
+     * @return A {@link PlayerData} object if found, or null if not found.
+     */
     public static PlayerData getPlayerDataFromDatabase(String playerName) {
-        File archivo = new File(nombreArchivo);
+        JsonObject jsonObject = readJsonFile();
+        JsonObject playerObject = jsonObject.getAsJsonObject(playerName);
 
-        try {
-            Gson gson = new Gson();
-            JsonObject jsonObject;
-
-            if (archivo.exists()) {
-                // Si el archivo existe, leer su contenido y convertirlo a un objeto JSON
-                BufferedReader bufferedReader = new BufferedReader(new FileReader(archivo));
-                StringBuilder jsonString = new StringBuilder();
-                String linea;
-
-                while ((linea = bufferedReader.readLine()) != null) {
-                    jsonString.append(linea);
-                }
-                bufferedReader.close();
-
-                jsonObject = gson.fromJson(jsonString.toString(), JsonObject.class);
-
-                if (jsonObject == null) {
-                    jsonObject = new JsonObject();
-                }
-
-                // Buscar el objeto del jugador por su nombre
-                JsonObject playerObject = jsonObject.getAsJsonObject(playerName);
-
-                if (playerObject != null) {
-                    // Obtener los datos del jugador desde el objeto JSON
-                    String name = playerName;
-                    boolean isDead = playerObject.get("IsDead").getAsBoolean();
-                    int deaths = playerObject.get("Deaths").getAsInt();
-                    String hostAddress = playerObject.get("IP").getAsString();
-                    String timePlayed = playerObject.get("TimePlayed").getAsString();
-                    UUID uuid = UUID.fromString(playerObject.get("UUID").getAsString());
-                    String banDate = playerObject.get("BanDate").getAsString();
-                    String banTime = playerObject.get("BanTime").getAsString();
-                    String coords = playerObject.get("Coords").getAsString();
-                    int points = playerObject.get("Points").getAsInt();
-
-                    // Crear y devolver un nuevo objeto PlayerData
-                    return new PlayerData(name, isDead, deaths, hostAddress, timePlayed, uuid, banDate, banTime, coords, points);
-                }
-            } else {
-                // Si el archivo no existe, devolver null
-                initPlayerDatabase ();
-                return null;
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (playerObject != null) {
+            return GSON.fromJson(playerObject, PlayerData.class);
         }
+        return null;
+    }
 
-        return null; // Si no se encuentra el jugador, devolver null
+    /**
+     * Retrieves the group of a player from the database.
+     *
+     * @param player The name of the player.
+     * @return The group of the player, or null if not found.
+     */
+    public static String getPlayerGroup(String player) {
+        PlayerData playerData = getPlayerDataFromDatabase(player);
+        if (playerData != null) {
+            return playerData.getGroup();
+        }
+        return null;
+    }
+
+    /**
+     * Retrieves a list of dead players from the database.
+     *
+     * @return A list of player names who are marked as dead.
+     */
+    public static List<String> getDeadPlayers() {
+        List<String> deadPlayers = new ArrayList<>();
+        JsonObject jsonObject = readJsonFile();
+
+        jsonObject.entrySet().stream()
+                .filter(entry -> entry.getValue().getAsJsonObject().get("isDead").getAsBoolean())
+                .forEach(entry -> deadPlayers.add(entry.getKey()));
+
+        return deadPlayers;
+    }
+
+    /**
+     * Retrieves a list of all players from the database.
+     *
+     * @return A list of all player names.
+     */
+    public static List<String> getAllPlayers() {
+        return new ArrayList<>(readJsonFile().keySet());
+    }
+
+    /**
+     * Updates the group of a player in the database.
+     *
+     * @param player The name of the player whose group is to be updated.
+     * @param group  The name of the new group.
+     */
+    public static void setPlayerGroup(String player, String group) {
+        PlayerData playerData = getPlayerDataFromDatabase(player);
+        if (playerData != null) {
+            playerData.setGroup(group);
+            addPlayerDataToDatabase(playerData);
+        }
+    }
+
+    /**
+     * Returns a list of PlayerData sorted by points from highest to lowest.
+     *
+     * @return List of PlayerData sorted by points.
+     */
+    public static List<PlayerData> getLeaderboard() {
+        List<PlayerData> leaderboard = new ArrayList<>();
+        JsonObject jsonObject = readJsonFile();
+
+        jsonObject.entrySet().forEach(entry -> {
+            PlayerData data = GSON.fromJson(entry.getValue(), PlayerData.class);
+            leaderboard.add(data);
+        });
+
+        leaderboard.sort((a, b) -> Integer.compare(b.getPoints(), a.getPoints())); // Descending
+        return leaderboard;
     }
 }
