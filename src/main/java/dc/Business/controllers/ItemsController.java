@@ -237,47 +237,68 @@ public class ItemsController {
      * @return Un ItemStack representando el totem personalizado.
      */
     public ItemStack generateCustomTotem(String type) {
-        ItemStack totem = new ItemStack(Material.TOTEM_OF_UNDYING);
-        ItemMeta meta = totem.getItemMeta();
+        ItemStack item;
 
-        String displayName = switch (type.toLowerCase()) {
-            case "jump" -> "Totem de Salto";
-            case "explosion" -> "Totem de Explosión";
-            case "deathscape" -> "DeathScape Totem";
-            default -> "Totem de " + type;
-        };
+        switch (type.toLowerCase()) {
+            case "jump" -> {
+                item = new ItemStack(Material.TOTEM_OF_UNDYING);
+                ItemMeta meta = item.getItemMeta();
+                assert meta != null;
+                meta.setDisplayName(ChatColor.BLUE + "Totem de Salto");
+                meta.setCustomModelData(10);
 
-        assert meta != null;
-        meta.setDisplayName(ChatColor.GOLD + displayName);
+                NamespacedKey key = new NamespacedKey(plugin, "TotemType");
+                meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, "Jump");
 
-        // Store the totem type
-        NamespacedKey key = new NamespacedKey(plugin, "TotemType");
-        meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, type);
+                meta.setLore(List.of(
+                        ChatColor.GRAY + "Otorga salto potenciado al revivir.",
+                        ChatColor.DARK_PURPLE + "'Creado por antiguos alquimistas del viento.'",
+                        ChatColor.BLUE + "" + ChatColor.ITALIC + "Raro"
+                ));
+                item.setItemMeta(meta);
+            }
 
-        // Set custom model
-        int modelData = switch (type.toLowerCase()) {
-            case "jump" -> 10;
-            case "explosion" -> 11;
-            case "deathscape" -> 12;
-            default -> 0;
-        };
-        meta.setCustomModelData(modelData);
+            case "explosion" -> {
+                item = new ItemStack(Material.TOTEM_OF_UNDYING);
+                ItemMeta meta = item.getItemMeta();
+                assert meta != null;
+                meta.setDisplayName(ChatColor.DARK_PURPLE + "Totem de Explosión");
+                meta.setCustomModelData(11);
 
-        meta.setLore(List.of(
-                ChatColor.YELLOW + "Tipo: " + type,
-                ChatColor.GRAY + "Se activa al salvarte de la muerte."
-        ));
+                NamespacedKey key = new NamespacedKey(plugin, "TotemType");
+                meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, "Explosion");
+                meta.setLore(List.of(
+                        ChatColor.GRAY + "Explota causando daño en área al revivir.",
+                        ChatColor.DARK_PURPLE + "'Forjado con el alma de un dragón furioso.'",
+                        ChatColor.DARK_PURPLE + "" + ChatColor.ITALIC + "Épico"
+                ));
+                item.setItemMeta(meta);
+            }
 
-        totem.setItemMeta(meta);
-        return totem;
+            case "deathscape" -> {
+                item = new ItemStack(Material.TOTEM_OF_UNDYING);
+                ItemMeta meta = item.getItemMeta();
+                assert meta != null;
+                meta.setDisplayName(ChatColor.GOLD + "DeathScape Totem");
+                meta.setCustomModelData(12);
+
+                NamespacedKey key = new NamespacedKey(plugin, "TotemType");
+                meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, "DeathScape");
+
+                meta.setLore(List.of(
+                        ChatColor.GRAY + "Teletransporta al usuario a un lugar seguro.",
+                        ChatColor.DARK_PURPLE + "'Creado por los antiguos para escapar de la muerte misma.'",
+                        ChatColor.GOLD + "" + ChatColor.ITALIC + "Legendario"
+                ));
+                item.setItemMeta(meta);
+            }
+
+            default -> throw new IllegalArgumentException("Tipo de totem no soportado: " + type);
+        }
+
+        return item;
     }
 
-    /**
-     * Genera un ítem personalizado de utilidad.
-     *
-     * @param type El tipo de utilidad ("Dash", "Catalizador").
-     * @return Un ItemStack representando el objeto personalizado.
-     */
     public ItemStack generateCustomUtilityItem(String type) {
         ItemStack item;
 
@@ -286,10 +307,15 @@ public class ItemsController {
                 item = new ItemStack(Material.FEATHER);
                 ItemMeta meta = item.getItemMeta();
                 assert meta != null;
-                meta.setDisplayName(ChatColor.AQUA + "Propulsor");
+                meta.setDisplayName(ChatColor.GOLD + "Propulsor");
                 meta.setCustomModelData(10);
                 meta.getPersistentDataContainer().set(new NamespacedKey(plugin, "CustomItemType"), PersistentDataType.STRING, "Dash");
-                meta.setLore(List.of(ChatColor.YELLOW + "Tipo: Dash", ChatColor.GRAY + "Haz click derecho para activarlo."));
+                meta.setLore(List.of(
+                        ChatColor.GRAY + "Haz clic derecho para impulsarte hacia adelante.",
+                        ChatColor.RED + "5 segundos de enfriamiento.",
+                        ChatColor.DARK_PURPLE + "'Diseñado por el mensajero de los dioses.'",
+                        ChatColor.GOLD + "" + ChatColor.ITALIC + "Legendario"
+                ));
                 item.setItemMeta(meta);
             }
 
@@ -301,8 +327,10 @@ public class ItemsController {
                 meta.setCustomModelData(20);
                 meta.getPersistentDataContainer().set(new NamespacedKey(plugin, "CustomItemType"), PersistentDataType.STRING, "JumpBoost");
                 meta.setLore(List.of(
-                        ChatColor.YELLOW + "Tipo: JumpBoost",
-                        ChatColor.GRAY + "Al consumirla, da un salto increíble."
+                        ChatColor.GRAY + "Te lanza hacia arriba al consumirla.",
+                        ChatColor.RED + "Se destruye tras el uso.",
+                        ChatColor.DARK_PURPLE + "'Extraída del suspiro de una nube viviente.'",
+                        ChatColor.GREEN + "" + ChatColor.ITALIC + "Poco común"
                 ));
                 item.setItemMeta(meta);
             }
@@ -313,13 +341,12 @@ public class ItemsController {
                 assert meta != null;
                 meta.setDisplayName(ChatColor.DARK_PURPLE + "Manzana de Invisibilidad Total");
                 meta.setCustomModelData(21);
-
-                NamespacedKey key = new NamespacedKey(plugin, "CustomItemType");
-                meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, "Invisibilidad");
-
+                meta.getPersistentDataContainer().set(new NamespacedKey(plugin, "CustomItemType"), PersistentDataType.STRING, "Invisibilidad");
                 meta.setLore(List.of(
-                        ChatColor.YELLOW + "Tipo: Invisibilidad",
-                        ChatColor.GRAY + "Te vuelve invisible para mobs y jugadores durante 10s."
+                        ChatColor.WHITE + "Te vuelve invisible durante 10 segundos.",
+                        ChatColor.DARK_GRAY + "No pueden verte ni mobs ni jugadores.",
+                        ChatColor.DARK_PURPLE + "'Solo los verdaderamente olvidados logran desaparecer así.'",
+                        ChatColor.DARK_PURPLE + "" + ChatColor.ITALIC + "Épico"
                 ));
                 item.setItemMeta(meta);
             }
@@ -327,17 +354,16 @@ public class ItemsController {
             case "beleño", "beleñonegro" -> {
                 item = new ItemStack(Material.APPLE);
                 ItemMeta meta = item.getItemMeta();
-
                 assert meta != null;
                 meta.setDisplayName(ChatColor.DARK_RED + "Beleño Negro");
                 meta.setCustomModelData(22);
-
-                NamespacedKey key = new NamespacedKey(plugin, "CustomItemType");
-                meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, "Beleño");
-
+                meta.getPersistentDataContainer().set(new NamespacedKey(plugin, "CustomItemType"), PersistentDataType.STRING, "Beleño");
                 meta.setLore(List.of(
                         ChatColor.RED + "Efecto: +100% daño cuerpo a cuerpo",
-                        ChatColor.GRAY + "pero recibes el doble de daño durante 10s."
+                        ChatColor.GRAY + "pero recibes el doble de daño durante 10 segundos.",
+                        ChatColor.DARK_RED + "Peligroso de usar, incluso para los expertos.",
+                        ChatColor.DARK_PURPLE + "'Utilizado por los guerreros del caos en rituales prohibidos.'",
+                        ChatColor.RED + "" + ChatColor.ITALIC + "Único"
                 ));
                 item.setItemMeta(meta);
             }
@@ -345,18 +371,15 @@ public class ItemsController {
             case "retiro", "pergamino", "scroll" -> {
                 item = new ItemStack(Material.PAPER);
                 ItemMeta meta = item.getItemMeta();
-
                 assert meta != null;
                 meta.setDisplayName(ChatColor.GOLD + "Pergamino del Retiro");
                 meta.setCustomModelData(23);
-
-                NamespacedKey key = new NamespacedKey(plugin, "CustomItemType");
-                meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, "ScrollReturn");
-
+                meta.getPersistentDataContainer().set(new NamespacedKey(plugin, "CustomItemType"), PersistentDataType.STRING, "ScrollReturn");
                 meta.setLore(List.of(
-                        ChatColor.YELLOW + "Tipo: Teletransporte",
                         ChatColor.GRAY + "Te devuelve a tu último punto de respawn.",
-                        ChatColor.RED + "Un solo uso."
+                        ChatColor.RED + "Un solo uso.",
+                        ChatColor.DARK_PURPLE + "'Escrito con tinta del río del tiempo.'",
+                        ChatColor.GOLD + "" + ChatColor.ITALIC + "Legendario"
                 ));
                 item.setItemMeta(meta);
             }
@@ -364,17 +387,15 @@ public class ItemsController {
             case "nectar", "guardian", "nectarguardian" -> {
                 item = new ItemStack(Material.HONEY_BOTTLE);
                 ItemMeta meta = item.getItemMeta();
-
                 assert meta != null;
-                meta.setDisplayName(ChatColor.GOLD + "Néctar del Guardián");
+                meta.setDisplayName(ChatColor.GREEN + "Néctar del Guardián");
                 meta.setCustomModelData(24);
-
-                NamespacedKey key = new NamespacedKey(plugin, "CustomItemType");
-                meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, "NectarCaida");
-
+                meta.getPersistentDataContainer().set(new NamespacedKey(plugin, "CustomItemType"), PersistentDataType.STRING, "NectarCaida");
                 meta.setLore(List.of(
-                        ChatColor.YELLOW + "Tipo: Protección",
-                        ChatColor.GRAY + "Inmunidad al daño de caída durante 1 minuto."
+                        ChatColor.WHITE + "Inmunidad al daño por caída durante 60 segundos.",
+                        ChatColor.DARK_GRAY + "Ideal para exploradores y acróbatas.",
+                        ChatColor.DARK_PURPLE + "'Se dice que un guardián de las alturas lloró este néctar.'",
+                        ChatColor.GREEN + "" + ChatColor.ITALIC + "Poco común"
                 ));
                 item.setItemMeta(meta);
             }
@@ -382,16 +403,14 @@ public class ItemsController {
             case "mejora" -> {
                 item = new ItemStack(Material.PAPER);
                 ItemMeta meta = item.getItemMeta();
-
                 assert meta != null;
-                meta.setDisplayName(ChatColor.BLUE + "Mejora");
+                meta.setDisplayName(ChatColor.DARK_PURPLE + "Mejora");
                 meta.setCustomModelData(24);
-
-                NamespacedKey key = new NamespacedKey(plugin, "CustomItemType");
-                meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, "Mejora");
-
+                meta.getPersistentDataContainer().set(new NamespacedKey(plugin, "CustomItemType"), PersistentDataType.STRING, "Mejora");
                 meta.setLore(List.of(
-                        ChatColor.GRAY + "Mejora ciertos objetos."
+                        ChatColor.GRAY + "Usado para mejorar ciertos objetos.",
+                        ChatColor.DARK_PURPLE + "'Solo los artesanos bendecidos pueden activarlo.'",
+                        ChatColor.GRAY + "" + ChatColor.ITALIC + "Común"
                 ));
                 item.setItemMeta(meta);
             }
@@ -399,16 +418,15 @@ public class ItemsController {
             case "plat" -> {
                 item = new ItemStack(Material.PAPER);
                 ItemMeta meta = item.getItemMeta();
-
                 assert meta != null;
                 meta.setDisplayName(ChatColor.BLUE + "Corazón de plata");
                 meta.setCustomModelData(2);
-
-                NamespacedKey key = new NamespacedKey(plugin, "CustomItemType");
-                meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, "Plat");
-
+                meta.getPersistentDataContainer().set(new NamespacedKey(plugin, "CustomItemType"), PersistentDataType.STRING, "Plat");
                 meta.setLore(List.of(
-                        ChatColor.GRAY + "Un peculiar corazón de plata."
+                        ChatColor.WHITE + "Un peculiar corazón de plata.",
+                        ChatColor.DARK_GRAY + "Al parecer... late.",
+                        ChatColor.DARK_PURPLE + "'Un fragmento de luna atrapado en un suspiro.'",
+                        ChatColor.ITALIC + "" + ChatColor.GRAY + "Común"
                 ));
                 item.setItemMeta(meta);
             }
@@ -416,16 +434,14 @@ public class ItemsController {
             case "fire" -> {
                 item = new ItemStack(Material.PAPER);
                 ItemMeta meta = item.getItemMeta();
-
                 assert meta != null;
-                meta.setDisplayName(ChatColor.BLUE + "Corazón de fuego");
+                meta.setDisplayName(ChatColor.RED + "Corazón de fuego");
                 meta.setCustomModelData(3);
-
-                NamespacedKey key = new NamespacedKey(plugin, "CustomItemType");
-                meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, "Fire");
-
+                meta.getPersistentDataContainer().set(new NamespacedKey(plugin, "CustomItemType"), PersistentDataType.STRING, "Fire");
                 meta.setLore(List.of(
-                        ChatColor.GRAY + "Un peculiar corazón de fuego."
+                        ChatColor.GRAY + "Un corazón ardiente que emite calor real.",
+                        ChatColor.DARK_PURPLE + "'El alma de una salamandra duerme en su interior.'",
+                        ChatColor.BLUE + "" + ChatColor.ITALIC + "Raro"
                 ));
                 item.setItemMeta(meta);
             }
@@ -433,16 +449,15 @@ public class ItemsController {
             case "ice" -> {
                 item = new ItemStack(Material.PAPER);
                 ItemMeta meta = item.getItemMeta();
-
                 assert meta != null;
-                meta.setDisplayName(ChatColor.BLUE + "Corazón de hielo");
+                meta.setDisplayName(ChatColor.AQUA + "Corazón de hielo");
                 meta.setCustomModelData(4);
-
-                NamespacedKey key = new NamespacedKey(plugin, "CustomItemType");
-                meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, "Ice");
-
+                meta.getPersistentDataContainer().set(new NamespacedKey(plugin, "CustomItemType"), PersistentDataType.STRING, "Ice");
                 meta.setLore(List.of(
-                        ChatColor.GRAY + "Un peculiar corazón de hielo."
+                        ChatColor.WHITE + "Extremadamente frío al tacto.",
+                        ChatColor.DARK_GRAY + "Congela incluso el alma.",
+                        ChatColor.DARK_PURPLE + "'Nacido del susurro de una tormenta eterna.'",
+                        ChatColor.AQUA + "" + ChatColor.ITALIC + "Raro"
                 ));
                 item.setItemMeta(meta);
             }
@@ -450,17 +465,15 @@ public class ItemsController {
             case "res" -> {
                 item = new ItemStack(Material.PAPER);
                 ItemMeta meta = item.getItemMeta();
-
                 assert meta != null;
-                meta.setDisplayName(ChatColor.BLUE + "Corazón de resurrección");
+                meta.setDisplayName(ChatColor.RED + "Corazón de resurrección");
                 meta.setCustomModelData(5);
-
-                NamespacedKey key = new NamespacedKey(plugin, "CustomItemType");
-                meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, "Res");
-
+                meta.getPersistentDataContainer().set(new NamespacedKey(plugin, "CustomItemType"), PersistentDataType.STRING, "Res");
                 meta.setLore(List.of(
-                        ChatColor.GRAY + "Revive a un jugador.",
-                        ChatColor.RED + "Pierde un slot de corazón"
+                        ChatColor.GRAY + "Revive a un jugador caído.",
+                        ChatColor.RED + "Quien lo usa pierde un slot de corazón.",
+                        ChatColor.DARK_PURPLE + "'Un sacrificio necesario para devolver la vida.'",
+                        ChatColor.RED + "" + ChatColor.ITALIC + "Único"
                 ));
                 item.setItemMeta(meta);
             }
