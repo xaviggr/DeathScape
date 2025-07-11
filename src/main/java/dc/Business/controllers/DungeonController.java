@@ -12,10 +12,10 @@ import org.bukkit.block.Chest;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.scheduler.BukkitTask;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class DungeonController {
 
@@ -27,6 +27,9 @@ public class DungeonController {
 
     // Coordenadas de los cofres
     private static final List<Location> CHEST_LOCATIONS = new ArrayList<>();
+
+    private final Map<UUID, Location> returnLocations = new HashMap<>();
+    private final Map<UUID, BukkitTask> dungeonTimers = new HashMap<>();
 
     private final Random random = new Random();
 
@@ -187,12 +190,61 @@ public class DungeonController {
         Location spawnLocation = getValidSpawnLocation(player);
 
         if (spawnLocation != null) {
+            // Guarda ubicación original
+            returnLocations.put(player.getUniqueId(), player.getLocation());
+
+            // Teletransporta
             player.teleport(spawnLocation);
-            Message.sendTitleToPlayer(player,ChatColor.GOLD + "¡Bienvenido a la dungeon!", ChatColor.RED + "¡Prepárate para la batalla!", 10, 40, 10);
+            Message.sendTitleToPlayer(player, ChatColor.GOLD + "¡Bienvenido a la dungeon!", ChatColor.RED + "¡Prepárate para la batalla!", 10, 40, 10);
             Message.sendMessageAllPlayers(player.getName() + " ha entrado a las mazmorras.", ChatColor.BLUE);
+
+            // Inicia temporizador de 30 minutos (30 * 60 * 20 ticks)
+            BukkitTask task = new BukkitRunnable() {
+                long ticksLeft = 30 * 60 * 20L;
+
+                @Override
+                public void run() {
+                    // Envía tiempo restante cada minuto
+                    if (ticksLeft % (20 * 60) == 0) {
+                        long minutesLeft = ticksLeft / (20 * 60);
+                        player.spigot().sendMessage(net.md_5.bungee.api.ChatMessageType.ACTION_BAR,
+                                new net.md_5.bungee.api.chat.TextComponent(ChatColor.GOLD + "Tiempo restante en la dungeon: " + minutesLeft + " min"));
+                    }
+
+                    // Fin del tiempo
+                    if (ticksLeft <= 0) {
+                        endDungeon(player);
+                        cancel();
+                        return;
+                    }
+
+                    ticksLeft -= 20;
+                }
+            }.runTaskTimer(plugin, 0L, 20L);
+
+            dungeonTimers.put(player.getUniqueId(), task);
+
         } else {
             Message.sendMessage(player, "No hay ubicaciones de spawn disponibles en este momento.", ChatColor.RED);
         }
+    }
+
+    private void endDungeon(Player player) {
+        UUID uuid = player.getUniqueId();
+
+        // Cancela task
+        if (dungeonTimers.containsKey(uuid)) {
+            dungeonTimers.get(uuid).cancel();
+            dungeonTimers.remove(uuid);
+        }
+
+        // Devuelve a ubicación original si existe
+        if (returnLocations.containsKey(uuid)) {
+            Location returnLoc = returnLocations.remove(uuid);
+            player.teleport(returnLoc);
+        }
+
+        player.sendMessage(ChatColor.RED + "¡Tu tiempo en la dungeon ha terminado!");
     }
 
     /**

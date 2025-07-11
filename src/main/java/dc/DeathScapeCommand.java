@@ -119,6 +119,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
                         options.add("removevidas");
                         options.add("itemgive");
                         options.add("menurevivir");
+                        options.add("dungeon");
                     }
 
                     if (groupPermissions.contains("teleport")) {
@@ -327,7 +328,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         commandMap.put("endersee", () -> handleEnderSee(player, args, group));
         commandMap.put("mute", () -> handleMutePlayer(player, args, group));
         commandMap.put("unmute", () -> handleUnMutePlayer(player, args, group));
-        commandMap.put("dungeon", () -> handleDungeonTP(player, group));
+        commandMap.put("dungeon", () -> handleDungeonTP(player, args, group));
         commandMap.put("addvidas", () -> handleAddVidasCommand(player, args, group));
         commandMap.put("removevidas", () -> handleQuitarVidasCommand(player, args, group));
         commandMap.put("vidas", () -> handleVidasCommand(player, args));
@@ -1104,6 +1105,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
             commands.put("removevidas", "Permite quitar vidas a otro jugador.");
             commands.put("itemgive", "Proporciona un item custom al jugador indicado.");
             commands.put("menurevivir", "Abre el menú para revivir a un jugador.");
+            commands.put("dungeon", "Mueve a un jugador a una posición aleatoria de la dungeon.");
         }
 
         if (groupPermissions.contains("teleport")) {
@@ -1599,13 +1601,31 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
         targetPlayer.getInventory().addItem(item);
     }
 
-    public void handleDungeonTP(Player player, GroupData group) {
-        if (!group.getPermissions().contains(Permission.GROUP)) {
-            sendNoPermissionMessage(player);
+    public void handleDungeonTP(Player sender, String[] args, GroupData group) {
+        // Verifica sintaxis
+        if (args.length != 2) {
+            sender.sendMessage(ChatColor.RED + "Uso: /ds dungeon <jugador>");
             return;
         }
 
-        dungeonController.teleportPlayerToDungeon(player);
+        // Verifica permisos del grupo
+        if (!group.getPermissions().contains(Permission.GROUP)) {
+            sendNoPermissionMessage(sender);
+            return;
+        }
+
+        String targetName = args[1];
+        Player target = Bukkit.getPlayerExact(targetName);
+
+        // Verifica que el jugador esté online
+        if (target == null) {
+            sender.sendMessage(ChatColor.RED + "El jugador '" + targetName + "' no está conectado.");
+            return;
+        }
+
+        // Inicia la teleportación a la dungeon
+        dungeonController.teleportPlayerToDungeon(target);
+        sender.sendMessage(ChatColor.GREEN + "Has enviado a " + target.getName() + " a la dungeon.");
     }
 
     /**
