@@ -56,6 +56,12 @@ public class ReviveInventory extends PlayersInventory {
      */
     @Override
     protected void onPlayerSelected(Player reviver, String playerName) {
+        // Verifica si el jugador existe (ha estado antes en el servidor)
+        if (!Bukkit.getOfflinePlayer(playerName).hasPlayedBefore()) {
+            Message.sendMessage(reviver, "El jugador '" + playerName + "' no existe o nunca ha entrado al servidor.", ChatColor.RED);
+            return;
+        }
+
         // Unban the player
         Bukkit.getBanList(org.bukkit.BanList.Type.NAME).pardon(playerName);
         PlayerEditDatabase.UnbanPlayer(playerName);

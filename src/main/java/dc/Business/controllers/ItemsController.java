@@ -471,7 +471,6 @@ public class ItemsController {
                 meta.getPersistentDataContainer().set(new NamespacedKey(plugin, "CustomItemType"), PersistentDataType.STRING, "Res");
                 meta.setLore(List.of(
                         ChatColor.GRAY + "Revive a un jugador caído.",
-                        ChatColor.RED + "Quien lo usa pierde un slot de corazón.",
                         ChatColor.DARK_PURPLE + "'Un sacrificio necesario para devolver la vida.'",
                         ChatColor.RED + "" + ChatColor.ITALIC + "Único"
                 ));
