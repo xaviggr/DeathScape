@@ -1625,6 +1625,7 @@ public class DeathScapeCommand implements CommandExecutor, TabCompleter {
 
         // Inicia la teleportación a la dungeon
         dungeonController.teleportPlayerToDungeon(target);
+        dungeonController.init();
         sender.sendMessage(ChatColor.GREEN + "Has enviado a " + target.getName() + " a la dungeon.");
     }
 

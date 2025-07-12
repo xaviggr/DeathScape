@@ -6,14 +6,19 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.block.Chest;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.EnchantmentStorageMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
+
+import net.md_5.bungee.api.ChatMessageType;
+import net.md_5.bungee.api.chat.TextComponent;
 
 import java.util.*;
 
@@ -21,6 +26,7 @@ public class DungeonController {
 
     private final DeathScape plugin;
     private final PlayerController playerController;
+    private final ItemsController itemsController;
 
     // Coordenadas de posibles spawns
     private static final List<Location> SPAWN_LOCATIONS = new ArrayList<>();
@@ -132,13 +138,14 @@ public class DungeonController {
         }
     }
 
-    public DungeonController(DeathScape deathScape, PlayerController playerController) {
+    public DungeonController(DeathScape deathScape, ItemsController itemsController, PlayerController playerController) {
         this.plugin = deathScape;
+        this.itemsController = itemsController;
         this.playerController = playerController;
         init();
     }
 
-    private void init() {
+    public void init() {
         clearDungeonChests();
         fillChestsWithLoot();
     }
@@ -255,11 +262,7 @@ public class DungeonController {
             Block block = chestLocation.getBlock();
             if (block.getType() == Material.CHEST) {
                 Chest chest = (Chest) block.getState();
-
-                // Solo rellena cofres vacíos
-                if (chest.getBlockInventory().isEmpty()) {
-                    chest.getBlockInventory().setContents(generateRandomLoot());
-                }
+                chest.getBlockInventory().setContents(generateRandomLoot());
             }
         }
     }
@@ -283,40 +286,67 @@ public class DungeonController {
      * @return Un array de ItemStack con ítems aleatorios.
      */
     private ItemStack[] generateRandomLoot() {
-        ItemStack[] loot = new ItemStack[27]; // Tamaño estándar de un cofre
+        ItemStack[] loot = new ItemStack[27]; // Tamaño de un cofre
+        Random random = new Random();
 
         for (int i = 0; i < loot.length; i++) {
-            double randomValue = random.nextDouble();
+            double roll = random.nextDouble() * 100; // 0.0 - 100.0
 
-            // Probabilidad del 40% de que no haya nada
-            if (randomValue < 0.4) {
-                loot[i] = null; // Slot vacío
-
-                // Probabilidad del 25% para ítems comunes
-            } else if (randomValue < 0.65) { // 40% + 25% = 65%
-                loot[i] = ItemsController.generateCommonItem();
-
-                // Probabilidad del 15% para ítems poco comunes
-            } else if (randomValue < 0.8) { // 65% + 15% = 80%
-                loot[i] = ItemsController.generateUncommonItem();
-
-                // Probabilidad del 10% para ítems raros
-            } else if (randomValue < 0.9) { // 80% + 10% = 90%
-                loot[i] = ItemsController.generateRareItem();
-
-                // Probabilidad del 6% para ítems épicos
-            } else if (randomValue < 0.96) { // 90% + 6% = 96%
-                loot[i] = ItemsController.generateEpicItem();
-
-                // Probabilidad del 3.99% para ítems legendarios
-            } else if (randomValue < 0.9999) { // 96% + 3.99% = 99.99%
-                loot[i] = ItemsController.generateLegendaryItem();
-
-                // Probabilidad del 0.1% para ítems únicos
-            } else { // 0.1% restante
-                loot[i] = ItemsController.generateUniqueItem();
+            if (roll < 0.01) {
+                loot[i] = new ItemStack(Material.ELYTRA);
+            } else if (roll < 0.31) {
+                String[] types = { "jump", "explosion", "deathscape" };
+                String chosenType = types[random.nextInt(types.length)];
+                loot[i] = itemsController.generateCustomTotem(chosenType);
+            } else if (roll < 0.51) {
+                loot[i] = new ItemStack(Material.NETHERITE_UPGRADE_SMITHING_TEMPLATE);
+            } else if (roll < 0.71) {
+                loot[i] = new ItemStack(Material.ENCHANTED_GOLDEN_APPLE);
+            } else if (roll < 0.91) {
+                loot[i] = itemsController.generateCustomUtilityItem("Mejora");
+            } else if (roll < 1.91) {
+                loot[i] = new ItemStack(Material.GOLDEN_APPLE);
+            } else if (roll < 2.91) {
+                loot[i] = createStack(Material.DIAMOND, 1, 2);
+            } else if (roll < 4.91) {
+                loot[i] = createStack(Material.GOLD_INGOT, 1, 4);
+            } else if (roll < 5.91) {
+                loot[i] = getBook(Enchantment.MENDING);
+            } else if (roll < 6.91) {
+                loot[i] = getBook(Enchantment.DAMAGE_ALL); // Filo
+            } else if (roll < 7.91) {
+                loot[i] = getBook(Enchantment.getByName("DAMAGE_UNDEAD")); // Golpeo
+            } else if (roll < 8.91) {
+                loot[i] = getBook(Enchantment.getByName("UNBREAKING"));
+            } else if (roll < 11.91) {
+                loot[i] = new ItemStack(Material.TOTEM_OF_UNDYING);
+            } else if (roll < 21.91) {
+                loot[i] = createStack(Material.IRON_INGOT, 1, 6);
+            } else if (roll < 31.91) {
+                loot[i] = createStack(Material.BONE, 1, 8);
+            } else if (roll < 51.91) {
+                loot[i] = createStack(Material.STRING, 1, 10);
+            } else if (roll < 56.91) {
+                loot[i] = createStack(Material.BREAD, 1, 10);
+            } else {
+                loot[i] = null; // Nada
             }
         }
+
         return loot;
+    }
+
+    private ItemStack createStack(Material material, int min, int max) {
+        int amount = min + random.nextInt(max - min + 1);
+        return new ItemStack(material, amount);
+    }
+
+    private ItemStack getBook(Enchantment enchantment) {
+        ItemStack book = new ItemStack(Material.ENCHANTED_BOOK);
+        EnchantmentStorageMeta meta = (EnchantmentStorageMeta) book.getItemMeta();
+        assert meta != null;
+        meta.addStoredEnchant(enchantment, 1, false);
+        book.setItemMeta(meta);
+        return book;
     }
 }

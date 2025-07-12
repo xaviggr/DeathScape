@@ -125,7 +125,7 @@ public class DeathScape extends JavaPlugin {
         totemController = new TotemController(this);
         mobSpawnController = new MobSpawnController(this);
         dimensionController = new DimensionController(this);
-        dungeonController = new DungeonController(this, playerController);
+        dungeonController = new DungeonController(this, itemsController, playerController);
         itemsController = new ItemsController(this);
         lifeController = new LifeController(this);
         waypointController = new WaypointController(this);
