@@ -1,6 +1,7 @@
 package dc.Business.controllers;
 
 import dc.DeathScape;
+import dc.Persistence.config.MainConfigManager;
 import dc.utils.Message;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -36,6 +37,8 @@ public class DungeonController {
 
     private final Map<UUID, Location> returnLocations = new HashMap<>();
     private final Map<UUID, BukkitTask> dungeonTimers = new HashMap<>();
+
+    private final double getlootProbabilityScale = MainConfigManager.getInstance().getlootProbabilityScale();
 
     private final Random random = new Random();
 
@@ -286,55 +289,79 @@ public class DungeonController {
      * @return Un array de ItemStack con ítems aleatorios.
      */
     private ItemStack[] generateRandomLoot() {
-        ItemStack[] loot = new ItemStack[27]; // Tamaño de un cofre
-        Random random = new Random();
+        ItemStack[] loot = new ItemStack[27];
+        List<ItemStack> itemsToPlace = new ArrayList<>();
 
-        for (int i = 0; i < loot.length; i++) {
-            double roll = random.nextDouble() * 100; // 0.0 - 100.0
+        double scale = getlootProbabilityScale;
 
-            if (roll < 0.01) {
-                loot[i] = new ItemStack(Material.ELYTRA);
-            } else if (roll < 0.31) {
-                String[] types = { "jump", "explosion", "deathscape" };
-                String chosenType = types[random.nextInt(types.length)];
-                loot[i] = itemsController.generateCustomTotem(chosenType);
-            } else if (roll < 0.51) {
-                loot[i] = new ItemStack(Material.NETHERITE_UPGRADE_SMITHING_TEMPLATE);
-            } else if (roll < 0.71) {
-                loot[i] = new ItemStack(Material.ENCHANTED_GOLDEN_APPLE);
-            } else if (roll < 0.91) {
-                loot[i] = itemsController.generateCustomUtilityItem("Mejora");
-            } else if (roll < 1.91) {
-                loot[i] = new ItemStack(Material.GOLDEN_APPLE);
-            } else if (roll < 2.91) {
-                loot[i] = createStack(Material.DIAMOND, 1, 2);
-            } else if (roll < 4.91) {
-                loot[i] = createStack(Material.GOLD_INGOT, 1, 4);
-            } else if (roll < 5.91) {
-                loot[i] = getBook(Enchantment.MENDING);
-            } else if (roll < 6.91) {
-                loot[i] = getBook(Enchantment.DAMAGE_ALL); // Filo
-            } else if (roll < 7.91) {
-                loot[i] = getBook(Enchantment.getByName("DAMAGE_UNDEAD")); // Golpeo
-            } else if (roll < 8.91) {
-                loot[i] = getBook(Enchantment.getByName("UNBREAKING"));
-            } else if (roll < 11.91) {
-                loot[i] = new ItemStack(Material.TOTEM_OF_UNDYING);
-            } else if (roll < 21.91) {
-                loot[i] = createStack(Material.IRON_INGOT, 1, 6);
-            } else if (roll < 31.91) {
-                loot[i] = createStack(Material.BONE, 1, 8);
-            } else if (roll < 51.91) {
-                loot[i] = createStack(Material.STRING, 1, 10);
-            } else if (roll < 56.91) {
-                loot[i] = createStack(Material.BREAD, 1, 10);
-            } else {
-                loot[i] = null; // Nada
-            }
+        if (random.nextDouble() * scale < 0.02) { // 0.02
+            itemsToPlace.add(new ItemStack(Material.ELYTRA));
+        }
+        if (random.nextDouble() * scale < 3.0) { // MÁS probabilidad (antes 0.3)
+            String[] types = { "jump", "explosion", "deathscape" };
+            itemsToPlace.add(itemsController.generateCustomTotem(types[random.nextInt(types.length)]));
+        }
+        if (random.nextDouble() * scale < 1.5) {
+            itemsToPlace.add(new ItemStack(Material.NETHERITE_UPGRADE_SMITHING_TEMPLATE));
+        }
+        if (random.nextDouble() * scale < 0.5) {
+            itemsToPlace.add(new ItemStack(Material.ENCHANTED_GOLDEN_APPLE));
+        }
+        if (random.nextDouble() * scale < 5.0) { // mejora muy importante
+            itemsToPlace.add(itemsController.generateCustomUtilityItem("Mejora"));
+        }
+        if (random.nextDouble() * scale < 3.0) {
+            itemsToPlace.add(new ItemStack(Material.GOLDEN_APPLE));
+        }
+        if (random.nextDouble() * scale < 4.0) {
+            itemsToPlace.add(createStack(Material.DIAMOND, 1, 2));
+        }
+        if (random.nextDouble() * scale < 5.0) {
+            itemsToPlace.add(createStack(Material.GOLD_INGOT, 1, 4));
+        }
+        if (random.nextDouble() * scale < 2.0) {
+            itemsToPlace.add(getBook(Enchantment.MENDING));
+        }
+        if (random.nextDouble() * scale < 2.0) {
+            itemsToPlace.add(getBook(Enchantment.DAMAGE_ALL)); // Filo
+        }
+        if (random.nextDouble() * scale < 2.0) {
+            itemsToPlace.add(getBook(Enchantment.getByName("DAMAGE_UNDEAD"))); // Golpeo
+        }
+        if (random.nextDouble() * scale < 2.0) {
+            itemsToPlace.add(getBook(Enchantment.getByName("UNBREAKING")));
+        }
+        if (random.nextDouble() * scale < 10.0) { // Tótem normal más común
+            itemsToPlace.add(new ItemStack(Material.TOTEM_OF_UNDYING));
+        }
+        if (random.nextDouble() * scale < 15.0) {
+            itemsToPlace.add(createStack(Material.IRON_INGOT, 1, 6));
+        }
+        if (random.nextDouble() * scale < 30.0) {
+            itemsToPlace.add(createStack(Material.STRING, 1, 10));
+        }
+        if (random.nextDouble() * scale < 20.0) {
+            itemsToPlace.add(createStack(Material.BONE, 1, 8));
+        }
+        if (random.nextDouble() * scale < 12.0) {
+            itemsToPlace.add(createStack(Material.BREAD, 1, 10));
+        }
+
+        // Mezclar posiciones
+        Collections.shuffle(itemsToPlace);
+
+        // Colocar aleatoriamente los ítems en el cofre
+        List<Integer> availableSlots = new ArrayList<>();
+        for (int i = 0; i < loot.length; i++) availableSlots.add(i);
+        Collections.shuffle(availableSlots);
+
+        for (int i = 0; i < itemsToPlace.size() && i < loot.length; i++) {
+            loot[availableSlots.get(i)] = itemsToPlace.get(i);
         }
 
         return loot;
     }
+
 
     private ItemStack createStack(Material material, int min, int max) {
         int amount = min + random.nextInt(max - min + 1);
@@ -345,7 +372,11 @@ public class DungeonController {
         ItemStack book = new ItemStack(Material.ENCHANTED_BOOK);
         EnchantmentStorageMeta meta = (EnchantmentStorageMeta) book.getItemMeta();
         assert meta != null;
-        meta.addStoredEnchant(enchantment, 1, false);
+
+        int maxLevel = enchantment.getMaxLevel();
+        int level = 1 + random.nextInt(maxLevel); // Entre 1 y maxLevel inclusive
+
+        meta.addStoredEnchant(enchantment, level, false); // false para respetar el límite natural
         book.setItemMeta(meta);
         return book;
     }

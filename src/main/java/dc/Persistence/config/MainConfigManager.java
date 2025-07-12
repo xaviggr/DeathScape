@@ -42,6 +42,9 @@ public class MainConfigManager {
     private String githubToken;
     private int leaderboardUpdateInterval;
 
+    //dungeon config
+    private double lootProbabilityScale;
+
     // Private constructor for Singleton
     private MainConfigManager() {}
 
@@ -105,6 +108,7 @@ public class MainConfigManager {
 
         githubToken = getConfig().getString("leaderboard.github_token");
         leaderboardUpdateInterval = getConfig().getInt("leaderboard.update_interval", 1);
+        lootProbabilityScale = getConfig().getDouble("loot-probability-scale", 50.0);
 
         if (!getConfig().isSet("leaderboard.github_token")) {
             getConfig().set("leaderboard.github_token", "<token>");
@@ -239,4 +243,6 @@ public class MainConfigManager {
     public String getGithubToken() { return githubToken; }
 
     public int getLeaderboardUpdateInterval() { return leaderboardUpdateInterval; }
+
+    public double getlootProbabilityScale() { return lootProbabilityScale; }
 }
